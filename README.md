@@ -121,10 +121,12 @@ MANUFACTURER="Acme Corp" ./build.sh    # brand a fork
 
 Output lands in `dist/` alongside `parsers.d/` and `obs_viewer.conf`.
 
-On Windows, `build.sh` auto-detects MSYS2 **ucrt64** GCC. TDM-GCC 10.x
-and MSYS2 **mingw64** GCC 15.x do *not* work — both have ABI mismatches
-against the prebuilt `libduckdb_static.a`. Cross-compilation notes for
-every target are in [docs/BUILD.md](./docs/BUILD.md).
+Windows binaries are produced by CI; that is the supported path. A
+local Windows build needs a MinGW-w64 GCC whose C++ ABI matches the
+prebuilt `libduckdb_static.a` — `build.sh` probes for one and prints
+which it picked. Which toolchains currently work, and the
+cross-compilation notes for every target, are in
+[docs/BUILD.md](./docs/BUILD.md).
 
 ## Development
 

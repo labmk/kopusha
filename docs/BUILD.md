@@ -46,7 +46,7 @@ rejects anything else up front rather than failing at link time.
 
 | Target | Build host | C toolchain |
 |--------|-----------|-------------|
-| `windows/amd64` | Windows | MSYS2 **ucrt64** GCC |
+| `windows/amd64` | Windows (CI) | MinGW-w64 GCC — see below |
 | `linux/amd64` | Linux | system GCC |
 | `linux/arm64` | Linux arm64 | system GCC |
 | `darwin/arm64` | **macOS only** | Xcode Command Line Tools (clang) |
@@ -62,22 +62,34 @@ SDK is universal. Nothing in the source is architecture-specific.
 
 ### Windows
 
-`build.sh` auto-detects MSYS2 ucrt64 GCC at
-`/c/msys64/ucrt64/bin/gcc.exe`. Two toolchains that look like they
-should work but don't:
+**Nobody develops this project on Windows.** The Windows binary is
+produced by CI, and that is the supported path. What follows is for the
+case where you need a local Windows build anyway.
 
-- **TDM-GCC 10.x** — too old; missing `__throw_bad_array_new_length`.
-- **MSYS2 mingw64 GCC 15.x** — `_Mbstatet` ABI mismatch against the
-  prebuilt `libduckdb_static.a`.
+The C toolchain is the only real difficulty, because you are linking
+against a **prebuilt** `libduckdb_static.a` and your compiler's C++ ABI
+has to match whatever built it. `build.sh` probes for a compiler, prints
+which one it selected and its version, and falls through to `gcc` on
+`PATH`.
 
-Both fail at link time with symbol errors that don't obviously point at
-the compiler choice. If you see either symbol, you're on the wrong GCC.
+What is known, as of 2026-08-01 against `duckdb-go-bindings v0.10505.0`:
 
-Install the right one:
+| Toolchain | Result |
+|-----------|--------|
+| MinGW-Builds GCC 15.2.0 at `C:\mingw64` (msvcrt) | **Works.** This is the stock GitHub `windows-latest` toolchain; CI builds and passes e2e with it. |
+| MSYS2 ucrt64 GCC 16.1.0 | **Fails.** `ld` crashes linking `libduckdb_static.a` — `collect2.exe: error: ld returned 5 exit status`, no symbol diagnostics. |
+| TDM-GCC 10.x | Fails — too old, missing `__throw_bad_array_new_length`. |
 
-```bash
-pacman -S mingw-w64-ucrt-x86_64-gcc
-```
+Earlier revisions of this document asserted the reverse: that MSYS2
+**ucrt64** was required and mingw64 GCC 15.x was broken by an
+`_Mbstatet` ABI mismatch. That was accurate against an older bindings
+release and is no longer true. Treat the table as a record of what was
+last observed, not a rule — if the link step starts failing after a
+`duckdb-go-bindings` bump, the working compiler may well move again.
+
+The practical advice: install the [winlibs](https://winlibs.com/) or
+MinGW-Builds GCC to `C:\mingw64`, or simply read the `C compiler:` line
+`build.sh` prints and compare it against the table.
 
 The binary is built for the console subsystem, so launching it from
 Explorer opens a console window. That's deliberate — closing the window

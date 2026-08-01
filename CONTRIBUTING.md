@@ -24,10 +24,11 @@ go run .                          # backend only, :9200
 cd frontend && npm run dev        # Vite on :5173, proxies /api to :9200
 ```
 
-Platform-specific toolchain notes — in particular the MSYS2 **ucrt64**
-requirement on Windows — are in [docs/BUILD.md](./docs/BUILD.md). If the
-link step fails with missing symbols, that document is almost certainly
-the answer.
+Platform-specific toolchain notes — in particular which Windows C
+compilers link against the prebuilt DuckDB archive — are in
+[docs/BUILD.md](./docs/BUILD.md). If the link step fails with missing
+symbols or a linker crash, that document is almost certainly the
+answer.
 
 ## Running the tests
 

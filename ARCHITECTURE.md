@@ -94,11 +94,10 @@ obs_viewer[.exe]                     (~85 MB single binary)
 
 - **Go**: 1.25.6+ with CGO enabled.
 - **Node**: 18+ with npm.
-- **C compiler (Windows)**: MSYS2 **ucrt64** GCC — auto-detected by
-  `build.sh` at `/c/msys64/ucrt64/bin/gcc.exe`. TDM-GCC 10.x and MSYS2
-  **mingw64** GCC 15.x do **not** work: ABI mismatches
-  (`__throw_bad_array_new_length`, `_Mbstatet`) against the prebuilt
-  `libduckdb_static.a`.
+- **C compiler (Windows)**: a MinGW-w64 GCC whose C++ ABI matches the
+  prebuilt `libduckdb_static.a`. `build.sh` probes for one and reports
+  its choice. The working set moves with `duckdb-go-bindings` releases —
+  docs/BUILD.md records what was last verified.
 - **DuckDB runtime**: no external download. Extensions (JSON, ICU,
   parquet, …) are statically linked; never call `INSTALL json` — it
   would try to fetch from `extensions.duckdb.org` and hang ~4 minutes

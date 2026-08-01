@@ -132,20 +132,30 @@ echo "[2/4] Static assets verified"
 # Step 3: Build Go binary
 echo "[3/4] Compiling Go binary..."
 
-# On Windows, prefer MSYS2 ucrt64 GCC (compatible ABI with the prebuilt
-# libduckdb_static.a). TDM-GCC 10.x is too old; MSYS2 mingw64 GCC 15.x
-# has an _Mbstatet ABI mismatch.
+# Windows C compiler selection. What is actually known, as of
+# 2026-08-01 against duckdb-go-bindings v0.10505.0:
 #
-# Probe a list rather than one hardcoded path: a hand-installed MSYS2
-# sits at C:\msys64, but CI runners and other setups put it elsewhere.
-# Falling through to whatever `gcc` is on PATH is deliberate — that is
-# what upstream duckdb-go does on windows-latest, and it works.
+#   works   MinGW-Builds GCC 15.2.0 at C:\mingw64 (msvcrt) — the stock
+#           toolchain on the GitHub windows-latest runner. CI builds and
+#           passes its e2e suite with this.
+#   fails   MSYS2 ucrt64 GCC 16.1.0 — ld crashes linking
+#           libduckdb_static.a ("ld returned 5 exit status", no symbol
+#           diagnostics).
+#
+# Earlier notes in this project asserted the opposite — that ucrt64 was
+# required and mingw64 GCC 15.x was broken by an _Mbstatet ABI mismatch.
+# That was true of an older bindings release; it is not true now, so
+# treat the ordering below as evidence rather than doctrine and re-check
+# it if the link step starts failing. Probe a list because MSYS2 lives
+# in a different place on every machine, then fall through to whatever
+# gcc is on PATH — which is what upstream duckdb-go relies on.
 if [ "$TARGET_OS" = "windows" ] && [ -z "${CC:-}" ]; then
     for candidate in \
-        "${MSYS2_ROOT:-}/ucrt64/bin/gcc.exe" \
-        /c/msys64/ucrt64/bin/gcc.exe \
+        /c/mingw64/bin/gcc.exe \
+        "${MSYS2_ROOT:-}/mingw64/bin/gcc.exe" \
         /c/msys64/mingw64/bin/gcc.exe \
-        /c/mingw64/bin/gcc.exe
+        "${MSYS2_ROOT:-}/ucrt64/bin/gcc.exe" \
+        /c/msys64/ucrt64/bin/gcc.exe
     do
         if [ -x "$candidate" ]; then
             export CC="$candidate"
@@ -159,8 +169,9 @@ if [ "$TARGET_OS" = "windows" ]; then
     resolved_cc="${CC:-$(command -v gcc 2>/dev/null || echo '')}"
     if [ -z "$resolved_cc" ]; then
         echo "ERROR: no C compiler found for the windows/amd64 target." >&2
-        echo "       Install MSYS2 ucrt64 GCC (pacman -S" >&2
-        echo "       mingw-w64-ucrt-x86_64-gcc) or set CC explicitly." >&2
+        echo "       Install MinGW-w64 GCC (the winlibs or MinGW-Builds" >&2
+        echo "       distribution at C:\\mingw64 is what CI uses) or set" >&2
+        echo "       CC explicitly. See docs/BUILD.md." >&2
         exit 1
     fi
     echo "  C compiler: $resolved_cc"
