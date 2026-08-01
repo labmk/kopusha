@@ -1,7 +1,9 @@
 # Self-update — design + tradeoffs
 
 Status: **stage 1 shipped** (release notification).
-Stage 2 (downloading and replacing the binary) is **deferred**.
+Stage 2 (downloading and replacing the binary) is **deferred**, blocked
+on release signing. Its `parsers.d/` behaviour is decided and recorded
+below.
 Trigger to revisit: release signing exists, and someone actually asks.
 
 ## What shipped
@@ -66,17 +68,62 @@ Extracting a release archive over an install directory deletes both. A
 user's custom parser rules are the single thing they would be angriest to
 lose, and the loss would be silent.
 
-The safe rule is **replace only the executable** and never touch
-`obs_viewer.conf`, `obs_viewer_*.conf`, or `parsers.d/`. But that has a
-cost: parser rules shipped in a new release would never reach existing
-installs, so a release adding a log format would not take effect. Doing
-it properly needs a manifest of shipped files with checksums, so the
-updater can overwrite what is unmodified since install and leave
-user-touched files alone. That is the part most likely to be
-underestimated.
-
 Settings survive for free — `obs_viewer_settings.json` sits beside the
 binary and is never touched.
+
+## Decided: how `parsers.d/` is updated
+
+**A shipped rule is replaced only if it is byte-identical to what it
+shipped as. Anything the user has touched is left alone.** Config files
+are never replaced at all.
+
+This keeps new log formats flowing to existing installs — otherwise a
+release adding a parser would silently do nothing — without ever
+overwriting work someone did by hand.
+
+### Where the reference checksums come from
+
+There is no installer, so nothing records what a file looked like when it
+arrived. The answer is that **the binary carries the manifest**: build.sh
+hashes `parsers.d/` and the result is embedded with `go:embed`. The
+*running* binary therefore knows what it shipped with, and the updater
+compares the files on disk against that, not against the incoming
+release. No install-time state, nothing to corrupt, nothing to migrate.
+
+This has to start before the updater exists. An install of a binary with
+no embedded manifest can never be reasoned about later, so the first
+self-update on such an install must fall back to touching nothing. Every
+release that carries a manifest is one more install the eventual updater
+can handle precisely.
+
+### The cases that matter
+
+| On disk | In the running binary's manifest | Action |
+|---|---|---|
+| Matches its recorded hash | yes | Replace. This is the whole point. |
+| Differs from its recorded hash | yes | **Keep.** User edited a shipped rule. |
+| Absent | yes | **Keep absent.** Deleting a rule is how you disable it; restoring it would undo a deliberate act. |
+| Present | no | **Keep.** User's own rule. |
+| Unmodified, and gone from the new release | yes | Delete. A withdrawn rule left behind can shadow its replacement, because `parsers.d/` loads in lexicographic order and the first match wins. |
+| Modified, and gone from the new release | yes | Keep. Their edit, their call. |
+
+The last two are the ones that get missed. Rule precedence is positional,
+so a stale file is not inert — it can quietly outrank the rule meant to
+supersede it.
+
+**Report, don't just act.** When rules are skipped because the user
+changed them, say so after updating: *"3 parser rules kept because you
+modified them: 20-line-iso-bracket.yaml, …"*. Otherwise a user who edited
+a shipped rule to fix a regex will silently never receive upstream fixes
+to it, and will have no way to discover that.
+
+### Config files stay out
+
+`obs_viewer.conf` and `obs_viewer_*.conf` are never replaced, even when
+unmodified. The shipped file is entirely commented-out defaults, so
+replacing it gains only fresher documentation while risking a silent
+behaviour change if a default moves. New `.example` siblings may be
+added, since adding a file nobody references cannot change behaviour.
 
 ### 4. Platform mechanics, in ascending order of pain
 
@@ -95,12 +142,15 @@ on Windows is the common case rather than the exception.
 
 ## If stage 2 is built
 
-Two decisions come first, and everything else follows from them:
+One decision remains, and everything else follows from it:
 
 1. **Signing.** Which scheme, where the private key lives, and who can
    use it. Without this, stop.
-2. **Whether `parsers.d/` is ever updated automatically.** "No" is
-   defensible and much simpler; "yes" requires the checksum manifest.
+
+The `parsers.d/` question is settled — see "Decided" above. Its only
+prerequisite, the embedded manifest, is independent of signing and can
+land at any time; the sooner it does, the more installs the eventual
+updater can treat precisely rather than conservatively.
 
 Then: user-initiated only — a button, never automatic. Verify the
 signature before writing. Keep the previous binary for rollback. Restart
