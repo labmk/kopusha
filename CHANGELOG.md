@@ -67,8 +67,9 @@ want explained.
 - Visual query builder with ten operators, plus a LogQL-shaped text DSL
   that round-trips with it.
 - Time filtering with explicit UTC offsets, avoiding DST ambiguity.
-- Virtualised result table with expandable rows and per-schema
-  persisted column widths.
+- Result table with expandable rows and per-schema persisted column
+  widths. (This entry originally said "virtualised", which was never
+  true — corrected in 0.1.1.)
 - NDJSON export, optionally copying the binary alongside the data so a
   recipient can open the result with no setup.
 - Module system for optional sub-features with their own Go handlers,
