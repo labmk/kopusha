@@ -77,8 +77,25 @@ The project is MIT and every dependency must be permissive — MIT, BSD,
 Apache-2.0, ISC, or MPL-2.0 at the outside. **A GPL- or AGPL-licensed
 dependency cannot be accepted**, because static linking would make the
 distributed binary a copyleft work that the MIT license on this
-repository cannot carry. Check the license before you add a module, and
-add an entry to `THIRD-PARTY-NOTICES.md`.
+repository cannot carry.
+
+After adding or upgrading a dependency, regenerate the notices and SBOM:
+
+```bash
+python3 scripts/generate-sbom.py
+```
+
+That rewrites both [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md)
+and `sbom.cdx.json`; commit them with your change. Neither file is
+edited by hand. It needs `cyclonedx-gomod` on `PATH`:
+
+```bash
+go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
+```
+
+Check the output — if a new component lands under a licence not already
+in the summary table, that is the moment to think about whether it
+belongs here.
 
 Beyond licensing, new dependencies need a reason. The backend is
 deliberately stdlib-only apart from DuckDB, the EVTX parser, YAML, and

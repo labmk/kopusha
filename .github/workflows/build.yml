@@ -227,7 +227,10 @@ jobs:
             # restore it before archiving — otherwise every download
             # arrives chmod 644 and will not run.
             [ -f "$dir/obs_viewer" ] && chmod +x "$dir/obs_viewer"
-            cp LICENSE README.md "$dir/"
+            # THIRD-PARTY-NOTICES.md is not documentation — MIT and BSD
+            # require their notices to travel with the binary, so it goes
+            # in every archive.
+            cp LICENSE README.md THIRD-PARTY-NOTICES.md sbom.cdx.json "$dir/"
 
             name="obs_viewer-${VERSION}-${platform}"
             if [ -f "$dir/obs_viewer.exe" ]; then
@@ -236,6 +239,10 @@ jobs:
               tar -czf "out/${name}.tar.gz" -C "$dir" .
             fi
           done
+
+          # Also publish the SBOM as a standalone asset so it can be
+          # consumed without downloading a platform archive.
+          cp sbom.cdx.json out/
 
           (cd out && sha256sum ./* > SHA256SUMS)
           ls -l out

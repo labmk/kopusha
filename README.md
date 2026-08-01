@@ -179,6 +179,11 @@ before you run it on data you care about.
 
 MIT — see [LICENSE](./LICENSE). Copyright (c) 2026 labmk.
 
+Everything compiled into the binary is permissive — MIT, BSD, Apache-2.0,
+ISC. [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) lists it, and
+`sbom.cdx.json` is the machine-readable CycloneDX equivalent, shipped
+with every release.
+
 obs-viewer is an independent open source project. Anyone is free to
 use, modify and redistribute it, including commercially, under the MIT
 terms. It is provided as-is, with no warranty and no support
