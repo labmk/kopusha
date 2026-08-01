@@ -49,8 +49,8 @@ The e2e suite spawns the real binary against `test-fixtures/`, so
    requires a REQ-DT row, a fixture, a Go unit test, and an e2e test.
    That matrix is the contract; a format without a row in it is not
    considered supported.
-4. Version bumped in the places listed under "Release chores" in
-   [AGENTS.md](./AGENTS.md), if the change is user-visible.
+4. Version bumped, if the change is user-visible — see "Release chores"
+   below.
 
 Commits should explain *why*, not restate the diff. Long-form is fine;
 the existing history leans verbose deliberately.
@@ -62,12 +62,12 @@ trailer:
 Assisted-by: AI coding assistant
 ```
 
-Don't name a vendor, product, or model. Tool names change and get
-retired; git history does not, and a commit message is the one thing in
-this repository that cannot be corrected later. Commits before v0.1.0
-name a specific tool — that was the earlier convention, and rewriting
-published history to match this one would be worse than the
-inconsistency.
+Don't name a vendor, product, or model — in commit messages, code
+comments, or documentation. Tool names change and get retired; git
+history does not, and a commit message is the one thing in this
+repository that cannot be corrected later. Commits before v0.1.0 name a
+specific tool — that was the earlier convention, and rewriting published
+history to match this one would be worse than the inconsistency.
 
 ## AI-assisted contributions
 
@@ -169,6 +169,48 @@ go run ./cmd/genmanifest
 A test fails if the committed manifest is stale, so this cannot be
 forgotten silently — left wrong, a binary would misjudge which rules the
 user edited.
+
+## House style
+
+Existing code is the best guide, but these are the conventions worth
+stating because they are easy to violate without noticing:
+
+- **Go**: stdlib HTTP, no frameworks. Core handlers in `server.go`,
+  business logic in `engine.go`, module handlers under `modules/<name>/`.
+- **DuckDB queries** use `ILIKE` for case-insensitive matching; `*` is
+  translated to SQL `%`. SQL string escaping is single-quote doubling.
+- **Engine schema is cached** at `LoadFile` time — never re-read
+  `information_schema` from the hot path.
+- **Frontend state lives in `App.jsx`**; auto-query on filter/time/sort
+  change with a 100 ms debounce, gated by the Auto Apply toggle.
+- **`localStorage` access goes through `useLocalStorage`** — don't
+  sprinkle raw `getItem`/`setItem` calls.
+- **Date parsing and formatting live in `utils/datetime.js`**;
+  components must not define their own.
+- **CSS uses custom properties** for theming. Core defaults are neutral
+  slate; a branding module may override `--accent` / `--accent-*`.
+
+## Release chores
+
+A user-visible change bumps the version in three files, which must stay
+in sync:
+
+- `build.sh` — `VERSION`
+- `frontend/package.json` — `version`
+- `main.go` — **both** the `version` var and the `@version` swag
+  annotation
+
+The generated files under `internal/server/docs/` pick the version up
+from the swag annotation on the next `swag init`, which `build.sh` runs
+when `swag` is on `PATH`.
+
+Regenerated artifacts belong in the same commit as the change that
+causes them:
+
+| Artifact | Regenerate with |
+|----------|-----------------|
+| `parsers.d.sha256` | `go run ./cmd/genmanifest` (or `./build.sh`) |
+| `sbom.cdx.json`, `THIRD-PARTY-NOTICES.md` | `python3 scripts/generate-sbom.py` |
 
 ## Security issues
 

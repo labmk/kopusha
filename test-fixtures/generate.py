@@ -3,7 +3,7 @@
 
 Every fixture is synthetic. Fixtures exercise *format grammar* — the
 shape a parser has to handle — and nothing else. See the "Test data
-policy" section in AGENTS.md for the rules; in short, a fixture must
+policy" section in CONTRIBUTING.md for the rules; in short, a fixture must
 never contain real hostnames, real filesystem paths, vendor or product
 names, or identifiers copied from any live system.
 

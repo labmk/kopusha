@@ -202,9 +202,6 @@ a worked example.
 obs-viewer was written with AI assistance. Architecture, design
 decisions, review and testing are human-owned; a substantial share of
 the implementation, documentation and test-fixture generation was
-AI-produced under that review. [AGENTS.md](./AGENTS.md) is the working
-brief that guided it.
-
 Treat this the way you would any other code you did not write: read it
 before you run it on data you care about.
 
