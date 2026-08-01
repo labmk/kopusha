@@ -47,11 +47,7 @@ as a misconfiguration, not a vulnerability in obs-viewer.
   (regex matching and field mapping).
 - Anything that weakens the loopback/TLS guardrail above.
 - Dependency vulnerabilities reachable from obs-viewer's own code
-  paths — `govulncheck` and `npm audit` both gate CI. Known and
-  unfixed: `0xrawsec/golang-evtx` panics from inside its own goroutine
-  on malformed binary XML, so a crafted `.evtx` file terminates the
-  process. Tracked in `internal/ingest/evtx/evtx.go`; the fix is the
-  migration to `Velocidex/evtx`.
+  paths — `govulncheck` and `npm audit` both gate CI.
 
 ### Out of scope
 

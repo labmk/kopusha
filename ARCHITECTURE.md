@@ -34,7 +34,7 @@ obs_viewer[.exe]                     (~85 MB single binary)
       block/                         ---- separated Key: Value records
       line/                          regex-driven line autodetect
       xml/                           autodetected row element + dot-path flatten
-      evtx/                          Windows EVTX via 0xrawsec/golang-evtx
+      evtx/                          Windows EVTX via Velocidex/evtx
     logx/                            Structured file logger next to the binary
     module/                          Module interface + Registry + /api/modules
     server/server.go                 Core HTTP server + embedded SPA

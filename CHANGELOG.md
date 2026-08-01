@@ -11,6 +11,27 @@ those are external and stable.
 
 ## [Unreleased]
 
+### Changed
+
+- EVTX parsing moved from `0xrawsec/golang-evtx` to
+  `www.velocidex.com/golang/evtx`. The old parser is GPL-3.0, which an
+  MIT-licensed binary cannot statically link; every dependency that
+  reaches the binary is now permissive. It also panicked from inside its
+  own goroutine on malformed binary XML — unrecoverable by the caller
+  and fatal to the process — where the new parser returns errors.
+- **Breaking (EVTX columns):** the event ID is now at
+  `Event.System.EventID.Value` rather than `Event.System.EventID`, and
+  `EventData` entries are keyed by name directly. Saved filters
+  referencing the old paths need updating. `@timestamp`,
+  `_source_format` and `Event.System.Channel`/`Computer` are unchanged.
+
+### Fixed
+
+- A truncated or corrupt EVTX chunk no longer aborts the whole file —
+  readable events before the damage are still ingested, and a file where
+  nothing parses reports the underlying error instead of appearing
+  empty.
+
 ## [0.1.0] — unreleased
 
 First public release.
