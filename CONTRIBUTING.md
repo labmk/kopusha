@@ -50,10 +50,54 @@ The e2e suite spawns the real binary against `test-fixtures/`, so
    That matrix is the contract; a format without a row in it is not
    considered supported.
 4. Version bumped in the places listed under "Release chores" in
-   [CLAUDE.md](./CLAUDE.md), if the change is user-visible.
+   [AGENTS.md](./AGENTS.md), if the change is user-visible.
 
 Commits should explain *why*, not restate the diff. Long-form is fine;
 the existing history leans verbose deliberately.
+
+If you want to record that a commit was AI-assisted, use a neutral
+trailer:
+
+```
+Assisted-by: AI coding assistant
+```
+
+Don't name a vendor, product, or model. Tool names change and get
+retired; git history does not, and a commit message is the one thing in
+this repository that cannot be corrected later. Commits before v0.1.0
+name a specific tool — that was the earlier convention, and rewriting
+published history to match this one would be worse than the
+inconsistency.
+
+## AI-assisted contributions
+
+Allowed, and used here — parts of this project were written with AI
+assistance. So this is not a purity rule. It is about who is accountable.
+
+**You are the author of what you submit.** Not the tool. That means:
+
+- You can explain what every line does and why, in review.
+- It is tested, and you ran the tests.
+- You have checked it does what the description claims rather than
+  something that merely looks correct. Plausible-but-wrong is the
+  characteristic failure of generated code, and it survives a skim.
+- "The model wrote it" is not an answer to a review comment.
+
+Two things get a change closed rather than reviewed:
+
+- **A pull request the author cannot explain.** Reviewing takes longer
+  than writing here, and that time comes out of a single maintainer's
+  evening.
+- **Invented facts.** Generated code confidently references APIs,
+  configuration keys, and licences that do not exist. Any claim about a
+  dependency's licence, a DuckDB behaviour, or a platform toolchain must
+  be something you checked, not something you were told. This project has
+  already been bitten: the Windows build instructions it inherited were
+  confidently wrong and cost two failed CI runs before anyone tested the
+  claim.
+
+You do not need to disclose that you used a tool. You do need to stand
+behind the result.
 
 ## Test data policy
 

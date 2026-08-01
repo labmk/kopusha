@@ -95,6 +95,31 @@ Rules describe structure only — regexes and field paths, no product
 knowledge. Files load in lexicographic order, so a `00-` prefix takes
 precedence over `50-`.
 
+### When a rule isn't enough
+
+A YAML rule covers any format whose structure a regex can describe. Some
+cannot be: binary formats, anything needing a decompression or decoding
+library, or a grammar that regular expressions genuinely can't express.
+Those need a new adapter in Go, and possibly a new dependency — a change
+to the binary rather than to a config file.
+
+**That's a welcome contribution.** Open a pull request, or an issue if
+you'd rather discuss the shape first, with:
+
+- **A description of the format** — what delimits a record, where the
+  timestamp is and in what layout, which fields are fixed and which are
+  optional or variable-width.
+- **An anonymized sample.** Retype the shape with invented values rather
+  than sending real log lines. Anything attached to a public repository
+  is public permanently, and a trimmed real log still carries whatever is
+  embedded in its message bodies.
+- **Why a `parsers.d/` rule can't do it** — briefly. It's the first thing
+  that will be asked, and it's often worth a second look.
+
+Any new dependency has to be permissive-licensed; see
+[CONTRIBUTING.md](./CONTRIBUTING.md) for that constraint and for the
+adapter checklist.
+
 ## Configuration
 
 `obs_viewer.conf` sits next to the binary. Every value is optional; the
@@ -174,11 +199,11 @@ a worked example.
 
 ## AI-supported development
 
-obs-viewer was written with AI assistance (Claude Code). Architecture,
-design decisions, review and testing are human-owned; a substantial
-share of the implementation, documentation and test-fixture generation
-was AI-produced under that review. [CLAUDE.md](./CLAUDE.md) is the
-working brief that guided it.
+obs-viewer was written with AI assistance. Architecture, design
+decisions, review and testing are human-owned; a substantial share of
+the implementation, documentation and test-fixture generation was
+AI-produced under that review. [AGENTS.md](./AGENTS.md) is the working
+brief that guided it.
 
 Treat this the way you would any other code you did not write: read it
 before you run it on data you care about.

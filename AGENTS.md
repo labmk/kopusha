@@ -1,7 +1,11 @@
-# CLAUDE.md
+# AGENTS.md
 
-Guidance for Claude Code (claude.ai/code) when working in this
-repository.
+Working brief for AI coding assistants operating in this repository, and
+a useful orientation for humans too.
+
+Some assistants look for a file named `CLAUDE.md` or similar. This is
+that file under a vendor-neutral name; point your tool at it, or add a
+one-line stub that references this one.
 
 ## Orientation
 
@@ -64,6 +68,19 @@ whose logs it came from.
   not define their own.
 - CSS uses custom properties for theming. Core defaults are neutral
   slate; a branding module may override `--accent` / `--accent-*`.
+
+## Attribution
+
+Record AI assistance with a neutral trailer and nothing more:
+
+```
+Assisted-by: AI coding assistant
+```
+
+No vendor, product, or model name — in commit messages, code comments,
+or documentation. Tool names change and get retired; git history on a
+public repository cannot be corrected afterwards. The same applies to
+prose: the README says "written with AI assistance" and stops there.
 
 ## Release chores
 

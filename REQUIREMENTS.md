@@ -24,7 +24,7 @@ lower-priority rule picks the file up instead, rows still appear, and
 nothing looks wrong until you check the marker.
 
 Fixtures exercise format grammar only. See the "Test data policy"
-section in CLAUDE.md for what they must never contain.
+section in AGENTS.md for what they must never contain.
 
 **EVTX is the one vendored fixture.** It is a binary format with
 per-chunk CRC32 checksums and BinXML template tables, which
