@@ -9,6 +9,38 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats obs-viewer *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.1.1] — 2026-08-01
+
+### Removed
+
+- `react-window` as a dependency. It was declared but **never imported**
+  — the virtualisation it implied was never built. Removing it also
+  removes four packages from the SBOM (82 → 78 components).
+
+### Fixed
+
+- **Documentation overclaimed.** The README advertised a "Virtualised
+  table" and ARCHITECTURE credited `react-window` for "virtual
+  scrolling". Neither was true: every row of the current page is
+  rendered. Both now say what the code does, and the missing
+  virtualisation is recorded as a known limitation rather than an
+  implicit promise.
+- Pinned `typescript` to `^6`. The OpenAPI client generator declares an
+  over-permissive peer range (`>=5.5.3`), so a transitive bump to
+  TypeScript 7 satisfied it and then broke the build on an API that no
+  longer exists. There is no newer generator release that handles 7.
+
+### Changed
+
+- Dependency updates within their existing ranges: Radix UI 1.1.15 →
+  1.1.23, TanStack Query 5.100.13 → 5.101.4, Playwright 1.60.0 →
+  1.62.1.
+- Documentation consolidated: the agent brief was dissolved into
+  CONTRIBUTING.md, which now carries house style and release chores.
+
+React 19, Vite 8 and `@vitejs/plugin-react` 6 are available but not
+taken — those are major upgrades, not dependency maintenance.
+
 ## [0.1.0] — 2026-08-01
 
 First public release. There is no prior published version, so everything
@@ -85,5 +117,6 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/obs-viewer/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/labmk/obs-viewer/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/labmk/obs-viewer/releases/tag/v0.1.1
 [0.1.0]: https://github.com/labmk/obs-viewer/releases/tag/v0.1.0

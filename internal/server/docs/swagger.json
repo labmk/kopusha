@@ -8,7 +8,7 @@
         "description": "Local viewer for log, metric and trace files: NDJSON, EVTX,\nXML, and rule-driven text logs, queried through DuckDB.\nThe OpenAPI spec is the source of truth for the generated\nTypeScript client used by the React frontend.",
         "title": "obs-viewer API",
         "contact": {},
-        "version": "0.1.0"
+        "version": "0.1.1"
     },
     "basePath": "/",
     "paths": {

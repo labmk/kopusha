@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-01T11:34:27Z",
+    "timestamp": "2026-08-01T18:49:58Z",
     "tools": {
       "components": [
         {
@@ -23,7 +23,7 @@
     "component": {
       "type": "application",
       "name": "obs_viewer",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "Single-binary local-first viewer for log, metric and trace files",
       "licenses": [
         {
@@ -763,8 +763,8 @@
       "type": "library",
       "name": "react-dialog",
       "group": "@radix-ui",
-      "version": "1.1.15",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15",
+      "version": "1.1.23",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
       "licenses": [
         {
           "license": {
@@ -773,12 +773,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-dialog@1.1.15",
+      "purl": "pkg:npm/%40radix-ui/react-dialog@1.1.23",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/dialog",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -791,7 +791,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.15.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.23.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -811,8 +811,8 @@
           "type": "library",
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
-          "version": "1.1.11",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
+          "version": "1.1.19",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -821,12 +821,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.1.11",
+          "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.1.19",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/dismissable-layer",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -839,7 +839,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.11.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.19.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -855,8 +855,8 @@
           "type": "library",
           "name": "react-focus-scope",
           "group": "@radix-ui",
-          "version": "1.1.7",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-focus-scope@1.1.7",
+          "version": "1.1.16",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -865,12 +865,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.1.7",
+          "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.1.16",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/focus-scope",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -883,7 +883,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.7.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.16.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -899,8 +899,8 @@
           "type": "library",
           "name": "react-portal",
           "group": "@radix-ui",
-          "version": "1.1.9",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-portal@1.1.9",
+          "version": "1.1.17",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -909,12 +909,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-portal@1.1.9",
+          "purl": "pkg:npm/%40radix-ui/react-portal@1.1.17",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/portal",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -927,7 +927,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.9.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.17.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -943,8 +943,8 @@
           "type": "library",
           "name": "react-presence",
           "group": "@radix-ui",
-          "version": "1.1.5",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-presence@1.1.5",
+          "version": "1.1.10",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -953,12 +953,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-presence@1.1.5",
+          "purl": "pkg:npm/%40radix-ui/react-presence@1.1.10",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/presence",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -971,7 +971,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.5.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.10.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -987,8 +987,8 @@
           "type": "library",
           "name": "react-primitive",
           "group": "@radix-ui",
-          "version": "2.1.3",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
+          "version": "2.1.10",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -997,12 +997,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-primitive@2.1.3",
+          "purl": "pkg:npm/%40radix-ui/react-primitive@2.1.10",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/primitive",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1015,7 +1015,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.1.3.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.1.10.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1033,8 +1033,8 @@
       "type": "library",
       "name": "react-popover",
       "group": "@radix-ui",
-      "version": "1.1.15",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15",
+      "version": "1.1.23",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
       "licenses": [
         {
           "license": {
@@ -1043,12 +1043,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-popover@1.1.15",
+      "purl": "pkg:npm/%40radix-ui/react-popover@1.1.23",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/popover",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1061,7 +1061,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.15.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.23.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1081,8 +1081,8 @@
           "type": "library",
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
-          "version": "1.1.11",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
+          "version": "1.1.19",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -1091,12 +1091,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.1.11",
+          "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.1.19",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/dismissable-layer",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1109,7 +1109,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.11.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.19.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1125,8 +1125,8 @@
           "type": "library",
           "name": "react-focus-scope",
           "group": "@radix-ui",
-          "version": "1.1.7",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-focus-scope@1.1.7",
+          "version": "1.1.16",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -1135,12 +1135,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.1.7",
+          "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.1.16",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/focus-scope",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1153,7 +1153,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.7.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.16.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1169,8 +1169,8 @@
           "type": "library",
           "name": "react-popper",
           "group": "@radix-ui",
-          "version": "1.2.8",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8",
+          "version": "1.3.7",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
           "licenses": [
             {
               "license": {
@@ -1179,12 +1179,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-popper@1.2.8",
+          "purl": "pkg:npm/%40radix-ui/react-popper@1.3.7",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/popper",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1197,7 +1197,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.2.8.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.3.7.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1213,8 +1213,8 @@
               "type": "library",
               "name": "react-arrow",
               "group": "@radix-ui",
-              "version": "1.1.7",
-              "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8|@radix-ui/react-arrow@1.1.7",
+              "version": "1.1.15",
+              "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
               "licenses": [
                 {
                   "license": {
@@ -1223,12 +1223,12 @@
                   }
                 }
               ],
-              "purl": "pkg:npm/%40radix-ui/react-arrow@1.1.7",
+              "purl": "pkg:npm/%40radix-ui/react-arrow@1.1.15",
               "externalReferences": [
                 {
-                  "url": "git+https://github.com/radix-ui/primitives.git",
+                  "url": "git+https://github.com/radix-ui/primitives.git#packages/react/arrow",
                   "type": "vcs",
-                  "comment": "as detected from PackageJson property \"repository.url\""
+                  "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
                 },
                 {
                   "url": "https://radix-ui.com/primitives",
@@ -1241,7 +1241,7 @@
                   "comment": "as detected from PackageJson property \"bugs.url\""
                 },
                 {
-                  "url": "https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.7.tgz",
+                  "url": "https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.15.tgz",
                   "type": "distribution",
                   "comment": "as detected from npm-ls property \"resolved\""
                 }
@@ -1259,8 +1259,8 @@
           "type": "library",
           "name": "react-portal",
           "group": "@radix-ui",
-          "version": "1.1.9",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-portal@1.1.9",
+          "version": "1.1.17",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -1269,12 +1269,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-portal@1.1.9",
+          "purl": "pkg:npm/%40radix-ui/react-portal@1.1.17",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/portal",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1287,7 +1287,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.9.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.17.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1303,8 +1303,8 @@
           "type": "library",
           "name": "react-presence",
           "group": "@radix-ui",
-          "version": "1.1.5",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-presence@1.1.5",
+          "version": "1.1.10",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -1313,12 +1313,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-presence@1.1.5",
+          "purl": "pkg:npm/%40radix-ui/react-presence@1.1.10",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/presence",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1331,7 +1331,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.5.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.10.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1347,8 +1347,8 @@
           "type": "library",
           "name": "react-primitive",
           "group": "@radix-ui",
-          "version": "2.1.3",
-          "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
+          "version": "2.1.10",
+          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -1357,12 +1357,12 @@
               }
             }
           ],
-          "purl": "pkg:npm/%40radix-ui/react-primitive@2.1.3",
+          "purl": "pkg:npm/%40radix-ui/react-primitive@2.1.10",
           "externalReferences": [
             {
-              "url": "git+https://github.com/radix-ui/primitives.git",
+              "url": "git+https://github.com/radix-ui/primitives.git#packages/react/primitive",
               "type": "vcs",
-              "comment": "as detected from PackageJson property \"repository.url\""
+              "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
             },
             {
               "url": "https://radix-ui.com/primitives",
@@ -1375,7 +1375,7 @@
               "comment": "as detected from PackageJson property \"bugs.url\""
             },
             {
-              "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.1.3.tgz",
+              "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.1.10.tgz",
               "type": "distribution",
               "comment": "as detected from npm-ls property \"resolved\""
             }
@@ -1393,8 +1393,8 @@
       "type": "library",
       "name": "react-query",
       "group": "@tanstack",
-      "version": "5.100.13",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@tanstack/react-query@5.100.13",
+      "version": "5.101.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
       "author": "tannerlinsley",
       "description": "Hooks for managing, caching and syncing asynchronous and remote data in React",
       "licenses": [
@@ -1405,7 +1405,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40tanstack/react-query@5.100.13",
+      "purl": "pkg:npm/%40tanstack/react-query@5.101.4",
       "externalReferences": [
         {
           "url": "git+https://github.com/TanStack/query.git#packages/react-query",
@@ -1423,7 +1423,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.100.13.tgz",
+          "url": "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.101.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1443,7 +1443,7 @@
       "type": "library",
       "name": "react-dom",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
+      "bom-ref": "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
       "description": "React package for working with the DOM.",
       "licenses": [
         {
@@ -1489,58 +1489,9 @@
     },
     {
       "type": "library",
-      "name": "react-window",
-      "version": "1.8.11",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react-window@1.8.11",
-      "author": "Brian Vaughn",
-      "description": "React components for efficiently rendering large, scrollable lists and tabular data",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT",
-            "acknowledgement": "declared"
-          }
-        }
-      ],
-      "purl": "pkg:npm/react-window@1.8.11",
-      "externalReferences": [
-        {
-          "url": "git+https://github.com/bvaughn/react-window.git",
-          "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
-        },
-        {
-          "url": "http://react-window.now.sh/",
-          "type": "website",
-          "comment": "as detected from PackageJson property \"homepage\""
-        },
-        {
-          "url": "https://github.com/bvaughn/react-window/issues",
-          "type": "issue-tracker",
-          "comment": "as detected from PackageJson property \"bugs.url\""
-        },
-        {
-          "url": "https://registry.npmjs.org/react-window/-/react-window-1.8.11.tgz",
-          "type": "distribution",
-          "comment": "as detected from npm-ls property \"resolved\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "cdx:npm:package:path",
-          "value": "node_modules/react-window"
-        },
-        {
-          "name": "obs-viewer:origin",
-          "value": "npm"
-        }
-      ]
-    },
-    {
-      "type": "library",
       "name": "react",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react@18.3.1",
+      "bom-ref": "obs-viewer-frontend@0.1.1|react@18.3.1",
       "description": "React is a JavaScript library for building user interfaces.",
       "licenses": [
         {
@@ -1588,8 +1539,8 @@
       "type": "library",
       "name": "primitive",
       "group": "@radix-ui",
-      "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3",
+      "version": "1.1.7",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
       "licenses": [
         {
           "license": {
@@ -1598,12 +1549,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/primitive@1.1.3",
+      "purl": "pkg:npm/%40radix-ui/primitive@1.1.7",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/core/primitive",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1616,7 +1567,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.3.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.7.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1636,8 +1587,8 @@
       "type": "library",
       "name": "react-compose-refs",
       "group": "@radix-ui",
-      "version": "1.1.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
+      "version": "1.1.5",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
       "licenses": [
         {
           "license": {
@@ -1646,12 +1597,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-compose-refs@1.1.2",
+      "purl": "pkg:npm/%40radix-ui/react-compose-refs@1.1.5",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/compose-refs",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1664,7 +1615,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.5.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1684,8 +1635,8 @@
       "type": "library",
       "name": "react-context",
       "group": "@radix-ui",
-      "version": "1.1.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-context@1.1.2",
+      "version": "1.2.2",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
       "licenses": [
         {
           "license": {
@@ -1694,12 +1645,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-context@1.1.2",
+      "purl": "pkg:npm/%40radix-ui/react-context@1.2.2",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/context",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1712,7 +1663,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.2.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.2.2.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1732,8 +1683,8 @@
       "type": "library",
       "name": "react-focus-guards",
       "group": "@radix-ui",
-      "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-focus-guards@1.1.3",
+      "version": "1.1.6",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
       "licenses": [
         {
           "license": {
@@ -1742,12 +1693,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-focus-guards@1.1.3",
+      "purl": "pkg:npm/%40radix-ui/react-focus-guards@1.1.6",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/focus-guards",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1760,7 +1711,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.3.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.6.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1780,8 +1731,8 @@
       "type": "library",
       "name": "react-id",
       "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-id@1.1.1",
+      "version": "1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
       "licenses": [
         {
           "license": {
@@ -1790,12 +1741,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-id@1.1.1",
+      "purl": "pkg:npm/%40radix-ui/react-id@1.1.4",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/id",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1808,7 +1759,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.1.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-id/-/react-id-1.1.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1828,8 +1779,8 @@
       "type": "library",
       "name": "react-slot",
       "group": "@radix-ui",
-      "version": "1.2.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
+      "version": "1.3.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
       "licenses": [
         {
           "license": {
@@ -1838,12 +1789,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-slot@1.2.3",
+      "purl": "pkg:npm/%40radix-ui/react-slot@1.3.3",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/slot",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1856,7 +1807,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.2.3.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.3.3.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1876,8 +1827,8 @@
       "type": "library",
       "name": "react-use-controllable-state",
       "group": "@radix-ui",
-      "version": "1.2.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-controllable-state@1.2.2",
+      "version": "1.2.6",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
       "licenses": [
         {
           "license": {
@@ -1886,12 +1837,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-controllable-state@1.2.2",
+      "purl": "pkg:npm/%40radix-ui/react-use-controllable-state@1.2.6",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-controllable-state",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -1904,7 +1855,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.2.2.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.2.6.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1922,10 +1873,58 @@
     },
     {
       "type": "library",
+      "name": "react-use-layout-effect",
+      "group": "@radix-ui",
+      "version": "1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT",
+            "acknowledgement": "declared"
+          }
+        }
+      ],
+      "purl": "pkg:npm/%40radix-ui/react-use-layout-effect@1.1.4",
+      "externalReferences": [
+        {
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-layout-effect",
+          "type": "vcs",
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+        },
+        {
+          "url": "https://radix-ui.com/primitives",
+          "type": "website",
+          "comment": "as detected from PackageJson property \"homepage\""
+        },
+        {
+          "url": "https://github.com/radix-ui/primitives/issues",
+          "type": "issue-tracker",
+          "comment": "as detected from PackageJson property \"bugs.url\""
+        },
+        {
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.4.tgz",
+          "type": "distribution",
+          "comment": "as detected from npm-ls property \"resolved\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "cdx:npm:package:path",
+          "value": "node_modules/@radix-ui/react-use-layout-effect"
+        },
+        {
+          "name": "obs-viewer:origin",
+          "value": "npm"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "react",
       "group": "@types",
-      "version": "18.3.28",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
+      "version": "18.3.31",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
       "description": "TypeScript definitions for react",
       "licenses": [
         {
@@ -1935,7 +1934,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40types/react@18.3.28",
+      "purl": "pkg:npm/%40types/react@18.3.31",
       "externalReferences": [
         {
           "url": "git+https://github.com/DefinitelyTyped/DefinitelyTyped.git#types/react",
@@ -1953,7 +1952,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@types/react/-/react-18.3.28.tgz",
+          "url": "https://registry.npmjs.org/@types/react/-/react-18.3.31.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1973,7 +1972,7 @@
       "type": "library",
       "name": "aria-hidden",
       "version": "1.2.6",
-      "bom-ref": "obs-viewer-frontend@0.1.0|aria-hidden@1.2.6",
+      "bom-ref": "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
       "author": "Anton Korzunov",
       "description": "Cast aria-hidden to everything, except...",
       "licenses": [
@@ -2022,7 +2021,7 @@
       "type": "library",
       "name": "react-remove-scroll",
       "version": "2.7.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react-remove-scroll@2.7.2",
+      "bom-ref": "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
       "author": "Anton Korzunov",
       "description": "Disables scroll outside of `children` node.",
       "licenses": [
@@ -2071,8 +2070,8 @@
       "type": "library",
       "name": "query-core",
       "group": "@tanstack",
-      "version": "5.100.13",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@tanstack/query-core@5.100.13",
+      "version": "5.101.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4",
       "author": "tannerlinsley",
       "description": "The framework agnostic core that powers TanStack Query",
       "licenses": [
@@ -2083,7 +2082,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40tanstack/query-core@5.100.13",
+      "purl": "pkg:npm/%40tanstack/query-core@5.101.4",
       "externalReferences": [
         {
           "url": "git+https://github.com/TanStack/query.git#packages/query-core",
@@ -2101,7 +2100,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.100.13.tgz",
+          "url": "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.101.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2121,7 +2120,7 @@
       "type": "library",
       "name": "loose-envify",
       "version": "1.4.0",
-      "bom-ref": "obs-viewer-frontend@0.1.0|loose-envify@1.4.0",
+      "bom-ref": "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
       "author": "Andres Suarez",
       "description": "Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST",
       "licenses": [
@@ -2170,7 +2169,7 @@
       "type": "library",
       "name": "scheduler",
       "version": "0.23.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|scheduler@0.23.2",
+      "bom-ref": "obs-viewer-frontend@0.1.1|scheduler@0.23.2",
       "description": "Cooperative scheduler for the browser environment.",
       "licenses": [
         {
@@ -2216,109 +2215,10 @@
     },
     {
       "type": "library",
-      "name": "runtime",
-      "group": "@babel",
-      "version": "7.29.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@babel/runtime@7.29.2",
-      "author": "The Babel Team",
-      "description": "babel's modular runtime helpers",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT",
-            "acknowledgement": "declared"
-          }
-        }
-      ],
-      "purl": "pkg:npm/%40babel/runtime@7.29.2",
-      "externalReferences": [
-        {
-          "url": "git+https://github.com/babel/babel.git#packages/babel-runtime",
-          "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
-        },
-        {
-          "url": "https://babel.dev/docs/en/next/babel-runtime",
-          "type": "website",
-          "comment": "as detected from PackageJson property \"homepage\""
-        },
-        {
-          "url": "https://github.com/babel/babel/issues",
-          "type": "issue-tracker",
-          "comment": "as detected from PackageJson property \"bugs.url\""
-        },
-        {
-          "url": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.2.tgz",
-          "type": "distribution",
-          "comment": "as detected from npm-ls property \"resolved\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "cdx:npm:package:path",
-          "value": "node_modules/@babel/runtime"
-        },
-        {
-          "name": "obs-viewer:origin",
-          "value": "npm"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "name": "memoize-one",
-      "version": "5.2.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|memoize-one@5.2.1",
-      "author": "Alex Reardon",
-      "description": "A memoization library which only remembers the latest invocation",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT",
-            "acknowledgement": "declared"
-          }
-        }
-      ],
-      "purl": "pkg:npm/memoize-one@5.2.1",
-      "externalReferences": [
-        {
-          "url": "git+https://github.com/alexreardon/memoize-one.git",
-          "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
-        },
-        {
-          "url": "https://github.com/alexreardon/memoize-one#readme",
-          "type": "website",
-          "comment": "as detected from PackageJson property \"homepage\""
-        },
-        {
-          "url": "https://github.com/alexreardon/memoize-one/issues",
-          "type": "issue-tracker",
-          "comment": "as detected from PackageJson property \"bugs.url\""
-        },
-        {
-          "url": "https://registry.npmjs.org/memoize-one/-/memoize-one-5.2.1.tgz",
-          "type": "distribution",
-          "comment": "as detected from npm-ls property \"resolved\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "cdx:npm:package:path",
-          "value": "node_modules/memoize-one"
-        },
-        {
-          "name": "obs-viewer:origin",
-          "value": "npm"
-        }
-      ]
-    },
-    {
-      "type": "library",
       "name": "react-use-callback-ref",
       "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
+      "version": "1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2327,12 +2227,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-callback-ref@1.1.1",
+      "purl": "pkg:npm/%40radix-ui/react-use-callback-ref@1.1.4",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-callback-ref",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -2345,7 +2245,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.1.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2363,106 +2263,10 @@
     },
     {
       "type": "library",
-      "name": "react-use-escape-keydown",
-      "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-escape-keydown@1.1.1",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT",
-            "acknowledgement": "declared"
-          }
-        }
-      ],
-      "purl": "pkg:npm/%40radix-ui/react-use-escape-keydown@1.1.1",
-      "externalReferences": [
-        {
-          "url": "git+https://github.com/radix-ui/primitives.git",
-          "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
-        },
-        {
-          "url": "https://radix-ui.com/primitives",
-          "type": "website",
-          "comment": "as detected from PackageJson property \"homepage\""
-        },
-        {
-          "url": "https://github.com/radix-ui/primitives/issues",
-          "type": "issue-tracker",
-          "comment": "as detected from PackageJson property \"bugs.url\""
-        },
-        {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-escape-keydown/-/react-use-escape-keydown-1.1.1.tgz",
-          "type": "distribution",
-          "comment": "as detected from npm-ls property \"resolved\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "cdx:npm:package:path",
-          "value": "node_modules/@radix-ui/react-use-escape-keydown"
-        },
-        {
-          "name": "obs-viewer:origin",
-          "value": "npm"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "name": "react-use-layout-effect",
-      "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT",
-            "acknowledgement": "declared"
-          }
-        }
-      ],
-      "purl": "pkg:npm/%40radix-ui/react-use-layout-effect@1.1.1",
-      "externalReferences": [
-        {
-          "url": "git+https://github.com/radix-ui/primitives.git",
-          "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
-        },
-        {
-          "url": "https://radix-ui.com/primitives",
-          "type": "website",
-          "comment": "as detected from PackageJson property \"homepage\""
-        },
-        {
-          "url": "https://github.com/radix-ui/primitives/issues",
-          "type": "issue-tracker",
-          "comment": "as detected from PackageJson property \"bugs.url\""
-        },
-        {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-layout-effect/-/react-use-layout-effect-1.1.1.tgz",
-          "type": "distribution",
-          "comment": "as detected from npm-ls property \"resolved\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "cdx:npm:package:path",
-          "value": "node_modules/@radix-ui/react-use-layout-effect"
-        },
-        {
-          "name": "obs-viewer:origin",
-          "value": "npm"
-        }
-      ]
-    },
-    {
-      "type": "library",
       "name": "react-use-effect-event",
       "group": "@radix-ui",
-      "version": "0.0.2",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-effect-event@0.0.2",
+      "version": "0.0.5",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
       "licenses": [
         {
           "license": {
@@ -2471,12 +2275,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-effect-event@0.0.2",
+      "purl": "pkg:npm/%40radix-ui/react-use-effect-event@0.0.5",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-effect-event",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -2489,7 +2293,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.2.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-effect-event/-/react-use-effect-event-0.0.5.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2510,7 +2314,7 @@
       "name": "prop-types",
       "group": "@types",
       "version": "15.7.15",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@types/prop-types@15.7.15",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15",
       "description": "TypeScript definitions for prop-types",
       "licenses": [
         {
@@ -2558,7 +2362,7 @@
       "type": "library",
       "name": "csstype",
       "version": "3.2.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|csstype@3.2.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|csstype@3.2.3",
       "author": "Fredrik Nicol",
       "description": "Strict TypeScript and Flow types for style based on MDN data",
       "licenses": [
@@ -2607,7 +2411,7 @@
       "type": "library",
       "name": "tslib",
       "version": "2.8.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|tslib@2.8.1",
+      "bom-ref": "obs-viewer-frontend@0.1.1|tslib@2.8.1",
       "author": "Microsoft Corp.",
       "description": "Runtime library for TypeScript helper functions",
       "licenses": [
@@ -2656,7 +2460,7 @@
       "type": "library",
       "name": "react-remove-scroll-bar",
       "version": "2.3.8",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react-remove-scroll-bar@2.3.8",
+      "bom-ref": "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
       "author": "Anton Korzunov",
       "description": "Removes body scroll without content _shake_",
       "licenses": [
@@ -2705,7 +2509,7 @@
       "type": "library",
       "name": "react-style-singleton",
       "version": "2.2.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|react-style-singleton@2.2.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
       "author": "Anton Korzunov",
       "description": "Just create a single stylesheet...",
       "licenses": [
@@ -2754,7 +2558,7 @@
       "type": "library",
       "name": "use-callback-ref",
       "version": "1.3.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|use-callback-ref@1.3.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
       "author": "theKashey",
       "description": "The same useRef, but with callback",
       "licenses": [
@@ -2803,7 +2607,7 @@
       "type": "library",
       "name": "use-sidecar",
       "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.1.0|use-sidecar@1.1.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3",
       "author": "theKashey",
       "description": "Sidecar code splitting utils",
       "licenses": [
@@ -2852,8 +2656,8 @@
       "type": "library",
       "name": "react-dom",
       "group": "@floating-ui",
-      "version": "2.1.8",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@floating-ui/react-dom@2.1.8",
+      "version": "2.1.9",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
       "author": "atomiks",
       "description": "Floating UI for React DOM",
       "licenses": [
@@ -2864,7 +2668,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40floating-ui/react-dom@2.1.8",
+      "purl": "pkg:npm/%40floating-ui/react-dom@2.1.9",
       "externalReferences": [
         {
           "url": "git+https://github.com/floating-ui/floating-ui.git#packages/react-dom",
@@ -2882,7 +2686,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.8.tgz",
+          "url": "https://registry.npmjs.org/@floating-ui/react-dom/-/react-dom-2.1.9.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2902,8 +2706,8 @@
       "type": "library",
       "name": "react-use-rect",
       "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-rect@1.1.1",
+      "version": "1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2912,12 +2716,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-rect@1.1.1",
+      "purl": "pkg:npm/%40radix-ui/react-use-rect@1.1.4",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-rect",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -2930,7 +2734,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.1.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-rect/-/react-use-rect-1.1.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2950,8 +2754,8 @@
       "type": "library",
       "name": "react-use-size",
       "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-size@1.1.1",
+      "version": "1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2960,12 +2764,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-size@1.1.1",
+      "purl": "pkg:npm/%40radix-ui/react-use-size@1.1.4",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-size",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -2978,7 +2782,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.1.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.4.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2998,8 +2802,8 @@
       "type": "library",
       "name": "rect",
       "group": "@radix-ui",
-      "version": "1.1.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@radix-ui/rect@1.1.1",
+      "version": "1.1.3",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
       "licenses": [
         {
           "license": {
@@ -3008,12 +2812,12 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/rect@1.1.1",
+      "purl": "pkg:npm/%40radix-ui/rect@1.1.3",
       "externalReferences": [
         {
-          "url": "git+https://github.com/radix-ui/primitives.git",
+          "url": "git+https://github.com/radix-ui/primitives.git#packages/core/rect",
           "type": "vcs",
-          "comment": "as detected from PackageJson property \"repository.url\""
+          "comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
         },
         {
           "url": "https://radix-ui.com/primitives",
@@ -3026,7 +2830,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/rect/-/rect-1.1.1.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/rect/-/rect-1.1.3.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -3046,7 +2850,7 @@
       "type": "library",
       "name": "js-tokens",
       "version": "4.0.0",
-      "bom-ref": "obs-viewer-frontend@0.1.0|js-tokens@4.0.0",
+      "bom-ref": "obs-viewer-frontend@0.1.1|js-tokens@4.0.0",
       "author": "Simon Lydell",
       "description": "A regex that tokenizes JavaScript.",
       "licenses": [
@@ -3095,7 +2899,7 @@
       "type": "library",
       "name": "get-nonce",
       "version": "1.0.1",
-      "bom-ref": "obs-viewer-frontend@0.1.0|get-nonce@1.0.1",
+      "bom-ref": "obs-viewer-frontend@0.1.1|get-nonce@1.0.1",
       "author": "Anton Korzunov",
       "description": "returns nonce",
       "licenses": [
@@ -3144,7 +2948,7 @@
       "type": "library",
       "name": "detect-node-es",
       "version": "1.1.0",
-      "bom-ref": "obs-viewer-frontend@0.1.0|detect-node-es@1.1.0",
+      "bom-ref": "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0",
       "author": "Ilya Kantor",
       "description": "Detect Node.JS (as opposite to browser environment). ESM modification",
       "licenses": [
@@ -3193,8 +2997,8 @@
       "type": "library",
       "name": "dom",
       "group": "@floating-ui",
-      "version": "1.7.6",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@floating-ui/dom@1.7.6",
+      "version": "1.8.0",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
       "author": "atomiks",
       "description": "Floating UI for the web",
       "licenses": [
@@ -3205,7 +3009,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40floating-ui/dom@1.7.6",
+      "purl": "pkg:npm/%40floating-ui/dom@1.8.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/floating-ui/floating-ui.git#packages/dom",
@@ -3223,7 +3027,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.7.6.tgz",
+          "url": "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.8.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -3243,8 +3047,8 @@
       "type": "library",
       "name": "core",
       "group": "@floating-ui",
-      "version": "1.7.5",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@floating-ui/core@1.7.5",
+      "version": "1.8.0",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
       "author": "atomiks",
       "description": "Positioning library for floating elements: tooltips, popovers, dropdowns, and more",
       "licenses": [
@@ -3255,7 +3059,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40floating-ui/core@1.7.5",
+      "purl": "pkg:npm/%40floating-ui/core@1.8.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/floating-ui/floating-ui.git#packages/core",
@@ -3273,7 +3077,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@floating-ui/core/-/core-1.7.5.tgz",
+          "url": "https://registry.npmjs.org/@floating-ui/core/-/core-1.8.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -3293,8 +3097,8 @@
       "type": "library",
       "name": "utils",
       "group": "@floating-ui",
-      "version": "0.2.11",
-      "bom-ref": "obs-viewer-frontend@0.1.0|@floating-ui/utils@0.2.11",
+      "version": "0.2.12",
+      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12",
       "author": "atomiks",
       "description": "Utilities for Floating UI",
       "licenses": [
@@ -3305,7 +3109,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40floating-ui/utils@0.2.11",
+      "purl": "pkg:npm/%40floating-ui/utils@0.2.12",
       "externalReferences": [
         {
           "url": "git+https://github.com/floating-ui/floating-ui.git#packages/utils",
@@ -3323,7 +3127,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.11.tgz",
+          "url": "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.2.12.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -3756,7 +3560,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.0.0-20260801112418-ea7911964bb6?type=module",
+      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.1.1-0.20260801114651-b468236ad333?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
         "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
@@ -3900,444 +3704,420 @@
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0",
+      "ref": "obs-viewer-frontend@0.1.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15",
-        "obs-viewer-frontend@0.1.0|@tanstack/react-query@5.100.13",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react-window@1.8.11",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
+        "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-context@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-focus-guards@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-focus-scope@1.1.7",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-id@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-portal@1.1.9",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-presence@1.1.5",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-controllable-state@1.2.2",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-escape-keydown@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-focus-scope@1.1.7",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-portal@1.1.9",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-presence@1.1.5",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-dialog@1.1.15|@radix-ui/react-primitive@2.1.3",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-context@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-focus-guards@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-focus-scope@1.1.7",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-id@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-portal@1.1.9",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-presence@1.1.5",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-controllable-state@1.2.2",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-dismissable-layer@1.1.11",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-escape-keydown@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-focus-scope@1.1.7",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@floating-ui/react-dom@2.1.8",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8|@radix-ui/react-arrow@1.1.7",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-context@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-rect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-size@1.1.1",
-        "obs-viewer-frontend@0.1.0|@radix-ui/rect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
+        "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-popper@1.2.8|@radix-ui/react-arrow@1.1.7",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-portal@1.1.9",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-presence@1.1.5",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-popover@1.1.15|@radix-ui/react-primitive@2.1.3",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@tanstack/react-query@5.100.13",
+      "ref": "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@tanstack/query-core@5.100.13",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
+      "ref": "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|loose-envify@1.4.0",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|scheduler@0.23.2"
+        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|scheduler@0.23.2"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|react-window@1.8.11",
+      "ref": "obs-viewer-frontend@0.1.1|react@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@babel/runtime@7.29.2",
-        "obs-viewer-frontend@0.1.0|memoize-one@5.2.1",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|react@18.3.1",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|loose-envify@1.4.0"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/primitive@1.1.3"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-context@1.1.2",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-focus-guards@1.1.3",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-id@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-slot@1.2.3",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-compose-refs@1.1.2",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-controllable-state@1.2.2",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-effect-event@0.0.2",
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
+      "ref": "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/prop-types@15.7.15",
-        "obs-viewer-frontend@0.1.0|csstype@3.2.3"
+        "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15",
+        "obs-viewer-frontend@0.1.1|csstype@3.2.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|aria-hidden@1.2.6",
+      "ref": "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1"
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|react-remove-scroll@2.7.2",
+      "ref": "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-remove-scroll-bar@2.3.8",
-        "obs-viewer-frontend@0.1.0|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1",
-        "obs-viewer-frontend@0.1.0|use-callback-ref@1.3.3",
-        "obs-viewer-frontend@0.1.0|use-sidecar@1.1.3"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
+        "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1",
+        "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
+        "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@tanstack/query-core@5.100.13"
+      "ref": "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|loose-envify@1.4.0",
+      "ref": "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|js-tokens@4.0.0"
+        "obs-viewer-frontend@0.1.1|js-tokens@4.0.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|scheduler@0.23.2",
+      "ref": "obs-viewer-frontend@0.1.1|scheduler@0.23.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|loose-envify@1.4.0"
+        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@babel/runtime@7.29.2"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|memoize-one@5.2.1"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-escape-keydown@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-callback-ref@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|csstype@3.2.3"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-effect-event@0.0.2",
+      "ref": "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|get-nonce@1.0.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@types/prop-types@15.7.15"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|csstype@3.2.3"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|tslib@2.8.1"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|react-remove-scroll-bar@2.3.8",
+      "ref": "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|react-style-singleton@2.2.3",
+      "ref": "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|get-nonce@1.0.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1"
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0",
+        "obs-viewer-frontend@0.1.1|react@18.3.1",
+        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|use-callback-ref@1.3.3",
+      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1"
+        "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
+        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|use-sidecar@1.1.3",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|detect-node-es@1.1.0",
-        "obs-viewer-frontend@0.1.0|react@18.3.1",
-        "obs-viewer-frontend@0.1.0|tslib@2.8.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@floating-ui/react-dom@2.1.8",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@floating-ui/dom@1.7.6",
-        "obs-viewer-frontend@0.1.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+        "obs-viewer-frontend@0.1.1|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-rect@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|js-tokens@4.0.0"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|get-nonce@1.0.1"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0"
+    },
+    {
+      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/rect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
+        "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/react-use-size@1.1.1",
+      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@radix-ui/react-use-layout-effect@1.1.1",
-        "obs-viewer-frontend@0.1.0|@types/react@18.3.28",
-        "obs-viewer-frontend@0.1.0|react@18.3.1"
+        "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.0|@radix-ui/rect@1.1.1"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|js-tokens@4.0.0"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|get-nonce@1.0.1"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|detect-node-es@1.1.0"
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|@floating-ui/dom@1.7.6",
-      "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@floating-ui/core@1.7.5",
-        "obs-viewer-frontend@0.1.0|@floating-ui/utils@0.2.11"
-      ]
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|@floating-ui/core@1.7.5",
-      "dependsOn": [
-        "obs-viewer-frontend@0.1.0|@floating-ui/utils@0.2.11"
-      ]
-    },
-    {
-      "ref": "obs-viewer-frontend@0.1.0|@floating-ui/utils@0.2.11"
+      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
     }
   ]
 }

@@ -84,9 +84,11 @@ obs_viewer[.exe]                     (~85 MB single binary)
 - **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO
   required; statically-linked `libduckdb_static.a` from
   `duckdb-go-bindings`).
-- **Frontend**: React 18, Vite 6, react-window (virtual scrolling),
-  TanStack Query 5 (server state + caching), Radix UI primitives
-  (Dialog + Popover).
+- **Frontend**: React 18, Vite 6, TanStack Query 5 (server state +
+  caching), Radix UI primitives (Dialog + Popover). The result table
+  renders a whole page of rows; there is no windowing. `react-window`
+  was a declared dependency for a long time without ever being imported,
+  and was removed in 0.1.1 — see "Known Limitations".
 - **Codegen**: `@hey-api/openapi-ts` generates the TS client from
   `swag init`'s `swagger.json` into `frontend/src/api/generated/` on
   every `npm run build` (via the `prebuild` script).
@@ -351,6 +353,12 @@ for the full contract. In brief:
 
 ## Known Limitations / Backlog
 
+- **The result table is not virtualised.** Every row of the current page
+  is in the DOM, so a 10,000-row page is heavy. `react-window` was a
+  declared dependency for a long time without ever being imported — the
+  virtualisation it implied was never built. Removed in 0.1.1 rather than
+  left as an implicit promise; adding real windowing is a genuine change,
+  not a dependency bump.
 - **Free-text search** uses `TRY_CAST(combined.* AS VARCHAR) ILIKE`,
   which is DuckDB-specific and may misbehave on exotic column types; a
   per-column union approach would be more robust.

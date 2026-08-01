@@ -41,8 +41,10 @@ copy onto an air-gapped machine.
   operators, plus a LogQL-shaped text view for copy/paste portability.
 - **Time filtering with explicit UTC.** Presets, custom ranges, and a
   UTC-offset timezone selector that avoids DST ambiguity.
-- **Virtualised table.** Expandable rows, per-schema persisted column
-  widths, page size up to 10,000 rows.
+- **Result table.** Expandable rows, per-schema persisted column widths,
+  page size up to 10,000 rows. Rows are paged, not virtualised — a full
+  10,000-row page is a lot of DOM, so reach for a smaller page size or a
+  tighter filter if it feels heavy.
 - **Export.** Write the current filtered view back out as NDJSON, and
   optionally copy the binary alongside it so the recipient can open the
   result with no setup at all.
