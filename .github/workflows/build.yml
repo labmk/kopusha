@@ -16,8 +16,8 @@ jobs:
     name: gofmt + vet
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: true
@@ -86,14 +86,14 @@ jobs:
       matrix: ${{ fromJSON(needs.targets.outputs.matrix) }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: true
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -104,6 +104,7 @@ jobs:
       # __throw_bad_array_new_length) — msvcrt vs UCRT, not a compiler
       # version problem, so a newer mingw64 will not fix it.
       - name: Set up MSYS2 (Windows)
+        id: msys2
         if: matrix.goos == 'windows'
         uses: msys2/setup-msys2@v2
         with:
@@ -117,11 +118,21 @@ jobs:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           MATRIX_CC: ${{ matrix.cc }}
+          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
           SKIP_VULNCHECK: '1'   # the dedicated job below runs it once
         run: |
           if [ "$GOOS" = "windows" ]; then
-            export CC=/c/msys64/ucrt64/bin/gcc.exe
-            export PATH="/c/msys64/ucrt64/bin:$PATH"
+            # setup-msys2 installs its own MSYS2 into the runner temp dir
+            # — NOT C:\msys64, which is where a hand-installed MSYS2 lives
+            # on a developer box. Hardcoding that path is what made cgo
+            # report `C compiler ... file does not exist` after every other
+            # build step had succeeded. Take the location from the action's
+            # own output and convert the Windows path for bash.
+            root="${MSYS2_ROOT//\\//}"
+            export CC="${root}/ucrt64/bin/gcc.exe"
+            export PATH="${root}/ucrt64/bin:$PATH"
+            echo "MSYS2 at $root"
+            "$CC" --version | head -1
           fi
           if [ -n "$MATRIX_CC" ]; then
             export CC="$MATRIX_CC"
@@ -152,13 +163,13 @@ jobs:
 
       - name: Upload failed e2e report
         if: failure() && matrix.e2e
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-${{ matrix.name }}
           path: frontend/playwright-report/
           retention-days: 7
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: obs_viewer-${{ matrix.name }}
           path: |
@@ -171,8 +182,8 @@ jobs:
     name: govulncheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
           cache: true
@@ -186,8 +197,8 @@ jobs:
       run:
         working-directory: frontend
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -203,9 +214,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: staging
           pattern: obs_viewer-*
