@@ -1,0 +1,20 @@
+# Line format D:
+#
+#   15:13:52.592268 26804/46320 Info   CaseViewActivationSetter created
+#
+# Time-of-day only (microsecond precision), PID/TID, level, message.
+# No date in the line — the adapter combines the parsed time with
+# the file's mtime to build a full timestamp. When the time-of-day
+# jumps backwards by more than 12 hours during scanning, the working
+# date advances by one calendar day (handles files that span a single
+# midnight rollover).
+
+family: line
+name: time-pidtid
+priority: 80
+
+parse: '^(?P<ts>\d{2}:\d{2}:\d{2}\.\d+)\s+(?P<pid>\d+)/(?P<tid>\d+)\s+(?P<level>\w+)\s+(?P<message>.*)$'
+
+ts_layout: '15:04:05.999999999'
+
+ts_use_mtime_date: true

@@ -1,0 +1,41 @@
+# Generic XML: autodetects the "row element" as the name that appears
+# most often as siblings under any one parent in the first 1 MiB. The
+# row's attributes and descendants are flattened with dot-paths:
+#
+#   row attribute               → @attr_name
+#   nested element text         → parent.child[.child]
+#   nested element attribute    → parent.child.@attr_name
+#   repeated paths              → collapsed into a list
+#
+# Encoded XML inside leaf text (e.g. &lt;Foo/&gt;) stays as a plain
+# string — encoding/xml has already decoded the entities, but we don't
+# recursively re-parse the result.
+#
+# Works for: rooted documents (<?xml … ?> + single root) AND multi-root
+# streams (sequence of <Event …/> elements with no enclosing root, like
+# UtilizationEvents.txt). The adapter wraps both cases in a synthetic
+# root internally so encoding/xml stays happy.
+
+family: xml
+name: repeating-row-element
+priority: 80
+
+# Sniff: first non-whitespace char is '<'. Avoids matching plain text
+# that contains '<' somewhere later.
+sniff: '^\s*<'
+
+# Candidate fields the row-flatten step may have produced. First one
+# present and parseable wins; everything else stays in the record as
+# regular columns.
+ts_candidates:
+  - '@time'
+  - '@Timestamp'
+  - '@timestamp'
+  - 'Timestamp'
+  - 'TimeStamp'
+  - 'TimeStamp_Absolute'
+
+ts_layouts:
+  - '2006-01-02T15:04:05.999999999Z07:00'
+  - '2006-01-02 15:04:05Z07:00'
+  - '2006-01-02 15:04:05Z'

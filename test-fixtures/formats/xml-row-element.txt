@@ -1,0 +1,3300 @@
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:00Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>50813</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>dba950ba7308a7ef</ContextId>
+<Detail>retrying upstream after 1174ms backoff</Detail>
+<Duration unit="ms">2348</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:00Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>73257</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c740d9fe143a4a09</ContextId>
+<Detail>request completed in 7342ms</Detail>
+<Duration unit="ms">230</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:01Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>79499</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>9e4bc5ab714519ec</ContextId>
+<Detail>segment 5f19d8f4 failed checksum validation</Detail>
+<Duration unit="ms">2287</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:00Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>57219</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>bc139e72a15a07ed</ContextId>
+<Detail>cache miss for key abd8eb9e</Detail>
+<Duration unit="ms">3518</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>67265</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>86d80eafb36a2012</ContextId>
+<Detail>background scan finished, 9081 objects visited</Detail>
+<Duration unit="ms">3159</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:08Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>33027</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>a82debc9cab034ac</ContextId>
+<Detail>request completed in 5272ms</Detail>
+<Duration unit="ms">3873</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:01Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>86027</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6d323c245e4b8142</ContextId>
+<Detail>handshake with 192.0.2.4035 completed</Detail>
+<Duration unit="ms">3507</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:08Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>74805</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>ebc0b6ec38af5dfd</ContextId>
+<Detail>deserialization failed at offset 1823: unexpected token</Detail>
+<Duration unit="ms">1962</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:10Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>70808</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d58ddb7a0ea795f6</ContextId>
+<Detail>background scan finished, 4640 objects visited</Detail>
+<Duration unit="ms">1610</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:14Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>36489</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a7f5fef54defe90e</ContextId>
+<Detail>background scan finished, 6218 objects visited</Detail>
+<Duration unit="ms">3528</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:05Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>64825</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>39b26018c13793f0</ContextId>
+<Detail>write rejected: quota exceeded by 7287 bytes</Detail>
+<Duration unit="ms">2102</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>60885</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>eaee664b479be459</ContextId>
+<Detail>handshake with 192.0.2.1840 completed</Detail>
+<Duration unit="ms">2065</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:20Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>24772</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>97333aebb2d5e92d</ContextId>
+<Detail>deserialization failed at offset 4530: unexpected token</Detail>
+<Duration unit="ms">2268</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:24Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>15686</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>d6768152a16dd766</ContextId>
+<Detail>segment 65099a45 failed checksum validation</Detail>
+<Duration unit="ms">3535</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:12Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>1171</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>68b8242b6d9ef62f</ContextId>
+<Detail>connection pool resized to 1126</Detail>
+<Duration unit="ms">874</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:19Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>71419</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>bc4ff4296ad16e9c</ContextId>
+<Detail>lease acquisition timed out after 6038ms</Detail>
+<Duration unit="ms">3350</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:26Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>30159</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>22a5b5d5f02732ad</ContextId>
+<Detail>background scan finished, 4245 objects visited</Detail>
+<Duration unit="ms">1306</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:32Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>76541</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>5de1b675530bbe50</ContextId>
+<Detail>lease renewed, ttl 9261s</Detail>
+<Duration unit="ms">985</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:27Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>93200</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f80254e1f3967e1f</ContextId>
+<Detail>shard 2647 rebalanced to node-c01</Detail>
+<Duration unit="ms">434</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:18Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>86777</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>f524111a229224fb</ContextId>
+<Detail>deserialization failed at offset 3092: unexpected token</Detail>
+<Duration unit="ms">1743</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>24718</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>8ce6c6fa4a492da4</ContextId>
+<Detail>shard 4081 rebalanced to node-b01</Detail>
+<Duration unit="ms">3651</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:18Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>77071</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>d60fed1dcdad9928</ContextId>
+<Detail>background scan finished, 7390 objects visited</Detail>
+<Duration unit="ms">3728</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:33Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>65485</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c5e3b3a0a95805f5</ContextId>
+<Detail>queue depth 8734 exceeds soft limit</Detail>
+<Duration unit="ms">1772</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:05Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>71553</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>afb9ccd2863c349c</ContextId>
+<Detail>dropped 2509 stale entries during compaction</Detail>
+<Duration unit="ms">3284</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:14Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>23966</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>79bd0d1ea9401ee3</ContextId>
+<Detail>lease renewed, ttl 1939s</Detail>
+<Duration unit="ms">3342</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:22Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>58390</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>516d2cbe5b47bef5</ContextId>
+<Detail>background scan finished, 8200 objects visited</Detail>
+<Duration unit="ms">2871</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:45Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>44087</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>7d599a3c4142cb48</ContextId>
+<Detail>background scan finished, 9449 objects visited</Detail>
+<Duration unit="ms">3894</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:03Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>8281</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c20ce19491117f41</ContextId>
+<Detail>retrying upstream after 4085ms backoff</Detail>
+<Duration unit="ms">489</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:10Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>81690</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3da5dfcc21fcaf17</ContextId>
+<Detail>background scan finished, 1636 objects visited</Detail>
+<Duration unit="ms">460</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:20Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>87006</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ed7cb668529a2b62</ContextId>
+<Detail>config reloaded from profile e2d7f4b6</Detail>
+<Duration unit="ms">737</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:58Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>39503</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>7202f757af35d304</ContextId>
+<Detail>connection pool resized to 9785</Detail>
+<Duration unit="ms">172</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:42Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>22642</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f2b7cd3b999c0f08</ContextId>
+<Detail>background scan finished, 706 objects visited</Detail>
+<Duration unit="ms">3216</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:43Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>96950</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>f3534fecfdd1942b</ContextId>
+<Detail>upstream 192.0.2.8660 refused connection after 3 attempts</Detail>
+<Duration unit="ms">1531</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:46Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>82873</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>877b268fddfcea9e</ContextId>
+<Detail>dropped 7719 stale entries during compaction</Detail>
+<Duration unit="ms">622</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:42Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>65591</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ee3459dad82646da</ContextId>
+<Detail>handshake with 192.0.2.5416 completed</Detail>
+<Duration unit="ms">196</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:13Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>95072</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>83e1373840491942</ContextId>
+<Detail>lease renewed, ttl 9553s</Detail>
+<Duration unit="ms">2392</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:09Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>48646</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>1dc24616191720db</ContextId>
+<Detail>connection pool resized to 4204</Detail>
+<Duration unit="ms">1126</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:30Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>56226</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>2bd40ab7cf13db10</ContextId>
+<Detail>segment 5025edcd failed checksum validation</Detail>
+<Duration unit="ms">937</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:13Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>43649</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e9e78c8513cb8cb7</ContextId>
+<Detail>queue depth 6712 exceeds soft limit</Detail>
+<Duration unit="ms">1093</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:10Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>4006</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b96f37290d7a5df1</ContextId>
+<Detail>dropped 5860 stale entries during compaction</Detail>
+<Duration unit="ms">856</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:08Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>96633</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>8926de45345eac8b</ContextId>
+<Detail>handshake with 192.0.2.8941 completed</Detail>
+<Duration unit="ms">2795</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:38Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>78032</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>97c7b252a3352d31</ContextId>
+<Detail>config reloaded from profile 457b9ddc</Detail>
+<Duration unit="ms">2863</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:14Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>5354</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>14d69db17fab04d4</ContextId>
+<Detail>handshake with 192.0.2.1441 completed</Detail>
+<Duration unit="ms">3633</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:03Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>90769</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>1334c4d5b58ab7bb</ContextId>
+<Detail>deserialization failed at offset 9010: unexpected token</Detail>
+<Duration unit="ms">2770</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:55Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>29348</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>2506d1f79a72ebf9</ContextId>
+<Detail>dropped 1215 stale entries during compaction</Detail>
+<Duration unit="ms">3996</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:53Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>23820</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>a4a234fa520e15ad</ContextId>
+<Detail>deserialization failed at offset 7701: unexpected token</Detail>
+<Duration unit="ms">2187</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:16Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>24841</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c7cc355db2c25a3d</ContextId>
+<Detail>connection pool resized to 167</Detail>
+<Duration unit="ms">3851</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:12Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>12744</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6b70e4cc3899c958</ContextId>
+<Detail>queue depth 3899 exceeds soft limit</Detail>
+<Duration unit="ms">2339</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:10Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>60150</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>0e42dcc393b2e8ff</ContextId>
+<Detail>deserialization failed at offset 939: unexpected token</Detail>
+<Duration unit="ms">3493</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:14Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>48328</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>cc0e935c6f6d7bc7</ContextId>
+<Detail>queue depth 5903 exceeds soft limit</Detail>
+<Duration unit="ms">1789</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:31Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>95343</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>28872fb416933ba4</ContextId>
+<Detail>handshake with 192.0.2.2880 completed</Detail>
+<Duration unit="ms">3294</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:09Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>48463</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b85afb5095abf9d5</ContextId>
+<Detail>connection pool resized to 4238</Detail>
+<Duration unit="ms">1157</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:17Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>49874</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>8e21a44a123f197d</ContextId>
+<Detail>write rejected: quota exceeded by 2137 bytes</Detail>
+<Duration unit="ms">381</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:18Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>53632</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>940b973cf346cae5</ContextId>
+<Detail>cache miss for key 0407bba4</Detail>
+<Duration unit="ms">2412</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:40Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>71607</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>0e4164217c4bf390</ContextId>
+<Detail>segment 50a9d579 failed checksum validation</Detail>
+<Duration unit="ms">2230</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:35Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>99053</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>df6fba48ac1a916b</ContextId>
+<Detail>deserialization failed at offset 1442: unexpected token</Detail>
+<Duration unit="ms">2569</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:41Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>37383</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>91f1774cede6dd0e</ContextId>
+<Detail>checkpoint written at offset 2060</Detail>
+<Duration unit="ms">998</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:21Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>14077</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3ef36c5e11b4f30c</ContextId>
+<Detail>cache miss for key a2cd187a</Detail>
+<Duration unit="ms">1691</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:43Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>50361</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d206e7876bdbabd7</ContextId>
+<Detail>handshake with 192.0.2.3993 completed</Detail>
+<Duration unit="ms">363</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:40Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>97121</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>35217eb10d131de7</ContextId>
+<Detail>checkpoint written at offset 4887</Detail>
+<Duration unit="ms">758</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:56Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>33668</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>dcbae3861e101712</ContextId>
+<Detail>write rejected: quota exceeded by 8016 bytes</Detail>
+<Duration unit="ms">1127</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:29Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>41245</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>6eced72417138b95</ContextId>
+<Detail>segment ddc43617 failed checksum validation</Detail>
+<Duration unit="ms">1702</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:30Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>66449</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>fd41cc205d2566e7</ContextId>
+<Detail>request completed in 7305ms</Detail>
+<Duration unit="ms">2354</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:12Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>19547</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>5aab45b653aadd27</ContextId>
+<Detail>write rejected: quota exceeded by 8852 bytes</Detail>
+<Duration unit="ms">2228</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:42Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>95738</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d8642abfbdf4a1bd</ContextId>
+<Detail>retrying upstream after 9055ms backoff</Detail>
+<Duration unit="ms">1835</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:33Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>48643</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>8541929f85dc47ea</ContextId>
+<Detail>lease renewed, ttl 8776s</Detail>
+<Duration unit="ms">1786</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:10Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>90831</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>399137c581d24f34</ContextId>
+<Detail>flushed 493 records to segment 9bb159b9</Detail>
+<Duration unit="ms">2334</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:40Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>96280</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>e9e83fc2e290bbfb</ContextId>
+<Detail>handshake with 192.0.2.871 completed</Detail>
+<Duration unit="ms">1649</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:43Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>90810</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>535500a30a5e26dc</ContextId>
+<Detail>deserialization failed at offset 1352: unexpected token</Detail>
+<Duration unit="ms">3556</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:45Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>96370</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6f154ccb2585c02d</ContextId>
+<Detail>request completed in 9963ms</Detail>
+<Duration unit="ms">2687</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:18Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>3618</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ebb63feb4562bbf8</ContextId>
+<Detail>shard 8605 rebalanced to node-c03</Detail>
+<Duration unit="ms">975</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:34Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>86300</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>f838d6498ab4c971</ContextId>
+<Detail>segment c85a0f8a failed checksum validation</Detail>
+<Duration unit="ms">295</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:34Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>85901</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>267c3ceef7b23ea9</ContextId>
+<Detail>lease acquisition timed out after 878ms</Detail>
+<Duration unit="ms">1364</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:18Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>56123</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>e4caefc4f78d14df</ContextId>
+<Detail>upstream 192.0.2.8412 refused connection after 3 attempts</Detail>
+<Duration unit="ms">2444</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:12Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>87035</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>5d0ad3e45590c123</ContextId>
+<Detail>connection pool resized to 325</Detail>
+<Duration unit="ms">1231</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:36Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>61099</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e20e946521c63d4d</ContextId>
+<Detail>retrying upstream after 1117ms backoff</Detail>
+<Duration unit="ms">2007</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:25Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>65854</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>8407510fc07d8485</ContextId>
+<Detail>connection pool resized to 4892</Detail>
+<Duration unit="ms">406</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:58Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>99689</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>84a97fa1315d9b8e</ContextId>
+<Detail>deserialization failed at offset 6815: unexpected token</Detail>
+<Duration unit="ms">133</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:18Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>96660</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>e0e535e46a8577a9</ContextId>
+<Detail>lease acquisition timed out after 6462ms</Detail>
+<Duration unit="ms">1758</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:44Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>75622</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>5b08aa9124eae5f0</ContextId>
+<Detail>upstream 192.0.2.1521 refused connection after 3 attempts</Detail>
+<Duration unit="ms">2564</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:09Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>52866</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>3d12f5ca623c7c45</ContextId>
+<Detail>lease acquisition timed out after 5765ms</Detail>
+<Duration unit="ms">1885</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:40Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>17809</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>e324f25731e1ae1c</ContextId>
+<Detail>write rejected: quota exceeded by 6890 bytes</Detail>
+<Duration unit="ms">1401</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:46Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>31759</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3b2ce77e501b94a1</ContextId>
+<Detail>shard 5984 rebalanced to node-a01</Detail>
+<Duration unit="ms">3822</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:00Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>63706</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>115b4c67d31504ea</ContextId>
+<Detail>deserialization failed at offset 9880: unexpected token</Detail>
+<Duration unit="ms">886</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:09Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>91218</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>239b166f17700332</ContextId>
+<Detail>deserialization failed at offset 7265: unexpected token</Detail>
+<Duration unit="ms">3020</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:47Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>48436</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e5bb94da4daa8f14</ContextId>
+<Detail>config reloaded from profile 30919e7e</Detail>
+<Duration unit="ms">171</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:33Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>24717</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>57975c3d5fe86f16</ContextId>
+<Detail>queue depth 6888 exceeds soft limit</Detail>
+<Duration unit="ms">3346</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>45099</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ff7f3418a15a12c1</ContextId>
+<Detail>config reloaded from profile b3a86b65</Detail>
+<Duration unit="ms">417</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:59Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>24888</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>a247e04dc7ab1cf9</ContextId>
+<Detail>deserialization failed at offset 1649: unexpected token</Detail>
+<Duration unit="ms">2174</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:26Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>20662</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>cb1c139ac24e79d7</ContextId>
+<Detail>write rejected: quota exceeded by 6472 bytes</Detail>
+<Duration unit="ms">2833</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:31Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>88593</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>57e35cb069ead4f9</ContextId>
+<Detail>shard 4469 rebalanced to node-a01</Detail>
+<Duration unit="ms">2693</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:56Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>96445</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>73267904aabc9599</ContextId>
+<Detail>request completed in 1708ms</Detail>
+<Duration unit="ms">1426</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:37Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>86237</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>3f5e96caeaa55138</ContextId>
+<Detail>lease acquisition timed out after 1130ms</Detail>
+<Duration unit="ms">243</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:52Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>34316</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>0c3e35d8102ccd1e</ContextId>
+<Detail>flushed 3090 records to segment 2a3ce89a</Detail>
+<Duration unit="ms">577</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:21Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>46925</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f4532421bfcc892f</ContextId>
+<Detail>retrying upstream after 3881ms backoff</Detail>
+<Duration unit="ms">2052</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:06Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>18488</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>2119aedc4c72f2e9</ContextId>
+<Detail>request completed in 7704ms</Detail>
+<Duration unit="ms">2802</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:23Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>94101</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ad1aab624e2bbfa9</ContextId>
+<Detail>retrying upstream after 7083ms backoff</Detail>
+<Duration unit="ms">2918</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:59Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>5565</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>bd3b698586d9393f</ContextId>
+<Detail>handshake with 192.0.2.7142 completed</Detail>
+<Duration unit="ms">830</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:00Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>8073</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>dc5ddf22aff4c912</ContextId>
+<Detail>worker 2716 joined the pool</Detail>
+<Duration unit="ms">1435</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>21728</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>222c66d398a99720</ContextId>
+<Detail>lease acquisition timed out after 1153ms</Detail>
+<Duration unit="ms">1048</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:30Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>35641</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>9aa244a11de79a8a</ContextId>
+<Detail>retrying upstream after 5045ms backoff</Detail>
+<Duration unit="ms">1215</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:47Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>7509</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>ee0999bb41c710fd</ContextId>
+<Detail>cache miss for key ce761599</Detail>
+<Duration unit="ms">829</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:01Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>22440</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>e3569697c2d66667</ContextId>
+<Detail>segment f00fd091 failed checksum validation</Detail>
+<Duration unit="ms">3903</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:15Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>74926</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>53b2552125a9ca67</ContextId>
+<Detail>segment bd1a5ab7 failed checksum validation</Detail>
+<Duration unit="ms">1812</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:12Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>63938</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>506572008b8b5a9e</ContextId>
+<Detail>upstream 192.0.2.9364 refused connection after 3 attempts</Detail>
+<Duration unit="ms">1041</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:57Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>79049</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>88c5c2f31c409da1</ContextId>
+<Detail>cache miss for key 4d4f2c5a</Detail>
+<Duration unit="ms">1707</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:48Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>4420</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>be60c241c6c8e62a</ContextId>
+<Detail>upstream 192.0.2.9303 refused connection after 3 attempts</Detail>
+<Duration unit="ms">825</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:42Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>14149</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c5917dd35ee78a6d</ContextId>
+<Detail>lease renewed, ttl 4786s</Detail>
+<Duration unit="ms">1763</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:44Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>85803</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>0ee719794f2a0459</ContextId>
+<Detail>connection pool resized to 5695</Detail>
+<Duration unit="ms">3133</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:07Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>13550</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>06094ca1ce012cb2</ContextId>
+<Detail>lease renewed, ttl 1987s</Detail>
+<Duration unit="ms">2141</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:55Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>45155</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>787929232f3840d1</ContextId>
+<Detail>config reloaded from profile 20d2a067</Detail>
+<Duration unit="ms">1298</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:24Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>55471</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>a01b45f02905242e</ContextId>
+<Detail>checkpoint written at offset 3897</Detail>
+<Duration unit="ms">915</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:23Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>1724</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>a4501a2896585a46</ContextId>
+<Detail>upstream 192.0.2.6810 refused connection after 3 attempts</Detail>
+<Duration unit="ms">2341</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:56Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>10917</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>e71819e52dd1598e</ContextId>
+<Detail>worker 9233 joined the pool</Detail>
+<Duration unit="ms">1733</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:17Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>6068</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>272f4123ba9f91d2</ContextId>
+<Detail>background scan finished, 4782 objects visited</Detail>
+<Duration unit="ms">3722</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:03Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>97952</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>36339e8cdb31da8f</ContextId>
+<Detail>background scan finished, 2977 objects visited</Detail>
+<Duration unit="ms">2629</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:36Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>95432</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f68f5e824d6f05ad</ContextId>
+<Detail>cache miss for key b57a280d</Detail>
+<Duration unit="ms">3208</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:48Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>7354</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>af2aaaf8a2fb9c4b</ContextId>
+<Detail>deserialization failed at offset 7569: unexpected token</Detail>
+<Duration unit="ms">2910</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:25Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>85183</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d4a982bc639888b0</ContextId>
+<Detail>flushed 6723 records to segment 8a9ea4bf</Detail>
+<Duration unit="ms">3732</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:22Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>97151</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>182b03090602d155</ContextId>
+<Detail>shard 2115 rebalanced to node-b01</Detail>
+<Duration unit="ms">2581</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:10Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>95553</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6771ba3f37684f5d</ContextId>
+<Detail>connection pool resized to 5086</Detail>
+<Duration unit="ms">598</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:16Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>82440</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6127f5e02cfbbffb</ContextId>
+<Detail>shard 5751 rebalanced to node-a02</Detail>
+<Duration unit="ms">1800</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:52Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>63856</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>18653a427896921b</ContextId>
+<Detail>upstream 192.0.2.8063 refused connection after 3 attempts</Detail>
+<Duration unit="ms">3669</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:21Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>16549</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>879cad7c0d2e02e1</ContextId>
+<Detail>request completed in 5423ms</Detail>
+<Duration unit="ms">1432</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:18Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>42038</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>985260951de7805d</ContextId>
+<Detail>request completed in 2485ms</Detail>
+<Duration unit="ms">1034</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:17Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>48518</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>85f5eae0103d7fdf</ContextId>
+<Detail>queue depth 5011 exceeds soft limit</Detail>
+<Duration unit="ms">1540</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:34Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>20786</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>50cc68545aa6783b</ContextId>
+<Detail>lease acquisition timed out after 8958ms</Detail>
+<Duration unit="ms">443</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:01Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>93517</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>4a566ebcfe9e9fb6</ContextId>
+<Detail>lease renewed, ttl 4678s</Detail>
+<Duration unit="ms">3987</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:38Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>53435</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>855fc87e5012c7bc</ContextId>
+<Detail>worker 7408 joined the pool</Detail>
+<Duration unit="ms">2799</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:07Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>43899</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>12f1936a6889a61d</ContextId>
+<Detail>handshake with 192.0.2.9099 completed</Detail>
+<Duration unit="ms">219</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:56Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>87572</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>4fde543f3ac8bb81</ContextId>
+<Detail>write rejected: quota exceeded by 2816 bytes</Detail>
+<Duration unit="ms">1818</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:15Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>31189</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f90ddc7838f0448f</ContextId>
+<Detail>handshake with 192.0.2.1977 completed</Detail>
+<Duration unit="ms">3465</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:42Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>84160</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>b256cbada46ee813</ContextId>
+<Detail>retrying upstream after 6002ms backoff</Detail>
+<Duration unit="ms">1441</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:21Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>32247</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>2ca216c4b0fc6723</ContextId>
+<Detail>shard 9432 rebalanced to node-b01</Detail>
+<Duration unit="ms">2423</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:02Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>42061</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>ce66ad8a91c84995</ContextId>
+<Detail>background scan finished, 8303 objects visited</Detail>
+<Duration unit="ms">548</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:02Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>75797</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>5299fed3365aae39</ContextId>
+<Detail>lease acquisition timed out after 1709ms</Detail>
+<Duration unit="ms">842</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:54Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>2578</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ade680470bae71d9</ContextId>
+<Detail>dropped 349 stale entries during compaction</Detail>
+<Duration unit="ms">3427</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:33Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>70220</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b6a0a9fa6dc0e468</ContextId>
+<Detail>shard 4533 rebalanced to node-b02</Detail>
+<Duration unit="ms">2957</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:29Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>75588</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>4e3929443fc531f8</ContextId>
+<Detail>cache miss for key e87a3c74</Detail>
+<Duration unit="ms">507</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:13Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>10956</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>3fbbed4913df21d6</ContextId>
+<Detail>cache miss for key 20546483</Detail>
+<Duration unit="ms">1061</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:53Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>6772</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3d259c2e0f891e3a</ContextId>
+<Detail>lease renewed, ttl 9412s</Detail>
+<Duration unit="ms">998</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:47Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>63333</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>2e2567fcf31455dd</ContextId>
+<Detail>flushed 5050 records to segment 614149b6</Detail>
+<Duration unit="ms">2607</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:34Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>98676</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e9e7e569b2b576e7</ContextId>
+<Detail>lease renewed, ttl 6336s</Detail>
+<Duration unit="ms">3889</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:54Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>9190</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>641df3dd3e8110dd</ContextId>
+<Detail>upstream 192.0.2.8929 refused connection after 3 attempts</Detail>
+<Duration unit="ms">166</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:57Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>89331</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>c6f1c1e2dee2e7af</ContextId>
+<Detail>handshake with 192.0.2.3213 completed</Detail>
+<Duration unit="ms">154</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:08Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>30534</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>bd58040d56a6ba8f</ContextId>
+<Detail>lease renewed, ttl 719s</Detail>
+<Duration unit="ms">32</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:27Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>70129</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6a6f3f023cab891b</ContextId>
+<Detail>cache miss for key 3b259839</Detail>
+<Duration unit="ms">1367</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:00Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>39241</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>eccc0c369746ad33</ContextId>
+<Detail>lease acquisition timed out after 7091ms</Detail>
+<Duration unit="ms">1720</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:01Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>31351</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>1fd469fd01c32ea6</ContextId>
+<Detail>lease acquisition timed out after 2062ms</Detail>
+<Duration unit="ms">972</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:00Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>81415</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>d06ac94c84883221</ContextId>
+<Detail>lease acquisition timed out after 7540ms</Detail>
+<Duration unit="ms">2144</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:01Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>89662</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3fabeb1a178a2243</ContextId>
+<Detail>dropped 4340 stale entries during compaction</Detail>
+<Duration unit="ms">395</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:41Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>54246</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>de51cbe2e57bb56f</ContextId>
+<Detail>lease renewed, ttl 8942s</Detail>
+<Duration unit="ms">1215</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:26Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>5276</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>601954f026e3c096</ContextId>
+<Detail>deserialization failed at offset 3772: unexpected token</Detail>
+<Duration unit="ms">1751</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:04Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>87509</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a766e6e471ed61d7</ContextId>
+<Detail>worker 9472 joined the pool</Detail>
+<Duration unit="ms">2367</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:47Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>60383</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>483b3208b7197ec5</ContextId>
+<Detail>write rejected: quota exceeded by 3341 bytes</Detail>
+<Duration unit="ms">349</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:25Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>74237</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f394bbebcf8a96da</ContextId>
+<Detail>lease renewed, ttl 9494s</Detail>
+<Duration unit="ms">2916</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:49Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>74708</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>5270291fd6ddb31b</ContextId>
+<Detail>lease renewed, ttl 7453s</Detail>
+<Duration unit="ms">809</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:31Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>23133</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>3cc35d9ff63ab1ce</ContextId>
+<Detail>flushed 7952 records to segment 1761e2f9</Detail>
+<Duration unit="ms">3359</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:15Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>23391</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>19bad22c5c60ec0d</ContextId>
+<Detail>handshake with 192.0.2.4360 completed</Detail>
+<Duration unit="ms">115</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:33Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>11721</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>951237101418c9ed</ContextId>
+<Detail>flushed 9801 records to segment 9d828685</Detail>
+<Duration unit="ms">3273</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:49Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>10721</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>ff15169d105a1dfc</ContextId>
+<Detail>config reloaded from profile 81aac7b3</Detail>
+<Duration unit="ms">21</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:46Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>58938</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>76d356d5646bcea7</ContextId>
+<Detail>worker 4382 joined the pool</Detail>
+<Duration unit="ms">2481</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:38Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>54653</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b760f507d4f79b65</ContextId>
+<Detail>checkpoint written at offset 2635</Detail>
+<Duration unit="ms">2031</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:15Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>39613</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>2db8ea71630b918f</ContextId>
+<Detail>lease acquisition timed out after 4230ms</Detail>
+<Duration unit="ms">407</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:21Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>61128</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ca68ece339b49ce2</ContextId>
+<Detail>background scan finished, 2934 objects visited</Detail>
+<Duration unit="ms">3810</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:17Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>85495</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>193057e5f70929e4</ContextId>
+<Detail>write rejected: quota exceeded by 9957 bytes</Detail>
+<Duration unit="ms">2121</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:26Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>1259</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>9947ae13ab8ea084</ContextId>
+<Detail>dropped 1183 stale entries during compaction</Detail>
+<Duration unit="ms">2038</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:46Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>2811</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>df9b06249a7fd1eb</ContextId>
+<Detail>upstream 192.0.2.8225 refused connection after 3 attempts</Detail>
+<Duration unit="ms">2302</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:09Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>59514</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>391bb65fce2c30fa</ContextId>
+<Detail>shard 2528 rebalanced to node-b02</Detail>
+<Duration unit="ms">877</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:40Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>74797</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>34022a953cdb4a05</ContextId>
+<Detail>config reloaded from profile 608dd9b2</Detail>
+<Duration unit="ms">1468</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:35Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>22343</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>4337cd0c28b2c966</ContextId>
+<Detail>segment 1abd9a8f failed checksum validation</Detail>
+<Duration unit="ms">2647</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:53Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>66549</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e8ed00319babb156</ContextId>
+<Detail>request completed in 3335ms</Detail>
+<Duration unit="ms">2096</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:39Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>82677</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>5219272966188cf2</ContextId>
+<Detail>lease acquisition timed out after 7810ms</Detail>
+<Duration unit="ms">1111</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:28Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>60669</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>52a455e7e0afd80e</ContextId>
+<Detail>flushed 5855 records to segment 86f7c362</Detail>
+<Duration unit="ms">550</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:45Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>16187</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3df36a13dc18011d</ContextId>
+<Detail>checkpoint written at offset 2045</Detail>
+<Duration unit="ms">2416</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:23Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>56094</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>62decdff3ec9adca</ContextId>
+<Detail>queue depth 7550 exceeds soft limit</Detail>
+<Duration unit="ms">3261</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:42Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>27151</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>ff6068f7c6ced900</ContextId>
+<Detail>lease acquisition timed out after 5449ms</Detail>
+<Duration unit="ms">2122</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:53Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>22025</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>0a96cde7c27fd530</ContextId>
+<Detail>queue depth 3712 exceeds soft limit</Detail>
+<Duration unit="ms">3009</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:14Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>87535</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>72ae1cdf9594c20d</ContextId>
+<Detail>deserialization failed at offset 7318: unexpected token</Detail>
+<Duration unit="ms">283</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:58Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>99871</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>740efe045732bc57</ContextId>
+<Detail>segment 85e4d351 failed checksum validation</Detail>
+<Duration unit="ms">1189</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:21Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>72754</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3eff3e22b56901ff</ContextId>
+<Detail>config reloaded from profile d0111215</Detail>
+<Duration unit="ms">112</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:20Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>12277</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6ca72e4988984035</ContextId>
+<Detail>flushed 6351 records to segment 851e3227</Detail>
+<Duration unit="ms">3114</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:48Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>70904</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f40ca081eff54f1f</ContextId>
+<Detail>queue depth 6680 exceeds soft limit</Detail>
+<Duration unit="ms">1538</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:40Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>52237</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>7ccaeb3ced1f52f4</ContextId>
+<Detail>flushed 5297 records to segment 0bdddf1e</Detail>
+<Duration unit="ms">3035</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:23Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>75135</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ec26c08cfe288764</ContextId>
+<Detail>handshake with 192.0.2.3015 completed</Detail>
+<Duration unit="ms">3952</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:57Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>62357</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>4f1a616d6a82c740</ContextId>
+<Detail>checkpoint written at offset 5948</Detail>
+<Duration unit="ms">2798</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:08Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>1423</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>33b7b68b7b470151</ContextId>
+<Detail>lease acquisition timed out after 1842ms</Detail>
+<Duration unit="ms">1672</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:09Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>27455</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>2bc282f753911899</ContextId>
+<Detail>request completed in 5015ms</Detail>
+<Duration unit="ms">2650</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:44Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>13816</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>9e8cf4556e2437e7</ContextId>
+<Detail>retrying upstream after 3217ms backoff</Detail>
+<Duration unit="ms">166</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:55Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>47557</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6270bbd51598a81f</ContextId>
+<Detail>config reloaded from profile 6026c9b5</Detail>
+<Duration unit="ms">1927</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:40Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>60537</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>a5672514792e602d</ContextId>
+<Detail>segment ae579948 failed checksum validation</Detail>
+<Duration unit="ms">614</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:09Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>37916</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>91289bf6c2bc5963</ContextId>
+<Detail>dropped 5663 stale entries during compaction</Detail>
+<Duration unit="ms">85</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:01Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>73473</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b691f131bded1d44</ContextId>
+<Detail>queue depth 1987 exceeds soft limit</Detail>
+<Duration unit="ms">1473</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:26Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>87445</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>896ccfb1aa06062a</ContextId>
+<Detail>deserialization failed at offset 7979: unexpected token</Detail>
+<Duration unit="ms">3182</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:04Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>95687</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f3f97eb5af225ca6</ContextId>
+<Detail>connection pool resized to 953</Detail>
+<Duration unit="ms">1400</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:24Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>75133</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d563525332f1c0e8</ContextId>
+<Detail>config reloaded from profile 3ec62ec5</Detail>
+<Duration unit="ms">186</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:15Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>91904</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>1ea53f8b9f575eff</ContextId>
+<Detail>request completed in 6891ms</Detail>
+<Duration unit="ms">1029</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:18Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>40912</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>eeeddd19f10a0944</ContextId>
+<Detail>retrying upstream after 8171ms backoff</Detail>
+<Duration unit="ms">3655</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:04Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>44477</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e8caa387ac1f75e5</ContextId>
+<Detail>checkpoint written at offset 8551</Detail>
+<Duration unit="ms">1956</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:15Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>61163</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>0fb76ff68a663fb6</ContextId>
+<Detail>dropped 679 stale entries during compaction</Detail>
+<Duration unit="ms">3107</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:25Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>73419</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>0ca3a428887eb07b</ContextId>
+<Detail>dropped 2700 stale entries during compaction</Detail>
+<Duration unit="ms">1746</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:38Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>88329</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>9245068386403d69</ContextId>
+<Detail>lease acquisition timed out after 6632ms</Detail>
+<Duration unit="ms">2288</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:41Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>44772</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ad58225f082d9715</ContextId>
+<Detail>queue depth 700 exceeds soft limit</Detail>
+<Duration unit="ms">547</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:31Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>87144</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>10c05eed5acc3877</ContextId>
+<Detail>dropped 7129 stale entries during compaction</Detail>
+<Duration unit="ms">3336</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:10Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>92744</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>14daffdeec0f6908</ContextId>
+<Detail>request completed in 6747ms</Detail>
+<Duration unit="ms">3337</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:23Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>12593</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>37ea8ac92b865743</ContextId>
+<Detail>shard 9932 rebalanced to node-c03</Detail>
+<Duration unit="ms">3518</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:33Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>26831</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>48b943e0967b9728</ContextId>
+<Detail>cache miss for key 0436400a</Detail>
+<Duration unit="ms">684</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:42Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>58966</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>4da497443ff1df01</ContextId>
+<Detail>shard 7131 rebalanced to node-a02</Detail>
+<Duration unit="ms">2790</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:05Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>19232</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>6bfb76bc6cd3690f</ContextId>
+<Detail>retrying upstream after 5979ms backoff</Detail>
+<Duration unit="ms">3238</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:51Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>74736</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>862d8ec95177f99a</ContextId>
+<Detail>cache miss for key 00267420</Detail>
+<Duration unit="ms">2860</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:27Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>71182</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>fdc399ce73e65dfb</ContextId>
+<Detail>shard 233 rebalanced to node-b02</Detail>
+<Duration unit="ms">2815</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:50Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>7861</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>edd4ea499e657db4</ContextId>
+<Detail>connection pool resized to 1978</Detail>
+<Duration unit="ms">3180</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:12Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>27307</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>f8e18a87ef265982</ContextId>
+<Detail>lease acquisition timed out after 5713ms</Detail>
+<Duration unit="ms">347</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:32Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>1330</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>184973e78a70febc</ContextId>
+<Detail>background scan finished, 1393 objects visited</Detail>
+<Duration unit="ms">3652</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:25Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>20194</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>0d2b6d159cb60ba4</ContextId>
+<Detail>lease renewed, ttl 6282s</Detail>
+<Duration unit="ms">1028</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:47Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>18667</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>955b2772dcf0e547</ContextId>
+<Detail>config reloaded from profile b4e4e909</Detail>
+<Duration unit="ms">2711</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:29Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>13130</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e111acec66fd85ba</ContextId>
+<Detail>retrying upstream after 1058ms backoff</Detail>
+<Duration unit="ms">3889</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:52Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>68376</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>95bd8420eaa141dc</ContextId>
+<Detail>queue depth 4774 exceeds soft limit</Detail>
+<Duration unit="ms">1629</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:02Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>74429</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>1f09a05f514bc8cb</ContextId>
+<Detail>request completed in 3905ms</Detail>
+<Duration unit="ms">1844</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:43Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>44396</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>695be85154dd84be</ContextId>
+<Detail>dropped 7415 stale entries during compaction</Detail>
+<Duration unit="ms">2031</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:47Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>13990</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>08abc1310dae9c5d</ContextId>
+<Detail>write rejected: quota exceeded by 6295 bytes</Detail>
+<Duration unit="ms">306</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:24Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>27526</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>dc254a7b7c46df51</ContextId>
+<Detail>handshake with 192.0.2.3581 completed</Detail>
+<Duration unit="ms">2801</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:14Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>17200</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>9732ebcb317cfe44</ContextId>
+<Detail>lease acquisition timed out after 2609ms</Detail>
+<Duration unit="ms">2870</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:13Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>43358</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>90889b829abfd17e</ContextId>
+<Detail>cache miss for key 6336b0d1</Detail>
+<Duration unit="ms">3205</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:04Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>25701</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>162b2b3be61243f8</ContextId>
+<Detail>segment 0c8e6993 failed checksum validation</Detail>
+<Duration unit="ms">2494</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:43Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>18431</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ce527e33af8885ca</ContextId>
+<Detail>queue depth 9 exceeds soft limit</Detail>
+<Duration unit="ms">223</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:54Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>53448</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>c53353797f70a44c</ContextId>
+<Detail>config reloaded from profile bff1d09f</Detail>
+<Duration unit="ms">1235</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:52Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>63888</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>12499ae606542a52</ContextId>
+<Detail>write rejected: quota exceeded by 4887 bytes</Detail>
+<Duration unit="ms">3471</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:36Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>22598</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>896b79b60b7db262</ContextId>
+<Detail>shard 4935 rebalanced to node-b01</Detail>
+<Duration unit="ms">471</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:59Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>77456</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6a14faa3317627e4</ContextId>
+<Detail>shard 6206 rebalanced to node-c02</Detail>
+<Duration unit="ms">240</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:56Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>36205</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>6164ca8167dfa9e7</ContextId>
+<Detail>upstream 192.0.2.8442 refused connection after 3 attempts</Detail>
+<Duration unit="ms">418</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:38Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>13870</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>5bcc128d2c4cdd22</ContextId>
+<Detail>background scan finished, 2856 objects visited</Detail>
+<Duration unit="ms">2577</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:37Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>36616</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a79f17aef2f65fd7</ContextId>
+<Detail>handshake with 192.0.2.7745 completed</Detail>
+<Duration unit="ms">3047</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:54Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>77630</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>06fdc0217dbd6cb1</ContextId>
+<Detail>handshake with 192.0.2.1478 completed</Detail>
+<Duration unit="ms">419</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:12Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>54575</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>331d2103c9f3ba6c</ContextId>
+<Detail>worker 4059 joined the pool</Detail>
+<Duration unit="ms">1601</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:41Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>84853</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6f2f4f3979fc1d2c</ContextId>
+<Detail>shard 1318 rebalanced to node-c03</Detail>
+<Duration unit="ms">1712</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:17Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>67080</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>1318d6d424390989</ContextId>
+<Detail>connection pool resized to 9276</Detail>
+<Duration unit="ms">630</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:00Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>29175</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>7c39cf07c645ba91</ContextId>
+<Detail>shard 5326 rebalanced to node-b03</Detail>
+<Duration unit="ms">221</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:55Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>63868</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>be57b48efe42dd39</ContextId>
+<Detail>dropped 6704 stale entries during compaction</Detail>
+<Duration unit="ms">2057</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:54Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>19869</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>5fdc55e8d59b920f</ContextId>
+<Detail>retrying upstream after 7483ms backoff</Detail>
+<Duration unit="ms">746</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:51Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>17127</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>66942aef43056864</ContextId>
+<Detail>request completed in 6299ms</Detail>
+<Duration unit="ms">1080</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:12Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>82659</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>3fc8c1b2d68c6cc6</ContextId>
+<Detail>queue depth 5264 exceeds soft limit</Detail>
+<Duration unit="ms">2820</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:12Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>93107</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d9b56d096534c56c</ContextId>
+<Detail>retrying upstream after 518ms backoff</Detail>
+<Duration unit="ms">144</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:41Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>10725</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>e659f771d3cbaa8e</ContextId>
+<Detail>worker 3438 joined the pool</Detail>
+<Duration unit="ms">2958</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:35Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>19808</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>71c4cd9df7c076b6</ContextId>
+<Detail>flushed 3518 records to segment de387aa0</Detail>
+<Duration unit="ms">351</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:27Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>84661</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>e9fb53f006af522e</ContextId>
+<Detail>dropped 3839 stale entries during compaction</Detail>
+<Duration unit="ms">2355</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:10Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>91230</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>d4f3d69c72c0273a</ContextId>
+<Detail>flushed 3381 records to segment ab2ade9a</Detail>
+<Duration unit="ms">3364</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:52Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>97551</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>367c3569605d22d3</ContextId>
+<Detail>request completed in 5551ms</Detail>
+<Duration unit="ms">755</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:11Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>48078</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>aeb83d84726fd23a</ContextId>
+<Detail>lease acquisition timed out after 2529ms</Detail>
+<Duration unit="ms">915</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:23Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>3959</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b4c1c72ad231bd9e</ContextId>
+<Detail>lease renewed, ttl 8717s</Detail>
+<Duration unit="ms">2478</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:57Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>93798</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>46673c7bd75c68e2</ContextId>
+<Detail>retrying upstream after 9222ms backoff</Detail>
+<Duration unit="ms">2687</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:43Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>63577</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>70ef6477dc6f43e3</ContextId>
+<Detail>checkpoint written at offset 3106</Detail>
+<Duration unit="ms">2059</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:31Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>57029</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c342800ba4175196</ContextId>
+<Detail>lease renewed, ttl 5820s</Detail>
+<Duration unit="ms">2639</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:42Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>8207</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a7bc9a7b930ef11f</ContextId>
+<Detail>queue depth 58 exceeds soft limit</Detail>
+<Duration unit="ms">57</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:34Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>71865</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>0ec3ef274e85833c</ContextId>
+<Detail>background scan finished, 6584 objects visited</Detail>
+<Duration unit="ms">2443</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:16Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>3450</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a62d771d3c24d61f</ContextId>
+<Detail>config reloaded from profile c63f89f4</Detail>
+<Duration unit="ms">797</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:08:04Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>62176</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>8c6b8cbd5618bfcc</ContextId>
+<Detail>config reloaded from profile 147fb21d</Detail>
+<Duration unit="ms">2031</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:41Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>61196</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>45ec6e900297d195</ContextId>
+<Detail>lease acquisition timed out after 2102ms</Detail>
+<Duration unit="ms">1910</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:47Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>16693</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>4ab5db59343a7738</ContextId>
+<Detail>checkpoint written at offset 8570</Detail>
+<Duration unit="ms">1593</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:08Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>62518</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>4ebc830239f172c1</ContextId>
+<Detail>dropped 6463 stale entries during compaction</Detail>
+<Duration unit="ms">1674</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:10Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>95224</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>6a43bb952308f3a8</ContextId>
+<Detail>shard 6105 rebalanced to node-c03</Detail>
+<Duration unit="ms">2759</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:26Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>26939</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>0d727932a1352476</ContextId>
+<Detail>deserialization failed at offset 5704: unexpected token</Detail>
+<Duration unit="ms">2481</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:24Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>35593</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>46976d845ffee0cd</ContextId>
+<Detail>deserialization failed at offset 6815: unexpected token</Detail>
+<Duration unit="ms">2515</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:52Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>4651</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>1421b4219c720f99</ContextId>
+<Detail>deserialization failed at offset 9970: unexpected token</Detail>
+<Duration unit="ms">3823</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:25Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>53417</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>22345f5b071ba7e1</ContextId>
+<Detail>cache miss for key b2cdc5a6</Detail>
+<Duration unit="ms">2573</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:44Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>41460</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ced4499301a4cb56</ContextId>
+<Detail>dropped 1518 stale entries during compaction</Detail>
+<Duration unit="ms">3515</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:08:06Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>33719</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>47451e2b3afb03c1</ContextId>
+<Detail>connection pool resized to 5404</Detail>
+<Duration unit="ms">3791</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:20Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>90564</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ff399961afd8af0d</ContextId>
+<Detail>queue depth 5455 exceeds soft limit</Detail>
+<Duration unit="ms">1577</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:25Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>48919</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>08d35443e41953b9</ContextId>
+<Detail>retrying upstream after 2697ms backoff</Detail>
+<Duration unit="ms">2231</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:12Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>12252</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>1aef0b6c15ecc57c</ContextId>
+<Detail>retrying upstream after 848ms backoff</Detail>
+<Duration unit="ms">1094</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:28Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>40067</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>6bd43cbc4a2b5f18</ContextId>
+<Detail>segment 3d3a3dbc failed checksum validation</Detail>
+<Duration unit="ms">3773</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:41Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>87076</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>89ebcf389afb6698</ContextId>
+<Detail>lease renewed, ttl 9673s</Detail>
+<Duration unit="ms">2554</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:08:06Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>38523</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>42924f276c4a2b99</ContextId>
+<Detail>write rejected: quota exceeded by 4429 bytes</Detail>
+<Duration unit="ms">1441</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:58Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>62096</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>42be902eed1adb29</ContextId>
+<Detail>handshake with 192.0.2.6821 completed</Detail>
+<Duration unit="ms">1563</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:28Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>13320</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f5597ede205b635f</ContextId>
+<Detail>shard 7568 rebalanced to node-c03</Detail>
+<Duration unit="ms">506</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:32Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>45829</ProcessId>
+<Hostname>node-a01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>c8a033fb2a0a4828</ContextId>
+<Detail>upstream 192.0.2.8239 refused connection after 3 attempts</Detail>
+<Duration unit="ms">2935</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:35Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>9230</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b2eded594b729dcf</ContextId>
+<Detail>cache miss for key 4eb0f428</Detail>
+<Duration unit="ms">3330</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:55Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>12700</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>11a4d117aca54d59</ContextId>
+<Detail>shard 3073 rebalanced to node-b01</Detail>
+<Duration unit="ms">3642</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:06Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>18887</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>12285db17560d30a</ContextId>
+<Detail>lease acquisition timed out after 8763ms</Detail>
+<Duration unit="ms">3520</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:20Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>50068</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>41a177680c5c6bde</ContextId>
+<Detail>lease renewed, ttl 257s</Detail>
+<Duration unit="ms">580</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:01Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>93212</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>1f44af2b1d9c36e4</ContextId>
+<Detail>retrying upstream after 1974ms backoff</Detail>
+<Duration unit="ms">2616</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:08:48Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>2856</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>e4d609a3f69aa495</ContextId>
+<Detail>connection pool resized to 5021</Detail>
+<Duration unit="ms">1012</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:37Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>16935</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>WARN</Severity>
+<ContextId>d3f7854402d10461</ContextId>
+<Detail>lease acquisition timed out after 8690ms</Detail>
+<Duration unit="ms">3737</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:53Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>52535</ProcessId>
+<Hostname>node-a03</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>649876675eaf8e7f</ContextId>
+<Detail>lease renewed, ttl 5157s</Detail>
+<Duration unit="ms">597</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:15Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>55127</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>b01f7453eae89765</ContextId>
+<Detail>background scan finished, 7131 objects visited</Detail>
+<Duration unit="ms">3236</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:08:21Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>3097</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>DEBUG</Severity>
+<ContextId>e4e8c585656b951a</ContextId>
+<Detail>checkpoint written at offset 8508</Detail>
+<Duration unit="ms">2406</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:29Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>scheduler.worker</ProcessName>
+<ProcessId>75565</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c960d97e32feb003</ContextId>
+<Detail>flushed 2935 records to segment 54f14ab6</Detail>
+<Duration unit="ms">2055</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:48Z">
+<Version>1.0</Version>
+<Functionality>authsvc_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>25225</ProcessId>
+<Hostname>node-b01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ccf3087e08c9714b</ContextId>
+<Detail>queue depth 197 exceeds soft limit</Detail>
+<Duration unit="ms">2522</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:57Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>24006</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>0f9cb3eb64eb254a</ContextId>
+<Detail>dropped 8562 stale entries during compaction</Detail>
+<Duration unit="ms">2385</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:05:51Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>22410</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>WARN</Severity>
+<ContextId>d9bd3da9036cf68b</ContextId>
+<Detail>lease acquisition timed out after 487ms</Detail>
+<Duration unit="ms">3302</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:24Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>24331</ProcessId>
+<Hostname>node-b03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>eba1f1e8a2c8a3a0</ContextId>
+<Detail>worker 905 joined the pool</Detail>
+<Duration unit="ms">2222</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:28Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>gateway.worker</ProcessName>
+<ProcessId>63122</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>f030d0cfe92f47dc</ContextId>
+<Detail>dropped 6378 stale entries during compaction</Detail>
+<Duration unit="ms">2065</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:02:11Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>3383</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ca706af30cdc1a3a</ContextId>
+<Detail>request completed in 809ms</Detail>
+<Duration unit="ms">1667</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:00:42Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>blobstore.worker</ProcessName>
+<ProcessId>98125</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>ERROR</Severity>
+<ContextId>cbbeb9b7db66a5c0</ContextId>
+<Detail>write rejected: quota exceeded by 5973 bytes</Detail>
+<Duration unit="ms">367</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:06:37Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>43215</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>WARN</Severity>
+<ContextId>4eb34771c0955c64</ContextId>
+<Detail>lease acquisition timed out after 7221ms</Detail>
+<Duration unit="ms">586</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:03:52Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>83130</ProcessId>
+<Hostname>node-c01</Hostname>
+<Severity>INFO</Severity>
+<ContextId>1761310680093df7</ContextId>
+<Detail>checkpoint written at offset 2286</Detail>
+<Duration unit="ms">1959</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:13Z">
+<Version>1.0</Version>
+<Functionality>indexer_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>16025</ProcessId>
+<Hostname>node-b02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>35cfedd3a77629d6</ContextId>
+<Detail>connection pool resized to 4730</Detail>
+<Duration unit="ms">1896</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:04:45Z">
+<Version>1.0</Version>
+<Functionality>blobstore_Checkpoint</Functionality>
+<ProcessName>indexer.worker</ProcessName>
+<ProcessId>22447</ProcessId>
+<Hostname>node-c02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>a0ea17f79e9d5d71</ContextId>
+<Detail>handshake with 192.0.2.7792 completed</Detail>
+<Duration unit="ms">2672</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:07:15Z">
+<Version>1.0</Version>
+<Functionality>scheduler_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>59330</ProcessId>
+<Hostname>node-a02</Hostname>
+<Severity>INFO</Severity>
+<ContextId>ae992acc57880c8b</ContextId>
+<Detail>request completed in 5731ms</Detail>
+<Duration unit="ms">810</Duration>
+</Event>
+<Event type="Telemetry" name="Checkpoint" time="2024-03-18 06:01:20Z">
+<Version>1.0</Version>
+<Functionality>gateway_Checkpoint</Functionality>
+<ProcessName>authsvc.worker</ProcessName>
+<ProcessId>2971</ProcessId>
+<Hostname>node-c03</Hostname>
+<Severity>INFO</Severity>
+<ContextId>c54edd4da251f721</ContextId>
+<Detail>worker 7196 joined the pool</Detail>
+<Duration unit="ms">2809</Duration>
+</Event>

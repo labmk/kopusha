@@ -1,0 +1,12 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/labmk/obs-viewer/security/advisories/new
+    about: >
+      Report privately. Do not open a public issue — see SECURITY.md for
+      what is in and out of scope.
+  - name: Question or idea
+    url: https://github.com/labmk/obs-viewer/discussions
+    about: >
+      For "how do I", "should this work like X", and anything that isn't
+      yet a concrete bug.

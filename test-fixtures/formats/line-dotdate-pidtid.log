@@ -1,0 +1,800 @@
+app.Common.SchedulerService: 18.03.24 06:00:00:000 67727/611247 request completed in 2458ms
+app.Common.AuthsvcService: 18.03.24 06:00:00:067 67727/716374 background scan finished, 9633 objects visited
+app.Common.IndexerService: 18.03.24 06:00:00:864 67727/904152 segment 5f3d093e failed checksum validation
+app.Common.BlobstoreService: 18.03.24 06:00:00:774 67727/437965 lease acquisition timed out after 9964ms
+app.Common.BlobstoreService: 18.03.24 06:00:00:972 67727/582609 upstream 192.0.2.3702 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:02:350 67727/162067 retrying upstream after 7029ms backoff
+app.Common.BlobstoreService: 18.03.24 06:00:03:918 67727/987714 worker 4213 joined the pool
+app.Common.GatewayService: 18.03.24 06:00:05:537 67727/563735 segment a1a03e13 failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:00:02:512 67727/464414 lease acquisition timed out after 8411ms
+app.Common.SchedulerService: 18.03.24 06:00:01:881 67727/619529 checkpoint written at offset 3681
+app.Common.SchedulerService: 18.03.24 06:00:01:070 67727/485323 queue depth 66 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:00:06:314 67727/863931 flushed 957 records to segment fb035a32
+app.Common.GatewayService: 18.03.24 06:00:04:068 67727/434184 request completed in 6692ms
+app.Common.AuthsvcService: 18.03.24 06:00:00:273 67727/971709 handshake with 192.0.2.6104 completed
+app.Common.SchedulerService: 18.03.24 06:00:03:444 67727/468444 segment 0d080ff3 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:00:05:625 67727/892606 connection pool resized to 1255
+app.Common.AuthsvcService: 18.03.24 06:00:08:896 67727/765777 worker 5143 joined the pool
+app.Common.GatewayService: 18.03.24 06:00:03:910 67727/723783 deserialization failed at offset 1879: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:00:12:654 67727/733707 request completed in 6513ms
+app.Common.BlobstoreService: 18.03.24 06:00:04:522 67727/325520 lease renewed, ttl 1882s
+app.Common.BlobstoreService: 18.03.24 06:00:06:520 67727/460412 upstream 192.0.2.875 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:02:457 67727/718598 retrying upstream after 6273ms backoff
+app.Common.AuthsvcService: 18.03.24 06:00:12:848 67727/526293 config reloaded from profile 04017925
+app.Common.AuthsvcService: 18.03.24 06:00:16:905 67727/652702 queue depth 3844 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:00:09:240 67727/822195 lease renewed, ttl 8765s
+app.Common.IndexerService: 18.03.24 06:00:06:925 67727/254219 retrying upstream after 1646ms backoff
+app.Common.IndexerService: 18.03.24 06:00:14:066 67727/955729 config reloaded from profile 27731c77
+app.Common.AuthsvcService: 18.03.24 06:00:08:748 67727/394889 worker 8935 joined the pool
+app.Common.BlobstoreService: 18.03.24 06:00:21:000 67727/426016 cache miss for key cec1a604
+app.Common.BlobstoreService: 18.03.24 06:00:15:138 67727/985288 write rejected: quota exceeded by 5623 bytes
+app.Common.AuthsvcService: 18.03.24 06:00:14:730 67727/955102 segment f8078ed4 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:00:11:532 67727/594805 lease renewed, ttl 3152s
+app.Common.AuthsvcService: 18.03.24 06:00:09:664 67727/717931 dropped 4447 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:24:354 67727/423871 background scan finished, 4615 objects visited
+app.Common.SchedulerService: 18.03.24 06:00:22:168 67727/876721 shard 659 rebalanced to node-b03
+app.Common.BlobstoreService: 18.03.24 06:00:01:680 67727/412865 segment 6a7f1176 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:00:28:620 67727/439163 handshake with 192.0.2.579 completed
+app.Common.IndexerService: 18.03.24 06:00:22:718 67727/253461 lease acquisition timed out after 608ms
+app.Common.AuthsvcService: 18.03.24 06:00:05:814 67727/637154 write rejected: quota exceeded by 2125 bytes
+app.Common.BlobstoreService: 18.03.24 06:00:17:550 67727/341104 cache miss for key 0f276dc9
+app.Common.GatewayService: 18.03.24 06:00:27:680 67727/538360 shard 8409 rebalanced to node-c03
+app.Common.SchedulerService: 18.03.24 06:00:15:416 67727/871141 dropped 2705 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:00:07:350 67727/350269 segment e38d94f3 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:31:648 67727/758863 deserialization failed at offset 5977: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:00:08:052 67727/516023 worker 868 joined the pool
+app.Common.SchedulerService: 18.03.24 06:00:29:565 67727/283719 handshake with 192.0.2.9189 completed
+app.Common.GatewayService: 18.03.24 06:00:15:226 67727/720379 checkpoint written at offset 919
+app.Common.GatewayService: 18.03.24 06:00:02:867 67727/271478 lease acquisition timed out after 1494ms
+app.Common.GatewayService: 18.03.24 06:00:38:352 67727/313826 checkpoint written at offset 8590
+app.Common.GatewayService: 18.03.24 06:00:39:102 67727/250499 config reloaded from profile 427934aa
+app.Common.BlobstoreService: 18.03.24 06:00:23:650 67727/148440 checkpoint written at offset 3883
+app.Common.GatewayService: 18.03.24 06:00:39:270 67727/917369 lease acquisition timed out after 1835ms
+app.Common.BlobstoreService: 18.03.24 06:00:10:764 67727/408120 dropped 6955 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:00:26:394 67727/962329 queue depth 7138 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:00:18:522 67727/921942 background scan finished, 3538 objects visited
+app.Common.BlobstoreService: 18.03.24 06:00:01:870 67727/207441 background scan finished, 6885 objects visited
+app.Common.BlobstoreService: 18.03.24 06:00:07:336 67727/244380 connection pool resized to 3408
+app.Common.AuthsvcService: 18.03.24 06:00:09:747 67727/809998 lease acquisition timed out after 1832ms
+app.Common.GatewayService: 18.03.24 06:00:13:572 67727/843290 handshake with 192.0.2.2784 completed
+app.Common.BlobstoreService: 18.03.24 06:00:42:539 67727/289560 upstream 192.0.2.5666 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:00:37:440 67727/619667 dropped 2526 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:45:384 67727/733699 flushed 1993 records to segment cb10fbff
+app.Common.IndexerService: 18.03.24 06:00:16:802 67727/668554 dropped 2577 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:00:07:434 67727/347511 retrying upstream after 4808ms backoff
+app.Common.SchedulerService: 18.03.24 06:00:28:864 67727/949251 connection pool resized to 8925
+app.Common.SchedulerService: 18.03.24 06:00:24:765 67727/758561 shard 491 rebalanced to node-b02
+app.Common.BlobstoreService: 18.03.24 06:00:25:674 67727/385739 retrying upstream after 7963ms backoff
+app.Common.IndexerService: 18.03.24 06:00:20:100 67727/971703 handshake with 192.0.2.9775 completed
+app.Common.SchedulerService: 18.03.24 06:00:29:512 67727/314471 checkpoint written at offset 3637
+app.Common.IndexerService: 18.03.24 06:00:36:294 67727/128664 background scan finished, 5925 objects visited
+app.Common.IndexerService: 18.03.24 06:00:20:580 67727/751034 flushed 8863 records to segment 496922a1
+app.Common.GatewayService: 18.03.24 06:00:32:944 67727/511811 lease renewed, ttl 6487s
+app.Common.GatewayService: 18.03.24 06:00:48:168 67727/971420 dropped 1301 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:00:02:847 67727/464734 segment 1aeb4260 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:00:49:136 67727/411352 request completed in 9881ms
+app.Common.GatewayService: 18.03.24 06:00:23:775 67727/630033 worker 5484 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:00:55:176 67727/408569 write rejected: quota exceeded by 5417 bytes
+app.Common.IndexerService: 18.03.24 06:00:09:086 67727/381665 retrying upstream after 5398ms backoff
+app.Common.AuthsvcService: 18.03.24 06:00:40:794 67727/364705 upstream 192.0.2.5315 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:00:04:108 67727/316476 config reloaded from profile 1ad3cbf1
+app.Common.AuthsvcService: 18.03.24 06:00:31:440 67727/353389 deserialization failed at offset 9832: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:00:04:860 67727/154280 cache miss for key a6dd04af
+app.Common.AuthsvcService: 18.03.24 06:00:27:798 67727/732806 queue depth 7628 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:00:22:410 67727/927214 write rejected: quota exceeded by 8662 bytes
+app.Common.SchedulerService: 18.03.24 06:00:03:948 67727/357847 lease renewed, ttl 8829s
+app.Common.AuthsvcService: 18.03.24 06:00:06:290 67727/705288 write rejected: quota exceeded by 9103 bytes
+app.Common.GatewayService: 18.03.24 06:01:02:694 67727/660153 write rejected: quota exceeded by 5897 bytes
+app.Common.BlobstoreService: 18.03.24 06:00:44:109 67727/938014 config reloaded from profile b7b46cc8
+app.Common.SchedulerService: 18.03.24 06:00:19:184 67727/571937 lease acquisition timed out after 9421ms
+app.Common.SchedulerService: 18.03.24 06:00:44:945 67727/783643 worker 8776 joined the pool
+app.Common.BlobstoreService: 18.03.24 06:00:07:740 67727/401474 background scan finished, 7549 objects visited
+app.Common.IndexerService: 18.03.24 06:00:12:194 67727/891767 config reloaded from profile 64a82eb1
+app.Common.SchedulerService: 18.03.24 06:01:12:312 67727/573004 shard 6910 rebalanced to node-c01
+app.Common.AuthsvcService: 18.03.24 06:00:01:302 67727/532685 background scan finished, 4127 objects visited
+app.Common.BlobstoreService: 18.03.24 06:01:08:056 67727/826523 cache miss for key 2f9cdf3c
+app.Common.GatewayService: 18.03.24 06:00:31:065 67727/465288 handshake with 192.0.2.9929 completed
+app.Common.AuthsvcService: 18.03.24 06:00:14:400 67727/211963 request completed in 2626ms
+app.Common.BlobstoreService: 18.03.24 06:00:12:998 67727/144668 lease acquisition timed out after 1598ms
+app.Common.BlobstoreService: 18.03.24 06:00:51:058 67727/248937 config reloaded from profile 3501ffb6
+app.Common.GatewayService: 18.03.24 06:01:13:755 67727/284848 segment 1d38dabc failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:17:600 67727/959909 shard 9829 rebalanced to node-a02
+app.Common.BlobstoreService: 18.03.24 06:01:19:184 67727/826364 checkpoint written at offset 5769
+app.Common.AuthsvcService: 18.03.24 06:00:41:820 67727/157615 write rejected: quota exceeded by 2968 bytes
+app.Common.AuthsvcService: 18.03.24 06:00:29:973 67727/542850 config reloaded from profile 9913dcc1
+app.Common.AuthsvcService: 18.03.24 06:00:12:168 67727/838434 handshake with 192.0.2.6502 completed
+app.Common.BlobstoreService: 18.03.24 06:01:16:545 67727/338696 upstream 192.0.2.7031 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:01:09:218 67727/560389 segment 11c75d01 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:46:652 67727/621932 segment 4f696bac failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:00:01:296 67727/305074 segment 11fce294 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:43:055 67727/948146 lease acquisition timed out after 244ms
+app.Common.BlobstoreService: 18.03.24 06:01:07:760 67727/259005 upstream 192.0.2.5390 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:01:14:148 67727/372318 handshake with 192.0.2.9997 completed
+app.Common.SchedulerService: 18.03.24 06:00:16:016 67727/703343 dropped 81 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:48:364 67727/367786 dropped 2078 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:00:11:970 67727/303778 cache miss for key 5d9e9640
+app.Common.AuthsvcService: 18.03.24 06:00:35:190 67727/883226 upstream 192.0.2.4631 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:00:33:524 67727/549947 deserialization failed at offset 1757: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:00:57:798 67727/912360 background scan finished, 2304 objects visited
+app.Common.AuthsvcService: 18.03.24 06:00:26:550 67727/573861 dropped 8423 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:01:06:997 67727/885933 queue depth 8945 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:00:49:920 67727/846487 connection pool resized to 3673
+app.Common.BlobstoreService: 18.03.24 06:00:20:207 67727/879597 cache miss for key e57fcb08
+app.Common.BlobstoreService: 18.03.24 06:01:07:710 67727/683004 lease acquisition timed out after 9024ms
+app.Common.SchedulerService: 18.03.24 06:01:14:661 67727/569472 handshake with 192.0.2.9341 completed
+app.Common.GatewayService: 18.03.24 06:01:37:836 67727/924206 request completed in 8601ms
+app.Common.GatewayService: 18.03.24 06:00:58:000 67727/965995 connection pool resized to 1411
+app.Common.BlobstoreService: 18.03.24 06:01:18:372 67727/962318 retrying upstream after 8040ms backoff
+app.Common.BlobstoreService: 18.03.24 06:00:22:606 67727/151879 handshake with 192.0.2.1526 completed
+app.Common.BlobstoreService: 18.03.24 06:00:36:992 67727/430870 shard 9200 rebalanced to node-c01
+app.Common.SchedulerService: 18.03.24 06:00:52:761 67727/631938 request completed in 4464ms
+app.Common.GatewayService: 18.03.24 06:00:32:240 67727/392694 segment 92ef47e8 failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:00:28:951 67727/727090 lease renewed, ttl 1702s
+app.Common.GatewayService: 18.03.24 06:00:42:636 67727/409662 lease acquisition timed out after 568ms
+app.Common.BlobstoreService: 18.03.24 06:00:29:260 67727/555337 flushed 5762 records to segment 771ccb29
+app.Common.GatewayService: 18.03.24 06:00:57:888 67727/960958 segment eb159c11 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:01:04:395 67727/237029 flushed 1591 records to segment fbc8e495
+app.Common.AuthsvcService: 18.03.24 06:01:35:064 67727/904986 checkpoint written at offset 968
+app.Common.BlobstoreService: 18.03.24 06:01:31:242 67727/317254 config reloaded from profile 033c2814
+app.Common.SchedulerService: 18.03.24 06:01:11:760 67727/674496 background scan finished, 9599 objects visited
+app.Common.AuthsvcService: 18.03.24 06:00:10:564 67727/558859 worker 9887 joined the pool
+app.Common.GatewayService: 18.03.24 06:00:25:060 67727/935542 request completed in 5276ms
+app.Common.BlobstoreService: 18.03.24 06:01:23:613 67727/929432 write rejected: quota exceeded by 8212 bytes
+app.Common.AuthsvcService: 18.03.24 06:01:36:702 67727/935205 worker 8318 joined the pool
+app.Common.SchedulerService: 18.03.24 06:00:35:893 67727/224615 config reloaded from profile 4c9af560
+app.Common.GatewayService: 18.03.24 06:01:08:688 67727/546192 deserialization failed at offset 1520: unexpected token
+app.Common.GatewayService: 18.03.24 06:00:33:640 67727/468353 queue depth 1335 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:01:47:602 67727/728323 config reloaded from profile 5d40f738
+app.Common.IndexerService: 18.03.24 06:00:59:388 67727/514939 lease renewed, ttl 8040s
+app.Common.AuthsvcService: 18.03.24 06:00:25:012 67727/294774 lease acquisition timed out after 3546ms
+app.Common.GatewayService: 18.03.24 06:00:06:407 67727/123564 upstream 192.0.2.8321 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:00:10:950 67727/849792 flushed 9462 records to segment 353e174e
+app.Common.BlobstoreService: 18.03.24 06:01:00:400 67727/132937 dropped 9940 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:00:56:392 67727/599219 segment ce59d1ef failed checksum validation
+app.Common.BlobstoreService: 18.03.24 06:01:43:734 67727/707334 connection pool resized to 468
+app.Common.AuthsvcService: 18.03.24 06:00:09:086 67727/693160 worker 3403 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:01:16:105 67727/104203 retrying upstream after 7943ms backoff
+app.Common.SchedulerService: 18.03.24 06:01:52:632 67727/466826 background scan finished, 6391 objects visited
+app.Common.BlobstoreService: 18.03.24 06:00:21:666 67727/706932 handshake with 192.0.2.9843 completed
+app.Common.SchedulerService: 18.03.24 06:01:08:098 67727/218962 dropped 610 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:01:08:688 67727/849131 background scan finished, 7464 objects visited
+app.Common.GatewayService: 18.03.24 06:01:54:240 67727/870382 checkpoint written at offset 7380
+app.Common.AuthsvcService: 18.03.24 06:01:50:607 67727/444257 shard 2903 rebalanced to node-b02
+app.Common.BlobstoreService: 18.03.24 06:01:27:966 67727/635670 checkpoint written at offset 7754
+app.Common.IndexerService: 18.03.24 06:00:51:019 67727/696801 cache miss for key 317efaa3
+app.Common.IndexerService: 18.03.24 06:01:10:684 67727/117197 segment 267b5c56 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:00:29:700 67727/277129 queue depth 9948 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:00:48:472 67727/868266 lease acquisition timed out after 1895ms
+app.Common.GatewayService: 18.03.24 06:01:08:470 67727/834265 request completed in 1693ms
+app.Common.AuthsvcService: 18.03.24 06:01:08:376 67727/561063 deserialization failed at offset 6265: unexpected token
+app.Common.SchedulerService: 18.03.24 06:02:04:384 67727/899679 retrying upstream after 338ms backoff
+app.Common.IndexerService: 18.03.24 06:00:47:260 67727/854969 queue depth 2203 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:01:34:392 67727/239260 queue depth 8531 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:00:28:036 67727/612970 flushed 2616 records to segment 09407b2e
+app.Common.IndexerService: 18.03.24 06:01:39:302 67727/878917 retrying upstream after 4441ms backoff
+app.Common.AuthsvcService: 18.03.24 06:02:16:242 67727/946913 request completed in 2425ms
+app.Common.BlobstoreService: 18.03.24 06:01:52:350 67727/360152 write rejected: quota exceeded by 1260 bytes
+app.Common.SchedulerService: 18.03.24 06:00:51:216 67727/618823 background scan finished, 6510 objects visited
+app.Common.IndexerService: 18.03.24 06:02:19:476 67727/676877 lease acquisition timed out after 1754ms
+app.Common.AuthsvcService: 18.03.24 06:01:32:204 67727/174618 flushed 6326 records to segment f58b3b8e
+app.Common.BlobstoreService: 18.03.24 06:01:33:259 67727/528016 connection pool resized to 9205
+app.Common.IndexerService: 18.03.24 06:00:31:140 67727/507026 request completed in 7989ms
+app.Common.AuthsvcService: 18.03.24 06:02:05:071 67727/182845 background scan finished, 5690 objects visited
+app.Common.AuthsvcService: 18.03.24 06:01:56:844 67727/351028 background scan finished, 7694 objects visited
+app.Common.IndexerService: 18.03.24 06:02:13:956 67727/192962 flushed 2208 records to segment 05aa5f9b
+app.Common.AuthsvcService: 18.03.24 06:01:43:776 67727/966356 handshake with 192.0.2.5301 completed
+app.Common.IndexerService: 18.03.24 06:00:09:250 67727/607648 flushed 6717 records to segment eb02bfc9
+app.Common.AuthsvcService: 18.03.24 06:01:59:598 67727/822587 retrying upstream after 9180ms backoff
+app.Common.SchedulerService: 18.03.24 06:00:19:074 67727/605346 retrying upstream after 4372ms backoff
+app.Common.SchedulerService: 18.03.24 06:00:36:284 67727/290620 retrying upstream after 8564ms backoff
+app.Common.AuthsvcService: 18.03.24 06:00:43:092 67727/770425 deserialization failed at offset 2153: unexpected token
+app.Common.GatewayService: 18.03.24 06:02:28:010 67727/650679 write rejected: quota exceeded by 6018 bytes
+app.Common.GatewayService: 18.03.24 06:01:40:657 67727/307669 handshake with 192.0.2.8871 completed
+app.Common.SchedulerService: 18.03.24 06:00:47:232 67727/881091 dropped 5800 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:01:21:446 67727/158780 checkpoint written at offset 7202
+app.Common.GatewayService: 18.03.24 06:00:51:604 67727/355687 config reloaded from profile 1abc83ad
+app.Common.GatewayService: 18.03.24 06:00:05:265 67727/619500 handshake with 192.0.2.4612 completed
+app.Common.IndexerService: 18.03.24 06:02:17:788 67727/661427 upstream 192.0.2.3807 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:02:34:645 67727/604300 lease acquisition timed out after 7953ms
+app.Common.SchedulerService: 18.03.24 06:00:50:886 67727/247076 lease acquisition timed out after 2220ms
+app.Common.GatewayService: 18.03.24 06:02:38:802 67727/728724 shard 5389 rebalanced to node-a01
+app.Common.IndexerService: 18.03.24 06:00:09:200 67727/492805 worker 2403 joined the pool
+app.Common.GatewayService: 18.03.24 06:02:36:177 67727/464504 lease acquisition timed out after 9317ms
+app.Common.IndexerService: 18.03.24 06:02:22:208 67727/970118 cache miss for key 02f0f875
+app.Common.AuthsvcService: 18.03.24 06:02:20:273 67727/222104 config reloaded from profile f380ec7f
+app.Common.SchedulerService: 18.03.24 06:01:05:688 67727/824205 deserialization failed at offset 1979: unexpected token
+app.Common.SchedulerService: 18.03.24 06:00:53:300 67727/175121 cache miss for key 9ac1a7d7
+app.Common.BlobstoreService: 18.03.24 06:02:27:084 67727/551646 checkpoint written at offset 2101
+app.Common.BlobstoreService: 18.03.24 06:02:42:288 67727/712029 queue depth 3349 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:02:02:096 67727/259251 dropped 5728 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:01:28:407 67727/367312 upstream 192.0.2.2787 refused connection after 3 attempts
+app.Common.GatewayService: 18.03.24 06:02:33:510 67727/808629 shard 9002 rebalanced to node-b03
+app.Common.IndexerService: 18.03.24 06:02:13:563 67727/863631 upstream 192.0.2.8711 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:02:26:280 67727/808869 shard 7397 rebalanced to node-c02
+app.Common.AuthsvcService: 18.03.24 06:00:20:448 67727/854187 worker 2682 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:00:57:352 67727/872634 dropped 6673 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:00:13:330 67727/639431 write rejected: quota exceeded by 9487 bytes
+app.Common.GatewayService: 18.03.24 06:00:33:480 67727/477100 dropped 6719 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:01:22:894 67727/908022 config reloaded from profile d5957530
+app.Common.IndexerService: 18.03.24 06:00:48:832 67727/822872 queue depth 2431 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:02:47:316 67727/142683 cache miss for key fd8cb271
+app.Common.GatewayService: 18.03.24 06:02:53:360 67727/109681 write rejected: quota exceeded by 2109 bytes
+app.Common.AuthsvcService: 18.03.24 06:02:14:810 67727/328474 upstream 192.0.2.6377 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:01:43:008 67727/961932 request completed in 1474ms
+app.Common.GatewayService: 18.03.24 06:02:56:839 67727/310064 upstream 192.0.2.9281 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:12:768 67727/456179 worker 3378 joined the pool
+app.Common.IndexerService: 18.03.24 06:02:49:650 67727/264613 background scan finished, 2787 objects visited
+app.Common.IndexerService: 18.03.24 06:02:52:890 67727/407571 dropped 769 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:34:731 67727/837102 lease renewed, ttl 3387s
+app.Common.SchedulerService: 18.03.24 06:02:09:048 67727/349872 handshake with 192.0.2.5065 completed
+app.Common.BlobstoreService: 18.03.24 06:02:24:041 67727/221963 config reloaded from profile b89ccebb
+app.Common.SchedulerService: 18.03.24 06:01:57:530 67727/536777 connection pool resized to 3511
+app.Common.IndexerService: 18.03.24 06:01:26:394 67727/357608 segment 59185bee failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:02:34:280 67727/311266 request completed in 5740ms
+app.Common.SchedulerService: 18.03.24 06:02:26:091 67727/344530 flushed 5359 records to segment 821b6fa1
+app.Common.AuthsvcService: 18.03.24 06:00:37:206 67727/582838 lease renewed, ttl 5706s
+app.Common.GatewayService: 18.03.24 06:02:03:140 67727/315440 request completed in 7348ms
+app.Common.GatewayService: 18.03.24 06:02:23:016 67727/276207 lease renewed, ttl 6450s
+app.Common.AuthsvcService: 18.03.24 06:00:17:775 67727/724206 lease renewed, ttl 8863s
+app.Common.IndexerService: 18.03.24 06:00:15:470 67727/823364 background scan finished, 4210 objects visited
+app.Common.BlobstoreService: 18.03.24 06:00:38:240 67727/661169 upstream 192.0.2.7142 refused connection after 3 attempts
+app.Common.GatewayService: 18.03.24 06:00:58:560 67727/858333 config reloaded from profile 991012a3
+app.Common.GatewayService: 18.03.24 06:02:50:146 67727/937257 cache miss for key 69e9ee0c
+app.Common.AuthsvcService: 18.03.24 06:02:18:908 67727/286776 cache miss for key a6bb4652
+app.Common.GatewayService: 18.03.24 06:02:24:828 67727/241079 checkpoint written at offset 4507
+app.Common.BlobstoreService: 18.03.24 06:02:37:380 67727/277706 segment da2fed0b failed checksum validation
+app.Common.BlobstoreService: 18.03.24 06:01:44:860 67727/474962 worker 1852 joined the pool
+app.Common.GatewayService: 18.03.24 06:03:15:078 67727/393490 lease acquisition timed out after 9725ms
+app.Common.IndexerService: 18.03.24 06:01:14:100 67727/557799 upstream 192.0.2.1969 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:02:18:880 67727/430537 retrying upstream after 3426ms backoff
+app.Common.AuthsvcService: 18.03.24 06:01:07:230 67727/374719 connection pool resized to 8098
+app.Common.BlobstoreService: 18.03.24 06:02:42:000 67727/153641 queue depth 9613 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:00:38:403 67727/882853 upstream 192.0.2.3984 refused connection after 3 attempts
+app.Common.GatewayService: 18.03.24 06:01:29:460 67727/839638 retrying upstream after 5673ms backoff
+app.Common.SchedulerService: 18.03.24 06:03:05:196 67727/595605 config reloaded from profile 297bda20
+app.Common.BlobstoreService: 18.03.24 06:02:24:526 67727/867943 worker 8414 joined the pool
+app.Common.GatewayService: 18.03.24 06:01:58:320 67727/608095 worker 5952 joined the pool
+app.Common.GatewayService: 18.03.24 06:00:26:368 67727/414301 dropped 3812 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:01:33:548 67727/914973 flushed 2954 records to segment 62ae14d1
+app.Common.BlobstoreService: 18.03.24 06:02:50:022 67727/213053 worker 4555 joined the pool
+app.Common.IndexerService: 18.03.24 06:00:27:195 67727/666803 lease acquisition timed out after 9391ms
+app.Common.BlobstoreService: 18.03.24 06:03:20:200 67727/237915 write rejected: quota exceeded by 9380 bytes
+app.Common.SchedulerService: 18.03.24 06:01:06:294 67727/151291 segment 935cddf4 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:37:728 67727/832041 worker 1146 joined the pool
+app.Common.GatewayService: 18.03.24 06:02:34:118 67727/368766 queue depth 2587 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:00:34:584 67727/568920 worker 4916 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:01:18:705 67727/861503 queue depth 4744 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:01:27:780 67727/280597 handshake with 192.0.2.8891 completed
+app.Common.AuthsvcService: 18.03.24 06:02:33:258 67727/516266 flushed 2976 records to segment e6821332
+app.Common.GatewayService: 18.03.24 06:00:52:528 67727/727545 queue depth 6854 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:00:29:052 67727/966657 write rejected: quota exceeded by 5523 bytes
+app.Common.SchedulerService: 18.03.24 06:02:16:620 67727/748354 background scan finished, 6254 objects visited
+app.Common.SchedulerService: 18.03.24 06:03:24:876 67727/616586 retrying upstream after 4909ms backoff
+app.Common.IndexerService: 18.03.24 06:00:39:440 67727/540153 deserialization failed at offset 378: unexpected token
+app.Common.IndexerService: 18.03.24 06:03:23:385 67727/224321 background scan finished, 8210 objects visited
+app.Common.AuthsvcService: 18.03.24 06:03:21:938 67727/120197 shard 1125 rebalanced to node-c01
+app.Common.SchedulerService: 18.03.24 06:02:01:825 67727/513055 handshake with 192.0.2.5764 completed
+app.Common.SchedulerService: 18.03.24 06:01:47:364 67727/883080 dropped 239 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:08:587 67727/428345 shard 4930 rebalanced to node-c02
+app.Common.BlobstoreService: 18.03.24 06:00:18:348 67727/761379 connection pool resized to 3600
+app.Common.GatewayService: 18.03.24 06:03:22:275 67727/747494 handshake with 192.0.2.2476 completed
+app.Common.SchedulerService: 18.03.24 06:00:54:320 67727/754503 dropped 1967 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:00:37:092 67727/120408 background scan finished, 2109 objects visited
+app.Common.GatewayService: 18.03.24 06:02:17:052 67727/276538 deserialization failed at offset 7084: unexpected token
+app.Common.SchedulerService: 18.03.24 06:00:52:072 67727/667273 dropped 7990 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:02:25:692 67727/670319 lease acquisition timed out after 2507ms
+app.Common.AuthsvcService: 18.03.24 06:01:03:270 67727/374113 deserialization failed at offset 629: unexpected token
+app.Common.IndexerService: 18.03.24 06:02:00:406 67727/455278 upstream 192.0.2.4843 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:01:36:719 67727/261260 lease acquisition timed out after 810ms
+app.Common.BlobstoreService: 18.03.24 06:03:11:808 67727/742245 shard 6756 rebalanced to node-b01
+app.Common.SchedulerService: 18.03.24 06:02:31:725 67727/899082 write rejected: quota exceeded by 5971 bytes
+app.Common.BlobstoreService: 18.03.24 06:02:28:480 67727/124470 flushed 1117 records to segment 7c4a2704
+app.Common.BlobstoreService: 18.03.24 06:02:02:511 67727/875274 background scan finished, 3572 objects visited
+app.Common.BlobstoreService: 18.03.24 06:02:16:364 67727/499159 worker 3603 joined the pool
+app.Common.SchedulerService: 18.03.24 06:03:45:610 67727/931003 upstream 192.0.2.253 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:50:274 67727/723406 request completed in 1277ms
+app.Common.BlobstoreService: 18.03.24 06:01:50:920 67727/881743 connection pool resized to 8743
+app.Common.AuthsvcService: 18.03.24 06:01:37:088 67727/917371 queue depth 4827 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:01:44:544 67727/717362 write rejected: quota exceeded by 7101 bytes
+app.Common.SchedulerService: 18.03.24 06:02:35:556 67727/777291 lease renewed, ttl 1380s
+app.Common.AuthsvcService: 18.03.24 06:01:24:617 67727/652491 upstream 192.0.2.4533 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:13:800 67727/822639 lease acquisition timed out after 4125ms
+app.Common.GatewayService: 18.03.24 06:00:58:394 67727/142774 background scan finished, 9359 objects visited
+app.Common.SchedulerService: 18.03.24 06:02:05:330 67727/731297 segment 103381d6 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:25:149 67727/130126 worker 3135 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:00:34:352 67727/782856 lease acquisition timed out after 3062ms
+app.Common.IndexerService: 18.03.24 06:03:03:915 67727/539860 worker 7585 joined the pool
+app.Common.BlobstoreService: 18.03.24 06:01:49:854 67727/670747 deserialization failed at offset 3472: unexpected token
+app.Common.SchedulerService: 18.03.24 06:02:00:037 67727/759699 upstream 192.0.2.4568 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:03:06:648 67727/681198 queue depth 4841 exceeds soft limit
+app.Common.IndexerService: 18.03.24 06:02:39:753 67727/865653 queue depth 628 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:00:33:480 67727/674964 lease acquisition timed out after 7400ms
+app.Common.GatewayService: 18.03.24 06:03:48:274 67727/285273 segment e1a2f617 failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:00:13:728 67727/466104 config reloaded from profile 28c6c5c5
+app.Common.GatewayService: 18.03.24 06:01:32:022 67727/388492 cache miss for key fa172ce9
+app.Common.AuthsvcService: 18.03.24 06:00:09:734 67727/594084 checkpoint written at offset 7267
+app.Common.AuthsvcService: 18.03.24 06:03:52:470 67727/738327 request completed in 8099ms
+app.Common.SchedulerService: 18.03.24 06:01:15:840 67727/520346 handshake with 192.0.2.7861 completed
+app.Common.GatewayService: 18.03.24 06:00:40:259 67727/403511 segment a5d9d63a failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:03:12:072 67727/942570 dropped 7839 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:01:36:976 67727/890682 lease renewed, ttl 7255s
+app.Common.BlobstoreService: 18.03.24 06:03:38:240 67727/649066 flushed 6192 records to segment c4eff2c1
+app.Common.AuthsvcService: 18.03.24 06:01:39:831 67727/440439 checkpoint written at offset 8523
+app.Common.AuthsvcService: 18.03.24 06:02:21:680 67727/324649 config reloaded from profile c0cde394
+app.Common.BlobstoreService: 18.03.24 06:02:40:208 67727/230676 shard 7753 rebalanced to node-c03
+app.Common.AuthsvcService: 18.03.24 06:03:05:652 67727/732232 checkpoint written at offset 7023
+app.Common.BlobstoreService: 18.03.24 06:01:27:750 67727/261084 worker 2567 joined the pool
+app.Common.SchedulerService: 18.03.24 06:03:40:702 67727/987248 queue depth 2686 exceeds soft limit
+app.Common.IndexerService: 18.03.24 06:02:07:530 67727/672364 worker 6532 joined the pool
+app.Common.SchedulerService: 18.03.24 06:01:04:616 67727/211085 flushed 3437 records to segment ad290b99
+app.Common.IndexerService: 18.03.24 06:00:13:818 67727/961920 config reloaded from profile 15aead3a
+app.Common.SchedulerService: 18.03.24 06:00:14:850 67727/226968 queue depth 7114 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:02:26:964 67727/640351 config reloaded from profile 3f1cf4ce
+app.Common.AuthsvcService: 18.03.24 06:04:16:968 67727/502104 retrying upstream after 9155ms backoff
+app.Common.BlobstoreService: 18.03.24 06:00:26:973 67727/232759 lease acquisition timed out after 9539ms
+app.Common.BlobstoreService: 18.03.24 06:02:26:626 67727/730358 worker 939 joined the pool
+app.Common.SchedulerService: 18.03.24 06:00:52:595 67727/978810 config reloaded from profile 1844d925
+app.Common.IndexerService: 18.03.24 06:02:43:632 67727/491319 worker 6502 joined the pool
+app.Common.IndexerService: 18.03.24 06:00:55:605 67727/596725 segment cfcce769 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:03:50:178 67727/404532 queue depth 7219 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:01:40:683 67727/253471 cache miss for key 294f5ce7
+app.Common.GatewayService: 18.03.24 06:01:52:540 67727/190407 shard 9398 rebalanced to node-c01
+app.Common.GatewayService: 18.03.24 06:04:10:976 67727/830752 worker 9191 joined the pool
+app.Common.BlobstoreService: 18.03.24 06:02:04:146 67727/744309 cache miss for key f8540cc4
+app.Common.AuthsvcService: 18.03.24 06:00:51:107 67727/323554 queue depth 7093 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:01:45:264 67727/136699 deserialization failed at offset 6771: unexpected token
+app.Common.GatewayService: 18.03.24 06:04:27:720 67727/629846 shard 4814 rebalanced to node-c02
+app.Common.GatewayService: 18.03.24 06:01:03:664 67727/976207 cache miss for key 8d1b606c
+app.Common.GatewayService: 18.03.24 06:00:24:984 67727/933895 checkpoint written at offset 7238
+app.Common.GatewayService: 18.03.24 06:03:42:720 67727/428562 shard 4703 rebalanced to node-b02
+app.Common.IndexerService: 18.03.24 06:02:21:694 67727/928773 deserialization failed at offset 6105: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:02:03:900 67727/923148 deserialization failed at offset 3578: unexpected token
+app.Common.GatewayService: 18.03.24 06:04:24:654 67727/216754 segment ebbc29df failed checksum validation
+app.Common.GatewayService: 18.03.24 06:02:51:424 67727/597255 config reloaded from profile 0b2559e8
+app.Common.IndexerService: 18.03.24 06:00:38:477 67727/760034 deserialization failed at offset 4069: unexpected token
+app.Common.SchedulerService: 18.03.24 06:02:01:776 67727/482720 lease renewed, ttl 6347s
+app.Common.GatewayService: 18.03.24 06:02:49:690 67727/441946 queue depth 4564 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:01:32:916 67727/623343 flushed 1132 records to segment d722ec53
+app.Common.GatewayService: 18.03.24 06:04:39:174 67727/425648 shard 7982 rebalanced to node-b02
+app.Common.SchedulerService: 18.03.24 06:03:41:602 67727/523835 segment 26534344 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:01:57:752 67727/551976 request completed in 9081ms
+app.Common.AuthsvcService: 18.03.24 06:00:11:880 67727/197114 lease renewed, ttl 276s
+app.Common.IndexerService: 18.03.24 06:01:20:503 67727/726996 lease renewed, ttl 5560s
+app.Common.SchedulerService: 18.03.24 06:03:12:222 67727/953463 shard 1215 rebalanced to node-a01
+app.Common.GatewayService: 18.03.24 06:02:53:877 67727/910470 write rejected: quota exceeded by 9485 bytes
+app.Common.SchedulerService: 18.03.24 06:02:39:432 67727/275095 segment 9fe0ffa1 failed checksum validation
+app.Common.GatewayService: 18.03.24 06:04:48:350 67727/433908 checkpoint written at offset 1900
+app.Common.GatewayService: 18.03.24 06:04:34:500 67727/597678 connection pool resized to 7077
+app.Common.BlobstoreService: 18.03.24 06:00:24:956 67727/208801 request completed in 7451ms
+app.Common.GatewayService: 18.03.24 06:01:37:152 67727/198113 request completed in 6417ms
+app.Common.SchedulerService: 18.03.24 06:03:42:138 67727/624984 config reloaded from profile adab70f7
+app.Common.SchedulerService: 18.03.24 06:00:12:580 67727/541815 dropped 9546 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:03:01:048 67727/246350 lease renewed, ttl 7077s
+app.Common.IndexerService: 18.03.24 06:02:30:288 67727/699994 segment 98ac4a85 failed checksum validation
+app.Common.GatewayService: 18.03.24 06:04:05:434 67727/168336 cache miss for key b584ce58
+app.Common.BlobstoreService: 18.03.24 06:00:32:164 67727/328532 lease acquisition timed out after 6633ms
+app.Common.AuthsvcService: 18.03.24 06:00:37:500 67727/965250 config reloaded from profile 3b6e5609
+app.Common.AuthsvcService: 18.03.24 06:03:55:752 67727/837989 connection pool resized to 9319
+app.Common.AuthsvcService: 18.03.24 06:01:54:985 67727/626236 deserialization failed at offset 9942: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:04:44:256 67727/971272 config reloaded from profile 6ba154a2
+app.Common.BlobstoreService: 18.03.24 06:02:35:011 67727/766055 flushed 6633 records to segment e2985a27
+app.Common.AuthsvcService: 18.03.24 06:02:19:460 67727/650770 lease acquisition timed out after 7682ms
+app.Common.IndexerService: 18.03.24 06:02:35:829 67727/614341 worker 3761 joined the pool
+app.Common.SchedulerService: 18.03.24 06:01:17:546 67727/274290 queue depth 3275 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:02:51:967 67727/473215 cache miss for key 2ea3c08c
+app.Common.SchedulerService: 18.03.24 06:02:29:376 67727/304186 write rejected: quota exceeded by 2063 bytes
+app.Common.BlobstoreService: 18.03.24 06:00:28:875 67727/445757 retrying upstream after 4777ms backoff
+app.Common.AuthsvcService: 18.03.24 06:03:14:544 67727/497101 connection pool resized to 5727
+app.Common.AuthsvcService: 18.03.24 06:03:31:302 67727/701046 flushed 7517 records to segment 05daecee
+app.Common.IndexerService: 18.03.24 06:02:51:884 67727/553095 dropped 7896 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:00:52:515 67727/481738 retrying upstream after 6376ms backoff
+app.Common.IndexerService: 18.03.24 06:01:41:790 67727/136469 background scan finished, 435 objects visited
+app.Common.AuthsvcService: 18.03.24 06:00:51:612 67727/372952 deserialization failed at offset 5310: unexpected token
+app.Common.IndexerService: 18.03.24 06:02:19:944 67727/525788 checkpoint written at offset 5658
+app.Common.SchedulerService: 18.03.24 06:03:27:897 67727/151268 request completed in 1092ms
+app.Common.SchedulerService: 18.03.24 06:04:21:616 67727/963679 lease renewed, ttl 4281s
+app.Common.BlobstoreService: 18.03.24 06:00:11:060 67727/903445 write rejected: quota exceeded by 1865 bytes
+app.Common.GatewayService: 18.03.24 06:05:14:028 67727/695333 cache miss for key d5019af4
+app.Common.SchedulerService: 18.03.24 06:01:44:014 67727/451386 request completed in 1004ms
+app.Common.BlobstoreService: 18.03.24 06:01:50:644 67727/851584 shard 2098 rebalanced to node-b02
+app.Common.BlobstoreService: 18.03.24 06:02:55:959 67727/491810 lease renewed, ttl 5783s
+app.Common.AuthsvcService: 18.03.24 06:02:53:600 67727/736636 dropped 2799 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:04:02:605 67727/980527 handshake with 192.0.2.5743 completed
+app.Common.AuthsvcService: 18.03.24 06:02:36:780 67727/622417 checkpoint written at offset 7011
+app.Common.AuthsvcService: 18.03.24 06:00:08:866 67727/162301 lease renewed, ttl 3669s
+app.Common.AuthsvcService: 18.03.24 06:03:57:148 67727/588292 lease acquisition timed out after 8239ms
+app.Common.SchedulerService: 18.03.24 06:01:38:820 67727/660230 queue depth 7227 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:02:21:694 67727/865085 request completed in 2787ms
+app.Common.BlobstoreService: 18.03.24 06:00:21:164 67727/723851 cache miss for key f4242212
+app.Common.BlobstoreService: 18.03.24 06:05:09:264 67727/360859 handshake with 192.0.2.4158 completed
+app.Common.AuthsvcService: 18.03.24 06:00:24:540 67727/103848 cache miss for key 841e13c5
+app.Common.BlobstoreService: 18.03.24 06:02:10:380 67727/584203 background scan finished, 8871 objects visited
+app.Common.GatewayService: 18.03.24 06:03:08:649 67727/610571 upstream 192.0.2.2007 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:03:16:524 67727/730594 segment 1b4672fd failed checksum validation
+app.Common.BlobstoreService: 18.03.24 06:03:43:433 67727/243706 dropped 932 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:03:30:726 67727/404346 checkpoint written at offset 608
+app.Common.SchedulerService: 18.03.24 06:01:11:380 67727/150765 retrying upstream after 3767ms backoff
+app.Common.AuthsvcService: 18.03.24 06:01:34:016 67727/388047 checkpoint written at offset 5985
+app.Common.BlobstoreService: 18.03.24 06:05:22:341 67727/620597 request completed in 6049ms
+app.Common.AuthsvcService: 18.03.24 06:04:06:202 67727/561796 lease renewed, ttl 8262s
+app.Common.AuthsvcService: 18.03.24 06:04:00:925 67727/274277 background scan finished, 2290 objects visited
+app.Common.SchedulerService: 18.03.24 06:03:30:420 67727/808685 checkpoint written at offset 7086
+app.Common.SchedulerService: 18.03.24 06:02:06:300 67727/388292 lease renewed, ttl 1262s
+app.Common.SchedulerService: 18.03.24 06:03:58:008 67727/157442 write rejected: quota exceeded by 3409 bytes
+app.Common.IndexerService: 18.03.24 06:05:34:593 67727/999337 shard 4410 rebalanced to node-c03
+app.Common.BlobstoreService: 18.03.24 06:04:29:240 67727/628117 write rejected: quota exceeded by 8260 bytes
+app.Common.AuthsvcService: 18.03.24 06:00:17:000 67727/578939 retrying upstream after 6686ms backoff
+app.Common.SchedulerService: 18.03.24 06:03:22:350 67727/323936 connection pool resized to 278
+app.Common.AuthsvcService: 18.03.24 06:01:54:436 67727/338061 upstream 192.0.2.4276 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:01:21:748 67727/950558 upstream 192.0.2.9107 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:05:29:043 67727/138372 connection pool resized to 1063
+app.Common.BlobstoreService: 18.03.24 06:00:11:610 67727/316072 config reloaded from profile 2d90d013
+app.Common.BlobstoreService: 18.03.24 06:01:30:941 67727/212126 dropped 2627 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:01:30:720 67727/743981 upstream 192.0.2.6317 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:01:55:611 67727/174192 flushed 7949 records to segment 6ccab518
+app.Common.IndexerService: 18.03.24 06:01:14:648 67727/377919 config reloaded from profile d796bc47
+app.Common.BlobstoreService: 18.03.24 06:02:09:195 67727/748901 lease renewed, ttl 9s
+app.Common.SchedulerService: 18.03.24 06:02:47:424 67727/694513 worker 7379 joined the pool
+app.Common.IndexerService: 18.03.24 06:03:35:878 67727/979708 background scan finished, 1536 objects visited
+app.Common.IndexerService: 18.03.24 06:01:14:460 67727/527287 connection pool resized to 2459
+app.Common.GatewayService: 18.03.24 06:04:43:594 67727/190773 config reloaded from profile 7b5adbaf
+app.Common.IndexerService: 18.03.24 06:03:23:280 67727/417664 cache miss for key e4eb96a5
+app.Common.AuthsvcService: 18.03.24 06:04:06:519 67727/127160 write rejected: quota exceeded by 8996 bytes
+app.Common.BlobstoreService: 18.03.24 06:01:23:980 67727/112496 upstream 192.0.2.3895 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:00:53:160 67727/184175 request completed in 721ms
+app.Common.AuthsvcService: 18.03.24 06:03:03:816 67727/762095 cache miss for key 8971758c
+app.Common.GatewayService: 18.03.24 06:02:05:490 67727/234054 upstream 192.0.2.6674 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:03:11:334 67727/407914 lease renewed, ttl 7285s
+app.Common.AuthsvcService: 18.03.24 06:03:17:574 67727/243278 worker 8975 joined the pool
+app.Common.SchedulerService: 18.03.24 06:02:59:648 67727/685770 retrying upstream after 5878ms backoff
+app.Common.BlobstoreService: 18.03.24 06:01:01:513 67727/835758 background scan finished, 3035 objects visited
+app.Common.IndexerService: 18.03.24 06:02:34:800 67727/753264 dropped 7412 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:02:55:890 67727/572236 worker 1688 joined the pool
+app.Common.SchedulerService: 18.03.24 06:02:33:228 67727/835745 lease acquisition timed out after 6636ms
+app.Common.AuthsvcService: 18.03.24 06:01:31:506 67727/424649 background scan finished, 698 objects visited
+app.Common.AuthsvcService: 18.03.24 06:01:21:720 67727/689047 write rejected: quota exceeded by 3896 bytes
+app.Common.SchedulerService: 18.03.24 06:04:34:365 67727/537477 checkpoint written at offset 2888
+app.Common.AuthsvcService: 18.03.24 06:02:06:768 67727/585028 checkpoint written at offset 7732
+app.Common.AuthsvcService: 18.03.24 06:04:01:296 67727/552682 background scan finished, 2310 objects visited
+app.Common.AuthsvcService: 18.03.24 06:01:34:348 67727/162551 deserialization failed at offset 4198: unexpected token
+app.Common.GatewayService: 18.03.24 06:03:49:500 67727/353870 deserialization failed at offset 1513: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:00:53:360 67727/461708 shard 2055 rebalanced to node-b03
+app.Common.IndexerService: 18.03.24 06:00:36:880 67727/511940 lease renewed, ttl 3505s
+app.Common.GatewayService: 18.03.24 06:00:38:808 67727/290175 segment c94109fd failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:03:54:741 67727/355172 shard 344 rebalanced to node-c01
+app.Common.AuthsvcService: 18.03.24 06:00:45:936 67727/642778 upstream 192.0.2.2671 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:00:35:805 67727/304564 handshake with 192.0.2.3299 completed
+app.Common.AuthsvcService: 18.03.24 06:05:10:822 67727/168203 upstream 192.0.2.347 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:02:23:836 67727/123418 request completed in 2189ms
+app.Common.IndexerService: 18.03.24 06:05:10:284 67727/589358 queue depth 6487 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:00:16:415 67727/386311 config reloaded from profile 77f56db8
+app.Common.GatewayService: 18.03.24 06:03:44:660 67727/682544 deserialization failed at offset 1207: unexpected token
+app.Common.GatewayService: 18.03.24 06:04:11:985 67727/937226 background scan finished, 4115 objects visited
+app.Common.IndexerService: 18.03.24 06:01:49:504 67727/817196 shard 3000 rebalanced to node-a03
+app.Common.GatewayService: 18.03.24 06:06:09:886 67727/318368 shard 8838 rebalanced to node-b01
+app.Common.IndexerService: 18.03.24 06:02:00:870 67727/883704 shard 3941 rebalanced to node-c02
+app.Common.BlobstoreService: 18.03.24 06:01:21:225 67727/169741 segment 7183feb8 failed checksum validation
+app.Common.IndexerService: 18.03.24 06:05:52:240 67727/432237 request completed in 2686ms
+app.Common.IndexerService: 18.03.24 06:04:32:844 67727/883295 handshake with 192.0.2.2698 completed
+app.Common.GatewayService: 18.03.24 06:05:50:852 67727/210856 worker 4407 joined the pool
+app.Common.GatewayService: 18.03.24 06:04:08:122 67727/841753 request completed in 5371ms
+app.Common.IndexerService: 18.03.24 06:03:15:840 67727/295501 flushed 7062 records to segment a0bf1cc1
+app.Common.SchedulerService: 18.03.24 06:02:57:970 67727/736456 cache miss for key 0197a5d8
+app.Common.SchedulerService: 18.03.24 06:04:17:870 67727/741078 handshake with 192.0.2.8081 completed
+app.Common.SchedulerService: 18.03.24 06:00:17:388 67727/809105 deserialization failed at offset 4873: unexpected token
+app.Common.IndexerService: 18.03.24 06:04:10:712 67727/608014 connection pool resized to 8117
+app.Common.BlobstoreService: 18.03.24 06:01:32:150 67727/711858 cache miss for key 9f6d050e
+app.Common.SchedulerService: 18.03.24 06:01:31:368 67727/109199 upstream 192.0.2.2202 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:00:45:778 67727/291832 queue depth 3552 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:02:43:968 67727/180103 retrying upstream after 432ms backoff
+app.Common.AuthsvcService: 18.03.24 06:05:47:679 67727/177891 deserialization failed at offset 974: unexpected token
+app.Common.GatewayService: 18.03.24 06:06:05:540 67727/824062 queue depth 2852 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:01:14:632 67727/579636 queue depth 8420 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:03:01:548 67727/698888 config reloaded from profile 89b2226c
+app.Common.SchedulerService: 18.03.24 06:05:22:422 67727/271524 dropped 4269 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:00:36:556 67727/860653 segment 722c5ba8 failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:04:07:005 67727/680375 upstream 192.0.2.7197 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:06:26:384 67727/694044 request completed in 3635ms
+app.Common.GatewayService: 18.03.24 06:03:57:566 67727/761086 checkpoint written at offset 2293
+app.Common.IndexerService: 18.03.24 06:05:36:648 67727/187556 worker 8864 joined the pool
+app.Common.BlobstoreService: 18.03.24 06:04:34:949 67727/681742 checkpoint written at offset 1865
+app.Common.AuthsvcService: 18.03.24 06:05:48:500 67727/889613 dropped 4737 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:04:22:023 67727/576646 request completed in 1582ms
+app.Common.GatewayService: 18.03.24 06:02:04:998 67727/186034 handshake with 192.0.2.1583 completed
+app.Common.IndexerService: 18.03.24 06:06:18:759 67727/542626 queue depth 6781 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:01:42:816 67727/777055 lease renewed, ttl 7385s
+app.Common.BlobstoreService: 18.03.24 06:06:34:405 67727/737910 shard 9762 rebalanced to node-a01
+app.Common.GatewayService: 18.03.24 06:03:29:990 67727/592398 lease acquisition timed out after 3961ms
+app.Common.GatewayService: 18.03.24 06:06:36:981 67727/417234 lease acquisition timed out after 5988ms
+app.Common.BlobstoreService: 18.03.24 06:05:56:108 67727/175926 retrying upstream after 3898ms backoff
+app.Common.BlobstoreService: 18.03.24 06:03:26:654 67727/257977 checkpoint written at offset 9324
+app.Common.IndexerService: 18.03.24 06:05:37:620 67727/307292 lease renewed, ttl 7414s
+app.Common.GatewayService: 18.03.24 06:06:05:876 67727/417305 request completed in 929ms
+app.Common.BlobstoreService: 18.03.24 06:02:43:328 67727/952826 checkpoint written at offset 7920
+app.Common.IndexerService: 18.03.24 06:01:09:255 67727/898035 upstream 192.0.2.9486 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:01:05:278 67727/906306 upstream 192.0.2.5942 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:00:35:535 67727/443870 request completed in 5664ms
+app.Common.AuthsvcService: 18.03.24 06:02:23:448 67727/240905 handshake with 192.0.2.555 completed
+app.Common.BlobstoreService: 18.03.24 06:00:20:680 67727/333422 write rejected: quota exceeded by 6581 bytes
+app.Common.BlobstoreService: 18.03.24 06:01:41:010 67727/223136 write rejected: quota exceeded by 8700 bytes
+app.Common.IndexerService: 18.03.24 06:01:44:319 67727/728722 retrying upstream after 1367ms backoff
+app.Common.AuthsvcService: 18.03.24 06:00:42:640 67727/702038 flushed 8955 records to segment 9f4b9cf5
+app.Common.SchedulerService: 18.03.24 06:03:34:131 67727/135576 cache miss for key 3a5eba1f
+app.Common.AuthsvcService: 18.03.24 06:02:24:072 67727/163514 upstream 192.0.2.1953 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:01:44:077 67727/867394 segment 14a097a6 failed checksum validation
+app.Common.GatewayService: 18.03.24 06:02:56:588 67727/201064 flushed 934 records to segment 4bfd99ed
+app.Common.IndexerService: 18.03.24 06:06:40:050 67727/273281 connection pool resized to 121
+app.Common.IndexerService: 18.03.24 06:02:57:788 67727/560228 queue depth 4400 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:02:00:683 67727/236975 checkpoint written at offset 2325
+app.Common.IndexerService: 18.03.24 06:04:28:752 67727/738290 dropped 7757 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:04:08:101 67727/599243 worker 8764 joined the pool
+app.Common.IndexerService: 18.03.24 06:01:51:830 67727/558496 shard 3688 rebalanced to node-b01
+app.Common.AuthsvcService: 18.03.24 06:06:47:277 67727/572374 dropped 1358 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:04:18:552 67727/748848 config reloaded from profile e795bcd6
+app.Common.AuthsvcService: 18.03.24 06:03:36:398 67727/467965 config reloaded from profile 893c8a0c
+app.Common.BlobstoreService: 18.03.24 06:00:46:458 67727/677158 config reloaded from profile 12f81d2a
+app.Common.BlobstoreService: 18.03.24 06:01:53:420 67727/133120 background scan finished, 7236 objects visited
+app.Common.GatewayService: 18.03.24 06:03:11:352 67727/575035 request completed in 4684ms
+app.Common.AuthsvcService: 18.03.24 06:04:02:724 67727/808439 lease acquisition timed out after 5509ms
+app.Common.IndexerService: 18.03.24 06:02:12:348 67727/606818 upstream 192.0.2.1298 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:04:11:174 67727/212535 worker 3416 joined the pool
+app.Common.IndexerService: 18.03.24 06:01:58:260 67727/411693 flushed 9487 records to segment e3e21f08
+app.Common.AuthsvcService: 18.03.24 06:06:03:552 67727/609073 upstream 192.0.2.850 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:04:55:932 67727/120612 config reloaded from profile fb48c664
+app.Common.AuthsvcService: 18.03.24 06:04:17:925 67727/651519 config reloaded from profile dd04ef16
+app.Common.IndexerService: 18.03.24 06:00:14:144 67727/373674 lease acquisition timed out after 5384ms
+app.Common.AuthsvcService: 18.03.24 06:05:21:550 67727/298599 retrying upstream after 3132ms backoff
+app.Common.SchedulerService: 18.03.24 06:05:35:790 67727/260693 flushed 6246 records to segment 703d5cdb
+app.Common.GatewayService: 18.03.24 06:04:44:987 67727/314066 flushed 4482 records to segment 178de8be
+app.Common.GatewayService: 18.03.24 06:06:33:464 67727/372034 request completed in 9163ms
+app.Common.SchedulerService: 18.03.24 06:03:47:835 67727/310466 background scan finished, 1790 objects visited
+app.Common.IndexerService: 18.03.24 06:05:33:300 67727/316470 segment 117e8e19 failed checksum validation
+app.Common.BlobstoreService: 18.03.24 06:05:52:640 67727/576963 write rejected: quota exceeded by 7204 bytes
+app.Common.GatewayService: 18.03.24 06:06:49:584 67727/858121 shard 1038 rebalanced to node-a02
+app.Common.SchedulerService: 18.03.24 06:07:19:082 67727/341511 write rejected: quota exceeded by 5795 bytes
+app.Common.BlobstoreService: 18.03.24 06:02:46:200 67727/949212 retrying upstream after 1819ms backoff
+app.Common.AuthsvcService: 18.03.24 06:05:13:575 67727/326962 background scan finished, 1978 objects visited
+app.Common.IndexerService: 18.03.24 06:05:48:612 67727/155489 request completed in 2642ms
+app.Common.GatewayService: 18.03.24 06:00:38:990 67727/770322 request completed in 3977ms
+app.Common.BlobstoreService: 18.03.24 06:03:38:178 67727/802828 flushed 4416 records to segment 4f7d09b6
+app.Common.AuthsvcService: 18.03.24 06:05:30:928 67727/973731 shard 6557 rebalanced to node-b02
+app.Common.SchedulerService: 18.03.24 06:01:21:200 67727/360290 queue depth 6975 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:02:41:007 67727/254739 dropped 1704 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:05:16:968 67727/995977 retrying upstream after 965ms backoff
+app.Common.IndexerService: 18.03.24 06:00:27:587 67727/205372 retrying upstream after 8238ms backoff
+app.Common.BlobstoreService: 18.03.24 06:00:23:124 67727/394137 write rejected: quota exceeded by 5718 bytes
+app.Common.AuthsvcService: 18.03.24 06:04:39:675 67727/614168 worker 7131 joined the pool
+app.Common.GatewayService: 18.03.24 06:03:49:796 67727/230354 deserialization failed at offset 220: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:05:29:994 67727/793628 segment 528858df failed checksum validation
+app.Common.IndexerService: 18.03.24 06:00:42:600 67727/378885 checkpoint written at offset 3894
+app.Common.IndexerService: 18.03.24 06:05:37:986 67727/891155 shard 8972 rebalanced to node-a02
+app.Common.IndexerService: 18.03.24 06:03:29:760 67727/830540 lease renewed, ttl 3338s
+app.Common.SchedulerService: 18.03.24 06:01:23:937 67727/928734 background scan finished, 8489 objects visited
+app.Common.IndexerService: 18.03.24 06:03:21:916 67727/866130 retrying upstream after 9469ms backoff
+app.Common.BlobstoreService: 18.03.24 06:05:47:238 67727/791609 write rejected: quota exceeded by 6925 bytes
+app.Common.GatewayService: 18.03.24 06:06:09:082 67727/961617 write rejected: quota exceeded by 7309 bytes
+app.Common.BlobstoreService: 18.03.24 06:06:21:225 67727/713309 retrying upstream after 7812ms backoff
+app.Common.IndexerService: 18.03.24 06:07:35:616 67727/818438 dropped 9454 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:04:06:956 67727/348402 background scan finished, 7152 objects visited
+app.Common.SchedulerService: 18.03.24 06:00:21:386 67727/813592 worker 8930 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:05:39:294 67727/502171 config reloaded from profile 6241bc56
+app.Common.BlobstoreService: 18.03.24 06:03:14:880 67727/297299 checkpoint written at offset 5268
+app.Common.IndexerService: 18.03.24 06:02:04:915 67727/843364 worker 3279 joined the pool
+app.Common.IndexerService: 18.03.24 06:04:33:540 67727/334606 connection pool resized to 5150
+app.Common.BlobstoreService: 18.03.24 06:05:50:383 67727/266320 shard 4255 rebalanced to node-c02
+app.Common.GatewayService: 18.03.24 06:00:51:976 67727/182737 checkpoint written at offset 2727
+app.Common.BlobstoreService: 18.03.24 06:02:32:685 67727/315216 queue depth 1144 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:02:39:978 67727/854072 dropped 2511 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:04:11:236 67727/401770 lease renewed, ttl 5232s
+app.Common.AuthsvcService: 18.03.24 06:05:26:340 67727/873606 flushed 8971 records to segment 32925580
+app.Common.AuthsvcService: 18.03.24 06:05:51:044 67727/497806 shard 3997 rebalanced to node-c01
+app.Common.SchedulerService: 18.03.24 06:01:29:090 67727/769052 connection pool resized to 8128
+app.Common.SchedulerService: 18.03.24 06:06:22:377 67727/467236 queue depth 5248 exceeds soft limit
+app.Common.IndexerService: 18.03.24 06:06:55:584 67727/610983 request completed in 2553ms
+app.Common.AuthsvcService: 18.03.24 06:06:23:671 67727/983749 config reloaded from profile 59bed5bb
+app.Common.BlobstoreService: 18.03.24 06:01:38:010 67727/537459 upstream 192.0.2.1919 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:05:20:110 67727/242671 config reloaded from profile 813c5bd8
+app.Common.BlobstoreService: 18.03.24 06:03:47:672 67727/297191 background scan finished, 2814 objects visited
+app.Common.IndexerService: 18.03.24 06:05:40:290 67727/168212 flushed 9275 records to segment a8ded685
+app.Common.AuthsvcService: 18.03.24 06:00:11:362 67727/211563 segment 091d8d2f failed checksum validation
+app.Common.GatewayService: 18.03.24 06:02:18:369 67727/537812 deserialization failed at offset 167: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:02:20:400 67727/622740 worker 5438 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:03:04:507 67727/767442 cache miss for key eb77a008
+app.Common.BlobstoreService: 18.03.24 06:01:20:668 67727/348311 connection pool resized to 7920
+app.Common.AuthsvcService: 18.03.24 06:06:45:216 67727/585899 deserialization failed at offset 9677: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:02:37:644 67727/460135 connection pool resized to 4298
+app.Common.GatewayService: 18.03.24 06:00:47:795 67727/804656 shard 9275 rebalanced to node-b03
+app.Common.AuthsvcService: 18.03.24 06:00:12:726 67727/547898 config reloaded from profile 6eb82e05
+app.Common.GatewayService: 18.03.24 06:02:37:820 67727/960247 flushed 2868 records to segment 4aefde8d
+app.Common.GatewayService: 18.03.24 06:06:33:376 67727/404136 checkpoint written at offset 7806
+app.Common.AuthsvcService: 18.03.24 06:01:11:253 67727/682385 queue depth 8721 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:01:22:350 67727/190577 segment 8ee908eb failed checksum validation
+app.Common.IndexerService: 18.03.24 06:07:21:142 67727/734291 config reloaded from profile 33231a1c
+app.Common.BlobstoreService: 18.03.24 06:05:35:376 67727/335769 queue depth 8564 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:05:36:537 67727/629268 lease acquisition timed out after 8761ms
+app.Common.BlobstoreService: 18.03.24 06:01:37:626 67727/237114 background scan finished, 34 objects visited
+app.Common.BlobstoreService: 18.03.24 06:00:07:995 67727/390114 deserialization failed at offset 118: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:07:22:288 67727/633898 background scan finished, 7466 objects visited
+app.Common.SchedulerService: 18.03.24 06:04:38:884 67727/409401 connection pool resized to 3379
+app.Common.SchedulerService: 18.03.24 06:02:21:522 67727/555031 shard 786 rebalanced to node-b02
+app.Common.GatewayService: 18.03.24 06:06:07:686 67727/795252 segment d2e9d075 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:02:20:120 67727/856529 connection pool resized to 1655
+app.Common.IndexerService: 18.03.24 06:01:56:127 67727/197884 config reloaded from profile e158d814
+app.Common.BlobstoreService: 18.03.24 06:01:14:018 67727/983805 queue depth 5799 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:02:23:913 67727/210555 request completed in 5737ms
+app.Common.AuthsvcService: 18.03.24 06:05:17:616 67727/910929 config reloaded from profile 51a0ea73
+app.Common.IndexerService: 18.03.24 06:08:14:375 67727/624636 flushed 4181 records to segment a376f6e4
+app.Common.BlobstoreService: 18.03.24 06:05:50:560 67727/347375 connection pool resized to 5734
+app.Common.IndexerService: 18.03.24 06:04:03:903 67727/414863 worker 8690 joined the pool
+app.Common.SchedulerService: 18.03.24 06:08:13:608 67727/946567 handshake with 192.0.2.8528 completed
+app.Common.AuthsvcService: 18.03.24 06:07:25:332 67727/708688 worker 7736 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:04:04:440 67727/551175 queue depth 7622 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:00:58:052 67727/496714 flushed 4417 records to segment 4ebf4181
+app.Common.BlobstoreService: 18.03.24 06:06:50:800 67727/182117 retrying upstream after 9477ms backoff
+app.Common.GatewayService: 18.03.24 06:00:13:926 67727/198823 flushed 4431 records to segment 07be0715
+app.Common.BlobstoreService: 18.03.24 06:00:26:628 67727/798151 config reloaded from profile 4e56a3a2
+app.Common.AuthsvcService: 18.03.24 06:07:45:455 67727/657152 flushed 5144 records to segment fd75202b
+app.Common.BlobstoreService: 18.03.24 06:01:36:672 67727/773982 retrying upstream after 5384ms backoff
+app.Common.AuthsvcService: 18.03.24 06:00:50:960 67727/639774 lease acquisition timed out after 3081ms
+app.Common.IndexerService: 18.03.24 06:02:23:550 67727/428590 shard 4473 rebalanced to node-a02
+app.Common.GatewayService: 18.03.24 06:00:38:340 67727/761056 deserialization failed at offset 8493: unexpected token
+app.Common.SchedulerService: 18.03.24 06:07:47:840 67727/815341 lease renewed, ttl 2443s
+app.Common.BlobstoreService: 18.03.24 06:08:06:519 67727/384114 deserialization failed at offset 7287: unexpected token
+app.Common.GatewayService: 18.03.24 06:03:26:082 67727/100537 request completed in 9941ms
+app.Common.GatewayService: 18.03.24 06:07:22:384 67727/846745 upstream 192.0.2.5860 refused connection after 3 attempts
+app.Common.GatewayService: 18.03.24 06:00:50:232 67727/157418 write rejected: quota exceeded by 6432 bytes
+app.Common.SchedulerService: 18.03.24 06:08:14:715 67727/854458 upstream 192.0.2.7683 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:04:53:930 67727/206479 connection pool resized to 7152
+app.Common.GatewayService: 18.03.24 06:06:13:966 67727/376921 lease acquisition timed out after 5719ms
+app.Common.AuthsvcService: 18.03.24 06:03:56:520 67727/979795 background scan finished, 6948 objects visited
+app.Common.GatewayService: 18.03.24 06:01:01:006 67727/347113 config reloaded from profile 1ac7ff62
+app.Common.IndexerService: 18.03.24 06:03:31:250 67727/376545 deserialization failed at offset 4576: unexpected token
+app.Common.SchedulerService: 18.03.24 06:03:12:696 67727/447515 dropped 9110 stale entries during compaction
+app.Common.AuthsvcService: 18.03.24 06:02:23:440 67727/904740 upstream 192.0.2.425 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:02:36:067 67727/819966 request completed in 27ms
+app.Common.SchedulerService: 18.03.24 06:03:12:930 67727/859930 request completed in 2979ms
+app.Common.SchedulerService: 18.03.24 06:04:45:580 67727/671136 checkpoint written at offset 4804
+app.Common.SchedulerService: 18.03.24 06:06:22:448 67727/665527 retrying upstream after 6518ms backoff
+app.Common.IndexerService: 18.03.24 06:00:55:845 67727/422057 request completed in 9444ms
+app.Common.IndexerService: 18.03.24 06:05:16:498 67727/695547 cache miss for key e56fd485
+app.Common.GatewayService: 18.03.24 06:07:51:844 67727/530936 config reloaded from profile 74ca31ce
+app.Common.IndexerService: 18.03.24 06:04:45:120 67727/926465 checkpoint written at offset 7460
+app.Common.GatewayService: 18.03.24 06:05:04:721 67727/633868 deserialization failed at offset 6541: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:07:53:330 67727/332521 queue depth 7520 exceeds soft limit
+app.Common.GatewayService: 18.03.24 06:06:31:833 67727/289139 checkpoint written at offset 3409
+app.Common.GatewayService: 18.03.24 06:00:47:808 67727/517416 dropped 5750 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:08:16:755 67727/530567 connection pool resized to 9080
+app.Common.GatewayService: 18.03.24 06:01:29:244 67727/625914 upstream 192.0.2.7524 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:02:10:065 67727/738001 shard 8569 rebalanced to node-a01
+app.Common.SchedulerService: 18.03.24 06:03:48:456 67727/921680 lease acquisition timed out after 9075ms
+app.Common.SchedulerService: 18.03.24 06:05:07:071 67727/255906 flushed 5108 records to segment d7d04d7f
+app.Common.AuthsvcService: 18.03.24 06:05:34:330 67727/112784 checkpoint written at offset 4939
+app.Common.GatewayService: 18.03.24 06:01:19:849 67727/610286 lease acquisition timed out after 8571ms
+app.Common.AuthsvcService: 18.03.24 06:07:03:360 67727/948773 segment 77f24bdb failed checksum validation
+app.Common.GatewayService: 18.03.24 06:01:31:528 67727/971682 dropped 6216 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:04:03:988 67727/402238 dropped 9934 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:02:58:200 67727/362851 lease renewed, ttl 4216s
+app.Common.GatewayService: 18.03.24 06:02:06:412 67727/138842 request completed in 6911ms
+app.Common.AuthsvcService: 18.03.24 06:05:03:973 67727/827360 segment cd4078f9 failed checksum validation
+app.Common.SchedulerService: 18.03.24 06:06:06:120 67727/871567 queue depth 9685 exceeds soft limit
+app.Common.IndexerService: 18.03.24 06:02:05:615 67727/176907 handshake with 192.0.2.81 completed
+app.Common.AuthsvcService: 18.03.24 06:02:15:320 67727/460244 request completed in 5537ms
+app.Common.SchedulerService: 18.03.24 06:07:09:711 67727/840042 checkpoint written at offset 3437
+app.Common.GatewayService: 18.03.24 06:01:21:840 67727/314281 queue depth 5940 exceeds soft limit
+app.Common.IndexerService: 18.03.24 06:01:21:277 67727/634597 shard 6028 rebalanced to node-c01
+app.Common.GatewayService: 18.03.24 06:08:56:256 67727/286129 dropped 685 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:04:26:465 67727/158909 dropped 9417 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:03:25:800 67727/300880 write rejected: quota exceeded by 3154 bytes
+app.Common.SchedulerService: 18.03.24 06:04:26:556 67727/916937 lease acquisition timed out after 5744ms
+app.Common.SchedulerService: 18.03.24 06:01:04:672 67727/675212 upstream 192.0.2.772 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:07:25:094 67727/641100 retrying upstream after 924ms backoff
+app.Common.SchedulerService: 18.03.24 06:01:22:110 67727/140815 background scan finished, 1357 objects visited
+app.Common.IndexerService: 18.03.24 06:08:29:267 67727/910958 upstream 192.0.2.5908 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:07:11:808 67727/978062 request completed in 6153ms
+app.Common.IndexerService: 18.03.24 06:08:32:127 67727/333565 config reloaded from profile 27dad0cc
+app.Common.AuthsvcService: 18.03.24 06:06:17:536 67727/125716 deserialization failed at offset 4092: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:03:12:515 67727/437270 flushed 4270 records to segment 9410bedb
+app.Common.GatewayService: 18.03.24 06:02:18:504 67727/203570 queue depth 8985 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:07:49:778 67727/770799 connection pool resized to 9197
+app.Common.BlobstoreService: 18.03.24 06:08:36:520 67727/707372 worker 4538 joined the pool
+app.Common.AuthsvcService: 18.03.24 06:02:22:596 67727/120278 config reloaded from profile ef9ff0ac
+app.Common.SchedulerService: 18.03.24 06:08:11:400 67727/242614 config reloaded from profile b2a65d90
+app.Common.SchedulerService: 18.03.24 06:00:46:967 67727/717431 segment 82f31601 failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:04:20:442 67727/402802 upstream 192.0.2.7902 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:00:30:229 67727/551590 handshake with 192.0.2.9850 completed
+app.Common.IndexerService: 18.03.24 06:03:50:208 67727/680789 upstream 192.0.2.5969 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:03:29:385 67727/784223 retrying upstream after 5274ms backoff
+app.Common.AuthsvcService: 18.03.24 06:01:19:072 67727/198107 lease renewed, ttl 4972s
+app.Common.SchedulerService: 18.03.24 06:06:55:009 67727/734885 shard 3568 rebalanced to node-b02
+app.Common.AuthsvcService: 18.03.24 06:05:41:256 67727/926773 request completed in 9216ms
+app.Common.IndexerService: 18.03.24 06:01:49:186 67727/464960 checkpoint written at offset 6412
+app.Common.GatewayService: 18.03.24 06:08:10:610 67727/712514 worker 1502 joined the pool
+app.Common.GatewayService: 18.03.24 06:01:18:210 67727/306684 deserialization failed at offset 2107: unexpected token
+app.Common.SchedulerService: 18.03.24 06:01:33:272 67727/685756 background scan finished, 2844 objects visited
+app.Common.GatewayService: 18.03.24 06:03:18:214 67727/970554 deserialization failed at offset 110: unexpected token
+app.Common.IndexerService: 18.03.24 06:09:15:492 67727/599035 config reloaded from profile fafe67b9
+app.Common.SchedulerService: 18.03.24 06:06:33:965 67727/811332 request completed in 8297ms
+app.Common.BlobstoreService: 18.03.24 06:05:03:584 67727/381696 lease acquisition timed out after 8553ms
+app.Common.GatewayService: 18.03.24 06:01:33:210 67727/127206 lease renewed, ttl 1547s
+app.Common.SchedulerService: 18.03.24 06:04:33:558 67727/314304 lease renewed, ttl 8225s
+app.Common.GatewayService: 18.03.24 06:00:53:206 67727/102873 upstream 192.0.2.315 refused connection after 3 attempts
+app.Common.AuthsvcService: 18.03.24 06:03:56:880 67727/495423 cache miss for key 471b0887
+app.Common.IndexerService: 18.03.24 06:00:23:793 67727/474692 write rejected: quota exceeded by 7537 bytes
+app.Common.AuthsvcService: 18.03.24 06:05:01:796 67727/111442 lease renewed, ttl 9734s
+app.Common.BlobstoreService: 18.03.24 06:02:14:478 67727/807278 deserialization failed at offset 7064: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:05:27:972 67727/915096 retrying upstream after 9038ms backoff
+app.Common.GatewayService: 18.03.24 06:07:33:850 67727/430005 retrying upstream after 787ms backoff
+app.Common.BlobstoreService: 18.03.24 06:00:42:108 67727/407546 cache miss for key 4dc37369
+app.Common.SchedulerService: 18.03.24 06:03:10:474 67727/404982 checkpoint written at offset 3103
+app.Common.IndexerService: 18.03.24 06:03:46:408 67727/722425 request completed in 1992ms
+app.Common.BlobstoreService: 18.03.24 06:03:53:280 67727/112029 background scan finished, 9463 objects visited
+app.Common.GatewayService: 18.03.24 06:00:13:870 67727/282485 dropped 2992 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:03:35:645 67727/939874 write rejected: quota exceeded by 9277 bytes
+app.Common.GatewayService: 18.03.24 06:05:09:636 67727/134674 flushed 6093 records to segment 4842c2fd
+app.Common.GatewayService: 18.03.24 06:08:24:304 67727/850861 config reloaded from profile 7557cff8
+app.Common.AuthsvcService: 18.03.24 06:04:58:004 67727/868754 background scan finished, 1462 objects visited
+app.Common.AuthsvcService: 18.03.24 06:07:58:485 67727/530847 deserialization failed at offset 9322: unexpected token
+app.Common.SchedulerService: 18.03.24 06:00:27:232 67727/166472 handshake with 192.0.2.9115 completed
+app.Common.GatewayService: 18.03.24 06:07:01:564 67727/252295 connection pool resized to 2046
+app.Common.GatewayService: 18.03.24 06:09:06:120 67727/251666 shard 1572 rebalanced to node-b01
+app.Common.BlobstoreService: 18.03.24 06:08:32:866 67727/186999 flushed 4968 records to segment f18442f6
+app.Common.GatewayService: 18.03.24 06:06:35:160 67727/862595 config reloaded from profile 16b15611
+app.Common.AuthsvcService: 18.03.24 06:08:17:952 67727/549900 request completed in 4400ms
+app.Common.GatewayService: 18.03.24 06:02:45:466 67727/691326 lease acquisition timed out after 2212ms
+app.Common.IndexerService: 18.03.24 06:02:07:053 67727/999837 dropped 1974 stale entries during compaction
+app.Common.GatewayService: 18.03.24 06:00:19:344 67727/905563 lease acquisition timed out after 6160ms
+app.Common.BlobstoreService: 18.03.24 06:04:13:300 67727/261213 upstream 192.0.2.4721 refused connection after 3 attempts
+app.Common.SchedulerService: 18.03.24 06:04:09:910 67727/899954 dropped 7901 stale entries during compaction
+app.Common.SchedulerService: 18.03.24 06:06:51:597 67727/626241 background scan finished, 6916 objects visited
+app.Common.IndexerService: 18.03.24 06:01:38:736 67727/473813 queue depth 6182 exceeds soft limit
+app.Common.BlobstoreService: 18.03.24 06:07:46:627 67727/789922 deserialization failed at offset 4361: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:06:20:250 67727/144675 dropped 7215 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:06:14:749 67727/546050 retrying upstream after 9604ms backoff
+app.Common.IndexerService: 18.03.24 06:06:28:032 67727/442125 segment 49c4e7ab failed checksum validation
+app.Common.AuthsvcService: 18.03.24 06:04:13:008 67727/730782 cache miss for key 7cbabbd0
+app.Common.AuthsvcService: 18.03.24 06:01:32:742 67727/610720 dropped 9371 stale entries during compaction
+app.Common.IndexerService: 18.03.24 06:06:32:600 67727/266303 retrying upstream after 6523ms backoff
+app.Common.SchedulerService: 18.03.24 06:06:12:708 67727/999558 connection pool resized to 9790
+app.Common.BlobstoreService: 18.03.24 06:05:22:482 67727/348147 deserialization failed at offset 7446: unexpected token
+app.Common.AuthsvcService: 18.03.24 06:01:25:654 67727/714652 handshake with 192.0.2.6537 completed
+app.Common.SchedulerService: 18.03.24 06:00:42:504 67727/852437 flushed 6599 records to segment 93bd5f9b
+app.Common.SchedulerService: 18.03.24 06:07:53:480 67727/935516 write rejected: quota exceeded by 1992 bytes
+app.Common.IndexerService: 18.03.24 06:00:38:050 67727/826096 retrying upstream after 1085ms backoff
+app.Common.GatewayService: 18.03.24 06:03:21:168 67727/680068 cache miss for key de137e8a
+app.Common.SchedulerService: 18.03.24 06:06:13:870 67727/835388 dropped 7913 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:07:23:120 67727/650095 shard 4927 rebalanced to node-b01
+app.Common.BlobstoreService: 18.03.24 06:09:16:920 67727/921394 upstream 192.0.2.2123 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:04:13:546 67727/142498 dropped 9434 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:05:36:713 67727/434154 queue depth 4660 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:04:18:048 67727/180224 lease renewed, ttl 2303s
+app.Common.BlobstoreService: 18.03.24 06:00:53:061 67727/978712 checkpoint written at offset 9778
+app.Common.IndexerService: 18.03.24 06:05:44:190 67727/979554 deserialization failed at offset 3969: unexpected token
+app.Common.SchedulerService: 18.03.24 06:03:48:987 67727/780819 upstream 192.0.2.4159 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:07:05:372 67727/175662 lease acquisition timed out after 5187ms
+app.Common.GatewayService: 18.03.24 06:00:59:521 67727/572685 cache miss for key 83ff8679
+app.Common.IndexerService: 18.03.24 06:00:37:926 67727/492111 flushed 2290 records to segment 5ba21793
+app.Common.GatewayService: 18.03.24 06:02:45:075 67727/478414 flushed 3106 records to segment 3b2a97b1
+app.Common.IndexerService: 18.03.24 06:09:29:584 67727/762751 background scan finished, 8623 objects visited
+app.Common.SchedulerService: 18.03.24 06:08:18:057 67727/470227 upstream 192.0.2.6914 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:03:26:948 67727/412242 handshake with 192.0.2.816 completed
+app.Common.AuthsvcService: 18.03.24 06:07:20:135 67727/940426 lease renewed, ttl 6483s
+app.Common.IndexerService: 18.03.24 06:05:17:460 67727/992833 queue depth 1234 exceeds soft limit
+app.Common.AuthsvcService: 18.03.24 06:05:47:545 67727/603083 deserialization failed at offset 8777: unexpected token
+app.Common.BlobstoreService: 18.03.24 06:00:21:896 67727/711462 upstream 192.0.2.7893 refused connection after 3 attempts
+app.Common.GatewayService: 18.03.24 06:00:36:801 67727/262355 flushed 6486 records to segment 9260e638
+app.Common.GatewayService: 18.03.24 06:02:18:768 67727/364885 background scan finished, 8041 objects visited
+app.Common.BlobstoreService: 18.03.24 06:04:27:685 67727/827313 queue depth 4318 exceeds soft limit
+app.Common.SchedulerService: 18.03.24 06:03:11:784 67727/770920 write rejected: quota exceeded by 461 bytes
+app.Common.SchedulerService: 18.03.24 06:02:57:862 67727/150760 background scan finished, 8314 objects visited
+app.Common.BlobstoreService: 18.03.24 06:09:53:364 67727/504692 handshake with 192.0.2.9057 completed
+app.Common.GatewayService: 18.03.24 06:06:33:711 67727/663502 cache miss for key 7353cf80
+app.Common.IndexerService: 18.03.24 06:03:49:100 67727/614352 background scan finished, 5599 objects visited
+app.Common.GatewayService: 18.03.24 06:06:08:606 67727/259161 request completed in 8558ms
+app.Common.BlobstoreService: 18.03.24 06:00:53:856 67727/813597 dropped 1786 stale entries during compaction
+app.Common.BlobstoreService: 18.03.24 06:08:33:864 67727/358491 worker 3991 joined the pool
+app.Common.SchedulerService: 18.03.24 06:00:30:172 67727/128405 upstream 192.0.2.3422 refused connection after 3 attempts
+app.Common.IndexerService: 18.03.24 06:07:55:410 67727/737839 background scan finished, 6362 objects visited
+app.Common.IndexerService: 18.03.24 06:06:22:876 67727/634112 upstream 192.0.2.6438 refused connection after 3 attempts
+app.Common.BlobstoreService: 18.03.24 06:07:01:613 67727/856019 handshake with 192.0.2.462 completed
+app.Common.IndexerService: 18.03.24 06:07:27:678 67727/493929 retrying upstream after 2520ms backoff
+app.Common.IndexerService: 18.03.24 06:08:07:390 67727/707129 shard 7076 rebalanced to node-c01

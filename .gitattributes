@@ -1,0 +1,10 @@
+# Normalize line endings in the repo to LF. build.sh and the hooks are
+# run through bash (Git Bash on Windows), which chokes on CRLF; the Go
+# and JS toolchains both assume LF.
+* text=auto eol=lf
+
+# Binary — never touch.
+*.png binary
+*.ico binary
+*.evtx binary
+*.woff2 binary

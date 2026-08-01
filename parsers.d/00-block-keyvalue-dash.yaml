@@ -1,0 +1,35 @@
+# Block-record format: records separated by a line of 20+ dashes,
+# fields written as `Key: Value` with optional multi-line continuation.
+#
+# Matches the classic block-dump shape ("Key: Value" lines between
+# dashed separators) emitted by many diagnostic and crash-report tools.
+# To add a sibling rule with a different separator (equals signs, say),
+# drop a new YAML file here — no code changes required.
+
+family: block
+name: keyvalue-dash-separated
+priority: 70
+
+# Detection: the sniff regex (multi-line) is applied to the first
+# ~512 bytes of the file. A line of 20+ dashes triggers a match.
+sniff: '^-{20,}$'
+
+# Per-record separator: same shape as sniff but applied per line.
+separator: '^-{20,}$'
+
+# Field syntax: KEY starts with a letter, ends at the first colon.
+# VALUE is the rest of the line (may be empty). Lines that don't
+# match this AND aren't blank become continuations of the previous
+# value (multi-line Messages stay intact).
+field: '^(?P<key>[A-Za-z][\w ]*?):[ \t]?(?P<value>.*)$'
+
+# Timestamp resolution: pick the first field name present in the
+# record, then parse with the first matching layout.
+ts_field:
+  - Timestamp
+  - TimeStamp
+  - '@timestamp'
+
+ts_layouts:
+  - '2006-01-02T15:04:05.999999999Z07:00'
+  - '2006-01-02T15:04:05Z07:00'

@@ -1,0 +1,213 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
+
+VERSION="${VERSION:-0.1.0}"
+# Default to the host platform. Set GOOS/GOARCH to cross-compile —
+# see docs/BUILD.md for which combinations actually work (CGO makes
+# most of them require a matching C cross-toolchain).
+TARGET_OS="${GOOS:-$(go env GOHOSTOS)}"
+TARGET_ARCH="${GOARCH:-$(go env GOHOSTARCH)}"
+HOST_OS="$(go env GOHOSTOS)"
+OUTPUT_NAME="obs_viewer"
+
+if [ "$TARGET_OS" = "windows" ]; then
+    OUTPUT_NAME="obs_viewer.exe"
+fi
+
+# Supported targets. DuckDB ships prebuilt static libs for exactly
+# these; anything else fails at link time with a missing-archive error
+# rather than something diagnosable.
+case "${TARGET_OS}/${TARGET_ARCH}" in
+    windows/amd64|linux/amd64|linux/arm64|darwin/amd64|darwin/arm64) ;;
+    *)
+        echo "ERROR: unsupported target ${TARGET_OS}/${TARGET_ARCH}." >&2
+        echo "       DuckDB bindings ship for windows/amd64, linux/amd64," >&2
+        echo "       linux/arm64, darwin/amd64, darwin/arm64." >&2
+        exit 1
+        ;;
+esac
+
+# CGO cross-compilation needs a C toolchain that targets the host's
+# *target*, not the host itself. Building for macOS requires the Apple
+# SDK, which cannot be redistributed — so darwin builds must run on
+# macOS. Fail early with a useful message instead of a confusing
+# "gcc: unrecognized command-line option '-arch'" from the Go runtime.
+if [ "$TARGET_OS" = "darwin" ] && [ "$HOST_OS" != "darwin" ]; then
+    echo "ERROR: darwin/${TARGET_ARCH} must be built on macOS." >&2
+    echo "       CGO is required (DuckDB) and the Apple SDK is not" >&2
+    echo "       redistributable, so there is no supported cross path" >&2
+    echo "       from ${HOST_OS}. Use a macOS machine or the" >&2
+    echo "       macos-14 runner in .github/workflows/build.yml." >&2
+    exit 1
+fi
+
+# ---------------------------------------------------------------------------
+# Branding
+# ---------------------------------------------------------------------------
+# Override any of these from the environment to brand a fork, e.g.
+#   MANUFACTURER="Acme Corp" ./build.sh
+PRODUCT_NAME="${PRODUCT_NAME:-obs_viewer}"
+MANUFACTURER="${MANUFACTURER:-labmk}"
+COPYRIGHT="${COPYRIGHT:-Copyright (c) $(date +%Y) ${MANUFACTURER}. MIT licensed.}"
+
+echo "=== ${PRODUCT_NAME} build ==="
+echo "Version:      $VERSION"
+echo "Manufacturer: $MANUFACTURER"
+echo "Target:       ${TARGET_OS}/${TARGET_ARCH}"
+echo ""
+
+# ---------------------------------------------------------------------------
+# Hook: pre-build (custom actions before compilation)
+# ---------------------------------------------------------------------------
+if [ -x "${SCRIPT_DIR}/hooks/pre-build.sh" ]; then
+    echo "[hook] Running pre-build..."
+    "${SCRIPT_DIR}/hooks/pre-build.sh" "$VERSION" "$TARGET_OS" "$TARGET_ARCH"
+fi
+
+# Step 0: Regenerate OpenAPI spec from swag annotations so the TS client
+# the frontend `prebuild` script generates is up to date with the Go
+# handlers. swag CLI lives at ~/go/bin/swag after `go install
+# github.com/swaggo/swag/cmd/swag@latest`. Skipped (with a notice) when
+# the binary isn't on PATH — useful for CI images that prebuild docs/.
+if command -v swag &>/dev/null; then
+    echo "[0/4] Regenerating OpenAPI spec (swag init)..."
+    swag init -g main.go --output internal/server/docs --parseInternal --parseDependency >/dev/null 2>&1 \
+        && echo "  Spec written to internal/server/docs/" \
+        || echo "  swag init reported issues — see internal/server/docs/"
+else
+    echo "[0/4] swag not found on PATH; skipping spec regeneration."
+    echo "       Install: go install github.com/swaggo/swag/cmd/swag@latest"
+fi
+
+# Step 1: Build frontend
+echo "[1/4] Building frontend..."
+cd frontend
+if [ ! -d node_modules ]; then
+    echo "  Installing dependencies (locked via package-lock.json)..."
+    # npm ci (not install) — refuses to drift from the lockfile, which
+    # prevents silent upgrades to transitive packages with fresh CVEs
+    # between developer machines and CI.
+    npm ci --silent
+fi
+npm run build --silent
+cd ..
+echo "  Frontend built -> static/"
+
+# Step 2: Verify static output
+if [ ! -f static/index.html ]; then
+    echo "ERROR: static/index.html not found after frontend build"
+    exit 1
+fi
+echo "[2/4] Static assets verified"
+
+# Step 3: Build Go binary
+echo "[3/4] Compiling Go binary..."
+
+# On Windows, prefer MSYS2 ucrt64 GCC (compatible ABI with the prebuilt
+# libduckdb_static.a). TDM-GCC 10.x is too old; MSYS2 mingw64 GCC 15.x
+# has an _Mbstatet ABI mismatch.
+if [ "$TARGET_OS" = "windows" ] && [ -z "${CC:-}" ]; then
+    if [ -x "/c/msys64/ucrt64/bin/gcc.exe" ]; then
+        export CC=/c/msys64/ucrt64/bin/gcc.exe
+        export PATH="/c/msys64/ucrt64/bin:$PATH"
+        echo "  Using MSYS2 ucrt64 GCC: $CC"
+    fi
+fi
+
+LDFLAGS="-s -w -X main.version=$VERSION"
+
+# Windows: console subsystem (default). `-H windowsgui` was tried and
+# reverted — hiding the console broke the unambiguous "close the window
+# → the process dies" contract, and the auto-shutdown paths that were
+# supposed to compensate proved less reliable than the console itself.
+# The trade is a console window on Explorer launches.
+
+# macOS: pin the deployment target so the binary runs on older releases
+# than the build machine. arm64 macOS starts at 11.0.
+if [ "$TARGET_OS" = "darwin" ]; then
+    export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-11.0}"
+    echo "  macOS deployment target: $MACOSX_DEPLOYMENT_TARGET"
+fi
+
+CGO_ENABLED=1 GOOS="$TARGET_OS" GOARCH="$TARGET_ARCH" \
+    go build -ldflags="$LDFLAGS" -o "dist/$OUTPUT_NAME" .
+
+# macOS refuses to run unsigned binaries downloaded from the internet
+# (Gatekeeper). An ad-hoc signature is enough for locally-built and
+# manually-transferred binaries; distribution needs a Developer ID and
+# notarization — wire that into hooks/sign.sh.
+if [ "$TARGET_OS" = "darwin" ] && [ "$HOST_OS" = "darwin" ]; then
+    if command -v codesign &>/dev/null; then
+        codesign --force --sign - "dist/$OUTPUT_NAME" 2>/dev/null \
+            && echo "  Ad-hoc signed (not notarized — see docs/BUILD.md)" \
+            || echo "  codesign failed; binary is unsigned"
+    fi
+fi
+
+echo "  Binary: dist/$OUTPUT_NAME"
+
+# Vulnerability scan — symbol-reachable advisories only, low false-positive
+# rate. SKIP_VULNCHECK=1 bypasses (handy for air-gapped builds where the
+# Go vuln DB at vuln.go.dev is unreachable). Failures are reported but do
+# not fail the build by default; flip the `|| true` to make it fatal.
+if [ "${SKIP_VULNCHECK:-0}" != "1" ]; then
+    if command -v govulncheck &>/dev/null; then
+        echo "  Running govulncheck..."
+        govulncheck ./... 2>&1 | tail -40 || echo "  (govulncheck reported issues — review above)"
+    else
+        echo "  govulncheck not found; install with: go install golang.org/x/vuln/cmd/govulncheck@latest"
+        echo "  (set SKIP_VULNCHECK=1 to silence this notice)"
+    fi
+fi
+
+# Ship parsers.d/ alongside the binary. Each YAML file inside drives
+# autodetect for one block/line/xml format; users can add their own
+# without recompiling.
+if [ -d "${SCRIPT_DIR}/parsers.d" ]; then
+    rm -rf "dist/parsers.d"
+    cp -r "${SCRIPT_DIR}/parsers.d" "dist/parsers.d"
+    echo "  Parser rules: dist/parsers.d/ ($(ls -1 dist/parsers.d/*.yaml 2>/dev/null | wc -l) files)"
+fi
+
+# Ship the config files. Core settings live in obs_viewer.conf (active,
+# all values commented = defaults). Each optional module adds its own
+# obs_viewer_<name>.conf sibling; ship one as `.example` when it needs
+# per-site values, and the operator renames it to `.conf` to enable.
+for conf in obs_viewer.conf; do
+    if [ -f "${SCRIPT_DIR}/${conf}" ]; then
+        cp "${SCRIPT_DIR}/${conf}" "dist/${conf}"
+        echo "  Config: dist/${conf}"
+    fi
+done
+
+# ---------------------------------------------------------------------------
+# Step 4: Code signing hook
+# ---------------------------------------------------------------------------
+echo "[4/4] Post-build..."
+
+if [ -x "${SCRIPT_DIR}/hooks/sign.sh" ]; then
+    echo "  [hook] Running code signing..."
+    "${SCRIPT_DIR}/hooks/sign.sh" "dist/$OUTPUT_NAME" "$PRODUCT_NAME" "$VERSION" "$MANUFACTURER"
+elif [ "$TARGET_OS" = "windows" ] && command -v signtool.exe &>/dev/null; then
+    echo "  [hook] signtool detected — sign manually or create hooks/sign.sh"
+    echo "  Example: signtool sign /fd SHA256 /tr http://timestamp.digicert.com /td SHA256 dist/$OUTPUT_NAME"
+else
+    echo "  Code signing: skipped (no hooks/sign.sh and no signtool)"
+fi
+
+# ---------------------------------------------------------------------------
+# Hook: post-build (custom actions after compilation)
+# ---------------------------------------------------------------------------
+if [ -x "${SCRIPT_DIR}/hooks/post-build.sh" ]; then
+    echo "[hook] Running post-build..."
+    "${SCRIPT_DIR}/hooks/post-build.sh" "dist/$OUTPUT_NAME" "$VERSION" "$TARGET_OS" "$TARGET_ARCH"
+fi
+
+echo ""
+echo "=== Build complete ==="
+echo "Product: ${PRODUCT_NAME} v${VERSION} (${MANUFACTURER})"
+echo "Output:  dist/$OUTPUT_NAME"
+ls -lh "dist/$OUTPUT_NAME"

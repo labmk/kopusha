@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Code signing hook for obs_viewer
+# Copy this file to sign.sh and make it executable (chmod +x sign.sh)
+# to enable automatic code signing during build.
+#
+# Arguments:
+#   $1 - Binary path (e.g. dist/obs_viewer.exe)
+#   $2 - Product name
+#   $3 - Version
+#   $4 - Manufacturer
+#
+# Example using signtool (Windows SDK):
+#   signtool sign /fd SHA256 \
+#     /tr http://timestamp.digicert.com /td SHA256 \
+#     /n "$MANUFACTURER" \
+#     /d "$2 v$3" \
+#     "$1"
+#
+# Example using osslsigncode (Linux cross-sign):
+#   osslsigncode sign \
+#     -certs /path/to/cert.pem \
+#     -key /path/to/key.pem \
+#     -n "$2 v$3" \
+#     -h sha256 \
+#     -ts http://timestamp.digicert.com \
+#     -in "$1" -out "$1.signed" \
+#     && mv "$1.signed" "$1"
+
+BINARY="$1"
+PRODUCT="$2"
+VERSION="$3"
+MANUFACTURER="$4"
+
+echo "  Signing: $BINARY ($PRODUCT v$VERSION by $MANUFACTURER)"
+# Add your signing command here

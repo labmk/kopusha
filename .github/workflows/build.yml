@@ -1,0 +1,249 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: gofmt + vet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: gofmt
+        run: |
+          unformatted="$(gofmt -l .)"
+          if [ -n "$unformatted" ]; then
+            echo "::error::gofmt would change these files:"
+            echo "$unformatted"
+            gofmt -d .
+            exit 1
+          fi
+      # go vet compiles the packages, so it needs CGO and the DuckDB
+      # archive. static/ contains only .gitkeep at this point — that is
+      # enough for `//go:embed static/*` to resolve, which is the whole
+      # reason the placeholder is committed.
+      - name: go vet
+        env:
+          CGO_ENABLED: '1'
+        run: go vet ./...
+
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # CGO (DuckDB) means every target needs a matching C toolchain
+          # and the prebuilt libduckdb_static.a for that platform, so
+          # each one builds on a native runner. The exception is
+          # darwin/amd64: the macOS SDK is universal, so an arm64 runner
+          # cross-builds it by passing -arch to clang. That matters
+          # because the Intel macOS runners are on their way out.
+          - name: linux-amd64
+            runner: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            artifact: obs_viewer
+            e2e: true
+          - name: linux-arm64
+            runner: ubuntu-24.04-arm
+            goos: linux
+            goarch: arm64
+            artifact: obs_viewer
+          - name: windows-amd64
+            runner: windows-latest
+            goos: windows
+            goarch: amd64
+            artifact: obs_viewer.exe
+            e2e: true
+          - name: darwin-arm64
+            runner: macos-14
+            goos: darwin
+            goarch: arm64
+            artifact: obs_viewer
+          - name: darwin-amd64
+            runner: macos-14
+            goos: darwin
+            goarch: amd64
+            artifact: obs_viewer
+            cc: clang -arch x86_64
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      # MSYS2 ucrt64 GCC. The mingw64 GCC that ships on the runner has an
+      # ABI mismatch against the prebuilt libduckdb_static.a (_Mbstatet,
+      # __throw_bad_array_new_length) — msvcrt vs UCRT, not a compiler
+      # version problem, so a newer mingw64 will not fix it.
+      - name: Set up MSYS2 (Windows)
+        if: matrix.goos == 'windows'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          install: mingw-w64-ucrt-x86_64-gcc
+          path-type: inherit
+
+      - name: Build
+        shell: bash
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          MATRIX_CC: ${{ matrix.cc }}
+          SKIP_VULNCHECK: '1'   # the dedicated job below runs it once
+        run: |
+          if [ "$GOOS" = "windows" ]; then
+            export CC=/c/msys64/ucrt64/bin/gcc.exe
+            export PATH="/c/msys64/ucrt64/bin:$PATH"
+          fi
+          if [ -n "$MATRIX_CC" ]; then
+            export CC="$MATRIX_CC"
+          fi
+          # A tagged build stamps the tag as the version so the binary
+          # never reports build.sh's default after a release bump.
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            export VERSION="${GITHUB_REF_NAME#v}"
+          fi
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Go tests
+        shell: bash
+        env:
+          CGO_ENABLED: '1'
+        run: go test ./...
+
+      # e2e drives the real binary through a browser, so it only runs
+      # where the artifact is natively executable.
+      - name: Playwright e2e
+        if: matrix.e2e
+        shell: bash
+        working-directory: frontend
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+
+      - name: Upload failed e2e report
+        if: failure() && matrix.e2e
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.name }}
+          path: frontend/playwright-report/
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: obs_viewer-${{ matrix.name }}
+          path: |
+            dist/${{ matrix.artifact }}
+            dist/parsers.d/
+            dist/obs_viewer.conf
+          if-no-files-found: error
+
+  vulncheck:
+    name: govulncheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - run: go install golang.org/x/vuln/cmd/govulncheck@latest
+      - run: govulncheck ./...
+
+  audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm audit --audit-level=high
+
+  release:
+    name: release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [check, build, vulncheck, audit]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: staging
+          pattern: obs_viewer-*
+
+      - name: Package
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#v}"
+          mkdir -p out
+
+          for dir in staging/obs_viewer-*; do
+            platform="${dir#staging/obs_viewer-}"
+            # upload-artifact does not preserve the executable bit, so
+            # restore it before archiving — otherwise every download
+            # arrives chmod 644 and will not run.
+            [ -f "$dir/obs_viewer" ] && chmod +x "$dir/obs_viewer"
+            cp LICENSE README.md "$dir/"
+
+            name="obs_viewer-${VERSION}-${platform}"
+            if [ -f "$dir/obs_viewer.exe" ]; then
+              (cd "$dir" && zip -qr "${GITHUB_WORKSPACE}/out/${name}.zip" .)
+            else
+              tar -czf "out/${name}.tar.gz" -C "$dir" .
+            fi
+          done
+
+          (cd out && sha256sum ./* > SHA256SUMS)
+          ls -l out
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          notes="$(printf '%s\n' \
+            "See [CHANGELOG.md](https://github.com/${REPO}/blob/main/CHANGELOG.md) for what changed." \
+            "" \
+            "Binaries are unsigned. On macOS, clear the quarantine attribute before running:" \
+            '`xattr -d com.apple.quarantine obs_viewer`  — see docs/BUILD.md.' \
+            "" \
+            "Verify a download against \`SHA256SUMS\`.")"
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "$notes" \
+            out/*

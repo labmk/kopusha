@@ -1,0 +1,16 @@
+# Line format E:
+#
+#   22:30:10.741 02.08.2024: Installer started.
+#
+# Unusual ordering — time-of-day first, then date, then colon, then
+# message. Go's time package doesn't care about field order as long
+# as the layout matches positionally; the regex captures the whole
+# `HH:MM:SS.msec DD.MM.YYYY` substring as the ts.
+
+family: line
+name: time-dotdate
+priority: 85
+
+parse: '^(?P<ts>\d{2}:\d{2}:\d{2}\.\d{3} \d{2}\.\d{2}\.\d{4}):\s*(?P<message>.*)$'
+
+ts_layout: '15:04:05.000 02.01.2006'

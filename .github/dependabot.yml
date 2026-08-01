@@ -1,0 +1,40 @@
+version: 2
+
+updates:
+  # Go modules. Grouped so the DuckDB bindings — which ship one module
+  # per platform and always bump in lockstep — arrive as a single PR
+  # instead of six that each fail to build alone.
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      duckdb:
+        patterns:
+          - "github.com/duckdb/*"
+      golang-x:
+        patterns:
+          - "golang.org/x/*"
+
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+      radix:
+        patterns:
+          - "@radix-ui/*"
+      dev-tooling:
+        dependency-type: development
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

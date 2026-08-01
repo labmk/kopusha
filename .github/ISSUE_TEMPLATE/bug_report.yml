@@ -1,0 +1,71 @@
+name: Bug report
+description: Something behaves differently than documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you attach anything: **do not paste real log data.**
+        Reduce the problem to a synthetic sample that still reproduces
+        it. Anything you attach here is public and permanent.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. obs_viewer --dir ./sample/
+        2. Load sample.ndjson
+        3. Filter on nodeinfo.type = "worker"
+        4. Result count is 0, but the field picker shows the value
+    validations:
+      required: true
+
+  - type: textarea
+    id: sample
+    attributes:
+      label: Minimal sample
+      description: >
+        A few synthetic lines in the format that triggers the problem.
+        For an ingest bug this is usually the whole answer — the shape
+        matters, the content does not.
+      render: text
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: From `obs_viewer --version`, or the status bar.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Platform
+      options:
+        - Windows amd64
+        - Linux amd64
+        - Linux arm64
+        - macOS arm64
+        - macOS amd64
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log output
+      description: >
+        `obs_viewer_<date>.log` sits next to the binary. Run with
+        `--verbose` for startup phase timings. Check it for paths you'd
+        rather not publish before pasting.
+      render: shell

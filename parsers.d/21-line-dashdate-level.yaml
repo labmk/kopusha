@@ -1,0 +1,16 @@
+# Line format B:
+#
+#   28-02-2026 04:00:40.417 Info    Analyzing Configuration/...
+#
+# DD-MM-YYYY date with millisecond time, then level (word), then
+# message. The level field is captured even though it has trailing
+# whitespace in the source — the regex uses `\s+` so any number of
+# spaces is OK.
+
+family: line
+name: dashdate-level
+priority: 90
+
+parse: '^(?P<ts>\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P<level>\w+)\s+(?P<message>.*)$'
+
+ts_layout: '02-01-2006 15:04:05.000'

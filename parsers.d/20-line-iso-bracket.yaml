@@ -1,0 +1,16 @@
+# Line format A:
+#
+#   2026-03-25 00:31:11.231 [INF] [CS] [PID:4252] clientManagement.xml.enc
+#
+# ISO date-time with millisecond precision, three bracketed metadata
+# fields (level, component, PID), then message. Continuation lines
+# (anything that doesn't match) append to the previous record's
+# `message` field.
+
+family: line
+name: iso-bracket
+priority: 100
+
+parse: '^(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}) \[(?P<level>\w+)\] \[(?P<component>\w+)\] \[PID:(?P<pid>\d+)\] (?P<message>.*)$'
+
+ts_layout: '2006-01-02 15:04:05.000'

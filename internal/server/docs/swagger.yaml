@@ -1,0 +1,689 @@
+basePath: /
+definitions:
+  server.BrowseEntry:
+    properties:
+      is_dir:
+        type: boolean
+      name:
+        type: string
+      path:
+        type: string
+      size:
+        type: integer
+    type: object
+  server.BrowseResponse:
+    properties:
+      current_path:
+        type: string
+      drives:
+        items:
+          type: string
+        type: array
+      entries:
+        items:
+          $ref: '#/definitions/server.BrowseEntry'
+        type: array
+      in_zip:
+        type: boolean
+    type: object
+  server.ErrorResponse:
+    properties:
+      error:
+        example: something failed
+        type: string
+    type: object
+  server.ExportRequest:
+    properties:
+      output_path:
+        type: string
+      query:
+        $ref: '#/definitions/server.QueryRequest'
+    type: object
+  server.ExportResponse:
+    properties:
+      path:
+        type: string
+      records:
+        type: integer
+      status:
+        type: string
+    type: object
+  server.FileInfo:
+    properties:
+      enabled:
+        type: boolean
+      format:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      path:
+        type: string
+      records:
+        type: integer
+      size:
+        type: integer
+    type: object
+  server.FilesResponse:
+    properties:
+      files:
+        items:
+          $ref: '#/definitions/server.FileInfo'
+        type: array
+      timestamp_field:
+        type: string
+    type: object
+  server.FilterClause:
+    properties:
+      combinator:
+        type: string
+      field:
+        type: string
+      operator:
+        type: string
+      value:
+        type: string
+    type: object
+  server.IDRequest:
+    properties:
+      id:
+        type: string
+    type: object
+  server.LoadDirResponse:
+    properties:
+      errors:
+        items:
+          type: string
+        type: array
+      loaded:
+        items:
+          type: string
+        type: array
+      status:
+        type: string
+    type: object
+  server.ModuleManifest:
+    properties:
+      bundle:
+        type: string
+      config:
+        additionalProperties: true
+        type: object
+      id:
+        type: string
+      style:
+        type: string
+      tab:
+        additionalProperties: true
+        type: object
+    type: object
+  server.ModulesResponse:
+    properties:
+      modules:
+        items:
+          $ref: '#/definitions/server.ModuleManifest'
+        type: array
+    type: object
+  server.PathRequest:
+    properties:
+      path:
+        type: string
+    type: object
+  server.QueryRequest:
+    properties:
+      filters:
+        items:
+          $ref: '#/definitions/server.FilterClause'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      search_text:
+        type: string
+      sort_field:
+        type: string
+      sort_order:
+        enum:
+        - asc
+        - desc
+        type: string
+      time_from:
+        type: string
+      time_to:
+        type: string
+    type: object
+  server.QueryResponse:
+    properties:
+      fields:
+        items:
+          type: string
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      rows:
+        items:
+          additionalProperties: true
+          type: object
+        type: array
+      total_count:
+        type: integer
+    type: object
+  server.SelfCopyRequest:
+    properties:
+      target_dir:
+        type: string
+    type: object
+  server.SelfCopyResponse:
+    properties:
+      path:
+        type: string
+      status:
+        type: string
+    type: object
+  server.SettingsBody:
+    properties:
+      auto_load_previous:
+        type: boolean
+      last_directory:
+        type: string
+    type: object
+  server.StatusResponse:
+    properties:
+      status:
+        example: ok
+        type: string
+    type: object
+  server.TimeRangeResponse:
+    properties:
+      max:
+        type: string
+      min:
+        type: string
+      timestamp_fields:
+        items:
+          type: string
+        type: array
+    type: object
+  server.TimestampFieldRequest:
+    properties:
+      field:
+        type: string
+    type: object
+  server.TimestampFieldResponse:
+    properties:
+      field:
+        type: string
+      status:
+        type: string
+    type: object
+  server.ToggleRequest:
+    properties:
+      enabled:
+        type: boolean
+      id:
+        type: string
+    type: object
+  server.VersionResponse:
+    properties:
+      arch:
+        type: string
+      idle_timeout_seconds:
+        type: integer
+      os:
+        type: string
+      version:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: |-
+    Local viewer for log, metric and trace files: NDJSON, EVTX,
+    XML, and rule-driven text logs, queried through DuckDB.
+    The OpenAPI spec is the source of truth for the generated
+    TypeScript client used by the React frontend.
+  title: obs-viewer API
+  version: 0.1.0
+paths:
+  /api/browse:
+    get:
+      description: Lists directory contents (or zip-archive contents when the path
+        points at a .zip file). Browsers cannot access the local filesystem; this
+        endpoint is how the file picker enumerates folders.
+      parameters:
+      - description: absolute path to list; defaults to the user home directory
+        in: query
+        name: path
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.BrowseResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Backend file browser
+      tags:
+      - files
+  /api/export:
+    post:
+      consumes:
+      - application/json
+      description: Reruns the query against DuckDB and writes the result to output_path
+        via COPY ... (FORMAT JSON, ARRAY false).
+      parameters:
+      - description: query + output path
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.ExportRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.ExportResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Export filtered rows to NDJSON
+      tags:
+      - export
+  /api/export/self-copy:
+    post:
+      consumes:
+      - application/json
+      description: F13 — drops the running binary into target_dir so a single zip
+        can carry both data and viewer.
+      parameters:
+      - description: destination directory
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.SelfCopyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.SelfCopyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Copy the binary alongside exported data
+      tags:
+      - export
+  /api/field-samples:
+    get:
+      description: Returns the DISTINCT value set per requested field (default list
+        when `fields` query param is absent). Fields whose distinct count exceeds
+        the cap (30) are returned with an empty array — signal to the caller that
+        the field is too high-cardinality to be useful as a literal value list. Feeds
+        the query builder's value-suggestion datalist.
+      parameters:
+      - description: 'comma-separated list of field names; default: service.name,host.name,SeverityText,log.level,event.category,_source_format'
+        in: query
+        name: fields
+        type: string
+      - description: max values per field (default 30)
+        in: query
+        name: cap
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Distinct sample values for low-cardinality fields
+      tags:
+      - query
+  /api/files:
+    get:
+      description: Returns every file the engine currently has loaded plus the auto-detected
+        timestamp column.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.FilesResponse'
+      summary: List loaded files
+      tags:
+      - files
+  /api/files/load:
+    post:
+      consumes:
+      - application/json
+      description: Loads a single file by absolute path. Supports virtual zip paths
+        in the form `C:\foo.zip|inner.ndjson` — the inner entry is extracted next
+        to the zip and then ingested. Dispatches through the ingest layer so non-NDJSON
+        formats (EVTX, XML, block, line) are handled too.
+      parameters:
+      - description: path to load
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.PathRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.StatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Load a file
+      tags:
+      - files
+  /api/files/load-dir:
+    post:
+      consumes:
+      - application/json
+      description: Bulk load. Each file is ingested through the dispatch layer; unsupported
+        entries land in `errors` rather than aborting the load.
+      parameters:
+      - description: directory or zip path
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.PathRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.LoadDirResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Load every supported file in a directory or zip
+      tags:
+      - files
+  /api/files/toggle:
+    post:
+      consumes:
+      - application/json
+      description: Toggles whether a loaded file participates in subsequent queries.
+        Cheaper than unload+load — the table stays in DuckDB, just excluded from UNION
+        ALL.
+      parameters:
+      - description: file id + enabled flag
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.ToggleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.StatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Enable / disable a file
+      tags:
+      - files
+  /api/files/unload:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: file id
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.IDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.StatusResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Unload a file
+      tags:
+      - files
+  /api/modules:
+    get:
+      description: Returns one manifest per enabled module in Add() order. The SPA
+        reads this at boot to decide which tabs to render and to inject the branding
+        stylesheet + favicons.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.ModulesResponse'
+      summary: List enabled modules
+      tags:
+      - modules
+  /api/query:
+    post:
+      consumes:
+      - application/json
+      description: Runs the assembled filter set (field clauses, time window, optional
+        free-text search) against the UNION ALL of enabled files. Sort, offset, and
+        limit drive paging. Free-text search uses DuckDB ILIKE on a TRY_CAST-VARCHAR'd
+        row.
+      parameters:
+      - description: query parameters
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.QueryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.QueryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Query the loaded files
+      tags:
+      - query
+  /api/settings:
+    get:
+      consumes:
+      - application/json
+      description: Persisted to obs_viewer_settings.json next to the binary. Only
+        the fields present in the POST body are updated.
+      parameters:
+      - description: 'POST only: partial settings patch'
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/server.SettingsBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.SettingsBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Get or persist user settings
+      tags:
+      - core
+    post:
+      consumes:
+      - application/json
+      description: Persisted to obs_viewer_settings.json next to the binary. Only
+        the fields present in the POST body are updated.
+      parameters:
+      - description: 'POST only: partial settings patch'
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/server.SettingsBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.SettingsBody'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Get or persist user settings
+      tags:
+      - core
+  /api/timerange:
+    get:
+      description: MIN/MAX of the active timestamp column across the UNION ALL, plus
+        the list of timestamp-like columns the engine detected.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.TimeRangeResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Time bounds of loaded data
+      tags:
+      - query
+  /api/timestamp-field:
+    get:
+      consumes:
+      - application/json
+      description: GET returns the column the engine currently sorts by. POST overrides
+        it; the engine silently falls back to the default if the requested field is
+        absent from the loaded files.
+      parameters:
+      - description: 'POST only: requested column'
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/server.TimestampFieldRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.TimestampFieldResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Get or set the active timestamp column
+      tags:
+      - query
+    post:
+      consumes:
+      - application/json
+      description: GET returns the column the engine currently sorts by. POST overrides
+        it; the engine silently falls back to the default if the requested field is
+        absent from the loaded files.
+      parameters:
+      - description: 'POST only: requested column'
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/server.TimestampFieldRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.TimestampFieldResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Get or set the active timestamp column
+      tags:
+      - query
+  /api/version:
+    get:
+      description: Lightweight liveness endpoint. The frontend uses this to drive
+        an adaptive 30s / 5s healthcheck.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.VersionResponse'
+      summary: Server version + platform info
+      tags:
+      - core
+schemes:
+- http
+- https
+swagger: "2.0"

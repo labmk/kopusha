@@ -1,0 +1,1240 @@
+2024-03-18 06:00:00.000 [INF] [SCH] [PID:4179] queue depth 2347 exceeds soft limit
+2024-03-18 06:00:00.196 [INF] [SCH] [PID:4179] dropped 5688 stale entries during compaction
+2024-03-18 06:00:00.520 [INF] [NET] [PID:4179] flushed 9682 records to segment 80fadccf
+2024-03-18 06:00:00.228 [INF] [DB] [PID:4179] dropped 4819 stale entries during compaction
+2024-03-18 06:00:01.584 [WRN] [IO] [PID:4179] deserialization failed at offset 4092: unexpected token
+2024-03-18 06:00:01.015 [INF] [IO] [PID:4179] config reloaded from profile 034172ae
+2024-03-18 06:00:01.284 [INF] [IO] [PID:4179] retrying upstream after 188ms backoff
+2024-03-18 06:00:02.149 [INF] [DB] [PID:4179] config reloaded from profile d1129379
+2024-03-18 06:00:00.560 [ERR] [NET] [PID:4179] segment 54ba6b8f failed checksum validation
+2024-03-18 06:00:02.061 [DBG] [CS] [PID:4179] connection pool resized to 9920
+2024-03-18 06:00:01.770 [INF] [CS] [PID:4179] lease renewed, ttl 9771s
+2024-03-18 06:00:03.575 [INF] [IO] [PID:4179] config reloaded from profile 6036bc6b
+2024-03-18 06:00:00.756 [INF] [CS] [PID:4179] request completed in 3866ms
+2024-03-18 06:00:04.641 [INF] [IO] [PID:4179] checkpoint written at offset 916
+2024-03-18 06:00:04.522 [INF] [DB] [PID:4179] dropped 584 stale entries during compaction
+2024-03-18 06:00:00.195 [WRN] [DB] [PID:4179] lease acquisition timed out after 921ms
+2024-03-18 06:00:00.784 [INF] [NET] [PID:4179] queue depth 7391 exceeds soft limit
+2024-03-18 06:00:03.910 [ERR] [IO] [PID:4179] write rejected: quota exceeded by 4177 bytes
+2024-03-18 06:00:06.462 [INF] [NET] [PID:4179] retrying upstream after 5635ms backoff
+2024-03-18 06:00:04.883 [INF] [IO] [PID:4179] connection pool resized to 5908
+2024-03-18 06:00:04.200 [DBG] [DB] [PID:4179] config reloaded from profile 0bb5e082
+2024-03-18 06:00:07.707 [INF] [CS] [PID:4179] background scan finished, 4852 objects visited
+2024-03-18 06:00:04.092 [DBG] [CS] [PID:4179] handshake with 192.0.2.2168 completed
+2024-03-18 06:00:07.268 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 103 bytes
+2024-03-18 06:00:01.368 [INF] [IO] [PID:4179] retrying upstream after 6655ms backoff
+2024-03-18 06:00:01.425 [INF] [DB] [PID:4179] lease renewed, ttl 6040s
+2024-03-18 06:00:04.966 [INF] [IO] [PID:4179] shard 7112 rebalanced to node-a03
+2024-03-18 06:00:05.454 [INF] [SCH] [PID:4179] retrying upstream after 9996ms backoff
+2024-03-18 06:00:06.104 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 1554 bytes
+2024-03-18 06:00:11.078 [WRN] [IO] [PID:4179] deserialization failed at offset 2249: unexpected token
+    at frame cff627fb (continuation)
+2024-03-18 06:00:10.620 [INF] [CS] [PID:4179] config reloaded from profile 63f95f51
+2024-03-18 06:00:07.409 [INF] [CS] [PID:4179] background scan finished, 2546 objects visited
+2024-03-18 06:00:09.216 [INF] [NET] [PID:4179] worker 8399 joined the pool
+2024-03-18 06:00:11.055 [INF] [DB] [PID:4179] flushed 2840 records to segment 20a7dff5
+2024-03-18 06:00:12.648 [WRN] [NET] [PID:4179] lease acquisition timed out after 7142ms
+2024-03-18 06:00:10.220 [WRN] [NET] [PID:4179] deserialization failed at offset 6473: unexpected token
+2024-03-18 06:00:06.192 [INF] [IO] [PID:4179] cache miss for key c19c5d09
+2024-03-18 06:00:11.803 [ERR] [NET] [PID:4179] deserialization failed at offset 724: unexpected token
+2024-03-18 06:00:02.774 [INF] [IO] [PID:4179] queue depth 2241 exceeds soft limit
+2024-03-18 06:00:00.195 [WRN] [DB] [PID:4179] lease acquisition timed out after 579ms
+2024-03-18 06:00:10.280 [INF] [DB] [PID:4179] shard 8459 rebalanced to node-a02
+2024-03-18 06:00:05.494 [DBG] [NET] [PID:4179] lease renewed, ttl 7915s
+2024-03-18 06:00:09.702 [INF] [DB] [PID:4179] lease renewed, ttl 4796s
+2024-03-18 06:00:12.341 [WRN] [DB] [PID:4179] segment 4cce0daf failed checksum validation
+2024-03-18 06:00:12.188 [DBG] [DB] [PID:4179] dropped 6546 stale entries during compaction
+2024-03-18 06:00:07.515 [INF] [DB] [PID:4179] connection pool resized to 3733
+2024-03-18 06:00:06.532 [DBG] [CS] [PID:4179] background scan finished, 6338 objects visited
+2024-03-18 06:00:12.878 [INF] [SCH] [PID:4179] shard 778 rebalanced to node-c01
+2024-03-18 06:00:00.432 [WRN] [SCH] [PID:4179] upstream 192.0.2.5053 refused connection after 3 attempts
+2024-03-18 06:00:16.513 [WRN] [CS] [PID:4179] upstream 192.0.2.3392 refused connection after 3 attempts
+2024-03-18 06:00:04.250 [INF] [DB] [PID:4179] flushed 9088 records to segment 47787de9
+2024-03-18 06:00:13.311 [WRN] [SCH] [PID:4179] lease acquisition timed out after 9388ms
+2024-03-18 06:00:11.492 [INF] [DB] [PID:4179] retrying upstream after 3650ms backoff
+2024-03-18 06:00:02.226 [DBG] [SCH] [PID:4179] checkpoint written at offset 9519
+2024-03-18 06:00:03.996 [INF] [SCH] [PID:4179] worker 7431 joined the pool
+2024-03-18 06:00:18.095 [INF] [CS] [PID:4179] config reloaded from profile 106f012a
+2024-03-18 06:00:20.104 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 7424 bytes
+2024-03-18 06:00:17.784 [WRN] [IO] [PID:4179] lease acquisition timed out after 4525ms
+2024-03-18 06:00:09.628 [INF] [SCH] [PID:4179] queue depth 5626 exceeds soft limit
+2024-03-18 06:00:13.452 [INF] [NET] [PID:4179] handshake with 192.0.2.2041 completed
+    at frame 84f9db27 (continuation)
+2024-03-18 06:00:01.860 [INF] [IO] [PID:4179] config reloaded from profile 5d6b1060
+2024-03-18 06:00:02.867 [INF] [SCH] [PID:4179] config reloaded from profile 42914bcc
+2024-03-18 06:00:06.448 [INF] [CS] [PID:4179] request completed in 4723ms
+2024-03-18 06:00:18.963 [INF] [DB] [PID:4179] retrying upstream after 6567ms backoff
+2024-03-18 06:00:18.688 [DBG] [IO] [PID:4179] flushed 2601 records to segment fa7537dd
+2024-03-18 06:00:12.740 [INF] [SCH] [PID:4179] cache miss for key 986eb3a9
+2024-03-18 06:00:06.930 [INF] [DB] [PID:4179] request completed in 3756ms
+2024-03-18 06:00:05.025 [INF] [SCH] [PID:4179] worker 8899 joined the pool
+2024-03-18 06:00:07.820 [WRN] [DB] [PID:4179] upstream 192.0.2.3646 refused connection after 3 attempts
+2024-03-18 06:00:23.184 [ERR] [SCH] [PID:4179] deserialization failed at offset 6589: unexpected token
+2024-03-18 06:00:08.050 [INF] [DB] [PID:4179] dropped 5251 stale entries during compaction
+2024-03-18 06:00:17.182 [INF] [IO] [PID:4179] config reloaded from profile 6b694ed5
+2024-03-18 06:00:27.936 [DBG] [DB] [PID:4179] lease renewed, ttl 5935s
+2024-03-18 06:00:06.278 [INF] [NET] [PID:4179] queue depth 5379 exceeds soft limit
+2024-03-18 06:00:04.958 [DBG] [IO] [PID:4179] request completed in 3604ms
+2024-03-18 06:00:18.900 [INF] [DB] [PID:4179] config reloaded from profile 95f77d9b
+2024-03-18 06:00:05.548 [WRN] [DB] [PID:4179] lease acquisition timed out after 4052ms
+2024-03-18 06:00:29.414 [INF] [SCH] [PID:4179] request completed in 72ms
+2024-03-18 06:00:29.952 [INF] [NET] [PID:4179] worker 9840 joined the pool
+2024-03-18 06:00:16.353 [DBG] [NET] [PID:4179] dropped 7428 stale entries during compaction
+2024-03-18 06:00:11.680 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 5660 bytes
+2024-03-18 06:00:05.346 [INF] [DB] [PID:4179] worker 996 joined the pool
+2024-03-18 06:00:30.258 [INF] [NET] [PID:4179] checkpoint written at offset 9220
+2024-03-18 06:00:05.644 [INF] [SCH] [PID:4179] connection pool resized to 9608
+2024-03-18 06:00:29.316 [WRN] [NET] [PID:4179] lease acquisition timed out after 8289ms
+2024-03-18 06:00:09.435 [WRN] [DB] [PID:4179] deserialization failed at offset 6482: unexpected token
+2024-03-18 06:00:12.900 [INF] [DB] [PID:4179] cache miss for key c082c660
+2024-03-18 06:00:34.017 [INF] [CS] [PID:4179] cache miss for key 37f93c03
+2024-03-18 06:00:18.568 [DBG] [IO] [PID:4179] background scan finished, 9085 objects visited
+2024-03-18 06:00:12.727 [INF] [DB] [PID:4179] retrying upstream after 205ms backoff
+    at frame 66da3b60 (continuation)
+2024-03-18 06:00:32.310 [INF] [SCH] [PID:4179] lease renewed, ttl 6461s
+2024-03-18 06:00:04.368 [DBG] [DB] [PID:4179] connection pool resized to 8519
+2024-03-18 06:00:22.816 [DBG] [IO] [PID:4179] cache miss for key 3b954af8
+2024-03-18 06:00:16.461 [ERR] [IO] [PID:4179] deserialization failed at offset 1590: unexpected token
+2024-03-18 06:00:07.614 [INF] [DB] [PID:4179] connection pool resized to 8041
+2024-03-18 06:00:16.340 [INF] [NET] [PID:4179] dropped 6851 stale entries during compaction
+2024-03-18 06:00:32.736 [INF] [CS] [PID:4179] retrying upstream after 1507ms backoff
+2024-03-18 06:00:34.823 [DBG] [SCH] [PID:4179] cache miss for key bb64505a
+2024-03-18 06:00:25.970 [INF] [DB] [PID:4179] handshake with 192.0.2.988 completed
+2024-03-18 06:00:28.611 [INF] [CS] [PID:4179] dropped 2542 stale entries during compaction
+2024-03-18 06:00:04.800 [INF] [IO] [PID:4179] connection pool resized to 7646
+2024-03-18 06:00:40.299 [INF] [CS] [PID:4179] dropped 3294 stale entries during compaction
+2024-03-18 06:00:27.642 [WRN] [DB] [PID:4179] lease acquisition timed out after 7181ms
+2024-03-18 06:00:11.330 [DBG] [DB] [PID:4179] config reloaded from profile ef8f7dec
+2024-03-18 06:00:33.696 [INF] [IO] [PID:4179] flushed 8580 records to segment 8eb90455
+2024-03-18 06:00:15.330 [INF] [NET] [PID:4179] lease renewed, ttl 548s
+2024-03-18 06:00:03.816 [INF] [DB] [PID:4179] background scan finished, 2888 objects visited
+2024-03-18 06:00:11.663 [INF] [NET] [PID:4179] background scan finished, 255 objects visited
+2024-03-18 06:00:06.696 [INF] [NET] [PID:4179] worker 7770 joined the pool
+2024-03-18 06:00:02.398 [ERR] [NET] [PID:4179] deserialization failed at offset 5656: unexpected token
+2024-03-18 06:00:01.430 [DBG] [DB] [PID:4179] background scan finished, 5230 objects visited
+2024-03-18 06:00:33.855 [INF] [SCH] [PID:4179] retrying upstream after 1803ms backoff
+2024-03-18 06:00:16.128 [DBG] [NET] [PID:4179] dropped 910 stale entries during compaction
+2024-03-18 06:00:13.560 [INF] [IO] [PID:4179] queue depth 4801 exceeds soft limit
+2024-03-18 06:00:03.306 [DBG] [NET] [PID:4179] background scan finished, 1307 objects visited
+2024-03-18 06:00:11.615 [DBG] [IO] [PID:4179] background scan finished, 8671 objects visited
+2024-03-18 06:00:18.096 [INF] [SCH] [PID:4179] cache miss for key 1899616c
+2024-03-18 06:00:35.802 [INF] [SCH] [PID:4179] checkpoint written at offset 5183
+2024-03-18 06:00:34.338 [WRN] [NET] [PID:4179] segment dd06118e failed checksum validation
+2024-03-18 06:00:27.965 [INF] [DB] [PID:4179] connection pool resized to 2428
+    at frame a13b005d (continuation)
+2024-03-18 06:00:06.720 [INF] [DB] [PID:4179] handshake with 192.0.2.2228 completed
+2024-03-18 06:00:38.962 [INF] [CS] [PID:4179] queue depth 7334 exceeds soft limit
+2024-03-18 06:00:21.106 [INF] [NET] [PID:4179] handshake with 192.0.2.4072 completed
+2024-03-18 06:00:18.204 [WRN] [SCH] [PID:4179] segment d1d2183d failed checksum validation
+2024-03-18 06:00:12.152 [INF] [IO] [PID:4179] connection pool resized to 130
+2024-03-18 06:00:21.625 [WRN] [DB] [PID:4179] deserialization failed at offset 4315: unexpected token
+2024-03-18 06:00:23.688 [INF] [IO] [PID:4179] config reloaded from profile 7e2d66fa
+2024-03-18 06:00:03.429 [INF] [DB] [PID:4179] worker 8432 joined the pool
+2024-03-18 06:00:43.136 [WRN] [CS] [PID:4179] segment 5b64b66a failed checksum validation
+2024-03-18 06:00:35.604 [INF] [IO] [PID:4179] cache miss for key ac83559e
+2024-03-18 06:00:50.440 [INF] [DB] [PID:4179] worker 9595 joined the pool
+2024-03-18 06:00:47.815 [INF] [CS] [PID:4179] worker 7520 joined the pool
+2024-03-18 06:00:38.676 [INF] [IO] [PID:4179] connection pool resized to 4861
+2024-03-18 06:00:07.714 [INF] [CS] [PID:4179] connection pool resized to 2409
+2024-03-18 06:00:37.520 [INF] [NET] [PID:4179] config reloaded from profile 728f8dbd
+2024-03-18 06:00:49.950 [DBG] [DB] [PID:4179] connection pool resized to 2457
+2024-03-18 06:00:01.224 [INF] [SCH] [PID:4179] shard 1304 rebalanced to node-a03
+2024-03-18 06:00:48.909 [ERR] [DB] [PID:4179] lease acquisition timed out after 6352ms
+2024-03-18 06:00:31.326 [INF] [CS] [PID:4179] handshake with 192.0.2.4675 completed
+2024-03-18 06:00:53.654 [ERR] [CS] [PID:4179] write rejected: quota exceeded by 279 bytes
+2024-03-18 06:00:27.860 [DBG] [CS] [PID:4179] handshake with 192.0.2.2608 completed
+2024-03-18 06:00:00.705 [WRN] [SCH] [PID:4179] segment 0e665d2b failed checksum validation
+2024-03-18 06:00:46.576 [INF] [NET] [PID:4179] dropped 6642 stale entries during compaction
+2024-03-18 06:00:18.447 [DBG] [NET] [PID:4179] lease renewed, ttl 17s
+2024-03-18 06:00:15.984 [INF] [DB] [PID:4179] worker 8091 joined the pool
+2024-03-18 06:00:18.850 [WRN] [CS] [PID:4179] lease acquisition timed out after 2108ms
+2024-03-18 06:00:24.528 [INF] [SCH] [PID:4179] retrying upstream after 7975ms backoff
+2024-03-18 06:00:02.940 [INF] [SCH] [PID:4179] cache miss for key 5ecb9ca4
+2024-03-18 06:00:20.868 [DBG] [IO] [PID:4179] retrying upstream after 4802ms backoff
+2024-03-18 06:00:05.811 [INF] [DB] [PID:4179] flushed 7066 records to segment 988014f1
+    at frame c972a645 (continuation)
+2024-03-18 06:00:10.800 [INF] [CS] [PID:4179] shard 6532 rebalanced to node-c01
+2024-03-18 06:00:01.661 [WRN] [CS] [PID:4179] deserialization failed at offset 1254: unexpected token
+2024-03-18 06:00:14.288 [INF] [DB] [PID:4179] request completed in 4779ms
+2024-03-18 06:00:57.375 [DBG] [NET] [PID:4179] lease renewed, ttl 7632s
+2024-03-18 06:00:06.160 [DBG] [SCH] [PID:4179] connection pool resized to 4962
+2024-03-18 06:00:39.525 [INF] [SCH] [PID:4179] queue depth 3740 exceeds soft limit
+2024-03-18 06:00:47.580 [DBG] [NET] [PID:4179] checkpoint written at offset 4870
+2024-03-18 06:00:53.380 [INF] [IO] [PID:4179] dropped 6520 stale entries during compaction
+2024-03-18 06:00:18.960 [DBG] [CS] [PID:4179] dropped 2215 stale entries during compaction
+2024-03-18 06:00:24.486 [INF] [DB] [PID:4179] queue depth 7017 exceeds soft limit
+2024-03-18 06:00:08.000 [INF] [CS] [PID:4179] flushed 3472 records to segment 8d562272
+2024-03-18 06:00:26.887 [INF] [IO] [PID:4179] worker 6113 joined the pool
+2024-03-18 06:00:21.870 [DBG] [NET] [PID:4179] dropped 3633 stale entries during compaction
+2024-03-18 06:00:35.371 [INF] [SCH] [PID:4179] checkpoint written at offset 3683
+2024-03-18 06:00:17.384 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 9873 bytes
+2024-03-18 06:01:04.515 [WRN] [DB] [PID:4179] upstream 192.0.2.7688 refused connection after 3 attempts
+2024-03-18 06:00:37.350 [INF] [NET] [PID:4179] lease renewed, ttl 9057s
+2024-03-18 06:00:02.672 [ERR] [IO] [PID:4179] deserialization failed at offset 5171: unexpected token
+2024-03-18 06:00:44.856 [INF] [DB] [PID:4179] config reloaded from profile e5eb61f4
+2024-03-18 06:01:05.065 [INF] [IO] [PID:4179] checkpoint written at offset 4765
+2024-03-18 06:00:05.270 [WRN] [NET] [PID:4179] segment e4eb536e failed checksum validation
+2024-03-18 06:00:51.984 [DBG] [SCH] [PID:4179] dropped 7615 stale entries during compaction
+2024-03-18 06:00:10.492 [WRN] [NET] [PID:4179] upstream 192.0.2.2993 refused connection after 3 attempts
+2024-03-18 06:00:46.537 [WRN] [DB] [PID:4179] segment 1cfd49ad failed checksum validation
+2024-03-18 06:00:10.788 [INF] [SCH] [PID:4179] request completed in 3875ms
+2024-03-18 06:00:38.150 [INF] [NET] [PID:4179] shard 1731 rebalanced to node-a02
+2024-03-18 06:00:45.760 [INF] [NET] [PID:4179] request completed in 2668ms
+2024-03-18 06:00:26.019 [INF] [SCH] [PID:4179] checkpoint written at offset 358
+2024-03-18 06:00:15.664 [DBG] [CS] [PID:4179] queue depth 3882 exceeds soft limit
+2024-03-18 06:00:57.459 [INF] [DB] [PID:4179] lease renewed, ttl 3848s
+    at frame 8aa569b2 (continuation)
+2024-03-18 06:00:07.740 [DBG] [DB] [PID:4179] queue depth 8718 exceeds soft limit
+2024-03-18 06:00:46.155 [DBG] [NET] [PID:4179] checkpoint written at offset 3284
+2024-03-18 06:01:03.700 [WRN] [CS] [PID:4179] lease acquisition timed out after 8381ms
+2024-03-18 06:00:14.823 [INF] [IO] [PID:4179] checkpoint written at offset 2493
+2024-03-18 06:00:31.832 [INF] [NET] [PID:4179] handshake with 192.0.2.2113 completed
+2024-03-18 06:01:13.075 [WRN] [IO] [PID:4179] lease acquisition timed out after 4927ms
+2024-03-18 06:00:25.482 [WRN] [IO] [PID:4179] lease acquisition timed out after 7885ms
+2024-03-18 06:00:04.301 [INF] [DB] [PID:4179] queue depth 2696 exceeds soft limit
+2024-03-18 06:01:13.884 [INF] [NET] [PID:4179] worker 733 joined the pool
+2024-03-18 06:00:13.230 [WRN] [IO] [PID:4179] upstream 192.0.2.7370 refused connection after 3 attempts
+2024-03-18 06:00:44.840 [WRN] [DB] [PID:4179] upstream 192.0.2.8616 refused connection after 3 attempts
+2024-03-18 06:00:01.528 [INF] [NET] [PID:4179] retrying upstream after 53ms backoff
+2024-03-18 06:00:54.912 [WRN] [SCH] [PID:4179] write rejected: quota exceeded by 4723 bytes
+2024-03-18 06:00:21.037 [INF] [CS] [PID:4179] retrying upstream after 707ms backoff
+2024-03-18 06:00:40.934 [INF] [CS] [PID:4179] flushed 1858 records to segment 4a8e9464
+2024-03-18 06:00:41.535 [DBG] [DB] [PID:4179] background scan finished, 5491 objects visited
+2024-03-18 06:00:06.076 [ERR] [NET] [PID:4179] write rejected: quota exceeded by 324 bytes
+2024-03-18 06:00:25.216 [ERR] [CS] [PID:4179] write rejected: quota exceeded by 7496 bytes
+2024-03-18 06:00:56.232 [INF] [NET] [PID:4179] lease renewed, ttl 2471s
+2024-03-18 06:00:39.203 [INF] [IO] [PID:4179] handshake with 192.0.2.7640 completed
+2024-03-18 06:00:46.000 [INF] [IO] [PID:4179] worker 2832 joined the pool
+2024-03-18 06:00:25.326 [INF] [SCH] [PID:4179] handshake with 192.0.2.5179 completed
+2024-03-18 06:00:11.312 [INF] [DB] [PID:4179] background scan finished, 2838 objects visited
+2024-03-18 06:00:23.954 [ERR] [SCH] [PID:4179] deserialization failed at offset 5250: unexpected token
+2024-03-18 06:00:01.632 [INF] [NET] [PID:4179] checkpoint written at offset 751
+2024-03-18 06:01:08.265 [ERR] [SCH] [PID:4179] upstream 192.0.2.9355 refused connection after 3 attempts
+2024-03-18 06:01:14.778 [DBG] [DB] [PID:4179] flushed 1206 records to segment 26688e05
+2024-03-18 06:00:33.327 [INF] [SCH] [PID:4179] shard 253 rebalanced to node-b03
+2024-03-18 06:00:52.000 [ERR] [CS] [PID:4179] deserialization failed at offset 6390: unexpected token
+2024-03-18 06:01:06.462 [INF] [DB] [PID:4179] request completed in 9983ms
+    at frame 2268bb57 (continuation)
+2024-03-18 06:00:20.580 [ERR] [CS] [PID:4179] deserialization failed at offset 1123: unexpected token
+2024-03-18 06:01:08.997 [INF] [NET] [PID:4179] dropped 3115 stale entries during compaction
+2024-03-18 06:00:12.084 [DBG] [SCH] [PID:4179] lease renewed, ttl 7428s
+2024-03-18 06:00:32.163 [DBG] [SCH] [PID:4179] lease renewed, ttl 5712s
+2024-03-18 06:01:12.118 [INF] [NET] [PID:4179] request completed in 1321ms
+2024-03-18 06:01:14.820 [ERR] [DB] [PID:4179] segment eb132a82 failed checksum validation
+2024-03-18 06:00:55.944 [INF] [CS] [PID:4179] handshake with 192.0.2.808 completed
+2024-03-18 06:00:16.709 [WRN] [SCH] [PID:4179] deserialization failed at offset 430: unexpected token
+2024-03-18 06:00:02.834 [INF] [SCH] [PID:4179] queue depth 5573 exceeds soft limit
+2024-03-18 06:00:28.908 [INF] [IO] [PID:4179] queue depth 7103 exceeds soft limit
+2024-03-18 06:00:20.240 [DBG] [IO] [PID:4179] checkpoint written at offset 724
+2024-03-18 06:00:58.565 [INF] [SCH] [PID:4179] cache miss for key aae4d738
+2024-03-18 06:00:21.978 [INF] [DB] [PID:4179] worker 3730 joined the pool
+2024-03-18 06:00:31.666 [INF] [SCH] [PID:4179] handshake with 192.0.2.7553 completed
+2024-03-18 06:00:56.448 [INF] [IO] [PID:4179] handshake with 192.0.2.1908 completed
+2024-03-18 06:01:05.700 [DBG] [DB] [PID:4179] cache miss for key 915e3d13
+2024-03-18 06:01:22.942 [INF] [IO] [PID:4179] shard 8561 rebalanced to node-b02
+2024-03-18 06:00:14.301 [WRN] [IO] [PID:4179] segment bf309ea1 failed checksum validation
+2024-03-18 06:00:56.772 [DBG] [IO] [PID:4179] shard 6569 rebalanced to node-c01
+2024-03-18 06:01:30.913 [INF] [NET] [PID:4179] connection pool resized to 94
+2024-03-18 06:01:18.430 [DBG] [CS] [PID:4179] handshake with 192.0.2.9870 completed
+2024-03-18 06:00:22.638 [DBG] [DB] [PID:4179] retrying upstream after 4323ms backoff
+2024-03-18 06:00:08.120 [WRN] [CS] [PID:4179] deserialization failed at offset 5588: unexpected token
+2024-03-18 06:01:11.764 [DBG] [NET] [PID:4179] retrying upstream after 1472ms backoff
+2024-03-18 06:00:32.994 [WRN] [CS] [PID:4179] deserialization failed at offset 5296: unexpected token
+2024-03-18 06:01:33.295 [DBG] [NET] [PID:4179] worker 4518 joined the pool
+2024-03-18 06:01:24.724 [WRN] [SCH] [PID:4179] deserialization failed at offset 555: unexpected token
+2024-03-18 06:00:30.573 [INF] [NET] [PID:4179] worker 3158 joined the pool
+2024-03-18 06:00:43.792 [INF] [SCH] [PID:4179] connection pool resized to 4461
+2024-03-18 06:00:15.057 [DBG] [NET] [PID:4179] flushed 3320 records to segment 11ef718c
+    at frame 69923890 (continuation)
+2024-03-18 06:00:34.560 [WRN] [NET] [PID:4179] lease acquisition timed out after 4158ms
+2024-03-18 06:01:20.012 [INF] [DB] [PID:4179] flushed 4584 records to segment 8c4c04b3
+2024-03-18 06:00:03.146 [DBG] [DB] [PID:4179] handshake with 192.0.2.952 completed
+2024-03-18 06:01:10.227 [INF] [SCH] [PID:4179] retrying upstream after 8279ms backoff
+2024-03-18 06:00:03.416 [WRN] [IO] [PID:4179] segment a6d28398 failed checksum validation
+2024-03-18 06:01:13.990 [INF] [SCH] [PID:4179] worker 9561 joined the pool
+2024-03-18 06:00:34.686 [INF] [NET] [PID:4179] checkpoint written at offset 9491
+2024-03-18 06:00:39.026 [INF] [DB] [PID:4179] dropped 9313 stale entries during compaction
+2024-03-18 06:00:39.680 [DBG] [SCH] [PID:4179] handshake with 192.0.2.20 completed
+2024-03-18 06:01:05.238 [ERR] [NET] [PID:4179] deserialization failed at offset 29: unexpected token
+2024-03-18 06:00:53.000 [DBG] [SCH] [PID:4179] config reloaded from profile 12f4d2f9
+2024-03-18 06:00:04.769 [DBG] [NET] [PID:4179] retrying upstream after 5488ms backoff
+2024-03-18 06:01:05.520 [DBG] [NET] [PID:4179] lease renewed, ttl 3005s
+2024-03-18 06:00:16.445 [INF] [DB] [PID:4179] flushed 5889 records to segment 440ae10e
+2024-03-18 06:00:50.292 [INF] [IO] [PID:4179] connection pool resized to 6941
+2024-03-18 06:01:20.580 [INF] [SCH] [PID:4179] config reloaded from profile d26e8785
+2024-03-18 06:01:32.416 [WRN] [DB] [PID:4179] segment 934caa86 failed checksum validation
+2024-03-18 06:01:21.212 [INF] [DB] [PID:4179] dropped 7471 stale entries during compaction
+2024-03-18 06:01:13.014 [INF] [DB] [PID:4179] request completed in 8890ms
+2024-03-18 06:00:06.993 [INF] [IO] [PID:4179] queue depth 2605 exceeds soft limit
+2024-03-18 06:01:02.400 [ERR] [CS] [PID:4179] segment b675b9f7 failed checksum validation
+2024-03-18 06:01:30.045 [DBG] [CS] [PID:4179] background scan finished, 8504 objects visited
+2024-03-18 06:00:15.458 [INF] [CS] [PID:4179] config reloaded from profile bfaa0d35
+2024-03-18 06:00:32.086 [INF] [DB] [PID:4179] dropped 8660 stale entries during compaction
+2024-03-18 06:01:14.976 [INF] [CS] [PID:4179] handshake with 192.0.2.5264 completed
+2024-03-18 06:01:06.780 [DBG] [NET] [PID:4179] lease renewed, ttl 9979s
+2024-03-18 06:01:00.116 [DBG] [IO] [PID:4179] flushed 2504 records to segment a7c61dd6
+2024-03-18 06:00:17.355 [WRN] [SCH] [PID:4179] deserialization failed at offset 3322: unexpected token
+2024-03-18 06:00:06.968 [INF] [DB] [PID:4179] connection pool resized to 4210
+2024-03-18 06:01:04.022 [WRN] [DB] [PID:4179] deserialization failed at offset 1052: unexpected token
+    at frame a98e5e5b (continuation)
+2024-03-18 06:01:05.880 [INF] [NET] [PID:4179] retrying upstream after 6756ms backoff
+2024-03-18 06:00:47.154 [INF] [SCH] [PID:4179] shard 4713 rebalanced to node-b01
+2024-03-18 06:01:34.656 [WRN] [IO] [PID:4179] deserialization failed at offset 8014: unexpected token
+2024-03-18 06:01:40.737 [INF] [CS] [PID:4179] queue depth 5123 exceeds soft limit
+2024-03-18 06:01:00.828 [INF] [IO] [PID:4179] dropped 8437 stale entries during compaction
+2024-03-18 06:00:32.450 [DBG] [CS] [PID:4179] background scan finished, 1781 objects visited
+2024-03-18 06:00:06.072 [INF] [NET] [PID:4179] request completed in 4668ms
+2024-03-18 06:00:59.832 [INF] [IO] [PID:4179] cache miss for key 1a08cd9d
+2024-03-18 06:00:11.120 [INF] [IO] [PID:4179] worker 3477 joined the pool
+2024-03-18 06:00:59.985 [DBG] [SCH] [PID:4179] shard 6135 rebalanced to node-b02
+2024-03-18 06:00:19.320 [INF] [IO] [PID:4179] checkpoint written at offset 3049
+2024-03-18 06:00:53.671 [INF] [IO] [PID:4179] checkpoint written at offset 3568
+2024-03-18 06:01:33.342 [INF] [CS] [PID:4179] lease renewed, ttl 6800s
+2024-03-18 06:00:54.336 [INF] [DB] [PID:4179] retrying upstream after 3ms backoff
+2024-03-18 06:00:41.464 [WRN] [DB] [PID:4179] segment 65e53313 failed checksum validation
+2024-03-18 06:01:09.540 [WRN] [DB] [PID:4179] deserialization failed at offset 1642: unexpected token
+2024-03-18 06:00:28.028 [INF] [SCH] [PID:4179] shard 7252 rebalanced to node-a03
+2024-03-18 06:00:58.548 [INF] [NET] [PID:4179] shard 7958 rebalanced to node-b01
+2024-03-18 06:01:28.992 [INF] [NET] [PID:4179] retrying upstream after 2114ms backoff
+2024-03-18 06:00:43.639 [INF] [DB] [PID:4179] queue depth 9255 exceeds soft limit
+2024-03-18 06:00:10.440 [DBG] [CS] [PID:4179] shard 2712 rebalanced to node-c03
+2024-03-18 06:01:17.697 [INF] [DB] [PID:4179] lease renewed, ttl 3420s
+2024-03-18 06:00:33.580 [WRN] [SCH] [PID:4179] deserialization failed at offset 9075: unexpected token
+2024-03-18 06:00:20.510 [ERR] [NET] [PID:4179] segment c8f9cae8 failed checksum validation
+2024-03-18 06:01:09.972 [WRN] [NET] [PID:4179] upstream 192.0.2.8883 refused connection after 3 attempts
+2024-03-18 06:00:29.500 [INF] [SCH] [PID:4179] config reloaded from profile 04c70209
+2024-03-18 06:00:15.984 [WRN] [DB] [PID:4179] lease acquisition timed out after 307ms
+2024-03-18 06:00:57.618 [INF] [IO] [PID:4179] handshake with 192.0.2.3330 completed
+2024-03-18 06:00:42.316 [ERR] [SCH] [PID:4179] deserialization failed at offset 7482: unexpected token
+2024-03-18 06:00:40.963 [INF] [NET] [PID:4179] request completed in 687ms
+    at frame f4870769 (continuation)
+2024-03-18 06:00:22.500 [ERR] [DB] [PID:4179] upstream 192.0.2.7480 refused connection after 3 attempts
+2024-03-18 06:00:24.080 [INF] [IO] [PID:4179] request completed in 6793ms
+2024-03-18 06:01:00.702 [DBG] [CS] [PID:4179] request completed in 4465ms
+2024-03-18 06:01:09.387 [INF] [SCH] [PID:4179] config reloaded from profile e13c7926
+2024-03-18 06:01:54.912 [INF] [CS] [PID:4179] flushed 6491 records to segment 6be30e66
+2024-03-18 06:01:27.230 [ERR] [IO] [PID:4179] upstream 192.0.2.31 refused connection after 3 attempts
+2024-03-18 06:00:29.376 [INF] [SCH] [PID:4179] handshake with 192.0.2.5475 completed
+2024-03-18 06:01:58.502 [INF] [CS] [PID:4179] queue depth 7325 exceeds soft limit
+2024-03-18 06:01:33.940 [INF] [SCH] [PID:4179] dropped 2659 stale entries during compaction
+2024-03-18 06:00:30.900 [DBG] [SCH] [PID:4179] request completed in 6871ms
+2024-03-18 06:00:31.930 [INF] [DB] [PID:4179] handshake with 192.0.2.1931 completed
+2024-03-18 06:00:57.535 [INF] [IO] [PID:4179] worker 4654 joined the pool
+2024-03-18 06:00:36.504 [WRN] [SCH] [PID:4179] upstream 192.0.2.6936 refused connection after 3 attempts
+2024-03-18 06:01:33.900 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 1028 bytes
+2024-03-18 06:00:44.274 [INF] [NET] [PID:4179] dropped 2721 stale entries during compaction
+2024-03-18 06:01:22.845 [INF] [IO] [PID:4179] request completed in 4271ms
+2024-03-18 06:01:36.064 [INF] [DB] [PID:4179] queue depth 6144 exceeds soft limit
+2024-03-18 06:00:24.092 [DBG] [CS] [PID:4179] cache miss for key 2e047182
+2024-03-18 06:01:15.684 [DBG] [SCH] [PID:4179] lease renewed, ttl 2558s
+2024-03-18 06:01:31.872 [INF] [CS] [PID:4179] dropped 6185 stale entries during compaction
+2024-03-18 06:00:41.920 [INF] [CS] [PID:4179] retrying upstream after 8922ms backoff
+2024-03-18 06:01:32.769 [WRN] [DB] [PID:4179] upstream 192.0.2.595 refused connection after 3 attempts
+2024-03-18 06:01:31.448 [WRN] [NET] [PID:4179] deserialization failed at offset 3467: unexpected token
+2024-03-18 06:01:02.016 [INF] [CS] [PID:4179] queue depth 4686 exceeds soft limit
+2024-03-18 06:01:15.492 [WRN] [IO] [PID:4179] deserialization failed at offset 5465: unexpected token
+2024-03-18 06:01:18.975 [INF] [DB] [PID:4179] flushed 8796 records to segment d3c69c37
+2024-03-18 06:01:09.764 [WRN] [IO] [PID:4179] deserialization failed at offset 5392: unexpected token
+2024-03-18 06:01:14.883 [DBG] [IO] [PID:4179] shard 270 rebalanced to node-c02
+2024-03-18 06:00:38.048 [INF] [IO] [PID:4179] dropped 7434 stale entries during compaction
+2024-03-18 06:01:40.016 [WRN] [CS] [PID:4179] upstream 192.0.2.8765 refused connection after 3 attempts
+    at frame 124e8ded (continuation)
+2024-03-18 06:00:31.020 [WRN] [IO] [PID:4179] lease acquisition timed out after 2964ms
+2024-03-18 06:01:15.468 [DBG] [DB] [PID:4179] queue depth 6311 exceeds soft limit
+2024-03-18 06:01:56.200 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 2747 bytes
+2024-03-18 06:00:57.609 [INF] [NET] [PID:4179] worker 4931 joined the pool
+2024-03-18 06:00:35.070 [ERR] [DB] [PID:4179] upstream 192.0.2.9074 refused connection after 3 attempts
+2024-03-18 06:01:10.685 [WRN] [CS] [PID:4179] upstream 192.0.2.6680 refused connection after 3 attempts
+2024-03-18 06:00:04.704 [WRN] [CS] [PID:4179] lease acquisition timed out after 2401ms
+2024-03-18 06:00:59.649 [DBG] [DB] [PID:4179] flushed 2476 records to segment c696f882
+2024-03-18 06:00:02.028 [WRN] [CS] [PID:4179] upstream 192.0.2.9813 refused connection after 3 attempts
+2024-03-18 06:01:03.393 [INF] [IO] [PID:4179] retrying upstream after 9536ms backoff
+2024-03-18 06:00:24.820 [INF] [DB] [PID:4179] config reloaded from profile c05e610c
+2024-03-18 06:00:37.510 [INF] [SCH] [PID:4179] queue depth 8186 exceeds soft limit
+2024-03-18 06:00:29.070 [INF] [NET] [PID:4179] flushed 4057 records to segment 1929d74e
+2024-03-18 06:00:15.778 [INF] [IO] [PID:4179] worker 8369 joined the pool
+2024-03-18 06:00:16.168 [WRN] [DB] [PID:4179] upstream 192.0.2.2411 refused connection after 3 attempts
+2024-03-18 06:00:32.430 [INF] [NET] [PID:4179] config reloaded from profile 7521fddf
+2024-03-18 06:01:35.150 [INF] [SCH] [PID:4179] lease renewed, ttl 4612s
+2024-03-18 06:00:54.132 [WRN] [SCH] [PID:4179] lease acquisition timed out after 2259ms
+2024-03-18 06:00:03.480 [WRN] [SCH] [PID:4179] upstream 192.0.2.1708 refused connection after 3 attempts
+2024-03-18 06:00:56.189 [WRN] [SCH] [PID:4179] segment f588efb7 failed checksum validation
+2024-03-18 06:02:12.650 [DBG] [IO] [PID:4179] queue depth 7646 exceeds soft limit
+2024-03-18 06:01:47.055 [ERR] [NET] [PID:4179] write rejected: quota exceeded by 3447 bytes
+2024-03-18 06:02:19.040 [INF] [IO] [PID:4179] retrying upstream after 8692ms backoff
+2024-03-18 06:01:07.423 [ERR] [DB] [PID:4179] write rejected: quota exceeded by 9116 bytes
+2024-03-18 06:01:17.526 [INF] [CS] [PID:4179] config reloaded from profile a16d8fbb
+2024-03-18 06:02:14.900 [INF] [IO] [PID:4179] request completed in 7172ms
+2024-03-18 06:00:16.020 [DBG] [CS] [PID:4179] handshake with 192.0.2.2982 completed
+2024-03-18 06:00:29.631 [INF] [IO] [PID:4179] worker 4403 joined the pool
+2024-03-18 06:00:09.666 [INF] [NET] [PID:4179] retrying upstream after 365ms backoff
+2024-03-18 06:00:51.337 [ERR] [NET] [PID:4179] deserialization failed at offset 6109: unexpected token
+    at frame 9dc14a47 (continuation)
+2024-03-18 06:00:03.600 [DBG] [DB] [PID:4179] checkpoint written at offset 3164
+2024-03-18 06:00:15.523 [INF] [NET] [PID:4179] shard 4615 rebalanced to node-b03
+2024-03-18 06:01:56.202 [INF] [SCH] [PID:4179] retrying upstream after 6479ms backoff
+2024-03-18 06:01:21.675 [INF] [CS] [PID:4179] lease renewed, ttl 9070s
+2024-03-18 06:01:31.000 [INF] [IO] [PID:4179] worker 1438 joined the pool
+2024-03-18 06:00:42.705 [INF] [IO] [PID:4179] cache miss for key b73097db
+2024-03-18 06:01:44.310 [INF] [NET] [PID:4179] background scan finished, 2078 objects visited
+2024-03-18 06:01:02.390 [INF] [CS] [PID:4179] dropped 1139 stale entries during compaction
+2024-03-18 06:01:38.256 [DBG] [CS] [PID:4179] flushed 1470 records to segment 46ea6755
+2024-03-18 06:02:12.840 [INF] [SCH] [PID:4179] handshake with 192.0.2.5234 completed
+2024-03-18 06:00:55.870 [INF] [NET] [PID:4179] queue depth 4389 exceeds soft limit
+2024-03-18 06:01:09.377 [WRN] [IO] [PID:4179] upstream 192.0.2.5080 refused connection after 3 attempts
+2024-03-18 06:00:16.368 [DBG] [IO] [PID:4179] config reloaded from profile 9c435304
+2024-03-18 06:01:42.948 [INF] [CS] [PID:4179] checkpoint written at offset 7982
+2024-03-18 06:01:06.572 [INF] [SCH] [PID:4179] request completed in 3661ms
+2024-03-18 06:01:37.125 [INF] [CS] [PID:4179] worker 1249 joined the pool
+2024-03-18 06:00:53.392 [INF] [SCH] [PID:4179] queue depth 3792 exceeds soft limit
+2024-03-18 06:01:48.953 [ERR] [CS] [PID:4179] lease acquisition timed out after 8679ms
+2024-03-18 06:02:01.338 [DBG] [IO] [PID:4179] background scan finished, 2279 objects visited
+2024-03-18 06:02:03.933 [INF] [DB] [PID:4179] queue depth 9858 exceeds soft limit
+2024-03-18 06:01:08.400 [DBG] [DB] [PID:4179] lease renewed, ttl 3243s
+2024-03-18 06:00:28.194 [INF] [SCH] [PID:4179] dropped 2628 stale entries during compaction
+2024-03-18 06:01:03.794 [INF] [NET] [PID:4179] request completed in 4386ms
+2024-03-18 06:01:39.580 [DBG] [CS] [PID:4179] config reloaded from profile 848a31aa
+2024-03-18 06:01:52.896 [INF] [SCH] [PID:4179] retrying upstream after 1350ms backoff
+2024-03-18 06:01:45.490 [INF] [CS] [PID:4179] config reloaded from profile bd330b19
+2024-03-18 06:02:30.540 [INF] [IO] [PID:4179] request completed in 8394ms
+2024-03-18 06:01:08.886 [INF] [CS] [PID:4179] retrying upstream after 431ms backoff
+2024-03-18 06:00:05.820 [ERR] [IO] [PID:4179] lease acquisition timed out after 3097ms
+2024-03-18 06:00:49.792 [WRN] [NET] [PID:4179] segment d1518a38 failed checksum validation
+    at frame 8186d772 (continuation)
+2024-03-18 06:02:28.590 [WRN] [SCH] [PID:4179] segment 7b92ab82 failed checksum validation
+2024-03-18 06:00:15.640 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 8062 bytes
+2024-03-18 06:00:16.464 [INF] [NET] [PID:4179] shard 3543 rebalanced to node-b03
+2024-03-18 06:01:26.067 [INF] [IO] [PID:4179] lease renewed, ttl 2883s
+2024-03-18 06:00:36.248 [INF] [NET] [PID:4179] request completed in 4097ms
+2024-03-18 06:02:12.325 [INF] [CS] [PID:4179] queue depth 2510 exceeds soft limit
+2024-03-18 06:02:05.928 [DBG] [DB] [PID:4179] lease renewed, ttl 2450s
+2024-03-18 06:01:12.254 [DBG] [SCH] [PID:4179] config reloaded from profile 6c20ad0a
+2024-03-18 06:00:24.676 [INF] [NET] [PID:4179] worker 5186 joined the pool
+2024-03-18 06:02:25.635 [INF] [DB] [PID:4179] flushed 7026 records to segment 61b719df
+2024-03-18 06:00:16.400 [DBG] [CS] [PID:4179] cache miss for key 66c7f3e2
+2024-03-18 06:02:17.543 [INF] [DB] [PID:4179] lease renewed, ttl 1506s
+2024-03-18 06:02:10.248 [INF] [SCH] [PID:4179] connection pool resized to 5185
+2024-03-18 06:02:17.020 [INF] [NET] [PID:4179] request completed in 1692ms
+2024-03-18 06:02:31.500 [WRN] [NET] [PID:4179] lease acquisition timed out after 12ms
+2024-03-18 06:02:02.310 [INF] [DB] [PID:4179] retrying upstream after 8898ms backoff
+2024-03-18 06:00:43.848 [INF] [CS] [PID:4179] background scan finished, 9206 objects visited
+2024-03-18 06:00:21.978 [DBG] [DB] [PID:4179] connection pool resized to 5628
+2024-03-18 06:00:53.856 [DBG] [SCH] [PID:4179] lease renewed, ttl 8498s
+2024-03-18 06:02:03.927 [INF] [CS] [PID:4179] queue depth 3440 exceeds soft limit
+2024-03-18 06:00:49.610 [DBG] [NET] [PID:4179] queue depth 4353 exceeds soft limit
+2024-03-18 06:02:12.753 [DBG] [DB] [PID:4179] shard 8735 rebalanced to node-c02
+2024-03-18 06:01:21.988 [INF] [CS] [PID:4179] queue depth 6935 exceeds soft limit
+2024-03-18 06:00:40.474 [WRN] [DB] [PID:4179] deserialization failed at offset 6122: unexpected token
+2024-03-18 06:00:48.438 [WRN] [NET] [PID:4179] lease acquisition timed out after 4562ms
+2024-03-18 06:01:27.150 [INF] [DB] [PID:4179] worker 4178 joined the pool
+2024-03-18 06:01:22.368 [WRN] [IO] [PID:4179] upstream 192.0.2.4427 refused connection after 3 attempts
+2024-03-18 06:01:20.064 [INF] [IO] [PID:4179] connection pool resized to 1350
+2024-03-18 06:02:07.072 [INF] [NET] [PID:4179] queue depth 5139 exceeds soft limit
+2024-03-18 06:01:58.577 [WRN] [SCH] [PID:4179] segment 7f06420c failed checksum validation
+    at frame b46cf3aa (continuation)
+2024-03-18 06:02:26.160 [INF] [CS] [PID:4179] config reloaded from profile 7b186219
+2024-03-18 06:02:33.665 [INF] [DB] [PID:4179] lease renewed, ttl 5087s
+2024-03-18 06:01:11.740 [INF] [NET] [PID:4179] connection pool resized to 9015
+2024-03-18 06:01:17.832 [WRN] [SCH] [PID:4179] upstream 192.0.2.4254 refused connection after 3 attempts
+2024-03-18 06:02:02.536 [INF] [IO] [PID:4179] shard 8964 rebalanced to node-a03
+2024-03-18 06:01:41.575 [DBG] [SCH] [PID:4179] lease renewed, ttl 7811s
+2024-03-18 06:02:41.028 [INF] [CS] [PID:4179] background scan finished, 4909 objects visited
+2024-03-18 06:00:32.025 [INF] [CS] [PID:4179] queue depth 2994 exceeds soft limit
+2024-03-18 06:01:30.736 [WRN] [CS] [PID:4179] upstream 192.0.2.5356 refused connection after 3 attempts
+2024-03-18 06:00:18.018 [INF] [CS] [PID:4179] lease renewed, ttl 9690s
+2024-03-18 06:01:22.990 [ERR] [SCH] [PID:4179] lease acquisition timed out after 8108ms
+2024-03-18 06:02:33.436 [INF] [NET] [PID:4179] connection pool resized to 1641
+2024-03-18 06:00:22.896 [INF] [DB] [PID:4179] dropped 3391 stale entries during compaction
+2024-03-18 06:01:19.672 [INF] [IO] [PID:4179] config reloaded from profile de79dab2
+2024-03-18 06:01:31.140 [INF] [DB] [PID:4179] flushed 8743 records to segment 7ba67279
+2024-03-18 06:01:42.660 [DBG] [DB] [PID:4179] dropped 2235 stale entries during compaction
+2024-03-18 06:02:41.756 [WRN] [NET] [PID:4179] deserialization failed at offset 3156: unexpected token
+2024-03-18 06:00:12.673 [DBG] [CS] [PID:4179] connection pool resized to 5304
+2024-03-18 06:00:52.998 [INF] [IO] [PID:4179] worker 6134 joined the pool
+2024-03-18 06:02:42.430 [INF] [DB] [PID:4179] checkpoint written at offset 1484
+2024-03-18 06:02:46.320 [ERR] [SCH] [PID:4179] write rejected: quota exceeded by 2699 bytes
+2024-03-18 06:02:47.580 [INF] [NET] [PID:4179] connection pool resized to 1359
+2024-03-18 06:00:27.404 [WRN] [DB] [PID:4179] segment b4d1a8a8 failed checksum validation
+2024-03-18 06:00:34.997 [INF] [CS] [PID:4179] checkpoint written at offset 9730
+2024-03-18 06:01:23.028 [INF] [SCH] [PID:4179] handshake with 192.0.2.7313 completed
+2024-03-18 06:02:20.175 [INF] [NET] [PID:4179] flushed 2299 records to segment f5b0d3d5
+2024-03-18 06:01:03.332 [WRN] [DB] [PID:4179] deserialization failed at offset 2206: unexpected token
+2024-03-18 06:00:21.903 [INF] [SCH] [PID:4179] dropped 2916 stale entries during compaction
+2024-03-18 06:00:32.256 [INF] [SCH] [PID:4179] cache miss for key afd57811
+2024-03-18 06:00:23.348 [INF] [SCH] [PID:4179] dropped 1642 stale entries during compaction
+    at frame 2ec39ba2 (continuation)
+2024-03-18 06:00:59.850 [DBG] [DB] [PID:4179] config reloaded from profile e3165c54
+2024-03-18 06:01:13.062 [INF] [SCH] [PID:4179] config reloaded from profile 69d89b2e
+2024-03-18 06:00:47.912 [INF] [IO] [PID:4179] request completed in 3991ms
+2024-03-18 06:02:41.721 [INF] [DB] [PID:4179] flushed 4424 records to segment 4b7c2102
+2024-03-18 06:00:33.596 [INF] [DB] [PID:4179] handshake with 192.0.2.2121 completed
+2024-03-18 06:02:30.150 [INF] [NET] [PID:4179] request completed in 3827ms
+2024-03-18 06:00:28.728 [WRN] [CS] [PID:4179] segment 8c55ec01 failed checksum validation
+2024-03-18 06:01:48.309 [INF] [CS] [PID:4179] cache miss for key 23c94621
+2024-03-18 06:00:48.090 [INF] [DB] [PID:4179] connection pool resized to 7365
+2024-03-18 06:00:27.999 [WRN] [SCH] [PID:4179] lease acquisition timed out after 2528ms
+2024-03-18 06:01:14.520 [DBG] [DB] [PID:4179] retrying upstream after 9436ms backoff
+2024-03-18 06:00:12.447 [INF] [SCH] [PID:4179] queue depth 1989 exceeds soft limit
+2024-03-18 06:01:36.558 [INF] [SCH] [PID:4179] checkpoint written at offset 314
+2024-03-18 06:02:43.439 [WRN] [DB] [PID:4179] upstream 192.0.2.8159 refused connection after 3 attempts
+2024-03-18 06:00:51.504 [INF] [IO] [PID:4179] flushed 4457 records to segment b94e4837
+2024-03-18 06:01:17.655 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 4204 bytes
+2024-03-18 06:02:23.994 [DBG] [NET] [PID:4179] dropped 3908 stale entries during compaction
+2024-03-18 06:02:09.359 [INF] [IO] [PID:4179] checkpoint written at offset 8309
+2024-03-18 06:00:19.656 [WRN] [CS] [PID:4179] upstream 192.0.2.6256 refused connection after 3 attempts
+2024-03-18 06:00:41.272 [INF] [NET] [PID:4179] config reloaded from profile b9338542
+2024-03-18 06:02:57.190 [INF] [DB] [PID:4179] retrying upstream after 7765ms backoff
+2024-03-18 06:00:28.731 [INF] [DB] [PID:4179] lease renewed, ttl 6729s
+2024-03-18 06:01:26.848 [INF] [CS] [PID:4179] worker 9365 joined the pool
+2024-03-18 06:01:26.559 [INF] [IO] [PID:4179] retrying upstream after 5581ms backoff
+2024-03-18 06:00:29.388 [INF] [NET] [PID:4179] checkpoint written at offset 3353
+2024-03-18 06:00:26.125 [INF] [IO] [PID:4179] lease renewed, ttl 3321s
+2024-03-18 06:01:47.576 [ERR] [SCH] [PID:4179] deserialization failed at offset 6799: unexpected token
+2024-03-18 06:02:24.054 [ERR] [DB] [PID:4179] write rejected: quota exceeded by 4866 bytes
+2024-03-18 06:00:56.882 [INF] [DB] [PID:4179] request completed in 2630ms
+2024-03-18 06:02:19.389 [INF] [SCH] [PID:4179] flushed 2210 records to segment 2730530c
+    at frame 5ccfdca4 (continuation)
+2024-03-18 06:00:45.120 [DBG] [IO] [PID:4179] checkpoint written at offset 1668
+2024-03-18 06:02:13.237 [INF] [DB] [PID:4179] handshake with 192.0.2.7234 completed
+2024-03-18 06:02:48.218 [DBG] [SCH] [PID:4179] background scan finished, 7665 objects visited
+2024-03-18 06:00:37.191 [ERR] [DB] [PID:4179] deserialization failed at offset 8940: unexpected token
+2024-03-18 06:02:30.524 [INF] [IO] [PID:4179] retrying upstream after 4811ms backoff
+2024-03-18 06:01:32.635 [INF] [DB] [PID:4179] retrying upstream after 9640ms backoff
+2024-03-18 06:00:05.346 [INF] [DB] [PID:4179] retrying upstream after 102ms backoff
+2024-03-18 06:00:05.844 [ERR] [NET] [PID:4179] write rejected: quota exceeded by 5642 bytes
+2024-03-18 06:01:21.496 [DBG] [NET] [PID:4179] retrying upstream after 6633ms backoff
+2024-03-18 06:01:04.059 [WRN] [CS] [PID:4179] upstream 192.0.2.3288 refused connection after 3 attempts
+2024-03-18 06:01:31.140 [INF] [IO] [PID:4179] retrying upstream after 3244ms backoff
+2024-03-18 06:03:12.963 [INF] [IO] [PID:4179] dropped 7231 stale entries during compaction
+2024-03-18 06:01:03.468 [INF] [NET] [PID:4179] shard 7912 rebalanced to node-a02
+2024-03-18 06:01:13.950 [INF] [DB] [PID:4179] dropped 7686 stale entries during compaction
+2024-03-18 06:01:30.896 [DBG] [DB] [PID:4179] background scan finished, 6931 objects visited
+2024-03-18 06:00:22.275 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 7211 bytes
+2024-03-18 06:03:12.448 [WRN] [DB] [PID:4179] upstream 192.0.2.4385 refused connection after 3 attempts
+2024-03-18 06:01:55.304 [INF] [DB] [PID:4179] lease renewed, ttl 775s
+2024-03-18 06:02:25.914 [DBG] [SCH] [PID:4179] worker 9691 joined the pool
+2024-03-18 06:01:02.874 [WRN] [DB] [PID:4179] deserialization failed at offset 6086: unexpected token
+2024-03-18 06:00:12.000 [INF] [DB] [PID:4179] config reloaded from profile c9339b82
+2024-03-18 06:02:45.831 [INF] [CS] [PID:4179] connection pool resized to 3026
+2024-03-18 06:00:35.140 [INF] [DB] [PID:4179] queue depth 4915 exceeds soft limit
+2024-03-18 06:00:07.042 [INF] [CS] [PID:4179] queue depth 2860 exceeds soft limit
+2024-03-18 06:02:28.680 [INF] [IO] [PID:4179] background scan finished, 6685 objects visited
+2024-03-18 06:02:12.310 [INF] [DB] [PID:4179] connection pool resized to 6123
+2024-03-18 06:00:53.636 [DBG] [DB] [PID:4179] checkpoint written at offset 4238
+2024-03-18 06:02:54.408 [INF] [DB] [PID:4179] retrying upstream after 7661ms backoff
+2024-03-18 06:00:22.352 [INF] [NET] [PID:4179] config reloaded from profile 9b34cf32
+2024-03-18 06:02:08.777 [INF] [SCH] [PID:4179] handshake with 192.0.2.1028 completed
+    at frame 01035995 (continuation)
+2024-03-18 06:00:30.600 [DBG] [NET] [PID:4179] checkpoint written at offset 3495
+2024-03-18 06:02:21.036 [INF] [NET] [PID:4179] queue depth 8704 exceeds soft limit
+2024-03-18 06:01:02.464 [WRN] [SCH] [PID:4179] segment 37c926fd failed checksum validation
+2024-03-18 06:00:12.825 [INF] [IO] [PID:4179] request completed in 8124ms
+2024-03-18 06:02:44.480 [INF] [CS] [PID:4179] request completed in 4995ms
+2024-03-18 06:00:35.535 [INF] [NET] [PID:4179] request completed in 7607ms
+2024-03-18 06:02:44.088 [INF] [NET] [PID:4179] dropped 4218 stale entries during compaction
+2024-03-18 06:00:09.306 [INF] [DB] [PID:4179] shard 6100 rebalanced to node-c01
+2024-03-18 06:02:38.508 [DBG] [CS] [PID:4179] checkpoint written at offset 9566
+2024-03-18 06:01:45.876 [INF] [SCH] [PID:4179] dropped 3659 stale entries during compaction
+2024-03-18 06:01:13.840 [DBG] [DB] [PID:4179] lease renewed, ttl 327s
+2024-03-18 06:00:14.067 [ERR] [SCH] [PID:4179] segment e1d73080 failed checksum validation
+2024-03-18 06:01:22.998 [INF] [DB] [PID:4179] handshake with 192.0.2.2293 completed
+2024-03-18 06:02:34.285 [WRN] [DB] [PID:4179] segment 485e9ef6 failed checksum validation
+2024-03-18 06:02:24.624 [INF] [DB] [PID:4179] background scan finished, 7247 objects visited
+2024-03-18 06:03:21.600 [DBG] [SCH] [PID:4179] connection pool resized to 9792
+2024-03-18 06:00:34.716 [DBG] [SCH] [PID:4179] request completed in 2290ms
+2024-03-18 06:02:34.938 [INF] [DB] [PID:4179] connection pool resized to 3809
+2024-03-18 06:02:30.480 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 6972 bytes
+2024-03-18 06:03:27.368 [WRN] [IO] [PID:4179] upstream 192.0.2.7449 refused connection after 3 attempts
+2024-03-18 06:02:58.610 [INF] [IO] [PID:4179] dropped 2114 stale entries during compaction
+2024-03-18 06:02:10.626 [DBG] [DB] [PID:4179] checkpoint written at offset 1464
+2024-03-18 06:00:31.920 [INF] [DB] [PID:4179] shard 7738 rebalanced to node-c03
+2024-03-18 06:03:23.073 [INF] [SCH] [PID:4179] retrying upstream after 6090ms backoff
+2024-03-18 06:02:54.618 [DBG] [DB] [PID:4179] cache miss for key 53809b4e
+2024-03-18 06:00:02.675 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 251 bytes
+2024-03-18 06:01:24.688 [ERR] [SCH] [PID:4179] lease acquisition timed out after 6697ms
+2024-03-18 06:01:02.292 [INF] [NET] [PID:4179] checkpoint written at offset 1214
+2024-03-18 06:02:49.470 [INF] [IO] [PID:4179] dropped 1824 stale entries during compaction
+2024-03-18 06:01:09.531 [INF] [NET] [PID:4179] retrying upstream after 6920ms backoff
+    at frame a2e66850 (continuation)
+2024-03-18 06:03:03.060 [WRN] [IO] [PID:4179] deserialization failed at offset 2266: unexpected token
+2024-03-18 06:02:30.939 [INF] [SCH] [PID:4179] retrying upstream after 9605ms backoff
+2024-03-18 06:01:56.530 [DBG] [IO] [PID:4179] background scan finished, 7771 objects visited
+2024-03-18 06:00:26.607 [DBG] [NET] [PID:4179] flushed 332 records to segment 0206ab5f
+2024-03-18 06:01:27.584 [DBG] [SCH] [PID:4179] background scan finished, 7276 objects visited
+2024-03-18 06:01:05.400 [INF] [IO] [PID:4179] retrying upstream after 94ms backoff
+2024-03-18 06:02:15.954 [INF] [IO] [PID:4179] checkpoint written at offset 5028
+2024-03-18 06:01:24.785 [INF] [NET] [PID:4179] background scan finished, 5931 objects visited
+2024-03-18 06:03:31.528 [ERR] [CS] [PID:4179] deserialization failed at offset 9040: unexpected token
+2024-03-18 06:00:08.784 [INF] [NET] [PID:4179] worker 286 joined the pool
+2024-03-18 06:03:21.300 [INF] [SCH] [PID:4179] background scan finished, 465 objects visited
+2024-03-18 06:01:43.037 [ERR] [CS] [PID:4179] segment 22ca313c failed checksum validation
+2024-03-18 06:01:42.120 [INF] [CS] [PID:4179] dropped 1860 stale entries during compaction
+2024-03-18 06:01:35.669 [INF] [IO] [PID:4179] handshake with 192.0.2.7935 completed
+2024-03-18 06:03:08.360 [INF] [NET] [PID:4179] connection pool resized to 4249
+2024-03-18 06:01:06.045 [ERR] [CS] [PID:4179] deserialization failed at offset 1537: unexpected token
+2024-03-18 06:02:22.892 [INF] [DB] [PID:4179] dropped 5920 stale entries during compaction
+2024-03-18 06:02:09.781 [INF] [DB] [PID:4179] config reloaded from profile 081cb569
+2024-03-18 06:01:46.578 [INF] [DB] [PID:4179] cache miss for key 4a2ecc72
+2024-03-18 06:01:35.030 [INF] [DB] [PID:4179] dropped 7750 stale entries during compaction
+2024-03-18 06:01:59.280 [INF] [DB] [PID:4179] cache miss for key 6b074191
+2024-03-18 06:02:10.713 [WRN] [IO] [PID:4179] upstream 192.0.2.9320 refused connection after 3 attempts
+2024-03-18 06:00:39.340 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 7709 bytes
+2024-03-18 06:00:39.410 [INF] [SCH] [PID:4179] cache miss for key d35f7c72
+2024-03-18 06:00:33.840 [INF] [DB] [PID:4179] worker 1843 joined the pool
+2024-03-18 06:03:17.185 [DBG] [DB] [PID:4179] retrying upstream after 6026ms backoff
+2024-03-18 06:00:16.980 [INF] [IO] [PID:4179] config reloaded from profile 32b3a74e
+2024-03-18 06:01:29.586 [WRN] [CS] [PID:4179] lease acquisition timed out after 5240ms
+2024-03-18 06:03:24.480 [INF] [CS] [PID:4179] dropped 6306 stale entries during compaction
+2024-03-18 06:03:40.203 [INF] [CS] [PID:4179] cache miss for key 2ab3ac0d
+    at frame cc48934f (continuation)
+2024-03-18 06:00:26.790 [DBG] [DB] [PID:4179] queue depth 812 exceeds soft limit
+2024-03-18 06:01:26.221 [INF] [CS] [PID:4179] queue depth 5652 exceeds soft limit
+2024-03-18 06:01:11.500 [INF] [SCH] [PID:4179] handshake with 192.0.2.7328 completed
+2024-03-18 06:02:34.137 [INF] [NET] [PID:4179] retrying upstream after 6389ms backoff
+2024-03-18 06:03:09.420 [INF] [DB] [PID:4179] handshake with 192.0.2.534 completed
+2024-03-18 06:03:38.500 [INF] [DB] [PID:4179] background scan finished, 9355 objects visited
+2024-03-18 06:03:13.536 [WRN] [CS] [PID:4179] lease acquisition timed out after 4048ms
+2024-03-18 06:02:40.983 [INF] [NET] [PID:4179] dropped 5203 stale entries during compaction
+2024-03-18 06:02:28.546 [INF] [IO] [PID:4179] cache miss for key 25acb157
+2024-03-18 06:03:26.703 [INF] [CS] [PID:4179] connection pool resized to 3227
+2024-03-18 06:03:32.860 [WRN] [DB] [PID:4179] deserialization failed at offset 7716: unexpected token
+2024-03-18 06:02:53.138 [WRN] [DB] [PID:4179] deserialization failed at offset 1402: unexpected token
+2024-03-18 06:03:27.774 [INF] [NET] [PID:4179] handshake with 192.0.2.6762 completed
+2024-03-18 06:00:25.652 [ERR] [SCH] [PID:4179] upstream 192.0.2.5171 refused connection after 3 attempts
+2024-03-18 06:01:14.752 [WRN] [SCH] [PID:4179] segment 0754cba1 failed checksum validation
+2024-03-18 06:02:44.385 [INF] [SCH] [PID:4179] request completed in 687ms
+2024-03-18 06:01:07.976 [INF] [CS] [PID:4179] request completed in 9813ms
+2024-03-18 06:01:55.052 [WRN] [CS] [PID:4179] lease acquisition timed out after 8921ms
+2024-03-18 06:02:14.064 [INF] [NET] [PID:4179] worker 9099 joined the pool
+2024-03-18 06:01:04.201 [DBG] [DB] [PID:4179] request completed in 7721ms
+2024-03-18 06:00:56.050 [INF] [NET] [PID:4179] checkpoint written at offset 401
+2024-03-18 06:01:17.421 [INF] [IO] [PID:4179] worker 4407 joined the pool
+2024-03-18 06:00:33.152 [WRN] [CS] [PID:4179] deserialization failed at offset 5934: unexpected token
+2024-03-18 06:03:53.049 [INF] [CS] [PID:4179] connection pool resized to 5592
+2024-03-18 06:02:18.996 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 3809 bytes
+2024-03-18 06:01:09.020 [ERR] [CS] [PID:4179] lease acquisition timed out after 97ms
+2024-03-18 06:03:33.964 [INF] [SCH] [PID:4179] config reloaded from profile 6bc8e592
+2024-03-18 06:01:42.684 [ERR] [DB] [PID:4179] lease acquisition timed out after 1881ms
+2024-03-18 06:00:38.272 [DBG] [DB] [PID:4179] dropped 7858 stale entries during compaction
+2024-03-18 06:03:45.823 [INF] [SCH] [PID:4179] handshake with 192.0.2.4053 completed
+    at frame 8e4e9552 (continuation)
+2024-03-18 06:03:43.200 [INF] [NET] [PID:4179] flushed 4838 records to segment 328c72d2
+2024-03-18 06:00:10.818 [INF] [IO] [PID:4179] lease renewed, ttl 9874s
+2024-03-18 06:00:18.662 [INF] [SCH] [PID:4179] lease renewed, ttl 6735s
+2024-03-18 06:02:59.091 [WRN] [IO] [PID:4179] upstream 192.0.2.6564 refused connection after 3 attempts
+2024-03-18 06:01:37.244 [INF] [NET] [PID:4179] dropped 65 stale entries during compaction
+2024-03-18 06:02:37.905 [DBG] [CS] [PID:4179] flushed 8834 records to segment 184003a0
+2024-03-18 06:03:54.522 [INF] [NET] [PID:4179] checkpoint written at offset 84
+2024-03-18 06:02:27.501 [INF] [IO] [PID:4179] handshake with 192.0.2.9617 completed
+2024-03-18 06:03:21.248 [INF] [SCH] [PID:4179] handshake with 192.0.2.5387 completed
+2024-03-18 06:02:38.340 [INF] [NET] [PID:4179] request completed in 1386ms
+2024-03-18 06:02:25.790 [INF] [DB] [PID:4179] lease renewed, ttl 1882s
+2024-03-18 06:02:46.803 [WRN] [DB] [PID:4179] upstream 192.0.2.9647 refused connection after 3 attempts
+2024-03-18 06:00:41.004 [INF] [DB] [PID:4179] request completed in 7543ms
+2024-03-18 06:03:25.355 [WRN] [CS] [PID:4179] deserialization failed at offset 5701: unexpected token
+2024-03-18 06:01:43.152 [WRN] [CS] [PID:4179] deserialization failed at offset 1055: unexpected token
+2024-03-18 06:02:33.135 [INF] [IO] [PID:4179] background scan finished, 4324 objects visited
+2024-03-18 06:02:43.856 [INF] [NET] [PID:4179] worker 1256 joined the pool
+2024-03-18 06:00:48.126 [INF] [DB] [PID:4179] shard 9074 rebalanced to node-c02
+2024-03-18 06:00:21.012 [DBG] [CS] [PID:4179] worker 5682 joined the pool
+2024-03-18 06:00:24.760 [DBG] [IO] [PID:4179] flushed 368 records to segment 3a779433
+2024-03-18 06:02:59.180 [WRN] [CS] [PID:4179] segment 4b8a107c failed checksum validation
+2024-03-18 06:00:15.525 [DBG] [IO] [PID:4179] retrying upstream after 1246ms backoff
+2024-03-18 06:03:35.834 [INF] [CS] [PID:4179] config reloaded from profile eb0157a7
+2024-03-18 06:00:52.955 [INF] [SCH] [PID:4179] background scan finished, 7935 objects visited
+2024-03-18 06:03:29.040 [DBG] [NET] [PID:4179] retrying upstream after 4163ms backoff
+2024-03-18 06:01:44.375 [INF] [IO] [PID:4179] shard 1744 rebalanced to node-b01
+2024-03-18 06:03:55.376 [DBG] [CS] [PID:4179] queue depth 1647 exceeds soft limit
+2024-03-18 06:02:30.480 [DBG] [CS] [PID:4179] shard 1383 rebalanced to node-b02
+2024-03-18 06:02:21.300 [INF] [IO] [PID:4179] connection pool resized to 8508
+2024-03-18 06:00:05.032 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 4033 bytes
+    at frame ba0f514d (continuation)
+2024-03-18 06:00:21.420 [DBG] [SCH] [PID:4179] lease renewed, ttl 4501s
+2024-03-18 06:02:32.702 [INF] [IO] [PID:4179] connection pool resized to 4662
+2024-03-18 06:03:55.736 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 9246 bytes
+2024-03-18 06:03:33.954 [INF] [NET] [PID:4179] shard 6871 rebalanced to node-b03
+2024-03-18 06:01:33.198 [INF] [NET] [PID:4179] worker 7727 joined the pool
+2024-03-18 06:03:32.090 [INF] [CS] [PID:4179] connection pool resized to 8945
+2024-03-18 06:00:54.696 [DBG] [CS] [PID:4179] connection pool resized to 1571
+2024-03-18 06:00:40.131 [INF] [CS] [PID:4179] queue depth 8648 exceeds soft limit
+2024-03-18 06:02:48.432 [ERR] [IO] [PID:4179] upstream 192.0.2.1031 refused connection after 3 attempts
+2024-03-18 06:03:25.119 [ERR] [DB] [PID:4179] upstream 192.0.2.9687 refused connection after 3 attempts
+2024-03-18 06:04:15.360 [INF] [DB] [PID:4179] worker 1538 joined the pool
+2024-03-18 06:02:34.481 [DBG] [IO] [PID:4179] connection pool resized to 9425
+2024-03-18 06:03:45.342 [DBG] [CS] [PID:4179] lease renewed, ttl 7785s
+2024-03-18 06:02:50.395 [WRN] [CS] [PID:4179] lease acquisition timed out after 7086ms
+2024-03-18 06:02:15.240 [INF] [CS] [PID:4179] shard 9958 rebalanced to node-c02
+2024-03-18 06:02:38.025 [INF] [DB] [PID:4179] background scan finished, 9486 objects visited
+2024-03-18 06:03:20.906 [INF] [NET] [PID:4179] checkpoint written at offset 4662
+2024-03-18 06:03:33.510 [INF] [CS] [PID:4179] request completed in 9633ms
+2024-03-18 06:00:28.512 [INF] [NET] [PID:4179] queue depth 5718 exceeds soft limit
+2024-03-18 06:01:33.456 [DBG] [SCH] [PID:4179] config reloaded from profile cc78325a
+2024-03-18 06:03:10.450 [INF] [DB] [PID:4179] request completed in 5361ms
+2024-03-18 06:02:23.871 [INF] [DB] [PID:4179] handshake with 192.0.2.8446 completed
+2024-03-18 06:02:40.392 [INF] [NET] [PID:4179] retrying upstream after 4826ms backoff
+2024-03-18 06:03:22.430 [WRN] [DB] [PID:4179] lease acquisition timed out after 4621ms
+2024-03-18 06:01:30.906 [INF] [NET] [PID:4179] request completed in 6363ms
+2024-03-18 06:00:03.930 [INF] [IO] [PID:4179] retrying upstream after 422ms backoff
+2024-03-18 06:01:11.504 [INF] [SCH] [PID:4179] handshake with 192.0.2.2837 completed
+2024-03-18 06:02:43.593 [WRN] [CS] [PID:4179] lease acquisition timed out after 1452ms
+2024-03-18 06:00:27.636 [INF] [DB] [PID:4179] shard 1855 rebalanced to node-b01
+2024-03-18 06:03:20.995 [DBG] [DB] [PID:4179] worker 7106 joined the pool
+    at frame 24ea0555 (continuation)
+2024-03-18 06:00:38.280 [INF] [DB] [PID:4179] checkpoint written at offset 7518
+2024-03-18 06:00:15.864 [INF] [NET] [PID:4179] shard 4408 rebalanced to node-b03
+2024-03-18 06:01:16.130 [INF] [SCH] [PID:4179] dropped 2095 stale entries during compaction
+2024-03-18 06:01:48.732 [DBG] [CS] [PID:4179] config reloaded from profile afc3d25f
+2024-03-18 06:03:43.104 [INF] [NET] [PID:4179] checkpoint written at offset 4833
+2024-03-18 06:02:14.330 [DBG] [CS] [PID:4179] handshake with 192.0.2.7066 completed
+2024-03-18 06:03:19.800 [WRN] [CS] [PID:4179] deserialization failed at offset 8955: unexpected token
+2024-03-18 06:03:32.106 [INF] [IO] [PID:4179] handshake with 192.0.2.675 completed
+2024-03-18 06:02:17.608 [INF] [SCH] [PID:4179] shard 8430 rebalanced to node-b03
+2024-03-18 06:03:17.355 [INF] [SCH] [PID:4179] background scan finished, 9103 objects visited
+2024-03-18 06:04:12.590 [INF] [NET] [PID:4179] checkpoint written at offset 6101
+2024-03-18 06:01:48.702 [INF] [IO] [PID:4179] cache miss for key 687139d9
+2024-03-18 06:02:19.104 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 6689 bytes
+2024-03-18 06:01:05.281 [DBG] [NET] [PID:4179] checkpoint written at offset 8666
+2024-03-18 06:02:51.870 [DBG] [DB] [PID:4179] cache miss for key 9fcf670e
+2024-03-18 06:00:32.400 [INF] [SCH] [PID:4179] request completed in 1240ms
+2024-03-18 06:02:07.764 [INF] [IO] [PID:4179] flushed 929 records to segment 8ab174ee
+2024-03-18 06:01:16.501 [DBG] [IO] [PID:4179] worker 8069 joined the pool
+2024-03-18 06:03:40.350 [INF] [NET] [PID:4179] background scan finished, 3706 objects visited
+2024-03-18 06:01:38.455 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 4977 bytes
+2024-03-18 06:00:52.360 [DBG] [DB] [PID:4179] cache miss for key c32dc178
+2024-03-18 06:01:39.426 [INF] [NET] [PID:4179] flushed 6114 records to segment 94a3f905
+2024-03-18 06:04:02.792 [WRN] [NET] [PID:4179] deserialization failed at offset 4539: unexpected token
+2024-03-18 06:02:37.773 [WRN] [SCH] [PID:4179] write rejected: quota exceeded by 3442 bytes
+2024-03-18 06:02:16.800 [INF] [DB] [PID:4179] retrying upstream after 1354ms backoff
+2024-03-18 06:01:07.130 [INF] [NET] [PID:4179] queue depth 3982 exceeds soft limit
+2024-03-18 06:04:19.308 [WRN] [SCH] [PID:4179] upstream 192.0.2.6960 refused connection after 3 attempts
+2024-03-18 06:02:46.941 [INF] [NET] [PID:4179] dropped 8082 stale entries during compaction
+2024-03-18 06:04:12.496 [INF] [NET] [PID:4179] checkpoint written at offset 8657
+2024-03-18 06:01:33.704 [INF] [CS] [PID:4179] handshake with 192.0.2.8169 completed
+    at frame 9ec673e5 (continuation)
+2024-03-18 06:00:10.350 [WRN] [NET] [PID:4179] deserialization failed at offset 1164: unexpected token
+2024-03-18 06:02:55.514 [DBG] [SCH] [PID:4179] worker 5566 joined the pool
+2024-03-18 06:03:24.832 [INF] [SCH] [PID:4179] background scan finished, 1303 objects visited
+2024-03-18 06:00:06.930 [INF] [NET] [PID:4179] retrying upstream after 6128ms backoff
+2024-03-18 06:01:14.258 [INF] [DB] [PID:4179] lease renewed, ttl 8607s
+2024-03-18 06:02:29.425 [INF] [DB] [PID:4179] connection pool resized to 3063
+2024-03-18 06:03:17.664 [INF] [NET] [PID:4179] request completed in 2139ms
+2024-03-18 06:00:52.972 [DBG] [IO] [PID:4179] config reloaded from profile 8d1fbf9b
+2024-03-18 06:00:32.108 [INF] [IO] [PID:4179] worker 8613 joined the pool
+2024-03-18 06:02:58.245 [WRN] [SCH] [PID:4179] segment c1ae4a18 failed checksum validation
+2024-03-18 06:04:17.600 [ERR] [CS] [PID:4179] deserialization failed at offset 2346: unexpected token
+2024-03-18 06:00:48.369 [INF] [IO] [PID:4179] worker 4815 joined the pool
+2024-03-18 06:04:33.780 [DBG] [NET] [PID:4179] handshake with 192.0.2.6564 completed
+2024-03-18 06:00:13.357 [WRN] [NET] [PID:4179] lease acquisition timed out after 5758ms
+2024-03-18 06:03:21.344 [WRN] [SCH] [PID:4179] lease acquisition timed out after 3819ms
+2024-03-18 06:00:16.215 [INF] [DB] [PID:4179] handshake with 192.0.2.9749 completed
+2024-03-18 06:03:38.860 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 3318 bytes
+2024-03-18 06:00:19.089 [ERR] [SCH] [PID:4179] lease acquisition timed out after 4821ms
+2024-03-18 06:03:55.764 [INF] [DB] [PID:4179] connection pool resized to 8816
+2024-03-18 06:01:27.207 [WRN] [SCH] [PID:4179] lease acquisition timed out after 9591ms
+2024-03-18 06:02:19.870 [DBG] [CS] [PID:4179] checkpoint written at offset 5942
+2024-03-18 06:01:00.435 [INF] [NET] [PID:4179] background scan finished, 7739 objects visited
+2024-03-18 06:04:32.696 [WRN] [NET] [PID:4179] segment d6fca927 failed checksum validation
+2024-03-18 06:04:05.272 [INF] [SCH] [PID:4179] lease renewed, ttl 5737s
+2024-03-18 06:01:59.952 [ERR] [SCH] [PID:4179] segment cf3d78d6 failed checksum validation
+2024-03-18 06:04:15.970 [DBG] [SCH] [PID:4179] dropped 4976 stale entries during compaction
+2024-03-18 06:04:27.784 [INF] [DB] [PID:4179] lease renewed, ttl 545s
+2024-03-18 06:02:04.041 [INF] [DB] [PID:4179] checkpoint written at offset 8444
+2024-03-18 06:04:40.738 [INF] [NET] [PID:4179] shard 242 rebalanced to node-a01
+2024-03-18 06:01:18.371 [INF] [CS] [PID:4179] dropped 5309 stale entries during compaction
+    at frame b70d46da (continuation)
+2024-03-18 06:00:05.760 [WRN] [IO] [PID:4179] deserialization failed at offset 4449: unexpected token
+2024-03-18 06:04:38.306 [INF] [SCH] [PID:4179] cache miss for key 86d51ef8
+2024-03-18 06:03:27.214 [ERR] [NET] [PID:4179] write rejected: quota exceeded by 3244 bytes
+2024-03-18 06:01:15.915 [DBG] [CS] [PID:4179] retrying upstream after 4446ms backoff
+2024-03-18 06:03:48.784 [INF] [IO] [PID:4179] retrying upstream after 798ms backoff
+2024-03-18 06:04:18.825 [INF] [SCH] [PID:4179] worker 8199 joined the pool
+2024-03-18 06:01:56.160 [DBG] [DB] [PID:4179] background scan finished, 7686 objects visited
+2024-03-18 06:01:13.427 [DBG] [DB] [PID:4179] worker 7020 joined the pool
+2024-03-18 06:01:32.456 [INF] [SCH] [PID:4179] worker 7253 joined the pool
+2024-03-18 06:01:36.228 [INF] [NET] [PID:4179] queue depth 6845 exceeds soft limit
+2024-03-18 06:03:57.250 [INF] [CS] [PID:4179] config reloaded from profile 303ebe49
+2024-03-18 06:01:51.843 [INF] [IO] [PID:4179] cache miss for key 0cd111fb
+2024-03-18 06:01:27.108 [INF] [CS] [PID:4179] worker 4536 joined the pool
+2024-03-18 06:01:50.683 [INF] [DB] [PID:4179] worker 2889 joined the pool
+2024-03-18 06:04:49.930 [INF] [NET] [PID:4179] flushed 907 records to segment 5af4ba8f
+2024-03-18 06:00:08.085 [WRN] [NET] [PID:4179] upstream 192.0.2.6510 refused connection after 3 attempts
+2024-03-18 06:00:57.408 [WRN] [CS] [PID:4179] deserialization failed at offset 2842: unexpected token
+2024-03-18 06:00:16.951 [WRN] [NET] [PID:4179] deserialization failed at offset 6444: unexpected token
+2024-03-18 06:00:23.616 [INF] [IO] [PID:4179] retrying upstream after 3173ms backoff
+2024-03-18 06:01:50.850 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 6538 bytes
+2024-03-18 06:01:48.040 [INF] [SCH] [PID:4179] shard 8835 rebalanced to node-c03
+2024-03-18 06:01:40.776 [INF] [DB] [PID:4179] connection pool resized to 6088
+2024-03-18 06:00:32.648 [DBG] [SCH] [PID:4179] config reloaded from profile 2c1e90ba
+2024-03-18 06:04:23.765 [INF] [SCH] [PID:4179] connection pool resized to 8404
+2024-03-18 06:03:17.160 [INF] [IO] [PID:4179] dropped 1776 stale entries during compaction
+2024-03-18 06:03:56.165 [INF] [CS] [PID:4179] retrying upstream after 1504ms backoff
+2024-03-18 06:02:44.866 [INF] [CS] [PID:4179] connection pool resized to 5355
+2024-03-18 06:01:45.327 [DBG] [CS] [PID:4179] queue depth 5931 exceeds soft limit
+2024-03-18 06:02:44.560 [WRN] [DB] [PID:4179] deserialization failed at offset 8517: unexpected token
+2024-03-18 06:01:04.414 [INF] [SCH] [PID:4179] lease renewed, ttl 8206s
+    at frame 4e18232c (continuation)
+2024-03-18 06:00:12.000 [INF] [CS] [PID:4179] worker 6199 joined the pool
+2024-03-18 06:03:49.055 [INF] [DB] [PID:4179] connection pool resized to 1603
+2024-03-18 06:02:52.960 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 7102 bytes
+2024-03-18 06:04:39.363 [INF] [DB] [PID:4179] queue depth 9536 exceeds soft limit
+2024-03-18 06:04:41.242 [DBG] [SCH] [PID:4179] background scan finished, 5396 objects visited
+2024-03-18 06:03:00.445 [DBG] [NET] [PID:4179] queue depth 2611 exceeds soft limit
+2024-03-18 06:01:15.600 [INF] [IO] [PID:4179] request completed in 8295ms
+2024-03-18 06:03:00.923 [INF] [IO] [PID:4179] shard 5905 rebalanced to node-a03
+2024-03-18 06:02:13.408 [ERR] [NET] [PID:4179] deserialization failed at offset 1307: unexpected token
+2024-03-18 06:01:18.177 [INF] [CS] [PID:4179] connection pool resized to 7469
+2024-03-18 06:03:41.920 [INF] [IO] [PID:4179] checkpoint written at offset 2674
+2024-03-18 06:00:31.962 [ERR] [IO] [PID:4179] upstream 192.0.2.6500 refused connection after 3 attempts
+2024-03-18 06:03:15.072 [INF] [NET] [PID:4179] background scan finished, 3086 objects visited
+2024-03-18 06:04:58.333 [INF] [DB] [PID:4179] dropped 3185 stale entries during compaction
+2024-03-18 06:02:19.812 [INF] [IO] [PID:4179] cache miss for key 7e953dee
+2024-03-18 06:05:02.175 [DBG] [DB] [PID:4179] flushed 3884 records to segment 81664b06
+2024-03-18 06:04:56.442 [INF] [IO] [PID:4179] request completed in 9085ms
+2024-03-18 06:04:21.547 [DBG] [CS] [PID:4179] handshake with 192.0.2.2364 completed
+2024-03-18 06:02:28.224 [INF] [SCH] [PID:4179] lease renewed, ttl 4212s
+2024-03-18 06:03:44.548 [INF] [NET] [PID:4179] flushed 7544 records to segment 2385288e
+2024-03-18 06:03:46.380 [WRN] [NET] [PID:4179] upstream 192.0.2.8878 refused connection after 3 attempts
+2024-03-18 06:04:56.064 [INF] [DB] [PID:4179] checkpoint written at offset 4489
+2024-03-18 06:01:00.216 [INF] [CS] [PID:4179] worker 7173 joined the pool
+2024-03-18 06:02:09.864 [INF] [NET] [PID:4179] lease renewed, ttl 4862s
+2024-03-18 06:00:11.610 [WRN] [SCH] [PID:4179] upstream 192.0.2.4938 refused connection after 3 attempts
+2024-03-18 06:04:42.100 [INF] [DB] [PID:4179] retrying upstream after 3444ms backoff
+2024-03-18 06:03:57.456 [DBG] [SCH] [PID:4179] checkpoint written at offset 5427
+2024-03-18 06:03:41.445 [INF] [SCH] [PID:4179] checkpoint written at offset 9207
+2024-03-18 06:00:14.782 [WRN] [CS] [PID:4179] upstream 192.0.2.865 refused connection after 3 attempts
+2024-03-18 06:04:40.440 [INF] [CS] [PID:4179] cache miss for key b00f563d
+    at frame b0fe3c1f (continuation)
+2024-03-18 06:00:20.280 [DBG] [IO] [PID:4179] config reloaded from profile 1a8fd0dd
+2024-03-18 06:04:34.131 [INF] [DB] [PID:4179] request completed in 3167ms
+2024-03-18 06:01:04.124 [INF] [CS] [PID:4179] lease renewed, ttl 8864s
+2024-03-18 06:01:22.998 [INF] [IO] [PID:4179] cache miss for key 96b3ff06
+2024-03-18 06:01:01.152 [WRN] [DB] [PID:4179] segment 411823ef failed checksum validation
+2024-03-18 06:02:13.450 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 117 bytes
+2024-03-18 06:00:12.576 [INF] [IO] [PID:4179] dropped 7201 stale entries during compaction
+2024-03-18 06:04:36.237 [INF] [NET] [PID:4179] cache miss for key edc523af
+2024-03-18 06:00:22.064 [WRN] [SCH] [PID:4179] lease acquisition timed out after 7268ms
+2024-03-18 06:02:33.855 [WRN] [DB] [PID:4179] deserialization failed at offset 1818: unexpected token
+2024-03-18 06:01:33.220 [DBG] [DB] [PID:4179] request completed in 1836ms
+2024-03-18 06:00:50.624 [INF] [IO] [PID:4179] dropped 3258 stale entries during compaction
+2024-03-18 06:02:58.200 [INF] [NET] [PID:4179] flushed 8425 records to segment a94469e9
+2024-03-18 06:00:06.344 [DBG] [NET] [PID:4179] config reloaded from profile b15d3f89
+2024-03-18 06:03:12.148 [INF] [CS] [PID:4179] request completed in 2219ms
+2024-03-18 06:04:57.330 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 3513 bytes
+2024-03-18 06:00:34.228 [INF] [IO] [PID:4179] handshake with 192.0.2.7470 completed
+2024-03-18 06:03:41.566 [WRN] [SCH] [PID:4179] deserialization failed at offset 4479: unexpected token
+2024-03-18 06:01:34.164 [INF] [DB] [PID:4179] cache miss for key faba6e4a
+2024-03-18 06:04:42.047 [WRN] [NET] [PID:4179] deserialization failed at offset 2216: unexpected token
+2024-03-18 06:04:52.800 [WRN] [IO] [PID:4179] lease acquisition timed out after 4710ms
+2024-03-18 06:01:42.528 [INF] [DB] [PID:4179] checkpoint written at offset 6184
+2024-03-18 06:02:49.222 [INF] [SCH] [PID:4179] queue depth 2417 exceeds soft limit
+2024-03-18 06:02:55.857 [ERR] [NET] [PID:4179] upstream 192.0.2.196 refused connection after 3 attempts
+2024-03-18 06:00:45.024 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 8998 bytes
+2024-03-18 06:05:09.120 [DBG] [DB] [PID:4179] cache miss for key c555afc6
+2024-03-18 06:03:21.500 [INF] [SCH] [PID:4179] connection pool resized to 4814
+2024-03-18 06:02:38.172 [INF] [IO] [PID:4179] cache miss for key a9830dbe
+2024-03-18 06:05:19.968 [INF] [NET] [PID:4179] worker 782 joined the pool
+2024-03-18 06:04:05.127 [DBG] [NET] [PID:4179] dropped 6508 stale entries during compaction
+    at frame 270f8a4e (continuation)
+2024-03-18 06:02:12.030 [ERR] [CS] [PID:4179] deserialization failed at offset 8680: unexpected token
+2024-03-18 06:02:05.705 [INF] [IO] [PID:4179] background scan finished, 7426 objects visited
+2024-03-18 06:04:44.200 [INF] [DB] [PID:4179] config reloaded from profile 4d919aef
+2024-03-18 06:03:54.957 [INF] [CS] [PID:4179] retrying upstream after 1387ms backoff
+2024-03-18 06:04:19.666 [DBG] [IO] [PID:4179] config reloaded from profile 7c40bfd4
+2024-03-18 06:02:47.890 [WRN] [NET] [PID:4179] lease acquisition timed out after 705ms
+2024-03-18 06:01:15.888 [INF] [SCH] [PID:4179] flushed 6579 records to segment 86d31d02
+2024-03-18 06:03:52.845 [INF] [CS] [PID:4179] shard 6781 rebalanced to node-c01
+2024-03-18 06:01:04.622 [INF] [IO] [PID:4179] dropped 430 stale entries during compaction
+2024-03-18 06:01:21.081 [INF] [CS] [PID:4179] handshake with 192.0.2.2738 completed
+2024-03-18 06:04:12.560 [INF] [NET] [PID:4179] worker 7360 joined the pool
+2024-03-18 06:02:22.854 [INF] [DB] [PID:4179] shard 5840 rebalanced to node-a01
+2024-03-18 06:02:49.332 [WRN] [NET] [PID:4179] deserialization failed at offset 8270: unexpected token
+2024-03-18 06:03:14.228 [WRN] [NET] [PID:4179] segment b7324623 failed checksum validation
+2024-03-18 06:01:42.176 [WRN] [IO] [PID:4179] upstream 192.0.2.8336 refused connection after 3 attempts
+2024-03-18 06:00:37.950 [WRN] [DB] [PID:4179] deserialization failed at offset 9449: unexpected token
+2024-03-18 06:00:31.388 [INF] [DB] [PID:4179] connection pool resized to 9502
+2024-03-18 06:02:29.687 [DBG] [DB] [PID:4179] handshake with 192.0.2.8135 completed
+2024-03-18 06:04:06.744 [ERR] [SCH] [PID:4179] upstream 192.0.2.9899 refused connection after 3 attempts
+2024-03-18 06:05:01.756 [DBG] [IO] [PID:4179] queue depth 2670 exceeds soft limit
+2024-03-18 06:00:50.630 [INF] [SCH] [PID:4179] shard 2802 rebalanced to node-a02
+2024-03-18 06:04:12.624 [WRN] [SCH] [PID:4179] lease acquisition timed out after 7499ms
+2024-03-18 06:05:01.184 [INF] [DB] [PID:4179] flushed 8675 records to segment d06f4048
+2024-03-18 06:01:27.465 [DBG] [IO] [PID:4179] config reloaded from profile c4d8586a
+2024-03-18 06:01:24.234 [INF] [NET] [PID:4179] request completed in 6878ms
+2024-03-18 06:02:39.485 [INF] [CS] [PID:4179] checkpoint written at offset 6659
+2024-03-18 06:03:44.048 [INF] [SCH] [PID:4179] background scan finished, 6391 objects visited
+2024-03-18 06:02:36.519 [INF] [SCH] [PID:4179] config reloaded from profile a2598593
+2024-03-18 06:04:30.674 [INF] [NET] [PID:4179] worker 5474 joined the pool
+2024-03-18 06:00:47.823 [INF] [DB] [PID:4179] request completed in 5110ms
+    at frame 94ece55d (continuation)
+2024-03-18 06:04:13.680 [ERR] [IO] [PID:4179] segment 9b67668a failed checksum validation
+2024-03-18 06:00:54.665 [INF] [NET] [PID:4179] checkpoint written at offset 3655
+2024-03-18 06:04:51.332 [INF] [SCH] [PID:4179] dropped 4732 stale entries during compaction
+2024-03-18 06:03:40.866 [INF] [CS] [PID:4179] shard 5655 rebalanced to node-b01
+2024-03-18 06:00:56.548 [INF] [SCH] [PID:4179] cache miss for key 93a3c8bd
+2024-03-18 06:01:23.655 [INF] [IO] [PID:4179] lease renewed, ttl 8473s
+2024-03-18 06:00:43.992 [INF] [SCH] [PID:4179] request completed in 2990ms
+2024-03-18 06:01:06.913 [ERR] [IO] [PID:4179] upstream 192.0.2.650 refused connection after 3 attempts
+2024-03-18 06:04:48.320 [INF] [SCH] [PID:4179] lease renewed, ttl 7289s
+2024-03-18 06:05:13.281 [INF] [NET] [PID:4179] shard 4882 rebalanced to node-a01
+2024-03-18 06:00:23.800 [INF] [SCH] [PID:4179] handshake with 192.0.2.3391 completed
+2024-03-18 06:01:13.186 [INF] [NET] [PID:4179] checkpoint written at offset 1974
+2024-03-18 06:04:42.012 [INF] [IO] [PID:4179] connection pool resized to 9726
+2024-03-18 06:03:00.836 [DBG] [NET] [PID:4179] shard 6902 rebalanced to node-b03
+2024-03-18 06:04:46.944 [DBG] [DB] [PID:4179] shard 9251 rebalanced to node-a03
+2024-03-18 06:01:50.295 [INF] [IO] [PID:4179] checkpoint written at offset 611
+2024-03-18 06:03:10.888 [INF] [IO] [PID:4179] queue depth 3059 exceeds soft limit
+2024-03-18 06:02:42.830 [ERR] [DB] [PID:4179] deserialization failed at offset 8678: unexpected token
+2024-03-18 06:01:48.966 [INF] [NET] [PID:4179] queue depth 5771 exceeds soft limit
+2024-03-18 06:05:28.997 [INF] [CS] [PID:4179] handshake with 192.0.2.2460 completed
+2024-03-18 06:04:57.560 [INF] [CS] [PID:4179] cache miss for key ef2daa34
+2024-03-18 06:00:17.220 [INF] [DB] [PID:4179] dropped 4542 stale entries during compaction
+2024-03-18 06:02:31.712 [INF] [CS] [PID:4179] background scan finished, 3130 objects visited
+2024-03-18 06:03:44.380 [ERR] [SCH] [PID:4179] write rejected: quota exceeded by 8234 bytes
+2024-03-18 06:03:53.280 [WRN] [CS] [PID:4179] deserialization failed at offset 2547: unexpected token
+2024-03-18 06:02:16.670 [INF] [IO] [PID:4179] lease renewed, ttl 4848s
+2024-03-18 06:01:04.084 [INF] [SCH] [PID:4179] connection pool resized to 7408
+2024-03-18 06:04:27.036 [INF] [CS] [PID:4179] cache miss for key a6f96b09
+2024-03-18 06:02:57.940 [DBG] [SCH] [PID:4179] queue depth 8498 exceeds soft limit
+2024-03-18 06:02:58.145 [INF] [NET] [PID:4179] checkpoint written at offset 5543
+    at frame e24afa10 (continuation)
+2024-03-18 06:00:20.010 [DBG] [SCH] [PID:4179] handshake with 192.0.2.5608 completed
+2024-03-18 06:04:57.011 [WRN] [NET] [PID:4179] segment 59e7a23b failed checksum validation
+2024-03-18 06:00:57.552 [INF] [DB] [PID:4179] background scan finished, 8930 objects visited
+2024-03-18 06:00:12.222 [INF] [DB] [PID:4179] flushed 4619 records to segment 3a31d2c6
+2024-03-18 06:05:19.884 [INF] [DB] [PID:4179] request completed in 4404ms
+2024-03-18 06:02:17.375 [INF] [DB] [PID:4179] cache miss for key 77868221
+2024-03-18 06:01:02.196 [DBG] [NET] [PID:4179] checkpoint written at offset 53
+2024-03-18 06:03:21.710 [DBG] [IO] [PID:4179] background scan finished, 7657 objects visited
+2024-03-18 06:01:05.850 [INF] [IO] [PID:4179] retrying upstream after 1905ms backoff
+2024-03-18 06:04:43.917 [ERR] [DB] [PID:4179] deserialization failed at offset 4277: unexpected token
+2024-03-18 06:03:59.360 [DBG] [NET] [PID:4179] dropped 3586 stale entries during compaction
+2024-03-18 06:04:20.776 [INF] [DB] [PID:4179] dropped 3193 stale entries during compaction
+2024-03-18 06:05:13.110 [WRN] [CS] [PID:4179] write rejected: quota exceeded by 5743 bytes
+2024-03-18 06:01:15.938 [DBG] [IO] [PID:4179] config reloaded from profile 606b1ee4
+2024-03-18 06:03:11.828 [INF] [NET] [PID:4179] retrying upstream after 5297ms backoff
+2024-03-18 06:02:55.230 [WRN] [IO] [PID:4179] upstream 192.0.2.2790 refused connection after 3 attempts
+2024-03-18 06:00:21.264 [INF] [DB] [PID:4179] worker 6312 joined the pool
+2024-03-18 06:05:51.252 [WRN] [CS] [PID:4179] upstream 192.0.2.6912 refused connection after 3 attempts
+2024-03-18 06:03:32.232 [INF] [DB] [PID:4179] handshake with 192.0.2.4145 completed
+2024-03-18 06:00:23.114 [DBG] [SCH] [PID:4179] shard 7328 rebalanced to node-b02
+2024-03-18 06:02:20.620 [INF] [DB] [PID:4179] dropped 8042 stale entries during compaction
+2024-03-18 06:00:49.896 [INF] [IO] [PID:4179] queue depth 4985 exceeds soft limit
+2024-03-18 06:05:13.092 [WRN] [CS] [PID:4179] lease acquisition timed out after 6477ms
+2024-03-18 06:01:11.440 [DBG] [IO] [PID:4179] dropped 6425 stale entries during compaction
+2024-03-18 06:04:46.080 [INF] [CS] [PID:4179] background scan finished, 6117 objects visited
+2024-03-18 06:03:19.585 [INF] [SCH] [PID:4179] queue depth 9254 exceeds soft limit
+2024-03-18 06:05:58.400 [INF] [DB] [PID:4179] dropped 1058 stale entries during compaction
+2024-03-18 06:03:36.177 [INF] [NET] [PID:4179] connection pool resized to 6151
+2024-03-18 06:02:41.640 [INF] [CS] [PID:4179] config reloaded from profile c910bf7c
+2024-03-18 06:02:13.951 [INF] [NET] [PID:4179] cache miss for key 92eb29d6
+    at frame 558ff678 (continuation)
+2024-03-18 06:05:36.600 [INF] [NET] [PID:4179] request completed in 6731ms
+2024-03-18 06:04:57.330 [WRN] [SCH] [PID:4179] deserialization failed at offset 8180: unexpected token
+2024-03-18 06:00:43.296 [DBG] [DB] [PID:4179] cache miss for key 621eca32
+2024-03-18 06:05:04.311 [DBG] [CS] [PID:4179] flushed 6495 records to segment 7f54a878
+2024-03-18 06:01:45.768 [INF] [CS] [PID:4179] config reloaded from profile d9985fa0
+2024-03-18 06:05:33.040 [INF] [SCH] [PID:4179] request completed in 5860ms
+2024-03-18 06:03:25.662 [INF] [NET] [PID:4179] retrying upstream after 1976ms backoff
+2024-03-18 06:04:13.053 [DBG] [IO] [PID:4179] background scan finished, 4986 objects visited
+2024-03-18 06:01:58.948 [INF] [SCH] [PID:4179] shard 2228 rebalanced to node-c02
+2024-03-18 06:04:41.790 [DBG] [IO] [PID:4179] lease renewed, ttl 1319s
+2024-03-18 06:03:47.500 [INF] [SCH] [PID:4179] checkpoint written at offset 3488
+2024-03-18 06:05:25.227 [INF] [NET] [PID:4179] queue depth 382 exceeds soft limit
+2024-03-18 06:01:55.824 [WRN] [SCH] [PID:4179] upstream 192.0.2.9082 refused connection after 3 attempts
+2024-03-18 06:02:29.732 [INF] [DB] [PID:4179] worker 9174 joined the pool
+2024-03-18 06:03:01.886 [INF] [NET] [PID:4179] worker 2856 joined the pool
+2024-03-18 06:02:15.420 [ERR] [CS] [PID:4179] write rejected: quota exceeded by 5198 bytes
+2024-03-18 06:03:55.412 [DBG] [DB] [PID:4179] lease renewed, ttl 9607s
+2024-03-18 06:00:52.269 [DBG] [DB] [PID:4179] checkpoint written at offset 4874
+2024-03-18 06:06:05.364 [INF] [DB] [PID:4179] dropped 28 stale entries during compaction
+2024-03-18 06:01:05.249 [DBG] [CS] [PID:4179] retrying upstream after 6827ms backoff
+2024-03-18 06:03:23.320 [INF] [SCH] [PID:4179] lease renewed, ttl 516s
+2024-03-18 06:05:19.587 [INF] [NET] [PID:4179] retrying upstream after 489ms backoff
+2024-03-18 06:05:23.622 [DBG] [SCH] [PID:4179] dropped 496 stale entries during compaction
+2024-03-18 06:02:26.757 [INF] [CS] [PID:4179] config reloaded from profile fb8c0b97
+2024-03-18 06:00:47.124 [INF] [DB] [PID:4179] config reloaded from profile 45f73e86
+2024-03-18 06:04:02.350 [INF] [NET] [PID:4179] dropped 2099 stale entries during compaction
+2024-03-18 06:01:01.116 [WRN] [IO] [PID:4179] segment 7892ec54 failed checksum validation
+2024-03-18 06:02:24.612 [INF] [DB] [PID:4179] request completed in 4912ms
+2024-03-18 06:01:56.000 [DBG] [NET] [PID:4179] handshake with 192.0.2.6467 completed
+2024-03-18 06:02:59.297 [INF] [IO] [PID:4179] worker 2820 joined the pool
+    at frame f4329562 (continuation)
+2024-03-18 06:02:54.840 [INF] [NET] [PID:4179] retrying upstream after 6783ms backoff
+2024-03-18 06:02:55.959 [INF] [IO] [PID:4179] config reloaded from profile 6ea3fd60
+2024-03-18 06:02:26.324 [INF] [IO] [PID:4179] handshake with 192.0.2.1357 completed
+2024-03-18 06:04:59.493 [INF] [CS] [PID:4179] cache miss for key 39f0e5d4
+2024-03-18 06:02:52.790 [INF] [CS] [PID:4179] background scan finished, 4075 objects visited
+2024-03-18 06:02:58.585 [INF] [CS] [PID:4179] worker 3489 joined the pool
+2024-03-18 06:05:04.200 [INF] [DB] [PID:4179] lease renewed, ttl 1839s
+2024-03-18 06:02:12.117 [INF] [NET] [PID:4179] worker 3394 joined the pool
+2024-03-18 06:05:14.230 [WRN] [SCH] [PID:4179] deserialization failed at offset 7533: unexpected token
+2024-03-18 06:01:09.486 [INF] [NET] [PID:4179] retrying upstream after 3939ms backoff
+2024-03-18 06:03:55.940 [DBG] [SCH] [PID:4179] checkpoint written at offset 353
+2024-03-18 06:01:26.572 [DBG] [SCH] [PID:4179] checkpoint written at offset 348
+2024-03-18 06:03:10.284 [INF] [DB] [PID:4179] handshake with 192.0.2.6337 completed
+2024-03-18 06:05:31.936 [DBG] [IO] [PID:4179] worker 5070 joined the pool
+2024-03-18 06:04:00.720 [INF] [NET] [PID:4179] background scan finished, 5991 objects visited
+2024-03-18 06:00:53.865 [INF] [SCH] [PID:4179] config reloaded from profile 09131c6d
+2024-03-18 06:02:42.712 [INF] [CS] [PID:4179] background scan finished, 3223 objects visited
+2024-03-18 06:03:44.439 [INF] [SCH] [PID:4179] worker 6899 joined the pool
+2024-03-18 06:02:36.420 [INF] [NET] [PID:4179] request completed in 6764ms
+2024-03-18 06:03:34.474 [INF] [IO] [PID:4179] queue depth 5820 exceeds soft limit
+2024-03-18 06:02:31.050 [INF] [SCH] [PID:4179] retrying upstream after 3996ms backoff
+2024-03-18 06:03:19.710 [INF] [NET] [PID:4179] background scan finished, 3143 objects visited
+2024-03-18 06:05:09.400 [WRN] [NET] [PID:4179] upstream 192.0.2.7657 refused connection after 3 attempts
+2024-03-18 06:02:02.937 [DBG] [CS] [PID:4179] background scan finished, 5959 objects visited
+2024-03-18 06:04:48.108 [WRN] [SCH] [PID:4179] write rejected: quota exceeded by 6619 bytes
+2024-03-18 06:02:03.195 [INF] [IO] [PID:4179] handshake with 192.0.2.6063 completed
+2024-03-18 06:01:26.040 [INF] [CS] [PID:4179] background scan finished, 9828 objects visited
+2024-03-18 06:01:20.388 [INF] [IO] [PID:4179] handshake with 192.0.2.271 completed
+2024-03-18 06:04:17.702 [INF] [SCH] [PID:4179] handshake with 192.0.2.2171 completed
+2024-03-18 06:04:43.864 [INF] [SCH] [PID:4179] worker 7171 joined the pool
+    at frame fef10a69 (continuation)
+2024-03-18 06:06:19.200 [INF] [DB] [PID:4179] config reloaded from profile 7a604092
+2024-03-18 06:04:46.378 [ERR] [CS] [PID:4179] deserialization failed at offset 9352: unexpected token
+2024-03-18 06:02:05.060 [INF] [CS] [PID:4179] handshake with 192.0.2.1611 completed
+2024-03-18 06:00:58.743 [WRN] [IO] [PID:4179] deserialization failed at offset 9872: unexpected token
+2024-03-18 06:05:49.932 [INF] [SCH] [PID:4179] queue depth 6136 exceeds soft limit
+2024-03-18 06:05:43.540 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 1918 bytes
+2024-03-18 06:05:43.896 [DBG] [IO] [PID:4179] worker 9910 joined the pool
+2024-03-18 06:05:18.143 [DBG] [NET] [PID:4179] flushed 5274 records to segment 9274c65a
+2024-03-18 06:05:48.480 [INF] [NET] [PID:4179] retrying upstream after 1928ms backoff
+2024-03-18 06:05:45.933 [DBG] [NET] [PID:4179] lease renewed, ttl 5459s
+2024-03-18 06:00:27.160 [INF] [IO] [PID:4179] lease renewed, ttl 7586s
+2024-03-18 06:02:53.809 [INF] [IO] [PID:4179] connection pool resized to 1479
+2024-03-18 06:02:40.380 [WRN] [NET] [PID:4179] segment b530dc02 failed checksum validation
+2024-03-18 06:04:41.197 [INF] [IO] [PID:4179] config reloaded from profile df086a85
+2024-03-18 06:01:56.880 [INF] [CS] [PID:4179] connection pool resized to 4242
+2024-03-18 06:04:55.425 [DBG] [DB] [PID:4179] checkpoint written at offset 6085
+2024-03-18 06:04:49.872 [DBG] [SCH] [PID:4179] shard 4906 rebalanced to node-c02
+2024-03-18 06:03:13.446 [INF] [IO] [PID:4179] config reloaded from profile 9993a369
+2024-03-18 06:03:22.446 [WRN] [IO] [PID:4179] segment 70bcdcd2 failed checksum validation
+2024-03-18 06:06:05.167 [INF] [IO] [PID:4179] request completed in 8281ms
+2024-03-18 06:03:40.500 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 2964 bytes
+2024-03-18 06:00:50.031 [INF] [IO] [PID:4179] request completed in 5441ms
+2024-03-18 06:05:04.420 [INF] [SCH] [PID:4179] background scan finished, 1845 objects visited
+2024-03-18 06:05:15.543 [WRN] [CS] [PID:4179] lease acquisition timed out after 4709ms
+2024-03-18 06:03:46.320 [INF] [DB] [PID:4179] worker 9342 joined the pool
+2024-03-18 06:03:17.000 [INF] [DB] [PID:4179] flushed 9807 records to segment e5ae9c02
+2024-03-18 06:06:00.876 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 8163 bytes
+2024-03-18 06:03:30.231 [WRN] [DB] [PID:4179] upstream 192.0.2.976 refused connection after 3 attempts
+2024-03-18 06:03:19.576 [INF] [NET] [PID:4179] request completed in 9406ms
+2024-03-18 06:04:28.019 [INF] [NET] [PID:4179] cache miss for key a236e0fe
+    at frame 6430a066 (continuation)
+2024-03-18 06:04:54.030 [INF] [CS] [PID:4179] worker 4180 joined the pool
+2024-03-18 06:03:16.218 [INF] [CS] [PID:4179] retrying upstream after 6949ms backoff
+2024-03-18 06:01:21.344 [INF] [CS] [PID:4179] lease renewed, ttl 228s
+2024-03-18 06:03:53.355 [WRN] [DB] [PID:4179] segment 21e52f54 failed checksum validation
+2024-03-18 06:00:57.652 [INF] [DB] [PID:4179] background scan finished, 8997 objects visited
+2024-03-18 06:02:24.275 [INF] [DB] [PID:4179] flushed 1689 records to segment 0a23c4c9
+2024-03-18 06:05:54.576 [INF] [CS] [PID:4179] config reloaded from profile d4356c80
+2024-03-18 06:02:33.538 [DBG] [DB] [PID:4179] background scan finished, 1027 objects visited
+2024-03-18 06:02:00.758 [DBG] [CS] [PID:4179] handshake with 192.0.2.2440 completed
+2024-03-18 06:00:45.954 [INF] [CS] [PID:4179] queue depth 3537 exceeds soft limit
+2024-03-18 06:04:01.000 [INF] [CS] [PID:4179] queue depth 6443 exceeds soft limit
+2024-03-18 06:03:58.238 [DBG] [SCH] [PID:4179] checkpoint written at offset 5321
+2024-03-18 06:03:33.426 [INF] [CS] [PID:4179] checkpoint written at offset 7546
+2024-03-18 06:03:23.609 [INF] [DB] [PID:4179] lease renewed, ttl 5292s
+2024-03-18 06:01:05.260 [WRN] [IO] [PID:4179] deserialization failed at offset 8643: unexpected token
+2024-03-18 06:05:20.595 [INF] [IO] [PID:4179] queue depth 3553 exceeds soft limit
+2024-03-18 06:03:57.416 [ERR] [CS] [PID:4179] write rejected: quota exceeded by 1603 bytes
+2024-03-18 06:04:02.687 [INF] [SCH] [PID:4179] flushed 2076 records to segment cc88c66a
+2024-03-18 06:00:31.248 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 6483 bytes
+2024-03-18 06:01:56.035 [DBG] [CS] [PID:4179] checkpoint written at offset 6433
+2024-03-18 06:04:18.560 [INF] [SCH] [PID:4179] handshake with 192.0.2.6970 completed
+2024-03-18 06:03:51.519 [DBG] [SCH] [PID:4179] connection pool resized to 2313
+2024-03-18 06:02:19.656 [DBG] [DB] [PID:4179] background scan finished, 5644 objects visited
+2024-03-18 06:04:21.354 [INF] [SCH] [PID:4179] config reloaded from profile 915b2f05
+2024-03-18 06:00:20.280 [INF] [NET] [PID:4179] cache miss for key 51fee30f
+2024-03-18 06:00:46.690 [DBG] [CS] [PID:4179] retrying upstream after 9891ms backoff
+2024-03-18 06:06:24.048 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 6965 bytes
+2024-03-18 06:04:19.335 [ERR] [SCH] [PID:4179] deserialization failed at offset 4539: unexpected token
+2024-03-18 06:01:44.854 [INF] [DB] [PID:4179] dropped 9576 stale entries during compaction
+2024-03-18 06:01:39.862 [ERR] [NET] [PID:4179] write rejected: quota exceeded by 2028 bytes
+    at frame 8fe59172 (continuation)
+2024-03-18 06:06:00.060 [INF] [CS] [PID:4179] flushed 2266 records to segment 54d99965
+2024-03-18 06:04:11.166 [WRN] [IO] [PID:4179] lease acquisition timed out after 3953ms
+2024-03-18 06:02:20.014 [INF] [CS] [PID:4179] queue depth 3352 exceeds soft limit
+2024-03-18 06:06:34.878 [INF] [NET] [PID:4179] handshake with 192.0.2.6443 completed
+2024-03-18 06:02:21.312 [INF] [CS] [PID:4179] cache miss for key 8bfed1b2
+2024-03-18 06:02:32.725 [WRN] [SCH] [PID:4179] upstream 192.0.2.7524 refused connection after 3 attempts
+2024-03-18 06:01:06.690 [WRN] [CS] [PID:4179] deserialization failed at offset 5846: unexpected token
+2024-03-18 06:01:30.376 [INF] [SCH] [PID:4179] lease renewed, ttl 5889s
+2024-03-18 06:03:26.628 [INF] [NET] [PID:4179] connection pool resized to 7920
+2024-03-18 06:00:20.580 [INF] [IO] [PID:4179] worker 1001 joined the pool
+2024-03-18 06:04:59.730 [INF] [DB] [PID:4179] checkpoint written at offset 8325
+2024-03-18 06:00:18.558 [WRN] [CS] [PID:4179] deserialization failed at offset 9592: unexpected token
+2024-03-18 06:03:23.304 [WRN] [SCH] [PID:4179] deserialization failed at offset 8853: unexpected token
+2024-03-18 06:01:15.409 [WRN] [CS] [PID:4179] segment 587433a5 failed checksum validation
+2024-03-18 06:05:15.370 [WRN] [NET] [PID:4179] segment 30a87ea8 failed checksum validation
+2024-03-18 06:01:17.625 [WRN] [DB] [PID:4179] upstream 192.0.2.466 refused connection after 3 attempts
+2024-03-18 06:00:36.260 [WRN] [IO] [PID:4179] deserialization failed at offset 316: unexpected token
+2024-03-18 06:03:49.177 [WRN] [SCH] [PID:4179] deserialization failed at offset 8018: unexpected token
+2024-03-18 06:00:16.608 [WRN] [SCH] [PID:4179] deserialization failed at offset 121: unexpected token
+2024-03-18 06:04:15.594 [INF] [DB] [PID:4179] handshake with 192.0.2.385 completed
+2024-03-18 06:04:23.120 [DBG] [SCH] [PID:4179] handshake with 192.0.2.252 completed
+2024-03-18 06:05:23.751 [INF] [NET] [PID:4179] config reloaded from profile a0f40494
+2024-03-18 06:06:40.128 [INF] [DB] [PID:4179] connection pool resized to 8998
+2024-03-18 06:06:13.394 [DBG] [CS] [PID:4179] request completed in 7340ms
+2024-03-18 06:04:08.472 [INF] [CS] [PID:4179] retrying upstream after 8009ms backoff
+2024-03-18 06:04:57.825 [DBG] [NET] [PID:4179] config reloaded from profile 62005159
+2024-03-18 06:06:28.066 [INF] [SCH] [PID:4179] flushed 4139 records to segment 68a6d427
+2024-03-18 06:03:45.105 [WRN] [CS] [PID:4179] deserialization failed at offset 2064: unexpected token
+2024-03-18 06:03:57.896 [INF] [IO] [PID:4179] request completed in 7949ms
+2024-03-18 06:00:19.931 [INF] [CS] [PID:4179] dropped 3312 stale entries during compaction
+    at frame 9a021f21 (continuation)
+2024-03-18 06:01:57.600 [DBG] [IO] [PID:4179] flushed 4252 records to segment 83ca6587
+2024-03-18 06:05:27.912 [WRN] [CS] [PID:4179] upstream 192.0.2.6928 refused connection after 3 attempts
+2024-03-18 06:06:25.032 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 6381 bytes
+2024-03-18 06:05:24.324 [WRN] [DB] [PID:4179] deserialization failed at offset 1720: unexpected token
+2024-03-18 06:01:47.508 [DBG] [SCH] [PID:4179] background scan finished, 2127 objects visited
+2024-03-18 06:03:12.010 [INF] [CS] [PID:4179] shard 4815 rebalanced to node-c03
+2024-03-18 06:00:55.968 [INF] [SCH] [PID:4179] handshake with 192.0.2.3293 completed
+2024-03-18 06:00:06.342 [INF] [NET] [PID:4179] cache miss for key ca5cf636
+2024-03-18 06:05:42.792 [ERR] [DB] [PID:4179] deserialization failed at offset 2888: unexpected token
+2024-03-18 06:01:12.012 [INF] [DB] [PID:4179] request completed in 4803ms
+2024-03-18 06:04:28.180 [INF] [DB] [PID:4179] retrying upstream after 9914ms backoff
+2024-03-18 06:02:44.455 [WRN] [SCH] [PID:4179] upstream 192.0.2.1230 refused connection after 3 attempts
+2024-03-18 06:06:54.180 [DBG] [NET] [PID:4179] retrying upstream after 3356ms backoff
+2024-03-18 06:00:11.693 [WRN] [IO] [PID:4179] write rejected: quota exceeded by 8237 bytes
+2024-03-18 06:03:22.160 [INF] [NET] [PID:4179] request completed in 2674ms
+2024-03-18 06:06:20.205 [INF] [NET] [PID:4179] queue depth 3201 exceeds soft limit
+2024-03-18 06:00:20.254 [DBG] [SCH] [PID:4179] dropped 6258 stale entries during compaction
+2024-03-18 06:05:03.028 [ERR] [SCH] [PID:4179] lease acquisition timed out after 1767ms
+2024-03-18 06:06:15.936 [INF] [IO] [PID:4179] lease renewed, ttl 5382s
+2024-03-18 06:06:39.806 [DBG] [IO] [PID:4179] flushed 624 records to segment 2ab61861
+2024-03-18 06:02:28.730 [DBG] [IO] [PID:4179] dropped 2633 stale entries during compaction
+2024-03-18 06:06:18.063 [INF] [SCH] [PID:4179] background scan finished, 8058 objects visited
+2024-03-18 06:04:23.712 [DBG] [SCH] [PID:4179] lease renewed, ttl 748s
+2024-03-18 06:05:31.557 [INF] [IO] [PID:4179] retrying upstream after 2429ms backoff
+2024-03-18 06:00:04.296 [WRN] [NET] [PID:4179] segment bce6f5f0 failed checksum validation
+2024-03-18 06:03:47.900 [DBG] [NET] [PID:4179] background scan finished, 6725 objects visited
+2024-03-18 06:07:08.248 [INF] [SCH] [PID:4179] lease renewed, ttl 1777s
+2024-03-18 06:03:02.013 [DBG] [SCH] [PID:4179] request completed in 1932ms
+2024-03-18 06:02:31.998 [INF] [DB] [PID:4179] flushed 5707 records to segment 20ebf12c
+2024-03-18 06:03:06.667 [INF] [IO] [PID:4179] worker 2640 joined the pool
+    at frame 79f74827 (continuation)
+2024-03-18 06:01:05.880 [INF] [NET] [PID:4179] cache miss for key ebfabfe0
+2024-03-18 06:06:37.808 [INF] [SCH] [PID:4179] connection pool resized to 5471
+2024-03-18 06:04:57.550 [ERR] [DB] [PID:4179] write rejected: quota exceeded by 6171 bytes
+2024-03-18 06:01:55.881 [DBG] [NET] [PID:4179] background scan finished, 5098 objects visited
+2024-03-18 06:05:23.032 [DBG] [SCH] [PID:4179] queue depth 4341 exceeds soft limit
+2024-03-18 06:00:53.165 [WRN] [CS] [PID:4179] deserialization failed at offset 8917: unexpected token
+2024-03-18 06:03:58.920 [INF] [NET] [PID:4179] background scan finished, 6418 objects visited
+2024-03-18 06:03:47.183 [INF] [DB] [PID:4179] lease renewed, ttl 2212s
+2024-03-18 06:03:18.016 [INF] [IO] [PID:4179] dropped 8628 stale entries during compaction
+2024-03-18 06:01:17.319 [INF] [CS] [PID:4179] checkpoint written at offset 7598
+2024-03-18 06:01:58.810 [DBG] [DB] [PID:4179] dropped 8878 stale entries during compaction
+2024-03-18 06:06:08.758 [DBG] [NET] [PID:4179] worker 3689 joined the pool
+2024-03-18 06:02:49.260 [INF] [SCH] [PID:4179] lease renewed, ttl 9566s
+2024-03-18 06:02:50.508 [WRN] [SCH] [PID:4179] deserialization failed at offset 1849: unexpected token
+2024-03-18 06:05:00.850 [INF] [IO] [PID:4179] background scan finished, 9658 objects visited
+2024-03-18 06:02:50.820 [INF] [NET] [PID:4179] handshake with 192.0.2.9114 completed
+2024-03-18 06:03:08.512 [INF] [IO] [PID:4179] background scan finished, 8489 objects visited
+2024-03-18 06:03:25.139 [INF] [SCH] [PID:4179] checkpoint written at offset 5802
+2024-03-18 06:06:22.104 [ERR] [IO] [PID:4179] deserialization failed at offset 6496: unexpected token
+2024-03-18 06:05:08.819 [WRN] [NET] [PID:4179] upstream 192.0.2.1290 refused connection after 3 attempts
+2024-03-18 06:02:27.400 [WRN] [CS] [PID:4179] lease acquisition timed out after 4017ms
+2024-03-18 06:03:09.372 [INF] [DB] [PID:4179] dropped 2340 stale entries during compaction
+2024-03-18 06:07:05.372 [INF] [CS] [PID:4179] handshake with 192.0.2.8957 completed
+2024-03-18 06:03:32.879 [INF] [IO] [PID:4179] lease renewed, ttl 3524s
+2024-03-18 06:03:55.152 [INF] [CS] [PID:4179] shard 1681 rebalanced to node-c03
+2024-03-18 06:04:01.995 [INF] [NET] [PID:4179] background scan finished, 4173 objects visited
+2024-03-18 06:04:39.818 [INF] [DB] [PID:4179] dropped 60 stale entries during compaction
+2024-03-18 06:03:53.577 [WRN] [NET] [PID:4179] write rejected: quota exceeded by 693 bytes
+2024-03-18 06:00:16.620 [WRN] [SCH] [PID:4179] write rejected: quota exceeded by 9030 bytes
+2024-03-18 06:00:48.796 [INF] [IO] [PID:4179] cache miss for key 95e02ac1
+    at frame c55d459b (continuation)
+2024-03-18 06:06:48.480 [INF] [SCH] [PID:4179] worker 4124 joined the pool
+2024-03-18 06:02:33.318 [WRN] [NET] [PID:4179] segment a37a5782 failed checksum validation
+2024-03-18 06:02:45.688 [INF] [IO] [PID:4179] background scan finished, 5837 objects visited
+2024-03-18 06:05:52.821 [WRN] [CS] [PID:4179] upstream 192.0.2.4134 refused connection after 3 attempts
+2024-03-18 06:00:16.710 [INF] [IO] [PID:4179] config reloaded from profile a948e01a
+2024-03-18 06:03:26.275 [INF] [IO] [PID:4179] connection pool resized to 9410
+2024-03-18 06:01:13.656 [INF] [IO] [PID:4179] queue depth 5826 exceeds soft limit
+2024-03-18 06:03:09.890 [WRN] [CS] [PID:4179] deserialization failed at offset 2975: unexpected token
+2024-03-18 06:07:17.138 [INF] [DB] [PID:4179] retrying upstream after 3998ms backoff
+2024-03-18 06:00:26.856 [WRN] [IO] [PID:4179] segment dd6d96c9 failed checksum validation
+2024-03-18 06:05:20.320 [DBG] [IO] [PID:4179] retrying upstream after 952ms backoff
+2024-03-18 06:00:59.413 [INF] [IO] [PID:4179] dropped 9537 stale entries during compaction
+2024-03-18 06:03:17.472 [WRN] [IO] [PID:4179] upstream 192.0.2.1017 refused connection after 3 attempts
+2024-03-18 06:04:03.691 [INF] [NET] [PID:4179] lease renewed, ttl 3466s
+2024-03-18 06:06:57.004 [INF] [DB] [PID:4179] retrying upstream after 5449ms backoff
+2024-03-18 06:06:43.875 [INF] [SCH] [PID:4179] background scan finished, 1748 objects visited
+2024-03-18 06:00:43.914 [WRN] [IO] [PID:4179] segment 30851739 failed checksum validation
+2024-03-18 06:02:40.034 [INF] [SCH] [PID:4179] request completed in 8464ms
+2024-03-18 06:01:44.904 [INF] [CS] [PID:4179] config reloaded from profile f36d6a19
+2024-03-18 06:03:20.962 [INF] [CS] [PID:4179] background scan finished, 9371 objects visited
+2024-03-18 06:05:40.130 [WRN] [DB] [PID:4179] deserialization failed at offset 9773: unexpected token
+2024-03-18 06:03:06.615 [INF] [NET] [PID:4179] flushed 6796 records to segment b2d3f606
+2024-03-18 06:06:24.880 [INF] [SCH] [PID:4179] retrying upstream after 1196ms backoff
+2024-03-18 06:01:32.906 [INF] [SCH] [PID:4179] request completed in 8634ms
+2024-03-18 06:06:23.292 [DBG] [DB] [PID:4179] handshake with 192.0.2.1688 completed
+2024-03-18 06:02:08.255 [INF] [IO] [PID:4179] config reloaded from profile af216d57
+2024-03-18 06:04:05.376 [WRN] [SCH] [PID:4179] write rejected: quota exceeded by 7727 bytes
+2024-03-18 06:03:09.879 [INF] [IO] [PID:4179] config reloaded from profile ed04e464
+2024-03-18 06:02:22.250 [INF] [IO] [PID:4179] queue depth 4454 exceeds soft limit
+2024-03-18 06:02:26.931 [WRN] [SCH] [PID:4179] upstream 192.0.2.3598 refused connection after 3 attempts
+    at frame 423cf0c0 (continuation)
+2024-03-18 06:00:17.100 [DBG] [DB] [PID:4179] config reloaded from profile 72ad242a
+2024-03-18 06:06:45.055 [DBG] [CS] [PID:4179] request completed in 5176ms
+2024-03-18 06:07:36.800 [DBG] [DB] [PID:4179] config reloaded from profile e126cac3
+2024-03-18 06:05:20.040 [INF] [CS] [PID:4179] checkpoint written at offset 6204
+2024-03-18 06:02:28.720 [DBG] [NET] [PID:4179] background scan finished, 3696 objects visited
+2024-03-18 06:06:28.155 [WRN] [NET] [PID:4179] upstream 192.0.2.6665 refused connection after 3 attempts
+2024-03-18 06:01:08.760 [DBG] [CS] [PID:4179] background scan finished, 9274 objects visited
+2024-03-18 06:05:00.514 [INF] [IO] [PID:4179] checkpoint written at offset 3798
+2024-03-18 06:01:06.584 [WRN] [DB] [PID:4179] deserialization failed at offset 50: unexpected token
+2024-03-18 06:04:43.803 [DBG] [NET] [PID:4179] lease renewed, ttl 6801s
+2024-03-18 06:03:48.850 [DBG] [DB] [PID:4179] request completed in 4627ms
+2024-03-18 06:04:33.938 [INF] [DB] [PID:4179] retrying upstream after 7973ms backoff
+2024-03-18 06:03:25.056 [INF] [CS] [PID:4179] background scan finished, 8553 objects visited
+2024-03-18 06:02:13.748 [WRN] [IO] [PID:4179] deserialization failed at offset 6941: unexpected token
+2024-03-18 06:01:39.244 [WRN] [DB] [PID:4179] segment 41e02fba failed checksum validation
+2024-03-18 06:05:52.275 [DBG] [IO] [PID:4179] shard 8602 rebalanced to node-a01
+2024-03-18 06:00:38.148 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 1855 bytes
+2024-03-18 06:02:21.154 [DBG] [IO] [PID:4179] cache miss for key af987f3b
+2024-03-18 06:01:50.010 [INF] [NET] [PID:4179] handshake with 192.0.2.9905 completed
+2024-03-18 06:07:23.897 [INF] [NET] [PID:4179] flushed 1139 records to segment c0fafc1e
+2024-03-18 06:00:41.760 [DBG] [CS] [PID:4179] retrying upstream after 3639ms backoff
+2024-03-18 06:02:35.574 [INF] [SCH] [PID:4179] background scan finished, 6421 objects visited
+2024-03-18 06:01:02.748 [INF] [CS] [PID:4179] retrying upstream after 2403ms backoff
+2024-03-18 06:04:55.402 [INF] [IO] [PID:4179] worker 7517 joined the pool
+2024-03-18 06:06:43.908 [WRN] [DB] [PID:4179] upstream 192.0.2.6262 refused connection after 3 attempts
+2024-03-18 06:05:08.725 [INF] [DB] [PID:4179] background scan finished, 4435 objects visited
+2024-03-18 06:06:15.452 [INF] [CS] [PID:4179] checkpoint written at offset 5551
+2024-03-18 06:03:02.052 [INF] [DB] [PID:4179] cache miss for key 78fd4dfb
+2024-03-18 06:05:43.392 [INF] [CS] [PID:4179] request completed in 7331ms
+2024-03-18 06:01:51.055 [INF] [DB] [PID:4179] retrying upstream after 8214ms backoff
+    at frame 8bb5584f (continuation)
+2024-03-18 06:06:24.930 [WRN] [DB] [PID:4179] write rejected: quota exceeded by 475 bytes
+2024-03-18 06:02:17.007 [WRN] [SCH] [PID:4179] deserialization failed at offset 4318: unexpected token
+2024-03-18 06:02:19.468 [INF] [SCH] [PID:4179] cache miss for key c4f88a22
+2024-03-18 06:05:04.980 [WRN] [DB] [PID:4179] lease acquisition timed out after 6505ms
+2024-03-18 06:04:37.064 [INF] [SCH] [PID:4179] background scan finished, 2013 objects visited
+2024-03-18 06:02:32.750 [INF] [CS] [PID:4179] dropped 382 stale entries during compaction
+2024-03-18 06:06:37.488 [INF] [CS] [PID:4179] config reloaded from profile 725c2256
+2024-03-18 06:06:35.472 [INF] [IO] [PID:4179] queue depth 9509 exceeds soft limit
+2024-03-18 06:00:24.738 [INF] [IO] [PID:4179] lease renewed, ttl 7562s
+2024-03-18 06:02:56.850 [ERR] [CS] [PID:4179] write rejected: quota exceeded by 4725 bytes
+2024-03-18 06:04:47.920 [ERR] [IO] [PID:4179] deserialization failed at offset 9436: unexpected token
+2024-03-18 06:04:37.535 [INF] [NET] [PID:4179] lease renewed, ttl 1589s
+2024-03-18 06:01:15.648 [INF] [IO] [PID:4179] queue depth 9571 exceeds soft limit
+2024-03-18 06:06:57.599 [INF] [DB] [PID:4179] worker 5101 joined the pool
+2024-03-18 06:03:41.408 [INF] [CS] [PID:4179] checkpoint written at offset 7268
+2024-03-18 06:07:04.230 [WRN] [CS] [PID:4179] lease acquisition timed out after 494ms
+2024-03-18 06:05:32.080 [DBG] [NET] [PID:4179] dropped 1629 stale entries during compaction
+2024-03-18 06:03:47.904 [INF] [NET] [PID:4179] background scan finished, 9796 objects visited
+2024-03-18 06:01:58.800 [INF] [SCH] [PID:4179] lease renewed, ttl 2346s
+2024-03-18 06:05:18.652 [INF] [SCH] [PID:4179] queue depth 9787 exceeds soft limit
+2024-03-18 06:04:37.270 [INF] [CS] [PID:4179] worker 3512 joined the pool
+2024-03-18 06:07:39.726 [ERR] [IO] [PID:4179] lease acquisition timed out after 640ms
+2024-03-18 06:05:11.112 [WRN] [DB] [PID:4179] segment 11e476b6 failed checksum validation
+2024-03-18 06:04:53.478 [INF] [DB] [PID:4179] cache miss for key 38a34e63
+2024-03-18 06:02:06.564 [INF] [CS] [PID:4179] retrying upstream after 3598ms backoff
+2024-03-18 06:07:12.590 [INF] [SCH] [PID:4179] worker 400 joined the pool
+2024-03-18 06:00:37.076 [INF] [CS] [PID:4179] background scan finished, 2884 objects visited
+2024-03-18 06:07:03.738 [WRN] [SCH] [PID:4179] deserialization failed at offset 7063: unexpected token
+2024-03-18 06:07:17.270 [INF] [IO] [PID:4179] connection pool resized to 4691
+2024-03-18 06:02:46.661 [WRN] [CS] [PID:4179] deserialization failed at offset 2998: unexpected token
+    at frame c72d2486 (continuation)

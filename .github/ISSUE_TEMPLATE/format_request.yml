@@ -1,0 +1,53 @@
+name: Log format support
+description: A text format obs-viewer does not parse yet
+labels: ["ingest"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Most formats need no code — a YAML rule in `parsers.d/` covers
+        any line, block, or XML shape. If you can describe the grammar,
+        you can likely write the rule yourself; see the README section
+        "Adding a text format". Open this issue if you'd rather it
+        shipped by default, or if the shape doesn't fit the existing
+        families.
+
+        **Synthetic samples only.** Retype the shape with invented
+        values rather than pasting real log lines.
+
+  - type: textarea
+    id: sample
+    attributes:
+      label: Sample lines
+      description: Five or six synthetic lines showing the structure.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: grammar
+    attributes:
+      label: Structure
+      description: >
+        Which part is the timestamp and in what layout, which is the
+        level, which is the message. Anything variable-width or
+        optional matters most.
+    validations:
+      required: true
+
+  - type: input
+    id: origin
+    attributes:
+      label: What emits this
+      description: >
+        A category is enough and is preferable — "a Java service using
+        logback defaults", "an embedded controller". Product names are
+        not needed.
+
+  - type: checkboxes
+    id: tried
+    attributes:
+      label: Have you tried writing a rule?
+      options:
+        - label: I tried a `parsers.d/` rule and it didn't match
+        - label: The format doesn't fit the line/block/XML families

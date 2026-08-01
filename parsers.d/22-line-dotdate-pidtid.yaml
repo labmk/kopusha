@@ -1,0 +1,23 @@
+# Line format C:
+#
+#   app.Common.CacheService: 26.03.26 09:55:01:280 36800/113264 ConfigModel creation started.
+#
+# A dotted-name prefix, then colon-space, then DD.MM.YY HH:MM:SS:msec
+# (note the colon between SS and msec — not a dot), then PID/TID,
+# then message. The prefix is captured as `source`.
+#
+# Go's time layout language can't express HH:MM:SS:ms directly (it
+# only handles `.ms` or `,ms`), so a regex sub converts the captured
+# ts value before time.Parse runs.
+
+family: line
+name: dotdate-pidtid
+priority: 90
+
+parse: '^(?P<source>[\w.]+):\s+(?P<ts>\d{2}\.\d{2}\.\d{2}\s+\d{2}:\d{2}:\d{2}:\d+)\s+(?P<pid>\d+)/(?P<tid>\d+)\s+(?P<message>.*)$'
+
+ts_layout: '02.01.06 15:04:05.000'
+
+ts_regex_subs:
+  - pattern: '(\d{2}:\d{2}:\d{2}):(\d+)$'
+    replacement: '$1.$2'

@@ -1,0 +1,22 @@
+# Build output
+dist/
+static/*
+!static/.gitkeep
+*.exe
+
+# Frontend
+frontend/node_modules/
+frontend/test-results/
+frontend/playwright-report/
+frontend/.vite/
+
+# Runtime artifacts written next to the binary
+obs_viewer_settings.json
+obs_viewer*.log
+logs/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
