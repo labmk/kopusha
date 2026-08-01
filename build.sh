@@ -17,15 +17,25 @@ if [ "$TARGET_OS" = "windows" ]; then
     OUTPUT_NAME="obs_viewer.exe"
 fi
 
-# Supported targets. DuckDB ships prebuilt static libs for exactly
-# these; anything else fails at link time with a missing-archive error
-# rather than something diagnosable.
+# Supported targets. DuckDB ships prebuilt static libs for more than
+# these — darwin/amd64 among them — but Intel macOS is deliberately not
+# a supported target for this project, so it is rejected here rather
+# than half-working. Anything else fails at link time with a
+# missing-archive error rather than something diagnosable.
 case "${TARGET_OS}/${TARGET_ARCH}" in
-    windows/amd64|linux/amd64|linux/arm64|darwin/amd64|darwin/arm64) ;;
+    windows/amd64|linux/amd64|linux/arm64|darwin/arm64) ;;
+    darwin/amd64)
+        echo "ERROR: darwin/amd64 (Intel macOS) is not a supported target." >&2
+        echo "       macOS support is Apple Silicon only. The DuckDB" >&2
+        echo "       bindings do ship an Intel archive, so if you need it," >&2
+        echo "       add darwin/amd64 to this case and build with" >&2
+        echo "       CC=\"clang -arch x86_64\" on an arm64 Mac." >&2
+        exit 1
+        ;;
     *)
         echo "ERROR: unsupported target ${TARGET_OS}/${TARGET_ARCH}." >&2
-        echo "       DuckDB bindings ship for windows/amd64, linux/amd64," >&2
-        echo "       linux/arm64, darwin/amd64, darwin/arm64." >&2
+        echo "       Supported: windows/amd64, linux/amd64, linux/arm64," >&2
+        echo "       darwin/arm64." >&2
         exit 1
         ;;
 esac
@@ -85,13 +95,21 @@ fi
 # Step 1: Build frontend
 echo "[1/4] Building frontend..."
 cd frontend
-if [ ! -d node_modules ]; then
-    echo "  Installing dependencies (locked via package-lock.json)..."
-    # npm ci (not install) — refuses to drift from the lockfile, which
-    # prevents silent upgrades to transitive packages with fresh CVEs
-    # between developer machines and CI.
-    npm ci --silent
-fi
+echo "  Installing dependencies (locked via package-lock.json)..."
+# npm ci (not install) — refuses to drift from the lockfile, which
+# prevents silent upgrades to transitive packages with fresh CVEs
+# between developer machines and CI.
+#
+# Run unconditionally. Gating this on `[ ! -d node_modules ]` looked
+# like a speed-up but meant a stale tree was never repaired: several
+# dependencies (rollup, esbuild) resolve to per-platform native
+# packages, so a node_modules copied between machines — or carried
+# along in a directory copy — fails at build time with a
+# "Cannot find module @rollup/rollup-<os>-<arch>" that points nowhere
+# useful. npm ci wipes and reinstalls, which is the behaviour that
+# makes the lockfile meaningful. CI never hit this because a fresh
+# checkout has no node_modules at all.
+npm ci --silent
 npm run build --silent
 cd ..
 echo "  Frontend built -> static/"

@@ -41,10 +41,8 @@ jobs:
 
   # CGO (DuckDB) means every target needs a matching C toolchain and the
   # prebuilt libduckdb_static.a for that platform, so each one builds on
-  # a native runner. The exception is darwin/amd64: the macOS SDK is
-  # universal, so an arm64 runner cross-builds it by passing -arch to
-  # clang. That matters because the Intel macOS runners are on their way
-  # out.
+  # a native runner. macOS is Apple Silicon only — Intel is not a
+  # supported target, which is also why no Intel runner appears here.
   #
   # The matrix is computed rather than literal because macOS runners bill
   # at 10x while this repository is private — roughly 200 minutes for one
@@ -69,8 +67,7 @@ jobs:
             {"name":"windows-amd64","runner":"windows-latest","goos":"windows","goarch":"amd64","artifact":"obs_viewer.exe","e2e":true}
           ]'
           mac='[
-            {"name":"darwin-arm64","runner":"macos-14","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"},
-            {"name":"darwin-amd64","runner":"macos-14","goos":"darwin","goarch":"amd64","artifact":"obs_viewer","cc":"clang -arch x86_64"}
+            {"name":"darwin-arm64","runner":"macos-14","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"}
           ]'
           if [ "$FULL" = "true" ]; then
             include="$(jq -cn --argjson a "$core" --argjson b "$mac" '$a + $b')"

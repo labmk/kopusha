@@ -25,8 +25,8 @@ import (
 
 	// Side-effect import: registers the generated swagger spec with the
 	// swag runtime so /api/openapi.json can hand it out.
-	"github.com/swaggo/swag"
 	_ "github.com/labmk/obs-viewer/internal/server/docs"
+	"github.com/swaggo/swag"
 )
 
 // zipVirtSep separates zip container from entry in a virtual path.

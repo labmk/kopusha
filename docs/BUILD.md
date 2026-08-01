@@ -51,7 +51,13 @@ rejects anything else up front rather than failing at link time.
 | `linux/amd64` | Linux | system GCC |
 | `linux/arm64` | Linux arm64 | system GCC |
 | `darwin/arm64` | **macOS only** | Xcode Command Line Tools (clang) |
-| `darwin/amd64` | **macOS only** | Xcode Command Line Tools (clang) |
+
+macOS support is **Apple Silicon only**. Intel Macs are not a target:
+`build.sh` rejects `darwin/amd64` up front and CI does not build it.
+The DuckDB bindings do ship an Intel archive, so the target is
+reachable if you ever need it — add the case back to `build.sh` and
+build on an arm64 Mac with `CC="clang -arch x86_64"`, since the macOS
+SDK is universal. Nothing in the source is architecture-specific.
 
 ## Platform notes
 
@@ -87,12 +93,10 @@ Linux or Windows. `build.sh` detects the attempt and fails early with an
 explanation rather than surfacing a confusing
 `gcc: unrecognized command-line option '-arch'` from `runtime/cgo`.
 
-If you have no Mac, use CI — `.github/workflows/build.yml` builds both
-macOS targets on the `macos-14` (Apple Silicon) runner and uploads them
-as artifacts. `darwin/amd64` is cross-built there with
-`CC="clang -arch x86_64"`: the macOS SDK is universal, so an arm64 host
-can target Intel even though no *other* host can target Darwin at all.
-The same trick works locally on an Apple Silicon Mac.
+If you have no Mac, use CI — `.github/workflows/build.yml` builds
+`darwin/arm64` on the `macos-14` (Apple Silicon) runner and uploads it
+as an artifact. That leg runs only on tags and manual dispatch, because
+macOS runners bill at 10x while the repository is private.
 
 On a Mac:
 
