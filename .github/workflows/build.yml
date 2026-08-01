@@ -99,18 +99,26 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      # MSYS2 ucrt64 GCC. The mingw64 GCC that ships on the runner has an
-      # ABI mismatch against the prebuilt libduckdb_static.a (_Mbstatet,
-      # __throw_bad_array_new_length) — msvcrt vs UCRT, not a compiler
-      # version problem, so a newer mingw64 will not fix it.
-      - name: Set up MSYS2 (Windows)
-        id: msys2
+      # No MSYS2 setup step. Installing mingw-w64-ucrt-x86_64-gcc pulled
+      # GCC 16.1.0, whose linker died on the prebuilt libduckdb_static.a
+      # with `ld returned 5 exit status` and no symbol diagnostics — an
+      # ld crash, consistent with the ABI drift this project already
+      # documents for GCC 15.x. Upstream duckdb-go builds on
+      # windows-latest with the runner's stock toolchain and no setup
+      # step at all, so match that; build.sh probes for a compiler and
+      # prints which one it picked.
+      - name: Windows toolchain probe
         if: matrix.goos == 'windows'
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: UCRT64
-          install: mingw-w64-ucrt-x86_64-gcc
-          path-type: inherit
+        shell: bash
+        run: |
+          echo "gcc on PATH: $(command -v gcc || echo '<none>')"
+          command -v gcc >/dev/null && gcc --version | head -1
+          for c in /c/msys64/ucrt64/bin/gcc.exe \
+                   /c/msys64/mingw64/bin/gcc.exe \
+                   /c/mingw64/bin/gcc.exe; do
+            [ -x "$c" ] && echo "candidate: $c -> $("$c" -dumpversion)"
+          done
+          true
 
       - name: Build
         shell: bash
@@ -118,22 +126,8 @@ jobs:
           GOOS: ${{ matrix.goos }}
           GOARCH: ${{ matrix.goarch }}
           MATRIX_CC: ${{ matrix.cc }}
-          MSYS2_ROOT: ${{ steps.msys2.outputs.msys2-location }}
           SKIP_VULNCHECK: '1'   # the dedicated job below runs it once
         run: |
-          if [ "$GOOS" = "windows" ]; then
-            # setup-msys2 installs its own MSYS2 into the runner temp dir
-            # — NOT C:\msys64, which is where a hand-installed MSYS2 lives
-            # on a developer box. Hardcoding that path is what made cgo
-            # report `C compiler ... file does not exist` after every other
-            # build step had succeeded. Take the location from the action's
-            # own output and convert the Windows path for bash.
-            root="${MSYS2_ROOT//\\//}"
-            export CC="${root}/ucrt64/bin/gcc.exe"
-            export PATH="${root}/ucrt64/bin:$PATH"
-            echo "MSYS2 at $root"
-            "$CC" --version | head -1
-          fi
           if [ -n "$MATRIX_CC" ]; then
             export CC="$MATRIX_CC"
           fi

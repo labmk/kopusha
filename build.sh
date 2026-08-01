@@ -135,12 +135,36 @@ echo "[3/4] Compiling Go binary..."
 # On Windows, prefer MSYS2 ucrt64 GCC (compatible ABI with the prebuilt
 # libduckdb_static.a). TDM-GCC 10.x is too old; MSYS2 mingw64 GCC 15.x
 # has an _Mbstatet ABI mismatch.
+#
+# Probe a list rather than one hardcoded path: a hand-installed MSYS2
+# sits at C:\msys64, but CI runners and other setups put it elsewhere.
+# Falling through to whatever `gcc` is on PATH is deliberate — that is
+# what upstream duckdb-go does on windows-latest, and it works.
 if [ "$TARGET_OS" = "windows" ] && [ -z "${CC:-}" ]; then
-    if [ -x "/c/msys64/ucrt64/bin/gcc.exe" ]; then
-        export CC=/c/msys64/ucrt64/bin/gcc.exe
-        export PATH="/c/msys64/ucrt64/bin:$PATH"
-        echo "  Using MSYS2 ucrt64 GCC: $CC"
+    for candidate in \
+        "${MSYS2_ROOT:-}/ucrt64/bin/gcc.exe" \
+        /c/msys64/ucrt64/bin/gcc.exe \
+        /c/msys64/mingw64/bin/gcc.exe \
+        /c/mingw64/bin/gcc.exe
+    do
+        if [ -x "$candidate" ]; then
+            export CC="$candidate"
+            export PATH="$(dirname "$candidate"):$PATH"
+            break
+        fi
+    done
+fi
+
+if [ "$TARGET_OS" = "windows" ]; then
+    resolved_cc="${CC:-$(command -v gcc 2>/dev/null || echo '')}"
+    if [ -z "$resolved_cc" ]; then
+        echo "ERROR: no C compiler found for the windows/amd64 target." >&2
+        echo "       Install MSYS2 ucrt64 GCC (pacman -S" >&2
+        echo "       mingw-w64-ucrt-x86_64-gcc) or set CC explicitly." >&2
+        exit 1
     fi
+    echo "  C compiler: $resolved_cc"
+    "$resolved_cc" --version 2>/dev/null | head -1 | sed 's/^/  /'
 fi
 
 LDFLAGS="-s -w -X main.version=$VERSION"
