@@ -14,6 +14,7 @@ export const qk = {
   fields: ['fields'],
   timeRange: ['timeRange'],
   query: (params) => ['query', params],
+  update: ['update'],
 };
 
 // Adaptive cadence: 30s while healthy, 5s while broken. TanStack's
@@ -26,6 +27,24 @@ export function useVersion() {
     refetchInterval: (query) => (query.state.error ? 5000 : 30000),
     refetchIntervalInBackground: true,
     staleTime: 0,
+    retry: 0,
+  });
+}
+
+// Release notification. The backend answers from a cached background
+// check, so this is a cheap local read — but it can report "not checked
+// yet" for the first few seconds after start, hence a retry and a slow
+// refetch rather than a single fire-and-forget fetch.
+export function useUpdateStatus() {
+  return useQuery({
+    queryKey: qk.update,
+    queryFn: async () => {
+      const r = await fetch('/api/update');
+      if (!r.ok) return { enabled: false, checked: false, available: false };
+      return r.json();
+    },
+    refetchInterval: (query) => (query.state.data?.checked ? false : 10000),
+    staleTime: 60000,
     retry: 0,
   });
 }

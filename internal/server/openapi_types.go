@@ -13,6 +13,26 @@ type VersionResponse struct {
 	IdleTimeoutSeconds int    `json:"idle_timeout_seconds"`
 }
 
+// UpdateResponse is the body of GET /api/update.
+//
+// Purely informational. obs-viewer never downloads or installs a
+// release; url points at a page for a human to visit.
+type UpdateResponse struct {
+	// Current is the running version.
+	Current string `json:"current" example:"0.1.0"`
+	// Latest is the newest published release, absent if unknown.
+	Latest string `json:"latest,omitempty" example:"0.2.0"`
+	// Available is true only when latest is confidently newer.
+	Available bool `json:"available"`
+	// URL is the release page.
+	URL string `json:"url,omitempty" example:"https://github.com/labmk/obs-viewer/releases/tag/v0.2.0"`
+	// Checked is false until a check completes, so "unknown" is
+	// distinguishable from "up to date".
+	Checked bool `json:"checked"`
+	// Enabled mirrors update_check in obs_viewer.conf.
+	Enabled bool `json:"enabled"`
+}
+
 // ErrorResponse is the body of any non-2xx response.
 type ErrorResponse struct {
 	Error string `json:"error" example:"something failed"`

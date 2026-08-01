@@ -144,6 +144,34 @@ export type ServerToggleRequest = {
     id?: string;
 };
 
+export type ServerUpdateResponse = {
+    /**
+     * Available is true only when latest is confidently newer.
+     */
+    available?: boolean;
+    /**
+     * Checked is false until a check completes, so "unknown" is
+     * distinguishable from "up to date".
+     */
+    checked?: boolean;
+    /**
+     * Current is the running version.
+     */
+    current?: string;
+    /**
+     * Enabled mirrors update_check in obs_viewer.conf.
+     */
+    enabled?: boolean;
+    /**
+     * Latest is the newest published release, absent if unknown.
+     */
+    latest?: string;
+    /**
+     * URL is the release page.
+     */
+    url?: string;
+};
+
 export type ServerVersionResponse = {
     arch?: string;
     idle_timeout_seconds?: number;
@@ -601,6 +629,22 @@ export type PostApiTimestampFieldResponses = {
 };
 
 export type PostApiTimestampFieldResponse = PostApiTimestampFieldResponses[keyof PostApiTimestampFieldResponses];
+
+export type GetApiUpdateData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/update';
+};
+
+export type GetApiUpdateResponses = {
+    /**
+     * OK
+     */
+    200: ServerUpdateResponse;
+};
+
+export type GetApiUpdateResponse = GetApiUpdateResponses[keyof GetApiUpdateResponses];
 
 export type GetApiVersionData = {
     body?: never;

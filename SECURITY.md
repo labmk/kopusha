@@ -77,3 +77,11 @@ release.
 - Windows binaries are unsigned unless you supply `hooks/sign.sh`.
 - DuckDB extensions are statically linked. obs-viewer never downloads an
   extension at runtime, which is what makes air-gapped use safe.
+- **obs-viewer never downloads or executes code.** The one outbound
+  request is the startup release check, which reads the GitHub releases
+  API and renders a version string. There is no self-update path: a
+  release cannot replace the running binary, so a compromised release
+  channel cannot execute code on an existing install. Signed,
+  user-initiated updates are a possible future feature and are tracked
+  in docs/SELF_UPDATE_PROPOSAL.md; they will not ship without release
+  signing.

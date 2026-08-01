@@ -691,6 +691,19 @@ html, body {
   font-weight: 600;
 }
 
+/* Release notice. Deliberately understated — a new version is
+   information, not a problem, so it must not compete with
+   .status-offline for attention. */
+.status-update {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+.status-update:hover {
+  color: var(--accent, var(--text-primary));
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }

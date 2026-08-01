@@ -144,6 +144,21 @@ test('status bar shows idle timeout', async ({ page }) => {
   await expect(statusBar).toContainText(/\d+h \d+m|\d+m|\d+d/);
 });
 
+test('no update notice when the check is disabled', async ({ page }) => {
+  // The harness runs with --no-update-check, so /api/update reports
+  // enabled=false. The status bar must stay silent rather than implying
+  // "up to date" from an absence of information.
+  const res = await page.request.get('/api/update');
+  expect(res.ok()).toBeTruthy();
+  const body = await res.json();
+  expect(body.enabled).toBe(false);
+  expect(body.available).toBe(false);
+
+  await page.goto('/');
+  await expect(page.locator('.status-bar')).toBeVisible();
+  await expect(page.locator('.status-update')).toHaveCount(0);
+});
+
 test('text dialog ingests Copilot-style single-line output and auto-corrects .X. regex', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Text' }).click();

@@ -10,6 +10,7 @@ import {
   useFiles,
   useFields,
   useLogQuery,
+  useUpdateStatus,
 } from './hooks/useApiQueries';
 import { formatTimeout } from './utils/datetime';
 import FilePanel from './components/FilePanel';
@@ -27,6 +28,7 @@ export default function App() {
   // Server-state via TanStack Query. /api/version drives the adaptive
   // healthcheck (30s healthy, 5s broken) directly via refetchInterval.
   const versionQ = useVersion();
+  const updateQ = useUpdateStatus();
   const modulesQ = useModules();
   const settingsQ = useSettings();
   const filesQ = useFiles();
@@ -545,6 +547,17 @@ export default function App() {
             <span title="Enabled modules (from obs_viewer.conf sections)" style={{ color: 'var(--text-secondary)' }}>
               modules: {modules.map(m => m.id).join(', ')}
             </span>
+          )}
+          {updateQ.data?.available && (
+            <a
+              href={updateQ.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="status-update"
+              title={`You are running ${updateQ.data.current}. Opens the release page — obs-viewer does not download or install anything itself.`}
+            >
+              v{updateQ.data.latest} available
+            </a>
           )}
           {versionQ.data?.idle_timeout_seconds > 0 && (
             <span title="Server shuts down after this many seconds with no API activity" style={{ color: 'var(--text-secondary)' }}>

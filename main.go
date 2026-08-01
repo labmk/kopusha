@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"embed"
 	"flag"
 	"fmt"
@@ -26,6 +27,7 @@ import (
 	"github.com/labmk/obs-viewer/internal/module"
 	"github.com/labmk/obs-viewer/internal/server"
 	"github.com/labmk/obs-viewer/internal/settings"
+	"github.com/labmk/obs-viewer/internal/update"
 )
 
 //go:embed static/*
@@ -59,6 +61,7 @@ func main() {
 	noBrowser := flag.Bool("no-browser", false, "Do not open browser automatically")
 	showVersion := flag.Bool("version", false, "Show version and exit")
 	verbose := flag.Bool("verbose", false, "Verbose startup logging with phase timings")
+	noUpdateCheck := flag.Bool("no-update-check", false, "Do not check GitHub for a newer release at startup")
 	flag.Parse()
 
 	if *showVersion {
@@ -275,6 +278,21 @@ func main() {
 
 	srv := server.New(eng, staticFS, version, store)
 	srv.SetIdleTimeoutSeconds(confTimeout)
+
+	// Release notification. On by default; `update_check = false` in
+	// obs_viewer.conf or --no-update-check turns it off, and the flag
+	// wins so a one-off run can stay offline without editing config.
+	//
+	// This is the only outbound request obs-viewer ever makes. It reads
+	// the GitHub releases API and does nothing else — no download, no
+	// install, no telemetry. It runs in the background so startup never
+	// waits on it, and it fails silently, because on an air-gapped host
+	// failing is the expected outcome of every single launch.
+	updateEnabled := cfg.GetDefault("update_check", "true") != "false" && !*noUpdateCheck
+	updater := update.New(version, updateEnabled)
+	srv.SetUpdateChecker(updater)
+	updater.Start(context.Background(), vlog)
+	vlog("update check: enabled=%v", updateEnabled)
 
 	// Module registry. Modules are mounted only when their config
 	// section is present in obs_viewer.conf — see /api/modules for

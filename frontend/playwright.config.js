@@ -34,7 +34,10 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: `"${BIN}" --port 9201 --no-browser --dir "${path.join(PROJECT_ROOT, 'test-fixtures', 'ndjson')}"`,
+    // --no-update-check keeps the suite hermetic. Without it every e2e run
+    // would hit the GitHub releases API, making the tests depend on the
+    // network and on an unauthenticated rate limit shared by the runner.
+    command: `"${BIN}" --port 9201 --no-browser --no-update-check --dir "${path.join(PROJECT_ROOT, 'test-fixtures', 'ndjson')}"`,
     url: 'http://127.0.0.1:9201/api/version',
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',

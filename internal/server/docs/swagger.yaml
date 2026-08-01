@@ -227,6 +227,32 @@ definitions:
       id:
         type: string
     type: object
+  server.UpdateResponse:
+    properties:
+      available:
+        description: Available is true only when latest is confidently newer.
+        type: boolean
+      checked:
+        description: |-
+          Checked is false until a check completes, so "unknown" is
+          distinguishable from "up to date".
+        type: boolean
+      current:
+        description: Current is the running version.
+        example: 0.1.0
+        type: string
+      enabled:
+        description: Enabled mirrors update_check in obs_viewer.conf.
+        type: boolean
+      latest:
+        description: Latest is the newest published release, absent if unknown.
+        example: 0.2.0
+        type: string
+      url:
+        description: URL is the release page.
+        example: https://github.com/labmk/obs-viewer/releases/tag/v0.2.0
+        type: string
+    type: object
   server.VersionResponse:
     properties:
       arch:
@@ -669,6 +695,21 @@ paths:
       summary: Get or set the active timestamp column
       tags:
       - query
+  /api/update:
+    get:
+      description: Reports whether a newer release exists. Read-only — obs-viewer
+        never downloads or installs anything. Returns enabled=false when the check
+        is switched off, which the UI must distinguish from "up to date".
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.UpdateResponse'
+      summary: Release update status
+      tags:
+      - system
   /api/version:
     get:
       description: Lightweight liveness endpoint. The frontend uses this to drive

@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
+import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -204,6 +204,13 @@ export const postApiTimestampField = <ThrowOnError extends boolean = false>(opti
         ...options?.headers
     }
 });
+
+/**
+ * Release update status
+ *
+ * Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
+ */
+export const getApiUpdate = <ThrowOnError extends boolean = false>(options?: Options<GetApiUpdateData, ThrowOnError>): RequestResult<GetApiUpdateResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetApiUpdateResponses, unknown, ThrowOnError>({ url: '/api/update', ...options });
 
 /**
  * Server version + platform info

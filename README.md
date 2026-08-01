@@ -24,7 +24,10 @@ copy onto an air-gapped machine.
 ## Features
 
 - **Single binary.** Frontend, query engine, and DuckDB extensions are
-  compiled in. No runtime dependencies, no network access required.
+  compiled in. No runtime dependencies. Nothing is fetched to run: the
+  only outbound request is an optional startup check for a newer release,
+  which reports and never installs — turn it off with `update_check =
+  false` and the binary makes no network calls at all.
 - **Multi-format ingest.** NDJSON, Windows EVTX, XML, and line- or
   block-structured text logs. New text formats are added by dropping a
   YAML rule into `parsers.d/` — no recompile.
@@ -55,6 +58,7 @@ obs_viewer --files "/path/to/*.ndjson"                # pre-load a glob
 obs_viewer --port 8080 --no-browser                   # custom port, no auto-open
 obs_viewer --port 9443 --cert cert.pem --key key.pem  # TLS
 obs_viewer --verbose                                  # startup phase timings
+obs_viewer --no-update-check                          # skip the release check
 ```
 
 Keep the `parsers.d/` folder beside the binary. The server exits on its
@@ -101,6 +105,7 @@ port    = 9200       # HTTP port
 timeout = 180        # inactivity auto-shutdown, seconds; 0 disables
 listen  = 127.0.0.1  # non-loopback requires --cert/--key
 parsers_dir = parsers.d
+update_check = true  # check GitHub for a newer release at startup
 ```
 
 All `obs_viewer*.conf` files in the directory are merged at startup in
@@ -162,6 +167,9 @@ a worked example.
   safe. Do not expose it on a network without an authenticating proxy
   in front.
 - Non-loopback `listen` values are ignored unless TLS is configured.
+- The release check is the only outbound request, sends nothing about
+  the host, and never downloads or installs. `update_check = false`
+  removes it.
 - Report vulnerabilities per [SECURITY.md](./SECURITY.md).
 
 ## AI-supported development

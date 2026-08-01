@@ -11,6 +11,23 @@ those are external and stable.
 
 ## [Unreleased]
 
+### Added
+
+- Release notification. At startup obs-viewer checks the GitHub releases
+  API and, if a newer version exists, the status bar links to its release
+  page. `GET /api/update` exposes the result.
+
+  It only ever reports — nothing is downloaded, nothing is installed, and
+  the running binary is never modified. Signed, user-initiated updates
+  are deferred; see [docs/SELF_UPDATE_PROPOSAL.md](./docs/SELF_UPDATE_PROPOSAL.md)
+  for why replacing the binary needs release signing first.
+
+  On by default. Turn it off with `update_check = false` in
+  `obs_viewer.conf`, or `--no-update-check` for one run — after which
+  obs-viewer makes no network requests at all. The check runs in the
+  background, never delays startup, and fails silently, so an air-gapped
+  host sees nothing.
+
 ### Changed
 
 - EVTX parsing moved from `0xrawsec/golang-evtx` to

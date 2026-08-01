@@ -619,6 +619,26 @@
                 }
             }
         },
+        "/api/update": {
+            "get": {
+                "description": "Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from \"up to date\".",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "system"
+                ],
+                "summary": "Release update status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.UpdateResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/version": {
             "get": {
                 "description": "Lightweight liveness endpoint. The frontend uses this to drive an adaptive 30s / 5s healthcheck.",
@@ -987,6 +1007,38 @@
                 },
                 "id": {
                     "type": "string"
+                }
+            }
+        },
+        "server.UpdateResponse": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "description": "Available is true only when latest is confidently newer.",
+                    "type": "boolean"
+                },
+                "checked": {
+                    "description": "Checked is false until a check completes, so \"unknown\" is\ndistinguishable from \"up to date\".",
+                    "type": "boolean"
+                },
+                "current": {
+                    "description": "Current is the running version.",
+                    "type": "string",
+                    "example": "0.1.0"
+                },
+                "enabled": {
+                    "description": "Enabled mirrors update_check in obs_viewer.conf.",
+                    "type": "boolean"
+                },
+                "latest": {
+                    "description": "Latest is the newest published release, absent if unknown.",
+                    "type": "string",
+                    "example": "0.2.0"
+                },
+                "url": {
+                    "description": "URL is the release page.",
+                    "type": "string",
+                    "example": "https://github.com/labmk/obs-viewer/releases/tag/v0.2.0"
                 }
             }
         },

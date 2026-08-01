@@ -22,6 +22,7 @@ import (
 	"github.com/labmk/obs-viewer/internal/engine"
 	"github.com/labmk/obs-viewer/internal/logx"
 	"github.com/labmk/obs-viewer/internal/settings"
+	"github.com/labmk/obs-viewer/internal/update"
 
 	// Side-effect import: registers the generated swagger spec with the
 	// swag runtime so /api/openapi.json can hand it out.
@@ -232,7 +233,17 @@ type Server struct {
 	// (e.g. holding an open connection to a remote host).
 	busyMu     sync.Mutex
 	busyChecks []func() bool
+
+	// updates reports whether a newer release exists. Nil when the
+	// check is disabled, in which case /api/update says so rather than
+	// implying "up to date" from an absence of information.
+	updates *update.Checker
 }
+
+// SetUpdateChecker attaches the release-notification checker. Called
+// once from main after New, for the same reason as
+// SetIdleTimeoutSeconds: the setting lives in obs_viewer.conf.
+func (s *Server) SetUpdateChecker(c *update.Checker) { s.updates = c }
 
 // New creates a new Server.
 func New(eng *engine.Engine, staticFS embed.FS, version string, store *settings.Store) *Server {
@@ -350,6 +361,7 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/files/load-dir", s.APIHandler(s.handleLoadDir))
 	s.mux.HandleFunc("/api/openapi.json", s.handleOpenAPISpec)
 	s.mux.HandleFunc("/api/field-samples", s.APIHandler(s.handleFieldSamples))
+	s.mux.HandleFunc("/api/update", s.APIHandler(s.handleUpdate))
 	s.mux.HandleFunc("/api/shutdown", s.handleShutdown)
 
 	// Module routes (/api/<name>/*, /m/<name>/*) are mounted by the
@@ -454,6 +466,20 @@ func (s *Server) handleVersion(w http.ResponseWriter, r *http.Request) {
 		"arch":                 runtime.GOARCH,
 		"idle_timeout_seconds": s.idleTimeoutSec,
 	})
+}
+
+// @Summary      Release update status
+// @Description  Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
+// @Tags         system
+// @Produce      json
+// @Success      200  {object}  UpdateResponse
+// @Router       /api/update [get]
+func (s *Server) handleUpdate(w http.ResponseWriter, r *http.Request) {
+	if s.updates == nil {
+		writeJSON(w, update.Status{Current: s.version, Enabled: false})
+		return
+	}
+	writeJSON(w, s.updates.Status())
 }
 
 // @Summary      List loaded files
