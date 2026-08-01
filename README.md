@@ -1,13 +1,14 @@
 # obs-viewer
 
-A single-binary, local-first viewer for log, metric and trace files.
-Point it at a folder, open a browser tab, and query gigabytes of
-heterogeneous log data at SQL speed — no server, no index, no
-infrastructure.
+**Makes unstructured logs queryable without writing extraction code.**
+
+Point it at a folder of logs that share no schema — NDJSON here, a
+bracketed text format there, Windows event logs, XML — and get one
+queryable table with a real filter UI over it. No ingestion step, no
+index, no server, nothing to install.
 
 obs-viewer embeds a [DuckDB](https://duckdb.org) query engine and a
-React UI into one executable. There is nothing to install and nothing
-to configure to get started.
+React UI into one executable.
 
 ```
 obs_viewer --dir ./logs/
@@ -15,11 +16,28 @@ obs_viewer --dir ./logs/
 
 ## Why
 
-Log triage usually means one of two bad options: grep across a pile of
-files that don't share a schema, or stand up an OpenSearch/Loki stack
-to answer one question. obs-viewer is the middle path — the ergonomics
-of a real query UI, with the deployment cost of a single file you can
-copy onto an air-gapped machine.
+SQL over local files is a solved problem — DuckDB ships its own browser
+UI, and there are good tools built on it. They all assume your data is
+already structured: Parquet, CSV, JSON.
+
+Logs are not. A line like
+
+```
+2026-03-18 06:00:00.000 [INF] [SCH] [PID:4179] queue depth 2347 exceeds limit
+```
+
+is one string column to every one of those tools. Making it queryable
+means hand-writing regex extraction in SQL, per format, and then
+hand-writing the union across files whose fields don't line up.
+
+That's the part obs-viewer does. Formats are described by dropping a
+YAML rule into `parsers.d/` — no recompile — and files with unrelated
+schemas load together into one union you can filter across. The query
+UI is there because the people who need this are not the people who
+enjoy writing regex; those already have grep.
+
+The deployment cost is one file you can copy onto an air-gapped
+machine.
 
 ## Features
 
@@ -187,6 +205,12 @@ obs-viewer has a module system for optional sub-features that ship
 their own Go handlers, React tab, and static assets. No modules ship by
 default — see [docs/MODULES.md](./docs/MODULES.md) for the contract and
 a worked example.
+
+## Roadmap
+
+Direction and the reasoning behind it: [docs/ROADMAP.md](./docs/ROADMAP.md).
+Tracking is in [issues](https://github.com/labmk/obs-viewer/issues),
+grouped by milestone.
 
 ## Security
 
