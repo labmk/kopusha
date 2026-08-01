@@ -114,6 +114,18 @@ Parser rules describe **structure only**: regexes, dot-paths, field
 names. A rule should read as a statement about text shape, not about
 whose logs it came from.
 
+Adding or editing a rule changes `parsers.d.sha256`, the manifest of
+what a binary ships with. `./build.sh` regenerates it, or run the
+generator directly:
+
+```bash
+go run ./cmd/genmanifest
+```
+
+A test fails if the committed manifest is stale, so this cannot be
+forgotten silently — left wrong, a binary would misjudge which rules the
+user edited.
+
 ## Security issues
 
 Do not open a public issue. Follow [SECURITY.md](./SECURITY.md).

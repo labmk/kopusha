@@ -36,6 +36,8 @@ obs_viewer[.exe]                     (~85 MB single binary)
       xml/                           autodetected row element + dot-path flatten
       evtx/                          Windows EVTX via Velocidex/evtx
     logx/                            Structured file logger next to the binary
+    manifest/                        SHA-256 record of the shipped parsers.d/ rules
+    update/                          Release-notification check (reports only)
     module/                          Module interface + Registry + /api/modules
     server/server.go                 Core HTTP server + embedded SPA
     server/docs/                     swag-generated OpenAPI spec (regen via `swag init`)
@@ -62,7 +64,10 @@ obs_viewer[.exe]                     (~85 MB single binary)
   test-fixtures/                     Synthetic + one vendored EVTX sample; see REQUIREMENTS.md
     ndjson/                          pre-loaded by webServer for smoke.spec.js
     formats/                         one fixture per REQ-DT entry
+  cmd/genmanifest/                   Writes parsers.d.sha256; run from build.sh
   parsers.d/                         YAML rule files for block/line/xml autodetect
+  parsers.d.sha256                   Generated; go:embed'd so the binary knows
+                                     which rules it shipped with
   modules/                           Optional sub-features (none ship by default)
   static/                            Vite build output (generated, git-ignored)
   ARCHITECTURE.md                    This document

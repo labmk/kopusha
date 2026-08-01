@@ -13,6 +13,19 @@ those are external and stable.
 
 ### Added
 
+- Parser rule manifest. `build.sh` records the SHA-256 of every
+  `parsers.d/` rule into `parsers.d.sha256`, which `go:embed` compiles
+  into the binary — so a binary always knows which rules it shipped with,
+  wherever it is copied to.
+
+  `--verbose` now reports rules that differ from shipped, and the same
+  detail lands in the log file. When a format parses oddly, "which rules
+  were edited locally" was previously unanswerable.
+
+  This is also the prerequisite for the self-update design's rule-merge
+  policy: replace a shipped rule only when it is byte-identical to what
+  shipped. See [docs/SELF_UPDATE_PROPOSAL.md](./docs/SELF_UPDATE_PROPOSAL.md).
+
 - Release notification. At startup obs-viewer checks the GitHub releases
   API and, if a newer version exists, the status bar links to its release
   page. `GET /api/update` exposes the result.

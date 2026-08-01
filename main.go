@@ -24,11 +24,15 @@ import (
 	"github.com/labmk/obs-viewer/internal/ingest/ndjson"
 	ingestxml "github.com/labmk/obs-viewer/internal/ingest/xml"
 	"github.com/labmk/obs-viewer/internal/logx"
+	"github.com/labmk/obs-viewer/internal/manifest"
 	"github.com/labmk/obs-viewer/internal/module"
 	"github.com/labmk/obs-viewer/internal/server"
 	"github.com/labmk/obs-viewer/internal/settings"
 	"github.com/labmk/obs-viewer/internal/update"
 )
+
+//go:embed parsers.d.sha256
+var parsersManifestData []byte
 
 //go:embed static/*
 var staticFS embed.FS
@@ -164,6 +168,27 @@ func main() {
 	// the rule-driven adapters (block/line/xml); NDJSON and EVTX need no
 	// rules and self-detect from extension or magic bytes.
 	parsersDir := cfg.GetDefault("parsers_dir", filepath.Join(exeDir, "parsers.d"))
+	// Compare the rules on disk against the set this binary shipped with,
+	// BEFORE loading them. A malformed rule makes LoadRules fatal, and
+	// that is exactly the moment "which rules did you edit?" is worth
+	// answering — reporting it afterwards would mean never reporting it
+	// in the case that matters most. Recorded in the log file too, since
+	// that is what a bug report tends to carry.
+	if shipped, err := manifest.Parse(parsersManifestData); err != nil {
+		vlog("parser manifest unreadable: %v", err)
+	} else if diff, err := shipped.Compare(parsersDir); err != nil {
+		vlog("parser manifest comparison failed: %v", err)
+	} else if diff.Clean() {
+		vlog("parser rules: %d, all as shipped", len(diff.Unchanged))
+	} else {
+		vlog("parser rules differ from shipped: %s", diff.Summary())
+		logx.Info("startup.parsers_modified", logx.F{
+			"modified": diff.Modified,
+			"removed":  diff.Removed,
+			"added":    diff.Added,
+		})
+	}
+
 	ruleSet, err := ingest.LoadRules(parsersDir)
 	if err != nil {
 		log.Fatalf("Failed to load parser rules from %s: %v", parsersDir, err)

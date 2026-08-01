@@ -83,17 +83,28 @@ fi
 # github.com/swaggo/swag/cmd/swag@latest`. Skipped (with a notice) when
 # the binary isn't on PATH — useful for CI images that prebuild docs/.
 if command -v swag &>/dev/null; then
-    echo "[0/4] Regenerating OpenAPI spec (swag init)..."
+    echo "[1/6] Regenerating OpenAPI spec (swag init)..."
     swag init -g main.go --output internal/server/docs --parseInternal --parseDependency >/dev/null 2>&1 \
         && echo "  Spec written to internal/server/docs/" \
         || echo "  swag init reported issues — see internal/server/docs/"
 else
-    echo "[0/4] swag not found on PATH; skipping spec regeneration."
+    echo "[1/6] swag not found on PATH; skipping spec regeneration."
     echo "       Install: go install github.com/swaggo/swag/cmd/swag@latest"
 fi
 
+# Regenerate the parser rule manifest, which go:embed compiles into the
+# binary. Doing it here rather than by hand keeps one invariant true: the
+# manifest inside the binary always describes the parsers.d/ shipped
+# beside it. If the two drift, a future self-update would misjudge which
+# rules the user edited — see docs/SELF_UPDATE_PROPOSAL.md.
+#
+# GOOS/GOARCH are cleared because this runs on the build host; leaving a
+# cross-compilation target set would try to run a foreign binary.
+echo "[2/6] Parser rule manifest..."
+(unset GOOS GOARCH; go run ./cmd/genmanifest)
+
 # Step 1: Build frontend
-echo "[1/4] Building frontend..."
+echo "[3/6] Building frontend..."
 cd frontend
 echo "  Installing dependencies (locked via package-lock.json)..."
 # npm ci (not install) — refuses to drift from the lockfile, which
@@ -127,10 +138,10 @@ if [ ! -f static/index.html ]; then
     echo "ERROR: static/index.html not found after frontend build"
     exit 1
 fi
-echo "[2/4] Static assets verified"
+echo "[4/6] Static assets verified"
 
 # Step 3: Build Go binary
-echo "[3/4] Compiling Go binary..."
+echo "[5/6] Compiling Go binary..."
 
 # Windows C compiler selection. What is actually known, as of
 # 2026-08-01 against duckdb-go-bindings v0.10505.0:
@@ -254,7 +265,7 @@ done
 # ---------------------------------------------------------------------------
 # Step 4: Code signing hook
 # ---------------------------------------------------------------------------
-echo "[4/4] Post-build..."
+echo "[6/6] Post-build..."
 
 if [ -x "${SCRIPT_DIR}/hooks/sign.sh" ]; then
     echo "  [hook] Running code signing..."

@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-01T09:46:22Z",
+    "timestamp": "2026-08-01T11:34:27Z",
     "tools": {
       "components": [
         {
@@ -3756,7 +3756,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.0.0-20260801083657-a95533971642?type=module",
+      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.0.0-20260801112418-ea7911964bb6?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
         "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",

@@ -161,14 +161,18 @@ Three optional executables, all skipped if absent:
 ## What the build does
 
 1. `swag init` — regenerate the OpenAPI spec (skipped if `swag` absent).
-2. `npm ci && npm run build` — the `prebuild` script regenerates the
+2. `go run ./cmd/genmanifest` — rewrite `parsers.d.sha256`, the record of
+   which parser rules this binary ships with. `go:embed` compiles it in,
+   so the manifest inside the binary always describes the `parsers.d/`
+   beside it.
+3. `npm ci && npm run build` — the `prebuild` script regenerates the
    typed TS client from `swagger.json`, then Vite writes to `static/`.
-3. Verify `static/index.html` exists (guards against a silent frontend
+4. Verify `static/index.html` exists (guards against a silent frontend
    failure producing a binary with an empty UI).
-4. `go build` with `-s -w` and the version stamped in.
-5. `govulncheck` (unless skipped) — reported, non-fatal by default.
-6. Copy `parsers.d/` and `obs_viewer.conf` into `dist/`.
-7. Code-sign hook.
+5. `go build` with `-s -w` and the version stamped in.
+6. `govulncheck` (unless skipped) — reported, non-fatal by default.
+7. Copy `parsers.d/` and `obs_viewer.conf` into `dist/`.
+8. Code-sign hook.
 
 ## Troubleshooting
 
