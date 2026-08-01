@@ -112,6 +112,14 @@ echo "  Installing dependencies (locked via package-lock.json)..."
 npm ci --silent
 npm run build --silent
 cd ..
+
+# Vite builds with emptyOutDir, which wipes static/ — including the
+# committed .gitkeep. That file is load-bearing: `//go:embed static/*`
+# fails to resolve on a fresh clone if the directory has no tracked
+# contents, so `go vet`, `go test` and `go run .` all break before the
+# frontend has ever been built. Put it back so a build never leaves the
+# tree in a state that a fresh clone could not reproduce.
+touch static/.gitkeep
 echo "  Frontend built -> static/"
 
 # Step 2: Verify static output
