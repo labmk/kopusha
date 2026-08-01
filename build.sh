@@ -50,7 +50,7 @@ if [ "$TARGET_OS" = "darwin" ] && [ "$HOST_OS" != "darwin" ]; then
     echo "       CGO is required (DuckDB) and the Apple SDK is not" >&2
     echo "       redistributable, so there is no supported cross path" >&2
     echo "       from ${HOST_OS}. Use a macOS machine or the" >&2
-    echo "       macos-14 runner in .github/workflows/build.yml." >&2
+    echo "       macos-26 runner in .github/workflows/build.yml." >&2
     exit 1
 fi
 
@@ -151,11 +151,18 @@ LDFLAGS="-s -w -X main.version=$VERSION"
 # supposed to compensate proved less reliable than the console itself.
 # The trade is a console window on Explorer launches.
 
-# macOS: pin the deployment target so the binary runs on older releases
-# than the build machine. arm64 macOS starts at 11.0.
+# macOS: the supported minimum is whatever the build SDK targets, so
+# derive it rather than pinning a floor. The previous 11.0 pin was
+# aspirational — DuckDB's prebuilt archive and the Go runtime objects
+# are compiled against the installed SDK, so the linker emitted a
+# warning per object ("built for newer 'macOS' version than being
+# linked") and the resulting binary would not have been trustworthy on
+# an 11.0 machine anyway. Export it explicitly so the value is visible
+# in the build log and overridable for a deliberate older target.
 if [ "$TARGET_OS" = "darwin" ]; then
-    export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-11.0}"
-    echo "  macOS deployment target: $MACOSX_DEPLOYMENT_TARGET"
+    sdk_version="$(xcrun --sdk macosx --show-sdk-version 2>/dev/null || echo "")"
+    export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-${sdk_version%%.*}.0}"
+    echo "  macOS deployment target: $MACOSX_DEPLOYMENT_TARGET (from SDK ${sdk_version:-unknown})"
 fi
 
 CGO_ENABLED=1 GOOS="$TARGET_OS" GOARCH="$TARGET_ARCH" \

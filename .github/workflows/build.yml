@@ -67,7 +67,7 @@ jobs:
             {"name":"windows-amd64","runner":"windows-latest","goos":"windows","goarch":"amd64","artifact":"obs_viewer.exe","e2e":true}
           ]'
           mac='[
-            {"name":"darwin-arm64","runner":"macos-14","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"}
+            {"name":"darwin-arm64","runner":"macos-26","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"}
           ]'
           if [ "$FULL" = "true" ]; then
             include="$(jq -cn --argjson a "$core" --argjson b "$mac" '$a + $b')"
@@ -95,7 +95,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
@@ -189,7 +189,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci

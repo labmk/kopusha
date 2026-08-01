@@ -2,10 +2,10 @@
 
 ## Requirements
 
-- **Go 1.25.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.2`;
+- **Go 1.25.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.5`;
   the `go 1.25.6` line is the language-compat floor, so any 1.25.6+
   toolchain can consume the module.
-- **Node 18+** with npm (Vite frontend build).
+- **Node 20+** with npm (Vite frontend build). CI builds on 24 LTS.
 - **A C compiler.** DuckDB is a CGO dependency — there is no pure-Go
   fallback.
 
@@ -20,7 +20,6 @@ Optional:
 ## Quick start
 
 ```bash
-chmod +x build.sh
 ./build.sh
 ```
 
@@ -34,11 +33,11 @@ Environment overrides:
 | `VERSION` | current release | Stamped into `main.version` via ldflags |
 | `GOOS` / `GOARCH` | host | Target platform |
 | `PRODUCT_NAME` | `obs_viewer` | Shown in build output, passed to the sign hook |
-| `MANUFACTURER` | `obs-viewer contributors` | Passed to the sign hook |
+| `MANUFACTURER` | `labmk` | Passed to the sign hook |
 | `COPYRIGHT` | derived from `MANUFACTURER` | Passed to the sign hook |
 | `CC` | auto-detected | C compiler override |
 | `SKIP_VULNCHECK` | `0` | Set to `1` on air-gapped hosts (vuln.go.dev unreachable) |
-| `MACOSX_DEPLOYMENT_TARGET` | `11.0` | macOS minimum version |
+| `MACOSX_DEPLOYMENT_TARGET` | build SDK major version | macOS minimum version |
 
 ## Supported targets
 
@@ -94,7 +93,7 @@ explanation rather than surfacing a confusing
 `gcc: unrecognized command-line option '-arch'` from `runtime/cgo`.
 
 If you have no Mac, use CI — `.github/workflows/build.yml` builds
-`darwin/arm64` on the `macos-14` (Apple Silicon) runner and uploads it
+`darwin/arm64` on the `macos-26` (Apple Silicon) runner and uploads it
 as an artifact. That leg runs only on tags and manual dispatch, because
 macOS runners bill at 10x while the repository is private.
 
@@ -105,8 +104,14 @@ xcode-select --install          # once
 GOOS=darwin GOARCH=arm64 ./build.sh
 ```
 
-`MACOSX_DEPLOYMENT_TARGET` defaults to `11.0` so the binary runs on
-releases older than the build machine.
+`MACOSX_DEPLOYMENT_TARGET` defaults to the **major version of the build
+SDK**, so the supported minimum is whatever macOS the build machine
+targets. There is deliberately no older floor: DuckDB's prebuilt archive
+and the Go runtime objects are compiled against the installed SDK, so
+pinning an older target only produced a linker warning per object and a
+binary that had never been verified on that older release. Set the
+variable explicitly if you need a deliberate older target and are
+prepared to test it.
 
 `build.sh` applies an **ad-hoc** code signature (`codesign --sign -`),
 which is enough for a binary you built yourself or copied over manually.

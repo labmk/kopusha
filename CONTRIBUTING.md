@@ -15,7 +15,7 @@ project, so a quick note on expectations before you invest time:
 
 ## Getting set up
 
-You need Go 1.25.6+ with CGO enabled, Node 18+, and a C compiler —
+You need Go 1.25.6+ with CGO enabled, Node 20+, and a C compiler —
 DuckDB is a CGO dependency, so there is no pure-Go path.
 
 ```bash
