@@ -39,47 +39,54 @@ jobs:
           CGO_ENABLED: '1'
         run: go vet ./...
 
+  # CGO (DuckDB) means every target needs a matching C toolchain and the
+  # prebuilt libduckdb_static.a for that platform, so each one builds on
+  # a native runner. The exception is darwin/amd64: the macOS SDK is
+  # universal, so an arm64 runner cross-builds it by passing -arch to
+  # clang. That matters because the Intel macOS runners are on their way
+  # out.
+  #
+  # The matrix is computed rather than literal because macOS runners bill
+  # at 10x while this repository is private — roughly 200 minutes for one
+  # full run against a 2,000/month allowance. Ordinary pushes therefore
+  # build Linux (1x) and Windows (2x) only; tags and manual dispatch get
+  # everything. Make the repository public and this distinction stops
+  # mattering, since standard runners are free there.
+  targets:
+    name: select targets
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.pick.outputs.matrix }}
+    steps:
+      - id: pick
+        env:
+          FULL: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') }}
+        run: |
+          set -euo pipefail
+          core='[
+            {"name":"linux-amd64","runner":"ubuntu-latest","goos":"linux","goarch":"amd64","artifact":"obs_viewer","e2e":true},
+            {"name":"linux-arm64","runner":"ubuntu-24.04-arm","goos":"linux","goarch":"arm64","artifact":"obs_viewer"},
+            {"name":"windows-amd64","runner":"windows-latest","goos":"windows","goarch":"amd64","artifact":"obs_viewer.exe","e2e":true}
+          ]'
+          mac='[
+            {"name":"darwin-arm64","runner":"macos-14","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"},
+            {"name":"darwin-amd64","runner":"macos-14","goos":"darwin","goarch":"amd64","artifact":"obs_viewer","cc":"clang -arch x86_64"}
+          ]'
+          if [ "$FULL" = "true" ]; then
+            include="$(jq -cn --argjson a "$core" --argjson b "$mac" '$a + $b')"
+          else
+            include="$(jq -cn --argjson a "$core" '$a')"
+          fi
+          echo "matrix={\"include\":$include}" >> "$GITHUB_OUTPUT"
+          jq -n --argjson i "$include" '$i | map(.name)'
+
   build:
     name: ${{ matrix.name }}
+    needs: targets
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          # CGO (DuckDB) means every target needs a matching C toolchain
-          # and the prebuilt libduckdb_static.a for that platform, so
-          # each one builds on a native runner. The exception is
-          # darwin/amd64: the macOS SDK is universal, so an arm64 runner
-          # cross-builds it by passing -arch to clang. That matters
-          # because the Intel macOS runners are on their way out.
-          - name: linux-amd64
-            runner: ubuntu-latest
-            goos: linux
-            goarch: amd64
-            artifact: obs_viewer
-            e2e: true
-          - name: linux-arm64
-            runner: ubuntu-24.04-arm
-            goos: linux
-            goarch: arm64
-            artifact: obs_viewer
-          - name: windows-amd64
-            runner: windows-latest
-            goos: windows
-            goarch: amd64
-            artifact: obs_viewer.exe
-            e2e: true
-          - name: darwin-arm64
-            runner: macos-14
-            goos: darwin
-            goarch: arm64
-            artifact: obs_viewer
-          - name: darwin-amd64
-            runner: macos-14
-            goos: darwin
-            goarch: amd64
-            artifact: obs_viewer
-            cc: clang -arch x86_64
+      matrix: ${{ fromJSON(needs.targets.outputs.matrix) }}
 
     steps:
       - uses: actions/checkout@v4
