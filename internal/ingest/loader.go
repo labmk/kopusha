@@ -90,3 +90,21 @@ type DirectIngester interface {
 	Loader
 	UseDirectPath() bool
 }
+
+// DirectSQLIngester is a DirectIngester whose format DuckDB reads with
+// something other than read_json_auto — Parquet, for instance.
+//
+// ReadExpr returns the table expression the engine puts after FROM. The
+// path argument arrives already escaped for single-quoted SQL, so an
+// implementation composes rather than escapes:
+//
+//	func (Loader) ReadExpr(p string) string {
+//		return "read_parquet('" + p + "')"
+//	}
+//
+// A DirectIngester that does not implement this keeps the NDJSON
+// read_json_auto path, which is what every existing adapter expects.
+type DirectSQLIngester interface {
+	DirectIngester
+	ReadExpr(escapedPath string) string
+}

@@ -272,7 +272,7 @@ info:
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
   title: obs-viewer API
-  version: 0.1.1
+  version: 0.2.0
 paths:
   /api/browse:
     get:

@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import { formatTimestamp } from '../utils/datetime';
+import { useVirtualRows, ROW_HEIGHT } from '../hooks/useVirtualRows';
+import RowDetailPanel from './RowDetailPanel';
 
 function isNullish(v) {
   if (v === null || v === undefined) return true;
@@ -61,7 +63,11 @@ function selectColumns(fields, timestampField) {
 }
 
 export default function LogTable({ result, sortOrder, onSortOrderChange, timestampField, timezone, hourFormat = '24', hideNulls = true }) {
-  const [expandedRows, setExpandedRows] = useState(new Set());
+  // A single selected row, shown in a side panel — not a set of
+  // in-place expansions. Expansion used to grow the row, which pushed
+  // everything below it off screen and, more consequentially, made row
+  // heights variable and windowing impractical.
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [hiddenColumns, setHiddenColumns] = useState(new Set());
   const [showColumnPicker, setShowColumnPicker] = useState(false);
   const DEFAULT_COL_WIDTH = 180;
@@ -113,20 +119,38 @@ export default function LogTable({ result, sortOrder, onSortOrderChange, timesta
     return columns.filter((c) => !hiddenColumns.has(c));
   }, [columns, hiddenColumns]);
 
+  // Windowing. Called unconditionally, before the empty-result early
+  // return below — hooks cannot live behind a branch.
+  const rowCount = result?.rows?.length ?? 0;
+  const { containerRef, startIndex, endIndex, padTop, padBottom, onScroll } =
+    useVirtualRows(rowCount);
+
+  // j/k and arrows move the selection while the detail panel is open;
+  // Escape closes it. Bound at the document because the table rows are
+  // not focusable — making them so would fight the click-to-select
+  // interaction for very little gain.
+  useEffect(() => {
+    if (selectedIndex === null) return undefined;
+    const onKey = (e) => {
+      const tag = e.target?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      if (e.key === 'Escape') { setSelectedIndex(null); return; }
+      const delta = (e.key === 'j' || e.key === 'ArrowDown') ? 1
+        : (e.key === 'k' || e.key === 'ArrowUp') ? -1 : 0;
+      if (delta === 0) return;
+      e.preventDefault();
+      setSelectedIndex((i) => Math.min(rowCount - 1, Math.max(0, i + delta)));
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [selectedIndex, rowCount]);
+
   if (!result || !result.rows) {
     return <div className="empty-state">No results</div>;
   }
 
   const toggleRow = (index) => {
-    setExpandedRows((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
-      return next;
-    });
+    setSelectedIndex((prev) => (prev === index ? null : index));
   };
 
   const toggleColumn = (col) => {
@@ -195,7 +219,8 @@ export default function LogTable({ result, sortOrder, onSortOrderChange, timesta
       </div>
 
       {/* Table */}
-      <div className="log-table-container">
+      <div className="log-table-split">
+      <div className="log-table-container" ref={containerRef} onScroll={onScroll}>
         <table className="log-table" style={{ tableLayout: 'fixed', width: 'max-content', minWidth: '100%' }}>
           <colgroup>
             <col style={{ width: '30px' }} />
@@ -230,12 +255,20 @@ export default function LogTable({ result, sortOrder, onSortOrderChange, timesta
             </tr>
           </thead>
           <tbody>
-            {result.rows.map((row, i) => (
-              <React.Fragment key={i}>
-                <tr onClick={() => toggleRow(i)} style={{ cursor: 'pointer' }}>
-                  <td className="expand-btn">
-                    {expandedRows.has(i) ? '▼' : '▶'}
-                  </td>
+            {/* Spacer standing in for every row scrolled past. Keeping
+                it inside the table means the browser still sizes the
+                columns from the rendered rows. */}
+            {padTop > 0 && <tr aria-hidden="true" style={{ height: padTop }} />}
+            {result.rows.slice(startIndex, endIndex).map((row, offset) => {
+              const i = startIndex + offset;
+              return (
+                <tr
+                  key={i}
+                  onClick={() => toggleRow(i)}
+                  className={selectedIndex === i ? 'row-selected' : undefined}
+                  style={{ cursor: 'pointer', height: ROW_HEIGHT }}
+                >
+                  <td className="expand-btn">{selectedIndex === i ? '▼' : '▶'}</td>
                   {visibleColumns.map((col) => (
                     <td key={col}>
                       {isTimestampCol(col)
@@ -244,19 +277,26 @@ export default function LogTable({ result, sortOrder, onSortOrderChange, timesta
                     </td>
                   ))}
                 </tr>
-                {expandedRows.has(i) && (
-                  <tr className="row-expanded">
-                    <td colSpan={visibleColumns.length + 1}>
-                      <pre style={{ margin: 0, fontFamily: 'var(--font-mono)', fontSize: '11px', lineHeight: '1.6' }}>
-                        {JSON.stringify(hideNulls ? stripNulls(row) : row, null, 2)}
-                      </pre>
-                    </td>
-                  </tr>
-                )}
-              </React.Fragment>
-            ))}
+              );
+            })}
+            {padBottom > 0 && <tr aria-hidden="true" style={{ height: padBottom }} />}
           </tbody>
         </table>
+      </div>
+      {selectedIndex !== null && result.rows[selectedIndex] && (
+        <RowDetailPanel
+          row={result.rows[selectedIndex]}
+          index={selectedIndex}
+          total={result.rows.length}
+          hideNulls={hideNulls}
+          onClose={() => setSelectedIndex(null)}
+          onNavigate={(delta) =>
+            setSelectedIndex((i) =>
+              Math.min(result.rows.length - 1, Math.max(0, i + delta))
+            )
+          }
+        />
+      )}
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const OPERATORS = [
   { value: 'does_not_exist', label: 'does not exist' },
 ];
 
-// Operators that take no value (OpenSearch parity for "exists" /
+// Operators that take no value ("exists" /
 // "does not exist"). The value input is hidden and the engine
 // builds the SQL clause from the field alone.
 const VALUELESS = new Set(['exists', 'does_not_exist']);
@@ -367,13 +367,13 @@ export default function QueryBuilder({
       {/* Separator before the text-view toggle */}
       <div style={{ width: '1px', height: '20px', background: 'var(--border)' }} />
 
-      {/* LogQL-shaped text view. Replaces the previous Save/Load buttons —
+      {/* pipeline-style text view. Replaces the previous Save/Load buttons —
           the text is the portable artefact (copy for chat/notes, paste back
           to restore). See utils/queryDsl.js for the format. */}
       <button
         className="btn btn-sm"
         onClick={() => setShowText(true)}
-        title="View / edit query as LogQL-shaped text"
+        title="View / edit query as pipeline-style text"
       >
         Text
       </button>

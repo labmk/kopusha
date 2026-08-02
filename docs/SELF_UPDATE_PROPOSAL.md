@@ -160,9 +160,10 @@ itself.
 
 ## The alternative that may be better than stage 2
 
-Publish to **winget** and a **Homebrew tap**. Both solve signing,
-permissions, and replacement mechanics with infrastructure that corporate
-IT already trusts, and neither is code this project has to own forever.
+Publishing through the platform package managers. They solve signing,
+permissions, and replacement mechanics with infrastructure that
+corporate IT already trusts, and none of it is code this project has to
+own forever.
 
 What they do not serve is this tool's actual deployment style — copying
 the executable onto a share or a USB stick, which is exactly what the

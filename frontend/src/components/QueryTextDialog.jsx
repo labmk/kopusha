@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { serializeQuery, parseQuery } from '../utils/queryDsl';
 
-// QueryTextDialog — the LogQL-shaped text view of the current query.
+// QueryTextDialog — the pipeline-style text view of the current query.
 //
 // Opens with the current filter/time/search state serialized into the
 // textarea. Copy ships it to the clipboard for chat/notes paste. Edit
@@ -64,20 +64,20 @@ export default function QueryTextDialog({ open, onOpenChange, current, onApply }
         <Dialog.Overlay className="rdx-overlay" />
         <Dialog.Content className="rdx-content" style={{ width: '720px' }}>
           <div className="modal-header">
-            <Dialog.Title asChild><h3>Query as text (LogQL-shaped)</h3></Dialog.Title>
+            <Dialog.Title asChild><h3>Query as text</h3></Dialog.Title>
             <Dialog.Close asChild>
               <button className="btn btn-sm" aria-label="Close">&times;</button>
             </Dialog.Close>
           </div>
           <Dialog.Description className="sr-only">
-            Inspect, copy, or paste-and-edit the current query as LogQL-style text.
+            Inspect, copy, or paste-and-edit the current query as text.
           </Dialog.Description>
 
           <div style={{ padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
               Edit and Apply to update the visual builder. Copy to share or save in notes.
-              When you migrate to Grafana/Loki, replace <code>{'{}'}</code> with your stream
-              selector and pass the <code>@time:</code> range as API params.
+              The empty <code>{'{}'}</code> selector matches every loaded file;
+              <code>@time:</code> carries the range.
             </div>
             <textarea
               value={text}

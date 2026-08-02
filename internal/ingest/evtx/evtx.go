@@ -2,7 +2,7 @@
 //
 // EVTX is a binary format (magic bytes "ElfFile\0") emitted by Windows
 // Vista and later. The parser is www.velocidex.com/golang/evtx
-// (Apache-2.0), the same one Velociraptor uses for DFIR work.
+// (Apache-2.0).
 //
 // Each event is flattened into a single record keyed by dot-paths over
 // the parsed structure. Standard fields land at predictable keys:

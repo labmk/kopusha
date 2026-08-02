@@ -1,8 +1,10 @@
-// LogQL-shaped query DSL for obs-viewer.
+// Pipeline-style query DSL for obs-viewer.
 //
-// Design goal: text that can be pasted into a chat/notes, re-pasted here
-// to restore state, AND ported to a Grafana/Loki backend with minimal
-// edits (basically: replace `{}` with `{job=...}`, drop @time:).
+// Design goal: text that can be pasted into a chat or notes and
+// re-pasted here to restore state. The shape — a stream selector, then
+// line filters, then label filters — is a widely used convention for
+// log query languages, so it reads as familiar and ports to other
+// pipeline dialects with small edits.
 //
 // Grammar (informal):
 //
@@ -83,8 +85,8 @@ function serializeFilter(f) {
       return `  | ${field} = ""`;
     case 'is_one_of':
     case 'is_not_one_of': {
-      // LogQL has no `IN` keyword — emit anchored regex alternation
-      // (`^(v1|v2|v3)$`) so the round-trip stays a LogQL-shaped query
+      // The dialect has no `IN` keyword — emit anchored regex
+      // alternation (`^(v1|v2|v3)$`) so the round-trip stays valid
       // and the engine can fall back to wildcard semantics if a future
       // parse doesn't recognise this specific shape.
       const parts = String(f.value || '').split(',')
@@ -117,20 +119,21 @@ function unpackOneOfPattern(pattern) {
   return parts.join(',');
 }
 
-// serializeQuery — render the four-part obs-viewer state as LogQL-ish
+// serializeQuery — render the four-part obs-viewer state as pipeline
 // text. Always emits the header comment + selector for shape stability;
 // optional sections drop when empty.
 export function serializeQuery({ filters = [], time_from = '', time_to = '', search = '' } = {}) {
   const lines = [
-    '# obs-viewer query (LogQL-shaped)',
-    '# Edit + paste back to restore. Migrate to Loki: replace {} with',
-    '# your stream selector, drop the @time: line (use API params).',
+    '# obs-viewer query',
+    '# Edit and paste back to restore. The empty {} selector matches',
+    '# every loaded file; @time: is the range filter.',
     '',
     '{}',
   ];
   if (search) lines.push(`  |= ${quoteValue(search)}`);
-  // `| json` is implicit in obs-viewer (everything's already structured)
-  // but we emit it so a paste into Loki has the parser stage ready.
+  // `| json` is implicit here — everything is already structured by the
+  // time it reaches the table — but it is emitted so the text stays
+  // shaped like the convention it follows.
   if (filters.length > 0) lines.push('  | json');
   for (const f of filters) lines.push(serializeFilter(f));
   if (time_from || time_to) {
@@ -180,7 +183,7 @@ function autoFixContainsRegex(value) {
 }
 
 // canonicalizeText pre-processes the input so the line-based parser
-// below can consume single-line LogQL too. LLMs (Copilot in
+// below can consume a single-line query too. LLMs (assistants in
 // particular) routinely emit `{} |= "a" |= "b" | json | f = "v"` on
 // one line; without this step every such paste would fail. We split
 // on top-level ` |` boundaries that are OUTSIDE quoted strings so a
@@ -263,7 +266,7 @@ function parseLabelFilter(field, op, value, warnings) {
 export function parseQuery(text) {
   const out = { filters: [], time_from: '', time_to: '', search: '', warnings: [] };
   if (!text || !text.trim()) return out;
-  // Tolerate one-liner pipe stages (Copilot et al. emit these). The
+  // Tolerate one-liner pipe stages (assistants emit these). The
   // canonicalizer is idempotent: already-multi-line input passes
   // through unchanged.
   const canonical = canonicalizeText(text);
@@ -285,8 +288,8 @@ export function parseQuery(text) {
     // Stream selector.
     if (RE_SELECTOR.test(trimmed)) { sawSelector = true; continue; }
     if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
-      // Non-empty selector — forward-compat with future Loki migration.
-      // For now we accept and ignore the labels.
+      // Non-empty selector — accepted and ignored. Reserved for a
+      // future scoping mechanism.
       sawSelector = true;
       continue;
     }

@@ -46,7 +46,7 @@ test('query text dialog round-trips a filter from visual builder', async ({ page
   await page.getByPlaceholder('Search all fields...').fill('error');
 
   // Open the text dialog and confirm the serialized form contains the
-  // search term as a LogQL line filter.
+  // search term as a pipeline DSL line filter.
   await page.getByRole('button', { name: 'Text' }).click();
   const textarea = page.locator('.rdx-content textarea');
   await expect(textarea).toBeVisible();
@@ -159,13 +159,13 @@ test('no update notice when the check is disabled', async ({ page }) => {
   await expect(page.locator('.status-update')).toHaveCount(0);
 });
 
-test('text dialog ingests Copilot-style single-line output and auto-corrects .X. regex', async ({ page }) => {
+test('text dialog ingests single-line assistant output and auto-corrects .X. regex', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Text' }).click();
   const textarea = page.locator('.rdx-content textarea').first();
   await expect(textarea).toBeVisible();
 
-  // The two mistakes LLM-generated LogQL makes most often, in one paste:
+  // The two mistakes LLM-generated pipeline DSL makes most often, in one paste:
   // the whole query collapsed onto a single line, and `.X.` written where
   // `.*X.*` was meant. Both should be silently corrected on Apply.
   await textarea.fill(

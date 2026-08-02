@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-01T18:49:58Z",
+    "timestamp": "2026-08-02T05:08:37Z",
     "tools": {
       "components": [
         {
@@ -23,7 +23,7 @@
     "component": {
       "type": "application",
       "name": "obs_viewer",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "description": "Single-binary local-first viewer for log, metric and trace files",
       "licenses": [
         {
@@ -764,7 +764,7 @@
       "name": "react-dialog",
       "group": "@radix-ui",
       "version": "1.1.23",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
       "licenses": [
         {
           "license": {
@@ -812,7 +812,7 @@
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
           "version": "1.1.19",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -856,7 +856,7 @@
           "name": "react-focus-scope",
           "group": "@radix-ui",
           "version": "1.1.16",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -900,7 +900,7 @@
           "name": "react-portal",
           "group": "@radix-ui",
           "version": "1.1.17",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -944,7 +944,7 @@
           "name": "react-presence",
           "group": "@radix-ui",
           "version": "1.1.10",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -988,7 +988,7 @@
           "name": "react-primitive",
           "group": "@radix-ui",
           "version": "2.1.10",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -1034,7 +1034,7 @@
       "name": "react-popover",
       "group": "@radix-ui",
       "version": "1.1.23",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
       "licenses": [
         {
           "license": {
@@ -1082,7 +1082,7 @@
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
           "version": "1.1.19",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -1126,7 +1126,7 @@
           "name": "react-focus-scope",
           "group": "@radix-ui",
           "version": "1.1.16",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -1170,7 +1170,7 @@
           "name": "react-popper",
           "group": "@radix-ui",
           "version": "1.3.7",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
           "licenses": [
             {
               "license": {
@@ -1214,7 +1214,7 @@
               "name": "react-arrow",
               "group": "@radix-ui",
               "version": "1.1.15",
-              "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+              "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
               "licenses": [
                 {
                   "license": {
@@ -1260,7 +1260,7 @@
           "name": "react-portal",
           "group": "@radix-ui",
           "version": "1.1.17",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -1304,7 +1304,7 @@
           "name": "react-presence",
           "group": "@radix-ui",
           "version": "1.1.10",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -1348,7 +1348,7 @@
           "name": "react-primitive",
           "group": "@radix-ui",
           "version": "2.1.10",
-          "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -1394,7 +1394,7 @@
       "name": "react-query",
       "group": "@tanstack",
       "version": "5.101.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
       "author": "tannerlinsley",
       "description": "Hooks for managing, caching and syncing asynchronous and remote data in React",
       "licenses": [
@@ -1443,7 +1443,7 @@
       "type": "library",
       "name": "react-dom",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+      "bom-ref": "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
       "description": "React package for working with the DOM.",
       "licenses": [
         {
@@ -1491,7 +1491,7 @@
       "type": "library",
       "name": "react",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.1.1|react@18.3.1",
+      "bom-ref": "obs-viewer-frontend@0.2.0|react@18.3.1",
       "description": "React is a JavaScript library for building user interfaces.",
       "licenses": [
         {
@@ -1540,7 +1540,7 @@
       "name": "primitive",
       "group": "@radix-ui",
       "version": "1.1.7",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
       "licenses": [
         {
           "license": {
@@ -1588,7 +1588,7 @@
       "name": "react-compose-refs",
       "group": "@radix-ui",
       "version": "1.1.5",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
       "licenses": [
         {
           "license": {
@@ -1636,7 +1636,7 @@
       "name": "react-context",
       "group": "@radix-ui",
       "version": "1.2.2",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
       "licenses": [
         {
           "license": {
@@ -1684,7 +1684,7 @@
       "name": "react-focus-guards",
       "group": "@radix-ui",
       "version": "1.1.6",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
       "licenses": [
         {
           "license": {
@@ -1732,7 +1732,7 @@
       "name": "react-id",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
       "licenses": [
         {
           "license": {
@@ -1780,7 +1780,7 @@
       "name": "react-slot",
       "group": "@radix-ui",
       "version": "1.3.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
       "licenses": [
         {
           "license": {
@@ -1828,7 +1828,7 @@
       "name": "react-use-controllable-state",
       "group": "@radix-ui",
       "version": "1.2.6",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
       "licenses": [
         {
           "license": {
@@ -1876,7 +1876,7 @@
       "name": "react-use-layout-effect",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
       "licenses": [
         {
           "license": {
@@ -1924,7 +1924,7 @@
       "name": "react",
       "group": "@types",
       "version": "18.3.31",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
       "description": "TypeScript definitions for react",
       "licenses": [
         {
@@ -1972,7 +1972,7 @@
       "type": "library",
       "name": "aria-hidden",
       "version": "1.2.6",
-      "bom-ref": "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
+      "bom-ref": "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
       "author": "Anton Korzunov",
       "description": "Cast aria-hidden to everything, except...",
       "licenses": [
@@ -2021,7 +2021,7 @@
       "type": "library",
       "name": "react-remove-scroll",
       "version": "2.7.2",
-      "bom-ref": "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
+      "bom-ref": "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
       "author": "Anton Korzunov",
       "description": "Disables scroll outside of `children` node.",
       "licenses": [
@@ -2071,7 +2071,7 @@
       "name": "query-core",
       "group": "@tanstack",
       "version": "5.101.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4",
       "author": "tannerlinsley",
       "description": "The framework agnostic core that powers TanStack Query",
       "licenses": [
@@ -2120,7 +2120,7 @@
       "type": "library",
       "name": "loose-envify",
       "version": "1.4.0",
-      "bom-ref": "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
+      "bom-ref": "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
       "author": "Andres Suarez",
       "description": "Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST",
       "licenses": [
@@ -2169,7 +2169,7 @@
       "type": "library",
       "name": "scheduler",
       "version": "0.23.2",
-      "bom-ref": "obs-viewer-frontend@0.1.1|scheduler@0.23.2",
+      "bom-ref": "obs-viewer-frontend@0.2.0|scheduler@0.23.2",
       "description": "Cooperative scheduler for the browser environment.",
       "licenses": [
         {
@@ -2218,7 +2218,7 @@
       "name": "react-use-callback-ref",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2266,7 +2266,7 @@
       "name": "react-use-effect-event",
       "group": "@radix-ui",
       "version": "0.0.5",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
       "licenses": [
         {
           "license": {
@@ -2314,7 +2314,7 @@
       "name": "prop-types",
       "group": "@types",
       "version": "15.7.15",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15",
       "description": "TypeScript definitions for prop-types",
       "licenses": [
         {
@@ -2362,7 +2362,7 @@
       "type": "library",
       "name": "csstype",
       "version": "3.2.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|csstype@3.2.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|csstype@3.2.3",
       "author": "Fredrik Nicol",
       "description": "Strict TypeScript and Flow types for style based on MDN data",
       "licenses": [
@@ -2411,7 +2411,7 @@
       "type": "library",
       "name": "tslib",
       "version": "2.8.1",
-      "bom-ref": "obs-viewer-frontend@0.1.1|tslib@2.8.1",
+      "bom-ref": "obs-viewer-frontend@0.2.0|tslib@2.8.1",
       "author": "Microsoft Corp.",
       "description": "Runtime library for TypeScript helper functions",
       "licenses": [
@@ -2460,7 +2460,7 @@
       "type": "library",
       "name": "react-remove-scroll-bar",
       "version": "2.3.8",
-      "bom-ref": "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
+      "bom-ref": "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
       "author": "Anton Korzunov",
       "description": "Removes body scroll without content _shake_",
       "licenses": [
@@ -2509,7 +2509,7 @@
       "type": "library",
       "name": "react-style-singleton",
       "version": "2.2.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
       "author": "Anton Korzunov",
       "description": "Just create a single stylesheet...",
       "licenses": [
@@ -2558,7 +2558,7 @@
       "type": "library",
       "name": "use-callback-ref",
       "version": "1.3.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
       "author": "theKashey",
       "description": "The same useRef, but with callback",
       "licenses": [
@@ -2607,7 +2607,7 @@
       "type": "library",
       "name": "use-sidecar",
       "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3",
       "author": "theKashey",
       "description": "Sidecar code splitting utils",
       "licenses": [
@@ -2657,7 +2657,7 @@
       "name": "react-dom",
       "group": "@floating-ui",
       "version": "2.1.9",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
       "author": "atomiks",
       "description": "Floating UI for React DOM",
       "licenses": [
@@ -2707,7 +2707,7 @@
       "name": "react-use-rect",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2755,7 +2755,7 @@
       "name": "react-use-size",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2803,7 +2803,7 @@
       "name": "rect",
       "group": "@radix-ui",
       "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
       "licenses": [
         {
           "license": {
@@ -2850,7 +2850,7 @@
       "type": "library",
       "name": "js-tokens",
       "version": "4.0.0",
-      "bom-ref": "obs-viewer-frontend@0.1.1|js-tokens@4.0.0",
+      "bom-ref": "obs-viewer-frontend@0.2.0|js-tokens@4.0.0",
       "author": "Simon Lydell",
       "description": "A regex that tokenizes JavaScript.",
       "licenses": [
@@ -2899,7 +2899,7 @@
       "type": "library",
       "name": "get-nonce",
       "version": "1.0.1",
-      "bom-ref": "obs-viewer-frontend@0.1.1|get-nonce@1.0.1",
+      "bom-ref": "obs-viewer-frontend@0.2.0|get-nonce@1.0.1",
       "author": "Anton Korzunov",
       "description": "returns nonce",
       "licenses": [
@@ -2948,7 +2948,7 @@
       "type": "library",
       "name": "detect-node-es",
       "version": "1.1.0",
-      "bom-ref": "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0",
+      "bom-ref": "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0",
       "author": "Ilya Kantor",
       "description": "Detect Node.JS (as opposite to browser environment). ESM modification",
       "licenses": [
@@ -2998,7 +2998,7 @@
       "name": "dom",
       "group": "@floating-ui",
       "version": "1.8.0",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
       "author": "atomiks",
       "description": "Floating UI for the web",
       "licenses": [
@@ -3048,7 +3048,7 @@
       "name": "core",
       "group": "@floating-ui",
       "version": "1.8.0",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
       "author": "atomiks",
       "description": "Positioning library for floating elements: tooltips, popovers, dropdowns, and more",
       "licenses": [
@@ -3098,7 +3098,7 @@
       "name": "utils",
       "group": "@floating-ui",
       "version": "0.2.12",
-      "bom-ref": "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12",
+      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12",
       "author": "atomiks",
       "description": "Utilities for Floating UI",
       "licenses": [
@@ -3560,7 +3560,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.1.1-0.20260801114651-b468236ad333?type=module",
+      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.1.2-0.20260801185033-9643ca633ef5?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
         "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
@@ -3704,420 +3704,420 @@
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1",
+      "ref": "obs-viewer-frontend@0.2.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
-        "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
+        "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
-        "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
+        "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@tanstack/react-query@5.101.4",
+      "ref": "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
+      "ref": "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|scheduler@0.23.2"
+        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|scheduler@0.23.2"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|react@18.3.1",
+      "ref": "obs-viewer-frontend@0.2.0|react@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0"
+        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7"
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-context@1.2.2",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-focus-guards@1.1.6",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-id@1.1.4",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-slot@1.3.3",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-controllable-state@1.2.6",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
+      "ref": "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15",
-        "obs-viewer-frontend@0.1.1|csstype@3.2.3"
+        "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15",
+        "obs-viewer-frontend@0.2.0|csstype@3.2.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|aria-hidden@1.2.6",
+      "ref": "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|react-remove-scroll@2.7.2",
+      "ref": "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
-        "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1",
-        "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
-        "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
+        "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1",
+        "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
+        "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@tanstack/query-core@5.101.4"
+      "ref": "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|loose-envify@1.4.0",
+      "ref": "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|js-tokens@4.0.0"
+        "obs-viewer-frontend@0.2.0|js-tokens@4.0.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|scheduler@0.23.2",
+      "ref": "obs-viewer-frontend@0.2.0|scheduler@0.23.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|loose-envify@1.4.0"
+        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-callback-ref@1.1.4",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-effect-event@0.0.5",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@types/prop-types@15.7.15"
+      "ref": "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|csstype@3.2.3"
+      "ref": "obs-viewer-frontend@0.2.0|csstype@3.2.3"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+      "ref": "obs-viewer-frontend@0.2.0|tslib@2.8.1"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|react-remove-scroll-bar@2.3.8",
+      "ref": "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|react-style-singleton@2.2.3",
+      "ref": "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|get-nonce@1.0.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|get-nonce@1.0.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|use-callback-ref@1.3.3",
+      "ref": "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|use-sidecar@1.1.3",
+      "ref": "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0",
-        "obs-viewer-frontend@0.1.1|react@18.3.1",
-        "obs-viewer-frontend@0.1.1|tslib@2.8.1"
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0",
+        "obs-viewer-frontend@0.2.0|react@18.3.1",
+        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/react-dom@2.1.9",
+      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
-        "obs-viewer-frontend@0.1.1|react-dom@18.3.1",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
+        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-rect@1.1.4",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/react-use-size@1.1.4",
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.1.1|@types/react@18.3.31",
-        "obs-viewer-frontend@0.1.1|react@18.3.1"
+        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+        "obs-viewer-frontend@0.2.0|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@radix-ui/rect@1.1.3"
+      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|js-tokens@4.0.0"
+      "ref": "obs-viewer-frontend@0.2.0|js-tokens@4.0.0"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|get-nonce@1.0.1"
+      "ref": "obs-viewer-frontend@0.2.0|get-nonce@1.0.1"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|detect-node-es@1.1.0"
+      "ref": "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0"
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/dom@1.8.0",
+      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
-        "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
+        "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
+        "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/core@1.8.0",
+      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
+        "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.1.1|@floating-ui/utils@0.2.12"
+      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
     }
   ]
 }

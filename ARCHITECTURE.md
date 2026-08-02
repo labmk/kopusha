@@ -31,6 +31,7 @@ obs_viewer[.exe]                     (~85 MB single binary)
       dispatch.go                    Registry: sniff → pick by confidence score
       rules.go                       parsers.d/ YAML loader; family-routed
       ndjson/                        DirectIngester (DuckDB read_json_auto fast path)
+      parquet/                       DirectSQLIngester (DuckDB read_parquet)
       block/                         ---- separated Key: Value records
       line/                          regex-driven line autodetect
       xml/                           autodetected row element + dot-path flatten
@@ -55,7 +56,7 @@ obs_viewer[.exe]                     (~85 MB single binary)
       hooks/useLocalStorage.js       Lazy-init + auto-persist hook
       hooks/useApiQueries.js         useVersion/useFiles/useFields/useLogQuery/…
       utils/datetime.js              Shared date parse/format/validate
-      utils/queryDsl.js              LogQL-shaped serialize/parse
+      utils/queryDsl.js              pipeline-style serialize/parse
       components/                    FilePanel, FileBrowser, TimeFilter, QueryBuilder,
                                      QueryTextDialog, MultiValueInput, LogTable,
                                      FieldPicker, ExportDialog
@@ -85,10 +86,10 @@ obs_viewer[.exe]                     (~85 MB single binary)
   required; statically-linked `libduckdb_static.a` from
   `duckdb-go-bindings`).
 - **Frontend**: React 18, Vite 6, TanStack Query 5 (server state +
-  caching), Radix UI primitives (Dialog + Popover). The result table
-  renders a whole page of rows; there is no windowing. `react-window`
-  was a declared dependency for a long time without ever being imported,
-  and was removed in 0.1.1 — see "Known Limitations".
+  caching), Radix UI primitives (Dialog + Popover). The result table is
+  windowed by `hooks/useVirtualRows.js` — a fixed row height makes the
+  scroll maths arithmetic, which is why row detail opens in a side panel
+  instead of expanding the row.
 - **Codegen**: `@hey-api/openapi-ts` generates the TS client from
   `swag init`'s `swagger.json` into `frontend/src/api/generated/` on
   every `npm run build` (via the `prebuild` script).
@@ -163,6 +164,12 @@ type RecordStreamer interface {
 type DirectIngester interface {
     Loader
     UseDirectPath() bool
+}
+
+// For a format DuckDB reads with something other than read_json_auto.
+type DirectSQLIngester interface {
+    DirectIngester
+    ReadExpr(escapedPath string) string
 }
 ```
 
@@ -270,7 +277,7 @@ columns and struct paths.
 - `src/utils/datetime.js` — the single home for date parsing and
   formatting: `DT_RE`, `isValidDateTime`, `isoToText`,
   `parseUserDateTime`, `formatTimestamp`, `formatTimeout`.
-- `src/utils/queryDsl.js` — LogQL-shaped serialize/parse. Empty `{}`
+- `src/utils/queryDsl.js` — pipeline-style serialize/parse. Empty `{}`
   stream selector + `|=` line filters + `| field op "value"` label
   filters + an `@time:` extension line. Operator map: `is` → `=`,
   `is_not` → `!=`, `contains`/`wildcard` → `=~`, `exists` → `=~ ".+"`,
@@ -353,12 +360,6 @@ for the full contract. In brief:
 
 ## Known Limitations / Backlog
 
-- **The result table is not virtualised.** Every row of the current page
-  is in the DOM, so a 10,000-row page is heavy. `react-window` was a
-  declared dependency for a long time without ever being imported — the
-  virtualisation it implied was never built. Removed in 0.1.1 rather than
-  left as an implicit promise; adding real windowing is a genuine change,
-  not a dependency bump.
 - **Free-text search** uses `TRY_CAST(combined.* AS VARCHAR) ILIKE`,
   which is DuckDB-specific and may misbehave on exotic column types; a
   per-column union approach would be more robust.

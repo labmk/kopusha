@@ -94,7 +94,7 @@ export default function App() {
   const brand = brandingMod?.config || {};
 
   // Settings hydration — last-directory only. Portable queries live in
-  // the LogQL-shaped text export from the Query Builder (copy → paste
+  // the pipeline-style text export from the Query Builder (copy → paste
   // anywhere → paste back to restore), not in persisted settings.
   const [lastDirectory, setLastDirectory] = useState('');
   useEffect(() => {

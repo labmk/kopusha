@@ -12,6 +12,7 @@ import (
 	"github.com/labmk/obs-viewer/internal/ingest/evtx"
 	"github.com/labmk/obs-viewer/internal/ingest/line"
 	"github.com/labmk/obs-viewer/internal/ingest/ndjson"
+	"github.com/labmk/obs-viewer/internal/ingest/parquet"
 	ingestxml "github.com/labmk/obs-viewer/internal/ingest/xml"
 )
 
@@ -61,6 +62,7 @@ func testRegistry(t *testing.T) *ingest.Registry {
 	}
 	reg := ingest.NewRegistry()
 	reg.Register(ndjson.New())
+	reg.Register(parquet.New())
 	reg.Register(evtx.New())
 	reg.Register(blockLoader)
 	reg.Register(lineLoader)
@@ -78,6 +80,7 @@ func TestFixturesRouteToExpectedAdapter(t *testing.T) {
 		optional bool // fixture may be absent (see REQ-DT-02)
 	}{
 		{"REQ-DT-01", "sample.ndjson", "ndjson", "", true, false},
+		{"REQ-DT-10", "sample.parquet", "parquet", "", true, false},
 		{"REQ-DT-02", "sample.evtx", "evtx", "evtx", false, true},
 		{"REQ-DT-03", "xml-row-element.txt", "xml", "xml:Event", false, false},
 		{"REQ-DT-04", "block-keyvalue-dash.txt", "block", "block:keyvalue-dash-separated", false, false},

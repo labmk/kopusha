@@ -232,12 +232,19 @@ jobs:
             # in every archive.
             cp LICENSE README.md THIRD-PARTY-NOTICES.md sbom.cdx.json "$dir/"
 
+            # zip for every platform, not tar.gz for Unix. One format
+            # means one set of instructions, and zip is the one every
+            # target opens without installing anything — including a
+            # Windows machine handed a Linux build to forward on.
+            #
+            # Info-ZIP stores the Unix mode in the external file
+            # attributes and `unzip` restores it, so the executable bit
+            # survives a Unix-to-Unix round trip (verified). It does not
+            # survive extraction by tools that ignore those attributes,
+            # which is most Windows GUI extractors — hence the chmod
+            # note in the release body.
             name="obs_viewer-${VERSION}-${platform}"
-            if [ -f "$dir/obs_viewer.exe" ]; then
-              (cd "$dir" && zip -qr "${GITHUB_WORKSPACE}/out/${name}.zip" .)
-            else
-              tar -czf "out/${name}.tar.gz" -C "$dir" .
-            fi
+            (cd "$dir" && zip -qr "${GITHUB_WORKSPACE}/out/${name}.zip" .)
           done
 
           # Also publish the SBOM as a standalone asset so it can be
@@ -254,6 +261,12 @@ jobs:
         run: |
           notes="$(printf '%s\n' \
             "See [CHANGELOG.md](https://github.com/${REPO}/blob/main/CHANGELOG.md) for what changed." \
+            "" \
+            "Every archive is a zip, on every platform." \
+            "" \
+            "On Linux and macOS, if the binary does not run after extracting," \
+            'restore the executable bit: `chmod +x obs_viewer`. Most extractors' \
+            "preserve it; some Windows GUI tools do not." \
             "" \
             "Binaries are unsigned. On macOS, clear the quarantine attribute before running:" \
             '`xattr -d com.apple.quarantine obs_viewer`  — see docs/BUILD.md.' \

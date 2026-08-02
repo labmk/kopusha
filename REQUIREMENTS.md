@@ -76,10 +76,15 @@ Do not commit a replacement sourced from a real machine.
    the canonical name listed in the table below. This field is injected
    by the per-adapter record-streaming layer.
 
-**NDJSON is the documented exception:** it goes through `DirectIngester`
+**NDJSON and Parquet are the documented exceptions:** both go through
+`DirectIngester`
 (DuckDB's `read_json_auto` reads the original file directly), so the
 records carry only their original fields — no `_source_format`
-injection. The original NDJSON is already structured; preserving the
+injection. Parquet is the same case for the same reason, and more
+strongly: a Parquet file is *already* a typed table, so re-deriving a
+schema or injecting marker columns would discard what the format exists
+to preserve. Round-tripping an export back in must return what went
+out. The original NDJSON is already structured; preserving the
 schema as-written is the whole point of the direct path (2-4× faster
 than parsing through Go). NDJSON detection is verified via the
 `/api/files` `format` field instead.
@@ -95,6 +100,7 @@ sniffing is easy to spot.
 | ID | Format family | Rule / variant | `_source_format` | Detection signal | Sample fixture | Go unit test | E2e test |
 |----|---------------|----------------|------------------|------------------|----------------|--------------|----------|
 | REQ-DT-01 | NDJSON | n/a (direct) | n/a (no `_source_format` — direct path) | `.ndjson` extension OR first non-blank line parses as a JSON object | `test-fixtures/formats/sample.ndjson` | `internal/ingest/ndjson/ndjson_test.go::TestDirectIngester` | `frontend/e2e/formats.spec.js::REQ-DT-01 ndjson` |
+| REQ-DT-10 | Parquet | n/a (columnar binary) | n/a (no `_source_format` — direct path) | Magic bytes `PAR1` at offset 0, or `.parquet`/`.pq` extension | `test-fixtures/formats/sample.parquet` | `internal/ingest/parquet/parquet_test.go` | `frontend/e2e/formats.spec.js::parquet` |
 | REQ-DT-02 | EVTX | n/a (binary) | `evtx` | Magic bytes `ElfFile\0` at offset 0 | `test-fixtures/formats/sample.evtx` | `internal/ingest/evtx/evtx_test.go::TestStreamRealSample` (skip-if-missing) | `frontend/e2e/formats.spec.js::evtx` |
 | REQ-DT-03 | XML | `repeating-row-element` | `xml:<rowName>` | First non-whitespace char is `<` | `test-fixtures/formats/xml-row-element.txt` | `internal/ingest/xml/xml_test.go::TestMultiRootStreamingWithoutXmlDeclaration` (et al.) | `frontend/e2e/formats.spec.js::xml` |
 | REQ-DT-04 | block | `keyvalue-dash-separated` | `block:keyvalue-dash-separated` | A line of 20+ dashes appears in the first ~512 bytes | `test-fixtures/formats/block-keyvalue-dash.txt` | `internal/ingest/block/block_test.go::TestDetectMatchesDashSeparator` (et al.) | `frontend/e2e/formats.spec.js::block-keyvalue-dash` |

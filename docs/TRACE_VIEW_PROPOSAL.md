@@ -48,7 +48,7 @@ duration, colour = service.
 | Approach | Bundle cost | Effort | Notes |
 |---|---|---|---|
 | **Hand-built SVG/canvas component** | ~+15-25 KB gzipped | 3-5 days | Full control over UX, no new dep. Have to handle: zoom/pan, clock skew across services, async spans (where end < parent end is legal), error highlighting, virtualization for 10k+ spans. |
-| **vis-timeline** (Grafana / Kibana use it) | ~+150 KB gzipped (430 KB → ~580 KB; +35%) | 1-2 days | Mature, has zoom/pan/grouping for free. Adds a transitive dep tree; Vite tree-shaking helps but not fully. |
+| **vis-timeline** | ~+150 KB gzipped (430 KB → ~580 KB; +35%) | 1-2 days | Mature, has zoom/pan/grouping for free. Adds a transitive dep tree; Vite tree-shaking helps but not fully. |
 | **react-flow** | ~+100 KB gzipped | 2-3 days | Designed for graph/DAG, not Gantt. Possible but awkward fit. |
 | **D3-timeline / d3.js** | ~+90 KB gzipped (or +30 KB for only the modules we need) | 4-6 days | Maximum flexibility, but D3 imperative API doesn't pair cleanly with React's declarative model. |
 | **Embed Jaeger / Tempo UI** | n/a — not a React component | n/a | Ships its own SPA + backend. Not a fit for obs-viewer's single-binary shape. |

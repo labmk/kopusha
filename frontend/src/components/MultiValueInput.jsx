@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 // MultiValueInput — chip-based value entry for is_one_of / is_not_one_of.
 //
-// UX (matches OpenSearch's filter UI):
+// UX:
 //   - Click into the input → datalist suggestions appear (browser-native)
 //   - Pick a suggestion → adds as chip, narrows remaining suggestions
 //   - Type free-text → Enter / Tab / "," commits as chip

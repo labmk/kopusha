@@ -199,6 +199,10 @@ func (e *Engine) LoadFileCtx(ctx context.Context, path string) error {
 	loadPath := absPath
 	loaderName := "ndjson-legacy"
 	var tmpPath string
+	// readExpr stays nil for everything that DuckDB reads as NDJSON —
+	// the direct NDJSON path and every streaming adapter, which convert
+	// to a temp NDJSON file first. Only a DirectSQLIngester sets it.
+	var readExpr readExprFunc
 	defer func() {
 		if tmpPath != "" {
 			_ = os.Remove(tmpPath)
@@ -216,7 +220,12 @@ func (e *Engine) LoadFileCtx(ctx context.Context, path string) error {
 		}
 		loaderName = loader.Name()
 		if di, ok := loader.(ingest.DirectIngester); ok && di.UseDirectPath() {
-			// NDJSON fast path — DuckDB reads the file directly.
+			// Direct path — DuckDB reads the original file. NDJSON goes
+			// through read_json_auto; a loader that needs a different
+			// reader (Parquet) supplies it via DirectSQLIngester.
+			if ds, ok := loader.(ingest.DirectSQLIngester); ok {
+				readExpr = ds.ReadExpr
+			}
 		} else {
 			streamer, ok := loader.(ingest.RecordStreamer)
 			if !ok {
@@ -237,7 +246,7 @@ func (e *Engine) LoadFileCtx(ctx context.Context, path string) error {
 
 	overall := time.Now()
 	phaseLoad := time.Now()
-	if err := e.duckdbLoadJSON(tableName, loadPath, absPath, loaderName, info.Size()); err != nil {
+	if err := e.duckdbLoadDirect(tableName, loadPath, absPath, loaderName, info.Size(), readExpr); err != nil {
 		return err
 	}
 	durLoad := time.Since(phaseLoad)
@@ -333,10 +342,27 @@ func (e *Engine) LoadFileCtx(ctx context.Context, path string) error {
 // added later if real data violates the assumption.
 const jsonSampleRows = 50000
 
-func (e *Engine) duckdbLoadJSON(tableName, loadPath, reportPath, loaderName string, sizeBytes int64) error {
+// readExprFunc builds the DuckDB table expression for a load. Nil means
+// the NDJSON default.
+type readExprFunc func(escapedPath string) string
+
+// jsonReadExpr is the default: DuckDB's newline-delimited JSON reader,
+// which every streaming adapter also targets because they convert to a
+// temp NDJSON file first.
+func jsonReadExpr(escapedPath string) string {
+	return fmt.Sprintf(
+		`read_json_auto('%s', format='newline_delimited', maximum_object_size=16777216, ignore_errors=true, sample_size=%d)`,
+		escapedPath, jsonSampleRows,
+	)
+}
+
+func (e *Engine) duckdbLoadDirect(tableName, loadPath, reportPath, loaderName string, sizeBytes int64, expr readExprFunc) error {
+	if expr == nil {
+		expr = jsonReadExpr
+	}
 	query := fmt.Sprintf(
-		`CREATE TABLE %s AS SELECT * FROM read_json_auto('%s', format='newline_delimited', maximum_object_size=16777216, ignore_errors=true, sample_size=%d)`,
-		tableName, escapeSQLString(loadPath), jsonSampleRows,
+		`CREATE TABLE %s AS SELECT * FROM %s`,
+		tableName, expr(escapeSQLString(loadPath)),
 	)
 	loadStart := time.Now()
 	if _, err := e.db.Exec(query); err != nil {
@@ -771,10 +797,24 @@ func (e *Engine) ExportFiltered(req QueryRequest, outputPath string) (int64, err
 		whereSQL = "WHERE " + strings.Join(whereClauses, " ")
 	}
 
-	// Use DuckDB COPY to export as NDJSON
+	// Format is chosen by the output extension rather than a separate
+	// parameter: the user already states their intent by naming the
+	// file, and a mismatch between an explicit format and the extension
+	// is a bug waiting to happen.
+	//
+	// Both writers are DuckDB COPY, and the parquet extension is
+	// statically linked, so neither path downloads anything.
+	copyOptions := "FORMAT JSON, ARRAY false"
+	if ExportFormatFor(outputPath) == ExportParquet {
+		// zstd over the default snappy: log data is highly repetitive
+		// columnwise and zstd is materially smaller at a decompression
+		// cost nothing here is sensitive to.
+		copyOptions = "FORMAT PARQUET, COMPRESSION zstd"
+	}
+
 	exportQuery := fmt.Sprintf(
-		`COPY (SELECT * FROM (%s) AS combined %s ORDER BY %s ASC) TO '%s' (FORMAT JSON, ARRAY false)`,
-		baseQuery, whereSQL, tsField, escapeSQLString(outputPath),
+		`COPY (SELECT * FROM (%s) AS combined %s ORDER BY %s ASC) TO '%s' (%s)`,
+		baseQuery, whereSQL, tsField, escapeSQLString(outputPath), copyOptions,
 	)
 	result, err := e.db.Exec(exportQuery)
 	if err != nil {
@@ -782,6 +822,31 @@ func (e *Engine) ExportFiltered(req QueryRequest, outputPath string) (int64, err
 	}
 	count, _ := result.RowsAffected()
 	return count, nil
+}
+
+// ExportFormat identifies how ExportFiltered will write a file.
+type ExportFormat string
+
+const (
+	// ExportNDJSON writes one JSON object per line. Human-readable and
+	// greppable; every field name repeats on every row.
+	ExportNDJSON ExportFormat = "ndjson"
+	// ExportParquet writes a columnar file with the schema in a footer.
+	// Types survive the round trip, and it is typically several times
+	// smaller because each column compresses against itself.
+	ExportParquet ExportFormat = "parquet"
+)
+
+// ExportFormatFor picks the export format from the output filename.
+// Anything that is not a Parquet extension writes NDJSON, which keeps
+// the previous behaviour for every path that existed before.
+func ExportFormatFor(path string) ExportFormat {
+	switch strings.ToLower(filepath.Ext(path)) {
+	case ".parquet", ".pq":
+		return ExportParquet
+	default:
+		return ExportNDJSON
+	}
 }
 
 // --- Internal helpers ---
@@ -1185,7 +1250,7 @@ func (e *Engine) buildFilterCondition(f Filter) string {
 		pattern := strings.ReplaceAll(value, "*", "%")
 		return fmt.Sprintf("TRY_CAST(%s AS VARCHAR) NOT ILIKE '%s'", field, pattern)
 	case "exists":
-		// OpenSearch-style "exists": the field is present AND non-empty.
+		// "exists": the field is present AND non-empty.
 		// Heterogeneous schemas mean missing columns are NULL after the
 		// UNION ALL (engine fills them in buildUnionQuery). Also reject
 		// the empty-string case so an explicit "" doesn't count as
@@ -1194,7 +1259,7 @@ func (e *Engine) buildFilterCondition(f Filter) string {
 	case "does_not_exist":
 		return fmt.Sprintf("(%s IS NULL OR TRY_CAST(%s AS VARCHAR) = '')", field, field)
 	case "is_one_of":
-		// OpenSearch-style "is one of": comma-separated value list.
+		// "is one of": comma-separated value list.
 		// Empty values are dropped; case-insensitive match.
 		quoted := quotedValueList(f.Value)
 		if quoted == "" {

@@ -16,9 +16,9 @@ obs_viewer --dir ./logs/
 
 ## Why
 
-SQL over local files is a solved problem — DuckDB ships its own browser
-UI, and there are good tools built on it. They all assume your data is
-already structured: Parquet, CSV, JSON.
+Querying local files with SQL is a solved problem, and there are good
+tools for it. They all assume your data is already structured: Parquet,
+CSV, JSON.
 
 Logs are not. A line like
 
@@ -56,16 +56,17 @@ machine.
   `STRUCT`s; a filter on `nodeinfo.type` resolves to the sub-path, and
   the field picker surfaces those alongside flat columns.
 - **Query builder + text DSL.** A visual filter builder with 10
-  operators, plus a LogQL-shaped text view for copy/paste portability.
+  operators, plus a pipeline-style text view for copy/paste portability.
 - **Time filtering with explicit UTC.** Presets, custom ranges, and a
   UTC-offset timezone selector that avoids DST ambiguity.
 - **Result table.** Expandable rows, per-schema persisted column widths,
   page size up to 10,000 rows. Rows are paged, not virtualised — a full
   10,000-row page is a lot of DOM, so reach for a smaller page size or a
   tighter filter if it feels heavy.
-- **Export.** Write the current filtered view back out as NDJSON, and
-  optionally copy the binary alongside it so the recipient can open the
-  result with no setup at all.
+- **Export.** Write the current filtered view back out as NDJSON or
+  Parquet — Parquet keeps the types and is typically ~10x smaller, so
+  the result drops straight into any other analytical tool. Optionally
+  copy the binary alongside it so the recipient needs no setup at all.
 - **Localhost by default.** Binds `127.0.0.1` unless you both set
   `listen=` and supply a TLS certificate.
 
@@ -90,6 +91,7 @@ own once no browser tab has polled it for `timeout` seconds (default
 | Format | Detection | Notes |
 |--------|-----------|-------|
 | NDJSON | `.ndjson`, or first line parses as a JSON object | Direct DuckDB path — original schema preserved as written |
+| Parquet | `PAR1` magic bytes, or `.parquet`/`.pq` | Direct DuckDB path — already typed, so nothing is inferred |
 | EVTX | `ElfFile\0` magic bytes | Windows event logs |
 | XML | First non-whitespace char is `<` | Row element autodetected; dot-path flattened, `@`-prefixed attributes |
 | Block records | A line of 20+ dashes near the start | `Key: Value` fields between separators |

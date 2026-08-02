@@ -22,6 +22,7 @@ import (
 	"github.com/labmk/obs-viewer/internal/ingest/evtx"
 	"github.com/labmk/obs-viewer/internal/ingest/line"
 	"github.com/labmk/obs-viewer/internal/ingest/ndjson"
+	"github.com/labmk/obs-viewer/internal/ingest/parquet"
 	ingestxml "github.com/labmk/obs-viewer/internal/ingest/xml"
 	"github.com/labmk/obs-viewer/internal/logx"
 	"github.com/labmk/obs-viewer/internal/manifest"
@@ -37,10 +38,10 @@ var parsersManifestData []byte
 //go:embed static/*
 var staticFS embed.FS
 
-var version = "0.1.1"
+var version = "0.2.0"
 
 // @title           obs-viewer API
-// @version         0.1.1
+// @version         0.2.0
 // @description     Local viewer for log, metric and trace files: NDJSON, EVTX,
 // @description     XML, and rule-driven text logs, queried through DuckDB.
 // @description     The OpenAPI spec is the source of truth for the generated
@@ -207,12 +208,13 @@ func main() {
 	}
 	loaders := ingest.NewRegistry()
 	loaders.Register(ndjson.New())
+	loaders.Register(parquet.New())
 	loaders.Register(evtx.New())
 	loaders.Register(blockLoader)
 	loaders.Register(lineLoader)
 	loaders.Register(xmlLoader)
 	eng.SetLoaders(loaders)
-	vlog("loaders: %d registered (ndjson, evtx, block, line, xml); rules from %s (block=%d line=%d xml=%d other=%d)",
+	vlog("loaders: %d registered (ndjson, parquet, evtx, block, line, xml); rules from %s (block=%d line=%d xml=%d other=%d)",
 		len(loaders.Loaders()), parsersDir,
 		len(ruleSet.Block), len(ruleSet.Line), len(ruleSet.XML), len(ruleSet.Other))
 	if len(ruleSet.Other) > 0 {
