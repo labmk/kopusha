@@ -45,7 +45,9 @@ machine.
   compiled in. No runtime dependencies. Nothing is fetched to run: the
   only outbound request is an optional startup check for a newer release,
   which reports and never installs — turn it off with `update_check =
-  false` and the binary makes no network calls at all.
+  false` and the binary makes no network calls at all. When a release
+  does exist, obs-viewer says so once and links to it; dismissing the
+  notice is remembered until the next version.
 - **Multi-format ingest.** NDJSON, Parquet, Windows EVTX, XML, and line-
   or block-structured text logs. New text formats are added by dropping
   a YAML rule into `parsers.d/` — no recompile.

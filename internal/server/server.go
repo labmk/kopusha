@@ -483,6 +483,7 @@ func (s *Server) handleVersion(w http.ResponseWriter, r *http.Request) {
 		"os":                   runtime.GOOS,
 		"arch":                 runtime.GOARCH,
 		"idle_timeout_seconds": s.idleTimeoutSec,
+		"repository":           update.RepoURL,
 	})
 }
 

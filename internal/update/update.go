@@ -35,6 +35,16 @@ import (
 // Overridable so tests can point at an httptest server.
 const DefaultEndpoint = "https://api.github.com/repos/labmk/obs-viewer/releases/latest"
 
+// RepoURL is the project's page, served to the UI so the header can
+// link to it. Kept beside DefaultEndpoint because the two must name the
+// same repository — a fork that changes one and not the other would
+// offer updates from somewhere other than where its code lives.
+//
+// Note that nothing fetches this: it is a destination for a person to
+// click, and the only request obs-viewer itself makes is the release
+// check above.
+const RepoURL = "https://github.com/labmk/obs-viewer"
+
 // checkTimeout bounds the whole request. Generous enough for a slow link,
 // short enough that a black-holed connection resolves well within the
 // first inactivity window.

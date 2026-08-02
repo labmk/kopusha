@@ -517,6 +517,12 @@ definitions:
         type: integer
       os:
         type: string
+      repository:
+        description: |-
+          Repository is the project's page. A destination for a person to
+          click, not something the binary fetches.
+        example: https://github.com/labmk/obs-viewer
+        type: string
       version:
         type: string
     type: object
@@ -528,7 +534,7 @@ info:
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
   title: obs-viewer API
-  version: 0.2.0
+  version: 0.2.1
 paths:
   /api/browse:
     get:

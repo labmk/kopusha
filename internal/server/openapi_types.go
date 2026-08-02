@@ -11,6 +11,9 @@ type VersionResponse struct {
 	OS                 string `json:"os"`
 	Arch               string `json:"arch"`
 	IdleTimeoutSeconds int    `json:"idle_timeout_seconds"`
+	// Repository is the project's page. A destination for a person to
+	// click, not something the binary fetches.
+	Repository string `json:"repository" example:"https://github.com/labmk/obs-viewer"`
 }
 
 // UpdateResponse is the body of GET /api/update.

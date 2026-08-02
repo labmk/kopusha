@@ -9,6 +9,28 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats obs-viewer *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.2.1] — 2026-08-02
+
+### Changed
+
+- **A new release is now actually announced.** The check has worked
+  since 0.1.0 and reported through a small link in the status bar — a
+  fine place for a fact and a poor place for news. It went unnoticed
+  through two releases.
+
+  There is now a notice, once, with a link to the release page. It is
+  not modal: obs-viewer gets opened to answer a question, and the
+  release will still be there afterwards. Dismissing it is remembered
+  per version, so declining 0.3.0 stays declined across restarts and
+  says nothing about 0.4.0. The status-bar link stays either way —
+  dismissing the interruption should not discard the information.
+
+  It still says plainly that nothing self-installs, so nobody waits for
+  an update that is never coming.
+- The product label in the header links to the project page. The
+  repository comes from `/api/version`, so a fork changes one Go
+  constant rather than a string in the frontend.
+
 ## [0.2.0] — 2026-08-02
 
 ### Added

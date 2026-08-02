@@ -379,6 +379,11 @@ export type ServerVersionResponse = {
     arch?: string;
     idle_timeout_seconds?: number;
     os?: string;
+    /**
+     * Repository is the project's page. A destination for a person to
+     * click, not something the binary fetches.
+     */
+    repository?: string;
     version?: string;
 };
 

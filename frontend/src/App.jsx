@@ -24,6 +24,7 @@ import ExportDialog from './components/ExportDialog';
 import PaginationBar from './components/PaginationBar';
 import RuleBuilder from './components/RuleBuilder';
 import TimeHistogram from './components/TimeHistogram';
+import UpdateNotice from './components/UpdateNotice';
 import { moduleComponents } from './moduleRegistry';
 
 export default function App() {
@@ -38,6 +39,9 @@ export default function App() {
   const filesQ = useFiles();
 
   const version = versionQ.data?.version || '';
+  // The backend names its own repository so there is one source of
+  // truth — a fork changes a Go const, not a string in the SPA.
+  const repoURL = versionQ.data?.repository || '';
   const backendOk = !versionQ.isError;
   const files = filesQ.data?.files || [];
   const timestampField = filesQ.data?.timestamp_field || '@timestamp';
@@ -410,7 +414,23 @@ export default function App() {
               </span>
             )
           )}
-          <span> {brand.header_text || 'obs-viewer'} </span><span>v{version}</span>
+          {/* The product label opens the project page. A branding
+              module's own logo and company link, above, are separate
+              and unchanged — this one always points at the source of
+              the software itself. */}
+          {repoURL ? (
+            <a
+              className="logo-link"
+              href={repoURL}
+              target="_blank"
+              rel="noreferrer noopener"
+              title="Open the obs-viewer project page"
+            >
+              <span> {brand.header_text || 'obs-viewer'} </span><span>v{version}</span>
+            </a>
+          ) : (
+            <span> {brand.header_text || 'obs-viewer'} <span>v{version}</span></span>
+          )}
         </div>
         <div className="tab-switcher">
           <button
@@ -691,6 +711,8 @@ export default function App() {
           </button>
         </span>
       </div>
+
+      <UpdateNotice status={updateQ.data} />
 
       {showBrowser && (
         <FileBrowser

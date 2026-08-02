@@ -1604,6 +1604,11 @@ const docTemplate = `{
                 "os": {
                     "type": "string"
                 },
+                "repository": {
+                    "description": "Repository is the project's page. A destination for a person to\nclick, not something the binary fetches.",
+                    "type": "string",
+                    "example": "https://github.com/labmk/obs-viewer"
+                },
                 "version": {
                     "type": "string"
                 }
@@ -1614,7 +1619,7 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.2.0",
+	Version:          "0.2.1",
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{"http", "https"},
