@@ -366,6 +366,8 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/browse", s.APIHandler(s.handleBrowse))
 	s.mux.HandleFunc("/api/query", s.APIHandler(s.handleQuery))
 	s.mux.HandleFunc("/api/histogram", s.APIHandler(s.handleHistogram))
+	s.mux.HandleFunc("/api/profile", s.APIHandler(s.handleProfile))
+	s.mux.HandleFunc("/api/profile/values", s.APIHandler(s.handleFieldValues))
 	s.mux.HandleFunc("/api/fields", s.APIHandler(s.handleFields))
 	s.mux.HandleFunc("/api/timerange", s.APIHandler(s.handleTimeRange))
 	s.mux.HandleFunc("/api/timestamp-field", s.APIHandler(s.handleTimestampField))
@@ -855,6 +857,73 @@ func (s *Server) handleHistogram(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, h)
+}
+
+// @Summary      Profile every field over the current result
+// @Description  Per field: how many rows carry a usable value, an approximate distinct count, and how many of the enabled files declare the field at all. Uses the same filters as /api/query, so the profile describes the rows on screen. One scan covers every field; value distributions are fetched separately per field via /api/profile/values.
+// @Tags         query
+// @Accept       json
+// @Produce      json
+// @Param        body  body      ProfileRequest    true  "same filters as /api/query, plus an optional field subset"
+// @Success      200   {object}  ProfileResponse
+// @Failure      400   {object}  ErrorResponse
+// @Failure      500   {object}  ErrorResponse
+// @Router       /api/profile [post]
+func (s *Server) handleProfile(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "POST required", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		engine.QueryRequest
+		Fields []string `json:"fields"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeError(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+	p, err := s.eng.GetProfile(req.QueryRequest, req.Fields)
+	if err != nil {
+		writeError(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, p)
+}
+
+// @Summary      Most common values for one field
+// @Description  A field's top values with counts, over the rows the current filters select. NULL and empty are excluded — the profile already reports the fill rate, and repeating it here would crowd out the values that carry information. Fetched per field, on demand, because each one needs its own GROUP BY.
+// @Tags         query
+// @Accept       json
+// @Produce      json
+// @Param        body  body      FieldValuesRequest  true  "same filters as /api/query, plus the field"
+// @Success      200   {object}  FieldValuesResponse
+// @Failure      400   {object}  ErrorResponse
+// @Failure      500   {object}  ErrorResponse
+// @Router       /api/profile/values [post]
+func (s *Server) handleFieldValues(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "POST required", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		engine.QueryRequest
+		Field string `json:"field"`
+		Top   int    `json:"top"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeError(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+	if req.Field == "" {
+		writeError(w, "Field is required", http.StatusBadRequest)
+		return
+	}
+	v, err := s.eng.GetFieldValues(req.QueryRequest, req.Field, req.Top)
+	if err != nil {
+		writeError(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, v)
 }
 
 // @Summary      Available filter fields

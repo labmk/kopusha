@@ -735,3 +735,249 @@ func TestTimeFilterAcceptsEverySpellingOfAnInstant(t *testing.T) {
 		}
 	}
 }
+
+// --- Field profiling (#18) ---
+
+func findProfile(p *Profile, name string) *FieldProfile {
+	for i := range p.Fields {
+		if p.Fields[i].Name == name {
+			return &p.Fields[i]
+		}
+	}
+	return nil
+}
+
+func TestProfileReportsFillAndCardinality(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "level": "INFO", "host": "a", "note": "x"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "level": "INFO", "host": "b"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z", "level": "WARN", "host": "c", "note": ""},
+		map[string]any{"@timestamp": "2026-05-20T10:00:03Z", "level": "ERROR", "host": "a"},
+	)
+	p, err := eng.GetProfile(QueryRequest{}, nil)
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	if p.Total != 4 {
+		t.Errorf("total = %d, want 4", p.Total)
+	}
+
+	level := findProfile(p, "level")
+	if level == nil {
+		t.Fatalf("no profile for level; got %+v", p.Fields)
+	}
+	if level.Present != 4 {
+		t.Errorf("level present = %d, want 4", level.Present)
+	}
+	if level.Distinct != 3 {
+		t.Errorf("level distinct = %d, want 3", level.Distinct)
+	}
+
+	// Empty string counts as absent, matching what the `exists` filter
+	// selects — a panel that disagreed with the filter it offers would
+	// send the operator to a row count they were not shown.
+	note := findProfile(p, "note")
+	if note == nil {
+		t.Fatal("no profile for note")
+	}
+	if note.Present != 1 {
+		t.Errorf("note present = %d, want 1 (one value, one empty, two missing)", note.Present)
+	}
+}
+
+// The panel has to describe the rows on screen, or clicking a value in
+// it produces a count the operator was never shown.
+func TestProfileRespectsFilters(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "level": "INFO", "host": "a"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "level": "INFO", "host": "b"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z", "level": "ERROR", "host": "c"},
+	)
+	p, err := eng.GetProfile(QueryRequest{
+		Filters: []Filter{{Field: "level", Operator: "is", Value: "INFO"}},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	if p.Total != 2 {
+		t.Errorf("total = %d, want 2", p.Total)
+	}
+	if h := findProfile(p, "host"); h == nil || h.Distinct != 2 {
+		t.Errorf("host distinct = %v, want 2 within the filtered rows", h)
+	}
+}
+
+// "This field is in 2 of your 7 files" is a different fact from "it is
+// null in most rows", and it is answered from cached metadata alone.
+func TestProfileCountsFilesDeclaringTheField(t *testing.T) {
+	dir := t.TempDir()
+	a := filepath.Join(dir, "a.ndjson")
+	b := filepath.Join(dir, "b.ndjson")
+	mustWriteJSON(t, a, map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "only_in_a": "x", "shared": "1"})
+	mustWriteJSON(t, b, map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "shared": "2"})
+
+	eng, err := New()
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = eng.Close() })
+	if err := eng.LoadFile(a); err != nil {
+		t.Fatal(err)
+	}
+	if err := eng.LoadFile(b); err != nil {
+		t.Fatal(err)
+	}
+
+	p, err := eng.GetProfile(QueryRequest{}, nil)
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	only := findProfile(p, "only_in_a")
+	if only == nil {
+		t.Fatalf("no profile for only_in_a; got %+v", p.Fields)
+	}
+	if only.Files != 1 || only.FilesTotal != 2 {
+		t.Errorf("only_in_a in %d of %d files, want 1 of 2", only.Files, only.FilesTotal)
+	}
+	shared := findProfile(p, "shared")
+	if shared == nil || shared.Files != 2 {
+		t.Errorf("shared in %v files, want 2", shared)
+	}
+}
+
+func TestFieldValuesRanksByFrequency(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:03Z", "level": "WARN"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:04Z", "level": ""},
+		map[string]any{"@timestamp": "2026-05-20T10:00:05Z"},
+	)
+	v, err := eng.GetFieldValues(QueryRequest{}, "level", 10)
+	if err != nil {
+		t.Fatalf("GetFieldValues: %v", err)
+	}
+	if len(v.Values) != 2 {
+		t.Fatalf("got %d values, want 2 (empty and missing excluded): %+v", len(v.Values), v.Values)
+	}
+	if v.Values[0].Value != "INFO" || v.Values[0].Count != 3 {
+		t.Errorf("top value = %+v, want INFO x3", v.Values[0])
+	}
+	if v.Values[1].Value != "WARN" || v.Values[1].Count != 1 {
+		t.Errorf("second value = %+v, want WARN x1", v.Values[1])
+	}
+	if v.Total != 4 {
+		t.Errorf("total = %d, want 4 (sum of returned values)", v.Total)
+	}
+}
+
+// Struct sub-paths are fields too — they are what the field picker
+// offers and what filters resolve against.
+func TestProfileHandlesStructSubPaths(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "nodeinfo": map[string]any{"type": "worker"}},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "nodeinfo": map[string]any{"type": "worker"}},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z", "nodeinfo": map[string]any{"type": "master"}},
+	)
+	p, err := eng.GetProfile(QueryRequest{}, []string{"nodeinfo.type"})
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	sub := findProfile(p, "nodeinfo.type")
+	if sub == nil {
+		t.Fatalf("no profile for nodeinfo.type: %+v", p.Fields)
+	}
+	if sub.Present != 3 || sub.Distinct != 2 {
+		t.Errorf("nodeinfo.type present=%d distinct=%d, want 3 and 2", sub.Present, sub.Distinct)
+	}
+
+	v, err := eng.GetFieldValues(QueryRequest{}, "nodeinfo.type", 10)
+	if err != nil {
+		t.Fatalf("GetFieldValues: %v", err)
+	}
+	if len(v.Values) != 2 || v.Values[0].Value != "worker" {
+		t.Errorf("unexpected values: %+v", v.Values)
+	}
+}
+
+func TestProfileEmptyEngine(t *testing.T) {
+	eng, err := New()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer eng.Close()
+	p, err := eng.GetProfile(QueryRequest{}, nil)
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	if p.Total != 0 || len(p.Fields) != 0 {
+		t.Errorf("expected an empty profile, got %+v", p)
+	}
+	v, err := eng.GetFieldValues(QueryRequest{}, "anything", 10)
+	if err != nil {
+		t.Fatalf("GetFieldValues: %v", err)
+	}
+	if len(v.Values) != 0 {
+		t.Errorf("expected no values, got %+v", v.Values)
+	}
+}
+
+// A whole STRUCT column, not a sub-path. It arrives here as JSON —
+// buildUnionSelect projects structs through to_json — and comparing
+// JSON to ” makes DuckDB parse the empty string as JSON and fail the
+// entire profile, taking every other field down with it.
+func TestProfileHandlesStructColumns(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "nodeinfo": map[string]any{"type": "worker", "id": 1}},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "nodeinfo": map[string]any{"type": "master", "id": 2}},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z"},
+	)
+	p, err := eng.GetProfile(QueryRequest{}, nil)
+	if err != nil {
+		t.Fatalf("GetProfile: %v", err)
+	}
+	node := findProfile(p, "nodeinfo")
+	if node == nil {
+		t.Fatalf("no profile for the struct column: %+v", p.Fields)
+	}
+	if node.Present != 2 {
+		t.Errorf("nodeinfo present = %d, want 2", node.Present)
+	}
+
+	// And its values must come back as text rather than erroring.
+	v, err := eng.GetFieldValues(QueryRequest{}, "nodeinfo", 10)
+	if err != nil {
+		t.Fatalf("GetFieldValues on a struct column: %v", err)
+	}
+	if len(v.Values) != 2 {
+		t.Errorf("got %d distinct struct values, want 2: %+v", len(v.Values), v.Values)
+	}
+}
+
+// The panel's "present" must select the same rows as the `exists`
+// filter it offers, or clicking through lands on a count the operator
+// was never shown.
+func TestProfilePresentAgreesWithExistsFilter(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "user": "alice"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:01Z", "user": ""},
+		map[string]any{"@timestamp": "2026-05-20T10:00:02Z"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:03Z", "user": "bob"},
+	)
+	p, err := eng.GetProfile(QueryRequest{}, []string{"user"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	res, err := eng.Query(QueryRequest{
+		Limit:   10,
+		Filters: []Filter{{Field: "user", Operator: "exists"}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if p.Fields[0].Present != res.TotalCount {
+		t.Errorf("profile says %d rows have user, the exists filter returns %d",
+			p.Fields[0].Present, res.TotalCount)
+	}
+}

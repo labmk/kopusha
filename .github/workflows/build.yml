@@ -207,6 +207,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # Build provenance. `id-token` mints the short-lived OIDC token
+      # that identifies this workflow to Sigstore; `attestations` lets
+      # the run record the result against the repository. No key is
+      # stored anywhere — the signing certificate is issued for the
+      # duration of the run and expires, so there is nothing to leak,
+      # rotate, or renew.
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v7
 
@@ -254,6 +262,30 @@ jobs:
           (cd out && sha256sum ./* > SHA256SUMS)
           ls -l out
 
+      # Provenance, not authorship. This records — signed, publicly and
+      # verifiably — that these exact bytes were produced by this
+      # workflow, from this repository, at this commit.
+      #
+      # It is deliberately not a code-signing certificate. Those exist
+      # so a CA vouches for a legal identity, and they are what silences
+      # Gatekeeper and SmartScreen; that remains open as #24. This
+      # answers the different and more useful question: was this file
+      # built from the source it claims to come from, or substituted
+      # somewhere between the build and the download?
+      #
+      # SHA256SUMS on its own could never answer that. It proves a
+      # download is intact against a list published in the same place
+      # by whoever published the file — including an attacker who
+      # replaced both.
+      #
+      # Attesting the archives rather than SHA256SUMS is deliberate:
+      # verification then covers the artifact the user actually runs,
+      # with no intermediate file to trust.
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'out/*.zip'
+
       - name: Create release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -268,10 +300,21 @@ jobs:
             'restore the executable bit: `chmod +x obs_viewer`. Most extractors' \
             "preserve it; some Windows GUI tools do not." \
             "" \
-            "Binaries are unsigned. On macOS, clear the quarantine attribute before running:" \
-            '`xattr -d com.apple.quarantine obs_viewer`  — see docs/BUILD.md.' \
+            "**Verify what you downloaded.** Every archive carries a signed" \
+            "build attestation proving it was produced by this repository's" \
+            "workflow, from this commit:" \
             "" \
-            "Verify a download against \`SHA256SUMS\`.")"
+            '```' \
+            "gh attestation verify obs_viewer-${GITHUB_REF_NAME#v}-linux-amd64.zip --repo ${REPO}" \
+            '```' \
+            "" \
+            "That is a stronger check than \`SHA256SUMS\`, which only shows a" \
+            "download is intact against a list published alongside it." \
+            "" \
+            "Binaries are **not** code-signed with a certificate, which is a" \
+            "separate thing: it is what stops the operating system warning." \
+            "On macOS, clear the quarantine attribute before running:" \
+            '`xattr -d com.apple.quarantine obs_viewer`  — see docs/BUILD.md.')"
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
             --notes "$notes" \

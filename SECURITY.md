@@ -68,20 +68,45 @@ release.
 ## Build integrity
 
 - Release binaries are built by `.github/workflows/build.yml` on
-  GitHub-hosted runners, one per platform. That workflow is new with
-  the public release and has not yet run a full matrix — treat the
-  first tagged build as the point where this becomes a guarantee.
-- macOS binaries are **ad-hoc signed only**, not notarized. A build
-  downloaded through a browser will be blocked by Gatekeeper until you
-  clear the quarantine attribute. See [docs/BUILD.md](./docs/BUILD.md).
-- Windows binaries are unsigned unless you supply `hooks/sign.sh`.
+  GitHub-hosted runners, one per platform.
+- **Every release archive carries a signed build attestation.** It
+  records that those exact bytes were produced by that workflow, from
+  this repository, at a named commit. Verify before running:
+
+  ```bash
+  gh attestation verify obs_viewer-<version>-<platform>.zip --repo labmk/obs-viewer
+  ```
+
+  The signature is made with a short-lived certificate issued to the
+  workflow run through Sigstore. No signing key exists to be stolen,
+  and nothing has to be renewed.
+
+  This is what `SHA256SUMS` cannot do. A checksum shows a download is
+  intact against a list published in the same place by whoever
+  published the file — an attacker who replaced the archive would
+  replace the list with it. The attestation is tied to the build, not
+  to the publisher.
+
+- **Attestation is not code signing.** It answers "was this built from
+  the source it claims?", not "who is the publisher?" — and only the
+  second silences the operating system. Concretely:
+
+  - macOS binaries are **ad-hoc signed only**, not notarized. A build
+    downloaded through a browser is blocked by Gatekeeper until you
+    clear the quarantine attribute. See
+    [docs/BUILD.md](./docs/BUILD.md).
+  - Windows binaries are unsigned unless you supply `hooks/sign.sh`,
+    so SmartScreen will warn.
+
+  Certificate-based signing for both platforms is tracked in
+  [#24](https://github.com/labmk/obs-viewer/issues/24).
 - DuckDB extensions are statically linked. obs-viewer never downloads an
   extension at runtime, which is what makes air-gapped use safe.
 - **obs-viewer never downloads or executes code.** The one outbound
   request is the startup release check, which reads the GitHub releases
   API and renders a version string. There is no self-update path: a
   release cannot replace the running binary, so a compromised release
-  channel cannot execute code on an existing install. Signed,
-  user-initiated updates are a possible future feature and are tracked
-  in docs/SELF_UPDATE_PROPOSAL.md; they will not ship without release
-  signing.
+  channel cannot execute code on an existing install. User-initiated
+  updates are a possible future feature, tracked in
+  docs/SELF_UPDATE_PROPOSAL.md; they will not ship without verifying
+  the attestation of the downloaded artifact first.

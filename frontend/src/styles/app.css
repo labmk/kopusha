@@ -1271,3 +1271,168 @@ html, body {
   align-items: baseline;
 }
 .logo-link:hover { text-decoration: underline; }
+
+/* --- Field profile ------------------------------------------------ */
+
+/* Splits the results area horizontally. The table keeps whatever is
+   left, so opening the panel narrows the rows rather than covering
+   them — the panel is read against the data it describes. */
+.main-split {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+.main-results {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.field-profile {
+  width: 300px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.field-profile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  font-size: 12px;
+  color: var(--text-primary);
+}
+.field-profile-total { color: var(--text-muted); font-weight: 400; }
+
+.field-profile-body { overflow-y: auto; flex: 1; }
+/* Dim while a refetch is in flight rather than emptying the panel —
+   the previous numbers are still the best available answer. */
+.field-profile-body.is-stale { opacity: 0.55; }
+
+.fp-field {
+  padding: 6px 12px 7px;
+  border-bottom: 1px solid var(--border);
+}
+.fp-field.is-open { background: var(--bg-tertiary); }
+
+.fp-field-head {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+}
+.fp-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fp-stats {
+  display: flex;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+/* A field that is not always populated is the interesting case. */
+.fp-fill-partial { color: var(--warning); }
+
+.fp-files {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.fp-bar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+.fp-bar-fill { height: 100%; background: var(--accent); opacity: 0.7; }
+
+.fp-values { margin-top: 6px; display: flex; flex-direction: column; gap: 2px; }
+.fp-values-loading { padding: 4px 0; }
+
+/* Each value is a button: clicking it filters. The bar behind the text
+   is the value's share, so the distribution reads at a glance without
+   a second column of numbers to parse. */
+.fp-value {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  padding: 3px 6px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+}
+.fp-value:hover { border-color: var(--accent); }
+.fp-value-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--accent);
+  opacity: 0.16;
+  pointer-events: none;
+}
+.fp-value-text {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fp-value-count {
+  position: relative;
+  font-size: 9px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fp-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+  padding: 4px 0;
+  line-height: 1.5;
+}
+.fp-truncated {
+  padding: 6px 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Narrow windows: the profile would leave the table unusable, so it
+   takes the full width and the operator closes it to get back. */
+@media (max-width: 1100px) {
+  .field-profile { width: 100%; border-left: none; }
+  .main-split .main-results { display: none; }
+  .main-split:not(:has(.field-profile)) .main-results { display: flex; }
+}

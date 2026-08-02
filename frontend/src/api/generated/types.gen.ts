@@ -69,6 +69,59 @@ export type ServerExportResponse = {
     status?: string;
 };
 
+export type ServerFieldProfileEntry = {
+    /**
+     * Distinct is approximate (HyperLogLog). The question it answers is
+     * "identifier or category?", which does not need the last digit.
+     */
+    distinct?: number;
+    /**
+     * Files and FilesTotal say how many enabled files declare the field
+     * at all — a different fact from its fill rate, and often the more
+     * useful one.
+     */
+    files?: number;
+    files_total?: number;
+    name?: string;
+    /**
+     * Present counts rows with a usable value — not NULL, not empty.
+     * The same rows the `exists` operator selects.
+     */
+    present?: number;
+};
+
+export type ServerFieldValueEntry = {
+    count?: number;
+    value?: string;
+};
+
+export type ServerFieldValuesRequest = {
+    field?: string;
+    filters?: Array<ServerFilterClause>;
+    limit?: number;
+    offset?: number;
+    search_text?: string;
+    sort_field?: string;
+    sort_order?: 'asc' | 'desc';
+    time_from?: string;
+    time_to?: string;
+    /**
+     * Top caps how many values come back. Defaults to, and is capped
+     * at, 50.
+     */
+    top?: number;
+};
+
+export type ServerFieldValuesResponse = {
+    field?: string;
+    /**
+     * Total sums the returned values only, not the whole field — it is
+     * the denominator for the shares shown beside them.
+     */
+    total?: number;
+    values?: Array<ServerFieldValueEntry>;
+};
+
 export type ServerFileInfo = {
     enabled?: boolean;
     format?: string;
@@ -200,6 +253,27 @@ export type ServerPreviewResponse = {
      */
     timestamp_errors?: number;
     warnings?: Array<string>;
+};
+
+export type ServerProfileRequest = {
+    fields?: Array<string>;
+    filters?: Array<ServerFilterClause>;
+    limit?: number;
+    offset?: number;
+    search_text?: string;
+    sort_field?: string;
+    sort_order?: 'asc' | 'desc';
+    time_from?: string;
+    time_to?: string;
+};
+
+export type ServerProfileResponse = {
+    fields?: Array<ServerFieldProfileEntry>;
+    total?: number;
+    /**
+     * Truncated reports that the field list hit the cap.
+     */
+    truncated?: boolean;
 };
 
 export type ServerQueryRequest = {
@@ -716,6 +790,70 @@ export type GetApiModulesResponses = {
 };
 
 export type GetApiModulesResponse = GetApiModulesResponses[keyof GetApiModulesResponses];
+
+export type PostApiProfileData = {
+    /**
+     * same filters as /api/query, plus an optional field subset
+     */
+    body: ServerProfileRequest;
+    path?: never;
+    query?: never;
+    url: '/api/profile';
+};
+
+export type PostApiProfileErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+    /**
+     * Internal Server Error
+     */
+    500: ServerErrorResponse;
+};
+
+export type PostApiProfileError = PostApiProfileErrors[keyof PostApiProfileErrors];
+
+export type PostApiProfileResponses = {
+    /**
+     * OK
+     */
+    200: ServerProfileResponse;
+};
+
+export type PostApiProfileResponse = PostApiProfileResponses[keyof PostApiProfileResponses];
+
+export type PostApiProfileValuesData = {
+    /**
+     * same filters as /api/query, plus the field
+     */
+    body: ServerFieldValuesRequest;
+    path?: never;
+    query?: never;
+    url: '/api/profile/values';
+};
+
+export type PostApiProfileValuesErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+    /**
+     * Internal Server Error
+     */
+    500: ServerErrorResponse;
+};
+
+export type PostApiProfileValuesError = PostApiProfileValuesErrors[keyof PostApiProfileValuesErrors];
+
+export type PostApiProfileValuesResponses = {
+    /**
+     * OK
+     */
+    200: ServerFieldValuesResponse;
+};
+
+export type PostApiProfileValuesResponse = PostApiProfileValuesResponses[keyof PostApiProfileValuesResponses];
 
 export type PostApiQueryData = {
     /**

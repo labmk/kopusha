@@ -192,7 +192,7 @@ stating because they are easy to violate without noticing:
 
 ## Release chores
 
-A user-visible change bumps the version in three files, which must stay
+A user-visible change bumps the version in four places, which must stay
 in sync:
 
 - `build.sh` — `VERSION`

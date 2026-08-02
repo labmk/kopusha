@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiHistogramData, PostApiHistogramErrors, PostApiHistogramResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
+import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiHistogramData, PostApiHistogramErrors, PostApiHistogramResponses, PostApiProfileData, PostApiProfileErrors, PostApiProfileResponses, PostApiProfileValuesData, PostApiProfileValuesErrors, PostApiProfileValuesResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -155,6 +155,34 @@ export const postApiHistogram = <ThrowOnError extends boolean = false>(options: 
  * Returns one manifest per enabled module in Add() order. The SPA reads this at boot to decide which tabs to render and to inject the branding stylesheet + favicons.
  */
 export const getApiModules = <ThrowOnError extends boolean = false>(options?: Options<GetApiModulesData, ThrowOnError>): RequestResult<GetApiModulesResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetApiModulesResponses, unknown, ThrowOnError>({ url: '/api/modules', ...options });
+
+/**
+ * Profile every field over the current result
+ *
+ * Per field: how many rows carry a usable value, an approximate distinct count, and how many of the enabled files declare the field at all. Uses the same filters as /api/query, so the profile describes the rows on screen. One scan covers every field; value distributions are fetched separately per field via /api/profile/values.
+ */
+export const postApiProfile = <ThrowOnError extends boolean = false>(options: Options<PostApiProfileData, ThrowOnError>): RequestResult<PostApiProfileResponses, PostApiProfileErrors, ThrowOnError> => (options.client ?? client).post<PostApiProfileResponses, PostApiProfileErrors, ThrowOnError>({
+    url: '/api/profile',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Most common values for one field
+ *
+ * A field's top values with counts, over the rows the current filters select. NULL and empty are excluded — the profile already reports the fill rate, and repeating it here would crowd out the values that carry information. Fetched per field, on demand, because each one needs its own GROUP BY.
+ */
+export const postApiProfileValues = <ThrowOnError extends boolean = false>(options: Options<PostApiProfileValuesData, ThrowOnError>): RequestResult<PostApiProfileValuesResponses, PostApiProfileValuesErrors, ThrowOnError> => (options.client ?? client).post<PostApiProfileValuesResponses, PostApiProfileValuesErrors, ThrowOnError>({
+    url: '/api/profile/values',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 /**
  * Query the loaded files

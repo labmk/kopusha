@@ -466,6 +466,98 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/profile": {
+            "post": {
+                "description": "Per field: how many rows carry a usable value, an approximate distinct count, and how many of the enabled files declare the field at all. Uses the same filters as /api/query, so the profile describes the rows on screen. One scan covers every field; value distributions are fetched separately per field via /api/profile/values.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "query"
+                ],
+                "summary": "Profile every field over the current result",
+                "parameters": [
+                    {
+                        "description": "same filters as /api/query, plus an optional field subset",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.ProfileRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.ProfileResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/profile/values": {
+            "post": {
+                "description": "A field's top values with counts, over the rows the current filters select. NULL and empty are excluded — the profile already reports the fill rate, and repeating it here would crowd out the values that carry information. Fetched per field, on demand, because each one needs its own GROUP BY.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "query"
+                ],
+                "summary": "Most common values for one field",
+                "parameters": [
+                    {
+                        "description": "same filters as /api/query, plus the field",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.FieldValuesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.FieldValuesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/query": {
             "post": {
                 "description": "Runs the assembled filter set (field clauses, time window, optional free-text search) against the UNION ALL of enabled files. Sort, offset, and limit drive paging. Free-text search uses DuckDB ILIKE on a TRY_CAST-VARCHAR'd row.",
@@ -1019,6 +1111,101 @@ const docTemplate = `{
                 }
             }
         },
+        "server.FieldProfileEntry": {
+            "type": "object",
+            "properties": {
+                "distinct": {
+                    "description": "Distinct is approximate (HyperLogLog). The question it answers is\n\"identifier or category?\", which does not need the last digit.",
+                    "type": "integer"
+                },
+                "files": {
+                    "description": "Files and FilesTotal say how many enabled files declare the field\nat all — a different fact from its fill rate, and often the more\nuseful one.",
+                    "type": "integer"
+                },
+                "files_total": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "present": {
+                    "description": "Present counts rows with a usable value — not NULL, not empty.\nThe same rows the ` + "`" + `exists` + "`" + ` operator selects.",
+                    "type": "integer"
+                }
+            }
+        },
+        "server.FieldValueEntry": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "server.FieldValuesRequest": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.FilterClause"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "search_text": {
+                    "type": "string"
+                },
+                "sort_field": {
+                    "type": "string"
+                },
+                "sort_order": {
+                    "type": "string",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "time_from": {
+                    "type": "string"
+                },
+                "time_to": {
+                    "type": "string"
+                },
+                "top": {
+                    "description": "Top caps how many values come back. Defaults to, and is capped\nat, 50.",
+                    "type": "integer"
+                }
+            }
+        },
+        "server.FieldValuesResponse": {
+            "type": "object",
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+                "total": {
+                    "description": "Total sums the returned values only, not the whole field — it is\nthe denominator for the shares shown beside them.",
+                    "type": "integer"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.FieldValueEntry"
+                    }
+                }
+            }
+        },
         "server.FileInfo": {
             "type": "object",
             "properties": {
@@ -1264,6 +1451,66 @@ const docTemplate = `{
                     "items": {
                         "type": "string"
                     }
+                }
+            }
+        },
+        "server.ProfileRequest": {
+            "type": "object",
+            "properties": {
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.FilterClause"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "search_text": {
+                    "type": "string"
+                },
+                "sort_field": {
+                    "type": "string"
+                },
+                "sort_order": {
+                    "type": "string",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                },
+                "time_from": {
+                    "type": "string"
+                },
+                "time_to": {
+                    "type": "string"
+                }
+            }
+        },
+        "server.ProfileResponse": {
+            "type": "object",
+            "properties": {
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.FieldProfileEntry"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "truncated": {
+                    "description": "Truncated reports that the field list hit the cap.",
+                    "type": "boolean"
                 }
             }
         },
@@ -1619,7 +1866,7 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.2.1",
+	Version:          "0.2.2",
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{"http", "https"},

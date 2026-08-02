@@ -11,6 +11,7 @@ import {
   useFields,
   useLogQuery,
   useHistogram,
+  useProfile,
   useUpdateStatus,
 } from './hooks/useApiQueries';
 import { formatTimeout } from './utils/datetime';
@@ -25,6 +26,7 @@ import PaginationBar from './components/PaginationBar';
 import RuleBuilder from './components/RuleBuilder';
 import TimeHistogram from './components/TimeHistogram';
 import UpdateNotice from './components/UpdateNotice';
+import FieldProfile from './components/FieldProfile';
 import { moduleComponents } from './moduleRegistry';
 
 export default function App() {
@@ -114,6 +116,7 @@ export default function App() {
   // its most useful feature.
   const [ruleSample, setRuleSample] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [showProfile, setShowProfile] = useLocalStorage('obs_viewer_show_profile', false);
   const [theme, setTheme] = useLocalStorage('obs_viewer_theme', 'dark');
   const [activeTab, setActiveTab] = useLocalStorage('obs_viewer_active_tab', 'viewer');
 
@@ -266,6 +269,7 @@ export default function App() {
   // The strip runs alongside the table on the same filter set. It is
   // keyed without offset/limit, so paging does not re-run it.
   const histogramQ = useHistogram(queryParams, filesEnabled);
+  const profileQ = useProfile(queryParams, filesEnabled && showProfile);
 
   // Surface query errors to the toast bar. Manual error state still
   // exists for non-query errors (file ops below).
@@ -279,6 +283,20 @@ export default function App() {
     queryClient.invalidateQueries({ queryKey: ['query'] });
     queryClient.invalidateQueries({ queryKey: ['histogram'] });
   }, [files.map(f => `${f.id}:${f.enabled ? 1 : 0}`).join(','), queryClient]);
+
+  // Clicking a value in the profile narrows to it. Applies at once, for
+  // the same reason a histogram drag does: the click *is* the decision,
+  // and profiling is only navigation if acting on what you see takes
+  // one step.
+  const handleProfileFilter = useCallback((field, value) => {
+    const next = [...filters, { field, operator: 'is', value, logic: 'AND' }];
+    setFilters(next);
+    setAppliedFilters(next);
+    setAppliedTimeFrom(timeFrom);
+    setAppliedTimeTo(timeTo);
+    setAppliedSearchText(searchText);
+    setOffset(0);
+  }, [filters, timeFrom, timeTo, searchText]);
 
   // Keep the fragment in step with the applied view.
   //
@@ -511,6 +529,13 @@ export default function App() {
             {theme === 'dark' ? '☀' : '☾'}
           </button>
           <button
+            className={`btn${showProfile ? ' btn-primary' : ''}`}
+            onClick={() => setShowProfile(v => !v)}
+            title="Show what is in the data: which fields exist, how often they are populated, and their most common values"
+          >
+            Fields
+          </button>
+          <button
             className="btn"
             onClick={handleCopyLink}
             title="Copy a link to this exact view — filters, time range, sort and columns. Files are not included; the recipient opens their own."
@@ -621,48 +646,66 @@ export default function App() {
           />
         )}
 
-        {files.length === 0 ? (
-          <div className="empty-state">
-            <div className="icon-large">&#128194;</div>
-            <div>No files loaded</div>
-            <button className="btn btn-primary" onClick={() => setShowBrowser(true)}>
-              Open Files
-            </button>
-          </div>
-        ) : enabledCount === 0 ? (
-          <div className="empty-state">
-            <div className="icon-large">&#128065;</div>
-            <div>No files selected - enable files in the left panel</div>
-          </div>
-        ) : loading && !queryResult ? (
-          <div className="loading">
-            <span className="spinner" />
-            Querying...
-          </div>
-        ) : (
-          <LogTable
-            result={queryResult}
-            sortOrder={sortOrder}
-            onSortOrderChange={setSortOrder}
-            timestampField={timestampField}
-            timezone={timezone}
-            hourFormat={hourFormat}
-            hideNulls={hideNulls}
-            hiddenColumns={hiddenColumns}
-            onHiddenColumnsChange={setHiddenColumns}
-          />
-        )}
+        {/* The profile sits beside the results rather than over them:
+            it is read while looking at the rows it describes, and a
+            panel that covered them would break the loop it exists to
+            support. */}
+        <div className="main-split">
+          <div className="main-results">
+            {files.length === 0 ? (
+              <div className="empty-state">
+                <div className="icon-large">&#128194;</div>
+                <div>No files loaded</div>
+                <button className="btn btn-primary" onClick={() => setShowBrowser(true)}>
+                  Open Files
+                </button>
+              </div>
+            ) : enabledCount === 0 ? (
+              <div className="empty-state">
+                <div className="icon-large">&#128065;</div>
+                <div>No files selected - enable files in the left panel</div>
+              </div>
+            ) : loading && !queryResult ? (
+              <div className="loading">
+                <span className="spinner" />
+                Querying...
+              </div>
+            ) : (
+              <LogTable
+                result={queryResult}
+                sortOrder={sortOrder}
+                onSortOrderChange={setSortOrder}
+                timestampField={timestampField}
+                timezone={timezone}
+                hourFormat={hourFormat}
+                hideNulls={hideNulls}
+                hiddenColumns={hiddenColumns}
+                onHiddenColumnsChange={setHiddenColumns}
+              />
+            )}
 
-        {queryResult && totalRecords > 0 && (
-          <PaginationBar
-            offset={offset}
-            limit={limit}
-            total={totalRecords}
-            loading={loading}
-            onJump={(newOffset) => setOffset(newOffset)}
-            onLimitChange={(n) => { setLimit(n); setOffset(0); }}
-          />
-        )}
+            {queryResult && totalRecords > 0 && (
+              <PaginationBar
+                offset={offset}
+                limit={limit}
+                total={totalRecords}
+                loading={loading}
+                onJump={(newOffset) => setOffset(newOffset)}
+                onLimitChange={(n) => { setLimit(n); setOffset(0); }}
+              />
+            )}
+          </div>
+
+          {showProfile && filesEnabled && (
+            <FieldProfile
+              profile={profileQ.data}
+              loading={profileQ.isFetching}
+              queryParams={queryParams}
+              onAddFilter={handleProfileFilter}
+              onClose={() => setShowProfile(false)}
+            />
+          )}
+        </div>
       </div>
 
       <div className="status-bar">

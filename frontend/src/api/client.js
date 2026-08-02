@@ -57,6 +57,22 @@ export const api = {
       body: JSON.stringify(params),
     }),
 
+  // Field summary for the current result: fill rate, approximate
+  // cardinality, and how many loaded files declare each field.
+  profile: (params) =>
+    request('/api/profile', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    }),
+
+  // Top values for one field, fetched on expand — each needs its own
+  // GROUP BY, so they are not part of the summary pass.
+  fieldValues: (params) =>
+    request('/api/profile/values', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    }),
+
   getFields: () => request('/api/fields'),
 
   getTimeRange: () => request('/api/timerange'),

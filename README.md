@@ -62,6 +62,12 @@ machine.
 - **Nested field filtering.** JSON objects materialise as DuckDB
   `STRUCT`s; a filter on `nodeinfo.type` resolves to the sub-path, and
   the field picker surfaces those alongside flat columns.
+- **Field profiling.** **Fields** shows what is actually in the data:
+  which fields exist, how often each is populated, roughly how many
+  distinct values it takes, and — across a heterogeneous load — how
+  many of your files declare it at all. Expand one to see its most
+  common values, and click a value to filter to it. Look, then
+  formulate, instead of guessing and querying.
 - **Query builder + text DSL.** A visual filter builder with 10
   operators, plus a pipeline-style text view for copy/paste portability.
 - **Time filtering with explicit UTC.** Presets, custom ranges, and a
@@ -84,6 +90,22 @@ machine.
   copy the binary alongside it so the recipient needs no setup at all.
 - **Localhost by default.** Binds `127.0.0.1` unless you both set
   `listen=` and supply a TLS certificate.
+
+## Verifying a download
+
+Every release archive carries a signed attestation proving it was built
+by this repository's workflow from a named commit:
+
+```bash
+gh attestation verify obs_viewer-0.2.1-darwin-arm64.zip --repo labmk/obs-viewer
+```
+
+That is a stronger check than the `SHA256SUMS` file published beside it,
+which only shows a download is intact — not where it came from.
+
+Binaries are not code-signed with a certificate, which is a separate
+thing and is what stops the operating system warning. See
+[SECURITY.md](./SECURITY.md).
 
 ## Usage
 

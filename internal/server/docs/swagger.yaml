@@ -95,6 +95,81 @@ definitions:
       status:
         type: string
     type: object
+  server.FieldProfileEntry:
+    properties:
+      distinct:
+        description: |-
+          Distinct is approximate (HyperLogLog). The question it answers is
+          "identifier or category?", which does not need the last digit.
+        type: integer
+      files:
+        description: |-
+          Files and FilesTotal say how many enabled files declare the field
+          at all — a different fact from its fill rate, and often the more
+          useful one.
+        type: integer
+      files_total:
+        type: integer
+      name:
+        type: string
+      present:
+        description: |-
+          Present counts rows with a usable value — not NULL, not empty.
+          The same rows the `exists` operator selects.
+        type: integer
+    type: object
+  server.FieldValueEntry:
+    properties:
+      count:
+        type: integer
+      value:
+        type: string
+    type: object
+  server.FieldValuesRequest:
+    properties:
+      field:
+        type: string
+      filters:
+        items:
+          $ref: '#/definitions/server.FilterClause'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      search_text:
+        type: string
+      sort_field:
+        type: string
+      sort_order:
+        enum:
+        - asc
+        - desc
+        type: string
+      time_from:
+        type: string
+      time_to:
+        type: string
+      top:
+        description: |-
+          Top caps how many values come back. Defaults to, and is capped
+          at, 50.
+        type: integer
+    type: object
+  server.FieldValuesResponse:
+    properties:
+      field:
+        type: string
+      total:
+        description: |-
+          Total sums the returned values only, not the whole field — it is
+          the denominator for the shares shown beside them.
+        type: integer
+      values:
+        items:
+          $ref: '#/definitions/server.FieldValueEntry'
+        type: array
+    type: object
   server.FileInfo:
     properties:
       enabled:
@@ -272,6 +347,46 @@ definitions:
         items:
           type: string
         type: array
+    type: object
+  server.ProfileRequest:
+    properties:
+      fields:
+        items:
+          type: string
+        type: array
+      filters:
+        items:
+          $ref: '#/definitions/server.FilterClause'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      search_text:
+        type: string
+      sort_field:
+        type: string
+      sort_order:
+        enum:
+        - asc
+        - desc
+        type: string
+      time_from:
+        type: string
+      time_to:
+        type: string
+    type: object
+  server.ProfileResponse:
+    properties:
+      fields:
+        items:
+          $ref: '#/definitions/server.FieldProfileEntry'
+        type: array
+      total:
+        type: integer
+      truncated:
+        description: Truncated reports that the field list hit the cap.
+        type: boolean
     type: object
   server.QueryRequest:
     properties:
@@ -534,7 +649,7 @@ info:
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
   title: obs-viewer API
-  version: 0.2.1
+  version: 0.2.2
 paths:
   /api/browse:
     get:
@@ -854,6 +969,73 @@ paths:
       summary: List enabled modules
       tags:
       - modules
+  /api/profile:
+    post:
+      consumes:
+      - application/json
+      description: 'Per field: how many rows carry a usable value, an approximate
+        distinct count, and how many of the enabled files declare the field at all.
+        Uses the same filters as /api/query, so the profile describes the rows on
+        screen. One scan covers every field; value distributions are fetched separately
+        per field via /api/profile/values.'
+      parameters:
+      - description: same filters as /api/query, plus an optional field subset
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.ProfileRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.ProfileResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Profile every field over the current result
+      tags:
+      - query
+  /api/profile/values:
+    post:
+      consumes:
+      - application/json
+      description: A field's top values with counts, over the rows the current filters
+        select. NULL and empty are excluded — the profile already reports the fill
+        rate, and repeating it here would crowd out the values that carry information.
+        Fetched per field, on demand, because each one needs its own GROUP BY.
+      parameters:
+      - description: same filters as /api/query, plus the field
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.FieldValuesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.FieldValuesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Most common values for one field
+      tags:
+      - query
   /api/query:
     post:
       consumes:

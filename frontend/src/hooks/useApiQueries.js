@@ -15,6 +15,7 @@ export const qk = {
   timeRange: ['timeRange'],
   query: (params) => ['query', params],
   histogram: (params) => ['histogram', params],
+  profile: (params) => ['profile', params],
   update: ['update'],
 };
 
@@ -103,6 +104,26 @@ export function useLogQuery(params, enabled) {
     queryFn: () => api.query(params),
     enabled: !!enabled,
     placeholderData: (previous) => previous,
+  });
+}
+
+// Field profile for the same filter set.
+//
+// `enabled` is the panel's open state, so nothing is computed until the
+// operator asks for it — this is a full scan with two aggregates per
+// column, which is cheap enough on demand and wasteful on every query.
+// While the panel stays open it tracks the filters, because a profile
+// that described a result the operator had already narrowed away would
+// be worse than none.
+export function useProfile(params, enabled) {
+  const { offset, limit, ...rest } = params;
+  return useQuery({
+    queryKey: qk.profile(rest),
+    queryFn: () => api.profile(rest),
+    enabled: !!enabled,
+    placeholderData: (previous) => previous,
+    staleTime: 30000,
+    retry: 0,
   });
 }
 

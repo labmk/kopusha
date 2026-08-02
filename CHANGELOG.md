@@ -9,6 +9,51 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats obs-viewer *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.2.2] — 2026-08-02
+
+### Added
+
+- **Signed build provenance on every release archive.** Each zip now
+  carries a Sigstore attestation recording that those exact bytes were
+  produced by this repository's workflow at a named commit:
+
+  ```bash
+  gh attestation verify obs_viewer-<version>-<platform>.zip --repo labmk/obs-viewer
+  ```
+
+  The certificate is issued to the workflow run and expires with it, so
+  there is no signing key to store, leak or rotate.
+
+  This closes a gap the 0.2.0 release notes could not: `SHA256SUMS`
+  shows a download is intact against a list published in the same place
+  by whoever published the file, which an attacker replacing the archive
+  would replace too. Provenance is tied to the build rather than to the
+  publisher.
+
+  It is **not** code signing and does not silence Gatekeeper or
+  SmartScreen — that needs a certificate authority vouching for a legal
+  identity, and stays open as #24.
+- **Field profiling.** A panel beside the results showing, per field:
+  how many rows carry a usable value, an approximate distinct count,
+  and how many of the loaded files declare the field at all. Expand a
+  field for its most common values with their shares; click a value to
+  filter to it.
+
+  The hardest moment for someone new is not writing the query — the DSL
+  is small and there is a builder for it. It is not knowing what the
+  data contains. Until now the only way to find out was to load a file
+  and read rows until you had a feel for it.
+
+  Cost is kept where it belongs: nothing is computed until the panel is
+  opened, the summary is a single scan covering every field at once,
+  and value distributions are fetched per field on expand because each
+  needs its own `GROUP BY`. New `POST /api/profile` and
+  `POST /api/profile/values`.
+
+  "Present" means the same thing here as the `exists` filter operator —
+  not NULL and not empty — so clicking through lands on exactly the row
+  count the panel showed.
+
 ## [0.2.1] — 2026-08-02
 
 ### Changed

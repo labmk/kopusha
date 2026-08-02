@@ -223,6 +223,62 @@ type HistogramResponse struct {
 	Field string `json:"field,omitempty" example:"@timestamp"`
 }
 
+// ProfileRequest is the body of POST /api/profile — a QueryRequest
+// plus an optional field subset. Omitting `fields` profiles every
+// column in the union.
+type ProfileRequest struct {
+	QueryRequest
+	Fields []string `json:"fields,omitempty"`
+}
+
+// FieldProfileEntry is one field's summary in a ProfileResponse.
+type FieldProfileEntry struct {
+	Name string `json:"name"`
+	// Present counts rows with a usable value — not NULL, not empty.
+	// The same rows the `exists` operator selects.
+	Present int64 `json:"present"`
+	// Distinct is approximate (HyperLogLog). The question it answers is
+	// "identifier or category?", which does not need the last digit.
+	Distinct int64 `json:"distinct"`
+	// Files and FilesTotal say how many enabled files declare the field
+	// at all — a different fact from its fill rate, and often the more
+	// useful one.
+	Files      int `json:"files"`
+	FilesTotal int `json:"files_total"`
+}
+
+// ProfileResponse is the body of POST /api/profile.
+type ProfileResponse struct {
+	Total  int64               `json:"total"`
+	Fields []FieldProfileEntry `json:"fields"`
+	// Truncated reports that the field list hit the cap.
+	Truncated bool `json:"truncated"`
+}
+
+// FieldValuesRequest is the body of POST /api/profile/values.
+type FieldValuesRequest struct {
+	QueryRequest
+	Field string `json:"field"`
+	// Top caps how many values come back. Defaults to, and is capped
+	// at, 50.
+	Top int `json:"top,omitempty"`
+}
+
+// FieldValueEntry is one value and how often it occurs.
+type FieldValueEntry struct {
+	Value string `json:"value"`
+	Count int64  `json:"count"`
+}
+
+// FieldValuesResponse is the body of POST /api/profile/values.
+type FieldValuesResponse struct {
+	Field string `json:"field"`
+	// Total sums the returned values only, not the whole field — it is
+	// the denominator for the shares shown beside them.
+	Total  int64             `json:"total"`
+	Values []FieldValueEntry `json:"values"`
+}
+
 // AdapterVerdict is one adapter's answer in a DiagnosisResponse.
 type AdapterVerdict struct {
 	// Name is the adapter name, e.g. "ndjson", "line".

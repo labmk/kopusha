@@ -822,6 +822,241 @@ func pickHistogramInterval(span time.Duration) int64 {
 	return (iv/86400 + 1) * 86400
 }
 
+// FieldProfile summarises one field across the current result.
+type FieldProfile struct {
+	Name string `json:"name"`
+	// Present is how many rows carry a usable value: not NULL and not
+	// the empty string. Matches what the `exists` filter operator
+	// selects, so clicking through from the panel lands on the same
+	// rows the panel described.
+	Present int64 `json:"present"`
+	// Distinct is an approximate count of distinct values. HyperLogLog
+	// rather than an exact COUNT(DISTINCT), because the question this
+	// answers is "is this an identifier or a category?" and that does
+	// not need the last digit.
+	Distinct int64 `json:"distinct"`
+	// Files and FilesTotal report how many of the enabled files declare
+	// this field at all. "Present in 2 of 7 files" is a different fact
+	// from "null in 70% of rows" and is often the more useful one — it
+	// says the field belongs to a subset of the sources, not that the
+	// sources are missing data.
+	Files      int `json:"files"`
+	FilesTotal int `json:"files_total"`
+}
+
+// Profile is the field summary for the current result.
+type Profile struct {
+	Total  int64          `json:"total"`
+	Fields []FieldProfile `json:"fields"`
+	// Truncated reports that the field list was capped.
+	Truncated bool `json:"truncated"`
+}
+
+// FieldValue is one of a field's most common values.
+type FieldValue struct {
+	Value string `json:"value"`
+	Count int64  `json:"count"`
+}
+
+// FieldValues is the top of a field's value distribution.
+type FieldValues struct {
+	Field  string       `json:"field"`
+	Total  int64        `json:"total"`
+	Values []FieldValue `json:"values"`
+}
+
+// maxProfileFields caps how many fields one profile pass covers.
+//
+// Every field adds two aggregates to a single SELECT. That stays one
+// scan however wide it gets, but the SQL text and the result row grow
+// with it, and a union of a dozen heterogeneous files can reach several
+// hundred columns. Past this the panel has stopped being readable
+// anyway.
+const maxProfileFields = 200
+
+// GetProfile summarises every field over the rows the current filters
+// select.
+//
+// One scan for all fields: each field contributes a FILTER'd count and
+// an approx_count_distinct to a single SELECT, rather than a query per
+// field. On a wide union the per-field version would be hundreds of
+// scans of the same data.
+//
+// Value distributions are deliberately not computed here — see
+// GetFieldValues. Those need a GROUP BY per field, which cannot be
+// folded into one pass, so they are fetched for the one field the
+// operator opened rather than for all of them.
+func (e *Engine) GetProfile(req QueryRequest, fields []string) (*Profile, error) {
+	e.mu.RLock()
+	defer e.mu.RUnlock()
+
+	out := &Profile{Fields: []FieldProfile{}}
+	tables := e.enabledTables()
+	if len(tables) == 0 {
+		return out, nil
+	}
+
+	baseQuery, allCols := e.buildUnionQuery(tables, false)
+	if len(fields) == 0 {
+		fields = e.allColumns(tables)
+	}
+	if len(fields) > maxProfileFields {
+		fields = fields[:maxProfileFields]
+		out.Truncated = true
+	}
+	if len(fields) == 0 {
+		return out, nil
+	}
+
+	whereClauses := e.buildWhereClause(req, allCols)
+	whereSQL := ""
+	if len(whereClauses) > 0 {
+		whereSQL = "WHERE " + strings.Join(whereClauses, " ")
+	}
+
+	var sels []string
+	sels = append(sels, "COUNT(*) AS total_rows")
+	for i, f := range fields {
+		// TRY_CAST to VARCHAR before comparing, exactly as the `exists`
+		// operator does. A STRUCT column reaches this point as JSON
+		// (buildUnionSelect projects it through to_json), and comparing
+		// JSON to '' makes DuckDB parse the empty string as JSON and
+		// fail the whole query. Casting also keeps this definition of
+		// "present" identical to the filter the panel offers.
+		ref := fmt.Sprintf("TRY_CAST(%s AS VARCHAR)", e.quoteFieldRef(f))
+		sels = append(sels,
+			fmt.Sprintf("COUNT(*) FILTER (WHERE %s IS NOT NULL AND %s <> '') AS p%d", ref, ref, i),
+			fmt.Sprintf("approx_count_distinct(NULLIF(%s, '')) AS d%d", ref, i),
+		)
+	}
+	query := fmt.Sprintf("SELECT %s FROM (%s) AS combined %s",
+		strings.Join(sels, ", "), baseQuery, whereSQL)
+
+	start := time.Now()
+	row := e.db.QueryRow(query)
+	scan := make([]any, 1+2*len(fields))
+	total := sql.NullInt64{}
+	scan[0] = &total
+	counts := make([]sql.NullInt64, 2*len(fields))
+	for i := range counts {
+		scan[1+i] = &counts[i]
+	}
+	if err := row.Scan(scan...); err != nil {
+		logx.Error("engine.profile", logx.F{"error": err.Error(), "fields": len(fields)})
+		return nil, fmt.Errorf("profile query failed: %w", err)
+	}
+	out.Total = total.Int64
+
+	fileCounts := e.fieldFileCounts(tables, fields)
+	for i, f := range fields {
+		out.Fields = append(out.Fields, FieldProfile{
+			Name:       f,
+			Present:    counts[2*i].Int64,
+			Distinct:   counts[2*i+1].Int64,
+			Files:      fileCounts[f],
+			FilesTotal: len(tables),
+		})
+	}
+	logx.Info("engine.profile", logx.F{
+		"fields":      len(fields),
+		"rows":        out.Total,
+		"duration_ms": time.Since(start).Milliseconds(),
+	})
+	return out, nil
+}
+
+// fieldFileCounts reports, per field, how many of the given tables
+// declare it. Answered entirely from cached per-table metadata — no
+// SQL, so "present in 2 of 7 files" costs nothing to display.
+func (e *Engine) fieldFileCounts(tables []string, fields []string) map[string]int {
+	out := make(map[string]int, len(fields))
+	for _, f := range fields {
+		lower := strings.ToLower(f)
+		n := 0
+		for _, t := range tables {
+			if tableHasField(e.tableCols[t], e.tableStructPaths[t], lower) {
+				n++
+			}
+		}
+		out[f] = n
+	}
+	return out
+}
+
+func tableHasField(cols, structPaths []string, lowerName string) bool {
+	for _, c := range cols {
+		if strings.ToLower(c) == lowerName {
+			return true
+		}
+	}
+	for _, p := range structPaths {
+		if strings.ToLower(p) == lowerName {
+			return true
+		}
+	}
+	return false
+}
+
+// maxFieldValues caps the value distribution returned for one field.
+const maxFieldValues = 50
+
+// GetFieldValues returns a field's most common values with their counts,
+// over the rows the current filters select.
+//
+// Empty and NULL are excluded: they are already reported as the field's
+// fill rate in the profile, and repeating them here would push the
+// values that carry information off the list.
+func (e *Engine) GetFieldValues(req QueryRequest, field string, limit int) (*FieldValues, error) {
+	e.mu.RLock()
+	defer e.mu.RUnlock()
+
+	out := &FieldValues{Field: field, Values: []FieldValue{}}
+	if strings.TrimSpace(field) == "" {
+		return out, nil
+	}
+	tables := e.enabledTables()
+	if len(tables) == 0 {
+		return out, nil
+	}
+	if limit <= 0 || limit > maxFieldValues {
+		limit = maxFieldValues
+	}
+
+	baseQuery, allCols := e.buildUnionQuery(tables, false)
+	// VARCHAR for the same reason as GetProfile: a STRUCT column is JSON
+	// here, and it is a string that gets displayed and filtered on.
+	ref := fmt.Sprintf("TRY_CAST(%s AS VARCHAR)", e.quoteFieldRef(field))
+
+	whereClauses := e.buildWhereClause(req, allCols)
+	whereSQL := fmt.Sprintf("WHERE %s IS NOT NULL AND %s <> ''", ref, ref)
+	if len(whereClauses) > 0 {
+		whereSQL = "WHERE " + strings.Join(whereClauses, " ") +
+			fmt.Sprintf(" AND %s IS NOT NULL AND %s <> ''", ref, ref)
+	}
+
+	query := fmt.Sprintf(
+		"SELECT %s AS v, COUNT(*) AS n FROM (%s) AS combined %s GROUP BY v ORDER BY n DESC, v ASC LIMIT %d",
+		ref, baseQuery, whereSQL, limit,
+	)
+	rows, err := e.db.Query(query)
+	if err != nil {
+		logx.Error("engine.field_values", logx.F{"error": err.Error(), "field": field})
+		return nil, fmt.Errorf("field values query failed: %w", err)
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var v sql.NullString
+		var n int64
+		if err := rows.Scan(&v, &n); err != nil {
+			continue
+		}
+		out.Values = append(out.Values, FieldValue{Value: v.String, Count: n})
+		out.Total += n
+	}
+	return out, nil
+}
+
 // GetFields returns the union of all field names across all enabled tables.
 // Columns are ordered by first appearance: fields from earlier tables come
 // first, then new fields from subsequent tables are appended.
