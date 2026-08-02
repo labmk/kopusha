@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
+import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -66,6 +66,20 @@ export const getApiFieldSamples = <ThrowOnError extends boolean = false>(options
  * Returns every file the engine currently has loaded plus the auto-detected timestamp column.
  */
 export const getApiFiles = <ThrowOnError extends boolean = false>(options?: Options<GetApiFilesData, ThrowOnError>): RequestResult<GetApiFilesResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetApiFilesResponses, unknown, ThrowOnError>({ url: '/api/files', ...options });
+
+/**
+ * Explain how a file was, or was not, matched
+ *
+ * Runs every ingest adapter's detection against the file and reports each one's score and reason, the first non-blank line as the parser sees it, and any encoding trait that commonly breaks matching (BOM, CRLF, NUL bytes, invalid UTF-8). Read-only: nothing is loaded. This is what the UI shows when a load fails, and it is the input to the rule builder.
+ */
+export const postApiFilesExplain = <ThrowOnError extends boolean = false>(options: Options<PostApiFilesExplainData, ThrowOnError>): RequestResult<PostApiFilesExplainResponses, PostApiFilesExplainErrors, ThrowOnError> => (options.client ?? client).post<PostApiFilesExplainResponses, PostApiFilesExplainErrors, ThrowOnError>({
+    url: '/api/files/explain',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
 
 /**
  * Load a file
@@ -135,6 +149,55 @@ export const getApiModules = <ThrowOnError extends boolean = false>(options?: Op
  */
 export const postApiQuery = <ThrowOnError extends boolean = false>(options: Options<PostApiQueryData, ThrowOnError>): RequestResult<PostApiQueryResponses, PostApiQueryErrors, ThrowOnError> => (options.client ?? client).post<PostApiQueryResponses, PostApiQueryErrors, ThrowOnError>({
     url: '/api/query',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * List parser rules
+ *
+ * Every rule currently loaded from parsers.d, with the file it came from. Used by the rule builder to warn before a name collides with an existing rule.
+ */
+export const getApiRules = <ThrowOnError extends boolean = false>(options?: Options<GetApiRulesData, ThrowOnError>): RequestResult<GetApiRulesResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetApiRulesResponses, unknown, ThrowOnError>({ url: '/api/rules', ...options });
+
+/**
+ * Preview what a rule would produce
+ *
+ * Runs a candidate rule over sample text through the real line adapter and returns the rows, the per-line verdict (parsed or folded into the previous record as a continuation), and any timestamp that the layout rejected. Nothing is written.
+ */
+export const postApiRulesPreview = <ThrowOnError extends boolean = false>(options: Options<PostApiRulesPreviewData, ThrowOnError>): RequestResult<PostApiRulesPreviewResponses, PostApiRulesPreviewErrors, ThrowOnError> => (options.client ?? client).post<PostApiRulesPreviewResponses, PostApiRulesPreviewErrors, ThrowOnError>({
+    url: '/api/rules/preview',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Save a rule to parsers.d
+ *
+ * Writes the rule as a YAML file next to the binary and reloads the parser registry, so it applies to files loaded afterwards without a restart. The rule name is normalized into a filename; a rule that fails to compile is not left on disk. Existing files are only replaced when overwrite is set.
+ */
+export const postApiRulesSave = <ThrowOnError extends boolean = false>(options: Options<PostApiRulesSaveData, ThrowOnError>): RequestResult<PostApiRulesSaveResponses, PostApiRulesSaveErrors, ThrowOnError> => (options.client ?? client).post<PostApiRulesSaveResponses, PostApiRulesSaveErrors, ThrowOnError>({
+    url: '/api/rules/save',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Infer a rule from sample lines
+ *
+ * Derives a candidate line rule — regex with named captures, plus a Go time layout — from pasted sample lines. Nothing is written; the result is a starting point for the builder, meant to be corrected against the preview.
+ */
+export const postApiRulesSuggest = <ThrowOnError extends boolean = false>(options: Options<PostApiRulesSuggestData, ThrowOnError>): RequestResult<PostApiRulesSuggestResponses, PostApiRulesSuggestErrors, ThrowOnError> => (options.client ?? client).post<PostApiRulesSuggestResponses, PostApiRulesSuggestErrors, ThrowOnError>({
+    url: '/api/rules/suggest',
     ...options,
     headers: {
         'Content-Type': 'application/json',

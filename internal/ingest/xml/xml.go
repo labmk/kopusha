@@ -36,6 +36,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -96,6 +97,40 @@ func (l *Loader) Detect(h ingest.LoadHint) int {
 		}
 	}
 	return best
+}
+
+// Explain names the rule that matched, or reports what the file starts
+// with instead. The leading-character check is called out separately
+// because it is the answer nine times out of ten: an XML file with a
+// preamble, a BOM, or leading blank lines is not what the sniff regex
+// expects.
+func (l *Loader) Explain(h ingest.LoadHint) string {
+	if len(l.rules) == 0 {
+		return "no xml rules loaded"
+	}
+	sniff := normalizeSniff(h.Sniff)
+	var matched []string
+	for _, r := range l.rules {
+		if r.Sniff.Match(sniff) {
+			matched = append(matched, strconv.Quote(r.Name))
+		}
+	}
+	if len(matched) > 0 {
+		return "sniff matched rule " + strings.Join(matched, ", ")
+	}
+	trimmed := bytes.TrimLeft(sniff, " \t\r\n")
+	if len(trimmed) == 0 {
+		return "file is empty or all whitespace"
+	}
+	if trimmed[0] != '<' {
+		return "first non-space character is not '<'"
+	}
+	names := make([]string, 0, len(l.rules))
+	for _, r := range l.rules {
+		names = append(names, r.Name)
+	}
+	return fmt.Sprintf("starts with '<' but no rule sniff matched; tried %d rule(s): %s",
+		len(l.rules), strings.Join(names, ", "))
 }
 
 // Stream emits one Record per occurrence of the autodetected row

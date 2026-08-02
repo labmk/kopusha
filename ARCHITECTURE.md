@@ -209,22 +209,86 @@ precedence control.
 | `24-line-time-dotdate.yaml` | line | `HH:MM:SS.mmm DD.MM.YYYY: msg` |
 
 The `line` family supports `ts_regex_subs` (preprocess the captured ts
-before `time.Parse`) and `ts_use_mtime_date` (combine time-of-day with
+before `time.Parse`), `ts_use_mtime_date` (combine time-of-day with
 file mtime; a backwards jump > 12h advances the working date by one day
-for cross-midnight rollover). The `xml` family always dot-path flattens
-with `@`-prefixed attributes. The `block` family handles UTF-8 BOM and
-CRLF transparently.
+for cross-midnight rollover) and `ts_use_mtime_year` (the capture has
+month and day but no year, as syslog does; the year comes from the
+mtime, stepping back one year when the result would postdate the file).
+The last two describe different gaps in the same timestamp and are
+mutually exclusive — setting both fails rule compilation. The `xml`
+family always dot-path flattens with `@`-prefixed attributes. The
+`block` family handles UTF-8 BOM and CRLF transparently.
 
 **Rules must describe structure only** — regexes, dot-paths, field
 names. No product names, hostnames, or deployment specifics.
 
+### Authoring rules (`internal/parsers`)
+
+Hand-writing a rule means writing a Go regex with named capture groups
+and a Go time layout, which is the exact skill the tool exists to make
+unnecessary — anyone comfortable doing it was never blocked. So the
+same rule schema is reachable from the UI, and `internal/parsers` owns
+that path:
+
+| File | Responsibility |
+|------|----------------|
+| `manager.go` | Owns `parsers.d`: builds the loader `Registry`, rebuilds it on save, and is the only writer |
+| `suggest.go` | Infers a candidate rule from pasted lines |
+| `preview.go` | Runs a candidate through the **real** `line` adapter |
+| `draft.go` | The draft type, validation, and the YAML emitter |
+
+Three properties are load-bearing:
+
+- **The manager owns the registry, not `main`.** A rule saved from the
+  UI has to apply immediately; a restart in the middle of the loop
+  would discard the loaded files the operator was trying to parse.
+- **The preview runs the real adapter**, over a temp file, not a
+  reimplementation. Continuation-line folding, BOM skipping, the
+  mtime-date rollover and oversized-line truncation are all adapter
+  behaviour that a second implementation would get subtly wrong, and a
+  preview that disagrees with the result is worse than none.
+- **The rule name is a filename.** It arrives from a browser, so it is
+  rebuilt from an allow-list (`Slug`) and the resulting path is then
+  checked to be inside `parsers.d` — the second check does not depend
+  on the first being exhaustive.
+
+Inference is structural rather than clever: locate the timestamp,
+tokenize each sample line, and walk the streams in lockstep. Positions
+where every line agrees are literal, positions where they differ are
+fields, and the walk stops where the structure does. The recurring
+hazard is *accidental* agreement — a three-line sample is little
+evidence, and a pid that happened not to change looks exactly like
+structure. Freezing one into the regex yields a rule that parses the
+sample and rejects the file, so agreement alone never makes a token
+literal: spaces, levels and numbers are always captured, and a word
+must be closed by punctuation (`PID:`) to count as a label.
+
+### Explaining a failure
+
+`Registry.Explain` returns a `Diagnosis`: every adapter's score *and*
+reason, the first non-blank line as the parser sees it, and notes for
+the encoding traits that break matching invisibly (BOM, CRLF, NUL
+bytes, invalid UTF-8). Adapters supply the reason through the optional
+`Explainer` interface; it is called only from this path, so it may
+re-read the file.
+
+`Pick` discards all of this, which is correct for loading a file and
+wrong for explaining a failure. The diagnosis is also the input the
+rule builder needs, so "no rule matched" and "build one from this line"
+are one screen.
+
 ### Adding a new format
 
-1. **Same family as an existing rule**: drop a YAML file in
-   `parsers.d/`, restart.
-2. **Brand-new family** (CSV, syslog, …): create
-   `internal/ingest/<name>/`, implement `Loader` + `RecordStreamer` (or
-   `DirectIngester`), register in `main.go`. No engine changes needed.
+1. **Same family as an existing rule**: build it in the UI (**Parser
+   rules**, or the prompt on a failed load), or drop a YAML file in
+   `parsers.d/` and restart.
+2. **Brand-new family** (CSV, …): create `internal/ingest/<name>/`,
+   implement `Loader` + `RecordStreamer` (or `DirectIngester`), and
+   register it in `parsers.Manager.Reload`. No engine changes needed.
+   Implement `Explainer` too — an adapter that declines without saying
+   why is a blank row in every diagnosis. If the format has its own
+   extension, add it to `ingestableExts` in `internal/server`, or the
+   file browser will hide files the dispatcher can read.
 
 Either way, add a REQ-DT row + fixture + Go test + e2e test — see the
 CI gate in REQUIREMENTS.md.
@@ -326,7 +390,12 @@ All endpoints return JSON. Errors: `{"error": "message"}`.
 | GET | `/api/field-samples` | `?fields=a,b,c&cap=N` | `{field: [v1,…]}` — DISTINCT values per field, capped |
 | GET | `/api/timerange` | — | `{min, max, timestamp_fields[]}` |
 | GET/POST | `/api/timestamp-field` | POST: `{field}` | `{field}` |
-| POST | `/api/export` | `{query, output_path}` | `{status, records, path}` |
+| POST | `/api/files/explain` | `{path}` | `{chosen, best_score, adapters[], first_line, notes[]}` — read-only; loads nothing |
+| GET | `/api/rules` | — | `{rules[], dir}` |
+| POST | `/api/rules/suggest` | `{sample}` | a draft rule inferred from the sample; writes nothing |
+| POST | `/api/rules/preview` | `{rule, sample}` | `{fields[], rows[], lines[], parsed, continuation, timestamp_errors, error}` |
+| POST | `/api/rules/save` | `{rule, overwrite}` | `{status, path, file, rules}`; `409` when the name exists |
+| POST | `/api/export` | `{query, output_path}` | `{status, records, path}` — format follows the extension |
 | POST | `/api/export/self-copy` | `{target_dir}` | `{status, path}` |
 | GET/POST | `/api/settings` | POST: `{last_directory, …}` | settings object / `{status}` |
 | POST | `/api/shutdown` | — | exits after 2s grace |

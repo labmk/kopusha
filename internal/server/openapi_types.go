@@ -196,3 +196,140 @@ type ModuleManifest struct {
 type ModulesResponse struct {
 	Modules []ModuleManifest `json:"modules"`
 }
+
+// AdapterVerdict is one adapter's answer in a DiagnosisResponse.
+type AdapterVerdict struct {
+	// Name is the adapter name, e.g. "ndjson", "line".
+	Name string `json:"name" example:"line"`
+	// Score is what Detect returned: 0 declines, 100 is an exact magic
+	// match. The highest score wins, ties broken by name.
+	Score int `json:"score" example:"0"`
+	// Reason is why, in one sentence.
+	Reason string `json:"reason" example:"none of 5 rule(s) matched any of the first 40 non-blank lines: iso-bracket, dashdate-level"`
+}
+
+// DiagnosisResponse is the body of POST /api/files/explain.
+type DiagnosisResponse struct {
+	Path string `json:"path"`
+	// Chosen is the adapter that would handle the file, empty when
+	// nothing matched.
+	Chosen    string           `json:"chosen" example:""`
+	BestScore int              `json:"best_score" example:"0"`
+	Adapters  []AdapterVerdict `json:"adapters"`
+	// FirstLine is the first non-blank line as the parser sees it,
+	// after BOM removal and CRLF folding.
+	FirstLine string `json:"first_line" example:"2026-03-18T06:00:00 gateway[4179]: queue depth 2347"`
+	// Notes are encoding traits that break matching invisibly.
+	Notes []string `json:"notes"`
+}
+
+// RuleInfo is one entry in RulesResponse.
+type RuleInfo struct {
+	Name     string `json:"name" example:"iso-bracket"`
+	Family   string `json:"family" example:"line"`
+	Priority int    `json:"priority" example:"100"`
+	File     string `json:"file" example:"20-line-iso-bracket.yaml"`
+}
+
+// RulesResponse is the body of GET /api/rules.
+type RulesResponse struct {
+	Rules []RuleInfo `json:"rules"`
+	// Dir is the parsers.d directory the rules were read from.
+	Dir string `json:"dir"`
+}
+
+// RuleSub is one timestamp substitution in a RuleDraft, applied to the
+// captured text before the layout is used. Needed for formats Go's
+// layout language cannot express, such as a colon before milliseconds.
+type RuleSub struct {
+	Pattern     string `json:"pattern"`
+	Replacement string `json:"replacement"`
+}
+
+// RuleDraft is a line-format rule being authored — the body of
+// /api/rules/suggest and part of the preview and save requests.
+type RuleDraft struct {
+	Name     string `json:"name" example:"gateway-log"`
+	Priority int    `json:"priority" example:"50"`
+	// Parse must capture the timestamp as (?P<ts>...). Every other
+	// named group becomes a field.
+	Parse string `json:"parse"`
+	// TsLayout is a Go time layout — the reference time spelled out,
+	// e.g. 2006-01-02 15:04:05 — not a strftime pattern.
+	TsLayout string `json:"ts_layout" example:"2006-01-02 15:04:05"`
+	// TsAssumeTZ names the zone for timestamps that carry none.
+	TsAssumeTZ string `json:"ts_assume_tz,omitempty" example:"Europe/Berlin"`
+	// TsUseMtimeDate supplies the date from the file's modification
+	// time, for formats carrying only a time of day.
+	TsUseMtimeDate bool `json:"ts_use_mtime_date,omitempty"`
+	// TsUseMtimeYear supplies only the year, for formats carrying month
+	// and day but no year.
+	TsUseMtimeYear bool      `json:"ts_use_mtime_year,omitempty"`
+	TsRegexSubs    []RuleSub `json:"ts_regex_subs,omitempty"`
+	// MessageField names the field non-matching lines are appended to.
+	// Defaults to "message".
+	MessageField string `json:"message_field,omitempty"`
+	// Sample is the text the rule was inferred from; saved into the
+	// rule file as a header comment.
+	Sample string `json:"sample,omitempty"`
+	// Warnings are advisory — an ambiguous date order, a missing year.
+	Warnings []string `json:"warnings,omitempty"`
+}
+
+// SampleRequest is the body of POST /api/rules/suggest.
+type SampleRequest struct {
+	Sample string `json:"sample"`
+}
+
+// PreviewRequest is the body of POST /api/rules/preview.
+type PreviewRequest struct {
+	Rule   RuleDraft `json:"rule"`
+	Sample string    `json:"sample"`
+}
+
+// PreviewLine is one sample line and what the rule did with it.
+type PreviewLine struct {
+	Text string `json:"text"`
+	// Status is "parsed" when the line opened a record, or
+	// "continuation" when it was appended to the previous record.
+	Status string `json:"status" example:"parsed"`
+	// TS is the raw captured timestamp text, before the layout runs.
+	TS string `json:"ts,omitempty"`
+	// TSError is why that text could not be turned into a timestamp.
+	TSError string `json:"ts_error,omitempty"`
+}
+
+// PreviewResponse is the body of POST /api/rules/preview.
+type PreviewResponse struct {
+	// Fields are the capture names in regex order.
+	Fields []string                 `json:"fields"`
+	Rows   []map[string]interface{} `json:"rows"`
+	Lines  []PreviewLine            `json:"lines"`
+	// Parsed and Continuation count the sample lines by status.
+	Parsed       int `json:"parsed"`
+	Continuation int `json:"continuation"`
+	// TimestampErrors counts parsed lines whose timestamp the layout
+	// rejected — rows that would load with no time on them.
+	TimestampErrors int      `json:"timestamp_errors"`
+	Warnings        []string `json:"warnings,omitempty"`
+	// Error is set when the rule itself is unusable, e.g. the regex
+	// does not compile. Reported in-band because that is an ordinary
+	// state while editing.
+	Error string `json:"error,omitempty"`
+}
+
+// SaveRuleRequest is the body of POST /api/rules/save.
+type SaveRuleRequest struct {
+	Rule RuleDraft `json:"rule"`
+	// Overwrite replaces an existing rule file of the same name.
+	Overwrite bool `json:"overwrite"`
+}
+
+// SaveRuleResponse is the body of POST /api/rules/save.
+type SaveRuleResponse struct {
+	Status string `json:"status" example:"ok"`
+	Path   string `json:"path"`
+	File   string `json:"file" example:"50-line-gateway-log.yaml"`
+	// Rules is how many line rules are loaded after the save.
+	Rules int `json:"rules" example:"6"`
+}

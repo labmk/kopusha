@@ -207,6 +207,46 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/files/explain": {
+            "post": {
+                "description": "Runs every ingest adapter's detection against the file and reports each one's score and reason, the first non-blank line as the parser sees it, and any encoding trait that commonly breaks matching (BOM, CRLF, NUL bytes, invalid UTF-8). Read-only: nothing is loaded. This is what the UI shows when a load fails, and it is the input to the rule builder.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "files"
+                ],
+                "summary": "Explain how a file was, or was not, matched",
+                "parameters": [
+                    {
+                        "description": "path to diagnose",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.PathRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.DiagnosisResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/files/load": {
             "post": {
                 "description": "Loads a single file by absolute path. Supports virtual zip paths in the form ` + "`" + `C:\\foo.zip|inner.ndjson` + "`" + ` — the inner entry is extracted next to the zip and then ingested. Dispatches through the ingest layer so non-NDJSON formats (EVTX, XML, block, line) are handled too.",
@@ -425,6 +465,152 @@ const docTemplate = `{
                     },
                     "500": {
                         "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rules": {
+            "get": {
+                "description": "Every rule currently loaded from parsers.d, with the file it came from. Used by the rule builder to warn before a name collides with an existing rule.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rules"
+                ],
+                "summary": "List parser rules",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.RulesResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rules/preview": {
+            "post": {
+                "description": "Runs a candidate rule over sample text through the real line adapter and returns the rows, the per-line verdict (parsed or folded into the previous record as a continuation), and any timestamp that the layout rejected. Nothing is written.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rules"
+                ],
+                "summary": "Preview what a rule would produce",
+                "parameters": [
+                    {
+                        "description": "draft rule + sample",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.PreviewRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.PreviewResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rules/save": {
+            "post": {
+                "description": "Writes the rule as a YAML file next to the binary and reloads the parser registry, so it applies to files loaded afterwards without a restart. The rule name is normalized into a filename; a rule that fails to compile is not left on disk. Existing files are only replaced when overwrite is set.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rules"
+                ],
+                "summary": "Save a rule to parsers.d",
+                "parameters": [
+                    {
+                        "description": "draft rule",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.SaveRuleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.SaveRuleResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rules/suggest": {
+            "post": {
+                "description": "Derives a candidate line rule — regex with named captures, plus a Go time layout — from pasted sample lines. Nothing is written; the result is a starting point for the builder, meant to be corrected against the preview.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rules"
+                ],
+                "summary": "Infer a rule from sample lines",
+                "parameters": [
+                    {
+                        "description": "sample text",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.SampleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.RuleDraft"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
                             "$ref": "#/definitions/server.ErrorResponse"
                         }
@@ -664,6 +850,26 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "server.AdapterVerdict": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "Name is the adapter name, e.g. \"ndjson\", \"line\".",
+                    "type": "string",
+                    "example": "line"
+                },
+                "reason": {
+                    "description": "Reason is why, in one sentence.",
+                    "type": "string",
+                    "example": "none of 5 rule(s) matched any of the first 40 non-blank lines: iso-bracket, dashdate-level"
+                },
+                "score": {
+                    "description": "Score is what Detect returned: 0 declines, 100 is an exact magic\nmatch. The highest score wins, ties broken by name.",
+                    "type": "integer",
+                    "example": 0
+                }
+            }
+        },
         "server.BrowseEntry": {
             "type": "object",
             "properties": {
@@ -701,6 +907,41 @@ const docTemplate = `{
                 },
                 "in_zip": {
                     "type": "boolean"
+                }
+            }
+        },
+        "server.DiagnosisResponse": {
+            "type": "object",
+            "properties": {
+                "adapters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.AdapterVerdict"
+                    }
+                },
+                "best_score": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "chosen": {
+                    "description": "Chosen is the adapter that would handle the file, empty when\nnothing matched.",
+                    "type": "string",
+                    "example": ""
+                },
+                "first_line": {
+                    "description": "FirstLine is the first non-blank line as the parser sees it,\nafter BOM removal and CRLF folding.",
+                    "type": "string",
+                    "example": "2026-03-18T06:00:00 gateway[4179]: queue depth 2347"
+                },
+                "notes": {
+                    "description": "Notes are encoding traits that break matching invisibly.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "path": {
+                    "type": "string"
                 }
             }
         },
@@ -864,6 +1105,84 @@ const docTemplate = `{
                 }
             }
         },
+        "server.PreviewLine": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "description": "Status is \"parsed\" when the line opened a record, or\n\"continuation\" when it was appended to the previous record.",
+                    "type": "string",
+                    "example": "parsed"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "ts": {
+                    "description": "TS is the raw captured timestamp text, before the layout runs.",
+                    "type": "string"
+                },
+                "ts_error": {
+                    "description": "TSError is why that text could not be turned into a timestamp.",
+                    "type": "string"
+                }
+            }
+        },
+        "server.PreviewRequest": {
+            "type": "object",
+            "properties": {
+                "rule": {
+                    "$ref": "#/definitions/server.RuleDraft"
+                },
+                "sample": {
+                    "type": "string"
+                }
+            }
+        },
+        "server.PreviewResponse": {
+            "type": "object",
+            "properties": {
+                "continuation": {
+                    "type": "integer"
+                },
+                "error": {
+                    "description": "Error is set when the rule itself is unusable, e.g. the regex\ndoes not compile. Reported in-band because that is an ordinary\nstate while editing.",
+                    "type": "string"
+                },
+                "fields": {
+                    "description": "Fields are the capture names in regex order.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "lines": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.PreviewLine"
+                    }
+                },
+                "parsed": {
+                    "description": "Parsed and Continuation count the sample lines by status.",
+                    "type": "integer"
+                },
+                "rows": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                    }
+                },
+                "timestamp_errors": {
+                    "description": "TimestampErrors counts parsed lines whose timestamp the layout\nrejected — rows that would load with no time on them.",
+                    "type": "integer"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "server.QueryRequest": {
             "type": "object",
             "properties": {
@@ -924,6 +1243,150 @@ const docTemplate = `{
                 },
                 "total_count": {
                     "type": "integer"
+                }
+            }
+        },
+        "server.RuleDraft": {
+            "type": "object",
+            "properties": {
+                "message_field": {
+                    "description": "MessageField names the field non-matching lines are appended to.\nDefaults to \"message\".",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "gateway-log"
+                },
+                "parse": {
+                    "description": "Parse must capture the timestamp as (?P\u003cts\u003e...). Every other\nnamed group becomes a field.",
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "integer",
+                    "example": 50
+                },
+                "sample": {
+                    "description": "Sample is the text the rule was inferred from; saved into the\nrule file as a header comment.",
+                    "type": "string"
+                },
+                "ts_assume_tz": {
+                    "description": "TsAssumeTZ names the zone for timestamps that carry none.",
+                    "type": "string",
+                    "example": "Europe/Berlin"
+                },
+                "ts_layout": {
+                    "description": "TsLayout is a Go time layout — the reference time spelled out,\ne.g. 2006-01-02 15:04:05 — not a strftime pattern.",
+                    "type": "string",
+                    "example": "2006-01-02 15:04:05"
+                },
+                "ts_regex_subs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.RuleSub"
+                    }
+                },
+                "ts_use_mtime_date": {
+                    "description": "TsUseMtimeDate supplies the date from the file's modification\ntime, for formats carrying only a time of day.",
+                    "type": "boolean"
+                },
+                "ts_use_mtime_year": {
+                    "description": "TsUseMtimeYear supplies only the year, for formats carrying month\nand day but no year.",
+                    "type": "boolean"
+                },
+                "warnings": {
+                    "description": "Warnings are advisory — an ambiguous date order, a missing year.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "server.RuleInfo": {
+            "type": "object",
+            "properties": {
+                "family": {
+                    "type": "string",
+                    "example": "line"
+                },
+                "file": {
+                    "type": "string",
+                    "example": "20-line-iso-bracket.yaml"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "iso-bracket"
+                },
+                "priority": {
+                    "type": "integer",
+                    "example": 100
+                }
+            }
+        },
+        "server.RuleSub": {
+            "type": "object",
+            "properties": {
+                "pattern": {
+                    "type": "string"
+                },
+                "replacement": {
+                    "type": "string"
+                }
+            }
+        },
+        "server.RulesResponse": {
+            "type": "object",
+            "properties": {
+                "dir": {
+                    "description": "Dir is the parsers.d directory the rules were read from.",
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.RuleInfo"
+                    }
+                }
+            }
+        },
+        "server.SampleRequest": {
+            "type": "object",
+            "properties": {
+                "sample": {
+                    "type": "string"
+                }
+            }
+        },
+        "server.SaveRuleRequest": {
+            "type": "object",
+            "properties": {
+                "overwrite": {
+                    "description": "Overwrite replaces an existing rule file of the same name.",
+                    "type": "boolean"
+                },
+                "rule": {
+                    "$ref": "#/definitions/server.RuleDraft"
+                }
+            }
+        },
+        "server.SaveRuleResponse": {
+            "type": "object",
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "example": "50-line-gateway-log.yaml"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "rules": {
+                    "description": "Rules is how many line rules are loaded after the save.",
+                    "type": "integer",
+                    "example": 6
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ok"
                 }
             }
         },

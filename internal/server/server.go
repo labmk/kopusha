@@ -21,6 +21,7 @@ import (
 
 	"github.com/labmk/obs-viewer/internal/engine"
 	"github.com/labmk/obs-viewer/internal/logx"
+	"github.com/labmk/obs-viewer/internal/parsers"
 	"github.com/labmk/obs-viewer/internal/settings"
 	"github.com/labmk/obs-viewer/internal/update"
 
@@ -53,27 +54,35 @@ func splitZipVirt(p string) (string, string) {
 // surfaces in non-zip directories. It mirrors the formats the ingest
 // dispatcher in internal/ingest/ knows how to route:
 //
-//	.ndjson         → ndjson direct path
-//	.zip            → browsed as a virtual directory
-//	.evtx           → evtx adapter
-//	.xml            → xml adapter (autodetected row element)
-//	.log .txt .out  → line / block rule adapters
-//	.csv            → reserved for a future CSV adapter
+//	.ndjson          → ndjson direct path
+//	.parquet .pq     → parquet adapter (also what Export writes)
+//	.zip             → browsed as a virtual directory
+//	.evtx            → evtx adapter
+//	.xml             → xml adapter (autodetected row element)
+//	.log .txt .out   → line / block rule adapters
+//	.csv             → reserved for a future CSV adapter
 //
 // Anything else (binaries, archives other than zip, images) is hidden
 // even though the dispatcher might still try if you point --files at
 // it directly. The browser is conservative on purpose — a folder full
 // of irrelevant files becomes unusable otherwise.
+//
+// This list has to keep pace with the adapters. Parquet was readable
+// for a release before it appeared here, which meant an exported file
+// could not be browsed back to — the capability existed and was
+// unreachable.
 var ingestableExts = map[string]struct{}{
-	".ndjson": {},
-	".zip":    {},
-	".evtx":   {},
-	".xml":    {},
-	".log":    {},
-	".txt":    {},
-	".out":    {},
-	".csv":    {},
-	".json":   {},
+	".ndjson":  {},
+	".parquet": {},
+	".pq":      {},
+	".zip":     {},
+	".evtx":    {},
+	".xml":     {},
+	".log":     {},
+	".txt":     {},
+	".out":     {},
+	".csv":     {},
+	".json":    {},
 }
 
 func isIngestableExt(name string) bool {
@@ -238,6 +247,10 @@ type Server struct {
 	// check is disabled, in which case /api/update says so rather than
 	// implying "up to date" from an absence of information.
 	updates *update.Checker
+
+	// rules owns parsers.d — the loader registry, and the write path
+	// for rules authored in the UI. See rules.go.
+	rules *parsers.Manager
 }
 
 // SetUpdateChecker attaches the release-notification checker. Called
@@ -363,6 +376,10 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/field-samples", s.APIHandler(s.handleFieldSamples))
 	s.mux.HandleFunc("/api/update", s.APIHandler(s.handleUpdate))
 	s.mux.HandleFunc("/api/shutdown", s.handleShutdown)
+
+	// Parser-rule routes: /api/files/explain and /api/rules/* — see
+	// rules.go.
+	s.registerRuleRoutes()
 
 	// Module routes (/api/<name>/*, /m/<name>/*) are mounted by the
 	// module registry at boot — see internal/module and docs/MODULES.md.

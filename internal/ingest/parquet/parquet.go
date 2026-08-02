@@ -68,3 +68,14 @@ func (Loader) Detect(h ingest.LoadHint) int {
 	}
 	return 0
 }
+
+// Explain reports why Detect scored this file the way it did.
+func (Loader) Explain(h ingest.LoadHint) string {
+	if len(h.Sniff) >= len(magic) && bytes.Equal(h.Sniff[:len(magic)], []byte(magic)) {
+		return "starts with the " + magic + " signature"
+	}
+	if h.Ext == ".parquet" || h.Ext == ".pq" {
+		return "extension is " + h.Ext + ", though the " + magic + " signature is missing"
+	}
+	return "does not start with " + magic + ", and the extension is not .parquet"
+}

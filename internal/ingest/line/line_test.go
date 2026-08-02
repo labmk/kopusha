@@ -302,3 +302,72 @@ func TestCompileRejectsMissingTs(t *testing.T) {
 		t.Error("expected error: parse regex without (?P<ts>...)")
 	}
 }
+
+// --- Year-less formats: ts_use_mtime_year ---
+
+func ruleSyslog() ingest.RawRule {
+	return ingest.RawRule{
+		Family: "line", Name: "syslog",
+		Data: map[string]any{
+			"name":              "syslog",
+			"priority":          50,
+			"parse":             `^(?P<ts>[A-Z][a-z]{2} [ 0-9]\d \d{2}:\d{2}:\d{2})\s+(?P<message>.*)$`,
+			"ts_layout":         "Jan _2 15:04:05",
+			"ts_use_mtime_year": true,
+		},
+	}
+}
+
+func TestMtimeYearFillsTheMissingYear(t *testing.T) {
+	l, _ := New([]ingest.RawRule{ruleSyslog()})
+	body := "Mar 18 06:00:00 gw sshd: accepted publickey\n" +
+		"Mar  8 06:00:09 gw cron: running job\n"
+	mtime := time.Date(2026, 3, 24, 14, 0, 0, 0, time.UTC)
+	got := runStream(t, l, body, mtime)
+	if len(got) != 2 {
+		t.Fatalf("got %d records, want 2", len(got))
+	}
+	// Without the flag these parse to year 0, which sorts correctly
+	// against each other and matches no time filter anyone would write.
+	if !strings.HasPrefix(got[0][ingest.FieldTimestamp].(string), "2026-03-18T06:00:00") {
+		t.Errorf("record 0 ts=%v, want 2026-03-18", got[0][ingest.FieldTimestamp])
+	}
+	if !strings.HasPrefix(got[1][ingest.FieldTimestamp].(string), "2026-03-08T06:00:09") {
+		t.Errorf("record 1 ts=%v, want the space-padded day to parse", got[1][ingest.FieldTimestamp])
+	}
+}
+
+// A log line cannot postdate the file it lives in, so a December entry
+// in a file last written in January belongs to the year before.
+func TestMtimeYearStepsBackAcrossTheYearBoundary(t *testing.T) {
+	l, _ := New([]ingest.RawRule{ruleSyslog()})
+	body := "Dec 30 23:00:00 gw sshd: last year\n" +
+		"Jan 02 01:00:00 gw sshd: this year\n"
+	mtime := time.Date(2026, 1, 3, 9, 0, 0, 0, time.UTC)
+	got := runStream(t, l, body, mtime)
+	if len(got) != 2 {
+		t.Fatalf("got %d records, want 2", len(got))
+	}
+	if !strings.HasPrefix(got[0][ingest.FieldTimestamp].(string), "2025-12-30T23:00:00") {
+		t.Errorf("December record ts=%v, want 2025-12-30 — a line cannot postdate its file",
+			got[0][ingest.FieldTimestamp])
+	}
+	if !strings.HasPrefix(got[1][ingest.FieldTimestamp].(string), "2026-01-02T01:00:00") {
+		t.Errorf("January record ts=%v, want 2026-01-02", got[1][ingest.FieldTimestamp])
+	}
+}
+
+// The two mtime flags describe different gaps in the same timestamp.
+// A rule setting both is a mistake worth naming, not one to resolve
+// silently in favour of whichever branch runs first.
+func TestMtimeFlagsAreMutuallyExclusive(t *testing.T) {
+	r := ruleSyslog()
+	r.Data["ts_use_mtime_date"] = true
+	_, err := New([]ingest.RawRule{r})
+	if err == nil {
+		t.Fatal("expected rule compilation to fail")
+	}
+	if !strings.Contains(err.Error(), "mutually exclusive") {
+		t.Errorf("unhelpful error: %v", err)
+	}
+}

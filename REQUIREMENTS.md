@@ -110,11 +110,22 @@ sniffing is easy to spot.
 | REQ-DT-08 | line | `time-pidtid` | `line:time-pidtid` | Parse regex matches: `HH:MM:SS.uuuuuu PID/TID Level msg` (date sourced from file mtime, rollover-aware) | `test-fixtures/formats/line-time-pidtid.log` | `internal/ingest/line/line_test.go::TestTimeOnlyUsesMtimeDate` + `TestTimeOnlyDayRollover` | `frontend/e2e/formats.spec.js::line-time-pidtid` |
 | REQ-DT-09 | line | `time-dotdate` | `line:time-dotdate` | Parse regex matches: `HH:MM:SS.mmm DD.MM.YYYY: msg` (time before date) | `test-fixtures/formats/line-time-dotdate.log` | `internal/ingest/line/line_test.go::TestTimeDotdate` | `frontend/e2e/formats.spec.js::line-time-dotdate` |
 
+### The negative case
+
+| ID | Purpose | Requirement | Sample fixture | Go test | E2e test |
+|----|---------|-------------|----------------|---------|----------|
+| REQ-DT-00 | Unrecognised format | No adapter claims it, **and** every adapter reports a non-empty reason, the first non-blank line, and any encoding trait (BOM, CRLF, NUL, invalid UTF-8) | `test-fixtures/formats/unmatched.log` | `internal/server/rules_test.go::TestExplainReportsEveryAdapter` | `frontend/e2e/rules.spec.js` |
+
+This fixture must keep matching nothing. If a new shipped rule ever
+claims it, the diagnosis path loses its only end-to-end test — change
+the fixture rather than the assertion, and check that it is still a
+plausible real-world format.
+
 ## Adding a new data type
 
-1. **New format family** (e.g. CSV, syslog): create `internal/ingest/<name>/`, implement the `Loader` interface (plus `RecordStreamer` or `DirectIngester`), register from `main.go`. Add Go unit tests under `internal/ingest/<name>/`. Add a new REQ-DT-NN row to the matrix above and a fixture under `test-fixtures/formats/`.
+1. **New format family** (e.g. CSV): create `internal/ingest/<name>/`, implement the `Loader` interface (plus `RecordStreamer` or `DirectIngester`, and `Explainer` so the adapter can say why it declined), and register it in `parsers.Manager.Reload`. Add the extension to `ingestableExts` in `internal/server` or the file browser will hide it. Add Go unit tests under `internal/ingest/<name>/`. Add a new REQ-DT-NN row to the matrix above and a fixture under `test-fixtures/formats/`.
 
-2. **Same family, new rule variant** (another line/block/xml shape): drop a YAML file under `parsers.d/`, add a writer to `test-fixtures/generate.py` and regenerate, add a Go unit test (the existing per-family `_test.go` files already cover the test harness — just add a new `TestX` function). Add a REQ-DT-NN row to the matrix.
+2. **Same family, new rule variant** (another line/block/xml shape): build it in the UI (**Parser rules**) or drop a YAML file under `parsers.d/`, add a writer to `test-fixtures/generate.py` and regenerate, add a Go unit test (the existing per-family `_test.go` files already cover the test harness — just add a new `TestX` function). Add a REQ-DT-NN row to the matrix.
 
 3. Add a row to the table in `internal/ingest/fixtures_test.go` so the new fixture's routing is asserted.
 

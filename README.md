@@ -46,9 +46,14 @@ machine.
   only outbound request is an optional startup check for a newer release,
   which reports and never installs — turn it off with `update_check =
   false` and the binary makes no network calls at all.
-- **Multi-format ingest.** NDJSON, Windows EVTX, XML, and line- or
-  block-structured text logs. New text formats are added by dropping a
-  YAML rule into `parsers.d/` — no recompile.
+- **Multi-format ingest.** NDJSON, Parquet, Windows EVTX, XML, and line-
+  or block-structured text logs. New text formats are added by dropping
+  a YAML rule into `parsers.d/` — no recompile.
+- **Rule builder.** Paste a few lines of an unrecognised format and
+  obs-viewer proposes a pattern, then shows the rows it would produce
+  before anything is saved. And when a file doesn't parse, it says
+  which adapters looked, what each one objected to, and what the first
+  line looked like by the time it reached the parser.
 - **Heterogeneous schemas.** Load files with completely different
   fields at once. Queries union them and fill `NULL` for columns a
   given file lacks.
@@ -59,10 +64,10 @@ machine.
   operators, plus a pipeline-style text view for copy/paste portability.
 - **Time filtering with explicit UTC.** Presets, custom ranges, and a
   UTC-offset timezone selector that avoids DST ambiguity.
-- **Result table.** Expandable rows, per-schema persisted column widths,
-  page size up to 10,000 rows. Rows are paged, not virtualised — a full
-  10,000-row page is a lot of DOM, so reach for a smaller page size or a
-  tighter filter if it feels heavy.
+- **Result table.** Virtualised, so a 10,000-row page renders only the
+  rows on screen. Clicking a row opens it in a side panel — `j`/`k` walk
+  the list — rather than expanding in place and pushing everything below
+  it off screen. Per-schema persisted column widths.
 - **Export.** Write the current filtered view back out as NDJSON or
   Parquet — Parquet keeps the types and is typically ~10x smaller, so
   the result drops straight into any other analytical tool. Optionally
@@ -101,9 +106,38 @@ Every non-NDJSON record gets an injected `@timestamp` (ISO-8601 UTC)
 and `_source_format`. See [REQUIREMENTS.md](./REQUIREMENTS.md) for the
 full per-format contract and the test matrix that enforces it.
 
+### When a file doesn't parse
+
+Nothing recognized it, so nothing pretends otherwise. obs-viewer shows
+what every adapter thought and why:
+
+```
+gateway.log — no rule matched
+  block     0   no separator line found in the first 262 bytes; tried 1 rule(s): keyvalue-dash-separated
+  evtx      0   does not start with the ElfFile signature
+  line      0   none of 5 rule(s) matched any of the first 5 non-blank lines: iso-bracket, …
+  ndjson    0   first non-space character is not '{'
+  parquet   0   does not start with PAR1, and the extension is not .parquet
+  xml       0   first non-space character is not '<'
+  first line seen: 2026-03-18T06:00:00 gateway[4179]: queue depth 2347
+```
+
+Anything invisible in an editor but fatal to a parser — a byte-order
+mark, CRLF endings, UTF-16, bytes that aren't valid UTF-8 — is listed
+too, and the line shown is the line as the parser sees it, not as the
+file stores it.
+
 ### Adding a text format
 
-Drop a YAML file in `parsers.d/` and restart:
+Click **Build a rule from this line** on that screen, or **Parser
+rules** in the header. Paste a few sample lines and obs-viewer proposes
+a pattern, then shows the table it would produce — through the real
+parser, so the preview cannot disagree with the result. Correct the
+field names, save, and the rule applies to the next load without a
+restart.
+
+The output is an ordinary YAML file in `parsers.d/`, which you can also
+write by hand:
 
 ```yaml
 family: line
@@ -112,6 +146,12 @@ priority: 90
 parse: '^(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(?P<level>\w+)\s+(?P<message>.*)$'
 ts_layout: '2006-01-02 15:04:05'
 ```
+
+`ts_layout` is a Go layout — the reference time `2006-01-02 15:04:05`
+written in the shape your timestamps use — not a `%Y-%m-%d` pattern.
+Formats that carry no date, or a date with no year, take the missing
+part from the file's modification time; see
+[ARCHITECTURE.md](./ARCHITECTURE.md) for the full schema.
 
 Rules describe structure only — regexes and field paths, no product
 knowledge. Files load in lexicographic order, so a `00-` prefix takes

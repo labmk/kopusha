@@ -69,6 +69,27 @@ type Loader interface {
 	Detect(h LoadHint) int
 }
 
+// Explainer is implemented by adapters that can say, in one sentence,
+// why they returned the score they did.
+//
+// Detect answers "can you read this file?" with a number, and when the
+// answer is no the number is the least useful thing about it. Explain
+// supplies the reason instead: "first line is not a JSON object", "no
+// ElfFile magic", "none of 5 rules matched". The Registry collects
+// these into a Diagnosis — see dispatch.go.
+//
+// Explain is called only from the diagnostic path, never during a
+// normal load, so it may re-read the file or do work that would be
+// wasteful per-ingest. It must not have side effects.
+//
+// An adapter that doesn't implement this still appears in a Diagnosis,
+// just without a reason. Implementing it is what makes a decline
+// actionable.
+type Explainer interface {
+	Loader
+	Explain(h LoadHint) string
+}
+
 // RecordStreamer is implemented by adapters that emit normalized records.
 // Stream calls emit for each record; if emit returns a non-nil error,
 // Stream must propagate it and stop. Stream returns nil on clean EOF.

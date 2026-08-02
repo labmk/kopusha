@@ -30,6 +30,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -86,6 +87,44 @@ func (l *Loader) Detect(h ingest.LoadHint) int {
 		}
 	}
 	return best
+}
+
+// Explain names the rule that matched, or reports how many were tried.
+// The rule names are the actionable part: they map one-to-one onto
+// files in parsers.d/, so "none of these matched" tells the operator
+// exactly which files to look at — or that a new one is needed.
+func (l *Loader) Explain(h ingest.LoadHint) string {
+	if len(l.rules) == 0 {
+		return "no block rules loaded"
+	}
+	sniff := normalizeSniff(h.Sniff)
+	var matched []string
+	for _, r := range l.rules {
+		if r.Sniff.Match(sniff) {
+			matched = append(matched, r.Name)
+		}
+	}
+	if len(matched) > 0 {
+		return "sniff matched rule " + quoteList(matched)
+	}
+	return fmt.Sprintf("no separator line found in the first %d bytes; tried %d rule(s): %s",
+		len(h.Sniff), len(l.rules), strings.Join(ruleNames(l.rules), ", "))
+}
+
+func ruleNames(rules []Rule) []string {
+	out := make([]string, 0, len(rules))
+	for _, r := range rules {
+		out = append(out, r.Name)
+	}
+	return out
+}
+
+func quoteList(names []string) string {
+	out := make([]string, 0, len(names))
+	for _, n := range names {
+		out = append(out, strconv.Quote(n))
+	}
+	return strings.Join(out, ", ")
 }
 
 // normalizeSniff strips a leading UTF-8 BOM and folds CRLF to LF so

@@ -7,7 +7,14 @@ async function request(path, options = {}) {
   });
   if (!resp.ok) {
     const err = await resp.json().catch(() => ({ error: resp.statusText }));
-    throw new Error(err.error || 'Request failed');
+    const e = new Error(err.error || 'Request failed');
+    // Carry the status through. Most callers only want the message, but
+    // a few need to branch — a 409 from the rule save means "already
+    // exists", which the UI resolves by offering to replace rather than
+    // by reporting a failure.
+    e.status = resp.status;
+    e.conflict = resp.status === 409;
+    throw e;
   }
   return resp.json();
 }
@@ -80,6 +87,38 @@ export const api = {
     request('/api/files/load-dir', {
       method: 'POST',
       body: JSON.stringify({ path }),
+    }),
+
+  // Why did this file parse the way it did — every adapter's score and
+  // reason, the first line as the parser saw it, and any encoding trait
+  // that breaks matching invisibly. Read-only; loads nothing.
+  explainFile: (path) =>
+    request('/api/files/explain', {
+      method: 'POST',
+      body: JSON.stringify({ path }),
+    }),
+
+  getRules: () => request('/api/rules'),
+
+  suggestRule: (sample) =>
+    request('/api/rules/suggest', {
+      method: 'POST',
+      body: JSON.stringify({ sample }),
+    }),
+
+  previewRule: (rule, sample) =>
+    request('/api/rules/preview', {
+      method: 'POST',
+      body: JSON.stringify({ rule, sample }),
+    }),
+
+  // Resolves to {status, path, file, rules}. Rejects with a `.conflict`
+  // flag when a rule of that name already exists, which is the one
+  // failure the caller can resolve by asking whether to replace.
+  saveRule: (rule, overwrite = false) =>
+    request('/api/rules/save', {
+      method: 'POST',
+      body: JSON.stringify({ rule, overwrite }),
     }),
 
   // Modules add their own namespaced helpers here, mirroring the

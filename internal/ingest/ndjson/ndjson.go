@@ -69,6 +69,31 @@ func (l Loader) Detect(h ingest.LoadHint) int {
 	return 0
 }
 
+// Explain reports why Detect scored this file the way it did. The
+// branches mirror Detect's in order — keep them in step.
+func (l Loader) Explain(h ingest.LoadHint) string {
+	if h.Ext == ".ndjson" {
+		return "extension is .ndjson"
+	}
+	trimmed := bytes.TrimLeft(h.Sniff, " \t\r\n")
+	if len(trimmed) == 0 {
+		return "file is empty or all whitespace"
+	}
+	if trimmed[0] == '[' {
+		return "starts with '[' — a JSON array, not newline-delimited objects"
+	}
+	if trimmed[0] != '{' {
+		return "first non-space character is not '{'"
+	}
+	if !firstLineIsJSONObject(trimmed) {
+		return "first line starts with '{' but is not a complete JSON object — objects must not span lines"
+	}
+	if h.Ext == ".json" {
+		return "first line is a complete JSON object (.json scores below .ndjson)"
+	}
+	return "first line is a complete JSON object"
+}
+
 // firstLineIsJSONObject returns true when the first newline-delimited
 // chunk of b unmarshals into a JSON object.
 func firstLineIsJSONObject(b []byte) bool {

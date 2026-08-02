@@ -2,6 +2,50 @@ import React, { useState, useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { api } from '../api/client';
 
+// EXPORT_FORMATS is the single place a writable format is declared.
+//
+// The backend picks the format from the output file's extension, so
+// this list only has to agree with engine.ExportFormatFor — adding a
+// format there and an entry here is the whole change, with no branching
+// anywhere in between.
+//
+// `ext` must be the extension the backend recognizes, and must be first
+// in `match` so switching formats rewrites the path to the canonical
+// spelling.
+const EXPORT_FORMATS = [
+  {
+    id: 'ndjson',
+    label: 'NDJSON — one JSON object per line',
+    ext: '.ndjson',
+    match: ['.ndjson', '.json'],
+    note: 'Readable and greppable. Every field name repeats on every row.',
+  },
+  {
+    id: 'parquet',
+    label: 'Parquet — columnar, compressed',
+    ext: '.parquet',
+    match: ['.parquet', '.pq'],
+    note: 'Typically several times smaller, and column types survive the round trip. obs-viewer reads it back.',
+  },
+];
+
+const DEFAULT_FORMAT = EXPORT_FORMATS[0];
+
+// formatForPath mirrors the backend's extension-based choice, so the
+// dropdown shows what will actually happen rather than what was last
+// clicked — including when the path is typed by hand.
+function formatForPath(path) {
+  const lower = (path || '').toLowerCase();
+  return EXPORT_FORMATS.find((f) => f.match.some((m) => lower.endsWith(m))) || DEFAULT_FORMAT;
+}
+
+function withExtension(path, ext) {
+  const slash = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\'));
+  const dot = path.lastIndexOf('.');
+  if (dot > slash) return path.slice(0, dot) + ext;
+  return path + ext;
+}
+
 function formatSize(bytes) {
   if (bytes === 0) return '0 B';
   const units = ['B', 'KB', 'MB', 'GB'];
@@ -26,9 +70,11 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
   useEffect(() => {
     api.browse('').then((data) => {
       const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-      setOutputPath(`${data.current_path}/obs_viewer_export_${ts}.ndjson`);
+      setOutputPath(`${data.current_path}/obs_viewer_export_${ts}${DEFAULT_FORMAT.ext}`);
     }).catch(() => {});
   }, []);
+
+  const format = formatForPath(outputPath);
 
   const browseDir = async (path) => {
     setBrowseLoading(true);
@@ -51,7 +97,7 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
   };
 
   const selectDir = (dirPath) => {
-    const filename = outputPath.split('/').pop().split('\\').pop() || 'export.ndjson';
+    const filename = outputPath.split('/').pop().split('\\').pop() || `export${DEFAULT_FORMAT.ext}`;
     setOutputPath(`${dirPath}/${filename}`);
     setBrowsing(false);
   };
@@ -101,7 +147,8 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
             </Dialog.Close>
           </div>
           <Dialog.Description className="sr-only">
-            Configure the output location and optional binary copy, then export the current filter set to NDJSON.
+            Choose an output format and location, optionally include the binary,
+            then export the current filter set.
           </Dialog.Description>
 
           <div className="export-options">
@@ -115,6 +162,33 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
             {query.time_to && <span> To: {new Date(query.time_to).toLocaleString()}</span>}
           </div>
 
+          {/* Format */}
+          <div>
+            <label
+              htmlFor="export-format"
+              style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '4px', display: 'block' }}
+            >
+              Format
+            </label>
+            <select
+              id="export-format"
+              className="input"
+              style={{ width: '100%', fontSize: '12px' }}
+              value={format.id}
+              onChange={(e) => {
+                const next = EXPORT_FORMATS.find((f) => f.id === e.target.value) || DEFAULT_FORMAT;
+                setOutputPath((p) => withExtension(p, next.ext));
+              }}
+            >
+              {EXPORT_FORMATS.map((f) => (
+                <option key={f.id} value={f.id}>{f.label}</option>
+              ))}
+            </select>
+            <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '4px' }}>
+              {format.note}
+            </div>
+          </div>
+
           {/* Output path */}
           <div>
             <label style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '4px', display: 'block' }}>
@@ -126,7 +200,7 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
                 style={{ flex: 1, fontSize: '12px' }}
                 value={outputPath}
                 onChange={(e) => setOutputPath(e.target.value)}
-                placeholder="/path/to/output.ndjson"
+                placeholder={`/path/to/output${DEFAULT_FORMAT.ext}`}
               />
               <button className="btn btn-sm" onClick={openBrowser}>Browse</button>
             </div>

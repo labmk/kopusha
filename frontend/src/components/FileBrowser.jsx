@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../api/client';
+import ParseDiagnosis from './ParseDiagnosis';
 
 function formatSize(bytes) {
   if (bytes === 0) return '0 B';
@@ -8,7 +9,7 @@ function formatSize(bytes) {
   return (bytes / Math.pow(1024, i)).toFixed(i > 0 ? 1 : 0) + ' ' + units[i];
 }
 
-export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDirectoryChanged }) {
+export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDirectoryChanged, onBuildRule }) {
   const [currentPath, setCurrentPath] = useState('');
   const [entries, setEntries] = useState([]);
   const [selected, setSelected] = useState(new Set());
@@ -19,6 +20,20 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
   const [pathInput, setPathInput] = useState('');
   const [drives, setDrives] = useState([]);
   const [filterText, setFilterText] = useState('');
+  // Diagnosis of the file that just failed to load. A load error on its
+  // own says only that obs-viewer is unhappy; this says which adapters
+  // looked, what each objected to, and what the first line actually was
+  // — and offers the rule builder as the way out.
+  const [diagnosis, setDiagnosis] = useState(null);
+  const [diagnosedFile, setDiagnosedFile] = useState('');
+
+  const diagnose = async (path, name) => {
+    try {
+      const d = await api.explainFile(path);
+      setDiagnosis(d);
+      setDiagnosedFile(name || path);
+    } catch { /* the load error already stands on its own */ }
+  };
 
   const browse = async (path) => {
     setLoading(true);
@@ -71,6 +86,7 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
   };
 
   const handleLoad = async () => {
+    let failed = false;
     for (const path of selected) {
       setLoadingFiles((prev) => new Set([...prev, path]));
       try {
@@ -78,6 +94,11 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
         onFileLoaded();
       } catch (e) {
         setError(e.message);
+        failed = true;
+        // Diagnose the first failure only: a directory of files that
+        // all fail for the same reason needs one explanation, not
+        // twenty stacked panels.
+        if (!diagnosis) await diagnose(path, path.split(/[/\\|]/).pop());
       } finally {
         setLoadingFiles((prev) => {
           const next = new Set(prev);
@@ -86,7 +107,7 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
         });
       }
     }
-    if (!error) {
+    if (!failed) {
       onClose();
     }
   };
@@ -140,6 +161,7 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
         loadedAny = true;
       } catch (e) {
         errs.push(entry.name + ': ' + e.message);
+        if (errs.length === 1) await diagnose(entry.path, entry.name);
       } finally {
         setLoadingFiles((prev) => {
           const next = new Set(prev);
@@ -227,6 +249,15 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
           <div style={{ padding: '8px 16px', color: 'var(--danger)', fontSize: '12px' }}>
             {error}
           </div>
+        )}
+
+        {diagnosis && (
+          <ParseDiagnosis
+            diagnosis={diagnosis}
+            fileName={diagnosedFile}
+            onClose={() => setDiagnosis(null)}
+            onBuildRule={onBuildRule ? () => onBuildRule(diagnosis.first_line) : undefined}
+          />
         )}
 
         <div className="modal-body">

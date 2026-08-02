@@ -60,6 +60,14 @@ func (Loader) Detect(h ingest.LoadHint) int {
 	return 0
 }
 
+// Explain reports why Detect scored this file the way it did.
+func (Loader) Explain(h ingest.LoadHint) string {
+	if len(h.Sniff) >= len(evtxMagic) && string(h.Sniff[:len(evtxMagic)]) == evtxMagic {
+		return "starts with the ElfFile signature"
+	}
+	return "does not start with the ElfFile signature"
+}
+
 // Stream iterates every event in the file and emits one Record per
 // event.
 //

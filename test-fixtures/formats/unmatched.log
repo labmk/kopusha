@@ -1,0 +1,5 @@
+2026-03-18T06:00:00 gateway[4179]: queue depth 2347
+2026-03-18T06:00:04 gateway[4179]: queue depth 2412
+2026-03-18T06:00:09 gateway[8802]: rebalanced shard 7
+2026-03-18T06:00:12 gateway[8802]: queue depth 1902
+2026-03-18T06:00:17 gateway[4179]: queue depth 2201

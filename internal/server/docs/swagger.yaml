@@ -1,5 +1,23 @@
 basePath: /
 definitions:
+  server.AdapterVerdict:
+    properties:
+      name:
+        description: Name is the adapter name, e.g. "ndjson", "line".
+        example: line
+        type: string
+      reason:
+        description: Reason is why, in one sentence.
+        example: 'none of 5 rule(s) matched any of the first 40 non-blank lines: iso-bracket,
+          dashdate-level'
+        type: string
+      score:
+        description: |-
+          Score is what Detect returned: 0 declines, 100 is an exact magic
+          match. The highest score wins, ties broken by name.
+        example: 0
+        type: integer
+    type: object
   server.BrowseEntry:
     properties:
       is_dir:
@@ -25,6 +43,35 @@ definitions:
         type: array
       in_zip:
         type: boolean
+    type: object
+  server.DiagnosisResponse:
+    properties:
+      adapters:
+        items:
+          $ref: '#/definitions/server.AdapterVerdict'
+        type: array
+      best_score:
+        example: 0
+        type: integer
+      chosen:
+        description: |-
+          Chosen is the adapter that would handle the file, empty when
+          nothing matched.
+        example: ""
+        type: string
+      first_line:
+        description: |-
+          FirstLine is the first non-blank line as the parser sees it,
+          after BOM removal and CRLF folding.
+        example: '2026-03-18T06:00:00 gateway[4179]: queue depth 2347'
+        type: string
+      notes:
+        description: Notes are encoding traits that break matching invisibly.
+        items:
+          type: string
+        type: array
+      path:
+        type: string
     type: object
   server.ErrorResponse:
     properties:
@@ -130,6 +177,67 @@ definitions:
       path:
         type: string
     type: object
+  server.PreviewLine:
+    properties:
+      status:
+        description: |-
+          Status is "parsed" when the line opened a record, or
+          "continuation" when it was appended to the previous record.
+        example: parsed
+        type: string
+      text:
+        type: string
+      ts:
+        description: TS is the raw captured timestamp text, before the layout runs.
+        type: string
+      ts_error:
+        description: TSError is why that text could not be turned into a timestamp.
+        type: string
+    type: object
+  server.PreviewRequest:
+    properties:
+      rule:
+        $ref: '#/definitions/server.RuleDraft'
+      sample:
+        type: string
+    type: object
+  server.PreviewResponse:
+    properties:
+      continuation:
+        type: integer
+      error:
+        description: |-
+          Error is set when the rule itself is unusable, e.g. the regex
+          does not compile. Reported in-band because that is an ordinary
+          state while editing.
+        type: string
+      fields:
+        description: Fields are the capture names in regex order.
+        items:
+          type: string
+        type: array
+      lines:
+        items:
+          $ref: '#/definitions/server.PreviewLine'
+        type: array
+      parsed:
+        description: Parsed and Continuation count the sample lines by status.
+        type: integer
+      rows:
+        items:
+          additionalProperties: true
+          type: object
+        type: array
+      timestamp_errors:
+        description: |-
+          TimestampErrors counts parsed lines whose timestamp the layout
+          rejected — rows that would load with no time on them.
+        type: integer
+      warnings:
+        items:
+          type: string
+        type: array
+    type: object
   server.QueryRequest:
     properties:
       filters:
@@ -171,6 +279,119 @@ definitions:
         type: array
       total_count:
         type: integer
+    type: object
+  server.RuleDraft:
+    properties:
+      message_field:
+        description: |-
+          MessageField names the field non-matching lines are appended to.
+          Defaults to "message".
+        type: string
+      name:
+        example: gateway-log
+        type: string
+      parse:
+        description: |-
+          Parse must capture the timestamp as (?P<ts>...). Every other
+          named group becomes a field.
+        type: string
+      priority:
+        example: 50
+        type: integer
+      sample:
+        description: |-
+          Sample is the text the rule was inferred from; saved into the
+          rule file as a header comment.
+        type: string
+      ts_assume_tz:
+        description: TsAssumeTZ names the zone for timestamps that carry none.
+        example: Europe/Berlin
+        type: string
+      ts_layout:
+        description: |-
+          TsLayout is a Go time layout — the reference time spelled out,
+          e.g. 2006-01-02 15:04:05 — not a strftime pattern.
+        example: "2006-01-02 15:04:05"
+        type: string
+      ts_regex_subs:
+        items:
+          $ref: '#/definitions/server.RuleSub'
+        type: array
+      ts_use_mtime_date:
+        description: |-
+          TsUseMtimeDate supplies the date from the file's modification
+          time, for formats carrying only a time of day.
+        type: boolean
+      ts_use_mtime_year:
+        description: |-
+          TsUseMtimeYear supplies only the year, for formats carrying month
+          and day but no year.
+        type: boolean
+      warnings:
+        description: Warnings are advisory — an ambiguous date order, a missing year.
+        items:
+          type: string
+        type: array
+    type: object
+  server.RuleInfo:
+    properties:
+      family:
+        example: line
+        type: string
+      file:
+        example: 20-line-iso-bracket.yaml
+        type: string
+      name:
+        example: iso-bracket
+        type: string
+      priority:
+        example: 100
+        type: integer
+    type: object
+  server.RuleSub:
+    properties:
+      pattern:
+        type: string
+      replacement:
+        type: string
+    type: object
+  server.RulesResponse:
+    properties:
+      dir:
+        description: Dir is the parsers.d directory the rules were read from.
+        type: string
+      rules:
+        items:
+          $ref: '#/definitions/server.RuleInfo'
+        type: array
+    type: object
+  server.SampleRequest:
+    properties:
+      sample:
+        type: string
+    type: object
+  server.SaveRuleRequest:
+    properties:
+      overwrite:
+        description: Overwrite replaces an existing rule file of the same name.
+        type: boolean
+      rule:
+        $ref: '#/definitions/server.RuleDraft'
+    type: object
+  server.SaveRuleResponse:
+    properties:
+      file:
+        example: 50-line-gateway-log.yaml
+        type: string
+      path:
+        type: string
+      rules:
+        description: Rules is how many line rules are loaded after the save.
+        example: 6
+        type: integer
+      status:
+        example: ok
+        type: string
     type: object
   server.SelfCopyRequest:
     properties:
@@ -408,6 +629,36 @@ paths:
       summary: List loaded files
       tags:
       - files
+  /api/files/explain:
+    post:
+      consumes:
+      - application/json
+      description: 'Runs every ingest adapter''s detection against the file and reports
+        each one''s score and reason, the first non-blank line as the parser sees
+        it, and any encoding trait that commonly breaks matching (BOM, CRLF, NUL bytes,
+        invalid UTF-8). Read-only: nothing is loaded. This is what the UI shows when
+        a load fails, and it is the input to the rule builder.'
+      parameters:
+      - description: path to diagnose
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.PathRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.DiagnosisResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Explain how a file was, or was not, matched
+      tags:
+      - files
   /api/files/load:
     post:
       consumes:
@@ -565,6 +816,111 @@ paths:
       summary: Query the loaded files
       tags:
       - query
+  /api/rules:
+    get:
+      description: Every rule currently loaded from parsers.d, with the file it came
+        from. Used by the rule builder to warn before a name collides with an existing
+        rule.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.RulesResponse'
+      summary: List parser rules
+      tags:
+      - rules
+  /api/rules/preview:
+    post:
+      consumes:
+      - application/json
+      description: Runs a candidate rule over sample text through the real line adapter
+        and returns the rows, the per-line verdict (parsed or folded into the previous
+        record as a continuation), and any timestamp that the layout rejected. Nothing
+        is written.
+      parameters:
+      - description: draft rule + sample
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.PreviewRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.PreviewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Preview what a rule would produce
+      tags:
+      - rules
+  /api/rules/save:
+    post:
+      consumes:
+      - application/json
+      description: Writes the rule as a YAML file next to the binary and reloads the
+        parser registry, so it applies to files loaded afterwards without a restart.
+        The rule name is normalized into a filename; a rule that fails to compile
+        is not left on disk. Existing files are only replaced when overwrite is set.
+      parameters:
+      - description: draft rule
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.SaveRuleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.SaveRuleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Save a rule to parsers.d
+      tags:
+      - rules
+  /api/rules/suggest:
+    post:
+      consumes:
+      - application/json
+      description: Derives a candidate line rule — regex with named captures, plus
+        a Go time layout — from pasted sample lines. Nothing is written; the result
+        is a starting point for the builder, meant to be corrected against the preview.
+      parameters:
+      - description: sample text
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.SampleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.RuleDraft'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Infer a rule from sample lines
+      tags:
+      - rules
   /api/settings:
     get:
       consumes:

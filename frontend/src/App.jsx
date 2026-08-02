@@ -20,6 +20,7 @@ import QueryBuilder from './components/QueryBuilder';
 import LogTable from './components/LogTable';
 import ExportDialog from './components/ExportDialog';
 import PaginationBar from './components/PaginationBar';
+import RuleBuilder from './components/RuleBuilder';
 import { moduleComponents } from './moduleRegistry';
 
 export default function App() {
@@ -82,6 +83,11 @@ export default function App() {
   // UI shell state
   const [showBrowser, setShowBrowser] = useState(false);
   const [showExport, setShowExport] = useState(false);
+  // Rule builder. `null` is closed; a string is the sample it opens
+  // with — normally the line from a failed load's diagnosis, which is
+  // what turns the worst moment in the product into the entry point for
+  // its most useful feature.
+  const [ruleSample, setRuleSample] = useState(null);
   const [theme, setTheme] = useLocalStorage('obs_viewer_theme', 'dark');
   const [activeTab, setActiveTab] = useLocalStorage('obs_viewer_active_tab', 'viewer');
 
@@ -407,6 +413,13 @@ export default function App() {
           >
             {theme === 'dark' ? '☀' : '☾'}
           </button>
+          <button
+            className="btn"
+            onClick={() => setRuleSample('')}
+            title="Build a parser rule for a log format obs-viewer does not recognize yet"
+          >
+            Parser rules
+          </button>
           <button className="btn btn-primary" onClick={() => setShowExport(true)}>
             Export
           </button>
@@ -589,6 +602,15 @@ export default function App() {
           onFileLoaded={handleFileLoaded}
           initialPath={lastDirectory}
           onDirectoryChanged={setLastDirectory}
+          onBuildRule={(sample) => setRuleSample(sample || '')}
+        />
+      )}
+
+      {ruleSample !== null && (
+        <RuleBuilder
+          initialSample={ruleSample}
+          onClose={() => setRuleSample(null)}
+          onSaved={() => setNotice('Parser rule saved. Load the file again to parse it with the new rule.')}
         />
       )}
 

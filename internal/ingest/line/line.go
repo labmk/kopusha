@@ -16,6 +16,10 @@
 // that spans a single midnight rollover still gets monotonic
 // timestamps.
 //
+// When a format carries month and day but no year (syslog's
+// "Mar 18 06:00:00"), the rule sets ts_use_mtime_year: true instead —
+// see withMtimeYear. The two flags are mutually exclusive.
+//
 // Rule format and the regex itself live in parsers.d/*.yaml — no
 // product or filename strings appear in this package's code.
 package line
@@ -28,6 +32,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -53,6 +58,7 @@ type Rule struct {
 	TsLayout       string         // Go time layout for the captured ts
 	TsAssumeTZ     *time.Location // location applied to naive ts parses; nil = UTC
 	TsUseMtimeDate bool           // ts captures only time-of-day; combine with mtime date
+	TsUseMtimeYear bool           // ts carries month and day but no year; take the year from mtime
 	TsRegexSubs    []sub          // applied to captured ts before time.Parse
 	MessageField   string         // field name for continuation appends; default "message"
 }
@@ -99,6 +105,50 @@ func (l *Loader) Detect(h ingest.LoadHint) int {
 		}
 	}
 	return best
+}
+
+// Explain names the rule that matched, or reports how much of the file
+// was scanned and which rules were tried.
+//
+// This is the reason string an operator sees most often, because a text
+// log that matches nothing is the common case — every format that isn't
+// one of the shipped five lands here. It says how many lines were
+// looked at so that "the good lines are further down the file" is
+// visibly ruled out, and names the rules so the answer to "so what do I
+// do now?" is a file the operator can open, or a new rule.
+func (l *Loader) Explain(h ingest.LoadHint) string {
+	if len(l.rules) == 0 {
+		return "no line rules loaded"
+	}
+	lines := sniffLines(h, detectSniffBytes)
+	var matched []string
+	for _, r := range l.rules {
+		if anyLineMatches(r.Parse, lines, 200) {
+			matched = append(matched, strconv.Quote(r.Name))
+		}
+	}
+	if len(matched) > 0 {
+		return "parse regex matched a line for rule " + strings.Join(matched, ", ")
+	}
+	names := make([]string, 0, len(l.rules))
+	for _, r := range l.rules {
+		names = append(names, r.Name)
+	}
+	return fmt.Sprintf("none of %d rule(s) matched any of the first %d non-blank lines: %s",
+		len(l.rules), countNonBlank(lines, 200), strings.Join(names, ", "))
+}
+
+func countNonBlank(lines [][]byte, limit int) int {
+	n := 0
+	for _, ln := range lines {
+		if n >= limit {
+			break
+		}
+		if len(bytes.TrimSpace(ln)) > 0 {
+			n++
+		}
+	}
+	return n
 }
 
 // Stream emits one Record per parsed line. Non-matching lines are
@@ -216,6 +266,9 @@ func (l *Loader) Stream(ctx context.Context, h ingest.LoadHint, emit func(ingest
 				}
 			} else {
 				if t, err := time.ParseInLocation(rule.TsLayout, raw, loc); err == nil {
+					if rule.TsUseMtimeYear && t.Year() == 0 {
+						t = withMtimeYear(t, mtimeLocal, loc)
+					}
 					rec[ingest.FieldTimestamp] = t.UTC().Format(time.RFC3339Nano)
 				}
 			}
@@ -225,6 +278,32 @@ func (l *Loader) Stream(ctx context.Context, h ingest.LoadHint, emit func(ingest
 		}
 	}
 	return flush()
+}
+
+// withMtimeYear rebuilds t with a year taken from the file's mtime.
+//
+// Some very common line formats carry month and day but no year —
+// syslog's "Mar 18 06:00:00" is the canonical one. Go parses those to
+// year 0, which sorts correctly relative to its neighbours and is
+// useless for everything else: a time filter over a real date range
+// matches nothing, and the UI shows year 0000.
+//
+// The file's mtime is the best available evidence, and it is right
+// except across a year boundary. Guard for that: a log line cannot
+// postdate the file it lives in, so a result more than a day past the
+// mtime means the line belongs to the previous year — a December entry
+// in a file last written in January.
+//
+// The one-day slack absorbs a clock skew or a timezone gap between the
+// filesystem and the log's own timestamps without misattributing an
+// ordinary line to the year before.
+func withMtimeYear(t, mtime time.Time, loc *time.Location) time.Time {
+	out := time.Date(mtime.Year(), t.Month(), t.Day(),
+		t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), loc)
+	if out.Sub(mtime) > 24*time.Hour {
+		out = out.AddDate(-1, 0, 0)
+	}
+	return out
 }
 
 func (l *Loader) pickRule(h ingest.LoadHint) (Rule, bool) {
@@ -334,13 +413,25 @@ func compileRule(r ingest.RawRule) (Rule, error) {
 		return Rule{}, err
 	}
 
+	useMtimeDate := boolOr(r.Data, "ts_use_mtime_date", false)
+	useMtimeYear := boolOr(r.Data, "ts_use_mtime_year", false)
+	// Both flags borrow from the mtime, but they describe different
+	// gaps in the captured timestamp and cannot both be true: one says
+	// the whole date is missing, the other says only the year is. A rule
+	// setting both is a mistake worth naming rather than silently
+	// resolving in favour of one.
+	if useMtimeDate && useMtimeYear {
+		return Rule{}, fmt.Errorf("rule %q: ts_use_mtime_date and ts_use_mtime_year are mutually exclusive", name)
+	}
+
 	return Rule{
 		Name:           name,
 		Priority:       intOr(r.Data, "priority", 10),
 		Parse:          parseRe,
 		TsLayout:       layout,
 		TsAssumeTZ:     loc,
-		TsUseMtimeDate: boolOr(r.Data, "ts_use_mtime_date", false),
+		TsUseMtimeDate: useMtimeDate,
+		TsUseMtimeYear: useMtimeYear,
 		TsRegexSubs:    subs,
 		MessageField:   strOr(r.Data, "message_field", "", "message"),
 	}, nil

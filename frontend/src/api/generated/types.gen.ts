@@ -4,6 +4,22 @@ export type ClientOptions = {
     baseUrl: `http://${string}` | `https://${string}` | (string & {});
 };
 
+export type ServerAdapterVerdict = {
+    /**
+     * Name is the adapter name, e.g. "ndjson", "line".
+     */
+    name?: string;
+    /**
+     * Reason is why, in one sentence.
+     */
+    reason?: string;
+    /**
+     * Score is what Detect returned: 0 declines, 100 is an exact magic
+     * match. The highest score wins, ties broken by name.
+     */
+    score?: number;
+};
+
 export type ServerBrowseEntry = {
     is_dir?: boolean;
     name?: string;
@@ -16,6 +32,26 @@ export type ServerBrowseResponse = {
     drives?: Array<string>;
     entries?: Array<ServerBrowseEntry>;
     in_zip?: boolean;
+};
+
+export type ServerDiagnosisResponse = {
+    adapters?: Array<ServerAdapterVerdict>;
+    best_score?: number;
+    /**
+     * Chosen is the adapter that would handle the file, empty when
+     * nothing matched.
+     */
+    chosen?: string;
+    /**
+     * FirstLine is the first non-blank line as the parser sees it,
+     * after BOM removal and CRLF folding.
+     */
+    first_line?: string;
+    /**
+     * Notes are encoding traits that break matching invisibly.
+     */
+    notes?: Array<string>;
+    path?: string;
 };
 
 export type ServerErrorResponse = {
@@ -85,6 +121,56 @@ export type ServerPathRequest = {
     path?: string;
 };
 
+export type ServerPreviewLine = {
+    /**
+     * Status is "parsed" when the line opened a record, or
+     * "continuation" when it was appended to the previous record.
+     */
+    status?: string;
+    text?: string;
+    /**
+     * TS is the raw captured timestamp text, before the layout runs.
+     */
+    ts?: string;
+    /**
+     * TSError is why that text could not be turned into a timestamp.
+     */
+    ts_error?: string;
+};
+
+export type ServerPreviewRequest = {
+    rule?: ServerRuleDraft;
+    sample?: string;
+};
+
+export type ServerPreviewResponse = {
+    continuation?: number;
+    /**
+     * Error is set when the rule itself is unusable, e.g. the regex
+     * does not compile. Reported in-band because that is an ordinary
+     * state while editing.
+     */
+    error?: string;
+    /**
+     * Fields are the capture names in regex order.
+     */
+    fields?: Array<string>;
+    lines?: Array<ServerPreviewLine>;
+    /**
+     * Parsed and Continuation count the sample lines by status.
+     */
+    parsed?: number;
+    rows?: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * TimestampErrors counts parsed lines whose timestamp the layout
+     * rejected — rows that would load with no time on them.
+     */
+    timestamp_errors?: number;
+    warnings?: Array<string>;
+};
+
 export type ServerQueryRequest = {
     filters?: Array<ServerFilterClause>;
     limit?: number;
@@ -104,6 +190,92 @@ export type ServerQueryResponse = {
         [key: string]: unknown;
     }>;
     total_count?: number;
+};
+
+export type ServerRuleDraft = {
+    /**
+     * MessageField names the field non-matching lines are appended to.
+     * Defaults to "message".
+     */
+    message_field?: string;
+    name?: string;
+    /**
+     * Parse must capture the timestamp as (?P<ts>...). Every other
+     * named group becomes a field.
+     */
+    parse?: string;
+    priority?: number;
+    /**
+     * Sample is the text the rule was inferred from; saved into the
+     * rule file as a header comment.
+     */
+    sample?: string;
+    /**
+     * TsAssumeTZ names the zone for timestamps that carry none.
+     */
+    ts_assume_tz?: string;
+    /**
+     * TsLayout is a Go time layout — the reference time spelled out,
+     * e.g. 2006-01-02 15:04:05 — not a strftime pattern.
+     */
+    ts_layout?: string;
+    ts_regex_subs?: Array<ServerRuleSub>;
+    /**
+     * TsUseMtimeDate supplies the date from the file's modification
+     * time, for formats carrying only a time of day.
+     */
+    ts_use_mtime_date?: boolean;
+    /**
+     * TsUseMtimeYear supplies only the year, for formats carrying month
+     * and day but no year.
+     */
+    ts_use_mtime_year?: boolean;
+    /**
+     * Warnings are advisory — an ambiguous date order, a missing year.
+     */
+    warnings?: Array<string>;
+};
+
+export type ServerRuleInfo = {
+    family?: string;
+    file?: string;
+    name?: string;
+    priority?: number;
+};
+
+export type ServerRuleSub = {
+    pattern?: string;
+    replacement?: string;
+};
+
+export type ServerRulesResponse = {
+    /**
+     * Dir is the parsers.d directory the rules were read from.
+     */
+    dir?: string;
+    rules?: Array<ServerRuleInfo>;
+};
+
+export type ServerSampleRequest = {
+    sample?: string;
+};
+
+export type ServerSaveRuleRequest = {
+    /**
+     * Overwrite replaces an existing rule file of the same name.
+     */
+    overwrite?: boolean;
+    rule?: ServerRuleDraft;
+};
+
+export type ServerSaveRuleResponse = {
+    file?: string;
+    path?: string;
+    /**
+     * Rules is how many line rules are loaded after the save.
+     */
+    rules?: number;
+    status?: string;
 };
 
 export type ServerSelfCopyRequest = {
@@ -325,6 +497,34 @@ export type GetApiFilesResponses = {
 
 export type GetApiFilesResponse = GetApiFilesResponses[keyof GetApiFilesResponses];
 
+export type PostApiFilesExplainData = {
+    /**
+     * path to diagnose
+     */
+    body: ServerPathRequest;
+    path?: never;
+    query?: never;
+    url: '/api/files/explain';
+};
+
+export type PostApiFilesExplainErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+};
+
+export type PostApiFilesExplainError = PostApiFilesExplainErrors[keyof PostApiFilesExplainErrors];
+
+export type PostApiFilesExplainResponses = {
+    /**
+     * OK
+     */
+    200: ServerDiagnosisResponse;
+};
+
+export type PostApiFilesExplainResponse = PostApiFilesExplainResponses[keyof PostApiFilesExplainResponses];
+
 export type PostApiFilesLoadData = {
     /**
      * path to load
@@ -484,6 +684,110 @@ export type PostApiQueryResponses = {
 };
 
 export type PostApiQueryResponse = PostApiQueryResponses[keyof PostApiQueryResponses];
+
+export type GetApiRulesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/rules';
+};
+
+export type GetApiRulesResponses = {
+    /**
+     * OK
+     */
+    200: ServerRulesResponse;
+};
+
+export type GetApiRulesResponse = GetApiRulesResponses[keyof GetApiRulesResponses];
+
+export type PostApiRulesPreviewData = {
+    /**
+     * draft rule + sample
+     */
+    body: ServerPreviewRequest;
+    path?: never;
+    query?: never;
+    url: '/api/rules/preview';
+};
+
+export type PostApiRulesPreviewErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+};
+
+export type PostApiRulesPreviewError = PostApiRulesPreviewErrors[keyof PostApiRulesPreviewErrors];
+
+export type PostApiRulesPreviewResponses = {
+    /**
+     * OK
+     */
+    200: ServerPreviewResponse;
+};
+
+export type PostApiRulesPreviewResponse = PostApiRulesPreviewResponses[keyof PostApiRulesPreviewResponses];
+
+export type PostApiRulesSaveData = {
+    /**
+     * draft rule
+     */
+    body: ServerSaveRuleRequest;
+    path?: never;
+    query?: never;
+    url: '/api/rules/save';
+};
+
+export type PostApiRulesSaveErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+    /**
+     * Conflict
+     */
+    409: ServerErrorResponse;
+};
+
+export type PostApiRulesSaveError = PostApiRulesSaveErrors[keyof PostApiRulesSaveErrors];
+
+export type PostApiRulesSaveResponses = {
+    /**
+     * OK
+     */
+    200: ServerSaveRuleResponse;
+};
+
+export type PostApiRulesSaveResponse = PostApiRulesSaveResponses[keyof PostApiRulesSaveResponses];
+
+export type PostApiRulesSuggestData = {
+    /**
+     * sample text
+     */
+    body: ServerSampleRequest;
+    path?: never;
+    query?: never;
+    url: '/api/rules/suggest';
+};
+
+export type PostApiRulesSuggestErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+};
+
+export type PostApiRulesSuggestError = PostApiRulesSuggestErrors[keyof PostApiRulesSuggestErrors];
+
+export type PostApiRulesSuggestResponses = {
+    /**
+     * OK
+     */
+    200: ServerRuleDraft;
+};
+
+export type PostApiRulesSuggestResponse = PostApiRulesSuggestResponses[keyof PostApiRulesSuggestResponses];
 
 export type GetApiSettingsData = {
     /**

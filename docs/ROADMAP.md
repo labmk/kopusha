@@ -37,12 +37,17 @@ Gaps in what already ships.
 
 | | |
 |---|---|
-| [#12](https://github.com/labmk/obs-viewer/issues/12) | **Virtualise the result table.** Every row of a page is in the DOM; the page size goes to 10,000. |
 | [#13](https://github.com/labmk/obs-viewer/issues/13) | **Rule-authoring UI.** The best capability in the product is currently gated behind hand-writing regex into YAML. |
 | [#14](https://github.com/labmk/obs-viewer/issues/14) | **Explain why a file did not parse.** The detection scores exist and are discarded. |
+| [#19](https://github.com/labmk/obs-viewer/issues/19) | **Time histogram strip.** Turns time filtering from typing into gesture. |
+| [#20](https://github.com/labmk/obs-viewer/issues/20) | **Shareable query state in the URL.** How a tool spreads inside a team. |
 
 #13 and #14 are the same feature from two directions: the failure
-message should be the entry point to the rule builder.
+message should be the entry point to the rule builder. #19 and #20 are
+small and independent of both.
+
+Shipped in 0.2.0 and closed on release: the virtualised result table,
+and Parquet read and write.
 
 ## Near future
 
@@ -50,12 +55,7 @@ The next substantive capabilities.
 
 | | |
 |---|---|
-| [#15](https://github.com/labmk/obs-viewer/issues/15) | **Parquet export.** The extension is already statically linked. Repositions the project as a front-end to the DuckDB ecosystem. |
-| [#16](https://github.com/labmk/obs-viewer/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
-| [#17](https://github.com/labmk/obs-viewer/issues/17) | **User-initiated update.** A button that fetches and replaces the binary, then restarts. Blocked on release signing. |
 | [#18](https://github.com/labmk/obs-viewer/issues/18) | **Field profiling panel.** Answers "what is in this data" before a query is written. |
-| [#19](https://github.com/labmk/obs-viewer/issues/19) | **Time histogram strip.** Turns time filtering from typing into gesture. |
-| [#20](https://github.com/labmk/obs-viewer/issues/20) | **Shareable query state in the URL.** How a tool spreads inside a team. |
 
 ## Future
 
@@ -63,8 +63,10 @@ Wanted, not scheduled.
 
 | | |
 |---|---|
+| [#16](https://github.com/labmk/obs-viewer/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
+| [#17](https://github.com/labmk/obs-viewer/issues/17) | **User-initiated update.** A button that fetches and replaces the binary, then restarts. Blocked on signing. |
+| [#24](https://github.com/labmk/obs-viewer/issues/24) | **Sign releases.** Gates #17, and is what would let macOS builds be notarized so a download stops being blocked. |
 | [#21](https://github.com/labmk/obs-viewer/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
-| [#22](https://github.com/labmk/obs-viewer/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
 
 ## Far future
 
@@ -72,8 +74,8 @@ Blocked on a precondition or a decision.
 
 | | |
 |---|---|
+| [#22](https://github.com/labmk/obs-viewer/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
 | [#23](https://github.com/labmk/obs-viewer/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Ship field profiling first and see whether the need survives. |
-| — | **Release signing.** Not an issue yet because it is a decision rather than a task: which scheme, where the private key lives, who can use it. It gates #17, and it is what would let macOS builds be notarized. |
 
 ## Things deliberately not planned
 

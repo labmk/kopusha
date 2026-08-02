@@ -17,16 +17,10 @@ import (
 
 	"github.com/labmk/obs-viewer/internal/config"
 	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/ingest"
-	"github.com/labmk/obs-viewer/internal/ingest/block"
-	"github.com/labmk/obs-viewer/internal/ingest/evtx"
-	"github.com/labmk/obs-viewer/internal/ingest/line"
-	"github.com/labmk/obs-viewer/internal/ingest/ndjson"
-	"github.com/labmk/obs-viewer/internal/ingest/parquet"
-	ingestxml "github.com/labmk/obs-viewer/internal/ingest/xml"
 	"github.com/labmk/obs-viewer/internal/logx"
 	"github.com/labmk/obs-viewer/internal/manifest"
 	"github.com/labmk/obs-viewer/internal/module"
+	"github.com/labmk/obs-viewer/internal/parsers"
 	"github.com/labmk/obs-viewer/internal/server"
 	"github.com/labmk/obs-viewer/internal/settings"
 	"github.com/labmk/obs-viewer/internal/update"
@@ -190,37 +184,18 @@ func main() {
 		})
 	}
 
-	ruleSet, err := ingest.LoadRules(parsersDir)
+	// The rule manager owns the registry from here on, so a rule saved
+	// through the UI can rebuild it in place — see internal/parsers.
+	ruleMgr := parsers.NewManager(parsersDir, eng.SetLoaders)
+	ruleStats, err := ruleMgr.Reload()
 	if err != nil {
 		log.Fatalf("Failed to load parser rules from %s: %v", parsersDir, err)
 	}
-	blockLoader, err := block.New(ruleSet.Block)
-	if err != nil {
-		log.Fatalf("block adapter: %v", err)
-	}
-	lineLoader, err := line.New(ruleSet.Line)
-	if err != nil {
-		log.Fatalf("line adapter: %v", err)
-	}
-	xmlLoader, err := ingestxml.New(ruleSet.XML)
-	if err != nil {
-		log.Fatalf("xml adapter: %v", err)
-	}
-	loaders := ingest.NewRegistry()
-	loaders.Register(ndjson.New())
-	loaders.Register(parquet.New())
-	loaders.Register(evtx.New())
-	loaders.Register(blockLoader)
-	loaders.Register(lineLoader)
-	loaders.Register(xmlLoader)
-	eng.SetLoaders(loaders)
 	vlog("loaders: %d registered (ndjson, parquet, evtx, block, line, xml); rules from %s (block=%d line=%d xml=%d other=%d)",
-		len(loaders.Loaders()), parsersDir,
-		len(ruleSet.Block), len(ruleSet.Line), len(ruleSet.XML), len(ruleSet.Other))
-	if len(ruleSet.Other) > 0 {
-		for _, r := range ruleSet.Other {
-			log.Printf("Warning: parser rule with unknown family %q in %s (rule name=%q ignored)", r.Family, r.Source, r.Name)
-		}
+		len(ruleMgr.Registry().Loaders()), parsersDir,
+		ruleStats.Block, ruleStats.Line, ruleStats.XML, len(ruleStats.Unknown))
+	for _, r := range ruleStats.Unknown {
+		log.Printf("Warning: parser rule with unknown family %q in %s (rule name=%q ignored)", r.Family, r.Source, r.Name)
 	}
 	store := settings.NewStore(exeDir)
 	if err := store.Load(); err != nil {
@@ -305,6 +280,7 @@ func main() {
 
 	srv := server.New(eng, staticFS, version, store)
 	srv.SetIdleTimeoutSeconds(confTimeout)
+	srv.SetRules(ruleMgr)
 
 	// Release notification. On by default; `update_check = false` in
 	// obs_viewer.conf or --no-update-check turns it off, and the flag

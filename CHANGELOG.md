@@ -13,6 +13,40 @@ those are external and stable.
 
 ### Added
 
+- **Rule builder.** Paste sample lines and obs-viewer infers a
+  `parsers.d/` rule — a regex with named captures, plus a Go time
+  layout — then shows the rows it would produce before anything is
+  written. Rename the fields, save, and the rule applies to the next
+  load without a restart.
+
+  The preview runs the candidate through the real `line` adapter over a
+  temp file rather than reimplementing it, so it cannot disagree with
+  what a load will produce.
+
+  Until now the rule system — the part of this project with no
+  substitute — was reachable only by hand-writing a Go regex into a
+  YAML file from documentation, which is the exact skill the tool
+  exists to make unnecessary.
+
+  New endpoints: `GET /api/rules`, `POST /api/rules/suggest`,
+  `POST /api/rules/preview`, `POST /api/rules/save`. New package
+  `internal/parsers`, which now owns `parsers.d/` and the loader
+  registry.
+- **`POST /api/files/explain`.** When a file matches no rule, report
+  every adapter's score *and* the reason it declined, the first
+  non-blank line as the parser sees it, and any encoding trait that
+  breaks matching invisibly — byte-order mark, CRLF, NUL bytes, invalid
+  UTF-8. Read-only; it loads nothing.
+
+  Shown automatically when a load fails, with a button that opens the
+  rule builder seeded with that line. The scores already existed inside
+  `Registry.Pick` and were discarded; the per-adapter reasons are new,
+  supplied through the optional `Explainer` interface.
+- **`ts_use_mtime_year`** in the `line` rule schema, for formats that
+  carry month and day but no year — syslog's `Mar 18 06:00:00`. Those
+  previously parsed to year 0, which sorted correctly and matched no
+  time filter. Mutually exclusive with `ts_use_mtime_date`; setting
+  both now fails rule compilation instead of resolving silently.
 - **Parquet, read and write.** Export the current filtered view as
   Parquet, and load Parquet files back in. The DuckDB parquet extension
   is already statically linked, so this downloads nothing and works
@@ -42,6 +76,18 @@ those are external and stable.
 - Release archives are **zip on every platform**. One format, one set of
   instructions.
 - Removed references to other products throughout the repository.
+
+### Fixed
+
+- **Parquet was unreachable from the UI.** The engine chose the export
+  format from the output extension, but the export dialog hard-coded
+  `.ndjson` and never mentioned Parquet, and the file browser hid
+  `.parquet` files so an exported file could not be browsed back to.
+  Both halves of the round trip existed and neither could be clicked.
+  The dialog now has a format selector driven by a single list, and
+  `.parquet`/`.pq` are listed by the browser.
+- The file browser closed after a failed load, discarding the error it
+  had just set. It read its own `error` state through a stale closure.
 
 ## [0.1.1] — 2026-08-01
 
