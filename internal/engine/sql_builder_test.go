@@ -288,10 +288,13 @@ func TestBuildWhereClauseTimeRangeOnly(t *testing.T) {
 	to := "2026-05-31T23:59:59Z"
 	clauses := e.buildWhereClause(QueryRequest{TimeFrom: &from, TimeTo: &to}, nil)
 	joined := strings.Join(clauses, " ")
-	if !strings.Contains(joined, `"@timestamp" >= '2026-05-01T00:00:00Z'`) {
+	// Both sides go through TRY_CAST. The column is VARCHAR in the union,
+	// so comparing as text would make the bound's spelling decide the
+	// result — see TestTimeFilterAcceptsEverySpellingOfAnInstant.
+	if !strings.Contains(joined, `TRY_CAST("@timestamp" AS TIMESTAMP) >= TRY_CAST('2026-05-01T00:00:00Z' AS TIMESTAMP)`) {
 		t.Errorf("missing from clause: %q", joined)
 	}
-	if !strings.Contains(joined, `"@timestamp" <= '2026-05-31T23:59:59Z'`) {
+	if !strings.Contains(joined, `TRY_CAST("@timestamp" AS TIMESTAMP) <= TRY_CAST('2026-05-31T23:59:59Z' AS TIMESTAMP)`) {
 		t.Errorf("missing to clause: %q", joined)
 	}
 	if !strings.Contains(joined, "AND") {

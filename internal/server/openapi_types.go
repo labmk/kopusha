@@ -197,6 +197,29 @@ type ModulesResponse struct {
 	Modules []ModuleManifest `json:"modules"`
 }
 
+// HistogramBucket is one bar in a HistogramResponse.
+type HistogramBucket struct {
+	// Start is the bucket's first instant, ISO-8601 UTC.
+	Start string `json:"start"`
+	Count int64  `json:"count"`
+}
+
+// HistogramResponse is the body of POST /api/histogram.
+type HistogramResponse struct {
+	Buckets []HistogramBucket `json:"buckets"`
+	// IntervalSeconds is the bucket width chosen for this span.
+	IntervalSeconds int64 `json:"interval_seconds" example:"300"`
+	// Min and Max bound the buckets, so a drag-select can map a pixel
+	// back to an instant without re-deriving the range.
+	Min string `json:"min,omitempty"`
+	Max string `json:"max,omitempty"`
+	// Total sums the buckets. Lower than the query's total_count by
+	// however many matching records have no usable timestamp.
+	Total int64 `json:"total"`
+	// Field is the timestamp column the buckets were built on.
+	Field string `json:"field,omitempty" example:"@timestamp"`
+}
+
 // AdapterVerdict is one adapter's answer in a DiagnosisResponse.
 type AdapterVerdict struct {
 	// Name is the adapter name, e.g. "ndjson", "line".

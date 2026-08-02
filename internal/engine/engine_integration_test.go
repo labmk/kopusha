@@ -4,6 +4,7 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 )
 
 // Integration tests against a real in-memory DuckDB. Exercise the
@@ -169,10 +170,11 @@ func TestQueryOperatorIsOneOf(t *testing.T) {
 }
 
 func TestQueryTimeRangeFilter(t *testing.T) {
-	// DuckDB auto-detects "@timestamp" ISO strings as TIMESTAMP. After
-	// the engine's CAST AS VARCHAR projection inside the UNION, they
-	// serialize as `YYYY-MM-DD HH:MM:SS` (space separator, no Z) — the
-	// same shape the frontend's TimeFilter sends. Use that shape here.
+	// The shape the frontend's TimeFilter sends. Bounds are compared as
+	// timestamps rather than as text, so this is no longer the only
+	// spelling that works — see
+	// TestTimeFilterAcceptsEverySpellingOfAnInstant — but it is the one
+	// the UI produces, so it stays covered on its own.
 	eng := loadOne(t,
 		map[string]any{"@timestamp": "2026-05-20T08:00:00Z", "n": 1},
 		map[string]any{"@timestamp": "2026-05-20T09:00:00Z", "n": 2},
@@ -566,4 +568,170 @@ func deref(p *string) string {
 		return "<nil>"
 	}
 	return *p
+}
+
+// --- Histogram (#19) ---
+
+func strPtr(s string) *string { return &s }
+
+func TestHistogramBucketsMatchingRecords(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:30Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:01:10Z", "level": "WARN"},
+		map[string]any{"@timestamp": "2026-05-20T10:02:00Z", "level": "ERROR"},
+	)
+	h, err := eng.GetHistogram(QueryRequest{})
+	if err != nil {
+		t.Fatalf("GetHistogram: %v", err)
+	}
+	if h.Total != 4 {
+		t.Errorf("total = %d, want 4", h.Total)
+	}
+	if len(h.Buckets) == 0 {
+		t.Fatal("no buckets")
+	}
+	// Bars must stay bounded whatever the span — that cap is what keeps
+	// an aggregate that runs on every query cheap.
+	if len(h.Buckets) > maxHistogramBuckets {
+		t.Errorf("%d buckets exceeds the cap of %d", len(h.Buckets), maxHistogramBuckets)
+	}
+	var sum int64
+	for _, b := range h.Buckets {
+		sum += b.Count
+	}
+	if sum != h.Total {
+		t.Errorf("buckets sum to %d but total is %d", sum, h.Total)
+	}
+	if h.Field != "@timestamp" {
+		t.Errorf("field = %q", h.Field)
+	}
+}
+
+// The strip has to describe the result on screen, so it takes the same
+// filters as the query. A histogram of everything next to a filtered
+// table would be actively misleading.
+func TestHistogramRespectsFilters(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:30Z", "level": "INFO"},
+		map[string]any{"@timestamp": "2026-05-20T10:01:10Z", "level": "ERROR"},
+	)
+	h, err := eng.GetHistogram(QueryRequest{
+		Filters: []Filter{{Field: "level", Operator: "is", Value: "ERROR"}},
+	})
+	if err != nil {
+		t.Fatalf("GetHistogram: %v", err)
+	}
+	if h.Total != 1 {
+		t.Errorf("total = %d, want 1 (filters ignored?)", h.Total)
+	}
+}
+
+// Narrowing the time range must re-resolve the bucket width. Keeping a
+// width derived from the whole data set would collapse a five-minute
+// window into a single bar that answers nothing.
+func TestHistogramIntervalFollowsTheFilteredSpan(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:10Z"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:20Z"},
+		map[string]any{"@timestamp": "2026-11-20T10:00:00Z"},
+	)
+	wide, err := eng.GetHistogram(QueryRequest{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	narrow, err := eng.GetHistogram(QueryRequest{
+		TimeFrom: strPtr("2026-05-20T10:00:00Z"),
+		TimeTo:   strPtr("2026-05-20T10:00:30Z"),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if narrow.IntervalSeconds >= wide.IntervalSeconds {
+		t.Errorf("narrow interval %ds is not finer than the wide one %ds",
+			narrow.IntervalSeconds, wide.IntervalSeconds)
+	}
+	if narrow.Total != 3 {
+		t.Errorf("narrow total = %d, want 3", narrow.Total)
+	}
+}
+
+// A file with no usable timestamp must produce an empty strip, not an
+// error: the histogram can never be the reason a query fails.
+func TestHistogramWithoutTimestampsIsEmptyNotAnError(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"name": "a", "value": 1},
+		map[string]any{"name": "b", "value": 2},
+	)
+	h, err := eng.GetHistogram(QueryRequest{})
+	if err != nil {
+		t.Fatalf("GetHistogram returned an error: %v", err)
+	}
+	if len(h.Buckets) != 0 {
+		t.Errorf("got %d buckets from data with no timestamps", len(h.Buckets))
+	}
+}
+
+func TestHistogramEmptyEngine(t *testing.T) {
+	eng, err := New()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer eng.Close()
+	h, err := eng.GetHistogram(QueryRequest{})
+	if err != nil {
+		t.Fatalf("GetHistogram: %v", err)
+	}
+	if len(h.Buckets) != 0 || h.Total != 0 {
+		t.Errorf("expected an empty histogram, got %+v", h)
+	}
+}
+
+func TestPickHistogramIntervalStaysUnderTheCap(t *testing.T) {
+	for _, span := range []time.Duration{
+		time.Second, 30 * time.Second, 5 * time.Minute, time.Hour,
+		24 * time.Hour, 30 * 24 * time.Hour, 365 * 24 * time.Hour,
+		10 * 365 * 24 * time.Hour,
+	} {
+		iv := pickHistogramInterval(span)
+		if iv <= 0 {
+			t.Errorf("span %s produced a non-positive interval %d", span, iv)
+			continue
+		}
+		if bars := int64(span.Seconds()) / iv; bars > maxHistogramBuckets {
+			t.Errorf("span %s would render %d bars with a %ds interval", span, bars, iv)
+		}
+	}
+}
+
+// A time bound may arrive from a shared URL or another tool, not just
+// from the one input widget that used to be its only source. Every
+// spelling of the same instant has to select the same rows — the
+// comparison used to be lexicographic against the VARCHAR-rendered
+// column, so an ISO-8601 bound with a 'T' silently matched nothing.
+func TestTimeFilterAcceptsEverySpellingOfAnInstant(t *testing.T) {
+	eng := loadOne(t,
+		map[string]any{"@timestamp": "2026-05-20T10:00:00Z"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:10Z"},
+		map[string]any{"@timestamp": "2026-05-20T10:00:20Z"},
+		map[string]any{"@timestamp": "2026-11-20T10:00:00Z"},
+	)
+	for _, pair := range [][2]string{
+		{"2026-05-20 10:00:00", "2026-05-20 10:00:30"},
+		{"2026-05-20T10:00:00", "2026-05-20T10:00:30"},
+		{"2026-05-20T10:00:00Z", "2026-05-20T10:00:30Z"},
+		{"2026-05-20T10:00:00.000Z", "2026-05-20T10:00:30.000Z"},
+	} {
+		from, to := pair[0], pair[1]
+		res, err := eng.Query(QueryRequest{Limit: 10, TimeFrom: &from, TimeTo: &to})
+		if err != nil {
+			t.Errorf("%q..%q: %v", from, to, err)
+			continue
+		}
+		if res.TotalCount != 3 {
+			t.Errorf("%q..%q matched %d rows, want 3", from, to, res.TotalCount)
+		}
+	}
 }

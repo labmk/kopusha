@@ -365,6 +365,7 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/files/toggle", s.APIHandler(s.handleToggleFile))
 	s.mux.HandleFunc("/api/browse", s.APIHandler(s.handleBrowse))
 	s.mux.HandleFunc("/api/query", s.APIHandler(s.handleQuery))
+	s.mux.HandleFunc("/api/histogram", s.APIHandler(s.handleHistogram))
 	s.mux.HandleFunc("/api/fields", s.APIHandler(s.handleFields))
 	s.mux.HandleFunc("/api/timerange", s.APIHandler(s.handleTimeRange))
 	s.mux.HandleFunc("/api/timestamp-field", s.APIHandler(s.handleTimestampField))
@@ -826,6 +827,33 @@ func (s *Server) handleQuery(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, result)
+}
+
+// @Summary      Record counts over time for the current filter
+// @Description  Same filter set as /api/query, aggregated into time buckets. The bucket width is derived from the span of the filtered data so the bar count stays bounded, and is reported back as interval_seconds. Returns an empty buckets array — never an error — when no timestamp column is detected or nothing matches, so a missing histogram can never be the reason a query fails.
+// @Tags         query
+// @Accept       json
+// @Produce      json
+// @Param        body  body      QueryRequest       true  "same shape as /api/query; offset and limit are ignored"
+// @Success      200   {object}  HistogramResponse
+// @Failure      400   {object}  ErrorResponse
+// @Router       /api/histogram [post]
+func (s *Server) handleHistogram(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "POST required", http.StatusMethodNotAllowed)
+		return
+	}
+	var req engine.QueryRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeError(w, "Invalid request body", http.StatusBadRequest)
+		return
+	}
+	h, err := s.eng.GetHistogram(req)
+	if err != nil {
+		writeError(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, h)
 }
 
 // @Summary      Available filter fields

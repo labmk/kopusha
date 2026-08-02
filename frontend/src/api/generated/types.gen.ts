@@ -91,6 +91,37 @@ export type ServerFilterClause = {
     value?: string;
 };
 
+export type ServerHistogramBucket = {
+    count?: number;
+    /**
+     * Start is the bucket's first instant, ISO-8601 UTC.
+     */
+    start?: string;
+};
+
+export type ServerHistogramResponse = {
+    buckets?: Array<ServerHistogramBucket>;
+    /**
+     * Field is the timestamp column the buckets were built on.
+     */
+    field?: string;
+    /**
+     * IntervalSeconds is the bucket width chosen for this span.
+     */
+    interval_seconds?: number;
+    max?: string;
+    /**
+     * Min and Max bound the buckets, so a drag-select can map a pixel
+     * back to an instant without re-deriving the range.
+     */
+    min?: string;
+    /**
+     * Total sums the buckets. Lower than the query's total_count by
+     * however many matching records have no usable timestamp.
+     */
+    total?: number;
+};
+
 export type ServerIdRequest = {
     id?: string;
 };
@@ -636,6 +667,34 @@ export type PostApiFilesUnloadResponses = {
 };
 
 export type PostApiFilesUnloadResponse = PostApiFilesUnloadResponses[keyof PostApiFilesUnloadResponses];
+
+export type PostApiHistogramData = {
+    /**
+     * same shape as /api/query; offset and limit are ignored
+     */
+    body: ServerQueryRequest;
+    path?: never;
+    query?: never;
+    url: '/api/histogram';
+};
+
+export type PostApiHistogramErrors = {
+    /**
+     * Bad Request
+     */
+    400: ServerErrorResponse;
+};
+
+export type PostApiHistogramError = PostApiHistogramErrors[keyof PostApiHistogramErrors];
+
+export type PostApiHistogramResponses = {
+    /**
+     * OK
+     */
+    200: ServerHistogramResponse;
+};
+
+export type PostApiHistogramResponse = PostApiHistogramResponses[keyof PostApiHistogramResponses];
 
 export type GetApiModulesData = {
     body?: never;

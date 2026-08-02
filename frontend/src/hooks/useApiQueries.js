@@ -14,6 +14,7 @@ export const qk = {
   fields: ['fields'],
   timeRange: ['timeRange'],
   query: (params) => ['query', params],
+  histogram: (params) => ['histogram', params],
   update: ['update'],
 };
 
@@ -102,5 +103,23 @@ export function useLogQuery(params, enabled) {
     queryFn: () => api.query(params),
     enabled: !!enabled,
     placeholderData: (previous) => previous,
+  });
+}
+
+// Counts over time for the same filter set. Keyed without offset or
+// limit: the strip describes the whole result, so paging through it
+// must not re-run the aggregate or make the bars jump.
+//
+// The backend answers with an empty bucket list rather than an error
+// when there is no timestamp column, so a failure here only ever
+// removes the strip — it never disturbs the table.
+export function useHistogram(params, enabled) {
+  const { offset, limit, ...rest } = params;
+  return useQuery({
+    queryKey: qk.histogram(rest),
+    queryFn: () => api.histogram(rest),
+    enabled: !!enabled,
+    placeholderData: (previous) => previous,
+    retry: 0,
   });
 }

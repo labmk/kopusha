@@ -23,9 +23,9 @@ ready equivalent.
 
 So the direction is: **invest in parsing and in the ergonomics around
 it; treat the rest of the analytical ecosystem as an ally rather than a
-competitor.** Exporting Parquet (#15) is the clearest expression of
-that — parse the mess here, hand the result to whatever the user
-already likes.
+competitor.** Parquet export is the clearest expression of that —
+parse the mess here, hand the result to whatever the user already
+likes.
 
 The audience is explicitly *not* people who are comfortable with grep
 and a regex. They are already served. It is people who need the answers
@@ -33,21 +33,18 @@ and do not write regex for fun.
 
 ## Do it now
 
-Gaps in what already ships.
+Empty. Everything that was here shipped in 0.2.0 — see the
+[changelog](../CHANGELOG.md):
 
-| | |
-|---|---|
-| [#13](https://github.com/labmk/obs-viewer/issues/13) | **Rule-authoring UI.** The best capability in the product is currently gated behind hand-writing regex into YAML. |
-| [#14](https://github.com/labmk/obs-viewer/issues/14) | **Explain why a file did not parse.** The detection scores exist and are discarded. |
-| [#19](https://github.com/labmk/obs-viewer/issues/19) | **Time histogram strip.** Turns time filtering from typing into gesture. |
-| [#20](https://github.com/labmk/obs-viewer/issues/20) | **Shareable query state in the URL.** How a tool spreads inside a team. |
+- **#13 rule-authoring UI** and **#14 explain why a file did not
+  parse**, which turned out to be one feature from two directions: the
+  failure message is the entry point to the rule builder.
+- **#19 time histogram** and **#20 shareable query state**, which were
+  small and independent of both.
+- **#12 virtualised result table**, **#15 Parquet read and write**, and
+  **#25 export writing where you are actually looking**.
 
-#13 and #14 are the same feature from two directions: the failure
-message should be the entry point to the rule builder. #19 and #20 are
-small and independent of both.
-
-Shipped in 0.2.0 and closed on release: the virtualised result table,
-and Parquet read and write.
+The next thing to pick up is #18.
 
 ## Near future
 

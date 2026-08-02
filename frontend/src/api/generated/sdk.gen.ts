@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
+import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiHistogramData, PostApiHistogramErrors, PostApiHistogramResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -128,6 +128,20 @@ export const postApiFilesToggle = <ThrowOnError extends boolean = false>(options
  */
 export const postApiFilesUnload = <ThrowOnError extends boolean = false>(options: Options<PostApiFilesUnloadData, ThrowOnError>): RequestResult<PostApiFilesUnloadResponses, PostApiFilesUnloadErrors, ThrowOnError> => (options.client ?? client).post<PostApiFilesUnloadResponses, PostApiFilesUnloadErrors, ThrowOnError>({
     url: '/api/files/unload',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Record counts over time for the current filter
+ *
+ * Same filter set as /api/query, aggregated into time buckets. The bucket width is derived from the span of the filtered data so the bar count stays bounded, and is reported back as interval_seconds. Returns an empty buckets array — never an error — when no timestamp column is detected or nothing matches, so a missing histogram can never be the reason a query fails.
+ */
+export const postApiHistogram = <ThrowOnError extends boolean = false>(options: Options<PostApiHistogramData, ThrowOnError>): RequestResult<PostApiHistogramResponses, PostApiHistogramErrors, ThrowOnError> => (options.client ?? client).post<PostApiHistogramResponses, PostApiHistogramErrors, ThrowOnError>({
+    url: '/api/histogram',
     ...options,
     headers: {
         'Content-Type': 'application/json',

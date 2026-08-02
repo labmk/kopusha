@@ -4,6 +4,10 @@ import { formatTimestamp } from '../utils/datetime';
 import { useVirtualRows, ROW_HEIGHT } from '../hooks/useVirtualRows';
 import RowDetailPanel from './RowDetailPanel';
 
+// Shared empty Set so the default prop is referentially stable — a new
+// Set() per render would re-run every memo that depends on it.
+const EMPTY_HIDDEN = new Set();
+
 function isNullish(v) {
   if (v === null || v === undefined) return true;
   if (typeof v === 'string' && v === '') return true;
@@ -62,14 +66,25 @@ function selectColumns(fields, timestampField) {
   return [...ordered, ...rest];
 }
 
-export default function LogTable({ result, sortOrder, onSortOrderChange, timestampField, timezone, hourFormat = '24', hideNulls = true }) {
+export default function LogTable({
+  result, sortOrder, onSortOrderChange, timestampField, timezone,
+  hourFormat = '24', hideNulls = true,
+  // Column visibility is owned by App because it is part of the view a
+  // link carries — see utils/urlState.js. The table only reports the
+  // toggles.
+  hiddenColumns = EMPTY_HIDDEN, onHiddenColumnsChange,
+}) {
   // A single selected row, shown in a side panel — not a set of
   // in-place expansions. Expansion used to grow the row, which pushed
   // everything below it off screen and, more consequentially, made row
   // heights variable and windowing impractical.
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [hiddenColumns, setHiddenColumns] = useState(new Set());
   const [showColumnPicker, setShowColumnPicker] = useState(false);
+
+  const setHiddenColumns = useCallback((updater) => {
+    if (!onHiddenColumnsChange) return;
+    onHiddenColumnsChange((prev) => (typeof updater === 'function' ? updater(prev) : updater));
+  }, [onHiddenColumnsChange]);
   const DEFAULT_COL_WIDTH = 180;
   // Column widths keyed by a hash of the current column set — widths persist
   // across sessions as long as the schema is stable, and reset cleanly when

@@ -150,3 +150,34 @@ test('the export dialog offers every format the engine writes', async ({ page })
   await format.selectOption('ndjson');
   await expect(pathInput).toHaveValue(/\.ndjson$/);
 });
+
+// The dialog used to hold two answers to "where does this go?" and
+// show the one it did not use: navigating the folder browser changed
+// nothing unless "Select this folder" was clicked, so exporting from a
+// folder you were looking at wrote somewhere else, silently.
+test('the export target follows the folder being browsed', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Export' }).click();
+
+  const pathInput = page.locator('input[placeholder^="/path/to/output"]');
+  await expect(pathInput).toHaveValue(/.+/);
+  const before = await pathInput.inputValue();
+
+  await page.getByRole('button', { name: 'Browse' }).click();
+  const browsePath = page.locator('.browse-path span').first();
+  await expect(browsePath).toHaveText(/.+/);
+
+  // Step into the first subdirectory offered, without confirming.
+  const startedAt = (await browsePath.textContent()).trim();
+  const firstDir = page.locator('.browse-entry.is-dir').first();
+  await expect(firstDir).toBeVisible();
+  await firstDir.click();
+  await expect(browsePath).not.toHaveText(startedAt);
+
+  const shown = (await browsePath.textContent()).trim();
+
+  // The path — which is what Export sends — now names that folder, and
+  // the filename survived the move.
+  await expect(pathInput).toHaveValue(new RegExp(`^${shown.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[/\\\\]`));
+  await expect(pathInput).toHaveValue(new RegExp(`${before.split(/[/\\]/).pop().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`));
+});

@@ -46,6 +46,36 @@ function withExtension(path, ext) {
   return path + ext;
 }
 
+// Paths here are the server's, so the separator is the server's too —
+// a Windows host reports C:\Users\… and gets a backslash back.
+function separatorFor(path) {
+  return path.includes('\\') && !path.includes('/') ? '\\' : '/';
+}
+
+function baseName(path) {
+  return path.split('/').pop().split('\\').pop();
+}
+
+function directoryOf(path) {
+  const slash = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\'));
+  return slash > 0 ? path.slice(0, slash) : '';
+}
+
+// withDirectory swaps the directory and keeps the filename, which is
+// what makes the path safe to rewrite while the operator browses:
+// a name they typed, and the extension the format selector set, both
+// survive moving to another folder.
+function withDirectory(path, dir) {
+  const name = baseName(path) || `export${DEFAULT_FORMAT.ext}`;
+  const sep = separatorFor(dir);
+  return dir.replace(/[/\\]$/, '') + sep + name;
+}
+
+function defaultFileName() {
+  const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  return `obs_viewer_export_${ts}${DEFAULT_FORMAT.ext}`;
+}
+
 function formatSize(bytes) {
   if (bytes === 0) return '0 B';
   const units = ['B', 'KB', 'MB', 'GB'];
@@ -66,22 +96,48 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
   const [browsePath, setBrowsePath] = useState('');
   const [browseLoading, setBrowseLoading] = useState(false);
 
-  // Set a sensible default output path
+  // Seed the output path from the directory the operator last worked
+  // in, falling back to the home directory. The home directory is
+  // almost never where the data is, and it is the one place an export
+  // is least likely to be wanted.
   useEffect(() => {
-    api.browse('').then((data) => {
-      const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-      setOutputPath(`${data.current_path}/obs_viewer_export_${ts}${DEFAULT_FORMAT.ext}`);
-    }).catch(() => {});
+    let cancelled = false;
+    const seed = (dir) => {
+      if (cancelled || !dir) return;
+      setOutputPath(withDirectory(defaultFileName(), dir));
+    };
+    api.getSettings()
+      .then((s) => {
+        if (s?.last_directory) {
+          seed(s.last_directory);
+          return null;
+        }
+        return api.browse('');
+      })
+      .then((data) => { if (data) seed(data.current_path); })
+      .catch(() => {
+        api.browse('').then((data) => seed(data.current_path)).catch(() => {});
+      });
+    return () => { cancelled = true; };
   }, []);
 
   const format = formatForPath(outputPath);
 
+  // Navigating the browser rewrites the output path as it goes.
+  //
+  // The alternative — commit the directory only when "Select this
+  // folder" is clicked — gives the dialog two answers to "where does
+  // this go?" and shows the operator the one that is not used. Anyone
+  // who browses to a folder and presses Export has said where they
+  // want it; keeping the path in step means the field, the listing and
+  // the button cannot disagree at any point.
   const browseDir = async (path) => {
     setBrowseLoading(true);
     try {
       const data = await api.browse(path);
       setBrowsePath(data.current_path);
       setBrowseEntries(data.entries || []);
+      setOutputPath((p) => withDirectory(p || defaultFileName(), data.current_path));
     } catch (e) {
       setError(e.message);
     } finally {
@@ -91,15 +147,7 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
 
   const openBrowser = () => {
     setBrowsing(true);
-    // Extract directory from current outputPath
-    const dir = outputPath.substring(0, outputPath.lastIndexOf('/')) || outputPath.substring(0, outputPath.lastIndexOf('\\')) || '';
-    browseDir(dir || '');
-  };
-
-  const selectDir = (dirPath) => {
-    const filename = outputPath.split('/').pop().split('\\').pop() || `export${DEFAULT_FORMAT.ext}`;
-    setOutputPath(`${dirPath}/${filename}`);
-    setBrowsing(false);
+    browseDir(directoryOf(outputPath));
   };
 
   const handleExport = async () => {
@@ -118,8 +166,7 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
       // Self-copy if requested
       let selfCopyPath = null;
       if (includeSelf) {
-        const targetDir = outputPath.substring(0, outputPath.lastIndexOf('/')) || outputPath.substring(0, outputPath.lastIndexOf('\\')) || '.';
-        const copyResult = await api.selfCopy(targetDir);
+        const copyResult = await api.selfCopy(directoryOf(outputPath) || '.');
         selfCopyPath = copyResult.path;
       }
 
@@ -251,8 +298,10 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
           <div style={{ borderTop: '1px solid var(--border)', maxHeight: '250px', display: 'flex', flexDirection: 'column' }}>
             <div className="browse-path" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>{browsePath}</span>
-              <button className="btn btn-sm btn-primary" onClick={() => selectDir(browsePath)}>
-                Select this folder
+              {/* Closes the browser and nothing else — the output path
+                  already points here, so there is nothing to confirm. */}
+              <button className="btn btn-sm" onClick={() => setBrowsing(false)}>
+                Done
               </button>
             </div>
             <div style={{ flex: 1, overflowY: 'auto' }}>

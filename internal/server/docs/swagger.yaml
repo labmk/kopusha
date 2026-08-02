@@ -132,6 +132,41 @@ definitions:
       value:
         type: string
     type: object
+  server.HistogramBucket:
+    properties:
+      count:
+        type: integer
+      start:
+        description: Start is the bucket's first instant, ISO-8601 UTC.
+        type: string
+    type: object
+  server.HistogramResponse:
+    properties:
+      buckets:
+        items:
+          $ref: '#/definitions/server.HistogramBucket'
+        type: array
+      field:
+        description: Field is the timestamp column the buckets were built on.
+        example: '@timestamp'
+        type: string
+      interval_seconds:
+        description: IntervalSeconds is the bucket width chosen for this span.
+        example: 300
+        type: integer
+      max:
+        type: string
+      min:
+        description: |-
+          Min and Max bound the buckets, so a drag-select can map a pixel
+          back to an instant without re-deriving the range.
+        type: string
+      total:
+        description: |-
+          Total sums the buckets. Lower than the query's total_count by
+          however many matching records have no usable timestamp.
+        type: integer
+    type: object
   server.IDRequest:
     properties:
       id:
@@ -768,6 +803,36 @@ paths:
       summary: Unload a file
       tags:
       - files
+  /api/histogram:
+    post:
+      consumes:
+      - application/json
+      description: Same filter set as /api/query, aggregated into time buckets. The
+        bucket width is derived from the span of the filtered data so the bar count
+        stays bounded, and is reported back as interval_seconds. Returns an empty
+        buckets array — never an error — when no timestamp column is detected or nothing
+        matches, so a missing histogram can never be the reason a query fails.
+      parameters:
+      - description: same shape as /api/query; offset and limit are ignored
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/server.QueryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.HistogramResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Record counts over time for the current filter
+      tags:
+      - query
   /api/modules:
     get:
       description: Returns one manifest per enabled module in Add() order. The SPA

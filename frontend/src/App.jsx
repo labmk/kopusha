@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { api } from './api/client';
 import { useLocalStorage } from './hooks/useLocalStorage';
@@ -10,9 +10,11 @@ import {
   useFiles,
   useFields,
   useLogQuery,
+  useHistogram,
   useUpdateStatus,
 } from './hooks/useApiQueries';
 import { formatTimeout } from './utils/datetime';
+import { decodeState, writeState, shareableURL } from './utils/urlState';
 import FilePanel from './components/FilePanel';
 import FileBrowser from './components/FileBrowser';
 import TimeFilter from './components/TimeFilter';
@@ -21,6 +23,7 @@ import LogTable from './components/LogTable';
 import ExportDialog from './components/ExportDialog';
 import PaginationBar from './components/PaginationBar';
 import RuleBuilder from './components/RuleBuilder';
+import TimeHistogram from './components/TimeHistogram';
 import { moduleComponents } from './moduleRegistry';
 
 export default function App() {
@@ -52,28 +55,46 @@ export default function App() {
   const [hideNulls, setHideNulls] = useLocalStorage('obs_viewer_hide_nulls', true);
   const [autoFilter, setAutoFilter] = useLocalStorage('obs_viewer_auto_filter', false);
 
-  // Filter / query state — always starts empty (no per-session persistence).
-  // The portable artefact is the text-form export from the Query Builder's
-  // "Text" button; users paste that into notes/chat and back here to restore.
-  const [filters, setFilters] = useState([]);
-  const [timeFrom, setTimeFrom] = useState('');
-  const [timeTo, setTimeTo] = useState('');
-  const [searchText, setSearchText] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
-  const [sortField, setSortField] = useLocalStorage('obs_viewer_sort_field', '@timestamp');
+  // Filter / query state, seeded from the URL fragment so a shared link
+  // or a reload restores the view. Read once, synchronously, before the
+  // first render — seeding from an effect would fire one query with the
+  // defaults and a second with the link's actual filters.
+  //
+  // Loaded files are deliberately not part of it: a path means
+  // something only on the machine that produced it. See
+  // utils/urlState.js.
+  const initial = useMemo(() => decodeState(window.location.hash), []);
+
+  const [filters, setFilters] = useState(initial.filters);
+  const [timeFrom, setTimeFrom] = useState(initial.timeFrom);
+  const [timeTo, setTimeTo] = useState(initial.timeTo);
+  const [searchText, setSearchText] = useState(initial.searchText);
+  const [sortOrder, setSortOrder] = useState(initial.sortOrder || 'asc');
+  // A link's sort wins over the stored preference, and then becomes it —
+  // the view you are looking at is the one you keep.
+  const [sortField, setSortField] = useState(
+    () => initial.sortField || localStorage.getItem('obs_viewer_sort_field') || '@timestamp'
+  );
+  useEffect(() => {
+    try { localStorage.setItem('obs_viewer_sort_field', sortField); } catch { /* private mode */ }
+  }, [sortField]);
+  const [hiddenColumns, setHiddenColumns] = useState(() => new Set(initial.hiddenColumns));
 
   // Pending vs. active filter set. When Auto Apply is off, the live form
   // state (filters/timeFrom/timeTo/searchText) is staged; only `applied*`
   // feeds the query key. Clicking Apply copies pending → applied.
   // When Auto Apply is on, applied tracks pending automatically via the
   // effect below.
-  const [appliedFilters, setAppliedFilters] = useState([]);
-  const [appliedTimeFrom, setAppliedTimeFrom] = useState('');
-  const [appliedTimeTo, setAppliedTimeTo] = useState('');
-  const [appliedSearchText, setAppliedSearchText] = useState('');
+  // Seeded from the link too: a shared view has already been applied by
+  // whoever shared it, so it must render as its results, not as a form
+  // waiting for Apply to be pressed.
+  const [appliedFilters, setAppliedFilters] = useState(initial.filters);
+  const [appliedTimeFrom, setAppliedTimeFrom] = useState(initial.timeFrom);
+  const [appliedTimeTo, setAppliedTimeTo] = useState(initial.timeTo);
+  const [appliedSearchText, setAppliedSearchText] = useState(initial.searchText);
 
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(200);
+  const [limit, setLimit] = useState(initial.limit || 200);
   const [error, setError] = useState(null);
   // `notice` is a soft, non-blocking message channel (e.g. parser
   // auto-corrections like ".X." → ".*X.*"). Renders in the same status
@@ -88,6 +109,7 @@ export default function App() {
   // what turns the worst moment in the product into the entry point for
   // its most useful feature.
   const [ruleSample, setRuleSample] = useState(null);
+  const [copiedLink, setCopiedLink] = useState(false);
   const [theme, setTheme] = useLocalStorage('obs_viewer_theme', 'dark');
   const [activeTab, setActiveTab] = useLocalStorage('obs_viewer_active_tab', 'viewer');
 
@@ -237,6 +259,10 @@ export default function App() {
   const queryResult = logQ.data;
   const loading = logQ.isFetching;
 
+  // The strip runs alongside the table on the same filter set. It is
+  // keyed without offset/limit, so paging does not re-run it.
+  const histogramQ = useHistogram(queryParams, filesEnabled);
+
   // Surface query errors to the toast bar. Manual error state still
   // exists for non-query errors (file ops below).
   useEffect(() => {
@@ -247,7 +273,58 @@ export default function App() {
   // file membership isn't part of the query key.
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ['query'] });
+    queryClient.invalidateQueries({ queryKey: ['histogram'] });
   }, [files.map(f => `${f.id}:${f.enabled ? 1 : 0}`).join(','), queryClient]);
+
+  // Keep the fragment in step with the applied view.
+  //
+  // Applied, not pending: the URL should describe the results on screen.
+  // Writing the pending form state would put a half-typed filter into
+  // the address bar and, worse, into any link copied while typing.
+  const shareState = useMemo(() => ({
+    filters: appliedFilters,
+    timeFrom: appliedTimeFrom,
+    timeTo: appliedTimeTo,
+    searchText: appliedSearchText,
+    sortField,
+    sortOrder,
+    hiddenColumns: [...hiddenColumns],
+    limit,
+  }), [appliedFilters, appliedTimeFrom, appliedTimeTo, appliedSearchText,
+    sortField, sortOrder, hiddenColumns, limit]);
+
+  useEffect(() => { writeState(shareState); }, [shareState]);
+
+  const handleCopyLink = async () => {
+    const url = shareableURL(shareState);
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // Clipboard access needs a secure context, which plain-HTTP
+      // localhost usually is but an operator on a TLS-less LAN bind is
+      // not. Fall back to selecting the text so the copy is still one
+      // keystroke away rather than impossible.
+      window.prompt('Copy this link:', url);
+      return;
+    }
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 1500);
+  };
+
+  // A drag on the histogram applies immediately, whatever Auto Apply is
+  // set to. Auto Apply exists to stop a half-typed filter from firing a
+  // query on every keystroke; a drag is a completed, deliberate gesture,
+  // and making the operator confirm it afterwards would undo the point
+  // of dragging instead of typing.
+  const handleHistogramRange = useCallback((from, to) => {
+    setTimeFrom(from);
+    setTimeTo(to);
+    setAppliedTimeFrom(from);
+    setAppliedTimeTo(to);
+    setAppliedFilters(filters);
+    setAppliedSearchText(searchText);
+    setOffset(0);
+  }, [filters, searchText]);
 
   const applyFilter = useCallback(() => {
     setAppliedFilters(filters);
@@ -415,6 +492,13 @@ export default function App() {
           </button>
           <button
             className="btn"
+            onClick={handleCopyLink}
+            title="Copy a link to this exact view — filters, time range, sort and columns. Files are not included; the recipient opens their own."
+          >
+            {copiedLink ? 'Copied' : 'Copy link'}
+          </button>
+          <button
+            className="btn"
             onClick={() => setRuleSample('')}
             title="Build a parser rule for a log format obs-viewer does not recognize yet"
           >
@@ -507,6 +591,16 @@ export default function App() {
           </div>
         )}
 
+        {filesEnabled && (
+          <TimeHistogram
+            data={histogramQ.data}
+            timezone={timezone}
+            hourFormat={hourFormat}
+            loading={histogramQ.isFetching}
+            onRangeSelect={handleHistogramRange}
+          />
+        )}
+
         {files.length === 0 ? (
           <div className="empty-state">
             <div className="icon-large">&#128194;</div>
@@ -534,6 +628,8 @@ export default function App() {
             timezone={timezone}
             hourFormat={hourFormat}
             hideNulls={hideNulls}
+            hiddenColumns={hiddenColumns}
+            onHiddenColumnsChange={setHiddenColumns}
           />
         )}
 

@@ -390,6 +390,7 @@ All endpoints return JSON. Errors: `{"error": "message"}`.
 | GET | `/api/field-samples` | `?fields=a,b,c&cap=N` | `{field: [v1,…]}` — DISTINCT values per field, capped |
 | GET | `/api/timerange` | — | `{min, max, timestamp_fields[]}` |
 | GET/POST | `/api/timestamp-field` | POST: `{field}` | `{field}` |
+| POST | `/api/histogram` | same body as `/api/query`; offset and limit ignored | `{buckets[], interval_seconds, min, max, total, field}` |
 | POST | `/api/files/explain` | `{path}` | `{chosen, best_score, adapters[], first_line, notes[]}` — read-only; loads nothing |
 | GET | `/api/rules` | — | `{rules[], dir}` |
 | POST | `/api/rules/suggest` | `{sample}` | a draft rule inferred from the sample; writes nothing |

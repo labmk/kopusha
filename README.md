@@ -63,7 +63,15 @@ machine.
 - **Query builder + text DSL.** A visual filter builder with 10
   operators, plus a pipeline-style text view for copy/paste portability.
 - **Time filtering with explicit UTC.** Presets, custom ranges, and a
-  UTC-offset timezone selector that avoids DST ambiguity.
+  UTC-offset timezone selector that avoids DST ambiguity. A histogram
+  above the table shows counts over time for the current filter; drag
+  across it to narrow the range without typing a timestamp.
+- **Shareable views.** **Copy link** puts the filters, time range, sort
+  and visible columns into a URL. It also means a refresh no longer
+  loses the query. The state lives in the URL fragment, so filter
+  values — which are log content — never reach the server or an access
+  log. Loaded files are not included: a path means something only on
+  the machine that produced it, so the recipient opens their own.
 - **Result table.** Virtualised, so a 10,000-row page renders only the
   rows on screen. Clicking a row opens it in a side panel — `j`/`k` walk
   the list — rather than expanding in place and pushing everything below

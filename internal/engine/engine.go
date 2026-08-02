@@ -664,6 +664,164 @@ func (e *Engine) Query(req QueryRequest) (*QueryResult, error) {
 	}, nil
 }
 
+// HistogramBucket is one bar: the bucket's start instant and how many
+// records fell into it.
+type HistogramBucket struct {
+	Start string `json:"start"`
+	Count int64  `json:"count"`
+}
+
+// Histogram is a count of matching records over time.
+type Histogram struct {
+	Buckets []HistogramBucket `json:"buckets"`
+	// IntervalSeconds is the bucket width actually used. The UI labels
+	// the strip with it, because "23 per bar" means nothing without it.
+	IntervalSeconds int64 `json:"interval_seconds"`
+	// Min and Max are the span the buckets cover, so a drag-select can
+	// map a pixel back to an instant without re-deriving the range.
+	Min string `json:"min,omitempty"`
+	Max string `json:"max,omitempty"`
+	// Total is the sum of all buckets. Equal to the query's total_count
+	// except for records whose timestamp is NULL, which no bucket can
+	// hold — the difference is worth surfacing rather than hiding.
+	Total int64 `json:"total"`
+	// Field is the timestamp column the buckets were built on.
+	Field string `json:"field,omitempty"`
+}
+
+// maxHistogramBuckets caps the bar count.
+//
+// This runs on every query, so it has to stay cheap, and the cap is
+// what keeps it cheap: bucket width is derived from the span rather
+// than fixed, so a one-minute range and a one-year range both produce
+// the same amount of work and the same amount of DOM.
+const maxHistogramBuckets = 120
+
+// histogramIntervals are the bucket widths the strip will choose from,
+// in seconds. Round, human-legible steps — a bar is a unit of time
+// somebody has to reason about, and 37 seconds is not one.
+var histogramIntervals = []int64{
+	1, 2, 5, 10, 15, 30,
+	60, 120, 300, 600, 900, 1800,
+	3600, 7200, 10800, 21600, 43200,
+	86400, 172800, 604800,
+	2592000, 7776000, 31536000,
+}
+
+// GetHistogram returns counts of matching records bucketed over time,
+// using the same filters as Query so the strip always describes the
+// result the operator is looking at.
+//
+// The bucket width is chosen from the span of the *filtered* data, not
+// the loaded data: after narrowing to a five-minute window the strip
+// has to resolve to seconds, or it collapses into one bar and stops
+// answering anything.
+//
+// Returns an empty histogram rather than an error when there is no
+// timestamp column or no data. A missing histogram is a strip that
+// does not render; it must never be the reason a query fails.
+func (e *Engine) GetHistogram(req QueryRequest) (*Histogram, error) {
+	e.mu.RLock()
+	defer e.mu.RUnlock()
+
+	out := &Histogram{Buckets: []HistogramBucket{}}
+	tables := e.enabledTables()
+	if len(tables) == 0 {
+		return out, nil
+	}
+
+	baseQuery, allCols := e.buildUnionQuery(tables, false)
+	tsField := e.resolveSortField(req.SortField, allCols)
+	if tsField == "" {
+		return out, nil
+	}
+	out.Field = strings.Trim(tsField, `"`)
+
+	whereClauses := e.buildWhereClause(req, allCols)
+	whereSQL := ""
+	if len(whereClauses) > 0 {
+		whereSQL = "WHERE " + strings.Join(whereClauses, " ")
+	}
+
+	// The timestamps are VARCHAR in the union — every adapter writes
+	// ISO-8601 UTC — so they are cast once here rather than compared as
+	// strings. TRY_CAST because a heterogeneous union can carry a column
+	// that is timestamp-like in one file and free text in another, and
+	// one such row must not fail the whole strip.
+	tsExpr := fmt.Sprintf("TRY_CAST(%s AS TIMESTAMP)", tsField)
+	spanQuery := fmt.Sprintf(
+		"SELECT MIN(%s), MAX(%s), COUNT(%s) FROM (%s) AS combined %s",
+		tsExpr, tsExpr, tsExpr, baseQuery, whereSQL,
+	)
+
+	var minTS, maxTS sql.NullTime
+	var counted int64
+	if err := e.db.QueryRow(spanQuery).Scan(&minTS, &maxTS, &counted); err != nil {
+		logx.Warn("engine.histogram_span", logx.F{"error": err.Error(), "sql": spanQuery})
+		return out, nil
+	}
+	if !minTS.Valid || !maxTS.Valid || counted == 0 {
+		return out, nil
+	}
+
+	span := maxTS.Time.Sub(minTS.Time)
+	interval := pickHistogramInterval(span)
+	out.IntervalSeconds = interval
+	out.Min = minTS.Time.UTC().Format(time.RFC3339Nano)
+	out.Max = maxTS.Time.UTC().Format(time.RFC3339Nano)
+
+	bucketQuery := fmt.Sprintf(
+		"SELECT TIME_BUCKET(INTERVAL %d SECOND, %s) AS b, COUNT(*) FROM (%s) AS combined %s "+
+			"GROUP BY b HAVING b IS NOT NULL ORDER BY b",
+		interval, tsExpr, baseQuery, whereSQL,
+	)
+	start := time.Now()
+	rows, err := e.db.Query(bucketQuery)
+	if err != nil {
+		logx.Warn("engine.histogram", logx.F{"error": err.Error(), "sql": bucketQuery})
+		return out, nil
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var b time.Time
+		var n int64
+		if err := rows.Scan(&b, &n); err != nil {
+			continue
+		}
+		out.Buckets = append(out.Buckets, HistogramBucket{
+			Start: b.UTC().Format(time.RFC3339Nano),
+			Count: n,
+		})
+		out.Total += n
+	}
+	logx.Info("engine.histogram", logx.F{
+		"buckets":     len(out.Buckets),
+		"interval_s":  interval,
+		"total":       out.Total,
+		"duration_ms": time.Since(start).Milliseconds(),
+	})
+	return out, nil
+}
+
+// pickHistogramInterval returns the smallest listed bucket width that
+// keeps the bar count within the cap.
+func pickHistogramInterval(span time.Duration) int64 {
+	seconds := int64(span.Seconds())
+	if seconds <= 0 {
+		return histogramIntervals[0]
+	}
+	for _, iv := range histogramIntervals {
+		if seconds/iv <= maxHistogramBuckets {
+			return iv
+		}
+	}
+	// Span longer than the largest listed width divided across the cap:
+	// fall back to whatever fits, rounded to a whole day.
+	iv := seconds / maxHistogramBuckets
+	return (iv/86400 + 1) * 86400
+}
+
 // GetFields returns the union of all field names across all enabled tables.
 // Columns are ordered by first appearance: fields from earlier tables come
 // first, then new fields from subsequent tables are appended.
@@ -1169,15 +1327,32 @@ func (e *Engine) buildWhereClause(req QueryRequest, allCols []string) []string {
 	var clauses []string
 	tsField := e.quotedTimestampField()
 
-	// Time range filter
+	// Time range filter.
+	//
+	// Compared as timestamps, not as text. Every column in the union is
+	// CAST to VARCHAR, so a bare string comparison here is lexicographic
+	// against the rendered form `2026-05-20 10:00:00` — which means the
+	// same instant written `2026-05-20T10:00:00Z` sorts *after* it (the
+	// 'T' is above ' ') and the filter silently matches nothing. That
+	// held together only while the bounds came from one input widget
+	// emitting one shape; a bound can now arrive from a shared URL, a
+	// pasted ISO-8601 value, or another tool.
+	//
+	// TRY_CAST rather than CAST: a heterogeneous union can carry a
+	// column that is a timestamp in one file and free text in another,
+	// and one such row must not fail the whole query. Those rows drop
+	// out of a time range, which is correct — a row with no usable
+	// instant is not inside any window.
 	if req.TimeFrom != nil && *req.TimeFrom != "" {
-		clauses = append(clauses, fmt.Sprintf("%s >= '%s'", tsField, escapeSQLString(*req.TimeFrom)))
+		clauses = append(clauses, fmt.Sprintf("TRY_CAST(%s AS TIMESTAMP) >= TRY_CAST('%s' AS TIMESTAMP)",
+			tsField, escapeSQLString(*req.TimeFrom)))
 	}
 	if req.TimeTo != nil && *req.TimeTo != "" {
 		if len(clauses) > 0 {
 			clauses = append(clauses, "AND")
 		}
-		clauses = append(clauses, fmt.Sprintf("%s <= '%s'", tsField, escapeSQLString(*req.TimeTo)))
+		clauses = append(clauses, fmt.Sprintf("TRY_CAST(%s AS TIMESTAMP) <= TRY_CAST('%s' AS TIMESTAMP)",
+			tsField, escapeSQLString(*req.TimeTo)))
 	}
 
 	// Field filters

@@ -403,6 +403,46 @@
                 }
             }
         },
+        "/api/histogram": {
+            "post": {
+                "description": "Same filter set as /api/query, aggregated into time buckets. The bucket width is derived from the span of the filtered data so the bar count stays bounded, and is reported back as interval_seconds. Returns an empty buckets array — never an error — when no timestamp column is detected or nothing matches, so a missing histogram can never be the reason a query fails.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "query"
+                ],
+                "summary": "Record counts over time for the current filter",
+                "parameters": [
+                    {
+                        "description": "same shape as /api/query; offset and limit are ignored",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/server.QueryRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.HistogramResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/modules": {
             "get": {
                 "description": "Returns one manifest per enabled module in Add() order. The SPA reads this at boot to decide which tabs to render and to inject the branding stylesheet + favicons.",
@@ -1030,6 +1070,50 @@
                 },
                 "value": {
                     "type": "string"
+                }
+            }
+        },
+        "server.HistogramBucket": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "start": {
+                    "description": "Start is the bucket's first instant, ISO-8601 UTC.",
+                    "type": "string"
+                }
+            }
+        },
+        "server.HistogramResponse": {
+            "type": "object",
+            "properties": {
+                "buckets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.HistogramBucket"
+                    }
+                },
+                "field": {
+                    "description": "Field is the timestamp column the buckets were built on.",
+                    "type": "string",
+                    "example": "@timestamp"
+                },
+                "interval_seconds": {
+                    "description": "IntervalSeconds is the bucket width chosen for this span.",
+                    "type": "integer",
+                    "example": 300
+                },
+                "max": {
+                    "type": "string"
+                },
+                "min": {
+                    "description": "Min and Max bound the buckets, so a drag-select can map a pixel\nback to an instant without re-deriving the range.",
+                    "type": "string"
+                },
+                "total": {
+                    "description": "Total sums the buckets. Lower than the query's total_count by\nhowever many matching records have no usable timestamp.",
+                    "type": "integer"
                 }
             }
         },

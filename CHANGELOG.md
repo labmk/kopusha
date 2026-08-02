@@ -13,6 +13,26 @@ those are external and stable.
 
 ### Added
 
+- **Time histogram.** A strip above the table showing record counts over
+  time for the current filter. Drag across it to narrow the time range —
+  it writes into the same time filter typing uses, and applies on its
+  own, because a completed gesture should not need a confirming click.
+
+  Bucket width is derived from the span of the *filtered* data, so
+  narrowing to five minutes re-resolves to seconds instead of
+  collapsing to one bar. The bar count is capped, which is what keeps
+  an aggregate that runs on every query cheap. New `POST /api/histogram`.
+- **Shareable views.** Filters, time range, sort, page size and hidden
+  columns are encoded into the URL, and **Copy link** puts it on the
+  clipboard. A refresh no longer loses the query.
+
+  The state lives in the URL **fragment**, never the query string:
+  filter values are log content — hostnames, user names, message
+  fragments — and anything before the `#` reaches the server, its access
+  log, and the `Referer` header of any outbound link. Loaded files are
+  deliberately excluded; a path is meaningful only on the machine that
+  produced it, so the recipient opens their own files and gets the
+  sender's question applied to them.
 - **Rule builder.** Paste sample lines and obs-viewer infers a
   `parsers.d/` rule — a regex with named captures, plus a Go time
   layout — then shows the rows it would produce before anything is
@@ -79,6 +99,20 @@ those are external and stable.
 
 ### Fixed
 
+- **Time-range bounds were compared as text.** Every column in the union
+  is cast to VARCHAR, so a bound was matched lexicographically against
+  the rendered form `2026-05-20 10:00:00` — meaning the same instant
+  written `2026-05-20T10:00:00Z` sorted *after* it and the filter
+  silently matched nothing. That held only while every bound came from
+  one input widget emitting one shape. Bounds are now compared as
+  timestamps, so any spelling of an instant selects the same rows.
+- **Export wrote to a folder the user was no longer looking at.**
+  Navigating the dialog's directory browser changed nothing unless
+  **Select this folder** was clicked, so browsing somewhere and pressing
+  Export wrote to the seeded path while the intended folder was on
+  screen directly above it. The output path now tracks the folder being
+  browsed, and the dialog opens in the last-used directory rather than
+  the home directory. (#25)
 - **Parquet was unreachable from the UI.** The engine chose the export
   format from the output extension, but the export dialog hard-coded
   `.ndjson` and never mentioned Parquet, and the file browser hid

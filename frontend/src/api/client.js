@@ -51,6 +51,12 @@ export const api = {
       body: JSON.stringify(params),
     }),
 
+  histogram: (params) =>
+    request('/api/histogram', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    }),
+
   getFields: () => request('/api/fields'),
 
   getTimeRange: () => request('/api/timerange'),
