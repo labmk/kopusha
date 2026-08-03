@@ -13,6 +13,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -213,7 +214,17 @@ func TestUpdateEndToEnd(t *testing.T) {
 }
 
 // The mode bit has to survive, or the new binary cannot be run.
+//
+// Unix only, because the thing being asserted does not exist elsewhere:
+// NTFS has no executable bit, Go reports every file as -rw-rw-rw-, and
+// what makes a Windows binary runnable is the .exe extension. Copying the
+// old file's mode across is still correct there, it is simply not
+// observable — so asserting it would be testing the filesystem's
+// behaviour rather than ours.
 func TestApplyPreservesTheExecutableBit(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("no executable bit on this platform")
+	}
 	u := install(t, nil, nil)
 	asset := AssetName(newVersion)
 	point(u, releaseServer(t, buildArchive(t, "the new binary", nil, nil), asset))
@@ -296,7 +307,23 @@ func TestArchiveRejectsPathTraversal(t *testing.T) {
 // On a locked-down Windows install the directory is frequently read-only.
 // That has to fail immediately, with a message naming the directory,
 // rather than after a 60 MB download.
+//
+// The irony of skipping this on Windows is not lost, but the alternative
+// is worse. Chmod does not restrict a directory on Windows — it changes
+// the read-only attribute of the entry, which does not stop files being
+// created inside it — so the precondition is never actually established
+// and the test passes for the wrong reason or fails for a third one.
+// Establishing it properly means driving icacls against an ACL that
+// varies with how the runner is provisioned.
+//
+// What is being tested is not platform-specific anyway: writable()
+// probes by creating a real temporary file, which is the one check that
+// answers the question on every platform rather than inferring it from
+// metadata. That is precisely why it is written that way.
 func TestPrepareFailsEarlyOnAReadOnlyInstall(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("a read-only directory cannot be created with chmod here")
+	}
 	u := install(t, nil, nil)
 	var hits int
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
