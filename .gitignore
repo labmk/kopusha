@@ -11,8 +11,8 @@ frontend/playwright-report/
 frontend/.vite/
 
 # Runtime artifacts written next to the binary
-obs_viewer_settings.json
-obs_viewer*.log
+kopusha_settings.json
+kopusha*.log
 logs/
 
 # Editor / OS

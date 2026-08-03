@@ -19,15 +19,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/logx"
-	"github.com/labmk/obs-viewer/internal/parsers"
-	"github.com/labmk/obs-viewer/internal/settings"
-	"github.com/labmk/obs-viewer/internal/update"
+	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/logx"
+	"github.com/labmk/kopusha/internal/parsers"
+	"github.com/labmk/kopusha/internal/settings"
+	"github.com/labmk/kopusha/internal/update"
 
 	// Side-effect import: registers the generated swagger spec with the
 	// swag runtime so /api/openapi.json can hand it out.
-	_ "github.com/labmk/obs-viewer/internal/server/docs"
+	_ "github.com/labmk/kopusha/internal/server/docs"
 	"github.com/swaggo/swag"
 )
 
@@ -225,7 +225,7 @@ func extractZipEntry(zipPath, inner string) (string, error) {
 	return "", fmt.Errorf("entry %q not in %s", inner, zipPath)
 }
 
-// Server is the HTTP server for obs_viewer.
+// Server is the HTTP server for kopusha.
 type Server struct {
 	eng            *engine.Engine
 	mux            *http.ServeMux
@@ -248,6 +248,10 @@ type Server struct {
 	// implying "up to date" from an absence of information.
 	updates *update.Checker
 
+	// update holds the self-update endpoints' state. Zero value is
+	// usable and reports that updating is unavailable.
+	update updateState
+
 	// rules owns parsers.d — the loader registry, and the write path
 	// for rules authored in the UI. See rules.go.
 	rules *parsers.Manager
@@ -255,7 +259,7 @@ type Server struct {
 
 // SetUpdateChecker attaches the release-notification checker. Called
 // once from main after New, for the same reason as
-// SetIdleTimeoutSeconds: the setting lives in obs_viewer.conf.
+// SetIdleTimeoutSeconds: the setting lives in kopusha.conf.
 func (s *Server) SetUpdateChecker(c *update.Checker) { s.updates = c }
 
 // New creates a new Server.
@@ -275,7 +279,7 @@ func New(eng *engine.Engine, staticFS embed.FS, version string, store *settings.
 // SetIdleTimeoutSeconds records the configured inactivity timeout so
 // /api/version can surface it to the SPA. Pass 0 to indicate no
 // auto-shutdown is configured. Called once from main after Server.New
-// because the timeout lives in obs_viewer.conf, not in the server
+// because the timeout lives in kopusha.conf, not in the server
 // constructor's arguments.
 func (s *Server) SetIdleTimeoutSeconds(sec int) { s.idleTimeoutSec = sec }
 
@@ -383,6 +387,7 @@ func (s *Server) registerRoutes() {
 	// Parser-rule routes: /api/files/explain and /api/rules/* — see
 	// rules.go.
 	s.registerRuleRoutes()
+	s.registerUpdateRoutes()
 
 	// Module routes (/api/<name>/*, /m/<name>/*) are mounted by the
 	// module registry at boot — see internal/module and docs/MODULES.md.
@@ -490,7 +495,7 @@ func (s *Server) handleVersion(w http.ResponseWriter, r *http.Request) {
 }
 
 // @Summary      Release update status
-// @Description  Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
+// @Description  Reports whether a newer release exists. Read-only — kopusha never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
 // @Tags         system
 // @Produce      json
 // @Success      200  {object}  UpdateResponse
@@ -1133,7 +1138,7 @@ func (s *Server) handleSelfCopy(w http.ResponseWriter, r *http.Request) {
 }
 
 // @Summary      Get or persist user settings
-// @Description  Persisted to obs_viewer_settings.json next to the binary. Only the fields present in the POST body are updated.
+// @Description  Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.
 // @Tags         core
 // @Accept       json
 // @Produce      json

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Code signing hook for obs_viewer
+# Code signing hook for kopusha
 # Copy this file to sign.sh and make it executable (chmod +x sign.sh)
 # to enable automatic code signing during build.
 #
 # Arguments:
-#   $1 - Binary path (e.g. dist/obs_viewer.exe)
+#   $1 - Binary path (e.g. dist/kopusha.exe)
 #   $2 - Product name
 #   $3 - Version
 #   $4 - Manufacturer

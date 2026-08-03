@@ -9,13 +9,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
-	"github.com/labmk/obs-viewer/internal/ingest/block"
-	"github.com/labmk/obs-viewer/internal/ingest/evtx"
-	"github.com/labmk/obs-viewer/internal/ingest/line"
-	"github.com/labmk/obs-viewer/internal/ingest/ndjson"
-	"github.com/labmk/obs-viewer/internal/ingest/parquet"
-	ingestxml "github.com/labmk/obs-viewer/internal/ingest/xml"
+	"github.com/labmk/kopusha/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest/block"
+	"github.com/labmk/kopusha/internal/ingest/evtx"
+	"github.com/labmk/kopusha/internal/ingest/line"
+	"github.com/labmk/kopusha/internal/ingest/ndjson"
+	"github.com/labmk/kopusha/internal/ingest/parquet"
+	ingestxml "github.com/labmk/kopusha/internal/ingest/xml"
 )
 
 // Manager owns parsers.d: it builds the loader registry from the rules

@@ -7,7 +7,7 @@ import (
 	"sync"
 )
 
-const FileName = "obs_viewer_settings.json"
+const FileName = "kopusha_settings.json"
 
 // DefaultLastDirectory is the directory shown in the file browser and used
 // for preload when the user has no saved state yet. Empty means "no

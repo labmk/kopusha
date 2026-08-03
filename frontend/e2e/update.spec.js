@@ -10,7 +10,7 @@ import { test, expect } from '@playwright/test';
 // check itself has Go tests, and what regressed here was the UI never
 // showing what the check found.
 
-const RELEASE_URL = 'https://github.com/labmk/obs-viewer/releases/tag/v9.9.9';
+const RELEASE_URL = 'https://github.com/labmk/kopusha/releases/tag/v9.9.9';
 
 async function withUpdateAvailable(page, latest = '9.9.9') {
   await page.route('**/api/update', (route) =>
@@ -45,9 +45,68 @@ test('an available release is announced, with a link to it', async ({ page }) =>
   await expect(link).toHaveAttribute('target', '_blank');
   await expect(link).toHaveAttribute('rel', /noreferrer/);
 
-  // Says plainly that nothing self-installs, so nobody waits for an
-  // update that is never coming.
-  await expect(notice).toContainText('does not download or install');
+  // The notice offers to install it, and says what pressing the button
+  // does before it is pressed.
+  await expect(notice.getByRole('button', { name: 'Update' })).toBeVisible();
+  await expect(notice).toContainText('checks its build provenance before writing');
+});
+
+test('preparing an update shows what it will do before writing anything', async ({ page }) => {
+  await withUpdateAvailable(page);
+  await page.route('**/api/update/prepare', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        from: '0.2.0',
+        to: '9.9.9',
+        attestation: { commit: 'abcdef0123456789abcdef' },
+        rules: {
+          frozen: false,
+          changes: [
+            { name: '10-shipped.yaml', action: 'replace' },
+            { name: '20-edited.yaml', action: 'keep', reason: 'you edited it' },
+          ],
+        },
+      }),
+    })
+  );
+  await page.goto('/');
+
+  const notice = page.locator('.update-notice');
+  await notice.getByRole('button', { name: 'Update' }).click();
+
+  // The commit is named, so the operator can go and read it.
+  await expect(notice).toContainText('abcdef012345');
+  // The rule they edited is listed with the reason it survives — this is
+  // the whole reason the plan is shown rather than just applied.
+  await expect(notice).toContainText('20-edited.yaml');
+  await expect(notice).toContainText('you edited it');
+  await expect(notice).toContainText('config files are never replaced');
+  await expect(notice).toContainText('Nothing has been written yet');
+  await expect(notice.getByRole('button', { name: 'Install and restart' })).toBeVisible();
+});
+
+test('a refused download is reported and installs nothing', async ({ page }) => {
+  await withUpdateAvailable(page);
+  await page.route('**/api/update/prepare', (route) =>
+    route.fulfill({
+      status: 502,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        error: 'refusing to install: no build attestation exists for these bytes',
+      }),
+    })
+  );
+  await page.goto('/');
+
+  const notice = page.locator('.update-notice');
+  await notice.getByRole('button', { name: 'Update' }).click();
+
+  await expect(notice).toContainText('no build attestation exists');
+  // Back to offering, not stuck mid-flight, and never offering to install.
+  await expect(notice.getByRole('button', { name: 'Update' })).toBeEnabled();
+  await expect(notice.getByRole('button', { name: 'Install and restart' })).toHaveCount(0);
 });
 
 test('dismissing is remembered per release', async ({ page }) => {
@@ -95,5 +154,5 @@ test('the header links to the project page', async ({ page }) => {
   const logo = page.locator('.logo-link');
   await expect(logo).toHaveAttribute('href', repository);
   await expect(logo).toHaveAttribute('target', '_blank');
-  await expect(logo).toContainText('obs-viewer');
+  await expect(logo).toContainText('kopusha');
 });

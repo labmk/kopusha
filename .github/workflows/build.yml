@@ -62,12 +62,12 @@ jobs:
         run: |
           set -euo pipefail
           core='[
-            {"name":"linux-amd64","runner":"ubuntu-latest","goos":"linux","goarch":"amd64","artifact":"obs_viewer","e2e":true},
-            {"name":"linux-arm64","runner":"ubuntu-24.04-arm","goos":"linux","goarch":"arm64","artifact":"obs_viewer"},
-            {"name":"windows-amd64","runner":"windows-latest","goos":"windows","goarch":"amd64","artifact":"obs_viewer.exe","e2e":true}
+            {"name":"linux-amd64","runner":"ubuntu-latest","goos":"linux","goarch":"amd64","artifact":"kopusha","e2e":true},
+            {"name":"linux-arm64","runner":"ubuntu-24.04-arm","goos":"linux","goarch":"arm64","artifact":"kopusha"},
+            {"name":"windows-amd64","runner":"windows-latest","goos":"windows","goarch":"amd64","artifact":"kopusha.exe","e2e":true}
           ]'
           mac='[
-            {"name":"darwin-arm64","runner":"macos-26","goos":"darwin","goarch":"arm64","artifact":"obs_viewer"}
+            {"name":"darwin-arm64","runner":"macos-26","goos":"darwin","goarch":"arm64","artifact":"kopusha"}
           ]'
           if [ "$FULL" = "true" ]; then
             include="$(jq -cn --argjson a "$core" --argjson b "$mac" '$a + $b')"
@@ -165,11 +165,11 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: obs_viewer-${{ matrix.name }}
+          name: kopusha-${{ matrix.name }}
           path: |
             dist/${{ matrix.artifact }}
             dist/parsers.d/
-            dist/obs_viewer.conf
+            dist/kopusha.conf
           if-no-files-found: error
 
   vulncheck:
@@ -221,7 +221,7 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           path: staging
-          pattern: obs_viewer-*
+          pattern: kopusha-*
 
       - name: Package
         run: |
@@ -229,12 +229,12 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           mkdir -p out
 
-          for dir in staging/obs_viewer-*; do
-            platform="${dir#staging/obs_viewer-}"
+          for dir in staging/kopusha-*; do
+            platform="${dir#staging/kopusha-}"
             # upload-artifact does not preserve the executable bit, so
             # restore it before archiving — otherwise every download
             # arrives chmod 644 and will not run.
-            [ -f "$dir/obs_viewer" ] && chmod +x "$dir/obs_viewer"
+            [ -f "$dir/kopusha" ] && chmod +x "$dir/kopusha"
             # THIRD-PARTY-NOTICES.md is not documentation — MIT and BSD
             # require their notices to travel with the binary, so it goes
             # in every archive.
@@ -251,7 +251,7 @@ jobs:
             # survive extraction by tools that ignore those attributes,
             # which is most Windows GUI extractors — hence the chmod
             # note in the release body.
-            name="obs_viewer-${VERSION}-${platform}"
+            name="kopusha-${VERSION}-${platform}"
             (cd "$dir" && zip -qr "${GITHUB_WORKSPACE}/out/${name}.zip" .)
           done
 
@@ -297,7 +297,7 @@ jobs:
             "Every archive is a zip, on every platform." \
             "" \
             "On Linux and macOS, if the binary does not run after extracting," \
-            'restore the executable bit: `chmod +x obs_viewer`. Most extractors' \
+            'restore the executable bit: `chmod +x kopusha`. Most extractors' \
             "preserve it; some Windows GUI tools do not." \
             "" \
             "**Verify what you downloaded.** Every archive carries a signed" \
@@ -305,7 +305,7 @@ jobs:
             "workflow, from this commit:" \
             "" \
             '```' \
-            "gh attestation verify obs_viewer-${GITHUB_REF_NAME#v}-linux-amd64.zip --repo ${REPO}" \
+            "gh attestation verify kopusha-${GITHUB_REF_NAME#v}-linux-amd64.zip --repo ${REPO}" \
             '```' \
             "" \
             "That is a stronger check than \`SHA256SUMS\`, which only shows a" \
@@ -314,7 +314,7 @@ jobs:
             "Binaries are **not** code-signed with a certificate, which is a" \
             "separate thing: it is what stops the operating system warning." \
             "On macOS, clear the quarantine attribute before running:" \
-            '`xattr -d com.apple.quarantine obs_viewer`  — see docs/BUILD.md.')"
+            '`xattr -d com.apple.quarantine kopusha`  — see docs/BUILD.md.')"
           gh release create "$GITHUB_REF_NAME" \
             --title "$GITHUB_REF_NAME" \
             --notes "$notes" \

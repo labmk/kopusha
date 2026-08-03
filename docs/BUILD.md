@@ -1,4 +1,4 @@
-# Building obs-viewer
+# Building kopusha
 
 ## Requirements
 
@@ -24,7 +24,7 @@ Optional:
 ```
 
 Defaults to the host platform. Output goes to `dist/` together with
-`parsers.d/` and `obs_viewer.conf`.
+`parsers.d/` and `kopusha.conf`.
 
 Environment overrides:
 
@@ -32,7 +32,7 @@ Environment overrides:
 |----------|---------|--------|
 | `VERSION` | current release | Stamped into `main.version` via ldflags |
 | `GOOS` / `GOARCH` | host | Target platform |
-| `PRODUCT_NAME` | `obs_viewer` | Shown in build output, passed to the sign hook |
+| `PRODUCT_NAME` | `kopusha` | Shown in build output, passed to the sign hook |
 | `MANUFACTURER` | `labmk` | Passed to the sign hook |
 | `COPYRIGHT` | derived from `MANUFACTURER` | Passed to the sign hook |
 | `CC` | auto-detected | C compiler override |
@@ -136,7 +136,7 @@ notarization — wire that into `hooks/sign.sh`, which receives
 Recipients of an unnotarized build can clear quarantine manually:
 
 ```bash
-xattr -d com.apple.quarantine ./obs_viewer
+xattr -d com.apple.quarantine ./kopusha
 ```
 
 ### Linux
@@ -171,7 +171,7 @@ Three optional executables, all skipped if absent:
    failure producing a binary with an empty UI).
 5. `go build` with `-s -w` and the version stamped in.
 6. `govulncheck` (unless skipped) — reported, non-fatal by default.
-7. Copy `parsers.d/` and `obs_viewer.conf` into `dist/`.
+7. Copy `parsers.d/` and `kopusha.conf` into `dist/`.
 8. Code-sign hook.
 
 ## Troubleshooting

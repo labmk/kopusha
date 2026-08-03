@@ -5,10 +5,10 @@
 // statically discover "modules ship their own bundles" without help.
 // Listing modules here keeps the build self-contained while still
 // letting the *runtime* decide which tabs to show (a missing
-// [section] in obs_viewer.conf removes the manifest entry → the tab
+// [section] in kopusha.conf removes the manifest entry → the tab
 // is not rendered regardless of what's in this file).
 //
-// No modules ship with obs-viewer by default. To add one:
+// No modules ship with kopusha by default. To add one:
 //   1. Place its tab component under modules/<name>/frontend/.
 //   2. Add one import + one map entry below.
 //   3. Have the backend module surface a `Tab` field in its manifest.

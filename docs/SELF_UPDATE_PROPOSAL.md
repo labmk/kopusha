@@ -1,10 +1,19 @@
 # Self-update — design + tradeoffs
 
-Status: **stage 1 shipped** (release notification).
-Stage 2 (downloading and replacing the binary) is **deferred**, blocked
-on release signing. Its `parsers.d/` behaviour is decided and recorded
-below.
-Trigger to revisit: release signing exists, and someone actually asks.
+Status: **both stages shipped** — release notification in 0.2.x, and
+download-and-replace in 0.3.0.
+
+The gate below was release signing, and it was met by build attestations
+rather than by a signing key: every release archive carries one, and the
+updater refuses any download GitHub holds no attestation for. What that
+does and does not establish is stated in `internal/selfupdate/verify.go`
+and in SECURITY.md — it is not a full Sigstore signature check, and it is
+not described as one.
+
+The rest of this document is the reasoning as it stood while the feature
+was deferred. It is kept because the tradeoffs did not stop being true
+when the code was written; the `parsers.d/` table in particular is the
+specification the implementation follows.
 
 ## What shipped
 
@@ -12,7 +21,7 @@ A startup check against the GitHub releases API. It compares the running
 version to the newest published release and, when the release is newer,
 the status bar shows a link to the release page.
 
-- On by default; `update_check = false` in `obs_viewer.conf`, or
+- On by default; `update_check = false` in `kopusha.conf`, or
   `--no-update-check` for a single run.
 - Runs in the background. Startup never waits on it.
 - Fails silently at normal verbosity — on an air-gapped host, failure is
@@ -59,7 +68,7 @@ is narrow. That is the main reason stage 1 is most of the value.
 
 ### 3. It would quietly destroy user data
 
-Release archives contain `obs_viewer.conf` **and** `parsers.d/`. Users are
+Release archives contain `kopusha.conf` **and** `parsers.d/`. Users are
 explicitly invited to edit the config and to drop their own YAML rules
 into `parsers.d/` — that is the documented way to add a log format
 without recompiling.
@@ -68,7 +77,7 @@ Extracting a release archive over an install directory deletes both. A
 user's custom parser rules are the single thing they would be angriest to
 lose, and the loss would be silent.
 
-Settings survive for free — `obs_viewer_settings.json` sits beside the
+Settings survive for free — `kopusha_settings.json` sits beside the
 binary and is never touched.
 
 ## Decided: how `parsers.d/` is updated
@@ -119,7 +128,7 @@ to it, and will have no way to discover that.
 
 ### Config files stay out
 
-`obs_viewer.conf` and `obs_viewer_*.conf` are never replaced, even when
+`kopusha.conf` and `kopusha_*.conf` are never replaced, even when
 unmodified. The shipped file is entirely commented-out defaults, so
 replacing it gains only fresher documentation while risking a silent
 behaviour change if a default moves. New `.example` siblings may be
@@ -167,6 +176,6 @@ own forever.
 
 What they do not serve is this tool's actual deployment style — copying
 the executable onto a share or a USB stick, which is exactly what the
-self-copy export feature exists for. Users who get obs-viewer that way
+self-copy export feature exists for. Users who get kopusha that way
 were never going to be reached by a package manager, and are frequently
 the same air-gapped users self-update cannot reach either.

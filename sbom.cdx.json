@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-02T05:08:37Z",
+    "timestamp": "2026-08-03T20:20:09Z",
     "tools": {
       "components": [
         {
@@ -22,8 +22,8 @@
     },
     "component": {
       "type": "application",
-      "name": "obs_viewer",
-      "version": "0.2.0",
+      "name": "kopusha",
+      "version": "0.2.2",
       "description": "Single-binary local-first viewer for log, metric and trace files",
       "licenses": [
         {
@@ -35,7 +35,7 @@
       "externalReferences": [
         {
           "type": "vcs",
-          "url": "https://github.com/labmk/obs-viewer"
+          "url": "https://github.com/labmk/kopusha"
         }
       ]
     }
@@ -69,7 +69,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -102,7 +102,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -135,11 +135,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         },
         {
-          "name": "obs-viewer:licence-corrected",
+          "name": "kopusha:licence-corrected",
           "value": "scanner output overridden to ISC; verified against the upstream LICENSE file"
         }
       ]
@@ -172,7 +172,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -205,7 +205,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -238,7 +238,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -271,7 +271,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -304,7 +304,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -337,7 +337,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -370,7 +370,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -403,7 +403,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -436,7 +436,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -469,7 +469,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -502,7 +502,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -535,7 +535,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -568,7 +568,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -595,11 +595,11 @@
       "purl": "pkg:golang/golang.org/x/mod@v0.32.0?goarch=arm64&goos=darwin&type=module",
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         },
         {
-          "name": "obs-viewer:licence-corrected",
+          "name": "kopusha:licence-corrected",
           "value": "scanner output overridden to BSD-3-Clause; verified against the upstream LICENSE file"
         }
       ]
@@ -626,11 +626,11 @@
       "purl": "pkg:golang/golang.org/x/sync@v0.19.0?goarch=arm64&goos=darwin&type=module",
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         },
         {
-          "name": "obs-viewer:licence-corrected",
+          "name": "kopusha:licence-corrected",
           "value": "scanner output overridden to BSD-3-Clause; verified against the upstream LICENSE file"
         }
       ]
@@ -657,11 +657,11 @@
       "purl": "pkg:golang/golang.org/x/tools@v0.41.0?goarch=arm64&goos=darwin&type=module",
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         },
         {
-          "name": "obs-viewer:licence-corrected",
+          "name": "kopusha:licence-corrected",
           "value": "scanner output overridden to BSD-3-Clause; verified against the upstream LICENSE file"
         }
       ]
@@ -694,7 +694,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -727,7 +727,7 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -754,7 +754,7 @@
       "purl": "pkg:golang/www.velocidex.com/golang/evtx@v0.2.0?goarch=arm64&goos=darwin&type=module",
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "go"
         }
       ]
@@ -764,7 +764,7 @@
       "name": "react-dialog",
       "group": "@radix-ui",
       "version": "1.1.23",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23",
       "licenses": [
         {
           "license": {
@@ -802,7 +802,7 @@
           "value": "node_modules/@radix-ui/react-dialog"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ],
@@ -812,7 +812,7 @@
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
           "version": "1.1.19",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -856,7 +856,7 @@
           "name": "react-focus-scope",
           "group": "@radix-ui",
           "version": "1.1.16",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -900,7 +900,7 @@
           "name": "react-portal",
           "group": "@radix-ui",
           "version": "1.1.17",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -944,7 +944,7 @@
           "name": "react-presence",
           "group": "@radix-ui",
           "version": "1.1.10",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -988,7 +988,7 @@
           "name": "react-primitive",
           "group": "@radix-ui",
           "version": "2.1.10",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -1034,7 +1034,7 @@
       "name": "react-popover",
       "group": "@radix-ui",
       "version": "1.1.23",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23",
       "licenses": [
         {
           "license": {
@@ -1072,7 +1072,7 @@
           "value": "node_modules/@radix-ui/react-popover"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ],
@@ -1082,7 +1082,7 @@
           "name": "react-dismissable-layer",
           "group": "@radix-ui",
           "version": "1.1.19",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
           "licenses": [
             {
               "license": {
@@ -1126,7 +1126,7 @@
           "name": "react-focus-scope",
           "group": "@radix-ui",
           "version": "1.1.16",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
           "licenses": [
             {
               "license": {
@@ -1170,7 +1170,7 @@
           "name": "react-popper",
           "group": "@radix-ui",
           "version": "1.3.7",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
           "licenses": [
             {
               "license": {
@@ -1214,7 +1214,7 @@
               "name": "react-arrow",
               "group": "@radix-ui",
               "version": "1.1.15",
-              "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+              "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
               "licenses": [
                 {
                   "license": {
@@ -1260,7 +1260,7 @@
           "name": "react-portal",
           "group": "@radix-ui",
           "version": "1.1.17",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
           "licenses": [
             {
               "license": {
@@ -1304,7 +1304,7 @@
           "name": "react-presence",
           "group": "@radix-ui",
           "version": "1.1.10",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
           "licenses": [
             {
               "license": {
@@ -1348,7 +1348,7 @@
           "name": "react-primitive",
           "group": "@radix-ui",
           "version": "2.1.10",
-          "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+          "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
           "licenses": [
             {
               "license": {
@@ -1394,7 +1394,7 @@
       "name": "react-query",
       "group": "@tanstack",
       "version": "5.101.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@tanstack/react-query@5.101.4",
       "author": "tannerlinsley",
       "description": "Hooks for managing, caching and syncing asynchronous and remote data in React",
       "licenses": [
@@ -1434,7 +1434,7 @@
           "value": "node_modules/@tanstack/react-query"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1443,7 +1443,7 @@
       "type": "library",
       "name": "react-dom",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+      "bom-ref": "kopusha-frontend@0.2.2|react-dom@18.3.1",
       "description": "React package for working with the DOM.",
       "licenses": [
         {
@@ -1482,7 +1482,7 @@
           "value": "node_modules/react-dom"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1491,7 +1491,7 @@
       "type": "library",
       "name": "react",
       "version": "18.3.1",
-      "bom-ref": "obs-viewer-frontend@0.2.0|react@18.3.1",
+      "bom-ref": "kopusha-frontend@0.2.2|react@18.3.1",
       "description": "React is a JavaScript library for building user interfaces.",
       "licenses": [
         {
@@ -1530,7 +1530,7 @@
           "value": "node_modules/react"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1540,7 +1540,7 @@
       "name": "primitive",
       "group": "@radix-ui",
       "version": "1.1.7",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
       "licenses": [
         {
           "license": {
@@ -1578,7 +1578,7 @@
           "value": "node_modules/@radix-ui/primitive"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1588,7 +1588,7 @@
       "name": "react-compose-refs",
       "group": "@radix-ui",
       "version": "1.1.5",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
       "licenses": [
         {
           "license": {
@@ -1626,7 +1626,7 @@
           "value": "node_modules/@radix-ui/react-compose-refs"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1636,7 +1636,7 @@
       "name": "react-context",
       "group": "@radix-ui",
       "version": "1.2.2",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-context@1.2.2",
       "licenses": [
         {
           "license": {
@@ -1674,7 +1674,7 @@
           "value": "node_modules/@radix-ui/react-context"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1684,7 +1684,7 @@
       "name": "react-focus-guards",
       "group": "@radix-ui",
       "version": "1.1.6",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-focus-guards@1.1.6",
       "licenses": [
         {
           "license": {
@@ -1722,7 +1722,7 @@
           "value": "node_modules/@radix-ui/react-focus-guards"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1732,7 +1732,7 @@
       "name": "react-id",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-id@1.1.4",
       "licenses": [
         {
           "license": {
@@ -1770,7 +1770,7 @@
           "value": "node_modules/@radix-ui/react-id"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1780,7 +1780,7 @@
       "name": "react-slot",
       "group": "@radix-ui",
       "version": "1.3.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
       "licenses": [
         {
           "license": {
@@ -1818,7 +1818,7 @@
           "value": "node_modules/@radix-ui/react-slot"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1828,7 +1828,7 @@
       "name": "react-use-controllable-state",
       "group": "@radix-ui",
       "version": "1.2.6",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-controllable-state@1.2.6",
       "licenses": [
         {
           "license": {
@@ -1866,7 +1866,7 @@
           "value": "node_modules/@radix-ui/react-use-controllable-state"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1876,7 +1876,7 @@
       "name": "react-use-layout-effect",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
       "licenses": [
         {
           "license": {
@@ -1914,7 +1914,7 @@
           "value": "node_modules/@radix-ui/react-use-layout-effect"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1924,7 +1924,7 @@
       "name": "react",
       "group": "@types",
       "version": "18.3.31",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+      "bom-ref": "kopusha-frontend@0.2.2|@types/react@18.3.31",
       "description": "TypeScript definitions for react",
       "licenses": [
         {
@@ -1963,7 +1963,7 @@
           "value": "node_modules/@types/react"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -1972,7 +1972,7 @@
       "type": "library",
       "name": "aria-hidden",
       "version": "1.2.6",
-      "bom-ref": "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
+      "bom-ref": "kopusha-frontend@0.2.2|aria-hidden@1.2.6",
       "author": "Anton Korzunov",
       "description": "Cast aria-hidden to everything, except...",
       "licenses": [
@@ -2012,7 +2012,7 @@
           "value": "node_modules/aria-hidden"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2021,7 +2021,7 @@
       "type": "library",
       "name": "react-remove-scroll",
       "version": "2.7.2",
-      "bom-ref": "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
+      "bom-ref": "kopusha-frontend@0.2.2|react-remove-scroll@2.7.2",
       "author": "Anton Korzunov",
       "description": "Disables scroll outside of `children` node.",
       "licenses": [
@@ -2061,7 +2061,7 @@
           "value": "node_modules/react-remove-scroll"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2071,7 +2071,7 @@
       "name": "query-core",
       "group": "@tanstack",
       "version": "5.101.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@tanstack/query-core@5.101.4",
       "author": "tannerlinsley",
       "description": "The framework agnostic core that powers TanStack Query",
       "licenses": [
@@ -2111,7 +2111,7 @@
           "value": "node_modules/@tanstack/query-core"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2120,7 +2120,7 @@
       "type": "library",
       "name": "loose-envify",
       "version": "1.4.0",
-      "bom-ref": "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
+      "bom-ref": "kopusha-frontend@0.2.2|loose-envify@1.4.0",
       "author": "Andres Suarez",
       "description": "Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST",
       "licenses": [
@@ -2160,7 +2160,7 @@
           "value": "node_modules/loose-envify"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2169,7 +2169,7 @@
       "type": "library",
       "name": "scheduler",
       "version": "0.23.2",
-      "bom-ref": "obs-viewer-frontend@0.2.0|scheduler@0.23.2",
+      "bom-ref": "kopusha-frontend@0.2.2|scheduler@0.23.2",
       "description": "Cooperative scheduler for the browser environment.",
       "licenses": [
         {
@@ -2208,7 +2208,7 @@
           "value": "node_modules/scheduler"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2218,7 +2218,7 @@
       "name": "react-use-callback-ref",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2256,7 +2256,7 @@
           "value": "node_modules/@radix-ui/react-use-callback-ref"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2266,7 +2266,7 @@
       "name": "react-use-effect-event",
       "group": "@radix-ui",
       "version": "0.0.5",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-effect-event@0.0.5",
       "licenses": [
         {
           "license": {
@@ -2304,7 +2304,7 @@
           "value": "node_modules/@radix-ui/react-use-effect-event"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2314,7 +2314,7 @@
       "name": "prop-types",
       "group": "@types",
       "version": "15.7.15",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15",
+      "bom-ref": "kopusha-frontend@0.2.2|@types/prop-types@15.7.15",
       "description": "TypeScript definitions for prop-types",
       "licenses": [
         {
@@ -2353,7 +2353,7 @@
           "value": "node_modules/@types/prop-types"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2362,7 +2362,7 @@
       "type": "library",
       "name": "csstype",
       "version": "3.2.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|csstype@3.2.3",
+      "bom-ref": "kopusha-frontend@0.2.2|csstype@3.2.3",
       "author": "Fredrik Nicol",
       "description": "Strict TypeScript and Flow types for style based on MDN data",
       "licenses": [
@@ -2402,7 +2402,7 @@
           "value": "node_modules/csstype"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2411,7 +2411,7 @@
       "type": "library",
       "name": "tslib",
       "version": "2.8.1",
-      "bom-ref": "obs-viewer-frontend@0.2.0|tslib@2.8.1",
+      "bom-ref": "kopusha-frontend@0.2.2|tslib@2.8.1",
       "author": "Microsoft Corp.",
       "description": "Runtime library for TypeScript helper functions",
       "licenses": [
@@ -2451,7 +2451,7 @@
           "value": "node_modules/tslib"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2460,7 +2460,7 @@
       "type": "library",
       "name": "react-remove-scroll-bar",
       "version": "2.3.8",
-      "bom-ref": "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
+      "bom-ref": "kopusha-frontend@0.2.2|react-remove-scroll-bar@2.3.8",
       "author": "Anton Korzunov",
       "description": "Removes body scroll without content _shake_",
       "licenses": [
@@ -2500,7 +2500,7 @@
           "value": "node_modules/react-remove-scroll-bar"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2509,7 +2509,7 @@
       "type": "library",
       "name": "react-style-singleton",
       "version": "2.2.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
+      "bom-ref": "kopusha-frontend@0.2.2|react-style-singleton@2.2.3",
       "author": "Anton Korzunov",
       "description": "Just create a single stylesheet...",
       "licenses": [
@@ -2549,7 +2549,7 @@
           "value": "node_modules/react-style-singleton"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2558,7 +2558,7 @@
       "type": "library",
       "name": "use-callback-ref",
       "version": "1.3.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
+      "bom-ref": "kopusha-frontend@0.2.2|use-callback-ref@1.3.3",
       "author": "theKashey",
       "description": "The same useRef, but with callback",
       "licenses": [
@@ -2598,7 +2598,7 @@
           "value": "node_modules/use-callback-ref"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2607,7 +2607,7 @@
       "type": "library",
       "name": "use-sidecar",
       "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3",
+      "bom-ref": "kopusha-frontend@0.2.2|use-sidecar@1.1.3",
       "author": "theKashey",
       "description": "Sidecar code splitting utils",
       "licenses": [
@@ -2647,7 +2647,7 @@
           "value": "node_modules/use-sidecar"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2657,7 +2657,7 @@
       "name": "react-dom",
       "group": "@floating-ui",
       "version": "2.1.9",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
+      "bom-ref": "kopusha-frontend@0.2.2|@floating-ui/react-dom@2.1.9",
       "author": "atomiks",
       "description": "Floating UI for React DOM",
       "licenses": [
@@ -2697,7 +2697,7 @@
           "value": "node_modules/@floating-ui/react-dom"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2707,7 +2707,7 @@
       "name": "react-use-rect",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-rect@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2745,7 +2745,7 @@
           "value": "node_modules/@radix-ui/react-use-rect"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2755,7 +2755,7 @@
       "name": "react-use-size",
       "group": "@radix-ui",
       "version": "1.1.4",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-size@1.1.4",
       "licenses": [
         {
           "license": {
@@ -2793,7 +2793,7 @@
           "value": "node_modules/@radix-ui/react-use-size"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2803,7 +2803,7 @@
       "name": "rect",
       "group": "@radix-ui",
       "version": "1.1.3",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
+      "bom-ref": "kopusha-frontend@0.2.2|@radix-ui/rect@1.1.3",
       "licenses": [
         {
           "license": {
@@ -2841,7 +2841,7 @@
           "value": "node_modules/@radix-ui/rect"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2850,7 +2850,7 @@
       "type": "library",
       "name": "js-tokens",
       "version": "4.0.0",
-      "bom-ref": "obs-viewer-frontend@0.2.0|js-tokens@4.0.0",
+      "bom-ref": "kopusha-frontend@0.2.2|js-tokens@4.0.0",
       "author": "Simon Lydell",
       "description": "A regex that tokenizes JavaScript.",
       "licenses": [
@@ -2890,7 +2890,7 @@
           "value": "node_modules/js-tokens"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2899,7 +2899,7 @@
       "type": "library",
       "name": "get-nonce",
       "version": "1.0.1",
-      "bom-ref": "obs-viewer-frontend@0.2.0|get-nonce@1.0.1",
+      "bom-ref": "kopusha-frontend@0.2.2|get-nonce@1.0.1",
       "author": "Anton Korzunov",
       "description": "returns nonce",
       "licenses": [
@@ -2939,7 +2939,7 @@
           "value": "node_modules/get-nonce"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2948,7 +2948,7 @@
       "type": "library",
       "name": "detect-node-es",
       "version": "1.1.0",
-      "bom-ref": "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0",
+      "bom-ref": "kopusha-frontend@0.2.2|detect-node-es@1.1.0",
       "author": "Ilya Kantor",
       "description": "Detect Node.JS (as opposite to browser environment). ESM modification",
       "licenses": [
@@ -2988,7 +2988,7 @@
           "value": "node_modules/detect-node-es"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -2998,7 +2998,7 @@
       "name": "dom",
       "group": "@floating-ui",
       "version": "1.8.0",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
+      "bom-ref": "kopusha-frontend@0.2.2|@floating-ui/dom@1.8.0",
       "author": "atomiks",
       "description": "Floating UI for the web",
       "licenses": [
@@ -3038,7 +3038,7 @@
           "value": "node_modules/@floating-ui/dom"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -3048,7 +3048,7 @@
       "name": "core",
       "group": "@floating-ui",
       "version": "1.8.0",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
+      "bom-ref": "kopusha-frontend@0.2.2|@floating-ui/core@1.8.0",
       "author": "atomiks",
       "description": "Positioning library for floating elements: tooltips, popovers, dropdowns, and more",
       "licenses": [
@@ -3088,7 +3088,7 @@
           "value": "node_modules/@floating-ui/core"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -3098,7 +3098,7 @@
       "name": "utils",
       "group": "@floating-ui",
       "version": "0.2.12",
-      "bom-ref": "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12",
+      "bom-ref": "kopusha-frontend@0.2.2|@floating-ui/utils@0.2.12",
       "author": "atomiks",
       "description": "Utilities for Floating UI",
       "licenses": [
@@ -3138,7 +3138,7 @@
           "value": "node_modules/@floating-ui/utils"
         },
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "npm"
         }
       ]
@@ -3157,11 +3157,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3180,11 +3180,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3203,11 +3203,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3226,11 +3226,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3249,11 +3249,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3272,11 +3272,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3295,11 +3295,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3318,11 +3318,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3341,11 +3341,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3364,11 +3364,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3387,11 +3387,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3410,11 +3410,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3433,11 +3433,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3456,11 +3456,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3479,11 +3479,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3502,11 +3502,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3525,11 +3525,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3548,11 +3548,11 @@
       ],
       "properties": [
         {
-          "name": "obs-viewer:origin",
+          "name": "kopusha:origin",
           "value": "duckdb-static"
         },
         {
-          "name": "obs-viewer:evidence",
+          "name": "kopusha:evidence",
           "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
         }
       ]
@@ -3560,7 +3560,7 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/obs-viewer@v0.1.2-0.20260801185033-9643ca633ef5?type=module",
+      "ref": "pkg:golang/github.com/labmk/kopusha@v0.2.2?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
         "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
@@ -3704,420 +3704,420 @@
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0",
+      "ref": "kopusha-frontend@0.2.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
-        "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23",
+        "kopusha-frontend@0.2.2|@tanstack/react-query@5.101.4",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-context@1.2.2",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "kopusha-frontend@0.2.2|@radix-ui/react-focus-guards@1.1.6",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "kopusha-frontend@0.2.2|@radix-ui/react-id@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-controllable-state@1.2.6",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|aria-hidden@1.2.6",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react-remove-scroll@2.7.2",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-effect-event@0.0.5",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-dialog@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-context@1.2.2",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+        "kopusha-frontend@0.2.2|@radix-ui/react-focus-guards@1.1.6",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+        "kopusha-frontend@0.2.2|@radix-ui/react-id@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-controllable-state@1.2.6",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|aria-hidden@1.2.6",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react-remove-scroll@2.7.2",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-dismissable-layer@1.1.19",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-effect-event@0.0.5",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-focus-scope@1.1.16",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
-        "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@floating-ui/react-dom@2.1.9",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-context@1.2.2",
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-rect@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-size@1.1.4",
+        "kopusha-frontend@0.2.2|@radix-ui/rect@1.1.3",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-popper@1.3.7|@radix-ui/react-arrow@1.1.15",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-portal@1.1.17",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-presence@1.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-popover@1.1.23|@radix-ui/react-primitive@2.1.10",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@tanstack/react-query@5.101.4",
+      "ref": "kopusha-frontend@0.2.2|@tanstack/react-query@5.101.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@tanstack/query-core@5.101.4",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
+      "ref": "kopusha-frontend@0.2.2|react-dom@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|scheduler@0.23.2"
+        "kopusha-frontend@0.2.2|loose-envify@1.4.0",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|scheduler@0.23.2"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|react@18.3.1",
+      "ref": "kopusha-frontend@0.2.2|react@18.3.1",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0"
+        "kopusha-frontend@0.2.2|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7"
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-context@1.2.2",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-context@1.2.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-focus-guards@1.1.6",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-focus-guards@1.1.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-id@1.1.4",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-id@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-slot@1.3.3",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-slot@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-compose-refs@1.1.5",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-compose-refs@1.1.5",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-controllable-state@1.2.6",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-controllable-state@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/primitive@1.1.7",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-effect-event@0.0.5",
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
+      "ref": "kopusha-frontend@0.2.2|@types/react@18.3.31",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15",
-        "obs-viewer-frontend@0.2.0|csstype@3.2.3"
+        "kopusha-frontend@0.2.2|@types/prop-types@15.7.15",
+        "kopusha-frontend@0.2.2|csstype@3.2.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|aria-hidden@1.2.6",
+      "ref": "kopusha-frontend@0.2.2|aria-hidden@1.2.6",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+        "kopusha-frontend@0.2.2|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|react-remove-scroll@2.7.2",
+      "ref": "kopusha-frontend@0.2.2|react-remove-scroll@2.7.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
-        "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1",
-        "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
-        "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-remove-scroll-bar@2.3.8",
+        "kopusha-frontend@0.2.2|react-style-singleton@2.2.3",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|tslib@2.8.1",
+        "kopusha-frontend@0.2.2|use-callback-ref@1.3.3",
+        "kopusha-frontend@0.2.2|use-sidecar@1.1.3"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@tanstack/query-core@5.101.4"
+      "ref": "kopusha-frontend@0.2.2|@tanstack/query-core@5.101.4"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|loose-envify@1.4.0",
+      "ref": "kopusha-frontend@0.2.2|loose-envify@1.4.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|js-tokens@4.0.0"
+        "kopusha-frontend@0.2.2|js-tokens@4.0.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|scheduler@0.23.2",
+      "ref": "kopusha-frontend@0.2.2|scheduler@0.23.2",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|loose-envify@1.4.0"
+        "kopusha-frontend@0.2.2|loose-envify@1.4.0"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-callback-ref@1.1.4",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-callback-ref@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-effect-event@0.0.5",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-effect-event@0.0.5",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@types/prop-types@15.7.15"
+      "ref": "kopusha-frontend@0.2.2|@types/prop-types@15.7.15"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|csstype@3.2.3"
+      "ref": "kopusha-frontend@0.2.2|csstype@3.2.3"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+      "ref": "kopusha-frontend@0.2.2|tslib@2.8.1"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|react-remove-scroll-bar@2.3.8",
+      "ref": "kopusha-frontend@0.2.2|react-remove-scroll-bar@2.3.8",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react-style-singleton@2.2.3",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|react-style-singleton@2.2.3",
+      "ref": "kopusha-frontend@0.2.2|react-style-singleton@2.2.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|get-nonce@1.0.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|get-nonce@1.0.1",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|use-callback-ref@1.3.3",
+      "ref": "kopusha-frontend@0.2.2|use-callback-ref@1.3.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|use-sidecar@1.1.3",
+      "ref": "kopusha-frontend@0.2.2|use-sidecar@1.1.3",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0",
-        "obs-viewer-frontend@0.2.0|react@18.3.1",
-        "obs-viewer-frontend@0.2.0|tslib@2.8.1"
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|detect-node-es@1.1.0",
+        "kopusha-frontend@0.2.2|react@18.3.1",
+        "kopusha-frontend@0.2.2|tslib@2.8.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/react-dom@2.1.9",
+      "ref": "kopusha-frontend@0.2.2|@floating-ui/react-dom@2.1.9",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
-        "obs-viewer-frontend@0.2.0|react-dom@18.3.1",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@floating-ui/dom@1.8.0",
+        "kopusha-frontend@0.2.2|react-dom@18.3.1",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-rect@1.1.4",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-rect@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/rect@1.1.3",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/react-use-size@1.1.4",
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/react-use-size@1.1.4",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@radix-ui/react-use-layout-effect@1.1.4",
-        "obs-viewer-frontend@0.2.0|@types/react@18.3.31",
-        "obs-viewer-frontend@0.2.0|react@18.3.1"
+        "kopusha-frontend@0.2.2|@radix-ui/react-use-layout-effect@1.1.4",
+        "kopusha-frontend@0.2.2|@types/react@18.3.31",
+        "kopusha-frontend@0.2.2|react@18.3.1"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@radix-ui/rect@1.1.3"
+      "ref": "kopusha-frontend@0.2.2|@radix-ui/rect@1.1.3"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|js-tokens@4.0.0"
+      "ref": "kopusha-frontend@0.2.2|js-tokens@4.0.0"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|get-nonce@1.0.1"
+      "ref": "kopusha-frontend@0.2.2|get-nonce@1.0.1"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|detect-node-es@1.1.0"
+      "ref": "kopusha-frontend@0.2.2|detect-node-es@1.1.0"
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/dom@1.8.0",
+      "ref": "kopusha-frontend@0.2.2|@floating-ui/dom@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
-        "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
+        "kopusha-frontend@0.2.2|@floating-ui/core@1.8.0",
+        "kopusha-frontend@0.2.2|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/core@1.8.0",
+      "ref": "kopusha-frontend@0.2.2|@floating-ui/core@1.8.0",
       "dependsOn": [
-        "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
+        "kopusha-frontend@0.2.2|@floating-ui/utils@0.2.12"
       ]
     },
     {
-      "ref": "obs-viewer-frontend@0.2.0|@floating-ui/utils@0.2.12"
+      "ref": "kopusha-frontend@0.2.2|@floating-ui/utils@0.2.12"
     }
   ]
 }

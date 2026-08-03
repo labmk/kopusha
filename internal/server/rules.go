@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
-	"github.com/labmk/obs-viewer/internal/logx"
-	"github.com/labmk/obs-viewer/internal/parsers"
+	"github.com/labmk/kopusha/internal/ingest"
+	"github.com/labmk/kopusha/internal/logx"
+	"github.com/labmk/kopusha/internal/parsers"
 )
 
 // SetRules attaches the parsers.d manager. Called once from main after

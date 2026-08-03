@@ -22,6 +22,13 @@ async function request(path, options = {}) {
 export const api = {
   getVersion: () => request('/api/version'),
 
+  // Self-update is two steps on purpose: prepare downloads and verifies
+  // without writing anything, so the user sees what will happen — and
+  // which of their parser rules will be left alone — before agreeing.
+  prepareUpdate: () => request('/api/update/prepare', { method: 'POST' }),
+
+  applyUpdate: () => request('/api/update/apply', { method: 'POST' }),
+
   getFiles: () => request('/api/files'),
 
   loadFile: (path) =>

@@ -1,4 +1,4 @@
-# obs-viewer
+# kopusha
 
 **Makes unstructured logs queryable without writing extraction code.**
 
@@ -7,11 +7,11 @@ bracketed text format there, Windows event logs, XML — and get one
 queryable table with a real filter UI over it. No ingestion step, no
 index, no server, nothing to install.
 
-obs-viewer embeds a [DuckDB](https://duckdb.org) query engine and a
+kopusha embeds a [DuckDB](https://duckdb.org) query engine and a
 React UI into one executable.
 
 ```
-obs_viewer --dir ./logs/
+kopusha --dir ./logs/
 ```
 
 ## Why
@@ -30,7 +30,7 @@ is one string column to every one of those tools. Making it queryable
 means hand-writing regex extraction in SQL, per format, and then
 hand-writing the union across files whose fields don't line up.
 
-That's the part obs-viewer does. Formats are described by dropping a
+That's the part kopusha does. Formats are described by dropping a
 YAML rule into `parsers.d/` — no recompile — and files with unrelated
 schemas load together into one union you can filter across. The query
 UI is there because the people who need this are not the people who
@@ -46,13 +46,13 @@ machine.
   only outbound request is an optional startup check for a newer release,
   which reports and never installs — turn it off with `update_check =
   false` and the binary makes no network calls at all. When a release
-  does exist, obs-viewer says so once and links to it; dismissing the
+  does exist, kopusha says so once and links to it; dismissing the
   notice is remembered until the next version.
 - **Multi-format ingest.** NDJSON, Parquet, Windows EVTX, XML, and line-
   or block-structured text logs. New text formats are added by dropping
   a YAML rule into `parsers.d/` — no recompile.
 - **Rule builder.** Paste a few lines of an unrecognised format and
-  obs-viewer proposes a pattern, then shows the rows it would produce
+  kopusha proposes a pattern, then shows the rows it would produce
   before anything is saved. And when a file doesn't parse, it says
   which adapters looked, what each one objected to, and what the first
   line looked like by the time it reached the parser.
@@ -97,7 +97,7 @@ Every release archive carries a signed attestation proving it was built
 by this repository's workflow from a named commit:
 
 ```bash
-gh attestation verify obs_viewer-0.2.1-darwin-arm64.zip --repo labmk/obs-viewer
+gh attestation verify kopusha-0.2.1-darwin-arm64.zip --repo labmk/kopusha
 ```
 
 That is a stronger check than the `SHA256SUMS` file published beside it,
@@ -110,13 +110,13 @@ thing and is what stops the operating system warning. See
 ## Usage
 
 ```bash
-obs_viewer                                            # port 9200, opens a browser
-obs_viewer --dir /path/to/logs/                       # pre-load a directory
-obs_viewer --files "/path/to/*.ndjson"                # pre-load a glob
-obs_viewer --port 8080 --no-browser                   # custom port, no auto-open
-obs_viewer --port 9443 --cert cert.pem --key key.pem  # TLS
-obs_viewer --verbose                                  # startup phase timings
-obs_viewer --no-update-check                          # skip the release check
+kopusha                                            # port 9200, opens a browser
+kopusha --dir /path/to/logs/                       # pre-load a directory
+kopusha --files "/path/to/*.ndjson"                # pre-load a glob
+kopusha --port 8080 --no-browser                   # custom port, no auto-open
+kopusha --port 9443 --cert cert.pem --key key.pem  # TLS
+kopusha --verbose                                  # startup phase timings
+kopusha --no-update-check                          # skip the release check
 ```
 
 Keep the `parsers.d/` folder beside the binary. The server exits on its
@@ -140,7 +140,7 @@ full per-format contract and the test matrix that enforces it.
 
 ### When a file doesn't parse
 
-Nothing recognized it, so nothing pretends otherwise. obs-viewer shows
+Nothing recognized it, so nothing pretends otherwise. kopusha shows
 what every adapter thought and why:
 
 ```
@@ -162,7 +162,7 @@ file stores it.
 ### Adding a text format
 
 Click **Build a rule from this line** on that screen, or **Parser
-rules** in the header. Paste a few sample lines and obs-viewer proposes
+rules** in the header. Paste a few sample lines and kopusha proposes
 a pattern, then shows the table it would produce — through the real
 parser, so the preview cannot disagree with the result. Correct the
 field names, save, and the rule applies to the next load without a
@@ -216,7 +216,7 @@ adapter checklist.
 
 ## Configuration
 
-`obs_viewer.conf` sits next to the binary. Every value is optional; the
+`kopusha.conf` sits next to the binary. Every value is optional; the
 shipped file has all of them commented out.
 
 ```ini
@@ -227,7 +227,7 @@ parsers_dir = parsers.d
 update_check = true  # check GitHub for a newer release at startup
 ```
 
-All `obs_viewer*.conf` files in the directory are merged at startup in
+All `kopusha*.conf` files in the directory are merged at startup in
 alphabetical order, so a module can ship its own sibling file.
 `.example` suffixes are deliberately skipped.
 
@@ -243,7 +243,7 @@ VERSION=1.0.0 ./build.sh               # custom version
 MANUFACTURER="Acme Corp" ./build.sh    # brand a fork
 ```
 
-Output lands in `dist/` alongside `parsers.d/` and `obs_viewer.conf`.
+Output lands in `dist/` alongside `parsers.d/` and `kopusha.conf`.
 
 Windows binaries are produced by CI; that is the supported path. A
 local Windows build needs a MinGW-w64 GCC whose C++ ABI matches the
@@ -275,7 +275,7 @@ cd frontend && npm run gen:api
 
 ## Extending
 
-obs-viewer has a module system for optional sub-features that ship
+kopusha has a module system for optional sub-features that ship
 their own Go handlers, React tab, and static assets. No modules ship by
 default — see [docs/MODULES.md](./docs/MODULES.md) for the contract and
 a worked example.
@@ -283,7 +283,7 @@ a worked example.
 ## Roadmap
 
 Direction and the reasoning behind it: [docs/ROADMAP.md](./docs/ROADMAP.md).
-Tracking is in [issues](https://github.com/labmk/obs-viewer/issues),
+Tracking is in [issues](https://github.com/labmk/kopusha/issues),
 grouped by milestone.
 
 ## Security
@@ -299,7 +299,7 @@ grouped by milestone.
 
 ## AI-supported development
 
-obs-viewer was written with AI assistance. Architecture, design
+kopusha was written with AI assistance. Architecture, design
 decisions, review and testing are human-owned; a substantial share of
 the implementation, documentation and test-fixture generation was
 Treat this the way you would any other code you did not write: read it
@@ -314,7 +314,7 @@ ISC. [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) lists it, and
 `sbom.cdx.json` is the machine-readable CycloneDX equivalent, shipped
 with every release.
 
-obs-viewer is an independent open source project. Anyone is free to
+kopusha is an independent open source project. Anyone is free to
 use, modify and redistribute it, including commercially, under the MIT
 terms. It is provided as-is, with no warranty and no support
 commitment.

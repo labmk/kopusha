@@ -20,7 +20,7 @@ package parquet
 import (
 	"bytes"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 // magic is the 4-byte marker at the start of every Parquet file. It also

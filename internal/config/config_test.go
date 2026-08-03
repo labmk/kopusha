@@ -8,7 +8,7 @@ import (
 
 func writeConf(t *testing.T, body string) string {
 	t.Helper()
-	p := filepath.Join(t.TempDir(), "obs_viewer.conf")
+	p := filepath.Join(t.TempDir(), "kopusha.conf")
 	if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
 		t.Fatalf("write: %v", err)
 	}
@@ -27,7 +27,7 @@ func TestLoad_MissingFile(t *testing.T) {
 }
 
 func TestLoad_FlatKeysCompat(t *testing.T) {
-	// Pre-0.4 obs_viewer.conf — no sections, just three flat keys.
+	// Pre-0.4 kopusha.conf — no sections, just three flat keys.
 	p := writeConf(t, "port = 9201\ntimeout = 600\nlisten=0.0.0.0\n")
 	cfg, err := Load(p)
 	if err != nil {

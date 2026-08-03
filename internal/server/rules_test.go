@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/parsers"
-	"github.com/labmk/obs-viewer/internal/settings"
+	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/parsers"
+	"github.com/labmk/kopusha/internal/settings"
 )
 
 // newRuleTestServer wires the rule routes over a real parsers.Manager

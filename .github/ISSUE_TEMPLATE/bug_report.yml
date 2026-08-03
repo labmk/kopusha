@@ -22,7 +22,7 @@ body:
     attributes:
       label: Steps to reproduce
       placeholder: |
-        1. obs_viewer --dir ./sample/
+        1. kopusha --dir ./sample/
         2. Load sample.ndjson
         3. Filter on nodeinfo.type = "worker"
         4. Result count is 0, but the field picker shows the value
@@ -43,7 +43,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: From `obs_viewer --version`, or the status bar.
+      description: From `kopusha --version`, or the status bar.
     validations:
       required: true
 
@@ -65,7 +65,7 @@ body:
     attributes:
       label: Log output
       description: >
-        `obs_viewer_<date>.log` sits next to the binary. Run with
+        `kopusha_<date>.log` sits next to the binary. Run with
         `--verbose` for startup phase timings. Check it for paths you'd
         rather not publish before pasting.
       render: shell

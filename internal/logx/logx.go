@@ -1,5 +1,5 @@
 // Package logx is a tiny structured JSON logger that writes newline-
-// delimited JSON objects to logs/obs_viewer_<date>.log next to the exe.
+// delimited JSON objects to logs/kopusha_<date>.log next to the exe.
 // No external deps. Thread-safe.
 package logx
 
@@ -24,7 +24,7 @@ type Logger struct {
 
 var global *Logger
 
-// Init opens (or creates) logs/obs_viewer_YYYY-MM-DD.log under baseDir.
+// Init opens (or creates) logs/kopusha_YYYY-MM-DD.log under baseDir.
 // On any error it falls back to stderr so logging never blocks startup.
 func Init(baseDir string) *Logger {
 	l := &Logger{dir: filepath.Join(baseDir, "logs")}
@@ -59,7 +59,7 @@ func (l *Logger) rotate() {
 		_ = l.file.Close()
 	}
 	l.day = today
-	l.path = filepath.Join(l.dir, "obs_viewer_"+today+".log")
+	l.path = filepath.Join(l.dir, "kopusha_"+today+".log")
 	f, err := os.OpenFile(l.path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "logx: cannot open %s: %v (falling back to stderr)\n", l.path, err)

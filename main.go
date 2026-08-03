@@ -15,15 +15,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/config"
-	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/logx"
-	"github.com/labmk/obs-viewer/internal/manifest"
-	"github.com/labmk/obs-viewer/internal/module"
-	"github.com/labmk/obs-viewer/internal/parsers"
-	"github.com/labmk/obs-viewer/internal/server"
-	"github.com/labmk/obs-viewer/internal/settings"
-	"github.com/labmk/obs-viewer/internal/update"
+	"github.com/labmk/kopusha/internal/config"
+	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/logx"
+	"github.com/labmk/kopusha/internal/manifest"
+	"github.com/labmk/kopusha/internal/module"
+	"github.com/labmk/kopusha/internal/parsers"
+	"github.com/labmk/kopusha/internal/selfupdate"
+	"github.com/labmk/kopusha/internal/server"
+	"github.com/labmk/kopusha/internal/settings"
+	"github.com/labmk/kopusha/internal/update"
 )
 
 //go:embed parsers.d.sha256
@@ -32,10 +33,10 @@ var parsersManifestData []byte
 //go:embed static/*
 var staticFS embed.FS
 
-var version = "0.2.2"
+var version = "0.3.0"
 
-// @title           obs-viewer API
-// @version         0.2.2
+// @title           kopusha API
+// @version         0.3.0
 // @description     Local viewer for log, metric and trace files: NDJSON, EVTX,
 // @description     XML, and rule-driven text logs, queried through DuckDB.
 // @description     The OpenAPI spec is the source of truth for the generated
@@ -64,7 +65,7 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Printf("obs_viewer v%s\n", version)
+		fmt.Printf("kopusha v%s\n", version)
 		os.Exit(0)
 	}
 
@@ -110,9 +111,9 @@ func main() {
 	}
 
 	// Load config files (all optional). Core settings live in
-	// obs_viewer.conf; each module may ship its own
-	// obs_viewer_<name>.conf sibling. They're globbed and merged in
-	// sorted order (obs_viewer.conf wins alphabetical first, so
+	// kopusha.conf; each module may ship its own
+	// kopusha_<name>.conf sibling. They're globbed and merged in
+	// sorted order (kopusha.conf wins alphabetical first, so
 	// module-specific overrides slot on top). `.example` suffixes
 	// deliberately don't match — they ship as reference templates that
 	// operators rename to `.conf` to activate.
@@ -121,7 +122,7 @@ func main() {
 	// ONLY when a TLS cert is provided; otherwise we fall back to
 	// loopback and print a warning.
 	confListen := "127.0.0.1"
-	confPaths, _ := filepath.Glob(filepath.Join(exeDir, "obs_viewer*.conf"))
+	confPaths, _ := filepath.Glob(filepath.Join(exeDir, "kopusha*.conf"))
 	sort.Strings(confPaths)
 	cfg, err := config.LoadAll(confPaths)
 	if err != nil {
@@ -254,7 +255,7 @@ func main() {
 	if rawListen != "" && !isLoopback(rawListen) {
 		if *certFile == "" {
 			fmt.Fprintf(os.Stderr,
-				"WARNING: obs_viewer.conf sets listen=%s but no TLS certificate was provided.\n"+
+				"WARNING: kopusha.conf sets listen=%s but no TLS certificate was provided.\n"+
 					"         For security, falling back to localhost-only (127.0.0.1).\n"+
 					"         Provide --cert and --key to enable the configured listen address.\n",
 				rawListen)
@@ -283,10 +284,10 @@ func main() {
 	srv.SetRules(ruleMgr)
 
 	// Release notification. On by default; `update_check = false` in
-	// obs_viewer.conf or --no-update-check turns it off, and the flag
+	// kopusha.conf or --no-update-check turns it off, and the flag
 	// wins so a one-off run can stay offline without editing config.
 	//
-	// This is the only outbound request obs-viewer ever makes. It reads
+	// This is the only outbound request kopusha ever makes. It reads
 	// the GitHub releases API and does nothing else — no download, no
 	// install, no telemetry. It runs in the background so startup never
 	// waits on it, and it fails silently, because on an air-gapped host
@@ -297,8 +298,39 @@ func main() {
 	updater.Start(context.Background(), vlog)
 	vlog("update check: enabled=%v", updateEnabled)
 
+	// User-initiated self-update. Separate from the check above: that one
+	// only ever reports, this one can replace the binary — and only when
+	// someone presses the button. Disabled by the same config key, since
+	// a host that must not phone home must not fetch a release either.
+	//
+	// The shipped manifest is what makes the parsers.d/ merge safe, so it
+	// is handed over here. Without it the merge freezes and touches
+	// nothing, which is the correct reading of "this binary cannot tell
+	// your rules from the ones it came with".
+	if updateEnabled {
+		shipped, err := manifest.Parse(parsersManifestData)
+		if err != nil {
+			vlog("self-update: parser manifest unreadable, rules will not be touched: %v", err)
+			shipped = nil
+		}
+		srv.SetUpdater(&selfupdate.Updater{
+			Current:    version,
+			InstallDir: exeDir,
+			ExePath:    exePath,
+			RulesDir:   parsersDir,
+			Shipped:    shipped,
+		})
+	}
+
+	// Sweep the binary left behind by a previous update. It cannot be
+	// removed by the process that replaced it — on Windows the running
+	// image is still locked — so the next launch is the first chance.
+	if selfupdate.SweepBackup(exePath) {
+		vlog("removed the previous binary left by an update")
+	}
+
 	// Module registry. Modules are mounted only when their config
-	// section is present in obs_viewer.conf — see /api/modules for
+	// section is present in kopusha.conf — see /api/modules for
 	// the runtime view the SPA reads. No modules ship by default;
 	// add yours with modreg.Add(<pkg>.New()) — see docs/MODULES.md.
 	modreg := module.NewRegistry(cfg, module.Deps{
@@ -313,7 +345,7 @@ func main() {
 	}
 	vlog("server constructed, ready to serve (total startup: %.2fs)", time.Since(startTime).Seconds())
 
-	fmt.Printf("obs_viewer v%s\n", version)
+	fmt.Printf("kopusha v%s\n", version)
 	fmt.Printf("Listening on %s\n", url)
 	if confTimeout > 0 {
 		fmt.Printf("Inactivity timeout: %ds\n", confTimeout)

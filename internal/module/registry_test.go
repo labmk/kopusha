@@ -10,14 +10,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/labmk/obs-viewer/internal/config"
+	"github.com/labmk/kopusha/internal/config"
 )
 
 // --- helpers ---
 
 func loadConf(t *testing.T, body string) *config.Config {
 	t.Helper()
-	p := filepath.Join(t.TempDir(), "obs_viewer.conf")
+	p := filepath.Join(t.TempDir(), "kopusha.conf")
 	if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
 		t.Fatalf("write conf: %v", err)
 	}

@@ -1,12 +1,12 @@
 # Third-party notices
 
-obs-viewer 0.2.0 is distributed as a single statically linked
+kopusha 0.2.2 is distributed as a single statically linked
 executable. Every component listed here is compiled into that binary,
 which is why their notices ship with it: MIT and BSD require the
 copyright notice to travel with copies, and Apache-2.0 §4 requires
 attribution.
 
-obs-viewer's own code is MIT — see [LICENSE](./LICENSE). This file
+kopusha's own code is MIT — see [LICENSE](./LICENSE). This file
 covers everything else.
 
 **Generated** by `scripts/generate-sbom.py`; do not edit by hand.
@@ -135,7 +135,7 @@ would make the distributed binary undistributable under MIT.
 scanner can see inside it. The DuckDB entries above were derived from
 the static archives the linker actually consumes and their licences
 read from the DuckDB source tree. They are marked in the SBOM with an
-`obs-viewer:evidence` property recording that provenance, rather than
+`kopusha:evidence` property recording that provenance, rather than
 being presented as scanner output.
 
 Full licence texts are available from each project's repository. The

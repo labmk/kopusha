@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 func newTestManager(t *testing.T) (*Manager, string) {

@@ -1,13 +1,13 @@
 # Architecture
 
-How obs-viewer is put together: the layers, the contracts between
+How kopusha is put together: the layers, the contracts between
 them, and the decisions that are load-bearing. Working rules for
 contributors live in [CONTRIBUTING.md](./CONTRIBUTING.md); the ingest
 contract and its test matrix live in [REQUIREMENTS.md](./REQUIREMENTS.md).
 
 ## What This Is
 
-obs-viewer is a standalone log/metrics/traces viewer distributed as a
+kopusha is a standalone log/metrics/traces viewer distributed as a
 single static binary: Go backend + embedded DuckDB query engine +
 React/Vite frontend bundled via `go:embed`. It reads files from the
 local filesystem — NDJSON, Windows EVTX, XML, and rule-driven text logs
@@ -20,11 +20,11 @@ the same source with no code changes.
 ## Repository layout
 
 ```
-obs_viewer[.exe]                     (~85 MB single binary)
+kopusha[.exe]                     (~85 MB single binary)
   main.go                            CLI entry: flags, conf load, registry boot, TLS
   console_windows.go                 AttachConsole shim (build-tagged); console_other.go is a no-op
   internal/
-    config/config.go                 obs_viewer*.conf parser (INI sections) + LoadAll merge
+    config/config.go                 kopusha*.conf parser (INI sections) + LoadAll merge
     engine/engine.go                 DuckDB wrapper: dispatch via ingest, query, export
     ingest/                          Format dispatch + adapters
       loader.go                      Loader, RecordStreamer, DirectIngester ifaces
@@ -45,7 +45,7 @@ obs_viewer[.exe]                     (~85 MB single binary)
     settings/settings.go             Persistent settings (JSON file next to binary)
   frontend/                          React SPA (Vite build)
     openapi-ts.config.js             reads internal/server/docs/swagger.json
-    playwright.config.js             spawns dist/obs_viewer.exe on :9201 with --dir test-fixtures/ndjson
+    playwright.config.js             spawns dist/kopusha.exe on :9201 with --dir test-fixtures/ndjson
     src/
       App.jsx                        Layout, /api/modules consumer
       main.jsx                       Wraps App in QueryClientProvider
@@ -346,7 +346,7 @@ columns and struct paths.
   filters + an `@time:` extension line. Operator map: `is` → `=`,
   `is_not` → `!=`, `contains`/`wildcard` → `=~`, `exists` → `=~ ".+"`,
   `does_not_exist` → `= ""`, `is_one_of` → anchored regex alternation.
-  Round-trip is lossless for the obs-viewer model; `contains` and
+  Round-trip is lossless for the kopusha model; `contains` and
   `wildcard` both serialize as `=~` and parse back as `wildcard`.
 - `LogTable` persists column widths under a key derived from the column
   set shape, so widths survive restarts but reset when the schema

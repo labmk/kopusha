@@ -4,6 +4,85 @@ export type ClientOptions = {
     baseUrl: `http://${string}` | `https://${string}` | (string & {});
 };
 
+export type SelfupdateAttestation = {
+    /**
+     * Commit is the source revision the archive was built from. This is
+     * the claim worth showing a person: it names a commit they can read.
+     */
+    commit?: string;
+    /**
+     * Digest is the SHA-256 of the verified archive, hex.
+     */
+    digest?: string;
+    /**
+     * Repository, WorkflowRef and WorkflowPath identify the build.
+     */
+    repository?: string;
+    /**
+     * RunnerEnvironment is "github-hosted" for a normal release. A
+     * self-hosted runner would mean the build ran on a machine outside
+     * GitHub's control.
+     */
+    runner_environment?: string;
+    workflow_path?: string;
+    workflow_ref?: string;
+};
+
+export type SelfupdatePlan = {
+    asset?: string;
+    /**
+     * Attestation is the verified provenance of the downloaded archive.
+     */
+    attestation?: SelfupdateAttestation;
+    from?: string;
+    install_dir?: string;
+    rules?: SelfupdateRulePlan;
+    size?: number;
+    to?: string;
+    /**
+     * Verification names what was actually checked, so the UI can say it
+     * precisely instead of implying a signature check that did not
+     * happen. See Verify.
+     */
+    verification?: string;
+};
+
+export type SelfupdateResult = {
+    backup?: string;
+    from?: string;
+    rules_added?: Array<string>;
+    rules_deleted?: Array<string>;
+    /**
+     * RulesFrozen is true when the running binary carried no manifest and
+     * parsers.d/ was therefore left entirely alone.
+     */
+    rules_frozen?: boolean;
+    rules_kept?: Array<SelfupdateRuleChange>;
+    rules_replaced?: Array<string>;
+    to?: string;
+};
+
+export type SelfupdateRuleAction = 'add' | 'replace' | 'delete' | 'keep';
+
+export type SelfupdateRuleChange = {
+    action?: SelfupdateRuleAction;
+    name?: string;
+    /**
+     * Reason is set on every RuleKeep and is written for a person to
+     * read: "you edited it", not "hash mismatch".
+     */
+    reason?: string;
+};
+
+export type SelfupdateRulePlan = {
+    changes?: Array<SelfupdateRuleChange>;
+    /**
+     * Frozen is true when the running binary carries no manifest, in
+     * which case nothing can be classified and nothing is touched.
+     */
+    frozen?: boolean;
+};
+
 export type ServerAdapterVerdict = {
     /**
      * Name is the adapter name, e.g. "ndjson", "line".
@@ -436,7 +515,7 @@ export type ServerUpdateResponse = {
      */
     current?: string;
     /**
-     * Enabled mirrors update_check in obs_viewer.conf.
+     * Enabled mirrors update_check in kopusha.conf.
      */
     enabled?: boolean;
     /**
@@ -1151,6 +1230,56 @@ export type GetApiUpdateResponses = {
 };
 
 export type GetApiUpdateResponse = GetApiUpdateResponses[keyof GetApiUpdateResponses];
+
+export type PostApiUpdateApplyData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/update/apply';
+};
+
+export type PostApiUpdateApplyErrors = {
+    /**
+     * Conflict
+     */
+    409: ServerErrorResponse;
+};
+
+export type PostApiUpdateApplyError = PostApiUpdateApplyErrors[keyof PostApiUpdateApplyErrors];
+
+export type PostApiUpdateApplyResponses = {
+    /**
+     * OK
+     */
+    200: SelfupdateResult;
+};
+
+export type PostApiUpdateApplyResponse = PostApiUpdateApplyResponses[keyof PostApiUpdateApplyResponses];
+
+export type PostApiUpdatePrepareData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/update/prepare';
+};
+
+export type PostApiUpdatePrepareErrors = {
+    /**
+     * Conflict
+     */
+    409: ServerErrorResponse;
+};
+
+export type PostApiUpdatePrepareError = PostApiUpdatePrepareErrors[keyof PostApiUpdatePrepareErrors];
+
+export type PostApiUpdatePrepareResponses = {
+    /**
+     * OK
+     */
+    200: SelfupdatePlan;
+};
+
+export type PostApiUpdatePrepareResponse = PostApiUpdatePrepareResponses[keyof PostApiUpdatePrepareResponses];
 
 export type GetApiVersionData = {
     body?: never;

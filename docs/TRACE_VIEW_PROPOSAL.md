@@ -1,7 +1,7 @@
 # Trace visualization — design + tradeoffs
 
 Status: **deferred** (no concrete user request yet).
-Trigger to revisit: real OTel trace exports flowing into obs-viewer
+Trigger to revisit: real OTel trace exports flowing into kopusha
 in volumes that make the current row-table view unhelpful.
 
 ## Why the current UI is wrong for traces
@@ -51,7 +51,7 @@ duration, colour = service.
 | **vis-timeline** | ~+150 KB gzipped (430 KB → ~580 KB; +35%) | 1-2 days | Mature, has zoom/pan/grouping for free. Adds a transitive dep tree; Vite tree-shaking helps but not fully. |
 | **react-flow** | ~+100 KB gzipped | 2-3 days | Designed for graph/DAG, not Gantt. Possible but awkward fit. |
 | **D3-timeline / d3.js** | ~+90 KB gzipped (or +30 KB for only the modules we need) | 4-6 days | Maximum flexibility, but D3 imperative API doesn't pair cleanly with React's declarative model. |
-| **Embed Jaeger / Tempo UI** | n/a — not a React component | n/a | Ships its own SPA + backend. Not a fit for obs-viewer's single-binary shape. |
+| **Embed Jaeger / Tempo UI** | n/a — not a React component | n/a | Ships its own SPA + backend. Not a fit for kopusha's single-binary shape. |
 
 **Recommended path: hand-built SVG component.** Reasons:
 - The waterfall is a single screen with one interaction (hover/click). Generic charting libraries' value (multi-pane dashboards, axis composition) doesn't apply.
@@ -98,7 +98,7 @@ assert the waterfall renders ≥ N bars. ~50 lines.
 | **Trace data shape is more brittle than logs** | OTel spec evolves (clock semantics, span links, span events, instrumentation scope). Code that assumes a particular shape today breaks when the producer updates. Logs have no spec to break. |
 | **Edge cases multiply** | Clock skew between services (child appears to start before parent), missing parents (parent_span_id refers to a span not in the result set), pre-aggregated spans, sampled traces with gaps. Each edge case is a UX call. |
 | **Memory growth on huge traces** | A trace with 10k spans is realistic for distributed pipelines. Rendering 10k SVG elements without virtualization stutters the browser. Virtualization is the right answer but adds another ~100 lines of windowing logic. |
-| **No real-time trace ingest** | obs-viewer is file-oriented by design. Operators investigating a live incident would use Jaeger/Tempo directly rather than wait for the next export cycle. obs-viewer's value here is **post-mortem**, which limits the audience. |
+| **No real-time trace ingest** | kopusha is file-oriented by design. Operators investigating a live incident would use Jaeger/Tempo directly rather than wait for the next export cycle. kopusha's value here is **post-mortem**, which limits the audience. |
 | **Opportunity cost** | ~1-2 weeks of focused work. The same time spent on the engine/server Go test suites (currently absent) probably catches more bugs than the trace view solves. |
 
 ## When to actually build this

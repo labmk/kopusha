@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate obs-viewer's test fixtures.
+"""Generate kopusha's test fixtures.
 
 Every fixture is synthetic. Fixtures exercise *format grammar* — the
 shape a parser has to handle — and nothing else. See the "Test data

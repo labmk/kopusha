@@ -12,7 +12,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 // Loader is the NDJSON adapter.

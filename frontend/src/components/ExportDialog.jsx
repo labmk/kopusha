@@ -25,7 +25,7 @@ const EXPORT_FORMATS = [
     label: 'Parquet — columnar, compressed',
     ext: '.parquet',
     match: ['.parquet', '.pq'],
-    note: 'Typically several times smaller, and column types survive the round trip. obs-viewer reads it back.',
+    note: 'Typically several times smaller, and column types survive the round trip. kopusha reads it back.',
   },
 ];
 
@@ -73,7 +73,7 @@ function withDirectory(path, dir) {
 
 function defaultFileName() {
   const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-  return `obs_viewer_export_${ts}${DEFAULT_FORMAT.ext}`;
+  return `kopusha_export_${ts}${DEFAULT_FORMAT.ext}`;
 }
 
 function formatSize(bytes) {
@@ -262,7 +262,7 @@ export default function ExportDialog({ query, totalRecords, onClose }) {
               style={{ accentColor: 'var(--accent)', width: '16px', height: '16px' }}
             />
             <div>
-              <div style={{ fontSize: '13px' }}>Include obs_viewer binary</div>
+              <div style={{ fontSize: '13px' }}>Include kopusha binary</div>
               <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
                 Copies the executable alongside exported data so recipients can view it immediately
               </div>

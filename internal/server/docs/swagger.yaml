@@ -1,5 +1,120 @@
 basePath: /
 definitions:
+  selfupdate.Attestation:
+    properties:
+      commit:
+        description: |-
+          Commit is the source revision the archive was built from. This is
+          the claim worth showing a person: it names a commit they can read.
+        type: string
+      digest:
+        description: Digest is the SHA-256 of the verified archive, hex.
+        type: string
+      repository:
+        description: Repository, WorkflowRef and WorkflowPath identify the build.
+        type: string
+      runner_environment:
+        description: |-
+          RunnerEnvironment is "github-hosted" for a normal release. A
+          self-hosted runner would mean the build ran on a machine outside
+          GitHub's control.
+        type: string
+      workflow_path:
+        type: string
+      workflow_ref:
+        type: string
+    type: object
+  selfupdate.Plan:
+    properties:
+      asset:
+        type: string
+      attestation:
+        allOf:
+        - $ref: '#/definitions/selfupdate.Attestation'
+        description: Attestation is the verified provenance of the downloaded archive.
+      from:
+        type: string
+      install_dir:
+        type: string
+      rules:
+        $ref: '#/definitions/selfupdate.RulePlan'
+      size:
+        type: integer
+      to:
+        type: string
+      verification:
+        description: |-
+          Verification names what was actually checked, so the UI can say it
+          precisely instead of implying a signature check that did not
+          happen. See Verify.
+        type: string
+    type: object
+  selfupdate.Result:
+    properties:
+      backup:
+        type: string
+      from:
+        type: string
+      rules_added:
+        items:
+          type: string
+        type: array
+      rules_deleted:
+        items:
+          type: string
+        type: array
+      rules_frozen:
+        description: |-
+          RulesFrozen is true when the running binary carried no manifest and
+          parsers.d/ was therefore left entirely alone.
+        type: boolean
+      rules_kept:
+        items:
+          $ref: '#/definitions/selfupdate.RuleChange'
+        type: array
+      rules_replaced:
+        items:
+          type: string
+        type: array
+      to:
+        type: string
+    type: object
+  selfupdate.RuleAction:
+    enum:
+    - add
+    - replace
+    - delete
+    - keep
+    type: string
+    x-enum-varnames:
+    - RuleAdd
+    - RuleReplace
+    - RuleDelete
+    - RuleKeep
+  selfupdate.RuleChange:
+    properties:
+      action:
+        $ref: '#/definitions/selfupdate.RuleAction'
+      name:
+        type: string
+      reason:
+        description: |-
+          Reason is set on every RuleKeep and is written for a person to
+          read: "you edited it", not "hash mismatch".
+        type: string
+    type: object
+  selfupdate.RulePlan:
+    properties:
+      changes:
+        items:
+          $ref: '#/definitions/selfupdate.RuleChange'
+        type: array
+      frozen:
+        description: |-
+          Frozen is true when the running binary carries no manifest, in
+          which case nothing can be classified and nothing is touched.
+        type: boolean
+    type: object
   server.AdapterVerdict:
     properties:
       name:
@@ -613,7 +728,7 @@ definitions:
         example: 0.1.0
         type: string
       enabled:
-        description: Enabled mirrors update_check in obs_viewer.conf.
+        description: Enabled mirrors update_check in kopusha.conf.
         type: boolean
       latest:
         description: Latest is the newest published release, absent if unknown.
@@ -621,7 +736,7 @@ definitions:
         type: string
       url:
         description: URL is the release page.
-        example: https://github.com/labmk/obs-viewer/releases/tag/v0.2.0
+        example: https://github.com/labmk/kopusha/releases/tag/v0.2.0
         type: string
     type: object
   server.VersionResponse:
@@ -636,7 +751,7 @@ definitions:
         description: |-
           Repository is the project's page. A destination for a person to
           click, not something the binary fetches.
-        example: https://github.com/labmk/obs-viewer
+        example: https://github.com/labmk/kopusha
         type: string
       version:
         type: string
@@ -648,8 +763,8 @@ info:
     XML, and rule-driven text logs, queried through DuckDB.
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
-  title: obs-viewer API
-  version: 0.2.2
+  title: kopusha API
+  version: 0.3.0
 paths:
   /api/browse:
     get:
@@ -1178,8 +1293,8 @@ paths:
     get:
       consumes:
       - application/json
-      description: Persisted to obs_viewer_settings.json next to the binary. Only
-        the fields present in the POST body are updated.
+      description: Persisted to kopusha_settings.json next to the binary. Only the
+        fields present in the POST body are updated.
       parameters:
       - description: 'POST only: partial settings patch'
         in: body
@@ -1207,8 +1322,8 @@ paths:
     post:
       consumes:
       - application/json
-      description: Persisted to obs_viewer_settings.json next to the binary. Only
-        the fields present in the POST body are updated.
+      description: Persisted to kopusha_settings.json next to the binary. Only the
+        fields present in the POST body are updated.
       parameters:
       - description: 'POST only: partial settings patch'
         in: body
@@ -1306,9 +1421,9 @@ paths:
       - query
   /api/update:
     get:
-      description: Reports whether a newer release exists. Read-only — obs-viewer
-        never downloads or installs anything. Returns enabled=false when the check
-        is switched off, which the UI must distinguish from "up to date".
+      description: Reports whether a newer release exists. Read-only — kopusha never
+        downloads or installs anything. Returns enabled=false when the check is switched
+        off, which the UI must distinguish from "up to date".
       produces:
       - application/json
       responses:
@@ -1319,6 +1434,42 @@ paths:
       summary: Release update status
       tags:
       - system
+  /api/update/apply:
+    post:
+      description: Installs the binary and merges parsers.d/, then restarts. Requires
+        a prior /api/update/prepare.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/selfupdate.Result'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Apply a prepared update
+      tags:
+      - update
+  /api/update/prepare:
+    post:
+      description: Downloads the newest release, verifies its build attestation, and
+        returns the plan. Writes nothing.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/selfupdate.Plan'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: Prepare an update
+      tags:
+      - update
   /api/version:
     get:
       description: Lightweight liveness endpoint. The frontend uses this to drive

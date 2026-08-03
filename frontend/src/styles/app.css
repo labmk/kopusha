@@ -1,4 +1,4 @@
-/* No webfont import. obs-viewer is offline-first — a Google Fonts
+/* No webfont import. kopusha is offline-first — a Google Fonts
    @import fails silently on an air-gapped host and leaks a request to a
    third party on every page load, neither of which is acceptable for a
    tool whose whole premise is "no network access required". The
@@ -7,10 +7,10 @@
    self-host it: drop the .woff2 next to the CSS and add an @font-face
    rule. */
 
-/* obs-viewer core theme — neutral palette. Accent defaults to slate
+/* kopusha core theme — neutral palette. Accent defaults to slate
    grey; the optional `branding` module overrides --accent / --accent-*
    via /m/branding/styles/brand.css when its [branding] section is
-   present in obs_viewer.conf. */
+   present in kopusha.conf. */
 :root, [data-theme="dark"] {
   color-scheme: dark;
   --base-0: #080808;
@@ -1435,4 +1435,36 @@ html, body {
   .field-profile { width: 100%; border-left: none; }
   .main-split .main-results { display: none; }
   .main-split:not(:has(.field-profile)) .main-results { display: flex; }
+}
+
+/* Self-update: the plan shown before anything is written, and the
+   report shown afterwards. Both lean on the existing notice styling —
+   this is the same card in a later state, not a new surface. */
+.update-notice-plan,
+.update-notice-kept {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 6px;
+  color: var(--text-secondary);
+}
+
+.update-notice-kept ul {
+  margin: 4px 0 0;
+  padding-left: 16px;
+}
+
+.update-notice-kept code,
+.update-notice-verified code {
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+.update-notice-verified {
+  margin-bottom: 4px;
+}
+
+.update-notice-error {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--danger, #c0392b);
 }

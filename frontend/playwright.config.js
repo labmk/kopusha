@@ -8,14 +8,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ingest of the fixture NDJSONs). Build it once with `./build.sh` from
 // the project root, then `npm run test:e2e` here.
 //
-// The webServer block spawns `dist/obs_viewer.exe` from the obs-viewer
+// The webServer block spawns `dist/kopusha.exe` from the kopusha
 // project root, pointed at `test-fixtures/ndjson` so two NDJSONs are
 // pre-loaded. Port 9201 is used to avoid clobbering a developer's
 // running instance on the default 9200.
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const BIN = process.platform === 'win32'
-  ? path.join(PROJECT_ROOT, 'dist', 'obs_viewer.exe')
-  : path.join(PROJECT_ROOT, 'dist', 'obs_viewer');
+  ? path.join(PROJECT_ROOT, 'dist', 'kopusha.exe')
+  : path.join(PROJECT_ROOT, 'dist', 'kopusha');
 
 export default defineConfig({
   testDir: './e2e',

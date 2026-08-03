@@ -40,7 +40,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 const utf8BOM = "\xef\xbb\xbf"
@@ -401,7 +401,7 @@ func detectRowElement(path string) (string, error) {
 // xmlReader wraps f so that:
 //   - a leading UTF-8 BOM is skipped (stdxml chokes on it otherwise)
 //   - "loose" multi-root documents are accepted by wrapping the body
-//     in a synthetic <obs_viewer_root>…</obs_viewer_root> when no
+//     in a synthetic <kopusha_root>…</kopusha_root> when no
 //     XML declaration or root element starts the file
 //
 // The wrapper element name has no semantic meaning — it's filtered out
@@ -425,8 +425,8 @@ func xmlReader(f *os.File) (io.Reader, error) {
 	// the cost is one extra StartElement/EndElement pair, but it makes
 	// the loose multi-root case (UtilizationEvents.txt) Just Work.
 	_ = trimmed
-	pre := strings.NewReader("<obs_viewer_root>")
-	post := strings.NewReader("</obs_viewer_root>")
+	pre := strings.NewReader("<kopusha_root>")
+	post := strings.NewReader("</kopusha_root>")
 	return io.MultiReader(pre, combined, post), nil
 }
 

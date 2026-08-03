@@ -5,7 +5,7 @@
 // from log content — a filter value can be a hostname, a user name, a
 // fragment of a message body. Anything after `#` is not sent to the
 // server, so none of it reaches an access log, a proxy, or a referrer
-// header on an outbound link. That is not a nicety: obs-viewer runs
+// header on an outbound link. That is not a nicety: kopusha runs
 // against files people are not supposed to paste into a web form.
 //
 // **The query only, not the loaded files.** A path is meaningful on the

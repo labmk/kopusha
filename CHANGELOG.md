@@ -1,13 +1,81 @@
 # Changelog
 
-Notable changes to obs-viewer. The format follows
+Notable changes to kopusha. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 While the version is `0.x`, minor bumps may carry breaking changes to
 the HTTP API, the `parsers.d/` rule schema, and the module contract.
-The file formats obs-viewer *reads* are not affected by that caveat —
+The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
+
+## [0.3.0] — unreleased
+
+### Added
+
+- **Update from inside the app.** When a newer release exists, the notice
+  now offers to install it. Never automatic, never on a timer — only when
+  someone presses the button, and never at all with
+  `update_check = false`.
+
+  It happens in two steps, and the middle one is the feature rather than
+  a formality. *Prepare* downloads the archive, verifies it, and shows
+  what installing would do — **without writing anything**. Only then does
+  *Install and restart* touch the disk.
+
+  What gets verified before a single byte is written: the downloaded
+  bytes are hashed, and that digest is looked up in GitHub's attestations
+  API. An archive no release workflow produced has no attestation and is
+  refused. The attestation must also name this repository, the release
+  workflow, the tag being installed, and a GitHub-hosted runner. This is
+  not a full Sigstore signature check and is not described as one —
+  SECURITY.md states exactly where the boundary is, and
+  `gh attestation verify` remains the way to check it properly.
+
+  **Your work is never overwritten.** Config files are not replaced at
+  all. A parser rule is replaced only if it is byte-identical to the one
+  this binary shipped with; anything you edited, added or deleted is left
+  alone, and the update tells you which rules it skipped and why. A rule
+  you deleted stays deleted, and a rule of your own is never displaced by
+  a shipped one arriving under the same name.
+
+  The previous binary is kept beside the new one as `.old`, so an update
+  can be undone by renaming one file. It is swept away on the next start.
+
+  On Unix the process re-executes itself and the page reconnects on its
+  own. On Windows the update installs and the process exits — restarting
+  there means racing for the listening port, and shipping an untested
+  restart would be worse than asking for a double-click.
+
+  Closes #17.
+
+### Changed
+
+- **The project is now called kopusha.** It was `obs-viewer`, a name that
+  could not be found: every search for it returns broadcasting software
+  or note-taking plugins, and `obs` silently stood for "observability",
+  an expansion nobody could see. Renaming was cheapest now, before a
+  self-updater started writing the old asset names into installs.
+
+  What this changes on disk:
+
+  | was | is |
+  |---|---|
+  | `obs_viewer` | `kopusha` |
+  | `obs_viewer.conf`, `obs_viewer_<module>.conf` | `kopusha.conf`, `kopusha_<module>.conf` |
+  | `obs_viewer_settings.json` | `kopusha_settings.json` |
+  | `obs_viewer-<version>-<platform>.zip` | `kopusha-<version>-<platform>.zip` |
+  | `github.com/labmk/obs-viewer` | `github.com/labmk/kopusha` |
+
+  **Existing installs need their config and settings files renamed**; the
+  old names are not read. GitHub redirects the old repository URL, and
+  old release tags keep the assets they were published with.
+
+  Every entry below this one predates the rename and describes files that
+  were named `obs_viewer*` at the time. They have not been rewritten,
+  because a release archive's name is a fact about a published artifact
+  rather than a spelling choice — and the build attestations covering
+  those archives are signed over the old names permanently.
 
 ## [0.2.2] — 2026-08-02
 
@@ -18,7 +86,7 @@ those are external and stable.
   produced by this repository's workflow at a named commit:
 
   ```bash
-  gh attestation verify obs_viewer-<version>-<platform>.zip --repo labmk/obs-viewer
+  gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
   ```
 
   The certificate is issued to the workflow run and expires with it, so
@@ -64,7 +132,7 @@ those are external and stable.
   through two releases.
 
   There is now a notice, once, with a link to the release page. It is
-  not modal: obs-viewer gets opened to answer a question, and the
+  not modal: kopusha gets opened to answer a question, and the
   release will still be there afterwards. Dismissing it is remembered
   per version, so declining 0.3.0 stays declined across restarts and
   says nothing about 0.4.0. The status-bar link stays either way —
@@ -100,7 +168,7 @@ those are external and stable.
   deliberately excluded; a path is meaningful only on the machine that
   produced it, so the recipient opens their own files and gets the
   sender's question applied to them.
-- **Rule builder.** Paste sample lines and obs-viewer infers a
+- **Rule builder.** Paste sample lines and kopusha infers a
   `parsers.d/` rule — a regex with named captures, plus a Go time
   layout — then shows the rows it would produce before anything is
   written. Rename the fields, save, and the rule applies to the next
@@ -257,7 +325,7 @@ want explained.
   React tab, and assets. No modules ship by default.
 - OpenAPI spec generated from `swag` annotations, driving a generated
   TypeScript client.
-- Release notification: at startup obs-viewer asks the GitHub releases
+- Release notification: at startup kopusha asks the GitHub releases
   API whether a newer version exists and, if so, the status bar links to
   its release page. `GET /api/update` exposes the result.
 - Parser rule manifest: `build.sh` records the SHA-256 of every
@@ -273,9 +341,9 @@ want explained.
   only when a TLS certificate is supplied; otherwise the server warns
   and falls back to loopback. There is no authentication layer — see
   [SECURITY.md](./SECURITY.md) for the threat model.
-- DuckDB extensions are statically linked; obs-viewer never downloads
+- DuckDB extensions are statically linked; kopusha never downloads
   an extension at runtime, which is what makes air-gapped use safe.
-- **obs-viewer never downloads or executes code.** The release check
+- **kopusha never downloads or executes code.** The release check
   reports a version string and nothing more, so there is no path by
   which a compromised release channel could reach an existing install.
   Signed, user-initiated updates are deferred — see
@@ -291,14 +359,14 @@ want explained.
   errors where the other panicked from inside its own goroutine, so a
   malformed `.evtx` can no longer terminate the process.
 - **The release check is on by default** and is the only outbound
-  request obs-viewer makes. It sends nothing about the host beyond what
+  request kopusha makes. It sends nothing about the host beyond what
   any HTTP request reveals. `update_check = false` in
-  `obs_viewer.conf`, or `--no-update-check`, removes it entirely — after
+  `kopusha.conf`, or `--no-update-check`, removes it entirely — after
   which the binary makes no network requests at all.
 - **EVTX column layout** follows the Velocidex parser: the event ID is
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/obs-viewer/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/labmk/obs-viewer/releases/tag/v0.1.1
-[0.1.0]: https://github.com/labmk/obs-viewer/releases/tag/v0.1.0
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/labmk/kopusha/releases/tag/v0.1.1
+[0.1.0]: https://github.com/labmk/kopusha/releases/tag/v0.1.0

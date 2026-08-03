@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 // Default rule used in tests — same shape as the YAML we ship.

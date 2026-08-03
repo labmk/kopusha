@@ -4,7 +4,7 @@
 
 Please report security issues privately via GitHub's
 [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability)
-on [github.com/labmk/obs-viewer](https://github.com/labmk/obs-viewer),
+on [github.com/labmk/kopusha](https://github.com/labmk/kopusha),
 rather than opening a public issue.
 
 Include what you have: affected version, a reproduction, and the impact
@@ -12,7 +12,7 @@ you believe it has. You'll get an acknowledgement within a few days.
 
 ## Threat model
 
-obs-viewer is a **local, single-user tool**. It reads files you already
+kopusha is a **local, single-user tool**. It reads files you already
 have access to and serves a UI to `127.0.0.1`. It is not a multi-tenant
 service and does not attempt to be one.
 
@@ -25,13 +25,13 @@ loopback bind is the entire access control story.
 Two guardrails enforce that:
 
 - The server binds `127.0.0.1` unless `listen` is set in
-  `obs_viewer.conf` **and** a TLS certificate is supplied via
+  `kopusha.conf` **and** a TLS certificate is supplied via
   `--cert`/`--key`. Setting `listen` alone is ignored, with a warning.
 - TLS is off by default because loopback traffic doesn't need it.
 
-If you expose obs-viewer beyond loopback, put an authenticating reverse
+If you expose kopusha beyond loopback, put an authenticating reverse
 proxy in front of it. Treat "reachable on the network without a proxy"
-as a misconfiguration, not a vulnerability in obs-viewer.
+as a misconfiguration, not a vulnerability in kopusha.
 
 ### In scope
 
@@ -46,7 +46,7 @@ as a misconfiguration, not a vulnerability in obs-viewer.
 - A crafted `parsers.d/` rule that escapes its stated capabilities
   (regex matching and field mapping).
 - Anything that weakens the loopback/TLS guardrail above.
-- Dependency vulnerabilities reachable from obs-viewer's own code
+- Dependency vulnerabilities reachable from kopusha's own code
   paths — `govulncheck` and `npm audit` both gate CI.
 
 ### Out of scope
@@ -74,7 +74,7 @@ release.
   this repository, at a named commit. Verify before running:
 
   ```bash
-  gh attestation verify obs_viewer-<version>-<platform>.zip --repo labmk/obs-viewer
+  gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
   ```
 
   The signature is made with a short-lived certificate issued to the
@@ -99,14 +99,41 @@ release.
     so SmartScreen will warn.
 
   Certificate-based signing for both platforms is tracked in
-  [#24](https://github.com/labmk/obs-viewer/issues/24).
-- DuckDB extensions are statically linked. obs-viewer never downloads an
+  [#24](https://github.com/labmk/kopusha/issues/24).
+- DuckDB extensions are statically linked. kopusha never downloads an
   extension at runtime, which is what makes air-gapped use safe.
-- **obs-viewer never downloads or executes code.** The one outbound
-  request is the startup release check, which reads the GitHub releases
-  API and renders a version string. There is no self-update path: a
-  release cannot replace the running binary, so a compromised release
-  channel cannot execute code on an existing install. User-initiated
-  updates are a possible future feature, tracked in
-  docs/SELF_UPDATE_PROPOSAL.md; they will not ship without verifying
-  the attestation of the downloaded artifact first.
+- **kopusha downloads code only when you press the button.** Two
+  outbound requests exist. The startup release check reads the GitHub
+  releases API and renders a version string; it never downloads. The
+  self-update path fetches a release archive and replaces the running
+  binary, and runs only on an explicit click — never on a timer, never
+  at startup, and never at all when `update_check = false`.
+
+  Before anything is written, the downloaded bytes are hashed and that
+  digest is looked up in GitHub's attestations API. An archive no
+  release workflow produced has no attestation and is refused. The
+  attestation is also checked to name this repository, the release
+  workflow, the tag being installed, and a GitHub-hosted runner.
+
+  **What that check is worth, stated precisely:** it authenticates the
+  archive against GitHub's attestation record over TLS. It does *not*
+  verify the Sigstore signature inside the bundle, so it does not defend
+  against an adversary able to forge responses from `api.github.com` —
+  who could equally forge the download. It does defend against the
+  realistic case: an asset uploaded by hand or swapped after
+  publication, which no workflow attested.
+
+  For the full cryptographic check, verify before running:
+
+  ```bash
+  gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
+  ```
+
+  The previous binary is kept alongside the new one as `.old`, so an
+  update can be undone by renaming one file.
+
+- **Your files are never replaced by an update.** Config files are not
+  touched at all. A parser rule is replaced only when it is
+  byte-identical to the one the running binary shipped with — anything
+  you edited, added or deleted is left alone, and the update reports
+  what it skipped and why. See docs/SELF_UPDATE_PROPOSAL.md.

@@ -1,4 +1,4 @@
-# Writing an obs-viewer module
+# Writing an kopusha module
 
 A module is an optional sub-feature that plugs into the core viewer
 without the core knowing anything about it. A module can contribute any
@@ -10,12 +10,12 @@ combination of:
 - **Config data** passed to the SPA at boot (a branding module, say,
   supplying a logo URL and company name)
 
-No modules ship with obs-viewer. This document is the contract for
+No modules ship with kopusha. This document is the contract for
 adding one.
 
 ## Lifecycle
 
-1. `main.go` loads all `obs_viewer*.conf` files and merges them into one
+1. `main.go` loads all `kopusha*.conf` files and merges them into one
    `config.Config`.
 2. `module.NewRegistry(cfg, deps)` is constructed, then each module is
    added with `modreg.Add(yourmodule.New())`.
@@ -78,8 +78,8 @@ import (
     "embed"
     "net/http"
 
-    "github.com/labmk/obs-viewer/internal/config"
-    "github.com/labmk/obs-viewer/internal/module"
+    "github.com/labmk/kopusha/internal/config"
+    "github.com/labmk/kopusha/internal/module"
 )
 
 //go:embed all:assets
@@ -133,8 +133,8 @@ Four edits, all one-liners:
    reaches `frontend/node_modules` and the import will fail to resolve
    even though the package is installed.
 
-4. **`obs_viewer_hello.conf`** — ship the config section. If it needs
-   per-site values, ship it as `obs_viewer_hello.conf.example` instead;
+4. **`kopusha_hello.conf`** — ship the config section. If it needs
+   per-site values, ship it as `kopusha_hello.conf.example` instead;
    the `.example` suffix is deliberately excluded from the startup glob,
    so the operator opts in by renaming.
 

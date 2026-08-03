@@ -57,9 +57,9 @@ export default function App() {
 
   // Local UI state
   const [timezone, setTimezone] = useState('UTC');
-  const [hourFormat, setHourFormat] = useLocalStorage('obs_viewer_hour_format', '24');
-  const [hideNulls, setHideNulls] = useLocalStorage('obs_viewer_hide_nulls', true);
-  const [autoFilter, setAutoFilter] = useLocalStorage('obs_viewer_auto_filter', false);
+  const [hourFormat, setHourFormat] = useLocalStorage('kopusha_hour_format', '24');
+  const [hideNulls, setHideNulls] = useLocalStorage('kopusha_hide_nulls', true);
+  const [autoFilter, setAutoFilter] = useLocalStorage('kopusha_auto_filter', false);
 
   // Filter / query state, seeded from the URL fragment so a shared link
   // or a reload restores the view. Read once, synchronously, before the
@@ -79,10 +79,10 @@ export default function App() {
   // A link's sort wins over the stored preference, and then becomes it —
   // the view you are looking at is the one you keep.
   const [sortField, setSortField] = useState(
-    () => initial.sortField || localStorage.getItem('obs_viewer_sort_field') || '@timestamp'
+    () => initial.sortField || localStorage.getItem('kopusha_sort_field') || '@timestamp'
   );
   useEffect(() => {
-    try { localStorage.setItem('obs_viewer_sort_field', sortField); } catch { /* private mode */ }
+    try { localStorage.setItem('kopusha_sort_field', sortField); } catch { /* private mode */ }
   }, [sortField]);
   const [hiddenColumns, setHiddenColumns] = useState(() => new Set(initial.hiddenColumns));
 
@@ -116,14 +116,14 @@ export default function App() {
   // its most useful feature.
   const [ruleSample, setRuleSample] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [showProfile, setShowProfile] = useLocalStorage('obs_viewer_show_profile', false);
-  const [theme, setTheme] = useLocalStorage('obs_viewer_theme', 'dark');
-  const [activeTab, setActiveTab] = useLocalStorage('obs_viewer_active_tab', 'viewer');
+  const [showProfile, setShowProfile] = useLocalStorage('kopusha_show_profile', false);
+  const [theme, setTheme] = useLocalStorage('kopusha_theme', 'dark');
+  const [activeTab, setActiveTab] = useLocalStorage('kopusha_active_tab', 'viewer');
 
   const tabModules = modules.filter(m => m.tab && moduleComponents[m.id]);
   // A module with the id 'branding' may supply a stylesheet and header
   // metadata (company, logo, title). None ships by default, so these
-  // stay empty and the header renders as plain "obs-viewer" with the
+  // stay empty and the header renders as plain "kopusha" with the
   // neutral slate accent from app.css. See docs/MODULES.md.
   const brandingMod = modules.find(m => m.id === 'branding');
   const brand = brandingMod?.config || {};
@@ -168,7 +168,7 @@ export default function App() {
   }, [brandingMod?.style]);
 
   useEffect(() => {
-    const title = brand.document_title || brand.header_text || 'obs-viewer';
+    const title = brand.document_title || brand.header_text || 'kopusha';
     document.title = title;
   }, [brand.document_title, brand.header_text]);
 
@@ -205,7 +205,7 @@ export default function App() {
   }, []);
 
   const handleStopServer = async () => {
-    if (!window.confirm('Stop the obs-viewer server? You will need to re-run obs_viewer.exe to use it again.')) return;
+    if (!window.confirm('Stop the kopusha server? You will need to re-run kopusha.exe to use it again.')) return;
     try {
       await fetch('/api/shutdown', { method: 'POST' });
     } catch { /* connection will drop as the server exits; expected */ }
@@ -219,14 +219,14 @@ export default function App() {
     setTimeout(() => {
       // If we're still here, window.close was blocked. Show a final
       // screen and stop the React tree to free everything cleanly.
-      document.title = 'obs-viewer — stopped';
+      document.title = 'kopusha — stopped';
       document.body.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:system-ui,sans-serif;background:#1a1d21;color:#cbd5e1;">
           <div style="text-align:center;max-width:520px;padding:24px;">
             <div style="font-size:48px;margin-bottom:16px;">&#9209;</div>
-            <h1 style="font-size:18px;font-weight:500;margin:0 0 8px;color:#e2e8f0;">obs-viewer server stopped</h1>
+            <h1 style="font-size:18px;font-weight:500;margin:0 0 8px;color:#e2e8f0;">kopusha server stopped</h1>
             <p style="font-size:13px;color:#94a3b8;margin:0 0 16px;">You can close this tab.</p>
-            <p style="font-size:11px;color:#64748b;">To use obs-viewer again, re-run obs_viewer.exe.</p>
+            <p style="font-size:11px;color:#64748b;">To use kopusha again, re-run kopusha.exe.</p>
           </div>
         </div>`;
     }, 200);
@@ -442,12 +442,12 @@ export default function App() {
               href={repoURL}
               target="_blank"
               rel="noreferrer noopener"
-              title="Open the obs-viewer project page"
+              title="Open the kopusha project page"
             >
-              <span> {brand.header_text || 'obs-viewer'} </span><span>v{version}</span>
+              <span> {brand.header_text || 'kopusha'} </span><span>v{version}</span>
             </a>
           ) : (
-            <span> {brand.header_text || 'obs-viewer'} <span>v{version}</span></span>
+            <span> {brand.header_text || 'kopusha'} <span>v{version}</span></span>
           )}
         </div>
         <div className="tab-switcher">
@@ -545,7 +545,7 @@ export default function App() {
           <button
             className="btn"
             onClick={() => setRuleSample('')}
-            title="Build a parser rule for a log format obs-viewer does not recognize yet"
+            title="Build a parser rule for a log format kopusha does not recognize yet"
           >
             Parser rules
           </button>
@@ -716,7 +716,7 @@ export default function App() {
         </span>
         <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {modules.length > 0 && (
-            <span title="Enabled modules (from obs_viewer.conf sections)" style={{ color: 'var(--text-secondary)' }}>
+            <span title="Enabled modules (from kopusha.conf sections)" style={{ color: 'var(--text-secondary)' }}>
               modules: {modules.map(m => m.id).join(', ')}
             </span>
           )}
@@ -726,7 +726,7 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               className="status-update"
-              title={`You are running ${updateQ.data.current}. Opens the release page — obs-viewer does not download or install anything itself.`}
+              title={`You are running ${updateQ.data.current}. Opens the release page. To install it, use the Update button in the notice.`}
             >
               v{updateQ.data.latest} available
             </a>
@@ -739,7 +739,7 @@ export default function App() {
           {!backendOk && <span className="status-offline">no connection to the backend</span>}
           <button
             onClick={handleStopServer}
-            title="Stop the obs-viewer server immediately"
+            title="Stop the kopusha server immediately"
             style={{
               fontSize: '11px',
               padding: '2px 8px',

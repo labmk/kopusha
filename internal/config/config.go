@@ -1,7 +1,7 @@
-// Package config parses obs_viewer.conf — an INI-with-sections format.
+// Package config parses kopusha.conf — an INI-with-sections format.
 //
 // Top-level keys (no preceding [section]) are flat config: port, timeout,
-// listen. These keep the format compatible with pre-0.4 obs_viewer.conf
+// listen. These keep the format compatible with pre-0.4 kopusha.conf
 // files that had no sections at all.
 //
 // Sections introduce module config: one [<module-name>] section per
@@ -54,11 +54,11 @@ func Load(path string) (*Config, error) {
 // merges (each subsequent file's [section] entries are added on top of
 // the existing map). Missing files are skipped silently.
 //
-// 0.5.17 split obs_viewer.conf into per-module siblings — core in
-// obs_viewer.conf, optional modules in obs_viewer_<module>.conf —
+// 0.5.17 split kopusha.conf into per-module siblings — core in
+// kopusha.conf, optional modules in kopusha_<module>.conf —
 // so an operator can copy / drop / .example individual module configs
 // without editing one big file. main.go globs them in sorted order
-// (obs_viewer.conf first alphabetically, then branding, then export…)
+// (kopusha.conf first alphabetically, then branding, then export…)
 // and passes the result here.
 func LoadAll(paths []string) (*Config, error) {
 	cfg := &Config{

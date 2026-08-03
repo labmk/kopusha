@@ -21,7 +21,7 @@ export default function FileBrowser({ onClose, onFileLoaded, initialPath, onDire
   const [drives, setDrives] = useState([]);
   const [filterText, setFilterText] = useState('');
   // Diagnosis of the file that just failed to load. A load error on its
-  // own says only that obs-viewer is unhappy; this says which adapters
+  // own says only that kopusha is unhappy; this says which adapters
   // looked, what each objected to, and what the first line actually was
   // — and offers the rule builder as the way out.
   const [diagnosis, setDiagnosis] = useState(null);

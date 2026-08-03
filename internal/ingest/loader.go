@@ -1,4 +1,4 @@
-// Package ingest is the format-agnostic file-loader layer for obs_viewer.
+// Package ingest is the format-agnostic file-loader layer for kopusha.
 //
 // The engine knows nothing about NDJSON, XML, EVTX, or text logs anymore.
 // It hands a file path to a Registry; the Registry sniffs the first ~512

@@ -13,12 +13,12 @@ type VersionResponse struct {
 	IdleTimeoutSeconds int    `json:"idle_timeout_seconds"`
 	// Repository is the project's page. A destination for a person to
 	// click, not something the binary fetches.
-	Repository string `json:"repository" example:"https://github.com/labmk/obs-viewer"`
+	Repository string `json:"repository" example:"https://github.com/labmk/kopusha"`
 }
 
 // UpdateResponse is the body of GET /api/update.
 //
-// Purely informational. obs-viewer never downloads or installs a
+// Purely informational. kopusha never downloads or installs a
 // release; url points at a page for a human to visit.
 type UpdateResponse struct {
 	// Current is the running version.
@@ -28,11 +28,11 @@ type UpdateResponse struct {
 	// Available is true only when latest is confidently newer.
 	Available bool `json:"available"`
 	// URL is the release page.
-	URL string `json:"url,omitempty" example:"https://github.com/labmk/obs-viewer/releases/tag/v0.2.0"`
+	URL string `json:"url,omitempty" example:"https://github.com/labmk/kopusha/releases/tag/v0.2.0"`
 	// Checked is false until a check completes, so "unknown" is
 	// distinguishable from "up to date".
 	Checked bool `json:"checked"`
-	// Enabled mirrors update_check in obs_viewer.conf.
+	// Enabled mirrors update_check in kopusha.conf.
 	Enabled bool `json:"enabled"`
 }
 

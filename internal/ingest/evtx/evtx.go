@@ -32,7 +32,7 @@ import (
 	"github.com/Velocidex/ordereddict"
 	"www.velocidex.com/golang/evtx"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 // evtxMagic is the 8-byte magic at the start of every EVTX file.

@@ -4,8 +4,8 @@ Direction, not dates. This is a single-maintainer project — items move
 when someone does the work, and "future" honestly means "wanted, not
 scheduled".
 
-Tracking lives in [issues](https://github.com/labmk/obs-viewer/issues),
-grouped by [milestone](https://github.com/labmk/obs-viewer/milestones)
+Tracking lives in [issues](https://github.com/labmk/kopusha/issues),
+grouped by [milestone](https://github.com/labmk/kopusha/milestones)
 and tagged `horizon:*`. This file explains the *reasoning*; the issues
 carry the detail.
 
@@ -52,7 +52,7 @@ The next substantive capabilities.
 
 | | |
 |---|---|
-| [#18](https://github.com/labmk/obs-viewer/issues/18) | **Field profiling panel.** Answers "what is in this data" before a query is written. |
+| [#18](https://github.com/labmk/kopusha/issues/18) | **Field profiling panel.** Answers "what is in this data" before a query is written. |
 
 ## Future
 
@@ -60,10 +60,10 @@ Wanted, not scheduled.
 
 | | |
 |---|---|
-| [#16](https://github.com/labmk/obs-viewer/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
-| [#17](https://github.com/labmk/obs-viewer/issues/17) | **User-initiated update.** A button that fetches and replaces the binary, then restarts. Blocked on signing. |
-| [#24](https://github.com/labmk/obs-viewer/issues/24) | **Sign releases.** Gates #17, and is what would let macOS builds be notarized so a download stops being blocked. |
-| [#21](https://github.com/labmk/obs-viewer/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
+| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
+| [#17](https://github.com/labmk/kopusha/issues/17) | **User-initiated update.** A button that fetches and replaces the binary, then restarts. Blocked on signing. |
+| [#24](https://github.com/labmk/kopusha/issues/24) | **Sign releases.** Gates #17, and is what would let macOS builds be notarized so a download stops being blocked. |
+| [#21](https://github.com/labmk/kopusha/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
 
 ## Far future
 
@@ -71,8 +71,8 @@ Blocked on a precondition or a decision.
 
 | | |
 |---|---|
-| [#22](https://github.com/labmk/obs-viewer/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
-| [#23](https://github.com/labmk/obs-viewer/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Ship field profiling first and see whether the need survives. |
+| [#22](https://github.com/labmk/kopusha/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
+| [#23](https://github.com/labmk/kopusha/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Ship field profiling first and see whether the need survives. |
 
 ## Things deliberately not planned
 

@@ -1,6 +1,6 @@
-# obs-viewer — Data-type ingestion requirements
+# kopusha — Data-type ingestion requirements
 
-This document is the canonical list of file formats obs-viewer accepts,
+This document is the canonical list of file formats kopusha accepts,
 the contract each one must satisfy after ingest, and the test cases
 that prove it. Update this file together with the test matrix below
 whenever a new adapter or shipped `parsers.d/` rule is added.
@@ -135,10 +135,10 @@ plausible real-world format.
 
 ```bash
 # Go unit tests across every adapter:
-cd obs-viewer && go test ./internal/ingest/...
+cd kopusha && go test ./internal/ingest/...
 
-# E2e suite (requires dist/obs_viewer.exe built first):
-cd obs-viewer/frontend && npm run test:e2e -- formats.spec.js
+# E2e suite (requires dist/kopusha.exe built first):
+cd kopusha/frontend && npm run test:e2e -- formats.spec.js
 ```
 
 CI should fail if any new data type lands without a row in the matrix

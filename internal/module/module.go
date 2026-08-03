@@ -1,10 +1,10 @@
-// Package module defines the interface optional obs-viewer sub-features
+// Package module defines the interface optional kopusha sub-features
 // implement to plug into the core viewer. No modules ship by default;
 // see docs/MODULES.md for the contract and a worked example.
 //
 // Boot flow:
 //
-//  1. main.go loads obs_viewer.conf into a *config.Config.
+//  1. main.go loads kopusha.conf into a *config.Config.
 //  2. main.go creates a Registry with the runtime Deps, calls Add(m) for
 //     each module the build ships with, and calls Boot(mux).
 //  3. Boot iterates modules in Add() order and consults Enabled(cfg) on
@@ -21,9 +21,9 @@ package module
 import (
 	"net/http"
 
-	"github.com/labmk/obs-viewer/internal/config"
-	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/settings"
+	"github.com/labmk/kopusha/internal/config"
+	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/settings"
 )
 
 // Module is implemented by every optional sub-feature.
@@ -48,7 +48,7 @@ type Module interface {
 // module via RegisterContext. Fields are append-only.
 //
 // Concrete types are used (not interfaces) for clarity at this stage —
-// the obs-viewer code base is small enough that the indirection cost of
+// the kopusha code base is small enough that the indirection cost of
 // abstract interfaces would outweigh the testability win.
 type Deps struct {
 	// Engine is the DuckDB engine the viewer uses. May be nil in tests;
@@ -92,7 +92,7 @@ type RegisterContext struct {
 	// the SPA to see via /api/modules.
 	Manifest *Manifest
 
-	// Config is the parsed obs_viewer.conf. Modules can read their
+	// Config is the parsed kopusha.conf. Modules can read their
 	// own section via cfg.Section("<name>").
 	Config *config.Config
 }

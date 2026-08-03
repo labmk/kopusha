@@ -36,7 +36,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 const utf8BOM = "\xef\xbb\xbf"

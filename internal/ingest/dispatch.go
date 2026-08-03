@@ -123,7 +123,7 @@ type AdapterVerdict struct {
 // Pick reduces every adapter's opinion to a single winner, which is the
 // right behavior for loading a file and the wrong one for explaining a
 // failure. When nothing matches, "no loader matched" tells the operator
-// only that obs-viewer is unhappy — not which adapters looked, what
+// only that kopusha is unhappy — not which adapters looked, what
 // each objected to, or what the first line actually looked like by the
 // time it reached the parser. Diagnosis carries all of it.
 //

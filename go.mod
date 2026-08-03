@@ -1,4 +1,4 @@
-module github.com/labmk/obs-viewer
+module github.com/labmk/kopusha
 
 // Require Go 1.25.6+ — this pulls the 2026-01-15 stdlib release that
 // fixes CVE-2025-61728 (archive/zip name-indexing DoS) and

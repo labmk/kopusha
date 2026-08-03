@@ -3,7 +3,7 @@ package ndjson
 import (
 	"testing"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 func TestDetectExplicitNdjsonExt(t *testing.T) {

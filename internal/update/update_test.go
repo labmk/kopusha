@@ -188,7 +188,7 @@ func TestRequestCarriesNoHostInformation(t *testing.T) {
 	if query != "" {
 		t.Errorf("request carried a query string: %q", query)
 	}
-	if ua := got.Get("User-Agent"); ua != "obs-viewer/0.1.0" {
+	if ua := got.Get("User-Agent"); ua != "kopusha/0.1.0" {
 		t.Errorf("User-Agent = %q, want just the product and version", ua)
 	}
 	for _, banned := range []string{"Cookie", "Authorization", "X-Machine-Id"} {

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for taking an interest. obs-viewer is a small, single-maintainer
+Thanks for taking an interest. kopusha is a small, single-maintainer
 project, so a quick note on expectations before you invest time:
 
 - **Bug reports are always welcome**, especially ones with a file that

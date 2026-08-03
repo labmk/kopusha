@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/labmk/obs-viewer/internal/manifest"
+	"github.com/labmk/kopusha/internal/manifest"
 )
 
 func main() {

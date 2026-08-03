@@ -2,7 +2,7 @@
 
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
-import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiHistogramData, PostApiHistogramErrors, PostApiHistogramResponses, PostApiProfileData, PostApiProfileErrors, PostApiProfileResponses, PostApiProfileValuesData, PostApiProfileValuesErrors, PostApiProfileValuesResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses } from './types.gen';
+import type { GetApiBrowseData, GetApiBrowseErrors, GetApiBrowseResponses, GetApiFieldSamplesData, GetApiFieldSamplesErrors, GetApiFieldSamplesResponses, GetApiFilesData, GetApiFilesResponses, GetApiModulesData, GetApiModulesResponses, GetApiRulesData, GetApiRulesResponses, GetApiSettingsData, GetApiSettingsErrors, GetApiSettingsResponses, GetApiTimerangeData, GetApiTimerangeErrors, GetApiTimerangeResponses, GetApiTimestampFieldData, GetApiTimestampFieldErrors, GetApiTimestampFieldResponses, GetApiUpdateData, GetApiUpdateResponses, GetApiVersionData, GetApiVersionResponses, PostApiExportData, PostApiExportErrors, PostApiExportResponses, PostApiExportSelfCopyData, PostApiExportSelfCopyErrors, PostApiExportSelfCopyResponses, PostApiFilesExplainData, PostApiFilesExplainErrors, PostApiFilesExplainResponses, PostApiFilesLoadData, PostApiFilesLoadDirData, PostApiFilesLoadDirErrors, PostApiFilesLoadDirResponses, PostApiFilesLoadErrors, PostApiFilesLoadResponses, PostApiFilesToggleData, PostApiFilesToggleErrors, PostApiFilesToggleResponses, PostApiFilesUnloadData, PostApiFilesUnloadErrors, PostApiFilesUnloadResponses, PostApiHistogramData, PostApiHistogramErrors, PostApiHistogramResponses, PostApiProfileData, PostApiProfileErrors, PostApiProfileResponses, PostApiProfileValuesData, PostApiProfileValuesErrors, PostApiProfileValuesResponses, PostApiQueryData, PostApiQueryErrors, PostApiQueryResponses, PostApiRulesPreviewData, PostApiRulesPreviewErrors, PostApiRulesPreviewResponses, PostApiRulesSaveData, PostApiRulesSaveErrors, PostApiRulesSaveResponses, PostApiRulesSuggestData, PostApiRulesSuggestErrors, PostApiRulesSuggestResponses, PostApiSettingsData, PostApiSettingsErrors, PostApiSettingsResponses, PostApiTimestampFieldData, PostApiTimestampFieldErrors, PostApiTimestampFieldResponses, PostApiUpdateApplyData, PostApiUpdateApplyErrors, PostApiUpdateApplyResponses, PostApiUpdatePrepareData, PostApiUpdatePrepareErrors, PostApiUpdatePrepareResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -250,7 +250,7 @@ export const postApiRulesSuggest = <ThrowOnError extends boolean = false>(option
 /**
  * Get or persist user settings
  *
- * Persisted to obs_viewer_settings.json next to the binary. Only the fields present in the POST body are updated.
+ * Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.
  */
 export const getApiSettings = <ThrowOnError extends boolean = false>(options?: Options<GetApiSettingsData, ThrowOnError>): RequestResult<GetApiSettingsResponses, GetApiSettingsErrors, ThrowOnError> => (options?.client ?? client).get<GetApiSettingsResponses, GetApiSettingsErrors, ThrowOnError>({
     url: '/api/settings',
@@ -264,7 +264,7 @@ export const getApiSettings = <ThrowOnError extends boolean = false>(options?: O
 /**
  * Get or persist user settings
  *
- * Persisted to obs_viewer_settings.json next to the binary. Only the fields present in the POST body are updated.
+ * Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.
  */
 export const postApiSettings = <ThrowOnError extends boolean = false>(options?: Options<PostApiSettingsData, ThrowOnError>): RequestResult<PostApiSettingsResponses, PostApiSettingsErrors, ThrowOnError> => (options?.client ?? client).post<PostApiSettingsResponses, PostApiSettingsErrors, ThrowOnError>({
     url: '/api/settings',
@@ -313,9 +313,23 @@ export const postApiTimestampField = <ThrowOnError extends boolean = false>(opti
 /**
  * Release update status
  *
- * Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
+ * Reports whether a newer release exists. Read-only — kopusha never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from "up to date".
  */
 export const getApiUpdate = <ThrowOnError extends boolean = false>(options?: Options<GetApiUpdateData, ThrowOnError>): RequestResult<GetApiUpdateResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetApiUpdateResponses, unknown, ThrowOnError>({ url: '/api/update', ...options });
+
+/**
+ * Apply a prepared update
+ *
+ * Installs the binary and merges parsers.d/, then restarts. Requires a prior /api/update/prepare.
+ */
+export const postApiUpdateApply = <ThrowOnError extends boolean = false>(options?: Options<PostApiUpdateApplyData, ThrowOnError>): RequestResult<PostApiUpdateApplyResponses, PostApiUpdateApplyErrors, ThrowOnError> => (options?.client ?? client).post<PostApiUpdateApplyResponses, PostApiUpdateApplyErrors, ThrowOnError>({ url: '/api/update/apply', ...options });
+
+/**
+ * Prepare an update
+ *
+ * Downloads the newest release, verifies its build attestation, and returns the plan. Writes nothing.
+ */
+export const postApiUpdatePrepare = <ThrowOnError extends boolean = false>(options?: Options<PostApiUpdatePrepareData, ThrowOnError>): RequestResult<PostApiUpdatePrepareResponses, PostApiUpdatePrepareErrors, ThrowOnError> => (options?.client ?? client).post<PostApiUpdatePrepareResponses, PostApiUpdatePrepareErrors, ThrowOnError>({ url: '/api/update/prepare', ...options });
 
 /**
  * Server version + platform info

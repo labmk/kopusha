@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/engine"
-	"github.com/labmk/obs-viewer/internal/settings"
+	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/settings"
 )
 
 // newTestServerDirect builds a Server struct directly, skipping New().

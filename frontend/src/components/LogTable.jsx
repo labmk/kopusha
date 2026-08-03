@@ -92,7 +92,7 @@ export default function LogTable({
   const colKey = useMemo(() => {
     const fields = result?.fields;
     if (!fields || !fields.length) return null;
-    return 'obs_viewer_col_widths_' + fields.slice().sort().join('|').length + '_' + fields.length;
+    return 'kopusha_col_widths_' + fields.slice().sort().join('|').length + '_' + fields.length;
   }, [result?.fields]);
   const [colWidths, setColWidths] = useState(() => {
     if (!colKey) return {};

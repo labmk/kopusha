@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate sbom.cdx.json and THIRD-PARTY-NOTICES.md.
 
-obs-viewer ships as one statically linked executable, so everything below
+kopusha ships as one statically linked executable, so everything below
 is *inside* the binary you distribute. That is what makes the notices
 file a licence obligation rather than a courtesy: MIT and BSD both
 require their copyright notice to travel with copies, and Apache-2.0 §4
@@ -68,7 +68,7 @@ DUCKDB_BUNDLED = [
 
 # DuckDB itself plus the extensions compiled in. All MIT, from the DuckDB
 # project — statically linked, which is what makes air-gapped use work:
-# obs-viewer never fetches an extension at runtime.
+# kopusha never fetches an extension at runtime.
 DUCKDB_CORE = [
     ("duckdb", "MIT", "Embedded analytical database engine"),
     ("duckdb-extension-json", "MIT", "JSON extension"),
@@ -111,7 +111,7 @@ def apply_overrides(component):
         component["licenses"] = [{"license": {"id": spdx}}]
         component.setdefault("properties", []).append(
             {
-                "name": "obs-viewer:licence-corrected",
+                "name": "kopusha:licence-corrected",
                 "value": f"scanner output overridden to {spdx}; verified "
                          f"against the upstream LICENSE file",
             }
@@ -164,7 +164,7 @@ def licence_ids(component) -> list:
 
 def tag(component, origin):
     component.setdefault("properties", []).append(
-        {"name": "obs-viewer:origin", "value": origin}
+        {"name": "kopusha:origin", "value": origin}
     )
     return component
 
@@ -177,9 +177,9 @@ def synthetic(name, spdx, description, group):
         "description": description,
         "licenses": [{"license": {"id": spdx}}],
         "properties": [
-            {"name": "obs-viewer:origin", "value": "duckdb-static"},
+            {"name": "kopusha:origin", "value": "duckdb-static"},
             {
-                "name": "obs-viewer:evidence",
+                "name": "kopusha:evidence",
                 "value": "statically linked inside libduckdb_static.a; "
                          "not discoverable by SBOM scanners",
             },
@@ -221,13 +221,13 @@ def main():
             },
             "component": {
                 "type": "application",
-                "name": "obs_viewer",
+                "name": "kopusha",
                 "version": version,
                 "description": "Single-binary local-first viewer for log, "
                                "metric and trace files",
                 "licenses": [{"license": {"id": "MIT"}}],
                 "externalReferences": [
-                    {"type": "vcs", "url": "https://github.com/labmk/obs-viewer"}
+                    {"type": "vcs", "url": "https://github.com/labmk/kopusha"}
                 ],
             },
         },
@@ -254,13 +254,13 @@ def write_notices(components, version):
     lines = [
         "# Third-party notices",
         "",
-        f"obs-viewer {version} is distributed as a single statically linked",
+        f"kopusha {version} is distributed as a single statically linked",
         "executable. Every component listed here is compiled into that binary,",
         "which is why their notices ship with it: MIT and BSD require the",
         "copyright notice to travel with copies, and Apache-2.0 §4 requires",
         "attribution.",
         "",
-        "obs-viewer's own code is MIT — see [LICENSE](./LICENSE). This file",
+        "kopusha's own code is MIT — see [LICENSE](./LICENSE). This file",
         "covers everything else.",
         "",
         "**Generated** by `scripts/generate-sbom.py`; do not edit by hand.",
@@ -298,7 +298,7 @@ def write_notices(components, version):
         "scanner can see inside it. The DuckDB entries above were derived from",
         "the static archives the linker actually consumes and their licences",
         "read from the DuckDB source tree. They are marked in the SBOM with an",
-        "`obs-viewer:evidence` property recording that provenance, rather than",
+        "`kopusha:evidence` property recording that provenance, rather than",
         "being presented as scanner output.",
         "",
         "Full licence texts are available from each project's repository. The",

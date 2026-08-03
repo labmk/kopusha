@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/labmk/obs-viewer/internal/config"
+	"github.com/labmk/kopusha/internal/config"
 )
 
 // Registry collects modules and mounts the enabled ones at boot.

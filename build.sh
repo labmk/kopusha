@@ -4,17 +4,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VERSION="${VERSION:-0.2.2}"
+VERSION="${VERSION:-0.3.0}"
 # Default to the host platform. Set GOOS/GOARCH to cross-compile —
 # see docs/BUILD.md for which combinations actually work (CGO makes
 # most of them require a matching C cross-toolchain).
 TARGET_OS="${GOOS:-$(go env GOHOSTOS)}"
 TARGET_ARCH="${GOARCH:-$(go env GOHOSTARCH)}"
 HOST_OS="$(go env GOHOSTOS)"
-OUTPUT_NAME="obs_viewer"
+OUTPUT_NAME="kopusha"
 
 if [ "$TARGET_OS" = "windows" ]; then
-    OUTPUT_NAME="obs_viewer.exe"
+    OUTPUT_NAME="kopusha.exe"
 fi
 
 # Supported targets. DuckDB ships prebuilt static libs for more than
@@ -59,7 +59,7 @@ fi
 # ---------------------------------------------------------------------------
 # Override any of these from the environment to brand a fork, e.g.
 #   MANUFACTURER="Acme Corp" ./build.sh
-PRODUCT_NAME="${PRODUCT_NAME:-obs_viewer}"
+PRODUCT_NAME="${PRODUCT_NAME:-kopusha}"
 MANUFACTURER="${MANUFACTURER:-labmk}"
 COPYRIGHT="${COPYRIGHT:-Copyright (c) $(date +%Y) ${MANUFACTURER}. MIT licensed.}"
 
@@ -251,11 +251,11 @@ if [ -d "${SCRIPT_DIR}/parsers.d" ]; then
     echo "  Parser rules: dist/parsers.d/ ($(ls -1 dist/parsers.d/*.yaml 2>/dev/null | wc -l) files)"
 fi
 
-# Ship the config files. Core settings live in obs_viewer.conf (active,
+# Ship the config files. Core settings live in kopusha.conf (active,
 # all values commented = defaults). Each optional module adds its own
-# obs_viewer_<name>.conf sibling; ship one as `.example` when it needs
+# kopusha_<name>.conf sibling; ship one as `.example` when it needs
 # per-site values, and the operator renames it to `.conf` to enable.
-for conf in obs_viewer.conf; do
+for conf in kopusha.conf; do
     if [ -f "${SCRIPT_DIR}/${conf}" ]; then
         cp "${SCRIPT_DIR}/${conf}" "dist/${conf}"
         echo "  Config: dist/${conf}"

@@ -1,5 +1,5 @@
 name: Log format support
-description: A text format obs-viewer does not parse yet
+description: A text format kopusha does not parse yet
 labels: ["ingest"]
 body:
   - type: markdown

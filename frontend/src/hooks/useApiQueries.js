@@ -1,4 +1,4 @@
-// Centralised TanStack Query hooks for the core obs-viewer API surface.
+// Centralised TanStack Query hooks for the core kopusha API surface.
 // Components import these instead of calling `api.*` directly when they
 // need cache participation (results, files, fields, time range, version,
 // modules, settings). One-shot mutations (load/unload/toggle) still call

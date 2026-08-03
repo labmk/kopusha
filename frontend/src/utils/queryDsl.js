@@ -1,4 +1,4 @@
-// Pipeline-style query DSL for obs-viewer.
+// Pipeline-style query DSL for kopusha.
 //
 // Design goal: text that can be pasted into a chat or notes and
 // re-pasted here to restore state. The shape — a stream selector, then
@@ -15,7 +15,7 @@
 //   SELECTOR   := "{" "}"                       (only empty form is meaningful here)
 //   PIPE       := "|" LINE_FILTER | "|" LABEL_FILTER | "|" PARSER
 //   LINE_FILTER:= "=" QSTR | "!=" QSTR | "~" QSTR | "!~" QSTR
-//   PARSER     := "json"                        (accepted, no-op for obs-viewer)
+//   PARSER     := "json"                        (accepted, no-op for kopusha)
 //   LABEL_FILTER := IDENT OP QSTR
 //   OP         := "=" | "!=" | "=~" | "!~"
 //   TIME       := "@time:" DT ".." DT
@@ -24,7 +24,7 @@
 //   DT         := "YYYY-MM-DD HH:MM:SS"
 //
 // Line filters that target the raw row text (no field) become the
-// `search` channel in obs-viewer state. Label filters become entries in
+// `search` channel in kopusha state. Label filters become entries in
 // `filters[]`. Time becomes `time_from` / `time_to`.
 //
 // `contains` and `wildcard` both serialize as `=~ ".*X.*"`. Parse always
@@ -63,7 +63,7 @@ function globToRegex(s) {
   return out;
 }
 
-// Serialize an obs-viewer filter to its `| field op "value"` line.
+// Serialize an kopusha filter to its `| field op "value"` line.
 function serializeFilter(f) {
   const field = f.field;
   switch (f.operator) {
@@ -119,12 +119,12 @@ function unpackOneOfPattern(pattern) {
   return parts.join(',');
 }
 
-// serializeQuery — render the four-part obs-viewer state as pipeline
+// serializeQuery — render the four-part kopusha state as pipeline
 // text. Always emits the header comment + selector for shape stability;
 // optional sections drop when empty.
 export function serializeQuery({ filters = [], time_from = '', time_to = '', search = '' } = {}) {
   const lines = [
-    '# obs-viewer query',
+    '# kopusha query',
     '# Edit and paste back to restore. The empty {} selector matches',
     '# every loaded file; @time: is the range filter.',
     '',
@@ -259,7 +259,7 @@ function parseLabelFilter(field, op, value, warnings) {
   }
 }
 
-// parseQuery — turn DSL text back into obs-viewer state. Always returns
+// parseQuery — turn DSL text back into kopusha state. Always returns
 // the four state fields; `error` is set with a human-readable message
 // when parsing fails halfway through. Partial state up to the failing
 // line is preserved so callers can show "applied through line N".
@@ -293,7 +293,7 @@ export function parseQuery(text) {
       sawSelector = true;
       continue;
     }
-    // Parser stage — accept and ignore for obs-viewer.
+    // Parser stage — accept and ignore for kopusha.
     if (RE_PARSER.test(trimmed)) continue;
     // Label filter: `| field op "value"`.
     const lf = trimmed.match(RE_LABEL);
@@ -317,7 +317,7 @@ export function parseQuery(text) {
         out.search = out.search ? `${out.search} ${val}` : val;
       } else if (op === '!=' || op === '~' || op === '!~') {
         // Negative / regex line filters don't have a direct slot in the
-        // obs-viewer model (we only carry one positive substring). Accept
+        // kopusha model (we only carry one positive substring). Accept
         // them and fold into `search` as best-effort, with a comment-style
         // marker so a re-serialize loses no information silently.
         return { ...out, error: `line ${i + 1}: line filter "${op}" not yet supported (only |= "..." round-trips)` };

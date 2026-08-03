@@ -1,4 +1,4 @@
-// Package update checks whether a newer obs-viewer release exists.
+// Package update checks whether a newer kopusha release exists.
 //
 // It only ever *reports*. Nothing is downloaded, nothing is executed,
 // and the running binary is never modified — replacing the executable in
@@ -6,7 +6,7 @@
 // built yet. See docs/SELF_UPDATE_PROPOSAL.md.
 //
 // The check is enabled by default and switched off with `update_check =
-// false` in obs_viewer.conf or `--no-update-check` on the command line.
+// false` in kopusha.conf or `--no-update-check` on the command line.
 // Because it is on by default it must be invisible when it cannot work:
 //
 //   - It runs in the background. Startup never waits for it.
@@ -33,7 +33,7 @@ import (
 
 // DefaultEndpoint is GitHub's "latest release" API for this project.
 // Overridable so tests can point at an httptest server.
-const DefaultEndpoint = "https://api.github.com/repos/labmk/obs-viewer/releases/latest"
+const DefaultEndpoint = "https://api.github.com/repos/labmk/kopusha/releases/latest"
 
 // RepoURL is the project's page, served to the UI so the header can
 // link to it. Kept beside DefaultEndpoint because the two must name the
@@ -41,9 +41,9 @@ const DefaultEndpoint = "https://api.github.com/repos/labmk/obs-viewer/releases/
 // offer updates from somewhere other than where its code lives.
 //
 // Note that nothing fetches this: it is a destination for a person to
-// click, and the only request obs-viewer itself makes is the release
+// click, and the only request kopusha itself makes is the release
 // check above.
-const RepoURL = "https://github.com/labmk/obs-viewer"
+const RepoURL = "https://github.com/labmk/kopusha"
 
 // checkTimeout bounds the whole request. Generous enough for a slow link,
 // short enough that a black-holed connection resolves well within the
@@ -136,7 +136,7 @@ func (c *Checker) fetch(ctx context.Context) (version, url string, err error) {
 		return "", "", err
 	}
 	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("User-Agent", "obs-viewer/"+c.Current)
+	req.Header.Set("User-Agent", "kopusha/"+c.Current)
 
 	resp, err := c.Client.Do(req)
 	if err != nil {

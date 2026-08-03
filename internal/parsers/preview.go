@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
-	"github.com/labmk/obs-viewer/internal/ingest/line"
+	"github.com/labmk/kopusha/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest/line"
 )
 
 // PreviewLine is one sample line and what the rule did with it.
@@ -207,7 +207,7 @@ func tsErrorText(raw, layout string, err error) string {
 
 // writeSampleFile stages the sample where the adapter can open it.
 func writeSampleFile(lines []string) (string, error) {
-	f, err := os.CreateTemp("", "obs-viewer-rule-preview-*.log")
+	f, err := os.CreateTemp("", "kopusha-rule-preview-*.log")
 	if err != nil {
 		return "", err
 	}

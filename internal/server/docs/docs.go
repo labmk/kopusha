@@ -752,7 +752,7 @@ const docTemplate = `{
         },
         "/api/settings": {
             "get": {
-                "description": "Persisted to obs_viewer_settings.json next to the binary. Only the fields present in the POST body are updated.",
+                "description": "Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.",
                 "consumes": [
                     "application/json"
                 ],
@@ -795,7 +795,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "Persisted to obs_viewer_settings.json next to the binary. Only the fields present in the POST body are updated.",
+                "description": "Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.",
                 "consumes": [
                     "application/json"
                 ],
@@ -942,7 +942,7 @@ const docTemplate = `{
         },
         "/api/update": {
             "get": {
-                "description": "Reports whether a newer release exists. Read-only — obs-viewer never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from \"up to date\".",
+                "description": "Reports whether a newer release exists. Read-only — kopusha never downloads or installs anything. Returns enabled=false when the check is switched off, which the UI must distinguish from \"up to date\".",
                 "produces": [
                     "application/json"
                 ],
@@ -955,6 +955,58 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/server.UpdateResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/update/apply": {
+            "post": {
+                "description": "Installs the binary and merges parsers.d/, then restarts. Requires a prior /api/update/prepare.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "update"
+                ],
+                "summary": "Apply a prepared update",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/selfupdate.Result"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/update/prepare": {
+            "post": {
+                "description": "Downloads the newest release, verifies its build attestation, and returns the plan. Writes nothing.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "update"
+                ],
+                "summary": "Prepare an update",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/selfupdate.Plan"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/server.ErrorResponse"
                         }
                     }
                 }
@@ -982,6 +1034,155 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "selfupdate.Attestation": {
+            "type": "object",
+            "properties": {
+                "commit": {
+                    "description": "Commit is the source revision the archive was built from. This is\nthe claim worth showing a person: it names a commit they can read.",
+                    "type": "string"
+                },
+                "digest": {
+                    "description": "Digest is the SHA-256 of the verified archive, hex.",
+                    "type": "string"
+                },
+                "repository": {
+                    "description": "Repository, WorkflowRef and WorkflowPath identify the build.",
+                    "type": "string"
+                },
+                "runner_environment": {
+                    "description": "RunnerEnvironment is \"github-hosted\" for a normal release. A\nself-hosted runner would mean the build ran on a machine outside\nGitHub's control.",
+                    "type": "string"
+                },
+                "workflow_path": {
+                    "type": "string"
+                },
+                "workflow_ref": {
+                    "type": "string"
+                }
+            }
+        },
+        "selfupdate.Plan": {
+            "type": "object",
+            "properties": {
+                "asset": {
+                    "type": "string"
+                },
+                "attestation": {
+                    "description": "Attestation is the verified provenance of the downloaded archive.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/selfupdate.Attestation"
+                        }
+                    ]
+                },
+                "from": {
+                    "type": "string"
+                },
+                "install_dir": {
+                    "type": "string"
+                },
+                "rules": {
+                    "$ref": "#/definitions/selfupdate.RulePlan"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "to": {
+                    "type": "string"
+                },
+                "verification": {
+                    "description": "Verification names what was actually checked, so the UI can say it\nprecisely instead of implying a signature check that did not\nhappen. See Verify.",
+                    "type": "string"
+                }
+            }
+        },
+        "selfupdate.Result": {
+            "type": "object",
+            "properties": {
+                "backup": {
+                    "type": "string"
+                },
+                "from": {
+                    "type": "string"
+                },
+                "rules_added": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "rules_deleted": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "rules_frozen": {
+                    "description": "RulesFrozen is true when the running binary carried no manifest and\nparsers.d/ was therefore left entirely alone.",
+                    "type": "boolean"
+                },
+                "rules_kept": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/selfupdate.RuleChange"
+                    }
+                },
+                "rules_replaced": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "to": {
+                    "type": "string"
+                }
+            }
+        },
+        "selfupdate.RuleAction": {
+            "type": "string",
+            "enum": [
+                "add",
+                "replace",
+                "delete",
+                "keep"
+            ],
+            "x-enum-varnames": [
+                "RuleAdd",
+                "RuleReplace",
+                "RuleDelete",
+                "RuleKeep"
+            ]
+        },
+        "selfupdate.RuleChange": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "$ref": "#/definitions/selfupdate.RuleAction"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "reason": {
+                    "description": "Reason is set on every RuleKeep and is written for a person to\nread: \"you edited it\", not \"hash mismatch\".",
+                    "type": "string"
+                }
+            }
+        },
+        "selfupdate.RulePlan": {
+            "type": "object",
+            "properties": {
+                "changes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/selfupdate.RuleChange"
+                    }
+                },
+                "frozen": {
+                    "description": "Frozen is true when the running binary carries no manifest, in\nwhich case nothing can be classified and nothing is touched.",
+                    "type": "boolean"
+                }
+            }
+        },
         "server.AdapterVerdict": {
             "type": "object",
             "properties": {
@@ -1824,7 +2025,7 @@ const docTemplate = `{
                     "example": "0.1.0"
                 },
                 "enabled": {
-                    "description": "Enabled mirrors update_check in obs_viewer.conf.",
+                    "description": "Enabled mirrors update_check in kopusha.conf.",
                     "type": "boolean"
                 },
                 "latest": {
@@ -1835,7 +2036,7 @@ const docTemplate = `{
                 "url": {
                     "description": "URL is the release page.",
                     "type": "string",
-                    "example": "https://github.com/labmk/obs-viewer/releases/tag/v0.2.0"
+                    "example": "https://github.com/labmk/kopusha/releases/tag/v0.2.0"
                 }
             }
         },
@@ -1854,7 +2055,7 @@ const docTemplate = `{
                 "repository": {
                     "description": "Repository is the project's page. A destination for a person to\nclick, not something the binary fetches.",
                     "type": "string",
-                    "example": "https://github.com/labmk/obs-viewer"
+                    "example": "https://github.com/labmk/kopusha"
                 },
                 "version": {
                     "type": "string"
@@ -1866,11 +2067,11 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.2.2",
+	Version:          "0.3.0",
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{"http", "https"},
-	Title:            "obs-viewer API",
+	Title:            "kopusha API",
 	Description:      "Local viewer for log, metric and trace files: NDJSON, EVTX,\nXML, and rule-driven text logs, queried through DuckDB.\nThe OpenAPI spec is the source of truth for the generated\nTypeScript client used by the React frontend.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

@@ -34,7 +34,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
+	"github.com/labmk/kopusha/internal/ingest"
 )
 
 // utf8BOM is the byte-order mark Windows tooling writes at the start of

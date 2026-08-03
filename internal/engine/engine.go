@@ -13,8 +13,8 @@ import (
 
 	_ "github.com/duckdb/duckdb-go/v2"
 
-	"github.com/labmk/obs-viewer/internal/ingest"
-	"github.com/labmk/obs-viewer/internal/logx"
+	"github.com/labmk/kopusha/internal/ingest"
+	"github.com/labmk/kopusha/internal/logx"
 )
 
 // FileInfo holds metadata about a loaded NDJSON file.
@@ -397,7 +397,7 @@ func (e *Engine) duckdbLoadDirect(tableName, loadPath, reportPath, loaderName st
 // request can abort a multi-GB ingest mid-flight instead of running
 // to completion and then discarding the result.
 func streamToTempNDJSON(ctx context.Context, s ingest.RecordStreamer, h ingest.LoadHint) (string, error) {
-	tmp, err := os.CreateTemp("", "obs_viewer_*.ndjson")
+	tmp, err := os.CreateTemp("", "kopusha_*.ndjson")
 	if err != nil {
 		return "", fmt.Errorf("create temp ndjson: %w", err)
 	}
