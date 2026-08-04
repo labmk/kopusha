@@ -56,10 +56,15 @@ export default function FilePanel({ files, onToggle, onUnload, onToggleAll, onRe
         ) : (
           files.map((file) => (
             <div key={file.id} className="checkbox-row">
+              {/* Named explicitly: the filename beside it is a div, not a
+                  label, so without this the control announces only its
+                  state and a screen reader user cannot tell the rows
+                  apart. */}
               <input
                 type="checkbox"
                 checked={file.enabled}
                 onChange={(e) => onToggle(file.id, e.target.checked)}
+                aria-label={`Include ${file.name} in queries`}
               />
               <div style={{ flex: 1, overflow: 'hidden' }}>
                 <div className="file-name" title={file.path}>

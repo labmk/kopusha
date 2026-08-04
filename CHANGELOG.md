@@ -9,6 +9,52 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Changed
+
+- **The header is down to what it is for.** It carried a tab strip with a
+  single option, styled as an active pill and centred like a title — a
+  control with nothing to switch to. It now appears only when a module
+  supplies a second tab, and the permanent tab is labelled `Parse`. The
+  label it used to carry, `OBS Viewer`, was the last thing in the tree
+  still holding the old name; the 0.3.0 rename matched `obs-viewer` and
+  `obs_viewer` and never saw it.
+
+- **Display preferences moved behind a settings button.** Timezone, time
+  format and theme are set once and then left alone, so they were taking
+  header room from things pressed constantly. They now live in a popover
+  that closes on Escape or an outside click.
+
+- **Hide null and Auto Apply moved into the query row.** Both change what
+  the query returns, so they belong beside the filters rather than among
+  the display preferences they used to sit with.
+
+- **Copy link is gone.** The address bar already carries the full view —
+  `writeState` has run on every change since 0.2.2 — so the button was a
+  second way to do what selecting the URL does.
+
+- **A type scale, instead of eight sizes.** Sizes ran 9, 10, 11, 12, 13,
+  14, 15 and 32px with no system. Four tokens now cover the interface,
+  and 9px and 10px are retired: they were carrying text people read, at
+  contrast that could not support them.
+
+### Fixed
+
+- **Muted text now meets WCAG AA in both themes.** `--text-muted` scored
+  3.79:1 on dark and **2.82:1 on light — an outright failure** — while
+  carrying the histogram axis labels, the bar description and the status
+  bar at 10–11px. It is now 5.97:1 and 5.20:1.
+
+- **The light theme has visible structure.** Four near-identical greys
+  (#EBEBEB, #F3F3F3, #F7F7F7, #FFFFFF) left panels indistinguishable at
+  1.11:1. The app background is now 1.26:1 against panels, with borders
+  darkened to match.
+
+- **Per-file checkboxes announce which file they control.** They sat
+  beside a `div` rather than a label, so a screen reader read only their
+  state and every row sounded the same.
+
 ## [0.3.2] — 2026-08-04
 
 ### Fixed

@@ -15,7 +15,7 @@ import {
   useUpdateStatus,
 } from './hooks/useApiQueries';
 import { formatTimeout } from './utils/datetime';
-import { decodeState, writeState, shareableURL } from './utils/urlState';
+import { decodeState, writeState } from './utils/urlState';
 import FilePanel from './components/FilePanel';
 import FileBrowser from './components/FileBrowser';
 import TimeFilter from './components/TimeFilter';
@@ -28,6 +28,16 @@ import TimeHistogram from './components/TimeHistogram';
 import UpdateNotice from './components/UpdateNotice';
 import FieldProfile from './components/FieldProfile';
 import { moduleComponents } from './moduleRegistry';
+
+// Fixed UTC offsets rather than IANA zone names: logs are read across
+// machines whose local zone is rarely the one the data came from, and a
+// numeric offset is unambiguous where "Europe/Berlin" is a question about
+// which side of a DST boundary a row falls on.
+const TIMEZONES = [
+  ...Array.from({ length: 12 }, (_, i) => [`Etc/GMT+${12 - i}`, `UTC-${String(12 - i).padStart(2, '0')}`]),
+  ['UTC', 'UTC'],
+  ...Array.from({ length: 12 }, (_, i) => [`Etc/GMT-${i + 1}`, `UTC+${String(i + 1).padStart(2, '0')}`]),
+];
 
 export default function App() {
   const queryClient = useQueryClient();
@@ -115,7 +125,7 @@ export default function App() {
   // what turns the worst moment in the product into the entry point for
   // its most useful feature.
   const [ruleSample, setRuleSample] = useState(null);
-  const [copiedLink, setCopiedLink] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [showProfile, setShowProfile] = useLocalStorage('kopusha_show_profile', false);
   const [theme, setTheme] = useLocalStorage('kopusha_theme', 'dark');
   const [activeTab, setActiveTab] = useLocalStorage('kopusha_active_tab', 'viewer');
@@ -317,21 +327,23 @@ export default function App() {
 
   useEffect(() => { writeState(shareState); }, [shareState]);
 
-  const handleCopyLink = async () => {
-    const url = shareableURL(shareState);
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      // Clipboard access needs a secure context, which plain-HTTP
-      // localhost usually is but an operator on a TLS-less LAN bind is
-      // not. Fall back to selecting the text so the copy is still one
-      // keystroke away rather than impossible.
-      window.prompt('Copy this link:', url);
-      return;
-    }
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 1500);
-  };
+  // A popover that only closes by pressing the same button again is a
+  // popover people leave open by accident. Escape and an outside click
+  // are what everything else on the desktop does.
+  useEffect(() => {
+    if (!showSettings) return;
+    const onKey = (e) => { if (e.key === 'Escape') setShowSettings(false); };
+    const onDown = (e) => {
+      if (!e.target.closest('.settings-wrap')) setShowSettings(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onDown);
+    };
+  }, [showSettings]);
+
 
   // A drag on the histogram applies immediately, whatever Auto Apply is
   // set to. Auto Apply exists to stop a half-typed filter from firing a
@@ -450,84 +462,70 @@ export default function App() {
             <span> {brand.header_text || 'kopusha'} <span>v{version}</span></span>
           )}
         </div>
-        <div className="tab-switcher">
-          <button
-            className={`tab-btn ${activeTab === 'viewer' ? 'active' : ''}`}
-            onClick={() => setActiveTab('viewer')}
-          >
-            OBS Viewer
-          </button>
-          {tabModules.map(m => (
+        {/* The tab strip only earns its space once something can be
+            switched to. With no tab modules enabled it was a control with
+            one option, centred like a title — so it is rendered only when
+            a module actually provides a tab. */}
+        {tabModules.length > 0 && (
+          <div className="tab-switcher">
             <button
-              key={m.id}
-              className={`tab-btn ${activeTab === m.id ? 'active' : ''}`}
-              onClick={() => setActiveTab(m.id)}
+              className={`tab-btn ${activeTab === 'viewer' ? 'active' : ''}`}
+              onClick={() => setActiveTab('viewer')}
             >
-              {m.tab.label}
+              Parse
             </button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <div className="tz-picker">
-            <span>Timezone:</span>
-            <select value={timezone} onChange={(e) => setTimezone(e.target.value)}>
-              <option value="Etc/GMT+12">UTC-12</option>
-              <option value="Etc/GMT+11">UTC-11</option>
-              <option value="Etc/GMT+10">UTC-10</option>
-              <option value="Etc/GMT+9">UTC-09</option>
-              <option value="Etc/GMT+8">UTC-08</option>
-              <option value="Etc/GMT+7">UTC-07</option>
-              <option value="Etc/GMT+6">UTC-06</option>
-              <option value="Etc/GMT+5">UTC-05</option>
-              <option value="Etc/GMT+4">UTC-04</option>
-              <option value="Etc/GMT+3">UTC-03</option>
-              <option value="Etc/GMT+2">UTC-02</option>
-              <option value="Etc/GMT+1">UTC-01</option>
-              <option value="UTC">UTC</option>
-              <option value="Etc/GMT-1">UTC+01</option>
-              <option value="Etc/GMT-2">UTC+02</option>
-              <option value="Etc/GMT-3">UTC+03</option>
-              <option value="Etc/GMT-4">UTC+04</option>
-              <option value="Etc/GMT-5">UTC+05</option>
-              <option value="Etc/GMT-6">UTC+06</option>
-              <option value="Etc/GMT-7">UTC+07</option>
-              <option value="Etc/GMT-8">UTC+08</option>
-              <option value="Etc/GMT-9">UTC+09</option>
-              <option value="Etc/GMT-10">UTC+10</option>
-              <option value="Etc/GMT-11">UTC+11</option>
-              <option value="Etc/GMT-12">UTC+12</option>
-            </select>
-            <span style={{ marginLeft: '6px' }}>Time format:</span>
-            <select value={hourFormat} onChange={(e) => setHourFormat(e.target.value)}>
-              <option value="24">24H</option>
-              <option value="12">12H</option>
-            </select>
-            <label style={{ marginLeft: '8px', display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }} title="Hide null/empty fields in expanded row view">
-              <input
-                type="checkbox"
-                checked={hideNulls}
-                onChange={(e) => setHideNulls(e.target.checked)}
-                style={{ accentColor: 'var(--accent)' }}
-              />
-              Hide null
-            </label>
-            <label style={{ marginLeft: '8px', display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer' }} title="Automatically re-run the query when filters/time/search change">
-              <input
-                type="checkbox"
-                checked={autoFilter}
-                onChange={(e) => setAutoFilter(e.target.checked)}
-                style={{ accentColor: 'var(--accent)' }}
-              />
-              Auto Apply
-            </label>
+            {tabModules.map(m => (
+              <button
+                key={m.id}
+                className={`tab-btn ${activeTab === m.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(m.id)}
+              >
+                {m.tab.label}
+              </button>
+            ))}
           </div>
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? '☀' : '☾'}
-          </button>
+        )}
+        <div className="header-actions">
+          {/* Timezone, time format and theme are set once and then left
+              alone. They were sharing the header with actions pressed many
+              times a session, which is what made the bar feel crowded. */}
+          <div className="settings-wrap">
+            <button
+              className={`icon-btn${showSettings ? ' active' : ''}`}
+              onClick={() => setShowSettings(v => !v)}
+              aria-label="Display settings"
+              aria-expanded={showSettings}
+              title="Timezone, time format and theme"
+            >
+              &#9881;
+            </button>
+            {showSettings && (
+              <div className="settings-popover" role="dialog" aria-label="Display settings">
+                <label className="settings-row">
+                  <span>Timezone</span>
+                  <select value={timezone} onChange={(e) => setTimezone(e.target.value)}>
+                    {TIMEZONES.map(([value, label]) => (
+                      <option key={value} value={value}>{label}</option>
+                    ))}
+                  </select>
+                </label>
+                <label className="settings-row">
+                  <span>Time format</span>
+                  <select value={hourFormat} onChange={(e) => setHourFormat(e.target.value)}>
+                    <option value="24">24-hour</option>
+                    <option value="12">12-hour</option>
+                  </select>
+                </label>
+                <label className="settings-row">
+                  <span>Theme</span>
+                  <select value={theme} onChange={(e) => { if (e.target.value !== theme) toggleTheme(); }}>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                  </select>
+                </label>
+              </div>
+            )}
+          </div>
           <button
             className={`btn${showProfile ? ' btn-primary' : ''}`}
             onClick={() => setShowProfile(v => !v)}
@@ -537,19 +535,16 @@ export default function App() {
           </button>
           <button
             className="btn"
-            onClick={handleCopyLink}
-            title="Copy a link to this exact view — filters, time range, sort and columns. Files are not included; the recipient opens their own."
-          >
-            {copiedLink ? 'Copied' : 'Copy link'}
-          </button>
-          <button
-            className="btn"
             onClick={() => setRuleSample('')}
             title="Build a parser rule for a log format kopusha does not recognize yet"
           >
             Parser rules
           </button>
-          <button className="btn btn-primary" onClick={() => setShowExport(true)}>
+          <button
+            className="btn btn-primary"
+            onClick={() => setShowExport(true)}
+            title="Write the current result to a file — NDJSON or Parquet"
+          >
             Export
           </button>
         </div>
@@ -563,9 +558,9 @@ export default function App() {
           onTimeFromChange={setTimeFrom}
           onTimeToChange={setTimeTo}
         />
-        <div style={{ width: '1px', height: '24px', background: 'var(--border)' }} />
+        <div className="top-bar-sep" />
         <label
-          style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', color: 'var(--text-secondary)' }}
+          className="check-inline"
           title="Primary sort/time field. ObservedTimestamp falls back to @timestamp if not present in the loaded files."
         >
           Sort:
@@ -574,7 +569,29 @@ export default function App() {
             <option value="ObservedTimestamp">ObservedTimestamp</option>
           </select>
         </label>
-        <div style={{ width: '1px', height: '24px', background: 'var(--border)' }} />
+        <div className="top-bar-sep" />
+        {/* Both of these change what the query returns, so they belong
+            beside the filters rather than in the header with the display
+            preferences they used to sit among. */}
+        <label className="check-inline" title="Hide null and empty fields when a row is expanded">
+          <input
+            type="checkbox"
+            checked={hideNulls}
+            onChange={(e) => setHideNulls(e.target.checked)}
+            aria-label="Hide null and empty fields"
+          />
+          Hide null
+        </label>
+        <label className="check-inline" title="Re-run the query automatically when filters, time or search change">
+          <input
+            type="checkbox"
+            checked={autoFilter}
+            onChange={(e) => setAutoFilter(e.target.checked)}
+            aria-label="Automatically re-run the query"
+          />
+          Auto Apply
+        </label>
+        <div className="top-bar-sep" />
         <QueryBuilder
           fields={fields}
           filters={filters}

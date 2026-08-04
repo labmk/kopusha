@@ -386,3 +386,58 @@ test('healthcheck status shows "no connection" when backend is unreachable', asy
   await page.goto('/');
   await expect(page.locator('.status-offline')).toBeVisible({ timeout: 10_000 });
 });
+
+// The header carried a tab strip with a single option, styled as an
+// active pill and centred like a title. It only earns its space once a
+// module supplies a second tab.
+test('no tab strip is shown when nothing can be switched to', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.app-header')).toBeVisible();
+  await expect(page.locator('.tab-switcher')).toHaveCount(0);
+  // And the label it used to carry is gone from the product entirely.
+  await expect(page.locator('body')).not.toContainText('OBS Viewer');
+});
+
+// Display preferences are set once and then left alone, so they live
+// behind the gear rather than in the row of things pressed constantly.
+test('display settings live behind the gear and dismiss properly', async ({ page }) => {
+  await page.goto('/');
+  const gear = page.getByRole('button', { name: 'Display settings' });
+  await expect(page.locator('.settings-popover')).toHaveCount(0);
+
+  await gear.click();
+  const pop = page.locator('.settings-popover');
+  await expect(pop).toBeVisible();
+  await expect(pop).toContainText('Timezone');
+  await expect(pop).toContainText('Time format');
+  await expect(pop).toContainText('Theme');
+
+  await page.keyboard.press('Escape');
+  await expect(pop).toHaveCount(0);
+
+  await gear.click();
+  await expect(pop).toBeVisible();
+  await page.locator('.status-bar').click({ position: { x: 5, y: 5 } });
+  await expect(pop).toHaveCount(0);
+});
+
+// Copy link is gone: writeState keeps the address bar current, so
+// selecting the URL is the same act with one less button.
+test('the query state reaches the address bar without a button', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('button', { name: 'Copy link' })).toHaveCount(0);
+  await page.getByRole('button', { name: '24h' }).click();
+  await expect.poll(() => page.url()).toMatch(/#/);
+});
+
+// Every checkbox has to say what it is. The per-file ones sat beside a
+// div rather than a label, so they announced only their state.
+test('checkboxes carry accessible names', async ({ page }) => {
+  await page.goto('/');
+  const unnamed = await page.evaluate(() =>
+    [...document.querySelectorAll('input[type=checkbox]')]
+      .filter((el) => !el.getAttribute('aria-label') && (!el.labels || el.labels.length === 0))
+      .length
+  );
+  expect(unnamed).toBe(0);
+});
