@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VERSION="${VERSION:-0.3.0}"
+VERSION="${VERSION:-0.3.1}"
 # Default to the host platform. Set GOOS/GOARCH to cross-compile —
 # see docs/BUILD.md for which combinations actually work (CGO makes
 # most of them require a matching C cross-toolchain).

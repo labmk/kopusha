@@ -9,7 +9,7 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
-## [Unreleased]
+## [0.3.1] — 2026-08-04
 
 ### Added
 
@@ -387,7 +387,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/labmk/kopusha/releases/tag/v0.3.1
 [0.3.0]: https://github.com/labmk/kopusha/releases/tag/v0.3.0
 [0.2.2]: https://github.com/labmk/kopusha/releases/tag/v0.2.2
 [0.2.1]: https://github.com/labmk/kopusha/releases/tag/v0.2.1
