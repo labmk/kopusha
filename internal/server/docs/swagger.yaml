@@ -38,6 +38,8 @@ definitions:
         type: string
       rules:
         $ref: '#/definitions/selfupdate.RulePlan'
+      samples:
+        $ref: '#/definitions/selfupdate.SamplePlan'
       size:
         type: integer
       to:
@@ -73,6 +75,10 @@ definitions:
           $ref: '#/definitions/selfupdate.RuleChange'
         type: array
       rules_replaced:
+        items:
+          type: string
+        type: array
+      samples_written:
         items:
           type: string
         type: array
@@ -114,6 +120,17 @@ definitions:
           Frozen is true when the running binary carries no manifest, in
           which case nothing can be classified and nothing is touched.
         type: boolean
+    type: object
+  selfupdate.SamplePlan:
+    properties:
+      created:
+        description: Created is true when samples/ did not exist and will be made.
+        type: boolean
+      write:
+        description: Write lists the sample files the update will create or overwrite.
+        items:
+          type: string
+        type: array
     type: object
   server.AdapterVerdict:
     properties:
@@ -764,7 +781,7 @@ info:
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
   title: kopusha API
-  version: 0.3.1
+  version: 0.3.2
 paths:
   /api/browse:
     get:

@@ -37,6 +37,7 @@ export type SelfupdatePlan = {
     from?: string;
     install_dir?: string;
     rules?: SelfupdateRulePlan;
+    samples?: SelfupdateSamplePlan;
     size?: number;
     to?: string;
     /**
@@ -59,6 +60,7 @@ export type SelfupdateResult = {
     rules_frozen?: boolean;
     rules_kept?: Array<SelfupdateRuleChange>;
     rules_replaced?: Array<string>;
+    samples_written?: Array<string>;
     to?: string;
 };
 
@@ -81,6 +83,17 @@ export type SelfupdateRulePlan = {
      * which case nothing can be classified and nothing is touched.
      */
     frozen?: boolean;
+};
+
+export type SelfupdateSamplePlan = {
+    /**
+     * Created is true when samples/ did not exist and will be made.
+     */
+    created?: boolean;
+    /**
+     * Write lists the sample files the update will create or overwrite.
+     */
+    write?: Array<string>;
 };
 
 export type ServerAdapterVerdict = {

@@ -41,6 +41,10 @@ type Updater struct {
 	ExePath string
 	// RulesDir is the parsers.d/ directory being merged into.
 	RulesDir string
+	// SamplesDir is the samples/ directory. Empty disables sample
+	// updating entirely, which is what a caller that does not ship them
+	// should do.
+	SamplesDir string
 	// Shipped is the parser manifest this binary was built with. Empty
 	// means the binary predates the manifest, in which case the merge
 	// touches nothing — see MergeRules.

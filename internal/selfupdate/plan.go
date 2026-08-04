@@ -28,8 +28,14 @@ type Plan struct {
 	// happen. See Verify.
 	Verification string `json:"verification"`
 
-	Rules      RulePlan `json:"rules"`
-	InstallDir string   `json:"install_dir"`
+	Rules   RulePlan   `json:"rules"`
+	Samples SamplePlan `json:"samples"`
+
+	InstallDir string `json:"install_dir"`
+
+	// samples is carried alongside the plan for the same reason archive
+	// is: what was inspected must be what gets written.
+	samples map[string][]byte
 
 	// archive is the verified zip, carried from Prepare to Apply so the
 	// bytes that were checked are the bytes that get installed. Passing a
@@ -43,10 +49,11 @@ type Result struct {
 	To     string `json:"to"`
 	Backup string `json:"backup"`
 
-	RulesAdded    []string     `json:"rules_added,omitempty"`
-	RulesReplaced []string     `json:"rules_replaced,omitempty"`
-	RulesDeleted  []string     `json:"rules_deleted,omitempty"`
-	RulesKept     []RuleChange `json:"rules_kept,omitempty"`
+	RulesAdded     []string     `json:"rules_added,omitempty"`
+	RulesReplaced  []string     `json:"rules_replaced,omitempty"`
+	RulesDeleted   []string     `json:"rules_deleted,omitempty"`
+	RulesKept      []RuleChange `json:"rules_kept,omitempty"`
+	SamplesWritten []string     `json:"samples_written,omitempty"`
 	// RulesFrozen is true when the running binary carried no manifest and
 	// parsers.d/ was therefore left entirely alone.
 	RulesFrozen bool `json:"rules_frozen"`
@@ -95,6 +102,11 @@ func (u *Updater) Prepare(ctx context.Context, version string) (*Plan, error) {
 		return nil, err
 	}
 
+	samples, err := a.samples()
+	if err != nil {
+		return nil, err
+	}
+
 	return &Plan{
 		From:        u.Current,
 		To:          version,
@@ -106,8 +118,10 @@ func (u *Updater) Prepare(ctx context.Context, version string) (*Plan, error) {
 			"Sigstore signature on that attestation was not itself checked — " +
 			"run `gh attestation verify` for that.",
 		Rules:      rulePlan,
+		Samples:    u.PlanSamples(samples),
 		InstallDir: u.InstallDir,
 		archive:    data,
+		samples:    samples,
 	}, nil
 }
 
@@ -146,12 +160,20 @@ func (u *Updater) Apply(plan *Plan) (*Result, error) {
 		return nil, fmt.Errorf("the new binary is installed, but parser rules could not be updated: %w", err)
 	}
 
+	// Samples are inert demo data, so a failure to write them is
+	// reported rather than treated as a failed update — the binary and
+	// the rules are what make the tool work.
+	if err := u.ApplySamples(plan.Samples, plan.samples); err != nil {
+		return nil, fmt.Errorf("the new binary and rules are installed, but samples could not be written: %w", err)
+	}
+
 	res := &Result{
-		From:        plan.From,
-		To:          plan.To,
-		Backup:      backup,
-		RulesKept:   plan.Rules.Kept(),
-		RulesFrozen: plan.Rules.Frozen,
+		From:           plan.From,
+		To:             plan.To,
+		Backup:         backup,
+		RulesKept:      plan.Rules.Kept(),
+		SamplesWritten: plan.Samples.Write,
+		RulesFrozen:    plan.Rules.Frozen,
 	}
 	for _, c := range plan.Rules.Changes {
 		switch c.Action {

@@ -153,6 +153,32 @@ func (a *archive) rules() (map[string][]byte, error) {
 	return out, nil
 }
 
+// samples returns every samples/ member, keyed by base name. Unlike
+// rules() there is no extension filter: the folder ships .log, .txt,
+// .ndjson, .parquet and a README, and a filter here would silently drop
+// whichever format is added next.
+func (a *archive) samples() (map[string][]byte, error) {
+	out := map[string][]byte{}
+	for _, f := range a.zip.File {
+		clean, err := safeName(f.Name)
+		if err != nil {
+			return nil, err
+		}
+		dir, base := path.Split(clean)
+		if dir != "samples/" || base == "" {
+			continue
+		}
+		data, ok, err := a.read(clean)
+		if err != nil {
+			return nil, err
+		}
+		if ok {
+			out[base] = data
+		}
+	}
+	return out, nil
+}
+
 // binaryName is the executable inside the archive for this platform.
 func binaryName() string {
 	if isWindows() {

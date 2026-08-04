@@ -372,3 +372,160 @@ func TestSweepBackupRemovesTheOldBinary(t *testing.T) {
 		t.Error("SweepBackup claimed a second removal")
 	}
 }
+
+// buildArchiveWithSamples adds a samples/ folder to the release zip.
+func buildArchiveWithSamples(t *testing.T, samples map[string]string) []byte {
+	t.Helper()
+	extra := map[string]string{}
+	for name, body := range samples {
+		extra["samples/"+name] = body
+	}
+	return buildArchive(t, "the new binary", nil, extra)
+}
+
+// The case this exists for: 0.3.0 shipped no samples/, so an install that
+// self-updated into 0.3.1 had no folder to update. Honouring "absent
+// means you deleted it" — right for a parser rule — would mean those
+// installs never receive samples at all.
+func TestUpdateCreatesSamplesWhenTheInstallHasNone(t *testing.T) {
+	u := install(t, nil, nil)
+	u.SamplesDir = filepath.Join(u.InstallDir, "samples")
+
+	archive := buildArchiveWithSamples(t, map[string]string{
+		"sample.ndjson": `{"ts":"2026-01-01T00:00:00Z"}`,
+		"unmatched.log": "nothing parses this",
+		"README.md":     "what these are",
+	})
+	point(u, releaseServer(t, archive, AssetName(newVersion)))
+
+	plan, err := u.Prepare(context.Background(), newVersion)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !plan.Samples.Created {
+		t.Error("plan does not report that samples/ will be created")
+	}
+	if len(plan.Samples.Write) != 3 {
+		t.Errorf("write = %v, want all three", plan.Samples.Write)
+	}
+	// Still nothing on disk after Prepare.
+	if _, err := os.Stat(u.SamplesDir); !os.IsNotExist(err) {
+		t.Fatalf("Prepare created samples/: %v", err)
+	}
+
+	res, err := u.Apply(plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for name, want := range map[string]string{
+		"sample.ndjson": `{"ts":"2026-01-01T00:00:00Z"}`,
+		"unmatched.log": "nothing parses this",
+		"README.md":     "what these are",
+	} {
+		body, err := os.ReadFile(filepath.Join(u.SamplesDir, name))
+		if err != nil {
+			t.Errorf("%s: %v", name, err)
+			continue
+		}
+		if string(body) != want {
+			t.Errorf("%s = %q, want %q", name, body, want)
+		}
+	}
+	if len(res.SamplesWritten) != 3 {
+		t.Errorf("report says %v, want three files", res.SamplesWritten)
+	}
+}
+
+// A shipped sample is overwritten — samples are demo data, and a newer
+// release's version of one is the one worth having.
+func TestUpdateOverwritesShippedSamplesButKeepsOthers(t *testing.T) {
+	u := install(t, nil, nil)
+	u.SamplesDir = filepath.Join(u.InstallDir, "samples")
+	if err := os.MkdirAll(u.SamplesDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	for name, body := range map[string]string{
+		"sample.ndjson":    "the old sample",
+		"my-own-notes.txt": "a file the user dropped in here",
+	} {
+		if err := os.WriteFile(filepath.Join(u.SamplesDir, name), []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	archive := buildArchiveWithSamples(t, map[string]string{"sample.ndjson": "the new sample"})
+	point(u, releaseServer(t, archive, AssetName(newVersion)))
+
+	plan, err := u.Prepare(context.Background(), newVersion)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if plan.Samples.Created {
+		t.Error("plan claims to create a directory that already exists")
+	}
+	if _, err := u.Apply(plan); err != nil {
+		t.Fatal(err)
+	}
+
+	if body, _ := os.ReadFile(filepath.Join(u.SamplesDir, "sample.ndjson")); string(body) != "the new sample" {
+		t.Errorf("shipped sample = %q, want the new one", body)
+	}
+	// Anything the release does not carry is strictly untouched, which is
+	// the one guarantee that stops samples/ being a folder you cannot use.
+	body, err := os.ReadFile(filepath.Join(u.SamplesDir, "my-own-notes.txt"))
+	if err != nil {
+		t.Fatalf("the user's own file was removed: %v", err)
+	}
+	if string(body) != "a file the user dropped in here" {
+		t.Errorf("the user's own file changed: %q", body)
+	}
+}
+
+// A release carrying no samples/ must not disturb the folder.
+func TestUpdateLeavesSamplesAloneWhenTheReleaseHasNone(t *testing.T) {
+	u := install(t, nil, nil)
+	u.SamplesDir = filepath.Join(u.InstallDir, "samples")
+	if err := os.MkdirAll(u.SamplesDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(u.SamplesDir, "kept.log"), []byte("still here"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	point(u, releaseServer(t, buildArchive(t, "the new binary", nil, nil), AssetName(newVersion)))
+
+	plan, err := u.Prepare(context.Background(), newVersion)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(plan.Samples.Write) != 0 {
+		t.Errorf("write = %v, want nothing", plan.Samples.Write)
+	}
+	if _, err := u.Apply(plan); err != nil {
+		t.Fatal(err)
+	}
+	if body, _ := os.ReadFile(filepath.Join(u.SamplesDir, "kept.log")); string(body) != "still here" {
+		t.Errorf("kept.log = %q", body)
+	}
+}
+
+// A caller that ships no samples opts out by leaving SamplesDir empty,
+// and must not have a folder invented next to its binary.
+func TestUpdateSkipsSamplesWhenTheDirIsUnset(t *testing.T) {
+	u := install(t, nil, nil)
+	u.SamplesDir = ""
+	point(u, releaseServer(t, buildArchiveWithSamples(t, map[string]string{"a.log": "x"}), AssetName(newVersion)))
+
+	plan, err := u.Prepare(context.Background(), newVersion)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(plan.Samples.Write) != 0 || plan.Samples.Created {
+		t.Fatalf("samples = %+v, want nothing", plan.Samples)
+	}
+	if _, err := u.Apply(plan); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(u.InstallDir, "samples")); !os.IsNotExist(err) {
+		t.Error("a samples/ folder was created despite being unset")
+	}
+}

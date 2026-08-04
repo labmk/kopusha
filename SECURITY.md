@@ -137,3 +137,10 @@ release.
   byte-identical to the one the running binary shipped with — anything
   you edited, added or deleted is left alone, and the update reports
   what it skipped and why. See docs/SELF_UPDATE_PROPOSAL.md.
+
+  The one exception is `samples/`, which is overwritten. It is inert
+  demo data — the binary never reads it, and deleting it changes
+  nothing — so shipped sample files are replaced with the newer
+  release's versions and the folder is created if it is missing. Any
+  file in there that the release does not carry is left untouched, so
+  the folder remains safe to keep your own files in.

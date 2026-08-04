@@ -1084,6 +1084,9 @@ const docTemplate = `{
                 "rules": {
                     "$ref": "#/definitions/selfupdate.RulePlan"
                 },
+                "samples": {
+                    "$ref": "#/definitions/selfupdate.SamplePlan"
+                },
                 "size": {
                     "type": "integer"
                 },
@@ -1128,6 +1131,12 @@ const docTemplate = `{
                     }
                 },
                 "rules_replaced": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "samples_written": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -1180,6 +1189,22 @@ const docTemplate = `{
                 "frozen": {
                     "description": "Frozen is true when the running binary carries no manifest, in\nwhich case nothing can be classified and nothing is touched.",
                     "type": "boolean"
+                }
+            }
+        },
+        "selfupdate.SamplePlan": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "description": "Created is true when samples/ did not exist and will be made.",
+                    "type": "boolean"
+                },
+                "write": {
+                    "description": "Write lists the sample files the update will create or overwrite.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
@@ -2067,7 +2092,7 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "0.3.1",
+	Version:          "0.3.2",
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{"http", "https"},

@@ -9,6 +9,32 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.2] — 2026-08-04
+
+### Fixed
+
+- **Updating now brings `samples/` with it.** 0.3.1 added sample logs to
+  the download, but the updater only knew about the binary and
+  `parsers.d/` — so an install that updated from 0.3.0 got the new binary
+  and no samples, and would have gone on missing every sample added
+  later.
+
+  Samples deliberately do *not* get the `parsers.d/` treatment. That
+  policy exists because parser rules are configuration you are invited to
+  edit, and losing an edit would lose real work. Samples are inert demo
+  data that nobody hand-tunes, so carrying a second manifest to detect
+  edits would be machinery bought for nothing. Shipped samples are simply
+  written over.
+
+  The folder is created when it is missing, which is the point: an
+  install that came from a version predating `samples/` has none, and
+  treating that absence as "you deleted it" would mean it never received
+  any. The cost of that choice is that deleting the folder does not make
+  it stay deleted — the update says so in its report.
+
+  Anything in `samples/` that the release does not carry is left strictly
+  alone, so it stays a folder you can keep your own files in.
+
 ## [0.3.1] — 2026-08-04
 
 ### Added
@@ -387,7 +413,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/labmk/kopusha/releases/tag/v0.3.2
 [0.3.1]: https://github.com/labmk/kopusha/releases/tag/v0.3.1
 [0.3.0]: https://github.com/labmk/kopusha/releases/tag/v0.3.0
 [0.2.2]: https://github.com/labmk/kopusha/releases/tag/v0.2.2

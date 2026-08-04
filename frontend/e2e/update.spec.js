@@ -68,6 +68,7 @@ test('preparing an update shows what it will do before writing anything', async 
             { name: '20-edited.yaml', action: 'keep', reason: 'you edited it' },
           ],
         },
+        samples: { write: ['sample.ndjson', 'unmatched.log'], created: true },
       }),
     })
   );
@@ -82,6 +83,9 @@ test('preparing an update shows what it will do before writing anything', async 
   // the whole reason the plan is shown rather than just applied.
   await expect(notice).toContainText('20-edited.yaml');
   await expect(notice).toContainText('you edited it');
+  // Samples travel with the binary, and the plan says which way round:
+  // added when the install has none, refreshed when it already does.
+  await expect(notice).toContainText('2 sample logs will be added');
   await expect(notice).toContainText('config files are never replaced');
   await expect(notice).toContainText('Nothing has been written yet');
   await expect(notice.getByRole('button', { name: 'Install and restart' })).toBeVisible();

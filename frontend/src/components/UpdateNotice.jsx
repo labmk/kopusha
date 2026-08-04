@@ -86,6 +86,12 @@ export default function UpdateNotice({ status }) {
                 so beats a page that silently stops responding. */}
             Restarting into {result?.to}. This page reconnects on its own.
           </div>
+          {result?.samples_written?.length > 0 && (
+            <div className="update-notice-kept">
+              {result.samples_written.length} sample log
+              {result.samples_written.length === 1 ? '' : 's'} updated.
+            </div>
+          )}
           {result?.rules_kept?.length > 0 && (
             <div className="update-notice-kept">
               <strong>{result.rules_kept.length} parser rule
@@ -125,6 +131,13 @@ export default function UpdateNotice({ status }) {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+              {plan.samples?.write?.length > 0 && (
+                <div>
+                  {plan.samples.write.length} sample log
+                  {plan.samples.write.length === 1 ? '' : 's'}{' '}
+                  {plan.samples.created ? 'will be added' : 'will be refreshed'}.
                 </div>
               )}
               <div>Your config files are never replaced.</div>
