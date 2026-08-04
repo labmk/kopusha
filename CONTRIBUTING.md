@@ -107,6 +107,11 @@ hostnames, usernames, IP addresses (use the RFC 5737 ranges), filesystem
 paths from a real deployment, vendor or product names, or identifiers
 lifted from a live system.
 
+Fixtures under `test-fixtures/formats/` are also **shipped**: `build.sh`
+copies them into `dist/samples/` so every release archive has sample
+data in it. Write each one as though it will be downloaded by strangers,
+because it will be.
+
 Do not trim a real log file down to make a fixture. Trimming removes
 rows; it does not remove what is embedded in the message bodies. Write
 it by hand, or add a writer to `test-fixtures/generate.py` and

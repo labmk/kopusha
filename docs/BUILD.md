@@ -24,7 +24,8 @@ Optional:
 ```
 
 Defaults to the host platform. Output goes to `dist/` together with
-`parsers.d/` and `kopusha.conf`.
+`parsers.d/`, `kopusha.conf`, and `samples/` — the synthetic log
+fixtures, minus the vendored `.evtx`.
 
 Environment overrides:
 
@@ -172,7 +173,12 @@ Three optional executables, all skipped if absent:
 5. `go build` with `-s -w` and the version stamped in.
 6. `govulncheck` (unless skipped) — reported, non-fatal by default.
 7. Copy `parsers.d/` and `kopusha.conf` into `dist/`.
-8. Code-sign hook.
+8. Copy `test-fixtures/formats/` into `dist/samples/` (with
+   `test-fixtures/SAMPLES.md` as its `README.md`), skipping
+   `sample.evtx` — the one fixture that is vendored rather than
+   generated, and so is not redistributed. The release workflow puts
+   the folder in every archive.
+9. Code-sign hook.
 
 ## Troubleshooting
 

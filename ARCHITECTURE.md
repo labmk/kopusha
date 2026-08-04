@@ -64,7 +64,9 @@ kopusha[.exe]                     (~85 MB single binary)
     e2e/                             Playwright smoke + per-format specs
   test-fixtures/                     Synthetic + one vendored EVTX sample; see REQUIREMENTS.md
     ndjson/                          pre-loaded by webServer for smoke.spec.js
-    formats/                         one fixture per REQ-DT entry
+    formats/                         one fixture per REQ-DT entry; build.sh ships
+                                     these (minus sample.evtx) as dist/samples/
+    SAMPLES.md                       becomes dist/samples/README.md
   cmd/genmanifest/                   Writes parsers.d.sha256; run from build.sh
   parsers.d/                         YAML rule files for block/line/xml autodetect
   parsers.d.sha256                   Generated; go:embed'd so the binary knows

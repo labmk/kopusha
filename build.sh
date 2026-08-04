@@ -262,6 +262,28 @@ for conf in kopusha.conf; do
     fi
 done
 
+# Ship the synthetic sample logs. These are the same fixtures the test
+# suite runs against — one per format the parsers.d/ rules beside them
+# cover — so a fresh install has something to open before anyone has
+# handed over a real log file. They are inert: the binary never reads
+# this directory, and deleting it changes nothing.
+#
+# sample.evtx is excluded deliberately. It is the one fixture that is
+# not synthetic — vendored from Velocidex/evtx under Apache-2.0, see
+# REQUIREMENTS.md — and putting it in a release archive would attach an
+# attribution obligation to a file THIRD-PARTY-NOTICES.md does not
+# cover, since that file is generated from the dependency graph and
+# knows nothing about test data. The EVTX code path is proven in CI
+# instead; users try it against a capture of their own.
+if [ -d "${SCRIPT_DIR}/test-fixtures/formats" ]; then
+    rm -rf "dist/samples"
+    mkdir -p "dist/samples"
+    find "${SCRIPT_DIR}/test-fixtures/formats" -maxdepth 1 -type f \
+        ! -name '*.evtx' -exec cp {} "dist/samples/" \;
+    cp "${SCRIPT_DIR}/test-fixtures/SAMPLES.md" "dist/samples/README.md"
+    echo "  Samples: dist/samples/ ($(ls -1 dist/samples | wc -l) files)"
+fi
+
 # ---------------------------------------------------------------------------
 # Step 4: Code signing hook
 # ---------------------------------------------------------------------------

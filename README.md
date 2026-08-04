@@ -123,6 +123,24 @@ Keep the `parsers.d/` folder beside the binary. The server exits on its
 own once no browser tab has polled it for `timeout` seconds (default
 180), so a forgotten process doesn't linger.
 
+### Sample data
+
+Every archive also carries a `samples/` folder: one synthetic log per
+format below, so there is something to open before you point kopusha at
+anything of your own. Load several at once — their schemas don't line
+up, which is the case worth seeing. `samples/unmatched.log` is in there
+to fail, so the diagnosis screen has something to diagnose.
+
+```bash
+kopusha --files "samples/*.log"
+```
+
+Nothing in it came from a running system: the logs are generated, and
+the addresses are in the RFC 5737 documentation range. `samples/` is
+inert — the binary never reads it, and deleting it costs nothing.
+Windows event logs are the one format without a sample; the project's
+`.evtx` fixture is third-party data, so it stays out of the download.
+
 ## Supported formats
 
 | Format | Detection | Notes |

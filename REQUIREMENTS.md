@@ -26,6 +26,13 @@ nothing looks wrong until you check the marker.
 Fixtures exercise format grammar only. See the "Test data policy"
 section in CONTRIBUTING.md for what they must never contain.
 
+**These fixtures are published.** `build.sh` copies
+`test-fixtures/formats/` into `dist/samples/`, so every release archive
+carries them and a fresh install has something to open. That raises the
+stakes on the policy above rather than changing it — a fixture is now
+shipped to strangers, not just committed. The one exclusion is
+`sample.evtx`, for the reason below.
+
 **EVTX is the one vendored fixture.** It is a binary format with
 per-chunk CRC32 checksums and BinXML template tables, which
 `generate.py` cannot synthesize. Shipping a capture of our own is out
@@ -41,8 +48,16 @@ already-published sample from a third party, so it discloses nothing
 about any of our environments — the policy above is satisfied at its
 intent, not merely its letter. It is a single-record Security log whose
 header is marked **dirty**, which usefully exercises the `OpenDirty`
-path that a cleanly-closed export would not reach. Attribution lives in
-`THIRD-PARTY-NOTICES.md`.
+path that a cleanly-closed export would not reach.
+
+It is also the one fixture `build.sh` keeps out of `dist/samples/`.
+`THIRD-PARTY-NOTICES.md` is generated from the dependency graph — it
+credits the `www.velocidex.com/golang/evtx` parser we link, and knows
+nothing about a data file — so redistributing the sample in a release
+archive would carry an Apache-2.0 attribution obligation that nothing
+in the archive discharges. Keeping it in the repository, where the
+provenance is stated here, costs nothing: CI still proves the EVTX path
+against it, and users have `.evtx` files of their own.
 
 This is the only fixture permitted to come from outside; everything
 else is generated. The skip-if-missing guards stay in place so the

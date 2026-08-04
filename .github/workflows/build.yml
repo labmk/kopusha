@@ -170,6 +170,7 @@ jobs:
             dist/${{ matrix.artifact }}
             dist/parsers.d/
             dist/kopusha.conf
+            dist/samples/
           if-no-files-found: error
 
   vulncheck:
