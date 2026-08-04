@@ -1498,9 +1498,13 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
-  font-size: var(--text-md);
+  /* Sized against the glyph rather than the text buttons beside it: a
+     gear at label size reads as a speck, and this is the control people
+     hunt for when they want the timezone. The box still matches the
+     button row height so the header stays on one baseline. */
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
   line-height: 1;
   color: var(--text-secondary);
   background: var(--bg-tertiary);

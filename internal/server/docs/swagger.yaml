@@ -781,7 +781,7 @@ info:
     The OpenAPI spec is the source of truth for the generated
     TypeScript client used by the React frontend.
   title: kopusha API
-  version: 0.3.2
+  version: 0.3.3
 paths:
   /api/browse:
     get:
