@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import { formatTimestamp } from '../utils/datetime';
 import { useVirtualRows, ROW_HEIGHT } from '../hooks/useVirtualRows';
@@ -38,29 +38,59 @@ function formatCellValue(value) {
   return String(value);
 }
 
-// Determine which columns to show (prioritize timestamp and common fields).
+// Determine which columns to show, and in what order.
 //
 // `@timestamp` always wins position 0 when present, regardless of which
 // timestamp column the engine is sorting by. If the operator switches
 // the sort field to ObservedTimestamp (or any other timestamp-like
 // column), it's still listed next — but @timestamp stays leftmost so
 // the row's primary clock is always in the same place.
-function selectColumns(fields, timestampField) {
+//
+// Everything after the anchors is ordered by how much of it is actually
+// filled in. Unioning heterogeneous formats produces a wide, sparse
+// table — nine sample logs give 38 columns — and in field order the
+// first screen was mostly empty cells belonging to whichever format
+// sorts alphabetically first, with the message pushed out of sight.
+//
+// The count comes from the rows already in hand rather than from a scan
+// of the table. It is a heuristic for what to show first, not a
+// statistic: the Fields panel is where exact population counts live.
+function selectColumns(fields, timestampField, rows) {
   if (!fields || fields.length === 0) return [];
 
+  // Matched case-insensitively: a union across formats routinely carries
+  // both `message` and `Message`, and only one of them was being found.
   const priority = ['@timestamp', timestampField, 'level', 'log.level', 'severity', 'message', 'msg'];
   const ordered = [];
-  const rest = [];
+  const taken = new Set();
 
   for (const p of priority) {
-    if (p && fields.includes(p) && !ordered.includes(p)) {
-      ordered.push(p);
+    if (!p) continue;
+    const match = fields.find(
+      (f) => !taken.has(f) && f.toLowerCase() === String(p).toLowerCase()
+    );
+    if (match) {
+      ordered.push(match);
+      taken.add(match);
     }
   }
-  for (const f of fields) {
-    if (!ordered.includes(f)) {
-      rest.push(f);
+
+  const rest = fields.filter((f) => !taken.has(f));
+  const sample = Array.isArray(rows) ? rows : [];
+  if (sample.length > 0) {
+    const filled = new Map();
+    for (const f of rest) {
+      let n = 0;
+      for (const row of sample) {
+        const v = row?.[f];
+        if (v !== null && v !== undefined && v !== '') n++;
+      }
+      filled.set(f, n);
     }
+    // Stable: Array.prototype.sort is stable in every engine this runs
+    // on, so equally-populated columns keep their original order rather
+    // than shuffling between renders.
+    rest.sort((a, b) => filled.get(b) - filled.get(a));
   }
 
   return [...ordered, ...rest];
@@ -125,10 +155,22 @@ export default function LogTable({
     document.addEventListener('mouseup', onUp);
   }, []);
 
+  // Held across pages deliberately. Recomputing per page would reorder
+  // the columns under someone who is reading them, for no gain: the
+  // question "which columns are worth seeing" is about the result, not
+  // about the 200 rows currently on screen.
+  const orderRef = useRef({ key: null, order: [] });
   const columns = useMemo(() => {
     if (!result?.fields) return [];
-    return selectColumns(result.fields, timestampField);
-  }, [result?.fields, timestampField]);
+    const key = `${result.fields.join('\u0000')}|${timestampField}`;
+    if (orderRef.current.key !== key) {
+      orderRef.current = {
+        key,
+        order: selectColumns(result.fields, timestampField, result.rows),
+      };
+    }
+    return orderRef.current.order;
+  }, [result?.fields, result?.rows, timestampField]);
 
   const visibleColumns = useMemo(() => {
     return columns.filter((c) => !hiddenColumns.has(c));

@@ -31,6 +31,20 @@ test('the empty state offers the shipped samples and loads them', async ({ page 
     // Every parseable sample lands in the file panel, queried as one table.
     await expect(page.locator('.status-bar')).toContainText(/[1-9]\d* records/, { timeout: 20000 });
 
+    // Unioning nine formats gives a wide, sparse table. Columns that
+    // carry values have to come before ones that are empty for most
+    // rows, or the first screen is blank cells and the message is
+    // pushed out of sight.
+    const headers = await page.locator('.log-table th, [role="columnheader"]')
+      .allTextContents()
+      .then((t) => t.map((x) => x.trim()).filter(Boolean));
+    const messageAt = headers.findIndex((h) => /^message$/i.test(h));
+    const sparseAt = headers.findIndex((h) => /^(AppDomain|EventSource|Machine)$/i.test(h));
+    expect(messageAt).toBeGreaterThanOrEqual(0);
+    if (sparseAt >= 0) {
+      expect(messageAt).toBeLessThan(sparseAt);
+    }
+
     // unmatched.log is in the folder precisely because no rule matches
     // it, so the report has to name it rather than swallow the failure.
     await expect(page.locator('.notice-bar')).toContainText('unmatched.log');

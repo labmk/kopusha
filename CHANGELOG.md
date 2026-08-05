@@ -9,7 +9,7 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
-## [Unreleased]
+## [0.3.4] — 2026-08-05
 
 ### Added
 
@@ -40,6 +40,22 @@ those are external and stable.
   `?` is ignored while typing, so it stays usable in a filter value.
 
 ### Changed
+
+- **Columns that carry values come first.** Unioning heterogeneous
+  formats produces a wide, sparse table — the nine sample logs give 38
+  columns — and in field order the first screen was empty cells
+  belonging to whichever format sorts alphabetically first, with the
+  message pushed out of sight.
+
+  After the anchors (`@timestamp`, the sort field, level, message) the
+  remaining columns are ordered by how much of them is filled in. The
+  count comes from the rows already in hand rather than a scan of the
+  table: it decides what to show first, and is not a statistic — the
+  Fields panel is where exact population counts live. The order is held
+  across pages, so reading is not interrupted by columns reshuffling.
+
+  Anchor matching is now case-insensitive. A union routinely carries
+  both `message` and `Message`, and only the lowercase one was found.
 
 - The notice bar was inline-styled with a hardcoded colour and its own
   font size, which is how it escaped the 0.3.3 token sweep. It now uses
@@ -495,7 +511,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.3...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.4...HEAD
+[0.3.4]: https://github.com/labmk/kopusha/releases/tag/v0.3.4
 [0.3.3]: https://github.com/labmk/kopusha/releases/tag/v0.3.3
 [0.3.2]: https://github.com/labmk/kopusha/releases/tag/v0.3.2
 [0.3.1]: https://github.com/labmk/kopusha/releases/tag/v0.3.1
