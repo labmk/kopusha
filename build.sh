@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VERSION="${VERSION:-0.3.8}"
+VERSION="${VERSION:-0.3.9}"
 
 # Default to the host platform. Set GOOS/GOARCH to cross-compile —
 # see docs/BUILD.md for which combinations actually work (CGO makes
@@ -279,23 +279,31 @@ done
 if [ -d "${SCRIPT_DIR}/test-fixtures/formats" ]; then
     rm -rf "dist/samples"
     mkdir -p "dist/samples"
-    # line-time-pidtid.log is excluded along with the EVTX capture, for
-    # a different reason: its format carries a time of day and no date,
-    # so its parser rule takes the day from the file's mtime. That is
-    # correct behaviour and it stays covered by the test fixtures — but
-    # it makes the shipped sample's position on the timeline a property
-    # of the filesystem rather than of the file. Copy it without
-    # preserving times, re-save it, or unpack the archive with a tool
-    # that ignores timestamps, and those rows jump to today while the
-    # other eight samples stay in 2024. A demo file whose timeline
-    # depends on how it was copied is a bad demo file.
+    # A named list, not "everything except". The shipped samples are a
+    # first impression, not the format matrix — REQUIREMENTS.md and the
+    # test fixtures are where coverage is guaranteed, and every format
+    # keeps its parsers.d/ rule in the install whether or not a sample
+    # for it ships here.
     #
-    # Anything added here that depends on mtime will have the same
-    # problem, so keep the shipped set to formats that carry their own
-    # date.
-    find "${SCRIPT_DIR}/test-fixtures/formats" -maxdepth 1 -type f \
-        ! -name '*.evtx' ! -name 'line-time-pidtid.log' \
-        -exec cp {} "dist/samples/" \;
+    # These three carry their own dates and land in the same hour, so the
+    # histogram over them means something the moment they load. The line
+    # and block families are held back for now: the time-of-day ones take
+    # their date from the file mtime, which makes their place on the
+    # timeline a property of how the file was copied rather than of the
+    # file, and the rest were included mostly to fill the format table.
+    #
+    # unmatched.log is not a format sample. It ships because it fails —
+    # it is what the parse diagnosis and the rule builder open onto, and
+    # neither feature is discoverable without a file that trips them. It
+    # parses to nothing, so it cannot affect the timeline.
+    for sample in \
+        sample.ndjson \
+        sample.parquet \
+        xml-row-element.txt \
+        unmatched.log
+    do
+        cp "${SCRIPT_DIR}/test-fixtures/formats/${sample}" "dist/samples/"
+    done
     cp "${SCRIPT_DIR}/test-fixtures/SAMPLES.md" "dist/samples/README.md"
     echo "  Samples: dist/samples/ ($(ls -1 dist/samples | wc -l) files)"
 fi

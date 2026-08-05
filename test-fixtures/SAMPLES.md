@@ -1,9 +1,8 @@
 # Sample logs
 
 This folder ships with kopusha so a fresh install has something to
-open. It is the same fixture set the test suite runs against — one file
-per format the bundled `parsers.d/` rules cover — copied in by
-`build.sh`.
+open. The files are copied in by `build.sh` from the fixture set the
+test suite runs against.
 
 **Every file here is synthetic.** Nothing was captured from a running
 system. The service names, hosts and message bodies come from a
@@ -20,32 +19,23 @@ affects nothing — the binary does not read it.
 | `sample.ndjson` | NDJSON | Nested objects. `service.name`, `host.name` and `nodeinfo.type` become DuckDB `STRUCT`s you can filter on by sub-path. |
 | `sample.parquet` | Parquet | The columnar path — types survive the round trip, and this is what **Export** writes. |
 | `xml-row-element.txt` | XML | Repeating `<Event>` rows with no declaration and no single root element; the row element is autodetected. |
-| `block-keyvalue-dash.txt` | Block text | `Key: Value` records separated by a rule of dashes. Has a UTF-8 BOM and empty values, both handled. |
-| `line-iso-bracket.log` | Line text | `2024-03-18 06:00:00.000 [INF] [SCH] [PID:4179] …`, with indented continuation lines folded into the record above them. |
-| `line-dashdate-level.log` | Line text | `18-03-2024 06:00:00.000 Info …` — day-first dates. |
-| `line-dotdate-pidtid.log` | Line text | `18.03.24 06:00:00:000 67727/611247 …` — note the colon before the milliseconds. |
-| `line-time-dotdate.log` | Line text | `06:00:00.000 18.03.2024: …` — time before date. |
 | `unmatched.log` | *none* | **Fails to load on purpose.** Load it to see the diagnosis: which adapters looked, what each one objected to, and the line as the parser saw it. The **Parser rules** builder opens from there. |
 
-Windows event logs are supported but no `.evtx` sample is included —
-the project's EVTX fixture is third-party data rather than something it
-generates, so it stays in the repository and out of the download. Point
-kopusha at any `.evtx` from your own machine to try it
-(`wevtutil epl Application sample.evtx`).
+The three that parse carry their own timestamps and fall inside the same
+hour, so the histogram says something the moment they load. They also
+have unrelated schemas, which is the point of loading them together:
+queries union them and fill `NULL` where a file has no such column.
 
 ## Opening them
 
-Start kopusha, then **Open Files** (or **+ Add**) and browse to this
-folder — that is the path everything else goes through, and it lets you
-pick which formats to load together. Loading several at once is worth
-doing: they have unrelated schemas, and queries union them and fill
-`NULL` where a file has no such column.
+Start kopusha and press **Try the samples** on the empty screen, or use
+**Open Files** / **+ Add** and browse to this folder.
 
 From the command line:
 
 ```bash
-kopusha --files "samples/*.log"     # the line-format samples
-kopusha --dir samples/              # NDJSON only — see below
+kopusha --files "samples/*"     # everything here
+kopusha --dir samples/          # NDJSON only — see below
 ```
 
 `--dir` pre-loads the `.ndjson` files it finds and ignores everything
@@ -53,19 +43,25 @@ else; use `--files` with a glob, or the file browser, for the rest.
 
 ## What is not here
 
-Two supported formats are deliberately absent.
+The shipped set is a first impression, not the format matrix.
+`REQUIREMENTS.md` is where coverage is guaranteed, and **every supported
+format keeps its `parsers.d/` rule inside the binary's install** — your
+own logs in these shapes parse whether or not a sample for them ships.
 
 **EVTX** — the fixture is a vendored capture, third-party data rather
 than something this project generates. The code path is proven in CI;
-try it against a capture of your own.
+point kopusha at any `.evtx` from your own machine
+(`wevtutil epl Application sample.evtx`).
 
-**Time-of-day-only line logs** (`HH:MM:SS` with no date) — the format is
-supported and tested, but its rule takes the date from the file's own
-mtime. That is right for a real log sitting where it was written, and
-wrong for a sample: copy it without preserving timestamps, re-save it,
-or unpack the archive with a tool that ignores them, and those rows jump
-to today while every other sample stays put. The timeline you see would
-depend on how the file reached you.
+**Time-of-day-only line logs** (`HH:MM:SS` with no date) — supported and
+tested, but the rule takes the date from the file's own mtime. That is
+right for a real log sitting where it was written and wrong for a
+sample: copy it without preserving timestamps, re-save it, or unpack the
+archive with a tool that ignores them, and those rows jump to today
+while the rest stay put. How logs like these should sit on a timeline
+beside dated ones is an open question, and one better settled against
+real data than against a fixture.
 
-Both formats are covered by `parsers.d/` rules that ship with the
-binary, so your own logs in those shapes parse regardless.
+**The other line and block formats** — held back for now. They were in
+the shipped set largely to fill the table, and a smaller set that reads
+well beats a complete one that does not.

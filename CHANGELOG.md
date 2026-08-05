@@ -9,6 +9,37 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.9] — 2026-08-05
+
+### Changed
+
+- **The shipped samples are down to three that parse, plus the one that
+  does not.** `sample.ndjson`, `sample.parquet` and `xml-row-element.txt`
+  all carry their own timestamps and land inside the same five minutes,
+  so the histogram is a real distribution the moment they load instead
+  of one tall bar and a tail. The table drops from 38 columns to 23 for
+  the same reason — fewer unrelated schemas in the union.
+
+  `unmatched.log` stays. It is not a format sample: it ships because it
+  fails, and it is what the parse diagnosis and the rule builder open
+  onto. It parses to nothing, so it cannot affect the timeline.
+
+  The line and block samples are held back. The time-of-day ones take
+  their date from the file's mtime, which is the problem 0.3.6 through
+  0.3.8 kept circling; the rest were in the set largely to fill the
+  format table. **No format loses support** — every `parsers.d/` rule
+  still ships in every install, the fixtures and the REQ-DT matrix are
+  unchanged, and your own logs in those shapes parse exactly as before.
+
+  How time-of-day logs should sit on a timeline beside dated ones is
+  left open on purpose. It is a question about real data, and it is
+  better answered when someone hits it with real data than guessed at
+  against a fixture.
+
+  `build.sh` now names the samples it copies instead of excluding what
+  it does not want, so the shipped set is a decision rather than a
+  residue.
+
 ## [0.3.8] — 2026-08-05
 
 ### Changed
@@ -623,7 +654,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.8...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.9...HEAD
+[0.3.9]: https://github.com/labmk/kopusha/releases/tag/v0.3.9
 [0.3.8]: https://github.com/labmk/kopusha/releases/tag/v0.3.8
 [0.3.7]: https://github.com/labmk/kopusha/releases/tag/v0.3.7
 [0.3.6]: https://github.com/labmk/kopusha/releases/tag/v0.3.6
