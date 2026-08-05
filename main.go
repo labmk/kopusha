@@ -282,6 +282,7 @@ func main() {
 	srv := server.New(eng, staticFS, version, store)
 	srv.SetIdleTimeoutSeconds(confTimeout)
 	srv.SetRules(ruleMgr)
+	srv.SetSamplesDir(filepath.Join(exeDir, "samples"))
 
 	// Release notification. On by default; `update_check = false` in
 	// kopusha.conf or --no-update-check turns it off, and the flag

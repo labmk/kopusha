@@ -647,10 +647,34 @@ definitions:
           $ref: '#/definitions/server.RuleInfo'
         type: array
     type: object
+  server.SampleFile:
+    properties:
+      name:
+        type: string
+      path:
+        type: string
+      size:
+        type: integer
+    type: object
   server.SampleRequest:
     properties:
       sample:
         type: string
+    type: object
+  server.SamplesResponse:
+    properties:
+      available:
+        description: |-
+          Available is false when the folder is absent — a binary copied on
+          its own, or an install that predates samples/. The UI offers
+          nothing rather than a button that fails.
+        type: boolean
+      dir:
+        type: string
+      files:
+        items:
+          $ref: '#/definitions/server.SampleFile'
+        type: array
     type: object
   server.SaveRuleRequest:
     properties:
@@ -1306,6 +1330,20 @@ paths:
       summary: Infer a rule from sample lines
       tags:
       - rules
+  /api/samples:
+    get:
+      description: Sample files in samples/ beside the binary, for the empty state's
+        "Try the samples" action.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.SamplesResponse'
+      summary: List shipped sample logs
+      tags:
+      - files
   /api/settings:
     get:
       consumes:

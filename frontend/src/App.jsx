@@ -26,6 +26,7 @@ import PaginationBar from './components/PaginationBar';
 import RuleBuilder from './components/RuleBuilder';
 import TimeHistogram from './components/TimeHistogram';
 import UpdateNotice from './components/UpdateNotice';
+import HelpPanel from './components/HelpPanel';
 import FieldProfile from './components/FieldProfile';
 import { moduleComponents } from './moduleRegistry';
 
@@ -126,6 +127,9 @@ export default function App() {
   // its most useful feature.
   const [ruleSample, setRuleSample] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+  const [samples, setSamples] = useState(null);
+  const [loadingSamples, setLoadingSamples] = useState(false);
   const [showProfile, setShowProfile] = useLocalStorage('kopusha_show_profile', false);
   const [theme, setTheme] = useLocalStorage('kopusha_theme', 'dark');
   const [activeTab, setActiveTab] = useLocalStorage('kopusha_active_tab', 'viewer');
@@ -327,6 +331,54 @@ export default function App() {
 
   useEffect(() => { writeState(shareState); }, [shareState]);
 
+  // Which samples shipped beside this binary. Asked once: the folder
+  // does not change under a running process, and a copied binary that
+  // has none must simply not offer the button.
+  useEffect(() => {
+    api.getSamples().then(setSamples).catch(() => setSamples({ available: false, files: [] }));
+  }, []);
+
+  // "?" opens the reference, the way it does in most things with a
+  // keyboard. Ignored while typing, or the character could never be
+  // entered into a filter.
+  useEffect(() => {
+    const onKey = (e) => {
+      const tag = e.target?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      if (e.key === '?') { e.preventDefault(); setShowHelp(true); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
+  // Loading the samples is deliberately the same act as loading anything
+  // else — one /api/files/load per file — so the file panel, the union
+  // and the diagnosis all behave exactly as they would by hand.
+  const loadSamples = async () => {
+    if (!samples?.files?.length) return;
+    setLoadingSamples(true);
+    const failed = [];
+    for (const f of samples.files) {
+      try {
+        await api.loadFile(f.path);
+      } catch {
+        failed.push(f.name);
+      }
+    }
+    setLoadingSamples(false);
+    invalidateFileSet();
+    if (failed.length > 0) {
+      // Not an error. unmatched.log ships precisely because no rule
+      // matches it, and saying so turns a failure into the feature it
+      // was put there to demonstrate.
+      setNotice(
+        `Loaded ${samples.files.length - failed.length} of ${samples.files.length} samples. ` +
+        `${failed.join(', ')} did not parse — open it with + Add to see the diagnosis, ` +
+        `or build a rule for it under Parser rules.`
+      );
+    }
+  };
+
   // A popover that only closes by pressing the same button again is a
   // popover people leave open by accident. Escape and an outside click
   // are what everything else on the desktop does.
@@ -489,6 +541,14 @@ export default function App() {
           {/* Timezone, time format and theme are set once and then left
               alone. They were sharing the header with actions pressed many
               times a session, which is what made the bar feel crowded. */}
+          <button
+            className="icon-btn"
+            onClick={() => setShowHelp(true)}
+            aria-label="What everything does"
+            title="What everything does (?)"
+          >
+            ?
+          </button>
           <div className="settings-wrap">
             <button
               className={`icon-btn${showSettings ? ' active' : ''}`}
@@ -645,9 +705,9 @@ export default function App() {
           </div>
         )}
         {notice && (
-          <div style={{ padding: '8px 16px', background: 'rgba(0,150,150,0.08)', color: 'var(--text-secondary)', fontSize: '12px', borderBottom: '1px solid var(--border)' }}>
+          <div className="notice-bar" role="status">
             {notice}
-            <button onClick={() => setNotice(null)} style={{ marginLeft: '12px', cursor: 'pointer', background: 'none', border: 'none', color: 'var(--text-secondary)' }}>
+            <button className="notice-dismiss" onClick={() => setNotice(null)}>
               dismiss
             </button>
           </div>
@@ -673,9 +733,26 @@ export default function App() {
               <div className="empty-state">
                 <div className="icon-large">&#128194;</div>
                 <div>No files loaded</div>
-                <button className="btn btn-primary" onClick={() => setShowBrowser(true)}>
-                  Open Files
-                </button>
+                {/* The samples have shipped since 0.3.1 with nothing in
+                    the interface pointing at them. This is the screen
+                    where having no data is the whole problem, so it is
+                    where they belong. */}
+                <div className="empty-actions">
+                  <button className="btn btn-primary" onClick={() => setShowBrowser(true)}>
+                    Open Files
+                  </button>
+                  {samples?.available && (
+                    <button className="btn" onClick={loadSamples} disabled={loadingSamples}>
+                      {loadingSamples ? 'Loading samples…' : `Try the samples (${samples.files.length})`}
+                    </button>
+                  )}
+                </div>
+                {samples?.available && (
+                  <div className="empty-hint">
+                    One log per supported format, queried together.
+                    Press <kbd>?</kbd> for what everything does.
+                  </div>
+                )}
               </div>
             ) : enabledCount === 0 ? (
               <div className="empty-state">
@@ -791,6 +868,8 @@ export default function App() {
           onSaved={() => setNotice('Parser rule saved. Load the file again to parse it with the new rule.')}
         />
       )}
+
+      {showHelp && <HelpPanel onClose={() => setShowHelp(false)} />}
 
       {showExport && (
         <ExportDialog

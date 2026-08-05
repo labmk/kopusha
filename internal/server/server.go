@@ -248,6 +248,10 @@ type Server struct {
 	// implying "up to date" from an absence of information.
 	updates *update.Checker
 
+	// samplesDir is the shipped samples/ folder, or empty when this
+	// install has none.
+	samplesDir string
+
 	// update holds the self-update endpoints' state. Zero value is
 	// usable and reports that updating is unavailable.
 	update updateState
@@ -388,6 +392,7 @@ func (s *Server) registerRoutes() {
 	// rules.go.
 	s.registerRuleRoutes()
 	s.registerUpdateRoutes()
+	s.mux.HandleFunc("/api/samples", s.APIHandler(s.handleSamples))
 
 	// Module routes (/api/<name>/*, /m/<name>/*) are mounted by the
 	// module registry at boot — see internal/module and docs/MODULES.md.

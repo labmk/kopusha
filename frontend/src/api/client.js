@@ -25,6 +25,8 @@ export const api = {
   // Self-update is two steps on purpose: prepare downloads and verifies
   // without writing anything, so the user sees what will happen — and
   // which of their parser rules will be left alone — before agreeing.
+  getSamples: () => request('/api/samples'),
+
   prepareUpdate: () => request('/api/update/prepare', { method: 'POST' }),
 
   applyUpdate: () => request('/api/update/apply', { method: 'POST' }),

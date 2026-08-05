@@ -750,6 +750,26 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/samples": {
+            "get": {
+                "description": "Sample files in samples/ beside the binary, for the empty state's \"Try the samples\" action.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "files"
+                ],
+                "summary": "List shipped sample logs",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.SamplesResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/api/settings": {
             "get": {
                 "description": "Persisted to kopusha_settings.json next to the binary. Only the fields present in the POST body are updated.",
@@ -1906,11 +1926,43 @@ const docTemplate = `{
                 }
             }
         },
+        "server.SampleFile": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
         "server.SampleRequest": {
             "type": "object",
             "properties": {
                 "sample": {
                     "type": "string"
+                }
+            }
+        },
+        "server.SamplesResponse": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "description": "Available is false when the folder is absent — a binary copied on\nits own, or an install that predates samples/. The UI offers\nnothing rather than a button that fails.",
+                    "type": "boolean"
+                },
+                "dir": {
+                    "type": "string"
+                },
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/server.SampleFile"
+                    }
                 }
             }
         },

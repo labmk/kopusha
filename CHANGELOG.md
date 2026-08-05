@@ -9,6 +9,42 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Added
+
+- **"Try the samples" in the empty state.** The sample logs have shipped
+  since 0.3.1 with nothing in the interface pointing at them. One click
+  now loads every parseable one — a log per supported format, queried
+  together as a single table, which is the thing this tool exists to do
+  and the hardest thing to explain without data.
+
+  `unmatched.log` is loaded too, and fails, on purpose. The report names
+  it and says where to look: *"9 of 10 loaded. unmatched.log did not
+  parse — open it with + Add to see the diagnosis, or build a rule for it
+  under Parser rules."* A first run that ends with a failure explained is
+  worth more than one that hides it.
+
+  New `GET /api/samples`. A binary copied without its `samples/` folder
+  reports none available and the button simply does not appear.
+
+- **A controls reference, behind `?` or the header button.** Every
+  control and every keyboard shortcut, in one static panel.
+
+  Deliberately not a first-run tour. A coach-mark overlay has to know
+  where things are, which couples it to a layout that moves — and this
+  release cycle has already moved the header twice. It also teaches at
+  the moment the user has least context, then never again. A reference
+  one keystroke away can be opened when the question actually occurs.
+
+  `?` is ignored while typing, so it stays usable in a filter value.
+
+### Changed
+
+- The notice bar was inline-styled with a hardcoded colour and its own
+  font size, which is how it escaped the 0.3.3 token sweep. It now uses
+  the tokens like everything else.
+
 ## [0.3.3] — 2026-08-04
 
 ### Changed

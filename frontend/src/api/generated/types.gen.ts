@@ -453,8 +453,25 @@ export type ServerRulesResponse = {
     rules?: Array<ServerRuleInfo>;
 };
 
+export type ServerSampleFile = {
+    name?: string;
+    path?: string;
+    size?: number;
+};
+
 export type ServerSampleRequest = {
     sample?: string;
+};
+
+export type ServerSamplesResponse = {
+    /**
+     * Available is false when the folder is absent — a binary copied on
+     * its own, or an install that predates samples/. The UI offers
+     * nothing rather than a button that fails.
+     */
+    available?: boolean;
+    dir?: string;
+    files?: Array<ServerSampleFile>;
 };
 
 export type ServerSaveRuleRequest = {
@@ -1082,6 +1099,22 @@ export type PostApiRulesSuggestResponses = {
 };
 
 export type PostApiRulesSuggestResponse = PostApiRulesSuggestResponses[keyof PostApiRulesSuggestResponses];
+
+export type GetApiSamplesData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/samples';
+};
+
+export type GetApiSamplesResponses = {
+    /**
+     * OK
+     */
+    200: ServerSamplesResponse;
+};
+
+export type GetApiSamplesResponse = GetApiSamplesResponses[keyof GetApiSamplesResponses];
 
 export type GetApiSettingsData = {
     /**
