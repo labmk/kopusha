@@ -9,6 +9,26 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.7] — 2026-08-05
+
+### Fixed
+
+- **0.3.6 did not actually fix the sample timeline; this does.** The
+  monotonic-clock half worked, but the pinned sample mtimes never
+  reached the release. `upload-artifact` does not preserve modification
+  times — the workflow already knew it drops the executable bit and
+  restores that by hand — so the samples arrived stamped with whenever
+  the release job downloaded them, and the time-of-day sample went on
+  dating itself from there.
+
+  Measured against the published 0.3.6 archive: 870 days end to end. The
+  release job now re-pins the sample mtimes after downloading the build
+  artifacts and before zipping, reading the date from `build.sh` so
+  there is one source of truth.
+
+  Verified against the published archive this time rather than the local
+  build, which is the check that would have caught it.
+
 ## [0.3.6] — 2026-08-05
 
 ### Fixed
@@ -574,7 +594,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.6...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.7...HEAD
+[0.3.7]: https://github.com/labmk/kopusha/releases/tag/v0.3.7
 [0.3.6]: https://github.com/labmk/kopusha/releases/tag/v0.3.6
 [0.3.5]: https://github.com/labmk/kopusha/releases/tag/v0.3.5
 [0.3.4]: https://github.com/labmk/kopusha/releases/tag/v0.3.4

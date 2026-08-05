@@ -33,10 +33,10 @@ var parsersManifestData []byte
 //go:embed static/*
 var staticFS embed.FS
 
-var version = "0.3.6"
+var version = "0.3.7"
 
 // @title           kopusha API
-// @version         0.3.6
+// @version         0.3.7
 // @description     Local viewer for log, metric and trace files: NDJSON, EVTX,
 // @description     XML, and rule-driven text logs, queried through DuckDB.
 // @description     The OpenAPI spec is the source of truth for the generated

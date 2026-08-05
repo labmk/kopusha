@@ -228,6 +228,11 @@ jobs:
         run: |
           set -euo pipefail
           VERSION="${GITHUB_REF_NAME#v}"
+          SAMPLE_MTIME="$(grep -m1 '^SAMPLE_MTIME=' build.sh | cut -d'"' -f2)"
+          if [ -z "$SAMPLE_MTIME" ]; then
+            echo "SAMPLE_MTIME not found in build.sh" >&2
+            exit 1
+          fi
           mkdir -p out
 
           for dir in staging/kopusha-*; do
@@ -236,6 +241,17 @@ jobs:
             # restore it before archiving — otherwise every download
             # arrives chmod 644 and will not run.
             [ -f "$dir/kopusha" ] && chmod +x "$dir/kopusha"
+            # Same loss, different attribute: upload-artifact does not
+            # preserve modification times either, so the sample mtimes
+            # build.sh pinned arrive as "whenever the artifact was
+            # downloaded". That matters because one sample format carries
+            # a time of day and no date, and its parser rule reads the day
+            # off the file — left at the download time those rows land
+            # years from every other sample. Re-pin here, reading the date
+            # from build.sh so there is one source of truth.
+            if [ -d "$dir/samples" ]; then
+              find "$dir/samples" -type f -exec touch -t "$SAMPLE_MTIME" {} +
+            fi
             # THIRD-PARTY-NOTICES.md is not documentation — MIT and BSD
             # require their notices to travel with the binary, so it goes
             # in every archive.

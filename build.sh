@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VERSION="${VERSION:-0.3.6}"
+VERSION="${VERSION:-0.3.7}"
 
 # The day the shipped sample logs describe, matching BASE in
 # test-fixtures/generate.py. Used to pin sample mtimes — see step 3.
