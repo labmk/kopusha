@@ -81,9 +81,31 @@ def level(rng):
     return rng.choices(LEVELS, weights=LEVEL_WEIGHTS)[0]
 
 
-def clock(rng, start, i, step_ms=(4, 900)):
-    """Monotonic timestamp generator with jittered spacing."""
-    return start + timedelta(milliseconds=i * rng.randint(*step_ms))
+def ticker(rng, start, step_ms=(4, 900)):
+    """Monotonic timestamps, advancing by a jittered step per call.
+
+    This used to be `start + i * rng.randint(step_ms)`, which drew a
+    fresh random for each row and multiplied it by the row index. That
+    is not monotonic despite what the name claimed: row 501 with a small
+    draw lands before row 500 with a large one, and the spread widens
+    with i.
+
+    For the dated formats that only made a sample look shuffled. For the
+    time-of-day format it was worse — the adapter advances the date
+    whenever the clock jumps backwards by more than 12 hours, so a file
+    meant to cross midnight once crossed it again and again and spread
+    600 rows over five weeks. Sample logs should sit inside a day, both
+    because real ones do and because the histogram over them is the
+    first thing anyone sees.
+    """
+    t = start
+
+    def tick():
+        nonlocal t
+        t = t + timedelta(milliseconds=rng.randint(*step_ms))
+        return t
+
+    return tick
 
 
 # --- Writers --------------------------------------------------------------
@@ -96,8 +118,9 @@ def write_ndjson(path, rows, rng, service):
     discovery and `nodeinfo.type` filtering in engine.go stay covered.
     """
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE)
         for i in range(rows):
-            ts = clock(rng, BASE, i)
+            ts = tick()
             lvl = level(rng)
             rec = {
                 "@timestamp": ts.strftime("%Y-%m-%dT%H:%M:%S.") + f"{ts.microsecond // 1000:03d}Z",
@@ -128,8 +151,9 @@ def write_xml_row_element(path, rows, rng):
     decoder path stays exercised.
     """
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE, (50, 2000))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (50, 2000))
+            ts = tick()
             lvl = level(rng)
             fh.write(
                 f'<Event type="Telemetry" name="Checkpoint" '
@@ -162,8 +186,9 @@ def write_block_keyvalue(path, rows, rng):
     """
     sep = "-" * 40
     with open(path, "w", encoding="utf-8-sig", newline="\n") as fh:
+        tick = ticker(rng, BASE, (200, 5000))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (200, 5000))
+            ts = tick()
             lvl = level(rng)
             svc = rng.choice(SERVICES)
             fh.write(sep + "\n")
@@ -191,8 +216,9 @@ def write_line_iso_bracket(path, rows, rng):
     lvl3 = {"DEBUG": "DBG", "INFO": "INF", "WARN": "WRN", "ERROR": "ERR"}
     pid = rng.randint(1000, 9999)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE, (4, 400))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (4, 400))
+            ts = tick()
             lvl = level(rng)
             fh.write(
                 f"{ts.strftime('%Y-%m-%d %H:%M:%S.')}{ts.microsecond // 1000:03d} "
@@ -207,8 +233,9 @@ def write_line_dashdate_level(path, rows, rng):
     `DD-MM-YYYY HH:MM:SS.mmm Level message`
     """
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE, (4, 400))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (4, 400))
+            ts = tick()
             lvl = level(rng)
             fh.write(
                 f"{ts.strftime('%d-%m-%Y %H:%M:%S.')}{ts.microsecond // 1000:03d} "
@@ -226,8 +253,9 @@ def write_line_dotdate_pidtid(path, rows, rng):
     """
     pid = rng.randint(10000, 99999)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE, (10, 800))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (10, 800))
+            ts = tick()
             lvl = level(rng)
             svc = rng.choice(SERVICES)
             fh.write(
@@ -247,10 +275,13 @@ def write_line_time_pidtid(path, rows, rng):
     covered end to end.
     """
     pid = rng.randint(10000, 99999)
-    start = datetime(2024, 3, 18, 23, 40, 0, tzinfo=timezone.utc)
+    # ~16 minutes of rows at this step, so starting here crosses
+    # midnight exactly once — which is the branch this fixture covers.
+    start = datetime(2024, 3, 18, 23, 52, 0, tzinfo=timezone.utc)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, start, (200, 3000))
         for i in range(rows):
-            ts = start + timedelta(milliseconds=i * rng.randint(200, 3000))
+            ts = tick()
             lvl = level(rng)
             fh.write(
                 f"{ts.strftime('%H:%M:%S.%f')} "
@@ -263,8 +294,9 @@ def write_line_time_dotdate(path, rows, rng):
     `HH:MM:SS.mmm DD.MM.YYYY: message` — time before date.
     """
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        tick = ticker(rng, BASE, (100, 4000))
         for i in range(rows):
-            ts = clock(rng, BASE, i, (100, 4000))
+            ts = tick()
             lvl = level(rng)
             fh.write(
                 f"{ts.strftime('%H:%M:%S.')}{ts.microsecond // 1000:03d} "

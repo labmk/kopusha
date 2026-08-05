@@ -35,7 +35,7 @@ type Plan struct {
 
 	// samples is carried alongside the plan for the same reason archive
 	// is: what was inspected must be what gets written.
-	samples map[string][]byte
+	samples map[string]SampleEntry
 
 	// archive is the verified zip, carried from Prepare to Apply so the
 	// bytes that were checked are the bytes that get installed. Passing a

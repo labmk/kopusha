@@ -9,6 +9,39 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.6] — 2026-08-05
+
+### Fixed
+
+- **The sample logs now sit inside one day.** Loading all of them gave a
+  histogram spanning 2024 to 2026 — two bars with a two-and-a-half-year
+  gulf between, which is the first thing "Try the samples" shows anyone.
+
+  Two causes, both real:
+
+  The fixture clock was not monotonic despite being named and documented
+  as such. It computed `start + i × random()`, drawing a fresh random per
+  row and multiplying by the row index, so a later row could land before
+  an earlier one. For the dated formats that merely looked shuffled. For
+  the time-of-day format it was worse: the adapter advances the date
+  whenever the clock jumps back more than 12 hours, so a file meant to
+  cross midnight once crossed it repeatedly and smeared 600 rows across
+  five weeks. The clock now accumulates a jittered step per row, and that
+  fixture still crosses midnight exactly once — the branch it exists to
+  cover.
+
+  Separately, the packaged samples carried the build date as their
+  mtime, and the time-of-day format takes its day from exactly there.
+  `build.sh` now pins the mtime to the day the sample data describes,
+  which keeps the parser honest — the date still comes from the
+  filesystem — while putting the rows where the rest of the samples are.
+
+  The updater used to write samples with today's timestamp, which would
+  have reintroduced the drift on every self-update; it now restores the
+  timestamp the release archive recorded.
+
+  All samples now span about 19 hours instead of 887 days.
+
 ## [0.3.5] — 2026-08-05
 
 ### Security
@@ -541,7 +574,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.5...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.6...HEAD
+[0.3.6]: https://github.com/labmk/kopusha/releases/tag/v0.3.6
 [0.3.5]: https://github.com/labmk/kopusha/releases/tag/v0.3.5
 [0.3.4]: https://github.com/labmk/kopusha/releases/tag/v0.3.4
 [0.3.3]: https://github.com/labmk/kopusha/releases/tag/v0.3.3

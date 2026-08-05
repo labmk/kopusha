@@ -1,3000 +1,3000 @@
 ﻿----------------------------------------
-Message: dropped 3156 stale entries during compaction
-ID: 2a2e3e5c
+Message: retrying upstream after 7626ms backoff
+ID: b471ec0d
 Severity: Information
-Timestamp: 2024-03-18T06:00:00.000+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 2088
-Thread Name: 
-Thread Id: 41005
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: flushed 769 records to segment 74808010
-ID: 9eb7a7f7
-Severity: Information
-Timestamp: 2024-03-18T06:00:00.696+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 35246
-Thread Name: 
-Thread Id: 2593
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 1610 bytes
-ID: 4916d91b
-Severity: Warn
-Timestamp: 2024-03-18T06:00:06.864+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 76462
-Thread Name: 
-Thread Id: 27762
-AppDomain: authsvc.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.4035 completed
-ID: bd5f69b3
-Severity: Information
-Timestamp: 2024-03-18T06:00:12.291+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 7068
-Thread Name: 
-Thread Id: 33750
-AppDomain: indexer.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 9363ms
-ID: 5374a738
-Severity: Error
-Timestamp: 2024-03-18T06:00:19.400+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 26451
-Thread Name: 
-Thread Id: 47311
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: dropped 4069 stale entries during compaction
-ID: 59c401e0
-Severity: Information
-Timestamp: 2024-03-18T06:00:12.870+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 83999
-Thread Name: 
-Thread Id: 51082
-AppDomain: authsvc.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 2353s
-ID: bd0c0c6b
-Severity: Information
-Timestamp: 2024-03-18T06:00:19.644+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 77814
-Thread Name: 
-Thread Id: 55943
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 1050ms backoff
-ID: 3982987b
-Severity: Debug
-Timestamp: 2024-03-18T06:00:02.961+01:00
+Timestamp: 2024-03-18T06:00:02.637+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 34358
+Process Id: 14877
 Thread Name: 
-Thread Id: 8412
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: dropped 162 stale entries during compaction
-ID: 42b7b942
-Severity: Information
-Timestamp: 2024-03-18T06:00:29.416+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 95815
-Thread Name: 
-Thread Id: 46178
-AppDomain: blobstore.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 4520ms
-ID: a46e1c6b
-Severity: Error
-Timestamp: 2024-03-18T06:00:12.537+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 94509
-Thread Name: 
-Thread Id: 12439
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: shard 161 rebalanced to node-c01
-ID: 63bfdc1b
-Severity: Information
-Timestamp: 2024-03-18T06:00:07.900+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 22907
-Thread Name: 
-Thread Id: 41838
-AppDomain: blobstore.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.7420 completed
-ID: 1f4b5e38
-Severity: Information
-Timestamp: 2024-03-18T06:00:41.184+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 5287
-Thread Name: 
-Thread Id: 93953
-AppDomain: blobstore.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: cache miss for key b91c595e
-ID: 70e4638a
-Severity: Information
-Timestamp: 2024-03-18T06:00:49.188+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 57598
-Thread Name: 
-Thread Id: 39578
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: queue depth 5985 exceeds soft limit
-ID: 5f6026bc
-Severity: Debug
-Timestamp: 2024-03-18T06:00:31.200+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 99282
-Thread Name: 
-Thread Id: 88444
-AppDomain: indexer.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: shard 4802 rebalanced to node-c02
-ID: a7c917f1
-Severity: Information
-Timestamp: 2024-03-18T06:00:07.378+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 17800
-Thread Name: 
-Thread Id: 90355
-AppDomain: scheduler.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: worker 3479 joined the pool
-ID: 0b024330
-Severity: Information
-Timestamp: 2024-03-18T06:00:08.355+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 76036
-Thread Name: 
-Thread Id: 69575
-AppDomain: gateway.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 6609s
-ID: 8863e26b
-Severity: Information
-Timestamp: 2024-03-18T06:00:19.104+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 23496
-Thread Name: 
-Thread Id: 82228
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: cache miss for key 2340be16
-ID: bdfd2e0c
-Severity: Information
-Timestamp: 2024-03-18T06:01:14.919+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 26801
-Thread Name: 
-Thread Id: 19861
-AppDomain: blobstore.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile 04f4d9dd
-ID: 020de1c4
-Severity: Information
-Timestamp: 2024-03-18T06:00:56.448+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 26165
-Thread Name: 
-Thread Id: 36218
-AppDomain: indexer.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile e6391c59
-ID: 25b9fa7e
-Severity: Debug
-Timestamp: 2024-03-18T06:01:12.409+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 20399
-Thread Name: 
-Thread Id: 42241
-AppDomain: scheduler.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 2682: unexpected token
-ID: 9b43a5c7
-Severity: Warn
-Timestamp: 2024-03-18T06:00:10.840+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 40558
-Thread Name: 
-Thread Id: 63043
-AppDomain: blobstore.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 1833 bytes
-ID: 5ba35002
-Severity: Error
-Timestamp: 2024-03-18T06:00:46.368+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 52203
-Thread Name: 
-Thread Id: 68263
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: cache miss for key 04ff2fd4
-ID: 281a1383
-Severity: Information
-Timestamp: 2024-03-18T06:00:14.894+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 58106
-Thread Name: 
-Thread Id: 62163
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile add0950f
-ID: 6e592afc
-Severity: Information
-Timestamp: 2024-03-18T06:00:45.862+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 21235
-Thread Name: 
-Thread Id: 69607
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 298ms backoff
-ID: e5e2f613
-Severity: Debug
-Timestamp: 2024-03-18T06:01:04.728+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 90050
-Thread Name: 
-Thread Id: 5809
-AppDomain: gateway.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 2934
-ID: b16e0d80
-Severity: Information
-Timestamp: 2024-03-18T06:01:29.600+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 54394
-Thread Name: 
-Thread Id: 20831
-AppDomain: blobstore.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 1571 objects visited
-ID: d89433f8
-Severity: Information
-Timestamp: 2024-03-18T06:00:27.014+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 80408
-Thread Name: 
-Thread Id: 70240
-AppDomain: gateway.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.342 refused connection after 3 attempts
-ID: 590d788f
-Severity: Warn
-Timestamp: 2024-03-18T06:00:22.869+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 16684
-Thread Name: 
-Thread Id: 6686
-AppDomain: blobstore.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: cache miss for key e682a3ff
-ID: 1cd97b8e
-Severity: Information
-Timestamp: 2024-03-18T06:02:00.204+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 72498
-Thread Name: 
-Thread Id: 62625
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: queue depth 2973 exceeds soft limit
-ID: c6cb2408
-Severity: Information
-Timestamp: 2024-03-18T06:00:22.330+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 14525
-Thread Name: 
-Thread Id: 76691
-AppDomain: scheduler.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: dropped 2961 stale entries during compaction
-ID: d6443000
-Severity: Debug
-Timestamp: 2024-03-18T06:00:14.430+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 3556
-Thread Name: 
-Thread Id: 84367
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 6350ms
-ID: 04e9f12d
-Severity: Warn
-Timestamp: 2024-03-18T06:01:07.363+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 61518
-Thread Name: 
-Thread Id: 47510
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: queue depth 7645 exceeds soft limit
-ID: 5e21ff40
-Severity: Information
-Timestamp: 2024-03-18T06:02:23.584+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 95770
-Thread Name: 
-Thread Id: 92882
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: worker 4441 joined the pool
-ID: 69aa8c92
-Severity: Information
-Timestamp: 2024-03-18T06:01:47.679+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 90762
-Thread Name: 
-Thread Id: 67354
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: request completed in 2822ms
-ID: b8187357
-Severity: Information
-Timestamp: 2024-03-18T06:00:23.868+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 63890
-Thread Name: 
-Thread Id: 22583
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 6717
-ID: c37f5814
-Severity: Information
-Timestamp: 2024-03-18T06:02:46.285+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 59321
-Thread Name: 
-Thread Id: 28516
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 8792s
-ID: 0a99a770
-Severity: Information
-Timestamp: 2024-03-18T06:02:41.064+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 55542
-Thread Name: 
-Thread Id: 95872
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 7126 bytes
-ID: 517b21f2
-Severity: Warn
-Timestamp: 2024-03-18T06:02:10.758+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 40942
-Thread Name: 
-Thread Id: 52958
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.6604 refused connection after 3 attempts
-ID: 88a9a93e
-Severity: Error
-Timestamp: 2024-03-18T06:01:00.382+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 45197
-Thread Name: 
-Thread Id: 27966
-AppDomain: scheduler.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: cache miss for key 8c6fd12b
-ID: 4ce58b0b
-Severity: Debug
-Timestamp: 2024-03-18T06:01:55.050+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 5914
-Thread Name: 
-Thread Id: 46663
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: cache miss for key f3d214da
-ID: 6c6b3502
-Severity: Debug
-Timestamp: 2024-03-18T06:01:15.120+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 64158
-Thread Name: 
-Thread Id: 96733
-AppDomain: scheduler.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.9767 completed
-ID: 7ce47aa3
-Severity: Information
-Timestamp: 2024-03-18T06:02:57.817+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 74949
-Thread Name: 
-Thread Id: 17672
-AppDomain: blobstore.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: background scan finished, 2902 objects visited
-ID: e84b2cd5
-Severity: Information
-Timestamp: 2024-03-18T06:02:25.152+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 17719
-Thread Name: 
-Thread Id: 31080
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: worker 175 joined the pool
-ID: 9ce5c9bd
-Severity: Information
-Timestamp: 2024-03-18T06:02:13.042+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 31139
-Thread Name: 
-Thread Id: 42336
-AppDomain: authsvc.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 5912ms backoff
-ID: c91fd172
-Severity: Information
-Timestamp: 2024-03-18T06:00:33.308+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 14570
-Thread Name: 
-Thread Id: 56474
-AppDomain: indexer.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: flushed 1724 records to segment 765a0830
-ID: 966bbf68
-Severity: Debug
-Timestamp: 2024-03-18T06:01:47.955+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 79795
-Thread Name: 
-Thread Id: 69916
-AppDomain: authsvc.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 6955: unexpected token
-ID: 82ee1d13
-Severity: Warn
-Timestamp: 2024-03-18T06:00:15.640+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 51727
-Thread Name: 
-Thread Id: 86223
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 3969
-ID: 6b1f6049
-Severity: Information
-Timestamp: 2024-03-18T06:02:29.601+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 89799
-Thread Name: 
-Thread Id: 84840
-AppDomain: scheduler.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 6766s
-ID: f89d9645
-Severity: Information
-Timestamp: 2024-03-18T06:01:25.248+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 73794
-Thread Name: 
-Thread Id: 56114
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 2520 objects visited
-ID: 1474ef9b
-Severity: Information
-Timestamp: 2024-03-18T06:02:29.107+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 42338
-Thread Name: 
-Thread Id: 90864
-AppDomain: blobstore.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: cache miss for key 2a225f7a
-ID: 8634666e
-Severity: Information
-Timestamp: 2024-03-18T06:04:00.650+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 34086
-Thread Name: 
-Thread Id: 94113
-AppDomain: authsvc.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 1606
-ID: 2a270b48
-Severity: Information
-Timestamp: 2024-03-18T06:03:56.181+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 77020
-Thread Name: 
-Thread Id: 11382
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.8793 refused connection after 3 attempts
-ID: cf5196d6
-Severity: Warn
-Timestamp: 2024-03-18T06:02:21.232+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 15635
-Thread Name: 
-Thread Id: 11173
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: cache miss for key 5a17560a
-ID: df65f017
-Severity: Information
-Timestamp: 2024-03-18T06:03:47.211+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 64973
-Thread Name: 
-Thread Id: 23522
-AppDomain: gateway.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: request completed in 5688ms
-ID: b131ad79
-Severity: Information
-Timestamp: 2024-03-18T06:02:19.428+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 24866
-Thread Name: 
-Thread Id: 40720
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: shard 3432 rebalanced to node-b02
-ID: 8b037cc7
-Severity: Debug
-Timestamp: 2024-03-18T06:03:19.705+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 27382
-Thread Name: 
-Thread Id: 4903
-AppDomain: blobstore.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 2433
-ID: cc3ad67c
-Severity: Information
-Timestamp: 2024-03-18T06:02:40.216+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 45282
-Thread Name: 
-Thread Id: 40608
-AppDomain: authsvc.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: dropped 3040 stale entries during compaction
-ID: e16d4dd6
-Severity: Information
-Timestamp: 2024-03-18T06:01:55.254+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 78707
-Thread Name: 
-Thread Id: 17234
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 686 bytes
-ID: 0d7ac955
-Severity: Error
-Timestamp: 2024-03-18T06:04:32.890+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 79564
-Thread Name: 
-Thread Id: 56519
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.8746 refused connection after 3 attempts
-ID: 8be6f61e
-Severity: Error
-Timestamp: 2024-03-18T06:03:35.763+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 29226
-Thread Name: 
-Thread Id: 90780
-AppDomain: blobstore.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.6278 refused connection after 3 attempts
-ID: f4a116a0
-Severity: Error
-Timestamp: 2024-03-18T06:04:08.820+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 22359
-Thread Name: 
-Thread Id: 33045
-AppDomain: scheduler.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 2140ms backoff
-ID: c6910a91
-Severity: Information
-Timestamp: 2024-03-18T06:00:27.816+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 4004
-Thread Name: 
-Thread Id: 40806
-AppDomain: blobstore.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.8790 completed
-ID: e664c43b
-Severity: Information
-Timestamp: 2024-03-18T06:05:06.900+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 18607
-Thread Name: 
-Thread Id: 72377
-AppDomain: gateway.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 4406s
-ID: 8b8457d2
-Severity: Information
-Timestamp: 2024-03-18T06:01:33.744+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 79280
-Thread Name: 
-Thread Id: 28684
-AppDomain: authsvc.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 5432
-ID: 5edc9135
-Severity: Information
-Timestamp: 2024-03-18T06:04:48.320+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 70293
-Thread Name: 
-Thread Id: 65184
-AppDomain: gateway.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.1271 completed
-ID: ecb1f1be
-Severity: Information
-Timestamp: 2024-03-18T06:03:26.895+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 75532
-Thread Name: 
-Thread Id: 45199
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: request completed in 2454ms
-ID: 98f241a8
-Severity: Information
-Timestamp: 2024-03-18T06:02:40.050+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 67995
-Thread Name: 
-Thread Id: 2848
-AppDomain: gateway.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: dropped 1874 stale entries during compaction
-ID: ef9e5df4
-Severity: Information
-Timestamp: 2024-03-18T06:03:21.603+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 17099
-Thread Name: 
-Thread Id: 90484
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 7794: unexpected token
-ID: 91f72b99
-Severity: Warn
-Timestamp: 2024-03-18T06:00:49.776+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 31652
-Thread Name: 
-Thread Id: 37449
-AppDomain: scheduler.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: queue depth 8735 exceeds soft limit
-ID: 54adde1e
-Severity: Information
-Timestamp: 2024-03-18T06:03:22.446+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 50424
-Thread Name: 
-Thread Id: 64174
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: queue depth 2485 exceeds soft limit
-ID: 1874b36a
-Severity: Information
-Timestamp: 2024-03-18T06:00:35.070+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 83240
-Thread Name: 
-Thread Id: 67959
-AppDomain: scheduler.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: background scan finished, 4333 objects visited
-ID: afaccdde
-Severity: Information
-Timestamp: 2024-03-18T06:04:12.689+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 84165
-Thread Name: 
-Thread Id: 28503
-AppDomain: authsvc.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: flushed 5068 records to segment f6db47b1
-ID: bf672054
-Severity: Information
-Timestamp: 2024-03-18T06:02:37.464+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 4272
-Thread Name: 
-Thread Id: 45888
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: segment fba6d67b failed checksum validation
-ID: 617040a6
-Severity: Error
-Timestamp: 2024-03-18T06:05:34.705+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 42542
-Thread Name: 
-Thread Id: 34366
-AppDomain: blobstore.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.7917 refused connection after 3 attempts
-ID: e5f70273
-Severity: Warn
-Timestamp: 2024-03-18T06:04:47.046+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 76170
-Thread Name: 
-Thread Id: 83915
+Thread Id: 65560
 AppDomain: scheduler.worker
 Machine: node-b02
 EventSource: 
 ----------------------------------------
-Message: background scan finished, 9898 objects visited
-ID: fee60ffe
+Message: queue depth 4661 exceeds soft limit
+ID: 9f8d73e3
 Severity: Information
-Timestamp: 2024-03-18T06:00:45.750+01:00
+Timestamp: 2024-03-18T06:00:04.493+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 35320
+Process Id: 69544
 Thread Name: 
-Thread Id: 89984
+Thread Id: 89102
 AppDomain: scheduler.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 3883
-ID: 25dfe000
-Severity: Information
-Timestamp: 2024-03-18T06:00:25.992+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 55909
-Thread Name: 
-Thread Id: 16251
-AppDomain: indexer.worker
 Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: shard 4511 rebalanced to node-b01
-ID: 2e18e47c
-Severity: Debug
-Timestamp: 2024-03-18T06:01:58.349+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 18710
-Thread Name: 
-Thread Id: 7728
-AppDomain: gateway.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: request completed in 1437ms
-ID: 297b09cc
+Message: worker 3672 joined the pool
+ID: 9d899551
 Severity: Information
-Timestamp: 2024-03-18T06:02:26.406+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 94376
-Thread Name: 
-Thread Id: 50125
-AppDomain: scheduler.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 1855
-ID: 0fb84dba
-Severity: Debug
-Timestamp: 2024-03-18T06:05:53.288+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 10458
-Thread Name: 
-Thread Id: 56041
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: worker 5015 joined the pool
-ID: 12e90e5a
-Severity: Information
-Timestamp: 2024-03-18T06:01:33.360+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 74774
-Thread Name: 
-Thread Id: 1499
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 6078
-ID: d6209bd0
-Severity: Information
-Timestamp: 2024-03-18T06:04:39.450+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 92054
-Thread Name: 
-Thread Id: 52811
-AppDomain: gateway.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 8169
-ID: 9b485023
-Severity: Information
-Timestamp: 2024-03-18T06:06:31.632+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 20126
-Thread Name: 
-Thread Id: 65168
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: cache miss for key b49e1515
-ID: a1a10880
-Severity: Information
-Timestamp: 2024-03-18T06:04:30.165+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 66231
-Thread Name: 
-Thread Id: 43078
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 5200s
-ID: 64e1b445
-Severity: Information
-Timestamp: 2024-03-18T06:01:47.268+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 64639
-Thread Name: 
-Thread Id: 51284
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: queue depth 8351 exceeds soft limit
-ID: fa2a92e1
-Severity: Debug
-Timestamp: 2024-03-18T06:00:37.315+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 19435
-Thread Name: 
-Thread Id: 58309
-AppDomain: blobstore.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 398 objects visited
-ID: e6f56b6a
-Severity: Information
-Timestamp: 2024-03-18T06:02:54.924+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 39123
-Thread Name: 
-Thread Id: 51984
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 4478
-ID: 3ceb8d40
-Severity: Information
-Timestamp: 2024-03-18T06:04:21.957+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 84111
-Thread Name: 
-Thread Id: 4041
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 6645: unexpected token
-ID: 333b5765
-Severity: Error
-Timestamp: 2024-03-18T06:01:53.168+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 20401
-Thread Name: 
-Thread Id: 55193
-AppDomain: indexer.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 5307ms
-ID: 615dacbe
-Severity: Warn
-Timestamp: 2024-03-18T06:03:31.286+01:00
+Timestamp: 2024-03-18T06:00:08.388+01:00
 Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 24294
+Process Id: 54476
 Thread Name: 
-Thread Id: 75923
+Thread Id: 58683
 AppDomain: authsvc.worker
 Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: connection pool resized to 2771
-ID: d87c978c
-Severity: Information
-Timestamp: 2024-03-18T06:00:53.550+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 56930
-Thread Name: 
-Thread Id: 16049
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: worker 727 joined the pool
-ID: 3e9d7b89
-Severity: Information
-Timestamp: 2024-03-18T06:04:17.257+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 67122
-Thread Name: 
-Thread Id: 11395
-AppDomain: indexer.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 2856s
-ID: 81d7d536
-Severity: Debug
-Timestamp: 2024-03-18T06:06:10.852+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 30640
-Thread Name: 
-Thread Id: 3133
-AppDomain: blobstore.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: flushed 328 records to segment b73be238
-ID: 38884159
-Severity: Information
-Timestamp: 2024-03-18T06:06:04.839+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 94783
-Thread Name: 
-Thread Id: 54906
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 7371ms backoff
-ID: f87e2115
-Severity: Information
-Timestamp: 2024-03-18T06:01:17.738+01:00
+Message: lease acquisition timed out after 854ms
+ID: 406e29b9
+Severity: Error
+Timestamp: 2024-03-18T06:00:08.963+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 53719
+Process Id: 46059
 Thread Name: 
-Thread Id: 1898
+Thread Id: 97586
 AppDomain: scheduler.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: lease acquisition timed out after 367ms
-ID: 7e03ad46
-Severity: Warn
-Timestamp: 2024-03-18T06:05:41.905+01:00
+Message: checkpoint written at offset 9555
+ID: dcf2506e
+Severity: Information
+Timestamp: 2024-03-18T06:00:11.883+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 46560
+Process Id: 74475
 Thread Name: 
-Thread Id: 39420
+Thread Id: 83638
 AppDomain: blobstore.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: upstream 192.0.2.7036 refused connection after 3 attempts
-ID: 7b2e57ec
+Message: lease acquisition timed out after 2202ms
+ID: 232c6575
 Severity: Warn
-Timestamp: 2024-03-18T06:02:10.752+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 70710
+Timestamp: 2024-03-18T06:00:12.955+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 1213
 Thread Name: 
-Thread Id: 1027
+Thread Id: 33856
+AppDomain: blobstore.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: request completed in 9996ms
+ID: 175880dd
+Severity: Information
+Timestamp: 2024-03-18T06:00:17.348+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 53886
+Thread Name: 
+Thread Id: 54818
+AppDomain: authsvc.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: dropped 5198 stale entries during compaction
+ID: a7dbe685
+Severity: Debug
+Timestamp: 2024-03-18T06:00:17.771+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 46662
+Thread Name: 
+Thread Id: 56536
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: queue depth 9006 exceeds soft limit
+ID: 46916e1a
+Severity: Information
+Timestamp: 2024-03-18T06:00:20.292+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 97642
+Thread Name: 
+Thread Id: 50819
+AppDomain: authsvc.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: request completed in 7436ms
+ID: cca25a97
+Severity: Information
+Timestamp: 2024-03-18T06:00:22.500+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 64209
+Thread Name: 
+Thread Id: 63463
+AppDomain: scheduler.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 661s
+ID: a39eb244
+Severity: Information
+Timestamp: 2024-03-18T06:00:25.296+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 7506
+Thread Name: 
+Thread Id: 92167
+AppDomain: authsvc.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: flushed 3765 records to segment 2ce92cba
+ID: bdafa35d
+Severity: Information
+Timestamp: 2024-03-18T06:00:28.508+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 54650
+Thread Name: 
+Thread Id: 95758
+AppDomain: indexer.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.1214 refused connection after 3 attempts
+ID: 7b2d4d3d
+Severity: Warn
+Timestamp: 2024-03-18T06:00:30.327+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 14616
+Thread Name: 
+Thread Id: 70942
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 6859
+ID: bdbbc836
+Severity: Information
+Timestamp: 2024-03-18T06:00:32.545+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 11819
+Thread Name: 
+Thread Id: 45894
+AppDomain: blobstore.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.715 refused connection after 3 attempts
+ID: d01218cb
+Severity: Error
+Timestamp: 2024-03-18T06:00:36.227+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 39830
+Thread Name: 
+Thread Id: 38100
+AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 8592ms
+ID: f4078186
+Severity: Warn
+Timestamp: 2024-03-18T06:00:36.850+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 75817
+Thread Name: 
+Thread Id: 42361
+AppDomain: scheduler.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 0941aeec
+ID: be689cfc
+Severity: Information
+Timestamp: 2024-03-18T06:00:38.200+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 53752
+Thread Name: 
+Thread Id: 60795
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 1011ms
+ID: 5331f1ec
+Severity: Warn
+Timestamp: 2024-03-18T06:00:39.489+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 14524
+Thread Name: 
+Thread Id: 80109
+AppDomain: authsvc.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 7346
+ID: 9575fa61
+Severity: Debug
+Timestamp: 2024-03-18T06:00:42.253+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 3530
+Thread Name: 
+Thread Id: 49116
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 5655ms backoff
+ID: ac37e99b
+Severity: Debug
+Timestamp: 2024-03-18T06:00:43.136+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 67420
+Thread Name: 
+Thread Id: 4667
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 5420ms backoff
+ID: 48c2a78c
+Severity: Information
+Timestamp: 2024-03-18T06:00:47.940+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 25986
+Thread Name: 
+Thread Id: 57933
+AppDomain: scheduler.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 5377ms backoff
+ID: bd7db97d
+Severity: Information
+Timestamp: 2024-03-18T06:00:52.487+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 66918
+Thread Name: 
+Thread Id: 7341
+AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 5017 bytes
+ID: 3321d8c8
+Severity: Warn
+Timestamp: 2024-03-18T06:00:57.315+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 38680
+Thread Name: 
+Thread Id: 93204
+AppDomain: gateway.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: cache miss for key 38e32d17
+ID: e75fbc88
+Severity: Information
+Timestamp: 2024-03-18T06:01:00.067+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 52002
+Thread Name: 
+Thread Id: 9519
+AppDomain: gateway.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 83163e0c
+ID: cdd47ae3
+Severity: Information
+Timestamp: 2024-03-18T06:01:04.350+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 67473
+Thread Name: 
+Thread Id: 43485
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 2e03e5d6
+ID: 3ab7e8c2
+Severity: Information
+Timestamp: 2024-03-18T06:01:04.836+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 44843
+Thread Name: 
+Thread Id: 3223
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 3468
+ID: 05e9d088
+Severity: Information
+Timestamp: 2024-03-18T06:01:05.575+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 25848
+Thread Name: 
+Thread Id: 3136
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 1830: unexpected token
+ID: 05457b3c
+Severity: Error
+Timestamp: 2024-03-18T06:01:08.659+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 53382
+Thread Name: 
+Thread Id: 76774
+AppDomain: indexer.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: background scan finished, 7502 objects visited
+ID: 7179523d
+Severity: Debug
+Timestamp: 2024-03-18T06:01:12.446+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 42665
+Thread Name: 
+Thread Id: 64236
+AppDomain: scheduler.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: shard 4912 rebalanced to node-a01
+ID: 826a9d4e
+Severity: Debug
+Timestamp: 2024-03-18T06:01:15.899+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 59030
+Thread Name: 
+Thread Id: 4662
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: background scan finished, 526 objects visited
+ID: 7b6c3951
+Severity: Debug
+Timestamp: 2024-03-18T06:01:18.367+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 67875
+Thread Name: 
+Thread Id: 58812
+AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 2631ms
+ID: ed1de21a
+Severity: Warn
+Timestamp: 2024-03-18T06:01:21.012+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 98561
+Thread Name: 
+Thread Id: 70915
+AppDomain: indexer.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: shard 1214 rebalanced to node-a02
+ID: fe16ea4f
+Severity: Information
+Timestamp: 2024-03-18T06:01:22.258+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 4750
+Thread Name: 
+Thread Id: 25749
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile c9e76db6
+ID: 7015e8f0
+Severity: Information
+Timestamp: 2024-03-18T06:01:22.531+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 35209
+Thread Name: 
+Thread Id: 83701
+AppDomain: authsvc.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: background scan finished, 7046 objects visited
+ID: 3faa597b
+Severity: Information
+Timestamp: 2024-03-18T06:01:25.187+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 36642
+Thread Name: 
+Thread Id: 11900
+AppDomain: indexer.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 7451ms
+ID: c08961a9
+Severity: Error
+Timestamp: 2024-03-18T06:01:25.897+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 63680
+Thread Name: 
+Thread Id: 34057
+AppDomain: gateway.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 6994ms backoff
+ID: a4bebbf8
+Severity: Information
+Timestamp: 2024-03-18T06:01:29.513+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 78885
+Thread Name: 
+Thread Id: 7249
+AppDomain: authsvc.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 293ms backoff
+ID: a7c916ed
+Severity: Information
+Timestamp: 2024-03-18T06:01:33.451+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 9947
+Thread Name: 
+Thread Id: 42335
+AppDomain: indexer.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: flushed 2048 records to segment b3231c8d
+ID: 8b492fd4
+Severity: Information
+Timestamp: 2024-03-18T06:01:35.115+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 55652
+Thread Name: 
+Thread Id: 22247
+AppDomain: indexer.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.8424 completed
+ID: 8d3f3714
+Severity: Information
+Timestamp: 2024-03-18T06:01:39.377+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 68391
+Thread Name: 
+Thread Id: 60556
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 1f74248f
+ID: 6e90bdf5
+Severity: Information
+Timestamp: 2024-03-18T06:01:44.204+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 92170
+Thread Name: 
+Thread Id: 78173
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.2338 completed
+ID: c6f211af
+Severity: Debug
+Timestamp: 2024-03-18T06:01:45.844+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 47368
+Thread Name: 
+Thread Id: 28419
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: flushed 5307 records to segment f32f1ed7
+ID: 162173f2
+Severity: Information
+Timestamp: 2024-03-18T06:01:48.529+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 68692
+Thread Name: 
+Thread Id: 45050
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: segment 83ef5c0e failed checksum validation
+ID: 2f071bf8
+Severity: Error
+Timestamp: 2024-03-18T06:01:50.060+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 42323
+Thread Name: 
+Thread Id: 65679
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: worker 7367 joined the pool
+ID: a138ece7
+Severity: Information
+Timestamp: 2024-03-18T06:01:53.003+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 8211
+Thread Name: 
+Thread Id: 16509
+AppDomain: indexer.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: queue depth 3258 exceeds soft limit
+ID: 6d513cd0
+Severity: Information
+Timestamp: 2024-03-18T06:01:56.979+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 32982
+Thread Name: 
+Thread Id: 90880
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 2982
+ID: f5c999e8
+Severity: Debug
+Timestamp: 2024-03-18T06:02:01.622+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 90491
+Thread Name: 
+Thread Id: 56413
 AppDomain: gateway.worker
 Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: retrying upstream after 9871ms backoff
-ID: 189ec98a
+Message: worker 1422 joined the pool
+ID: 5be54824
 Severity: Information
-Timestamp: 2024-03-18T06:04:22.579+01:00
+Timestamp: 2024-03-18T06:02:05.403+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 61286
+Process Id: 68768
 Thread Name: 
-Thread Id: 65247
+Thread Id: 49631
 AppDomain: blobstore.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 8f02f8fc
+ID: ebf91fc9
+Severity: Information
+Timestamp: 2024-03-18T06:02:06.754+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 79273
+Thread Name: 
+Thread Id: 82259
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 9617
+ID: cffab62f
+Severity: Information
+Timestamp: 2024-03-18T06:02:08.917+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 65992
+Thread Name: 
+Thread Id: 36052
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: dropped 1099 stale entries during compaction
+ID: cc818dcf
+Severity: Information
+Timestamp: 2024-03-18T06:02:10.078+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 72352
+Thread Name: 
+Thread Id: 51426
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 5138 bytes
+ID: 38079529
+Severity: Warn
+Timestamp: 2024-03-18T06:02:13.738+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 47223
+Thread Name: 
+Thread Id: 41221
+AppDomain: scheduler.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 7460s
+ID: 83943b0e
+Severity: Information
+Timestamp: 2024-03-18T06:02:16.741+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 74488
+Thread Name: 
+Thread Id: 52702
+AppDomain: scheduler.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 6761s
+ID: d545cb36
+Severity: Information
+Timestamp: 2024-03-18T06:02:19.764+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 71817
+Thread Name: 
+Thread Id: 52710
+AppDomain: scheduler.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: cache miss for key 3ecb5534
+ID: 9f9cb15d
+Severity: Information
+Timestamp: 2024-03-18T06:02:23.082+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 98148
+Thread Name: 
+Thread Id: 46186
+AppDomain: scheduler.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 2539
+ID: 9a910fb5
+Severity: Debug
+Timestamp: 2024-03-18T06:02:26.396+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 10271
+Thread Name: 
+Thread Id: 26814
+AppDomain: blobstore.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.7091 refused connection after 3 attempts
+ID: ccf1b6c0
+Severity: Warn
+Timestamp: 2024-03-18T06:02:30.370+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 76530
+Thread Name: 
+Thread Id: 89534
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 4564: unexpected token
+ID: 33b3f4e2
+Severity: Warn
+Timestamp: 2024-03-18T06:02:33.266+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 33913
+Thread Name: 
+Thread Id: 30926
+AppDomain: gateway.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: worker 7473 joined the pool
+ID: d22834d1
+Severity: Information
+Timestamp: 2024-03-18T06:02:34.394+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 3986
+Thread Name: 
+Thread Id: 59005
+AppDomain: authsvc.worker
 Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: worker 6156 joined the pool
+ID: 66ea49bd
+Severity: Information
+Timestamp: 2024-03-18T06:02:35.164+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 30556
+Thread Name: 
+Thread Id: 11736
+AppDomain: gateway.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 3730: unexpected token
+ID: 93668e17
+Severity: Warn
+Timestamp: 2024-03-18T06:02:36.079+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 6392
+Thread Name: 
+Thread Id: 73669
+AppDomain: indexer.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: queue depth 1572 exceeds soft limit
+ID: 887e8b71
+Severity: Information
+Timestamp: 2024-03-18T06:02:39.950+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 22339
+Thread Name: 
+Thread Id: 94950
+AppDomain: blobstore.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: shard 7926 rebalanced to node-b01
+ID: 9539407e
+Severity: Debug
+Timestamp: 2024-03-18T06:02:40.913+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 49225
+Thread Name: 
+Thread Id: 9455
+AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.9186 refused connection after 3 attempts
+ID: 44b3d73a
+Severity: Error
+Timestamp: 2024-03-18T06:02:42.464+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 11421
+Thread Name: 
+Thread Id: 73761
+AppDomain: authsvc.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: queue depth 9481 exceeds soft limit
+ID: 4439e7da
+Severity: Information
+Timestamp: 2024-03-18T06:02:46.530+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 11812
+Thread Name: 
+Thread Id: 14380
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 7710ms
+ID: bef16e16
+Severity: Warn
+Timestamp: 2024-03-18T06:02:50.204+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 49141
+Thread Name: 
+Thread Id: 24449
+AppDomain: indexer.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.3956 completed
+ID: 306bb023
+Severity: Information
+Timestamp: 2024-03-18T06:02:50.574+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 37660
+Thread Name: 
+Thread Id: 96696
+AppDomain: gateway.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 6804
+ID: a0f378a8
+Severity: Information
+Timestamp: 2024-03-18T06:02:53.006+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 27467
+Thread Name: 
+Thread Id: 49122
+AppDomain: authsvc.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 8551: unexpected token
+ID: c04bf0cf
+Severity: Error
+Timestamp: 2024-03-18T06:02:54.796+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 66848
+Thread Name: 
+Thread Id: 47411
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 5626 bytes
+ID: 42462286
+Severity: Warn
+Timestamp: 2024-03-18T06:02:56.240+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 92328
+Thread Name: 
+Thread Id: 80451
+AppDomain: authsvc.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: queue depth 8704 exceeds soft limit
+ID: 4e9cef63
+Severity: Debug
+Timestamp: 2024-03-18T06:02:57.041+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 15231
+Thread Name: 
+Thread Id: 3501
+AppDomain: scheduler.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 5455: unexpected token
+ID: a1636b49
+Severity: Warn
+Timestamp: 2024-03-18T06:03:00.996+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 35553
+Thread Name: 
+Thread Id: 70637
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.2984 refused connection after 3 attempts
+ID: e3fb249f
+Severity: Warn
+Timestamp: 2024-03-18T06:03:04.023+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 56083
+Thread Name: 
+Thread Id: 92734
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 6093
+ID: 807f0f53
+Severity: Debug
+Timestamp: 2024-03-18T06:03:06.379+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 2375
+Thread Name: 
+Thread Id: 99571
+AppDomain: blobstore.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.5888 refused connection after 3 attempts
+ID: d60796ec
+Severity: Warn
+Timestamp: 2024-03-18T06:03:06.597+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 47849
+Thread Name: 
+Thread Id: 8890
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: queue depth 544 exceeds soft limit
+ID: d69a2ba6
+Severity: Information
+Timestamp: 2024-03-18T06:03:09.621+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 82812
+Thread Name: 
+Thread Id: 58449
+AppDomain: scheduler.worker
+Machine: node-c01
 EventSource: 
 ----------------------------------------
 Message: handshake with 192.0.2.2289 completed
-ID: cfa578a2
-Severity: Debug
-Timestamp: 2024-03-18T06:05:47.116+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 14198
-Thread Name: 
-Thread Id: 9008
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: shard 8514 rebalanced to node-b01
-ID: 21d504b2
+ID: 6c9d3739
 Severity: Information
-Timestamp: 2024-03-18T06:06:34.218+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 95051
+Timestamp: 2024-03-18T06:03:14.349+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 30511
 Thread Name: 
-Thread Id: 29971
-AppDomain: indexer.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: worker 7118 joined the pool
-ID: 88688e49
-Severity: Debug
-Timestamp: 2024-03-18T06:02:10.600+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 72213
-Thread Name: 
-Thread Id: 61736
-AppDomain: scheduler.worker
+Thread Id: 80692
+AppDomain: gateway.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: worker 1443 joined the pool
-ID: d98b5e01
+Message: handshake with 192.0.2.2862 completed
+ID: de80ed59
 Severity: Information
-Timestamp: 2024-03-18T06:02:19.077+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 53165
+Timestamp: 2024-03-18T06:03:17.056+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 97765
 Thread Name: 
-Thread Id: 39473
-AppDomain: gateway.worker
+Thread Id: 6477
+AppDomain: authsvc.worker
 Machine: node-a03
 EventSource: 
 ----------------------------------------
-Message: worker 4995 joined the pool
-ID: a2eac185
-Severity: Debug
-Timestamp: 2024-03-18T06:07:36.450+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 28594
+Message: shard 87 rebalanced to node-c03
+ID: de381a9a
+Severity: Information
+Timestamp: 2024-03-18T06:03:18.155+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 85338
 Thread Name: 
-Thread Id: 57202
-AppDomain: gateway.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.9954 completed
-ID: 0b966304
-Severity: Debug
-Timestamp: 2024-03-18T06:04:48.400+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 75809
-Thread Name: 
-Thread Id: 21032
-AppDomain: gateway.worker
+Thread Id: 39815
+AppDomain: authsvc.worker
 Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: deserialization failed at offset 4119: unexpected token
-ID: cafb3688
-Severity: Warn
-Timestamp: 2024-03-18T06:08:28.768+01:00
+Message: config reloaded from profile c4945ce6
+ID: 4c0b412d
+Severity: Debug
+Timestamp: 2024-03-18T06:03:21.443+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 98474
+Process Id: 77833
 Thread Name: 
-Thread Id: 77344
-AppDomain: indexer.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile da02b09b
-ID: 08a63973
-Severity: Information
-Timestamp: 2024-03-18T06:05:56.580+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 65044
-Thread Name: 
-Thread Id: 22769
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 9447
-ID: af948cd1
-Severity: Information
-Timestamp: 2024-03-18T06:03:24.474+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 73235
-Thread Name: 
-Thread Id: 19692
+Thread Id: 85933
 AppDomain: indexer.worker
 Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: lease renewed, ttl 4343s
-ID: 5456f395
-Severity: Information
-Timestamp: 2024-03-18T06:08:24.719+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 97718
-Thread Name: 
-Thread Id: 38916
-AppDomain: scheduler.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.2771 completed
-ID: 4a3f407e
-Severity: Debug
-Timestamp: 2024-03-18T06:06:43.056+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 7272
-Thread Name: 
-Thread Id: 65703
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: segment 43198729 failed checksum validation
-ID: d3a04129
-Severity: Warn
-Timestamp: 2024-03-18T06:03:58.819+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 50267
-Thread Name: 
-Thread Id: 66665
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.6936 completed
-ID: b31b5fb4
-Severity: Information
-Timestamp: 2024-03-18T06:07:12.080+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 51893
-Thread Name: 
-Thread Id: 17613
-AppDomain: indexer.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 5007
-ID: 500b6c49
-Severity: Information
-Timestamp: 2024-03-18T06:03:10.032+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 69822
-Thread Name: 
-Thread Id: 91160
-AppDomain: authsvc.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: flushed 2552 records to segment 94e95da0
-ID: 4d624699
-Severity: Information
-Timestamp: 2024-03-18T06:05:56.496+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 38621
-Thread Name: 
-Thread Id: 63807
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: dropped 2497 stale entries during compaction
-ID: 0f43314b
-Severity: Information
-Timestamp: 2024-03-18T06:01:15.371+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 48029
-Thread Name: 
-Thread Id: 18133
-AppDomain: scheduler.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 5758 objects visited
-ID: 627e6dd6
-Severity: Information
-Timestamp: 2024-03-18T06:08:50.784+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 68401
-Thread Name: 
-Thread Id: 99215
-AppDomain: indexer.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: shard 7972 rebalanced to node-b01
-ID: 03b65089
-Severity: Information
-Timestamp: 2024-03-18T06:07:54.490+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 56985
-Thread Name: 
-Thread Id: 64776
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 2698 bytes
-ID: e4fd6672
-Severity: Warn
-Timestamp: 2024-03-18T06:07:44.000+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 72748
-Thread Name: 
-Thread Id: 54109
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 2505ms backoff
-ID: 4fcf1760
-Severity: Information
-Timestamp: 2024-03-18T06:04:19.974+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 94295
-Thread Name: 
-Thread Id: 48810
-AppDomain: indexer.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 2658ms backoff
-ID: 95dbdae6
-Severity: Information
-Timestamp: 2024-03-18T06:05:55.416+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 94592
-Thread Name: 
-Thread Id: 70485
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile 9932300f
-ID: 4154cc01
-Severity: Information
-Timestamp: 2024-03-18T06:06:51.978+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 47989
-Thread Name: 
-Thread Id: 90460
-AppDomain: blobstore.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: worker 6264 joined the pool
-ID: 176523e5
-Severity: Information
-Timestamp: 2024-03-18T06:04:09.240+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 18842
-Thread Name: 
-Thread Id: 35580
-AppDomain: scheduler.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 7325ms backoff
-ID: 85fd313d
-Severity: Information
-Timestamp: 2024-03-18T06:09:17.931+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 14352
-Thread Name: 
-Thread Id: 73754
-AppDomain: scheduler.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 1131s
-ID: 8abd47a5
-Severity: Debug
-Timestamp: 2024-03-18T06:05:48.554+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 50548
-Thread Name: 
-Thread Id: 1621
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 7738ms backoff
-ID: 56d0571a
-Severity: Information
-Timestamp: 2024-03-18T06:01:44.673+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 50465
-Thread Name: 
-Thread Id: 22361
-AppDomain: authsvc.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: dropped 5750 stale entries during compaction
-ID: 6bea87fb
-Severity: Information
-Timestamp: 2024-03-18T06:01:10.928+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 3033
-Thread Name: 
-Thread Id: 84475
-AppDomain: blobstore.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: request completed in 6214ms
-ID: 5fc978ee
-Severity: Debug
-Timestamp: 2024-03-18T06:06:37.625+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 89999
-Thread Name: 
-Thread Id: 27596
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile cb43ef92
-ID: 2d6f444a
-Severity: Information
-Timestamp: 2024-03-18T06:08:21.354+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 22363
-Thread Name: 
-Thread Id: 55318
-AppDomain: blobstore.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 3952 bytes
-ID: e43cd1ea
-Severity: Warn
-Timestamp: 2024-03-18T06:08:12.506+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 47219
-Thread Name: 
-Thread Id: 28252
-AppDomain: authsvc.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 5306
-ID: 8c8e3cfc
-Severity: Information
-Timestamp: 2024-03-18T06:07:27.744+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 8772
-Thread Name: 
-Thread Id: 25933
-AppDomain: indexer.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 3867 objects visited
-ID: 22d34f25
-Severity: Information
-Timestamp: 2024-03-18T06:00:50.697+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 50799
-Thread Name: 
-Thread Id: 49016
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: queue depth 240 exceeds soft limit
-ID: 894eceb8
-Severity: Information
-Timestamp: 2024-03-18T06:06:56.520+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 99114
-Thread Name: 
-Thread Id: 26209
-AppDomain: authsvc.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: dropped 5809 stale entries during compaction
-ID: 60d3af0f
-Severity: Information
-Timestamp: 2024-03-18T06:07:52.648+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 93350
-Thread Name: 
-Thread Id: 21938
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 8622ms backoff
-ID: 09faea03
-Severity: Information
-Timestamp: 2024-03-18T06:10:42.312+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 47108
-Thread Name: 
-Thread Id: 28529
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.4382 refused connection after 3 attempts
-ID: 75c17f44
-Severity: Warn
-Timestamp: 2024-03-18T06:08:45.616+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 62870
-Thread Name: 
-Thread Id: 51304
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: shard 8079 rebalanced to node-c01
-ID: 0ded591b
-Severity: Debug
-Timestamp: 2024-03-18T06:07:32.518+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 35890
-Thread Name: 
-Thread Id: 6216
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: write rejected: quota exceeded by 6248 bytes
-ID: 0cac13c8
+Message: segment dacf5296 failed checksum validation
+ID: b3d07aeb
 Severity: Error
-Timestamp: 2024-03-18T06:01:04.260+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 63667
+Timestamp: 2024-03-18T06:03:25.631+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 22148
 Thread Name: 
-Thread Id: 75382
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.1409 completed
-ID: 4cb7bcb1
-Severity: Information
-Timestamp: 2024-03-18T06:05:57.000+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 75192
-Thread Name: 
-Thread Id: 91490
-AppDomain: scheduler.worker
+Thread Id: 57850
+AppDomain: gateway.worker
 Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: deserialization failed at offset 4392: unexpected token
-ID: 4a4f8069
-Severity: Warn
-Timestamp: 2024-03-18T06:01:49.189+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 58062
-Thread Name: 
-Thread Id: 99828
-AppDomain: authsvc.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 5223ms backoff
-ID: 40c55559
-Severity: Information
-Timestamp: 2024-03-18T06:03:04.092+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 80524
-Thread Name: 
-Thread Id: 11089
-AppDomain: blobstore.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 860
-ID: 1770c2bf
-Severity: Information
-Timestamp: 2024-03-18T06:04:07.698+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 29041
-Thread Name: 
-Thread Id: 92704
-AppDomain: authsvc.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile e0b9b610
-ID: 7fcee3cc
-Severity: Information
-Timestamp: 2024-03-18T06:01:54.380+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 70252
-Thread Name: 
-Thread Id: 21979
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile cddb4103
-ID: 65a32ec7
-Severity: Information
-Timestamp: 2024-03-18T06:07:23.586+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 25465
-Thread Name: 
-Thread Id: 78499
-AppDomain: authsvc.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 7294
-ID: b5858495
+Message: cache miss for key 25a31c09
+ID: 3d73a590
 Severity: Debug
-Timestamp: 2024-03-18T06:02:07.800+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 14100
-Thread Name: 
-Thread Id: 41406
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 8382ms backoff
-ID: 99a8225f
-Severity: Debug
-Timestamp: 2024-03-18T06:09:03.114+01:00
+Timestamp: 2024-03-18T06:03:28.131+01:00
 Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 43641
+Process Id: 22072
 Thread Name: 
-Thread Id: 67333
-AppDomain: gateway.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: dropped 9380 stale entries during compaction
-ID: 2f8421e6
-Severity: Debug
-Timestamp: 2024-03-18T06:05:20.112+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 42780
-Thread Name: 
-Thread Id: 20438
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 816
-ID: 4a4be872
-Severity: Information
-Timestamp: 2024-03-18T06:03:18.215+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 96970
-Thread Name: 
-Thread Id: 16070
-AppDomain: blobstore.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: segment e3b7e3e7 failed checksum validation
-ID: a2308d2e
-Severity: Error
-Timestamp: 2024-03-18T06:05:14.776+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 41578
-Thread Name: 
-Thread Id: 86045
+Thread Id: 89221
 AppDomain: gateway.worker
 Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: lease renewed, ttl 1933s
-ID: bd611619
+Message: connection pool resized to 8533
+ID: d154840a
 Severity: Information
-Timestamp: 2024-03-18T06:03:09.777+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 18960
-Thread Name: 
-Thread Id: 11441
-AppDomain: authsvc.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 4132s
-ID: d1945a7f
-Severity: Information
-Timestamp: 2024-03-18T06:10:05.468+01:00
+Timestamp: 2024-03-18T06:03:28.496+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 91970
+Process Id: 29966
 Thread Name: 
-Thread Id: 81149
+Thread Id: 92089
 AppDomain: indexer.worker
-Machine: node-b02
+Machine: node-a03
 EventSource: 
 ----------------------------------------
-Message: worker 9537 joined the pool
-ID: f2cba211
+Message: cache miss for key 4d4d995a
+ID: e3e96355
 Severity: Information
-Timestamp: 2024-03-18T06:12:07.120+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 14067
-Thread Name: 
-Thread Id: 76797
-AppDomain: authsvc.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: cache miss for key 3fb86b0e
-ID: 408eb867
-Severity: Information
-Timestamp: 2024-03-18T06:03:29.550+01:00
+Timestamp: 2024-03-18T06:03:29.035+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 92168
+Process Id: 65912
 Thread Name: 
-Thread Id: 39075
+Thread Id: 83956
 AppDomain: indexer.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: worker 519 joined the pool
-ID: 2b1e0c31
-Severity: Information
-Timestamp: 2024-03-18T06:00:48.471+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 84028
-Thread Name: 
-Thread Id: 62541
-AppDomain: blobstore.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: upstream 192.0.2.874 refused connection after 3 attempts
-ID: 1a7d83bd
-Severity: Warn
-Timestamp: 2024-03-18T06:09:01.424+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 14792
-Thread Name: 
-Thread Id: 24379
-AppDomain: authsvc.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 9664
-ID: 406182c5
-Severity: Information
-Timestamp: 2024-03-18T06:11:46.554+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 75934
-Thread Name: 
-Thread Id: 25445
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 6173
-ID: 8bc1158b
-Severity: Debug
-Timestamp: 2024-03-18T06:06:34.856+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 99486
-Thread Name: 
-Thread Id: 67524
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 3801s
-ID: 268dd525
-Severity: Information
-Timestamp: 2024-03-18T06:09:46.830+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 62328
-Thread Name: 
-Thread Id: 50251
-AppDomain: gateway.worker
 Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: shard 2882 rebalanced to node-a01
-ID: b580de17
-Severity: Debug
-Timestamp: 2024-03-18T06:07:17.736+01:00
+Message: flushed 8078 records to segment 0f8bfe3b
+ID: 28aa4528
+Severity: Information
+Timestamp: 2024-03-18T06:03:31.734+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 24033
+Process Id: 55850
 Thread Name: 
-Thread Id: 4946
+Thread Id: 48442
 AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: dropped 6615 stale entries during compaction
+ID: 7a11be10
+Severity: Debug
+Timestamp: 2024-03-18T06:03:36.149+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 90574
+Thread Name: 
+Thread Id: 41377
+AppDomain: gateway.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: background scan finished, 3550 objects visited
+ID: 72c9d86a
+Severity: Information
+Timestamp: 2024-03-18T06:03:38.841+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 35835
+Thread Name: 
+Thread Id: 78728
+AppDomain: scheduler.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: background scan finished, 1890 objects visited
+ID: cef8a407
+Severity: Information
+Timestamp: 2024-03-18T06:03:43.835+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 84237
+Thread Name: 
+Thread Id: 18251
+AppDomain: scheduler.worker
 Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: background scan finished, 6323 objects visited
-ID: 8a449482
-Severity: Information
-Timestamp: 2024-03-18T06:07:56.966+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 76940
-Thread Name: 
-Thread Id: 78884
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: flushed 3837 records to segment abdb596f
-ID: e2efea6c
-Severity: Information
-Timestamp: 2024-03-18T06:08:57.358+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 2879
-Thread Name: 
-Thread Id: 50772
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 5378: unexpected token
-ID: ee69675f
-Severity: Warn
-Timestamp: 2024-03-18T06:08:03.519+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 66872
-Thread Name: 
-Thread Id: 48486
-AppDomain: authsvc.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 3366ms
-ID: ebd094c1
-Severity: Warn
-Timestamp: 2024-03-18T06:06:50.080+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 94644
-Thread Name: 
-Thread Id: 60704
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: queue depth 6787 exceeds soft limit
-ID: 3e712c17
-Severity: Information
-Timestamp: 2024-03-18T06:04:47.546+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 15466
-Thread Name: 
-Thread Id: 3330
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: segment 2c551052 failed checksum validation
-ID: 1a321213
-Severity: Warn
-Timestamp: 2024-03-18T06:01:27.318+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 41944
-Thread Name: 
-Thread Id: 92925
-AppDomain: blobstore.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: cache miss for key 0e5c07c0
-ID: a40e4ff5
-Severity: Debug
-Timestamp: 2024-03-18T06:12:55.717+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 85526
-Thread Name: 
-Thread Id: 76662
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: request completed in 9797ms
-ID: 3a6e54d3
-Severity: Information
-Timestamp: 2024-03-18T06:05:08.812+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 66206
-Thread Name: 
-Thread Id: 29935
-AppDomain: gateway.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 3732ms
-ID: b4266cbb
-Severity: Warn
-Timestamp: 2024-03-18T06:10:08.685+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 15922
-Thread Name: 
-Thread Id: 79251
-AppDomain: authsvc.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 4696ms
-ID: 88f73711
+Message: write rejected: quota exceeded by 6182 bytes
+ID: 52fb8b2b
 Severity: Error
-Timestamp: 2024-03-18T06:10:46.238+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 41536
+Timestamp: 2024-03-18T06:03:44.790+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 67319
 Thread Name: 
-Thread Id: 6422
-AppDomain: authsvc.worker
+Thread Id: 13111
+AppDomain: gateway.worker
 Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: request completed in 8725ms
-ID: 4bc3ba01
+Message: cache miss for key d98e8943
+ID: 9731108b
 Severity: Debug
-Timestamp: 2024-03-18T06:10:04.373+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 79825
+Timestamp: 2024-03-18T06:03:47.707+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 20462
 Thread Name: 
-Thread Id: 81313
-AppDomain: indexer.worker
-Machine: node-b02
+Thread Id: 17440
+AppDomain: blobstore.worker
+Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: upstream 192.0.2.3089 refused connection after 3 attempts
-ID: 3cd11a7e
-Severity: Error
-Timestamp: 2024-03-18T06:03:22.776+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 90844
+Message: lease acquisition timed out after 7487ms
+ID: 536d627b
+Severity: Warn
+Timestamp: 2024-03-18T06:03:52.520+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 69236
 Thread Name: 
-Thread Id: 35592
-AppDomain: indexer.worker
+Thread Id: 49855
+AppDomain: gateway.worker
 Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: write rejected: quota exceeded by 1978 bytes
-ID: 8d11df38
-Severity: Warn
-Timestamp: 2024-03-18T06:04:30.569+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 86400
-Thread Name: 
-Thread Id: 36659
-AppDomain: authsvc.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 7986s
-ID: e380aeb7
+Message: background scan finished, 3064 objects visited
+ID: e18b096f
 Severity: Information
-Timestamp: 2024-03-18T06:04:18.230+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 8558
-Thread Name: 
-Thread Id: 19621
-AppDomain: indexer.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: shard 9766 rebalanced to node-a01
-ID: b33290a5
-Severity: Debug
-Timestamp: 2024-03-18T06:12:06.066+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 57034
-Thread Name: 
-Thread Id: 85237
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.8835 completed
-ID: f69872ed
-Severity: Information
-Timestamp: 2024-03-18T06:07:10.344+01:00
+Timestamp: 2024-03-18T06:03:54.196+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 84294
+Process Id: 78567
 Thread Name: 
-Thread Id: 36267
+Thread Id: 56881
 AppDomain: scheduler.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: cache miss for key 75224386
-ID: 350580a0
-Severity: Information
-Timestamp: 2024-03-18T06:11:25.253+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 63457
-Thread Name: 
-Thread Id: 79401
-AppDomain: indexer.worker
-Machine: node-a01
-EventSource: 
-----------------------------------------
-Message: shard 696 rebalanced to node-c01
-ID: e574413d
-Severity: Information
-Timestamp: 2024-03-18T06:03:49.680+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 83498
-Thread Name: 
-Thread Id: 87705
-AppDomain: scheduler.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: config reloaded from profile cb8fd357
-ID: 0de9194f
-Severity: Information
-Timestamp: 2024-03-18T06:09:25.950+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 20975
-Thread Name: 
-Thread Id: 80150
-AppDomain: indexer.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 7161ms backoff
-ID: 0c30d348
-Severity: Debug
-Timestamp: 2024-03-18T06:01:17.792+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 2481
-Thread Name: 
-Thread Id: 93887
-AppDomain: authsvc.worker
-Machine: node-b01
-EventSource: 
-----------------------------------------
-Message: flushed 4518 records to segment 47a6ca9b
-ID: b02c1884
-Severity: Information
-Timestamp: 2024-03-18T06:04:28.509+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 98458
-Thread Name: 
-Thread Id: 39736
-AppDomain: blobstore.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 5950s
-ID: 44cfd1ea
-Severity: Information
-Timestamp: 2024-03-18T06:06:02.764+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 46667
-Thread Name: 
-Thread Id: 21538
-AppDomain: blobstore.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: dropped 3622 stale entries during compaction
-ID: d2df8f7b
-Severity: Information
-Timestamp: 2024-03-18T06:00:59.965+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 23435
-Thread Name: 
-Thread Id: 52279
-AppDomain: scheduler.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: queue depth 6896 exceeds soft limit
-ID: 7e189cf3
-Severity: Debug
-Timestamp: 2024-03-18T06:00:46.440+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 32889
-Thread Name: 
-Thread Id: 25495
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: segment 8b9e0254 failed checksum validation
-ID: 9928a7d8
+Message: lease acquisition timed out after 6731ms
+ID: b44ea4c1
 Severity: Warn
-Timestamp: 2024-03-18T06:00:40.363+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 20734
+Timestamp: 2024-03-18T06:03:55.502+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 40590
 Thread Name: 
-Thread Id: 41762
-AppDomain: indexer.worker
+Thread Id: 67755
+AppDomain: blobstore.worker
 Machine: node-b02
 EventSource: 
 ----------------------------------------
-Message: request completed in 1338ms
-ID: bd590118
+Message: connection pool resized to 4437
+ID: 985f825d
 Severity: Information
-Timestamp: 2024-03-18T06:00:51.688+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 98593
-Thread Name: 
-Thread Id: 79749
-AppDomain: authsvc.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: checkpoint written at offset 4648
-ID: 72b3f0b3
-Severity: Information
-Timestamp: 2024-03-18T06:01:52.728+01:00
+Timestamp: 2024-03-18T06:03:56.065+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 65431
+Process Id: 35749
 Thread Name: 
-Thread Id: 2079
+Thread Id: 81659
 AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: worker 9871 joined the pool
-ID: dc056a37
-Severity: Information
-Timestamp: 2024-03-18T06:08:30.232+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 36290
-Thread Name: 
-Thread Id: 71577
-AppDomain: indexer.worker
 Machine: node-c02
 EventSource: 
 ----------------------------------------
-Message: write rejected: quota exceeded by 3825 bytes
-ID: d5347e14
-Severity: Error
-Timestamp: 2024-03-18T06:11:20.615+01:00
+Message: connection pool resized to 9464
+ID: ad13364d
+Severity: Information
+Timestamp: 2024-03-18T06:03:56.347+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 93392
+Process Id: 71518
 Thread Name: 
-Thread Id: 16867
+Thread Id: 13534
 AppDomain: scheduler.worker
-Machine: node-b02
+Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: handshake with 192.0.2.6358 completed
-ID: 4c0b3bce
-Severity: Information
-Timestamp: 2024-03-18T06:10:56.766+01:00
+Message: dropped 7442 stale entries during compaction
+ID: e33d93e6
+Severity: Debug
+Timestamp: 2024-03-18T06:04:00.005+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 69988
+Process Id: 26446
 Thread Name: 
-Thread Id: 97532
+Thread Id: 19780
 AppDomain: indexer.worker
 Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: connection pool resized to 8184
-ID: dab1dd74
+Message: shard 8313 rebalanced to node-a01
+ID: fdded0bc
 Severity: Information
-Timestamp: 2024-03-18T06:06:32.139+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 43255
+Timestamp: 2024-03-18T06:04:03.087+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 29599
 Thread Name: 
-Thread Id: 27761
+Thread Id: 95023
+AppDomain: gateway.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 6251
+ID: 2ee334cf
+Severity: Information
+Timestamp: 2024-03-18T06:04:04.784+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 3700
+Thread Name: 
+Thread Id: 15634
+AppDomain: indexer.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: request completed in 9849ms
+ID: 10bac661
+Severity: Information
+Timestamp: 2024-03-18T06:04:05.899+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 72995
+Thread Name: 
+Thread Id: 7615
+AppDomain: blobstore.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: shard 3017 rebalanced to node-c01
+ID: 3885aea5
+Severity: Information
+Timestamp: 2024-03-18T06:04:07.646+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 16715
+Thread Name: 
+Thread Id: 74269
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.267 refused connection after 3 attempts
+ID: 6b3b75a4
+Severity: Warn
+Timestamp: 2024-03-18T06:04:11.286+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 97380
+Thread Name: 
+Thread Id: 50854
+AppDomain: blobstore.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: dropped 8885 stale entries during compaction
+ID: c017047a
+Severity: Information
+Timestamp: 2024-03-18T06:04:12.017+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 9228
+Thread Name: 
+Thread Id: 70641
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 5813
+ID: 01b19c63
+Severity: Information
+Timestamp: 2024-03-18T06:04:12.384+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 77504
+Thread Name: 
+Thread Id: 74271
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: flushed 3896 records to segment 3afe73dc
+ID: b5e7e8bf
+Severity: Information
+Timestamp: 2024-03-18T06:04:13.811+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 96684
+Thread Name: 
+Thread Id: 75510
+AppDomain: scheduler.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: worker 2465 joined the pool
+ID: 6b5de90f
+Severity: Information
+Timestamp: 2024-03-18T06:04:15.566+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 4346
+Thread Name: 
+Thread Id: 48405
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 2634
+ID: ddab925e
+Severity: Debug
+Timestamp: 2024-03-18T06:04:19.154+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 23353
+Thread Name: 
+Thread Id: 61782
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.5805 completed
+ID: d536993e
+Severity: Debug
+Timestamp: 2024-03-18T06:04:20.139+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 82746
+Thread Name: 
+Thread Id: 41644
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 7064ms backoff
+ID: 15f1c992
+Severity: Information
+Timestamp: 2024-03-18T06:04:24.354+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 38634
+Thread Name: 
+Thread Id: 6045
+AppDomain: indexer.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 2291ms
+ID: 06213e53
+Severity: Warn
+Timestamp: 2024-03-18T06:04:26.755+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 69586
+Thread Name: 
+Thread Id: 49961
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: cache miss for key 8c980b3e
+ID: 35783299
+Severity: Information
+Timestamp: 2024-03-18T06:04:26.986+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 74377
+Thread Name: 
+Thread Id: 25561
+AppDomain: gateway.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 9f5c090d
+ID: 61b5021e
+Severity: Information
+Timestamp: 2024-03-18T06:04:31.235+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 95988
+Thread Name: 
+Thread Id: 91673
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 7841ms backoff
+ID: df31f9c6
+Severity: Information
+Timestamp: 2024-03-18T06:04:33.247+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 24898
+Thread Name: 
+Thread Id: 72035
+AppDomain: scheduler.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile c25c00c4
+ID: 435d2735
+Severity: Information
+Timestamp: 2024-03-18T06:04:34.108+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 77181
+Thread Name: 
+Thread Id: 24290
+AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile a59390aa
+ID: caeff8c5
+Severity: Information
+Timestamp: 2024-03-18T06:04:39.052+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 20909
+Thread Name: 
+Thread Id: 19477
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 7728ms
+ID: 949a7cbe
+Severity: Error
+Timestamp: 2024-03-18T06:04:42.330+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 72239
+Thread Name: 
+Thread Id: 87072
+AppDomain: authsvc.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: flushed 6155 records to segment 4292e10b
+ID: 9724fd4b
+Severity: Information
+Timestamp: 2024-03-18T06:04:46.238+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 96507
+Thread Name: 
+Thread Id: 11638
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: segment 6e70f521 failed checksum validation
+ID: f0269d3f
+Severity: Error
+Timestamp: 2024-03-18T06:04:49.766+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 60710
+Thread Name: 
+Thread Id: 22437
+AppDomain: gateway.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 4950
+ID: b4fc41a5
+Severity: Information
+Timestamp: 2024-03-18T06:04:50.151+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 29127
+Thread Name: 
+Thread Id: 31366
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 1639 bytes
+ID: 3d6cee24
+Severity: Warn
+Timestamp: 2024-03-18T06:04:54.508+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 37472
+Thread Name: 
+Thread Id: 19713
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: cache miss for key 3716afcd
+ID: d9ddc06b
+Severity: Information
+Timestamp: 2024-03-18T06:04:55.490+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 52165
+Thread Name: 
+Thread Id: 72546
+AppDomain: blobstore.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: request completed in 3494ms
+ID: 0e5d12f0
+Severity: Information
+Timestamp: 2024-03-18T06:04:59.227+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 44424
+Thread Name: 
+Thread Id: 81296
 AppDomain: authsvc.worker
 Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: handshake with 192.0.2.2409 completed
-ID: 65151a18
+Message: retrying upstream after 8954ms backoff
+ID: 84212e95
 Severity: Information
-Timestamp: 2024-03-18T06:07:40.976+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 59117
+Timestamp: 2024-03-18T06:05:01.208+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 95383
 Thread Name: 
-Thread Id: 86334
+Thread Id: 1054
+AppDomain: gateway.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: worker 9564 joined the pool
+ID: af205a44
+Severity: Debug
+Timestamp: 2024-03-18T06:05:05.531+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 35327
+Thread Name: 
+Thread Id: 90280
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 3444
+ID: 3faddeae
+Severity: Information
+Timestamp: 2024-03-18T06:05:05.731+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 31989
+Thread Name: 
+Thread Id: 98113
+AppDomain: scheduler.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 1070s
+ID: ce14960c
+Severity: Debug
+Timestamp: 2024-03-18T06:05:08.591+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 89826
+Thread Name: 
+Thread Id: 61337
+AppDomain: gateway.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: background scan finished, 9410 objects visited
+ID: 11e5e390
+Severity: Debug
+Timestamp: 2024-03-18T06:05:12.295+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 48738
+Thread Name: 
+Thread Id: 78152
 AppDomain: authsvc.worker
 Machine: node-c02
 EventSource: 
 ----------------------------------------
-Message: segment 1a57a7d9 failed checksum validation
-ID: 04c2a20d
-Severity: Warn
-Timestamp: 2024-03-18T06:13:07.563+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 53340
+Message: worker 8498 joined the pool
+ID: b511e66c
+Severity: Information
+Timestamp: 2024-03-18T06:05:14.214+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 87259
 Thread Name: 
-Thread Id: 77485
+Thread Id: 35383
+AppDomain: gateway.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 1948ms
+ID: 454844e9
+Severity: Warn
+Timestamp: 2024-03-18T06:05:18.235+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 13996
+Thread Name: 
+Thread Id: 21912
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: queue depth 579 exceeds soft limit
+ID: a7a2afc6
+Severity: Information
+Timestamp: 2024-03-18T06:05:22.317+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 92520
+Thread Name: 
+Thread Id: 79839
 AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: segment 40e23bea failed checksum validation
+ID: 9d0a19fb
+Severity: Warn
+Timestamp: 2024-03-18T06:05:26.309+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 20657
+Thread Name: 
+Thread Id: 65554
+AppDomain: authsvc.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: segment ea9639d1 failed checksum validation
+ID: c0e7b267
+Severity: Warn
+Timestamp: 2024-03-18T06:05:29.875+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 79488
+Thread Name: 
+Thread Id: 50728
+AppDomain: authsvc.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: cache miss for key a6854794
+ID: 830138e1
+Severity: Information
+Timestamp: 2024-03-18T06:05:31.070+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 41921
+Thread Name: 
+Thread Id: 61544
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 7189 bytes
+ID: e610c1c9
+Severity: Warn
+Timestamp: 2024-03-18T06:05:34.961+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 15948
+Thread Name: 
+Thread Id: 94251
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: shard 7519 rebalanced to node-b03
+ID: ec00b71d
+Severity: Information
+Timestamp: 2024-03-18T06:05:39.887+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 89159
+Thread Name: 
+Thread Id: 88521
+AppDomain: scheduler.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: queue depth 8651 exceeds soft limit
+ID: 3aed5d4b
+Severity: Debug
+Timestamp: 2024-03-18T06:05:42.859+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 18813
+Thread Name: 
+Thread Id: 12626
+AppDomain: blobstore.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: request completed in 3561ms
+ID: 7d8f7f6f
+Severity: Debug
+Timestamp: 2024-03-18T06:05:43.921+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 95411
+Thread Name: 
+Thread Id: 89851
+AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: segment da4a804a failed checksum validation
+ID: 85d478ca
+Severity: Error
+Timestamp: 2024-03-18T06:05:48.089+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 42960
+Thread Name: 
+Thread Id: 57193
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: segment c116cea4 failed checksum validation
+ID: 68877948
+Severity: Warn
+Timestamp: 2024-03-18T06:05:48.308+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 32880
+Thread Name: 
+Thread Id: 15062
+AppDomain: scheduler.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 248
+ID: 271d66ca
+Severity: Information
+Timestamp: 2024-03-18T06:05:52.491+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 80560
+Thread Name: 
+Thread Id: 28778
+AppDomain: indexer.worker
 Machine: node-b03
 EventSource: 
 ----------------------------------------
-Message: connection pool resized to 9533
-ID: 9b765cc3
-Severity: Information
-Timestamp: 2024-03-18T06:14:17.850+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 5219
+Message: segment 82799352 failed checksum validation
+ID: 9964d4b6
+Severity: Error
+Timestamp: 2024-03-18T06:05:53.379+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 88169
 Thread Name: 
-Thread Id: 85264
-AppDomain: authsvc.worker
-Machine: node-a01
+Thread Id: 70370
+AppDomain: indexer.worker
+Machine: node-c02
 EventSource: 
 ----------------------------------------
-Message: lease acquisition timed out after 4055ms
-ID: 7d2db99d
-Severity: Warn
-Timestamp: 2024-03-18T06:13:28.312+01:00
+Message: shard 2977 rebalanced to node-a02
+ID: 63d6d8bf
+Severity: Information
+Timestamp: 2024-03-18T06:05:55.259+01:00
 Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 52155
+Process Id: 90400
 Thread Name: 
-Thread Id: 18053
+Thread Id: 16511
 AppDomain: gateway.worker
 Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: checkpoint written at offset 2849
-ID: f88ce621
+Message: worker 4301 joined the pool
+ID: 76446079
 Severity: Debug
-Timestamp: 2024-03-18T06:05:46.944+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 71103
-Thread Name: 
-Thread Id: 53600
-AppDomain: authsvc.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: flushed 5063 records to segment ea0a6abb
-ID: 301a0ed9
-Severity: Information
-Timestamp: 2024-03-18T06:10:22.039+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 53315
-Thread Name: 
-Thread Id: 94299
-AppDomain: indexer.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: flushed 1963 records to segment 7c873bf8
-ID: 75596914
-Severity: Information
-Timestamp: 2024-03-18T06:04:07.932+01:00
+Timestamp: 2024-03-18T06:05:58.354+01:00
 Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 75863
+Process Id: 54155
 Thread Name: 
-Thread Id: 14229
+Thread Id: 51983
 AppDomain: scheduler.worker
-Machine: node-c01
+Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: flushed 2342 records to segment 9b161388
-ID: ad160325
+Message: segment a49fbe6a failed checksum validation
+ID: 43d3c886
+Severity: Warn
+Timestamp: 2024-03-18T06:06:01.015+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 74662
+Thread Name: 
+Thread Id: 13719
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: request completed in 6212ms
+ID: ec49dea5
 Severity: Information
-Timestamp: 2024-03-18T06:06:36.825+01:00
+Timestamp: 2024-03-18T06:06:02.841+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 42765
+Process Id: 91560
 Thread Name: 
-Thread Id: 38583
+Thread Id: 41901
 AppDomain: indexer.worker
-Machine: node-b02
+Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: upstream 192.0.2.6624 refused connection after 3 attempts
-ID: d362ed3a
+Message: segment e7b8dbbd failed checksum validation
+ID: 21dafcee
 Severity: Warn
-Timestamp: 2024-03-18T06:14:08.876+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 80578
-Thread Name: 
-Thread Id: 79749
-AppDomain: gateway.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: segment 39f0a426 failed checksum validation
-ID: d3d05327
-Severity: Warn
-Timestamp: 2024-03-18T06:16:10.028+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 68506
-Thread Name: 
-Thread Id: 70755
-AppDomain: scheduler.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 461ms
-ID: 7462c6c2
-Severity: Warn
-Timestamp: 2024-03-18T06:12:22.302+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 67539
-Thread Name: 
-Thread Id: 77035
-AppDomain: indexer.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: lease renewed, ttl 8282s
-ID: 1242220a
-Severity: Information
-Timestamp: 2024-03-18T06:07:22.178+01:00
+Timestamp: 2024-03-18T06:06:04.359+01:00
 Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 32114
+Process Id: 47173
 Thread Name: 
-Thread Id: 84567
+Thread Id: 58032
 AppDomain: authsvc.worker
 Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: shard 7379 rebalanced to node-b01
-ID: 9c6f7d38
-Severity: Debug
-Timestamp: 2024-03-18T06:11:47.600+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 39744
+Message: flushed 440 records to segment 09f7371b
+ID: d82c48a6
+Severity: Information
+Timestamp: 2024-03-18T06:06:07.056+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 87685
 Thread Name: 
-Thread Id: 84332
-AppDomain: gateway.worker
-Machine: node-b03
+Thread Id: 63344
+AppDomain: authsvc.worker
+Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: write rejected: quota exceeded by 3865 bytes
-ID: 43101631
-Severity: Error
-Timestamp: 2024-03-18T06:06:36.171+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 37779
+Message: upstream 192.0.2.795 refused connection after 3 attempts
+ID: 0a82727b
+Severity: Warn
+Timestamp: 2024-03-18T06:06:07.586+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 74410
 Thread Name: 
-Thread Id: 21265
+Thread Id: 29615
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 226
+ID: 69664c19
+Severity: Information
+Timestamp: 2024-03-18T06:06:09.623+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 92445
+Thread Name: 
+Thread Id: 6578
 AppDomain: blobstore.worker
 Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: upstream 192.0.2.3652 refused connection after 3 attempts
-ID: b2da6569
-Severity: Warn
-Timestamp: 2024-03-18T06:12:40.732+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 90657
+Message: checkpoint written at offset 1056
+ID: 8f2f4a8e
+Severity: Information
+Timestamp: 2024-03-18T06:06:11.003+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 35178
 Thread Name: 
-Thread Id: 86632
-AppDomain: authsvc.worker
-Machine: node-a02
+Thread Id: 82769
+AppDomain: indexer.worker
+Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: request completed in 7269ms
-ID: 016f4a34
+Message: background scan finished, 2183 objects visited
+ID: 4399abf8
 Severity: Debug
-Timestamp: 2024-03-18T06:07:53.802+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 16484
-Thread Name: 
-Thread Id: 82864
-AppDomain: scheduler.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: segment 7f67ce53 failed checksum validation
-ID: a9c6abd3
-Severity: Warn
-Timestamp: 2024-03-18T06:11:53.592+01:00
+Timestamp: 2024-03-18T06:06:11.472+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 22116
+Process Id: 63789
 Thread Name: 
-Thread Id: 43635
-AppDomain: blobstore.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: shard 4054 rebalanced to node-c03
-ID: 46d93e71
-Severity: Information
-Timestamp: 2024-03-18T06:16:21.950+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 64304
-Thread Name: 
-Thread Id: 48628
-AppDomain: authsvc.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 5741ms backoff
-ID: 426d341c
-Severity: Information
-Timestamp: 2024-03-18T06:03:50.308+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 12349
-Thread Name: 
-Thread Id: 59760
+Thread Id: 56642
 AppDomain: blobstore.worker
 Machine: node-c01
 EventSource: 
 ----------------------------------------
-Message: lease renewed, ttl 3089s
-ID: 203dc84c
+Message: worker 9386 joined the pool
+ID: eaf16bec
 Severity: Debug
-Timestamp: 2024-03-18T06:01:19.488+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 68993
+Timestamp: 2024-03-18T06:06:15.203+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 91496
 Thread Name: 
-Thread Id: 48477
+Thread Id: 52666
+AppDomain: blobstore.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 360: unexpected token
+ID: 2df5bd50
+Severity: Warn
+Timestamp: 2024-03-18T06:06:19.212+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 91825
+Thread Name: 
+Thread Id: 15724
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: shard 709 rebalanced to node-b02
+ID: 8ca65f87
+Severity: Information
+Timestamp: 2024-03-18T06:06:23.181+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 31201
+Thread Name: 
+Thread Id: 37888
+AppDomain: gateway.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: worker 8695 joined the pool
+ID: 30e2bfa9
+Severity: Information
+Timestamp: 2024-03-18T06:06:27.585+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 20220
+Thread Name: 
+Thread Id: 22365
 AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: worker 6880 joined the pool
+ID: 072ec7b7
+Severity: Information
+Timestamp: 2024-03-18T06:06:29.776+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 50884
+Thread Name: 
+Thread Id: 54241
+AppDomain: gateway.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 9551 bytes
+ID: c892dcce
+Severity: Error
+Timestamp: 2024-03-18T06:06:33.644+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 78162
+Thread Name: 
+Thread Id: 1614
+AppDomain: authsvc.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: request completed in 5276ms
+ID: 72c9c3c3
+Severity: Information
+Timestamp: 2024-03-18T06:06:37.146+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 96015
+Thread Name: 
+Thread Id: 65792
+AppDomain: blobstore.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: flushed 5271 records to segment 8ff49bff
+ID: 3c9a46d0
+Severity: Information
+Timestamp: 2024-03-18T06:06:40.149+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 49915
+Thread Name: 
+Thread Id: 59908
+AppDomain: indexer.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: worker 2888 joined the pool
+ID: 86982dee
+Severity: Information
+Timestamp: 2024-03-18T06:06:43.810+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 7058
+Thread Name: 
+Thread Id: 11457
+AppDomain: scheduler.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 4146 bytes
+ID: eff1d23a
+Severity: Error
+Timestamp: 2024-03-18T06:06:44.549+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 8317
+Thread Name: 
+Thread Id: 16550
+AppDomain: blobstore.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 516ms
+ID: ca4e68fe
+Severity: Warn
+Timestamp: 2024-03-18T06:06:49.197+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 70863
+Thread Name: 
+Thread Id: 44662
+AppDomain: authsvc.worker
 Machine: node-b02
 EventSource: 
 ----------------------------------------
-Message: upstream 192.0.2.4558 refused connection after 3 attempts
-ID: 96a92b60
-Severity: Error
-Timestamp: 2024-03-18T06:06:47.680+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 95524
-Thread Name: 
-Thread Id: 34965
-AppDomain: indexer.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: segment 7eca6bf6 failed checksum validation
-ID: 545d93be
-Severity: Warn
-Timestamp: 2024-03-18T06:05:00.542+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 37243
-Thread Name: 
-Thread Id: 77052
-AppDomain: indexer.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: flushed 7982 records to segment babe965d
-ID: c4daea54
-Severity: Information
-Timestamp: 2024-03-18T06:10:50.370+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 81046
-Thread Name: 
-Thread Id: 65514
-AppDomain: authsvc.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 3523 objects visited
-ID: c85ef0bf
+Message: background scan finished, 5856 objects visited
+ID: 6d2e62c8
 Severity: Debug
-Timestamp: 2024-03-18T06:17:17.698+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 76089
+Timestamp: 2024-03-18T06:06:50.451+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 87359
 Thread Name: 
-Thread Id: 8136
-AppDomain: gateway.worker
-Machine: node-a03
+Thread Id: 21900
+AppDomain: scheduler.worker
+Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: lease acquisition timed out after 9193ms
-ID: f10ddb65
-Severity: Warn
-Timestamp: 2024-03-18T06:16:41.912+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 9550
+Message: lease renewed, ttl 2439s
+ID: 757e9331
+Severity: Information
+Timestamp: 2024-03-18T06:06:50.973+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 14890
 Thread Name: 
-Thread Id: 42519
+Thread Id: 41574
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.8974 completed
+ID: cf679f4d
+Severity: Information
+Timestamp: 2024-03-18T06:06:53.173+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 44927
+Thread Name: 
+Thread Id: 28119
 AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 4123s
+ID: 11052da6
+Severity: Information
+Timestamp: 2024-03-18T06:06:56.671+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 62122
+Thread Name: 
+Thread Id: 18426
+AppDomain: authsvc.worker
 Machine: node-c02
 EventSource: 
 ----------------------------------------
-Message: lease renewed, ttl 4860s
-ID: ac784287
-Severity: Information
-Timestamp: 2024-03-18T06:10:00.873+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 14996
+Message: request completed in 8029ms
+ID: 4b020cd9
+Severity: Debug
+Timestamp: 2024-03-18T06:07:01.004+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 72678
 Thread Name: 
-Thread Id: 18187
+Thread Id: 87531
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: segment c0c5af32 failed checksum validation
+ID: e1908eba
+Severity: Warn
+Timestamp: 2024-03-18T06:07:03.441+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 28422
+Thread Name: 
+Thread Id: 80148
 AppDomain: gateway.worker
 Machine: node-b02
 EventSource: 
 ----------------------------------------
-Message: retrying upstream after 6641ms backoff
-ID: 35e37137
-Severity: Information
-Timestamp: 2024-03-18T06:06:57.300+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 13662
+Message: segment 4cf3cf0a failed checksum validation
+ID: c47db106
+Severity: Warn
+Timestamp: 2024-03-18T06:07:04.315+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 60498
 Thread Name: 
-Thread Id: 12426
-AppDomain: gateway.worker
-Machine: node-c01
+Thread Id: 77795
+AppDomain: scheduler.worker
+Machine: node-c03
 EventSource: 
 ----------------------------------------
-Message: handshake with 192.0.2.7924 completed
-ID: da564a6b
+Message: cache miss for key d4c5027c
+ID: af8cae51
 Severity: Information
-Timestamp: 2024-03-18T06:07:34.940+01:00
+Timestamp: 2024-03-18T06:07:07.939+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 21316
+Process Id: 99344
 Thread Name: 
-Thread Id: 68822
+Thread Id: 93291
 AppDomain: blobstore.worker
 Machine: node-a03
 EventSource: 
 ----------------------------------------
-Message: lease renewed, ttl 6561s
-ID: 27ebabc0
+Message: background scan finished, 6147 objects visited
+ID: 4333c57e
 Severity: Information
-Timestamp: 2024-03-18T06:10:49.512+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 40624
-Thread Name: 
-Thread Id: 52553
-AppDomain: gateway.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: segment c2519e2c failed checksum validation
-ID: 048bdc9f
-Severity: Error
-Timestamp: 2024-03-18T06:16:19.755+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 72741
-Thread Name: 
-Thread Id: 32285
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 74ms
-ID: 08380325
-Severity: Warn
-Timestamp: 2024-03-18T06:17:28.362+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 28497
-Thread Name: 
-Thread Id: 22011
-AppDomain: blobstore.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 9730ms backoff
-ID: 6a584f80
-Severity: Information
-Timestamp: 2024-03-18T06:01:02.415+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 94133
-Thread Name: 
-Thread Id: 76420
-AppDomain: blobstore.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: deserialization failed at offset 767: unexpected token
-ID: 216e8e8b
-Severity: Error
-Timestamp: 2024-03-18T06:02:55.120+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 14133
-Thread Name: 
-Thread Id: 41213
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: flushed 8160 records to segment 54d61108
-ID: 24cbe2de
-Severity: Information
-Timestamp: 2024-03-18T06:11:34.382+01:00
+Timestamp: 2024-03-18T06:07:09.906+01:00
 Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 80133
+Process Id: 3270
 Thread Name: 
-Thread Id: 97545
+Thread Id: 51503
 AppDomain: authsvc.worker
-Machine: node-b03
+Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: handshake with 192.0.2.9571 completed
-ID: bbc5f948
-Severity: Debug
-Timestamp: 2024-03-18T06:02:45.834+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 57367
-Thread Name: 
-Thread Id: 86370
-AppDomain: scheduler.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 3453
-ID: 9f1b01e3
-Severity: Debug
-Timestamp: 2024-03-18T06:05:40.967+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 17579
-Thread Name: 
-Thread Id: 18166
-AppDomain: indexer.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: worker 3308 joined the pool
-ID: b1ac50f4
-Severity: Information
-Timestamp: 2024-03-18T06:06:08.480+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 81870
-Thread Name: 
-Thread Id: 88299
-AppDomain: indexer.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 295ms backoff
-ID: f54ad9b0
-Severity: Information
-Timestamp: 2024-03-18T06:10:25.275+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 40919
-Thread Name: 
-Thread Id: 3450
-AppDomain: scheduler.worker
-Machine: node-a03
-EventSource: 
-----------------------------------------
-Message: background scan finished, 1513 objects visited
-ID: 19383c1d
-Severity: Information
-Timestamp: 2024-03-18T06:01:56.842+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 53710
-Thread Name: 
-Thread Id: 26717
-AppDomain: authsvc.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: worker 8513 joined the pool
-ID: 6920c497
-Severity: Information
-Timestamp: 2024-03-18T06:11:54.369+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 67118
-Thread Name: 
-Thread Id: 3609
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: worker 4451 joined the pool
-ID: b4c1d018
-Severity: Information
-Timestamp: 2024-03-18T06:14:22.980+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 76707
-Thread Name: 
-Thread Id: 10472
-AppDomain: authsvc.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 3002ms
-ID: 74c658d9
-Severity: Error
-Timestamp: 2024-03-18T06:10:17.384+01:00
-Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 52094
-Thread Name: 
-Thread Id: 47304
-AppDomain: indexer.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: segment c1c5cce6 failed checksum validation
-ID: 67134912
+Message: write rejected: quota exceeded by 1431 bytes
+ID: 8c2e5fe2
 Severity: Warn
-Timestamp: 2024-03-18T06:02:51.120+01:00
+Timestamp: 2024-03-18T06:07:13.341+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 25101
+Process Id: 97362
 Thread Name: 
-Thread Id: 88951
+Thread Id: 64731
 AppDomain: indexer.worker
-Machine: node-b03
+Machine: node-b01
 EventSource: 
 ----------------------------------------
-Message: request completed in 1922ms
-ID: a05d168c
+Message: cache miss for key cd0256e4
+ID: 6096ff8c
 Severity: Information
-Timestamp: 2024-03-18T06:18:32.265+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 57109
-Thread Name: 
-Thread Id: 86456
-AppDomain: gateway.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: segment 8550e109 failed checksum validation
-ID: 62c5a42c
-Severity: Warn
-Timestamp: 2024-03-18T06:13:07.176+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 71908
-Thread Name: 
-Thread Id: 75813
-AppDomain: blobstore.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 2460
-ID: f2ef6d12
-Severity: Information
-Timestamp: 2024-03-18T06:11:20.826+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 45688
-Thread Name: 
-Thread Id: 74529
-AppDomain: blobstore.worker
-Machine: node-a02
-EventSource: 
-----------------------------------------
-Message: connection pool resized to 6009
-ID: f39cfb46
-Severity: Information
-Timestamp: 2024-03-18T06:05:17.538+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 71248
-Thread Name: 
-Thread Id: 94929
-AppDomain: scheduler.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: segment 88f48a48 failed checksum validation
-ID: e3fcb4fb
-Severity: Error
-Timestamp: 2024-03-18T06:16:51.675+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 4638
-Thread Name: 
-Thread Id: 6116
-AppDomain: gateway.worker
-Machine: node-b03
-EventSource: 
-----------------------------------------
-Message: lease acquisition timed out after 7505ms
-ID: 638c8193
-Severity: Warn
-Timestamp: 2024-03-18T06:14:07.712+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 31756
-Thread Name: 
-Thread Id: 94381
-AppDomain: gateway.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.2875 completed
-ID: 055d0a37
-Severity: Debug
-Timestamp: 2024-03-18T06:07:35.040+01:00
+Timestamp: 2024-03-18T06:07:16.161+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 32859
+Process Id: 70998
 Thread Name: 
-Thread Id: 81327
+Thread Id: 5423
 AppDomain: indexer.worker
 Machine: node-a03
 EventSource: 
 ----------------------------------------
-Message: segment 24b8e2e8 failed checksum validation
-ID: 9a61ea90
-Severity: Warn
-Timestamp: 2024-03-18T06:14:07.280+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 61240
+Message: flushed 7903 records to segment 27697a4a
+ID: a4ba1607
+Severity: Information
+Timestamp: 2024-03-18T06:07:19.941+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 16649
 Thread Name: 
-Thread Id: 58053
+Thread Id: 4950
+AppDomain: blobstore.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: dropped 1820 stale entries during compaction
+ID: 20624300
+Severity: Information
+Timestamp: 2024-03-18T06:07:24.882+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 43915
+Thread Name: 
+Thread Id: 53732
+AppDomain: blobstore.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: background scan finished, 2404 objects visited
+ID: ba666685
+Severity: Information
+Timestamp: 2024-03-18T06:07:27.473+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 1422
+Thread Name: 
+Thread Id: 46210
+AppDomain: authsvc.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: worker 9614 joined the pool
+ID: a9eeb340
+Severity: Information
+Timestamp: 2024-03-18T06:07:31.734+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 45203
+Thread Name: 
+Thread Id: 54223
 AppDomain: authsvc.worker
 Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: dropped 8094 stale entries during compaction
-ID: a7007d83
+Message: handshake with 192.0.2.2450 completed
+ID: d831973e
 Severity: Information
-Timestamp: 2024-03-18T06:06:28.853+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 69628
-Thread Name: 
-Thread Id: 47698
-AppDomain: scheduler.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: background scan finished, 51 objects visited
-ID: 12cfb96d
-Severity: Information
-Timestamp: 2024-03-18T06:13:11.040+01:00
-Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 83429
-Thread Name: 
-Thread Id: 51464
-AppDomain: blobstore.worker
-Machine: node-b02
-EventSource: 
-----------------------------------------
-Message: cache miss for key 2286c6c7
-ID: 99936648
-Severity: Information
-Timestamp: 2024-03-18T06:06:46.567+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 50921
-Thread Name: 
-Thread Id: 76484
-AppDomain: gateway.worker
-Machine: node-c01
-EventSource: 
-----------------------------------------
-Message: shard 6655 rebalanced to node-c03
-ID: 6984c695
-Severity: Information
-Timestamp: 2024-03-18T06:17:54.480+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 66103
-Thread Name: 
-Thread Id: 61374
-AppDomain: gateway.worker
-Machine: node-c03
-EventSource: 
-----------------------------------------
-Message: retrying upstream after 8289ms backoff
-ID: 2f51710f
-Severity: Debug
-Timestamp: 2024-03-18T06:03:12.699+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 58397
-Thread Name: 
-Thread Id: 33835
-AppDomain: authsvc.worker
-Machine: node-c02
-EventSource: 
-----------------------------------------
-Message: handshake with 192.0.2.1604 completed
-ID: 3348a82a
-Severity: Information
-Timestamp: 2024-03-18T06:13:10.316+01:00
+Timestamp: 2024-03-18T06:07:36.189+01:00
 Process Name: /opt/indexer/bin/indexer-worker
-Process Id: 51673
+Process Id: 79512
 Thread Name: 
-Thread Id: 27844
+Thread Id: 3829
 AppDomain: indexer.worker
 Machine: node-b03
 EventSource: 
 ----------------------------------------
-Message: flushed 6709 records to segment 9f17ec4e
-ID: 60449cc4
+Message: config reloaded from profile 38045c0c
+ID: c1b9afcb
 Severity: Information
-Timestamp: 2024-03-18T06:17:49.180+01:00
-Process Name: /opt/scheduler/bin/scheduler-worker
-Process Id: 45951
+Timestamp: 2024-03-18T06:07:38.481+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 12845
 Thread Name: 
-Thread Id: 37733
-AppDomain: scheduler.worker
-Machine: node-c01
+Thread Id: 8404
+AppDomain: indexer.worker
+Machine: node-a01
 EventSource: 
 ----------------------------------------
-Message: handshake with 192.0.2.8035 completed
-ID: 22febc52
+Message: cache miss for key 5adb1bc0
+ID: d35617cb
 Severity: Information
-Timestamp: 2024-03-18T06:07:07.056+01:00
+Timestamp: 2024-03-18T06:07:41.232+01:00
 Process Name: /opt/blobstore/bin/blobstore-worker
-Process Id: 28589
+Process Id: 83277
 Thread Name: 
-Thread Id: 77694
+Thread Id: 6011
+AppDomain: blobstore.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 1486ms backoff
+ID: 28e84380
+Severity: Information
+Timestamp: 2024-03-18T06:07:46.190+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 67171
+Thread Name: 
+Thread Id: 5347
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: dropped 9086 stale entries during compaction
+ID: aa2752f4
+Severity: Debug
+Timestamp: 2024-03-18T06:07:50.647+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 81967
+Thread Name: 
+Thread Id: 57462
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 4450: unexpected token
+ID: e822d6ad
+Severity: Warn
+Timestamp: 2024-03-18T06:07:52.854+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 87207
+Thread Name: 
+Thread Id: 57392
+AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: cache miss for key e76eb296
+ID: 6eb345a9
+Severity: Information
+Timestamp: 2024-03-18T06:07:57.820+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 83947
+Thread Name: 
+Thread Id: 35564
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 8819 bytes
+ID: c38563a8
+Severity: Warn
+Timestamp: 2024-03-18T06:07:59.270+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 95178
+Thread Name: 
+Thread Id: 32089
+AppDomain: scheduler.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 9506s
+ID: 75da1fa0
+Severity: Debug
+Timestamp: 2024-03-18T06:08:01.106+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 10081
+Thread Name: 
+Thread Id: 84982
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 6933: unexpected token
+ID: fc448ab5
+Severity: Error
+Timestamp: 2024-03-18T06:08:04.566+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 12677
+Thread Name: 
+Thread Id: 55019
+AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: checkpoint written at offset 4521
+ID: 8222e2aa
+Severity: Information
+Timestamp: 2024-03-18T06:08:09.267+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 82390
+Thread Name: 
+Thread Id: 86432
+AppDomain: indexer.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: worker 3232 joined the pool
+ID: 8b770aa8
+Severity: Information
+Timestamp: 2024-03-18T06:08:13.945+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 61462
+Thread Name: 
+Thread Id: 33243
+AppDomain: gateway.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 1256 bytes
+ID: 5dbcc8de
+Severity: Warn
+Timestamp: 2024-03-18T06:08:17.719+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 88448
+Thread Name: 
+Thread Id: 11864
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: cache miss for key 2bc5744a
+ID: c6092b40
+Severity: Information
+Timestamp: 2024-03-18T06:08:19.231+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 37404
+Thread Name: 
+Thread Id: 55360
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: shard 8483 rebalanced to node-a01
+ID: c08a8422
+Severity: Information
+Timestamp: 2024-03-18T06:08:23.356+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 50106
+Thread Name: 
+Thread Id: 14462
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 4995ms backoff
+ID: 1a10499c
+Severity: Information
+Timestamp: 2024-03-18T06:08:24.873+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 3106
+Thread Name: 
+Thread Id: 65230
+AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.8026 completed
+ID: b17e6b8d
+Severity: Information
+Timestamp: 2024-03-18T06:08:25.325+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 65404
+Thread Name: 
+Thread Id: 41407
+AppDomain: gateway.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.4017 completed
+ID: 29ea1a8d
+Severity: Information
+Timestamp: 2024-03-18T06:08:25.959+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 39403
+Thread Name: 
+Thread Id: 61784
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: lease renewed, ttl 6790s
+ID: 0ef56d98
+Severity: Debug
+Timestamp: 2024-03-18T06:08:27.492+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 51848
+Thread Name: 
+Thread Id: 91750
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: request completed in 2264ms
+ID: 7d7b908a
+Severity: Information
+Timestamp: 2024-03-18T06:08:31.728+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 38358
+Thread Name: 
+Thread Id: 32155
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: worker 5208 joined the pool
+ID: 81108643
+Severity: Information
+Timestamp: 2024-03-18T06:08:35.573+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 90497
+Thread Name: 
+Thread Id: 4774
+AppDomain: indexer.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.2619 refused connection after 3 attempts
+ID: 01da0174
+Severity: Warn
+Timestamp: 2024-03-18T06:08:36.060+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 49043
+Thread Name: 
+Thread Id: 25071
+AppDomain: authsvc.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: shard 3300 rebalanced to node-c01
+ID: f96f59ae
+Severity: Information
+Timestamp: 2024-03-18T06:08:36.425+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 20312
+Thread Name: 
+Thread Id: 4959
+AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: dropped 1651 stale entries during compaction
+ID: 84a20567
+Severity: Information
+Timestamp: 2024-03-18T06:08:39.903+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 93352
+Thread Name: 
+Thread Id: 11903
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.7795 completed
+ID: 32b68a53
+Severity: Information
+Timestamp: 2024-03-18T06:08:41.190+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 14498
+Thread Name: 
+Thread Id: 22447
+AppDomain: authsvc.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: background scan finished, 2580 objects visited
+ID: 56344392
+Severity: Debug
+Timestamp: 2024-03-18T06:08:42.796+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 35570
+Thread Name: 
+Thread Id: 52769
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: shard 3520 rebalanced to node-a03
+ID: 5ea41d48
+Severity: Information
+Timestamp: 2024-03-18T06:08:43.676+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 34281
+Thread Name: 
+Thread Id: 80969
+AppDomain: gateway.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: cache miss for key 5d0dffc3
+ID: 37376f57
+Severity: Information
+Timestamp: 2024-03-18T06:08:44.841+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 50051
+Thread Name: 
+Thread Id: 18636
+AppDomain: indexer.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 2352ms
+ID: 4b21fc2d
+Severity: Warn
+Timestamp: 2024-03-18T06:08:49.027+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 98017
+Thread Name: 
+Thread Id: 75458
+AppDomain: gateway.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 6997ms backoff
+ID: b8dc6ec8
+Severity: Information
+Timestamp: 2024-03-18T06:08:49.579+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 4102
+Thread Name: 
+Thread Id: 12580
+AppDomain: scheduler.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 2850
+ID: 801d940f
+Severity: Information
+Timestamp: 2024-03-18T06:08:53.609+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 41081
+Thread Name: 
+Thread Id: 50288
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: cache miss for key 6098c951
+ID: cbf77e1d
+Severity: Information
+Timestamp: 2024-03-18T06:08:54.228+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 94854
+Thread Name: 
+Thread Id: 63109
+AppDomain: scheduler.worker
+Machine: node-a02
+EventSource: 
+----------------------------------------
+Message: shard 5429 rebalanced to node-c01
+ID: 4bb29fad
+Severity: Debug
+Timestamp: 2024-03-18T06:08:57.007+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 33512
+Thread Name: 
+Thread Id: 68218
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: shard 5646 rebalanced to node-b01
+ID: d8be7434
+Severity: Information
+Timestamp: 2024-03-18T06:08:59.399+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 4393
+Thread Name: 
+Thread Id: 46175
+AppDomain: authsvc.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 748699c0
+ID: b4d04abc
+Severity: Information
+Timestamp: 2024-03-18T06:09:02.828+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 40209
+Thread Name: 
+Thread Id: 71629
+AppDomain: scheduler.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: background scan finished, 9105 objects visited
+ID: a05ce11f
+Severity: Information
+Timestamp: 2024-03-18T06:09:05.503+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 83542
+Thread Name: 
+Thread Id: 65786
+AppDomain: scheduler.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 6484ms backoff
+ID: 6b3d676c
+Severity: Debug
+Timestamp: 2024-03-18T06:09:06.916+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 54748
+Thread Name: 
+Thread Id: 96104
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile e112e35d
+ID: c9e2fbad
+Severity: Information
+Timestamp: 2024-03-18T06:09:09.888+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 29888
+Thread Name: 
+Thread Id: 89610
+AppDomain: gateway.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.6078 completed
+ID: 8f3eb740
+Severity: Debug
+Timestamp: 2024-03-18T06:09:11.361+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 59450
+Thread Name: 
+Thread Id: 22019
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.9321 completed
+ID: 93b797fb
+Severity: Information
+Timestamp: 2024-03-18T06:09:16.065+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 69551
+Thread Name: 
+Thread Id: 3533
+AppDomain: authsvc.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 8078
+ID: 0c9117b4
+Severity: Information
+Timestamp: 2024-03-18T06:09:19.643+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 4081
+Thread Name: 
+Thread Id: 25400
+AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 6009ms backoff
+ID: a026b6fd
+Severity: Information
+Timestamp: 2024-03-18T06:09:23.969+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 88762
+Thread Name: 
+Thread Id: 35179
+AppDomain: indexer.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.8095 completed
+ID: cd643723
+Severity: Information
+Timestamp: 2024-03-18T06:09:27.962+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 95623
+Thread Name: 
+Thread Id: 17560
+AppDomain: gateway.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: request completed in 2878ms
+ID: 2ba46f41
+Severity: Information
+Timestamp: 2024-03-18T06:09:29.049+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 98385
+Thread Name: 
+Thread Id: 92042
+AppDomain: scheduler.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.7693 completed
+ID: 0458184c
+Severity: Information
+Timestamp: 2024-03-18T06:09:29.377+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 51341
+Thread Name: 
+Thread Id: 2298
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: lease acquisition timed out after 8757ms
+ID: 487a0c6e
+Severity: Warn
+Timestamp: 2024-03-18T06:09:30.060+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 48582
+Thread Name: 
+Thread Id: 27112
+AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: deserialization failed at offset 8723: unexpected token
+ID: e48294af
+Severity: Warn
+Timestamp: 2024-03-18T06:09:30.431+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 25276
+Thread Name: 
+Thread Id: 83073
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: worker 4185 joined the pool
+ID: 9de44773
+Severity: Information
+Timestamp: 2024-03-18T06:09:30.670+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 43287
+Thread Name: 
+Thread Id: 12423
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: request completed in 4548ms
+ID: 31406f14
+Severity: Debug
+Timestamp: 2024-03-18T06:09:31.206+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 26329
+Thread Name: 
+Thread Id: 23408
+AppDomain: authsvc.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: flushed 743 records to segment d5b50e05
+ID: 45535f46
+Severity: Information
+Timestamp: 2024-03-18T06:09:32.455+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 6172
+Thread Name: 
+Thread Id: 21167
+AppDomain: authsvc.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: flushed 4853 records to segment 84be6198
+ID: 6765d5cd
+Severity: Information
+Timestamp: 2024-03-18T06:09:37.306+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 83362
+Thread Name: 
+Thread Id: 34122
 AppDomain: blobstore.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: retrying upstream after 24ms backoff
-ID: 5a7fe026
+Message: handshake with 192.0.2.1558 completed
+ID: 3a079b87
 Severity: Information
-Timestamp: 2024-03-18T06:08:15.482+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 24795
+Timestamp: 2024-03-18T06:09:39.239+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 1995
 Thread Name: 
-Thread Id: 44414
-AppDomain: gateway.worker
+Thread Id: 47577
+AppDomain: indexer.worker
 Machine: node-c02
 EventSource: 
 ----------------------------------------
-Message: background scan finished, 7771 objects visited
-ID: 24806035
-Severity: Information
-Timestamp: 2024-03-18T06:04:37.512+01:00
-Process Name: /opt/authsvc/bin/authsvc-worker
-Process Id: 27168
+Message: background scan finished, 8916 objects visited
+ID: 8cfcc865
+Severity: Debug
+Timestamp: 2024-03-18T06:09:41.932+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 68225
 Thread Name: 
-Thread Id: 57452
+Thread Id: 46889
+AppDomain: gateway.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: dropped 8600 stale entries during compaction
+ID: 6fdfbf91
+Severity: Debug
+Timestamp: 2024-03-18T06:09:42.655+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 3968
+Thread Name: 
+Thread Id: 18460
 AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 8520ms backoff
+ID: bf7fe2a8
+Severity: Information
+Timestamp: 2024-03-18T06:09:45.556+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 80224
+Thread Name: 
+Thread Id: 83862
+AppDomain: scheduler.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.8961 refused connection after 3 attempts
+ID: ee53ff47
+Severity: Warn
+Timestamp: 2024-03-18T06:09:50.414+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 70954
+Thread Name: 
+Thread Id: 37995
+AppDomain: authsvc.worker
+Machine: node-c01
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 2553 bytes
+ID: bfe7994e
+Severity: Warn
+Timestamp: 2024-03-18T06:09:53.628+01:00
+Process Name: /opt/scheduler/bin/scheduler-worker
+Process Id: 1518
+Thread Name: 
+Thread Id: 98343
+AppDomain: scheduler.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile f9df406e
+ID: 1f35e58b
+Severity: Information
+Timestamp: 2024-03-18T06:09:58.221+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 23325
+Thread Name: 
+Thread Id: 71099
+AppDomain: indexer.worker
 Machine: node-a02
 EventSource: 
 ----------------------------------------
-Message: deserialization failed at offset 6082: unexpected token
-ID: 967ed2b3
-Severity: Warn
-Timestamp: 2024-03-18T06:20:15.369+01:00
-Process Name: /opt/gateway/bin/gateway-worker
-Process Id: 99493
+Message: request completed in 333ms
+ID: ec994e38
+Severity: Information
+Timestamp: 2024-03-18T06:09:59.035+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 65373
 Thread Name: 
-Thread Id: 13823
+Thread Id: 71738
+AppDomain: indexer.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: shard 1783 rebalanced to node-a01
+ID: aca10b15
+Severity: Information
+Timestamp: 2024-03-18T06:10:01.328+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 82149
+Thread Name: 
+Thread Id: 67036
+AppDomain: blobstore.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 0dfbc41d
+ID: 3ec963a0
+Severity: Information
+Timestamp: 2024-03-18T06:10:03.721+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 14193
+Thread Name: 
+Thread Id: 9058
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: upstream 192.0.2.3027 refused connection after 3 attempts
+ID: 9c172d01
+Severity: Warn
+Timestamp: 2024-03-18T06:10:07.728+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 83342
+Thread Name: 
+Thread Id: 43524
+AppDomain: indexer.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 6723 bytes
+ID: e194f99d
+Severity: Error
+Timestamp: 2024-03-18T06:10:08.735+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 40442
+Thread Name: 
+Thread Id: 53193
+AppDomain: blobstore.worker
+Machine: node-b03
+EventSource: 
+----------------------------------------
+Message: handshake with 192.0.2.3759 completed
+ID: 3c9dda23
+Severity: Debug
+Timestamp: 2024-03-18T06:10:11.607+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 51332
+Thread Name: 
+Thread Id: 40134
 AppDomain: gateway.worker
-Machine: node-c01
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: segment 1347c467 failed checksum validation
+ID: 95ea9c39
+Severity: Error
+Timestamp: 2024-03-18T06:10:13.331+01:00
+Process Name: /opt/authsvc/bin/authsvc-worker
+Process Id: 4678
+Thread Name: 
+Thread Id: 88646
+AppDomain: authsvc.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: write rejected: quota exceeded by 9427 bytes
+ID: 949ed1b1
+Severity: Error
+Timestamp: 2024-03-18T06:10:18.272+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 60900
+Thread Name: 
+Thread Id: 85997
+AppDomain: blobstore.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 403
+ID: 796a27ff
+Severity: Debug
+Timestamp: 2024-03-18T06:10:20.754+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 16901
+Thread Name: 
+Thread Id: 81136
+AppDomain: blobstore.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: connection pool resized to 5419
+ID: 5ad0a5ef
+Severity: Debug
+Timestamp: 2024-03-18T06:10:23.067+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 76080
+Thread Name: 
+Thread Id: 62986
+AppDomain: indexer.worker
+Machine: node-a01
+EventSource: 
+----------------------------------------
+Message: retrying upstream after 3181ms backoff
+ID: 92108619
+Severity: Information
+Timestamp: 2024-03-18T06:10:24.360+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 75244
+Thread Name: 
+Thread Id: 58514
+AppDomain: gateway.worker
+Machine: node-b01
+EventSource: 
+----------------------------------------
+Message: cache miss for key 8405f2da
+ID: 92f972c8
+Severity: Information
+Timestamp: 2024-03-18T06:10:25.535+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 92884
+Thread Name: 
+Thread Id: 95238
+AppDomain: gateway.worker
+Machine: node-a03
+EventSource: 
+----------------------------------------
+Message: segment 0e3c37d4 failed checksum validation
+ID: ec555af6
+Severity: Warn
+Timestamp: 2024-03-18T06:10:29.808+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 90176
+Thread Name: 
+Thread Id: 81703
+AppDomain: blobstore.worker
+Machine: node-b02
+EventSource: 
+----------------------------------------
+Message: background scan finished, 1454 objects visited
+ID: b76d257f
+Severity: Information
+Timestamp: 2024-03-18T06:10:33.502+01:00
+Process Name: /opt/indexer/bin/indexer-worker
+Process Id: 60751
+Thread Name: 
+Thread Id: 79413
+AppDomain: indexer.worker
+Machine: node-c02
+EventSource: 
+----------------------------------------
+Message: config reloaded from profile 5ca09371
+ID: e5a3f7bb
+Severity: Information
+Timestamp: 2024-03-18T06:10:34.749+01:00
+Process Name: /opt/gateway/bin/gateway-worker
+Process Id: 24965
+Thread Name: 
+Thread Id: 4238
+AppDomain: gateway.worker
+Machine: node-c03
+EventSource: 
+----------------------------------------
+Message: segment 2ddf4cfc failed checksum validation
+ID: c80c45ce
+Severity: Error
+Timestamp: 2024-03-18T06:10:36.877+01:00
+Process Name: /opt/blobstore/bin/blobstore-worker
+Process Id: 80412
+Thread Name: 
+Thread Id: 60404
+AppDomain: blobstore.worker
+Machine: node-b01
 EventSource: 

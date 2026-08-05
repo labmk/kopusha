@@ -1,1200 +1,1200 @@
-18-03-2024 06:00:00.000 Info    checkpoint written at offset 2150
-18-03-2024 06:00:00.381 Warn    write rejected: quota exceeded by 7461 bytes
-18-03-2024 06:00:00.790 Info    background scan finished, 3633 objects visited
-18-03-2024 06:00:01.044 Info    flushed 179 records to segment 20174636
-18-03-2024 06:00:00.576 Info    worker 4132 joined the pool
-18-03-2024 06:00:00.520 Info    connection pool resized to 7789
-18-03-2024 06:00:01.560 Debug   dropped 9372 stale entries during compaction
-18-03-2024 06:00:01.351 Info    cache miss for key ac8abed4
-18-03-2024 06:00:01.520 Info    shard 4813 rebalanced to node-a01
-18-03-2024 06:00:03.375 Warn    deserialization failed at offset 6719: unexpected token
-18-03-2024 06:00:03.380 Info    worker 3241 joined the pool
-18-03-2024 06:00:01.639 Info    lease renewed, ttl 8814s
-18-03-2024 06:00:00.048 Info    connection pool resized to 8290
-18-03-2024 06:00:01.820 Info    handshake with 192.0.2.1190 completed
-18-03-2024 06:00:04.004 Warn    segment 6ecf0d76 failed checksum validation
-18-03-2024 06:00:04.530 Info    shard 6180 rebalanced to node-a02
-18-03-2024 06:00:03.568 Debug   dropped 1237 stale entries during compaction
-18-03-2024 06:00:06.001 Info    config reloaded from profile 04224724
-18-03-2024 06:00:00.504 Info    request completed in 5797ms
-18-03-2024 06:00:05.491 Error   segment 6284a537 failed checksum validation
-18-03-2024 06:00:01.200 Debug   config reloaded from profile 49db4908
-18-03-2024 06:00:05.670 Info    lease renewed, ttl 2555s
-18-03-2024 06:00:00.880 Warn    write rejected: quota exceeded by 6027 bytes
-18-03-2024 06:00:06.440 Info    worker 1803 joined the pool
-18-03-2024 06:00:07.392 Info    request completed in 3848ms
-18-03-2024 06:00:00.950 Info    flushed 9701 records to segment 2f500166
-18-03-2024 06:00:10.036 Info    shard 5613 rebalanced to node-c02
-18-03-2024 06:00:08.046 Debug   request completed in 7803ms
-18-03-2024 06:00:07.868 Info    handshake with 192.0.2.7921 completed
-18-03-2024 06:00:05.597 Info    connection pool resized to 9004
-18-03-2024 06:00:02.160 Info    handshake with 192.0.2.3404 completed
-18-03-2024 06:00:05.146 Info    lease renewed, ttl 3401s
-18-03-2024 06:00:11.584 Warn    lease acquisition timed out after 6387ms
-18-03-2024 06:00:11.286 Info    dropped 1595 stale entries during compaction
-18-03-2024 06:00:10.200 Info    lease renewed, ttl 9645s
-18-03-2024 06:00:04.235 Info    lease renewed, ttl 8264s
-18-03-2024 06:00:02.376 Info    checkpoint written at offset 6308
-18-03-2024 06:00:14.800 Info    shard 893 rebalanced to node-c03
-18-03-2024 06:00:05.320 Info    worker 3342 joined the pool
-18-03-2024 06:00:00.390 Debug   lease renewed, ttl 1989s
-18-03-2024 06:00:04.960 Info    config reloaded from profile d57c71b5
-18-03-2024 06:00:03.895 Info    lease renewed, ttl 2704s
-18-03-2024 06:00:01.134 Error   write rejected: quota exceeded by 3743 bytes
-18-03-2024 06:00:15.050 Debug   config reloaded from profile b17abb68
-18-03-2024 06:00:08.756 Info    checkpoint written at offset 133
-18-03-2024 06:00:01.710 Info    connection pool resized to 8439
-18-03-2024 06:00:14.674 Info    lease renewed, ttl 7813s
-18-03-2024 06:00:15.369 Info    queue depth 7572 exceeds soft limit
-18-03-2024 06:00:08.832 Warn    segment d3fd73e9 failed checksum validation
-18-03-2024 06:00:12.201 Info    connection pool resized to 2895
-18-03-2024 06:00:07.150 Warn    segment 6b011cf5 failed checksum validation
-18-03-2024 06:00:14.790 Info    queue depth 8626 exceeds soft limit
-18-03-2024 06:00:04.940 Info    request completed in 9000ms
-18-03-2024 06:00:04.717 Info    retrying upstream after 9751ms backoff
-18-03-2024 06:00:02.538 Info    background scan finished, 9625 objects visited
-18-03-2024 06:00:02.090 Info    dropped 1917 stale entries during compaction
-18-03-2024 06:00:14.224 Info    queue depth 8261 exceeds soft limit
-18-03-2024 06:00:08.322 Info    worker 3102 joined the pool
-18-03-2024 06:00:16.124 Info    cache miss for key 7444e715
-18-03-2024 06:00:00.590 Info    dropped 7919 stale entries during compaction
-18-03-2024 06:00:05.340 Debug   worker 8295 joined the pool
-18-03-2024 06:00:20.008 Warn    lease acquisition timed out after 1409ms
-18-03-2024 06:00:00.310 Info    checkpoint written at offset 6363
-18-03-2024 06:00:03.717 Info    handshake with 192.0.2.8413 completed
-18-03-2024 06:00:05.120 Warn    upstream 192.0.2.7983 refused connection after 3 attempts
-18-03-2024 06:00:19.630 Info    request completed in 4336ms
-18-03-2024 06:00:25.344 Info    background scan finished, 4721 objects visited
-18-03-2024 06:00:20.435 Info    flushed 8316 records to segment 3c69c524
-18-03-2024 06:00:00.476 Error   segment a4be9856 failed checksum validation
-18-03-2024 06:00:17.388 Warn    deserialization failed at offset 6782: unexpected token
-18-03-2024 06:00:13.790 Warn    upstream 192.0.2.4608 refused connection after 3 attempts
-18-03-2024 06:00:14.839 Error   deserialization failed at offset 4811: unexpected token
-18-03-2024 06:00:26.136 Error   segment 23d9f29e failed checksum validation
-18-03-2024 06:00:10.950 Debug   flushed 2413 records to segment 1d867260
-18-03-2024 06:00:17.982 Error   write rejected: quota exceeded by 3351 bytes
-18-03-2024 06:00:15.075 Info    handshake with 192.0.2.6705 completed
-18-03-2024 06:00:07.904 Info    dropped 2395 stale entries during compaction
-18-03-2024 06:00:27.720 Warn    segment e6a3e955 failed checksum validation
-18-03-2024 06:00:21.138 Info    handshake with 192.0.2.6996 completed
-18-03-2024 06:00:24.411 Info    shard 6813 rebalanced to node-a02
-18-03-2024 06:00:07.120 Warn    segment 8d1e4aea failed checksum validation
-18-03-2024 06:00:09.639 Info    background scan finished, 6140 objects visited
-18-03-2024 06:00:32.390 Error   write rejected: quota exceeded by 6321 bytes
-18-03-2024 06:00:09.213 Info    lease renewed, ttl 7471s
-18-03-2024 06:00:15.960 Warn    write rejected: quota exceeded by 8250 bytes
-18-03-2024 06:00:08.925 Info    dropped 3561 stale entries during compaction
-18-03-2024 06:00:20.554 Info    connection pool resized to 5931
-18-03-2024 06:00:12.006 Warn    lease acquisition timed out after 1823ms
-18-03-2024 06:00:07.832 Debug   background scan finished, 9780 objects visited
-18-03-2024 06:00:34.799 Warn    deserialization failed at offset 2391: unexpected token
-18-03-2024 06:00:20.610 Info    config reloaded from profile d31c7b7e
-18-03-2024 06:00:19.201 Debug   background scan finished, 1391 objects visited
-18-03-2024 06:00:17.388 Info    background scan finished, 7520 objects visited
-18-03-2024 06:00:19.902 Info    background scan finished, 942 objects visited
-18-03-2024 06:00:19.270 Info    background scan finished, 1594 objects visited
-18-03-2024 06:00:07.220 Debug   flushed 622 records to segment 5018fcae
-18-03-2024 06:00:37.536 Info    cache miss for key 8485d2dd
-18-03-2024 06:00:15.520 Info    handshake with 192.0.2.7824 completed
-18-03-2024 06:00:12.348 Warn    upstream 192.0.2.7924 refused connection after 3 attempts
-18-03-2024 06:00:25.443 Info    background scan finished, 507 objects visited
-18-03-2024 06:00:06.000 Info    background scan finished, 1566 objects visited
-18-03-2024 06:00:25.452 Info    config reloaded from profile db572ec0
-18-03-2024 06:00:16.116 Info    cache miss for key 53336bc5
-18-03-2024 06:00:19.261 Info    handshake with 192.0.2.5316 completed
-18-03-2024 06:00:10.504 Info    connection pool resized to 2830
-18-03-2024 06:00:32.445 Debug   checkpoint written at offset 7225
-18-03-2024 06:00:40.704 Info    request completed in 9614ms
-18-03-2024 06:00:08.667 Warn    lease acquisition timed out after 5081ms
-18-03-2024 06:00:14.904 Info    worker 7629 joined the pool
-18-03-2024 06:00:08.393 Info    cache miss for key c850b883
-18-03-2024 06:00:20.240 Info    lease renewed, ttl 7443s
-18-03-2024 06:00:05.772 Info    request completed in 329ms
-18-03-2024 06:00:22.176 Debug   handshake with 192.0.2.745 completed
-18-03-2024 06:00:36.838 Info    worker 6673 joined the pool
-18-03-2024 06:00:27.018 Info    dropped 8105 stale entries during compaction
-18-03-2024 06:00:26.680 Info    dropped 4235 stale entries during compaction
-18-03-2024 06:00:06.960 Warn    deserialization failed at offset 7973: unexpected token
-18-03-2024 06:00:21.528 Info    config reloaded from profile 08443563
-18-03-2024 06:00:37.052 Error   segment 1349c875 failed checksum validation
-18-03-2024 06:00:26.418 Info    flushed 6576 records to segment ac2463d2
-18-03-2024 06:00:11.400 Debug   checkpoint written at offset 3952
-18-03-2024 06:00:03.267 Info    config reloaded from profile ce2dae1c
-18-03-2024 06:00:41.358 Info    config reloaded from profile 7e22a358
-18-03-2024 06:00:15.006 Info    cache miss for key a5bd8e82
-18-03-2024 06:00:15.128 Debug   config reloaded from profile bbe04335
-18-03-2024 06:00:24.125 Info    shard 335 rebalanced to node-b01
-18-03-2024 06:00:05.166 Info    lease renewed, ttl 9248s
-18-03-2024 06:00:40.259 Info    background scan finished, 2118 objects visited
-18-03-2024 06:00:25.856 Info    shard 856 rebalanced to node-b02
-18-03-2024 06:00:49.020 Debug   config reloaded from profile 362e3b27
-18-03-2024 06:00:50.830 Warn    lease acquisition timed out after 1961ms
-18-03-2024 06:00:46.374 Debug   background scan finished, 990 objects visited
-18-03-2024 06:00:47.388 Debug   lease renewed, ttl 2968s
-18-03-2024 06:00:31.654 Warn    write rejected: quota exceeded by 7152 bytes
-18-03-2024 06:00:38.726 Info    checkpoint written at offset 4909
-18-03-2024 06:00:36.855 Debug   flushed 2715 records to segment dfd1fd10
-18-03-2024 06:00:38.216 Error   upstream 192.0.2.3344 refused connection after 3 attempts
-18-03-2024 06:00:09.864 Info    shard 1725 rebalanced to node-b03
-18-03-2024 06:00:03.174 Info    dropped 6658 stale entries during compaction
-18-03-2024 06:00:52.264 Info    worker 8080 joined the pool
-18-03-2024 06:00:31.500 Info    handshake with 192.0.2.8892 completed
-18-03-2024 06:00:28.059 Error   deserialization failed at offset 3872: unexpected token
-18-03-2024 06:00:32.660 Info    queue depth 7013 exceeds soft limit
-18-03-2024 06:00:13.871 Debug   background scan finished, 5072 objects visited
-18-03-2024 06:00:10.512 Info    config reloaded from profile fc6fe024
-18-03-2024 06:00:30.595 Info    connection pool resized to 949
-18-03-2024 06:00:44.968 Info    shard 2419 rebalanced to node-b02
-18-03-2024 06:00:56.301 Warn    upstream 192.0.2.8321 refused connection after 3 attempts
-18-03-2024 06:00:47.508 Debug   lease renewed, ttl 2108s
-18-03-2024 06:00:14.602 Info    shard 8654 rebalanced to node-a03
-18-03-2024 06:00:38.700 Info    handshake with 192.0.2.6775 completed
-18-03-2024 06:00:11.476 Info    flushed 2973 records to segment 78d284d0
-18-03-2024 06:00:50.008 Debug   shard 2322 rebalanced to node-a03
-18-03-2024 06:00:52.938 Warn    upstream 192.0.2.6212 refused connection after 3 attempts
-18-03-2024 06:00:37.576 Info    queue depth 9202 exceeds soft limit
-18-03-2024 06:00:14.415 Warn    write rejected: quota exceeded by 3617 bytes
-18-03-2024 06:00:58.032 Warn    upstream 192.0.2.1582 refused connection after 3 attempts
-18-03-2024 06:00:44.117 Info    connection pool resized to 3454
-18-03-2024 06:01:02.410 Info    config reloaded from profile 339ec009
-18-03-2024 06:00:41.499 Info    retrying upstream after 4202ms backoff
-18-03-2024 06:01:02.560 Info    shard 3077 rebalanced to node-a02
-18-03-2024 06:00:05.152 Warn    segment 020e4263 failed checksum validation
-18-03-2024 06:00:27.378 Info    cache miss for key ced257f5
-18-03-2024 06:00:17.441 Error   lease acquisition timed out after 9304ms
-18-03-2024 06:00:01.968 Warn    deserialization failed at offset 4857: unexpected token
-18-03-2024 06:00:27.720 Info    lease renewed, ttl 4353s
-18-03-2024 06:00:39.508 Warn    lease acquisition timed out after 3778ms
-18-03-2024 06:00:44.589 Info    shard 2161 rebalanced to node-c03
-18-03-2024 06:00:47.880 Info    cache miss for key 2a6e4bb1
-18-03-2024 06:00:23.829 Warn    segment fe090f57 failed checksum validation
-18-03-2024 06:00:23.800 Debug   queue depth 1340 exceeds soft limit
-18-03-2024 06:00:47.538 Info    shard 4845 rebalanced to node-b01
-18-03-2024 06:00:54.868 Debug   checkpoint written at offset 1777
-18-03-2024 06:00:50.516 Info    request completed in 1412ms
-18-03-2024 06:00:17.922 Info    background scan finished, 590 objects visited
-18-03-2024 06:00:52.325 Info    worker 8518 joined the pool
-18-03-2024 06:00:55.616 Info    retrying upstream after 9443ms backoff
-18-03-2024 06:00:31.860 Info    background scan finished, 8690 objects visited
-18-03-2024 06:00:32.574 Info    retrying upstream after 2921ms backoff
-18-03-2024 06:00:23.091 Info    cache miss for key ce92b1d5
-18-03-2024 06:01:05.340 Warn    upstream 192.0.2.3875 refused connection after 3 attempts
-18-03-2024 06:00:19.910 Info    lease renewed, ttl 9315s
-18-03-2024 06:01:02.608 Info    connection pool resized to 6878
-18-03-2024 06:01:09.357 Debug   worker 804 joined the pool
-18-03-2024 06:01:07.344 Info    shard 9462 rebalanced to node-c03
-18-03-2024 06:01:01.050 Info    checkpoint written at offset 8397
-18-03-2024 06:00:38.502 Info    cache miss for key 1f806b9c
-18-03-2024 06:01:06.011 Debug   lease renewed, ttl 5232s
-18-03-2024 06:00:38.540 Warn    write rejected: quota exceeded by 2835 bytes
-18-03-2024 06:00:50.274 Debug   checkpoint written at offset 4125
-18-03-2024 06:00:59.090 Info    flushed 6844 records to segment 3a3fde2f
-18-03-2024 06:00:37.245 Info    shard 5751 rebalanced to node-b01
-18-03-2024 06:01:02.400 Info    config reloaded from profile 92814fa7
-18-03-2024 06:00:13.124 Debug   queue depth 3600 exceeds soft limit
-18-03-2024 06:00:32.592 Warn    segment b0961d38 failed checksum validation
-18-03-2024 06:00:50.310 Debug   cache miss for key 1dec4749
-18-03-2024 06:01:03.112 Debug   queue depth 1007 exceeds soft limit
-18-03-2024 06:00:33.490 Error   upstream 192.0.2.369 refused connection after 3 attempts
-18-03-2024 06:00:03.564 Error   deserialization failed at offset 8779: unexpected token
-18-03-2024 06:00:19.502 Info    worker 4288 joined the pool
-18-03-2024 06:00:50.600 Info    connection pool resized to 2680
-18-03-2024 06:00:33.969 Info    config reloaded from profile 94580008
-18-03-2024 06:00:51.712 Info    checkpoint written at offset 8168
-18-03-2024 06:00:36.337 Debug   cache miss for key 706daf3f
-18-03-2024 06:01:07.728 Error   deserialization failed at offset 5873: unexpected token
-18-03-2024 06:01:07.855 Info    config reloaded from profile 3a8a4df1
-18-03-2024 06:00:35.020 Error   deserialization failed at offset 6266: unexpected token
-18-03-2024 06:00:38.502 Warn    write rejected: quota exceeded by 6200 bytes
-18-03-2024 06:01:06.768 Info    cache miss for key 78e6808e
-18-03-2024 06:01:15.867 Error   deserialization failed at offset 5951: unexpected token
-18-03-2024 06:00:11.130 Warn    lease acquisition timed out after 5172ms
-18-03-2024 06:00:10.339 Info    cache miss for key 2af5303d
-18-03-2024 06:00:44.944 Info    queue depth 7671 exceeds soft limit
-18-03-2024 06:01:07.734 Error   write rejected: quota exceeded by 4471 bytes
-18-03-2024 06:00:23.326 Debug   connection pool resized to 6186
-18-03-2024 06:01:08.585 Info    handshake with 192.0.2.358 completed
-18-03-2024 06:01:16.680 Info    cache miss for key 08740807
-18-03-2024 06:00:49.476 Info    queue depth 1139 exceeds soft limit
-18-03-2024 06:01:16.300 Info    queue depth 8218 exceeds soft limit
-18-03-2024 06:01:09.423 Info    checkpoint written at offset 7356
-18-03-2024 06:00:46.200 Warn    segment e5bcb3c0 failed checksum validation
-18-03-2024 06:00:34.034 Debug   dropped 3717 stale entries during compaction
-18-03-2024 06:00:32.634 Info    cache miss for key 5fde7120
-18-03-2024 06:01:05.562 Info    lease renewed, ttl 4577s
-18-03-2024 06:00:18.368 Info    worker 59 joined the pool
-18-03-2024 06:00:15.075 Info    worker 4623 joined the pool
-18-03-2024 06:00:45.426 Warn    segment 33a91a0a failed checksum validation
-18-03-2024 06:00:29.964 Info    queue depth 9128 exceeds soft limit
-18-03-2024 06:01:18.204 Info    retrying upstream after 2239ms backoff
-18-03-2024 06:00:03.435 Info    flushed 7629 records to segment 736b20ab
-18-03-2024 06:00:02.300 Info    config reloaded from profile 30de93ca
-18-03-2024 06:00:47.586 Debug   handshake with 192.0.2.2593 completed
-18-03-2024 06:01:26.072 Warn    write rejected: quota exceeded by 7877 bytes
-18-03-2024 06:00:18.174 Warn    deserialization failed at offset 1470: unexpected token
-18-03-2024 06:00:52.650 Info    queue depth 4049 exceeds soft limit
-18-03-2024 06:00:37.600 Error   write rejected: quota exceeded by 8825 bytes
-18-03-2024 06:01:14.104 Warn    lease acquisition timed out after 3533ms
-18-03-2024 06:01:13.470 Info    config reloaded from profile 3baa2d28
-18-03-2024 06:01:34.248 Info    connection pool resized to 277
-18-03-2024 06:01:23.411 Error   segment 559ae29a failed checksum validation
-18-03-2024 06:00:25.200 Debug   retrying upstream after 2402ms backoff
-18-03-2024 06:00:05.784 Info    dropped 6566 stale entries during compaction
-18-03-2024 06:01:11.632 Info    config reloaded from profile bb09866c
-18-03-2024 06:01:22.134 Info    dropped 7718 stale entries during compaction
-18-03-2024 06:00:34.648 Info    shard 3089 rebalanced to node-a01
-18-03-2024 06:00:22.050 Info    worker 9832 joined the pool
-18-03-2024 06:01:06.666 Info    dropped 6157 stale entries during compaction
-18-03-2024 06:00:25.194 Info    request completed in 3374ms
-18-03-2024 06:00:11.408 Info    connection pool resized to 4129
-18-03-2024 06:01:39.600 Warn    deserialization failed at offset 6975: unexpected token
-18-03-2024 06:01:12.500 Info    connection pool resized to 7888
-18-03-2024 06:01:31.113 Info    checkpoint written at offset 7501
-18-03-2024 06:01:11.568 Info    dropped 3627 stale entries during compaction
-18-03-2024 06:01:21.719 Info    dropped 102 stale entries during compaction
-18-03-2024 06:00:18.034 Info    worker 5702 joined the pool
-18-03-2024 06:00:27.285 Info    flushed 9489 records to segment 2055bf72
-18-03-2024 06:00:24.320 Debug   handshake with 192.0.2.7292 completed
-18-03-2024 06:00:54.484 Debug   queue depth 24 exceeds soft limit
-18-03-2024 06:01:32.106 Info    queue depth 4809 exceeds soft limit
-18-03-2024 06:01:30.909 Info    retrying upstream after 7266ms backoff
-18-03-2024 06:01:01.100 Info    shard 2733 rebalanced to node-c03
-18-03-2024 06:01:42.312 Info    shard 1600 rebalanced to node-a02
-18-03-2024 06:00:48.994 Info    connection pool resized to 8653
-18-03-2024 06:01:34.680 Info    lease renewed, ttl 4285s
-18-03-2024 06:00:28.248 Debug   queue depth 947 exceeds soft limit
-18-03-2024 06:00:26.500 Info    dropped 6336 stale entries during compaction
-18-03-2024 06:00:47.082 Info    queue depth 690 exceeds soft limit
-18-03-2024 06:00:36.045 Debug   shard 1063 rebalanced to node-c01
-18-03-2024 06:01:45.860 Info    config reloaded from profile 985dfd3c
-18-03-2024 06:00:18.292 Debug   request completed in 7119ms
-18-03-2024 06:01:40.710 Info    checkpoint written at offset 6332
-18-03-2024 06:00:25.745 Info    retrying upstream after 2798ms backoff
-18-03-2024 06:00:09.792 Debug   connection pool resized to 2720
-18-03-2024 06:00:10.101 Info    retrying upstream after 9341ms backoff
-18-03-2024 06:01:21.378 Info    checkpoint written at offset 3528
-18-03-2024 06:00:46.750 Info    cache miss for key 0a3f4ad5
-18-03-2024 06:00:04.968 Info    lease renewed, ttl 3163s
-18-03-2024 06:00:23.268 Debug   flushed 684 records to segment 9047260d
-18-03-2024 06:00:33.082 Debug   handshake with 192.0.2.2774 completed
-18-03-2024 06:01:24.258 Warn    write rejected: quota exceeded by 5481 bytes
-18-03-2024 06:00:56.560 Info    dropped 3850 stale entries during compaction
-18-03-2024 06:00:20.232 Debug   dropped 5364 stale entries during compaction
-18-03-2024 06:01:01.476 Debug   cache miss for key bfd2f852
-18-03-2024 06:00:39.903 Debug   cache miss for key 171cb06c
-18-03-2024 06:00:43.168 Debug   retrying upstream after 1466ms backoff
-18-03-2024 06:01:09.255 Info    shard 6111 rebalanced to node-c01
-18-03-2024 06:01:39.528 Info    queue depth 748 exceeds soft limit
-18-03-2024 06:00:26.978 Debug   worker 8378 joined the pool
-18-03-2024 06:00:19.584 Debug   dropped 6426 stale entries during compaction
-18-03-2024 06:00:44.506 Warn    upstream 192.0.2.641 refused connection after 3 attempts
-18-03-2024 06:00:55.100 Warn    lease acquisition timed out after 3762ms
-18-03-2024 06:00:07.275 Info    queue depth 7761 exceeds soft limit
-18-03-2024 06:00:31.828 Info    dropped 6706 stale entries during compaction
-18-03-2024 06:00:16.701 Info    queue depth 871 exceeds soft limit
-18-03-2024 06:01:07.914 Debug   dropped 4031 stale entries during compaction
-18-03-2024 06:00:02.360 Debug   shard 8692 rebalanced to node-c03
-18-03-2024 06:00:13.912 Info    cache miss for key d05da89b
-18-03-2024 06:00:56.133 Debug   handshake with 192.0.2.3424 completed
-18-03-2024 06:01:50.856 Info    flushed 2442 records to segment 78a6e417
-18-03-2024 06:01:21.029 Info    retrying upstream after 9221ms backoff
-18-03-2024 06:01:38.100 Info    dropped 4201 stale entries during compaction
-18-03-2024 06:00:24.682 Debug   config reloaded from profile 18483899
-18-03-2024 06:00:48.924 Info    connection pool resized to 3697
-18-03-2024 06:00:51.813 Debug   background scan finished, 3242 objects visited
-18-03-2024 06:01:39.408 Info    worker 1654 joined the pool
-18-03-2024 06:00:53.680 Info    request completed in 8645ms
-18-03-2024 06:00:58.140 Debug   worker 3626 joined the pool
-18-03-2024 06:00:53.418 Info    connection pool resized to 8688
-18-03-2024 06:01:51.496 Debug   request completed in 4426ms
-18-03-2024 06:01:40.734 Debug   retrying upstream after 6653ms backoff
-18-03-2024 06:01:40.440 Error   deserialization failed at offset 5521: unexpected token
-18-03-2024 06:01:02.200 Info    connection pool resized to 1657
-18-03-2024 06:01:26.736 Warn    deserialization failed at offset 8161: unexpected token
-18-03-2024 06:01:44.855 Debug   worker 5993 joined the pool
-18-03-2024 06:01:12.220 Info    checkpoint written at offset 797
-18-03-2024 06:00:22.050 Info    worker 1451 joined the pool
-18-03-2024 06:01:53.444 Info    connection pool resized to 7720
-18-03-2024 06:01:45.878 Warn    write rejected: quota exceeded by 1179 bytes
-18-03-2024 06:00:46.746 Info    retrying upstream after 4238ms backoff
-18-03-2024 06:01:52.926 Error   lease acquisition timed out after 254ms
-18-03-2024 06:00:27.840 Info    dropped 4148 stale entries during compaction
-18-03-2024 06:01:47.856 Warn    write rejected: quota exceeded by 8816 bytes
-18-03-2024 06:01:48.192 Warn    segment a6199e88 failed checksum validation
-18-03-2024 06:01:53.373 Info    shard 9690 rebalanced to node-b01
-18-03-2024 06:00:50.868 Info    worker 1414 joined the pool
-18-03-2024 06:02:09.025 Info    lease renewed, ttl 1385s
-18-03-2024 06:00:46.618 Warn    write rejected: quota exceeded by 336 bytes
-18-03-2024 06:01:07.689 Info    dropped 4588 stale entries during compaction
-18-03-2024 06:01:38.728 Debug   lease renewed, ttl 623s
-18-03-2024 06:00:47.376 Debug   config reloaded from profile 9cd740f5
-18-03-2024 06:02:06.060 Warn    lease acquisition timed out after 9629ms
-18-03-2024 06:00:48.657 Info    worker 8630 joined the pool
-18-03-2024 06:00:49.800 Info    request completed in 5166ms
-18-03-2024 06:00:44.955 Info    dropped 2274 stale entries during compaction
-18-03-2024 06:01:37.862 Warn    lease acquisition timed out after 9848ms
-18-03-2024 06:00:40.870 Warn    lease acquisition timed out after 8246ms
-18-03-2024 06:02:08.688 Info    flushed 4354 records to segment df40327c
-18-03-2024 06:01:42.448 Warn    segment 105f925f failed checksum validation
-18-03-2024 06:00:41.912 Info    worker 890 joined the pool
-18-03-2024 06:00:29.832 Info    retrying upstream after 7388ms backoff
-18-03-2024 06:00:51.680 Info    config reloaded from profile d9aa7b3b
-18-03-2024 06:02:04.806 Info    request completed in 6428ms
-18-03-2024 06:02:01.752 Info    retrying upstream after 717ms backoff
-18-03-2024 06:02:04.852 Info    request completed in 3718ms
-18-03-2024 06:01:40.448 Info    flushed 1771 records to segment f32b8253
-18-03-2024 06:00:12.420 Info    queue depth 6677 exceeds soft limit
-18-03-2024 06:01:48.990 Warn    write rejected: quota exceeded by 425 bytes
-18-03-2024 06:01:10.788 Debug   handshake with 192.0.2.7657 completed
-18-03-2024 06:00:07.656 Info    lease renewed, ttl 5787s
-18-03-2024 06:01:54.123 Info    handshake with 192.0.2.5975 completed
-18-03-2024 06:00:59.150 Info    connection pool resized to 8319
-18-03-2024 06:00:04.914 Info    lease renewed, ttl 6695s
-18-03-2024 06:00:06.688 Info    retrying upstream after 7078ms backoff
-18-03-2024 06:01:00.010 Warn    deserialization failed at offset 8627: unexpected token
-18-03-2024 06:00:44.250 Info    request completed in 5795ms
-18-03-2024 06:00:50.410 Warn    write rejected: quota exceeded by 1332 bytes
-18-03-2024 06:00:37.380 Info    flushed 4578 records to segment 738686cf
-18-03-2024 06:00:48.909 Warn    deserialization failed at offset 3001: unexpected token
-18-03-2024 06:01:37.018 Info    checkpoint written at offset 9788
-18-03-2024 06:00:19.027 Warn    write rejected: quota exceeded by 4296 bytes
-18-03-2024 06:00:58.680 Info    cache miss for key 5cee82c4
-18-03-2024 06:00:56.316 Info    flushed 7034 records to segment 17426055
-18-03-2024 06:01:17.830 Info    background scan finished, 4993 objects visited
-18-03-2024 06:02:07.776 Info    checkpoint written at offset 3711
-18-03-2024 06:01:51.748 Info    request completed in 3925ms
-18-03-2024 06:00:02.190 Warn    deserialization failed at offset 9168: unexpected token
-18-03-2024 06:02:03.708 Info    request completed in 33ms
-18-03-2024 06:02:14.322 Info    queue depth 1058 exceeds soft limit
-18-03-2024 06:01:27.216 Info    handshake with 192.0.2.1294 completed
-18-03-2024 06:01:09.003 Info    background scan finished, 8131 objects visited
-18-03-2024 06:00:23.310 Warn    lease acquisition timed out after 2675ms
-18-03-2024 06:01:48.332 Info    flushed 6824 records to segment ee1a5eab
-18-03-2024 06:00:57.288 Info    queue depth 7771 exceeds soft limit
-18-03-2024 06:01:36.607 Debug   connection pool resized to 8873
-18-03-2024 06:00:05.984 Info    retrying upstream after 6716ms backoff
-18-03-2024 06:00:20.250 Info    config reloaded from profile 2467f117
-18-03-2024 06:00:26.320 Info    cache miss for key e3411fac
-18-03-2024 06:01:15.400 Info    retrying upstream after 8553ms backoff
-18-03-2024 06:00:58.590 Warn    segment 3c5096e0 failed checksum validation
-18-03-2024 06:02:08.102 Warn    segment 2d91c849 failed checksum validation
-18-03-2024 06:00:06.080 Info    background scan finished, 3988 objects visited
-18-03-2024 06:01:14.295 Debug   worker 7464 joined the pool
-18-03-2024 06:01:29.006 Warn    lease acquisition timed out after 2716ms
-18-03-2024 06:00:39.832 Info    connection pool resized to 1765
-18-03-2024 06:00:26.496 Error   write rejected: quota exceeded by 4445 bytes
-18-03-2024 06:01:40.870 Error   upstream 192.0.2.7264 refused connection after 3 attempts
-18-03-2024 06:01:26.850 Info    shard 2932 rebalanced to node-c01
-18-03-2024 06:01:08.499 Info    queue depth 2554 exceeds soft limit
-18-03-2024 06:00:27.160 Debug   checkpoint written at offset 6036
-18-03-2024 06:00:14.393 Error   deserialization failed at offset 3702: unexpected token
-18-03-2024 06:01:14.100 Warn    deserialization failed at offset 2460: unexpected token
-18-03-2024 06:00:41.837 Warn    lease acquisition timed out after 8863ms
-18-03-2024 06:00:29.008 Warn    lease acquisition timed out after 1347ms
-18-03-2024 06:01:07.989 Info    retrying upstream after 9653ms backoff
-18-03-2024 06:00:15.760 Warn    upstream 192.0.2.7930 refused connection after 3 attempts
-18-03-2024 06:00:30.020 Debug   connection pool resized to 3505
-18-03-2024 06:01:41.376 Info    retrying upstream after 7662ms backoff
-18-03-2024 06:01:24.164 Info    background scan finished, 3371 objects visited
-18-03-2024 06:01:39.898 Info    cache miss for key 72a54b70
-18-03-2024 06:01:35.760 Info    connection pool resized to 2337
-18-03-2024 06:01:13.200 Info    connection pool resized to 4245
-18-03-2024 06:00:18.045 Info    retrying upstream after 5428ms backoff
-18-03-2024 06:00:17.286 Info    lease renewed, ttl 684s
-18-03-2024 06:00:32.240 Info    lease renewed, ttl 2857s
-18-03-2024 06:02:18.976 Info    dropped 4825 stale entries during compaction
-18-03-2024 06:02:35.115 Info    lease renewed, ttl 6297s
-18-03-2024 06:00:25.578 Info    queue depth 3051 exceeds soft limit
-18-03-2024 06:00:42.328 Warn    upstream 192.0.2.6782 refused connection after 3 attempts
-18-03-2024 06:02:42.384 Warn    lease acquisition timed out after 7437ms
-18-03-2024 06:01:45.522 Debug   flushed 5684 records to segment f88428eb
-18-03-2024 06:00:43.460 Info    dropped 3939 stale entries during compaction
-18-03-2024 06:01:51.381 Debug   config reloaded from profile 3b79fb6d
-18-03-2024 06:02:44.800 Info    connection pool resized to 3471
-18-03-2024 06:01:53.988 Info    dropped 1700 stale entries during compaction
-18-03-2024 06:02:07.512 Info    checkpoint written at offset 1816
-18-03-2024 06:02:42.265 Info    flushed 529 records to segment 94facfef
-18-03-2024 06:01:20.288 Warn    write rejected: quota exceeded by 1913 bytes
-18-03-2024 06:02:30.120 Info    cache miss for key c23eca0c
-18-03-2024 06:00:32.604 Info    request completed in 6286ms
-18-03-2024 06:01:30.085 Debug   flushed 2994 records to segment 4793229a
-18-03-2024 06:02:02.220 Info    checkpoint written at offset 4319
-18-03-2024 06:02:39.559 Info    dropped 253 stale entries during compaction
-18-03-2024 06:01:15.960 Info    dropped 6641 stale entries during compaction
-18-03-2024 06:01:27.984 Debug   request completed in 7159ms
-18-03-2024 06:02:47.480 Info    shard 7982 rebalanced to node-b02
-18-03-2024 06:00:44.625 Info    lease renewed, ttl 8425s
-18-03-2024 06:00:38.340 Info    request completed in 7951ms
-18-03-2024 06:00:03.416 Info    dropped 6060 stale entries during compaction
-18-03-2024 06:00:04.280 Info    config reloaded from profile fc07a602
-18-03-2024 06:00:20.592 Info    checkpoint written at offset 414
-18-03-2024 06:01:26.000 Debug   checkpoint written at offset 6629
-18-03-2024 06:01:46.888 Warn    deserialization failed at offset 9566: unexpected token
-18-03-2024 06:00:34.128 Debug   queue depth 2915 exceeds soft limit
-18-03-2024 06:01:32.662 Info    request completed in 9180ms
-18-03-2024 06:00:49.910 Debug   flushed 1476 records to segment 80f3b619
-18-03-2024 06:01:53.535 Debug   dropped 8793 stale entries during compaction
-18-03-2024 06:00:49.268 Warn    write rejected: quota exceeded by 1224 bytes
-18-03-2024 06:00:19.228 Error   upstream 192.0.2.622 refused connection after 3 attempts
-18-03-2024 06:01:48.186 Info    shard 983 rebalanced to node-b03
-18-03-2024 06:00:23.706 Warn    segment 23592275 failed checksum validation
-18-03-2024 06:01:45.160 Info    retrying upstream after 6807ms backoff
-18-03-2024 06:00:25.137 Info    config reloaded from profile 95d82ceb
-18-03-2024 06:01:22.212 Info    request completed in 1514ms
-18-03-2024 06:02:00.053 Info    retrying upstream after 4106ms backoff
-18-03-2024 06:00:05.328 Info    checkpoint written at offset 5823
-18-03-2024 06:01:28.555 Warn    write rejected: quota exceeded by 5999 bytes
-18-03-2024 06:02:32.086 Info    request completed in 4629ms
-18-03-2024 06:02:41.367 Info    retrying upstream after 9488ms backoff
-18-03-2024 06:02:57.856 Info    retrying upstream after 5487ms backoff
-18-03-2024 06:01:36.984 Info    shard 7222 rebalanced to node-c01
-18-03-2024 06:00:17.550 Debug   flushed 1788 records to segment e9673763
-18-03-2024 06:00:28.864 Warn    deserialization failed at offset 9667: unexpected token
-18-03-2024 06:00:27.572 Info    handshake with 192.0.2.1682 completed
-18-03-2024 06:01:16.557 Info    config reloaded from profile 408d82b5
-18-03-2024 06:02:28.004 Info    flushed 3899 records to segment 3d2a30ac
-18-03-2024 06:00:26.845 Warn    segment 54d47a96 failed checksum validation
-18-03-2024 06:00:32.376 Info    cache miss for key 0ad50c5e
-18-03-2024 06:01:40.540 Warn    deserialization failed at offset 3004: unexpected token
-18-03-2024 06:00:54.960 Info    handshake with 192.0.2.4912 completed
-18-03-2024 06:02:47.076 Info    retrying upstream after 2041ms backoff
-18-03-2024 06:00:09.200 Warn    segment 8acc0a12 failed checksum validation
-18-03-2024 06:02:49.648 Warn    upstream 192.0.2.7263 refused connection after 3 attempts
-18-03-2024 06:03:01.104 Info    connection pool resized to 8648
-18-03-2024 06:01:20.099 Debug   dropped 7668 stale entries during compaction
-18-03-2024 06:03:04.208 Error   deserialization failed at offset 1543: unexpected token
-18-03-2024 06:00:09.765 Debug   request completed in 6760ms
-18-03-2024 06:00:17.708 Info    dropped 3153 stale entries during compaction
-18-03-2024 06:01:36.202 Debug   connection pool resized to 9280
-18-03-2024 06:02:04.488 Info    dropped 4169 stale entries during compaction
-18-03-2024 06:02:44.619 Warn    segment 90730a08 failed checksum validation
-18-03-2024 06:02:54.370 Info    shard 7113 rebalanced to node-b03
-18-03-2024 06:02:06.699 Info    lease renewed, ttl 6778s
-18-03-2024 06:01:13.632 Warn    lease acquisition timed out after 1652ms
-18-03-2024 06:01:13.788 Info    dropped 9557 stale entries during compaction
-18-03-2024 06:00:06.162 Info    connection pool resized to 7760
-18-03-2024 06:02:41.975 Info    worker 3092 joined the pool
-18-03-2024 06:02:10.424 Info    request completed in 6908ms
-18-03-2024 06:00:12.402 Info    queue depth 552 exceeds soft limit
-18-03-2024 06:01:15.046 Info    handshake with 192.0.2.4957 completed
-18-03-2024 06:00:32.572 Info    checkpoint written at offset 3107
-18-03-2024 06:00:41.280 Info    retrying upstream after 1779ms backoff
-18-03-2024 06:01:11.669 Info    background scan finished, 4217 objects visited
-18-03-2024 06:02:38.096 Info    queue depth 2699 exceeds soft limit
-18-03-2024 06:01:56.403 Warn    upstream 192.0.2.4924 refused connection after 3 attempts
-18-03-2024 06:00:07.744 Info    worker 3574 joined the pool
-18-03-2024 06:01:35.545 Info    checkpoint written at offset 3266
-18-03-2024 06:02:50.100 Info    connection pool resized to 2569
-18-03-2024 06:02:22.691 Info    connection pool resized to 6039
-18-03-2024 06:01:00.512 Info    worker 5059 joined the pool
-18-03-2024 06:01:20.196 Error   lease acquisition timed out after 471ms
-18-03-2024 06:00:50.470 Info    retrying upstream after 2255ms backoff
-18-03-2024 06:01:32.308 Info    lease renewed, ttl 5961s
-18-03-2024 06:01:36.432 Info    handshake with 192.0.2.799 completed
-18-03-2024 06:01:09.020 Info    connection pool resized to 2179
-18-03-2024 06:02:27.212 Warn    write rejected: quota exceeded by 3737 bytes
-18-03-2024 06:02:59.685 Info    lease renewed, ttl 252s
-18-03-2024 06:00:56.048 Info    handshake with 192.0.2.2367 completed
-18-03-2024 06:02:25.621 Info    dropped 3857 stale entries during compaction
-18-03-2024 06:02:00.018 Info    config reloaded from profile cd99f08b
-18-03-2024 06:02:46.167 Info    queue depth 8323 exceeds soft limit
-18-03-2024 06:00:10.000 Info    connection pool resized to 1890
-18-03-2024 06:00:28.056 Info    connection pool resized to 8800
-18-03-2024 06:02:27.086 Info    queue depth 7878 exceeds soft limit
-18-03-2024 06:03:08.625 Info    cache miss for key cd0581c1
-18-03-2024 06:00:53.928 Warn    segment 1321fb46 failed checksum validation
-18-03-2024 06:02:42.610 Info    request completed in 3509ms
-18-03-2024 06:02:12.066 Info    connection pool resized to 1254
-18-03-2024 06:01:35.823 Info    connection pool resized to 4432
-18-03-2024 06:01:23.820 Warn    write rejected: quota exceeded by 548 bytes
-18-03-2024 06:02:31.682 Info    shard 7215 rebalanced to node-c03
-18-03-2024 06:02:00.360 Debug   cache miss for key f8d955c2
-18-03-2024 06:01:10.007 Info    retrying upstream after 1711ms backoff
-18-03-2024 06:01:12.704 Debug   request completed in 8216ms
-18-03-2024 06:02:04.146 Debug   worker 3323 joined the pool
-18-03-2024 06:00:11.822 Info    shard 5262 rebalanced to node-a01
-18-03-2024 06:02:29.865 Warn    upstream 192.0.2.1671 refused connection after 3 attempts
-18-03-2024 06:02:39.444 Info    flushed 311 records to segment 1e503858
-18-03-2024 06:01:45.985 Info    lease renewed, ttl 4683s
-18-03-2024 06:02:50.422 Warn    deserialization failed at offset 6746: unexpected token
-18-03-2024 06:01:16.812 Error   write rejected: quota exceeded by 8008 bytes
-18-03-2024 06:02:19.360 Info    retrying upstream after 2991ms backoff
-18-03-2024 06:01:47.326 Debug   request completed in 2293ms
-18-03-2024 06:01:22.476 Warn    deserialization failed at offset 4466: unexpected token
-18-03-2024 06:01:18.973 Info    queue depth 6779 exceeds soft limit
-18-03-2024 06:03:13.356 Debug   queue depth 2800 exceeds soft limit
-18-03-2024 06:01:05.625 Error   deserialization failed at offset 4614: unexpected token
-18-03-2024 06:02:58.314 Info    dropped 1314 stale entries during compaction
-18-03-2024 06:02:53.910 Info    cache miss for key 66c037c4
-18-03-2024 06:00:25.872 Info    flushed 3549 records to segment feebb60c
-18-03-2024 06:00:06.348 Debug   handshake with 192.0.2.6224 completed
-18-03-2024 06:02:54.900 Info    request completed in 4747ms
-18-03-2024 06:03:10.629 Info    checkpoint written at offset 6486
-18-03-2024 06:02:07.680 Info    request completed in 6296ms
-18-03-2024 06:03:11.347 Warn    upstream 192.0.2.2177 refused connection after 3 attempts
-18-03-2024 06:01:15.294 Error   write rejected: quota exceeded by 2389 bytes
-18-03-2024 06:00:41.195 Debug   connection pool resized to 6061
-18-03-2024 06:03:21.000 Info    retrying upstream after 3397ms backoff
-18-03-2024 06:01:51.696 Debug   lease renewed, ttl 7546s
-18-03-2024 06:03:16.908 Info    lease renewed, ttl 6667s
-18-03-2024 06:02:25.530 Debug   worker 2001 joined the pool
-18-03-2024 06:02:13.920 Info    connection pool resized to 1243
-18-03-2024 06:01:21.150 Debug   handshake with 192.0.2.6987 completed
-18-03-2024 06:03:28.670 Info    request completed in 873ms
-18-03-2024 06:00:10.317 Warn    deserialization failed at offset 3169: unexpected token
-18-03-2024 06:02:44.832 Info    flushed 7560 records to segment ae861964
-18-03-2024 06:01:02.130 Info    worker 9456 joined the pool
-18-03-2024 06:00:08.736 Info    connection pool resized to 4609
-18-03-2024 06:00:08.205 Info    shard 2174 rebalanced to node-c03
-18-03-2024 06:00:18.084 Info    shard 7216 rebalanced to node-b01
-18-03-2024 06:03:19.287 Warn    lease acquisition timed out after 2347ms
-18-03-2024 06:00:20.900 Debug   retrying upstream after 2552ms backoff
-18-03-2024 06:03:30.482 Warn    write rejected: quota exceeded by 205 bytes
-18-03-2024 06:02:25.728 Debug   background scan finished, 7786 objects visited
-18-03-2024 06:00:09.954 Info    request completed in 3250ms
-18-03-2024 06:03:39.938 Info    queue depth 1837 exceeds soft limit
-18-03-2024 06:02:27.075 Info    dropped 7029 stale entries during compaction
-18-03-2024 06:00:46.704 Info    connection pool resized to 2789
-18-03-2024 06:03:17.735 Warn    segment 579e9b6f failed checksum validation
-18-03-2024 06:01:16.446 Info    flushed 898 records to segment 3ae4f1db
-18-03-2024 06:02:17.514 Info    cache miss for key cc33a2a5
-18-03-2024 06:02:54.720 Info    worker 6781 joined the pool
-18-03-2024 06:02:21.372 Info    retrying upstream after 4571ms backoff
-18-03-2024 06:02:07.574 Info    dropped 5574 stale entries during compaction
-18-03-2024 06:03:00.723 Error   write rejected: quota exceeded by 8436 bytes
-18-03-2024 06:01:37.008 Info    handshake with 192.0.2.925 completed
-18-03-2024 06:00:51.980 Warn    segment 958eb7d6 failed checksum validation
-18-03-2024 06:01:42.446 Info    lease renewed, ttl 7726s
-18-03-2024 06:02:10.410 Debug   dropped 7996 stale entries during compaction
-18-03-2024 06:03:42.656 Debug   config reloaded from profile 91112c62
-18-03-2024 06:00:26.743 Debug   cache miss for key a2935133
-18-03-2024 06:03:45.720 Info    handshake with 192.0.2.8316 completed
-18-03-2024 06:00:38.828 Warn    deserialization failed at offset 2331: unexpected token
-18-03-2024 06:00:07.436 Info    queue depth 1384 exceeds soft limit
-18-03-2024 06:03:05.079 Info    dropped 2742 stale entries during compaction
-18-03-2024 06:02:52.200 Info    checkpoint written at offset 7773
-18-03-2024 06:03:37.350 Debug   retrying upstream after 116ms backoff
-18-03-2024 06:01:25.248 Error   lease acquisition timed out after 4004ms
-18-03-2024 06:02:04.055 Info    shard 2066 rebalanced to node-b03
-18-03-2024 06:03:00.336 Info    background scan finished, 453 objects visited
-18-03-2024 06:02:27.645 Info    retrying upstream after 5320ms backoff
-18-03-2024 06:02:57.480 Warn    write rejected: quota exceeded by 8594 bytes
-18-03-2024 06:03:31.484 Debug   checkpoint written at offset 8081
-18-03-2024 06:01:48.252 Debug   dropped 6658 stale entries during compaction
-18-03-2024 06:00:57.717 Warn    segment dce994d5 failed checksum validation
-18-03-2024 06:00:54.896 Debug   queue depth 8001 exceeds soft limit
-18-03-2024 06:00:07.605 Info    handshake with 192.0.2.2955 completed
-18-03-2024 06:01:42.550 Warn    upstream 192.0.2.5819 refused connection after 3 attempts
-18-03-2024 06:00:52.830 Warn    lease acquisition timed out after 6766ms
-18-03-2024 06:03:11.688 Debug   retrying upstream after 3100ms backoff
-18-03-2024 06:02:56.700 Warn    upstream 192.0.2.7600 refused connection after 3 attempts
-18-03-2024 06:01:16.700 Info    shard 8145 rebalanced to node-c03
-18-03-2024 06:03:30.396 Info    worker 3136 joined the pool
-18-03-2024 06:03:22.464 Warn    deserialization failed at offset 6989: unexpected token
-18-03-2024 06:01:55.042 Info    background scan finished, 8355 objects visited
-18-03-2024 06:01:16.626 Debug   request completed in 7236ms
-18-03-2024 06:02:16.850 Error   write rejected: quota exceeded by 3383 bytes
-18-03-2024 06:02:24.828 Info    background scan finished, 6662 objects visited
-18-03-2024 06:01:53.430 Warn    deserialization failed at offset 3099: unexpected token
-18-03-2024 06:03:08.370 Info    worker 269 joined the pool
-18-03-2024 06:01:14.276 Warn    segment 3dafac38 failed checksum validation
-18-03-2024 06:03:15.000 Debug   config reloaded from profile 0fac378a
-18-03-2024 06:03:04.507 Warn    lease acquisition timed out after 7873ms
-18-03-2024 06:02:40.132 Warn    segment 5252d0a5 failed checksum validation
-18-03-2024 06:00:46.431 Info    shard 589 rebalanced to node-c03
-18-03-2024 06:01:39.056 Info    checkpoint written at offset 1523
-18-03-2024 06:03:57.765 Info    request completed in 3726ms
-18-03-2024 06:03:12.708 Info    config reloaded from profile 633ff11f
-18-03-2024 06:00:32.171 Info    background scan finished, 226 objects visited
-18-03-2024 06:01:19.648 Error   write rejected: quota exceeded by 5555 bytes
-18-03-2024 06:02:11.544 Debug   config reloaded from profile a357baee
-18-03-2024 06:04:02.780 Info    flushed 7277 records to segment d949fb5b
-18-03-2024 06:02:37.027 Debug   connection pool resized to 6354
-18-03-2024 06:02:12.192 Debug   retrying upstream after 5331ms backoff
-18-03-2024 06:04:01.522 Warn    segment 220b4647 failed checksum validation
-18-03-2024 06:03:05.428 Debug   dropped 596 stale entries during compaction
-18-03-2024 06:02:36.210 Warn    upstream 192.0.2.1532 refused connection after 3 attempts
-18-03-2024 06:03:07.264 Info    flushed 8406 records to segment 0424b494
-18-03-2024 06:02:10.804 Error   write rejected: quota exceeded by 2713 bytes
-18-03-2024 06:04:06.582 Info    worker 7778 joined the pool
-18-03-2024 06:01:19.851 Debug   retrying upstream after 3141ms backoff
-18-03-2024 06:01:37.340 Info    worker 848 joined the pool
-18-03-2024 06:02:30.282 Warn    lease acquisition timed out after 1891ms
-18-03-2024 06:03:07.222 Debug   worker 2591 joined the pool
-18-03-2024 06:02:13.945 Warn    lease acquisition timed out after 550ms
-18-03-2024 06:02:15.408 Warn    lease acquisition timed out after 1819ms
-18-03-2024 06:00:30.625 Warn    write rejected: quota exceeded by 2507 bytes
-18-03-2024 06:01:50.802 Debug   shard 7507 rebalanced to node-b02
-18-03-2024 06:01:43.455 Info    request completed in 6382ms
-18-03-2024 06:00:36.424 Info    flushed 8005 records to segment 65fda7c9
-18-03-2024 06:02:08.316 Info    connection pool resized to 9289
-18-03-2024 06:02:33.090 Info    lease renewed, ttl 8761s
-18-03-2024 06:02:42.798 Warn    write rejected: quota exceeded by 3413 bytes
-18-03-2024 06:00:36.656 Info    connection pool resized to 9794
-18-03-2024 06:04:04.338 Debug   handshake with 192.0.2.657 completed
-18-03-2024 06:00:54.524 Info    queue depth 2484 exceeds soft limit
-18-03-2024 06:00:22.860 Error   deserialization failed at offset 7568: unexpected token
-18-03-2024 06:01:13.776 Warn    segment 60c0bc99 failed checksum validation
-18-03-2024 06:01:24.721 Info    flushed 3094 records to segment 92f9891d
-18-03-2024 06:01:36.338 Info    worker 1120 joined the pool
-18-03-2024 06:02:26.331 Info    config reloaded from profile 06efae51
-18-03-2024 06:01:31.520 Info    background scan finished, 5454 objects visited
-18-03-2024 06:01:52.816 Debug   shard 3817 rebalanced to node-a02
-18-03-2024 06:03:56.898 Error   upstream 192.0.2.6282 refused connection after 3 attempts
-18-03-2024 06:01:42.880 Warn    write rejected: quota exceeded by 46 bytes
-18-03-2024 06:03:17.708 Info    queue depth 9116 exceeds soft limit
-18-03-2024 06:01:24.495 Error   deserialization failed at offset 3326: unexpected token
-18-03-2024 06:00:56.202 Warn    upstream 192.0.2.2563 refused connection after 3 attempts
-18-03-2024 06:00:55.642 Warn    segment 88ff2bea failed checksum validation
-18-03-2024 06:01:04.800 Info    cache miss for key 355c3910
-18-03-2024 06:04:05.322 Warn    lease acquisition timed out after 3261ms
-18-03-2024 06:00:43.550 Info    shard 1951 rebalanced to node-c02
-18-03-2024 06:04:08.031 Info    retrying upstream after 3309ms backoff
-18-03-2024 06:02:15.616 Info    queue depth 9967 exceeds soft limit
-18-03-2024 06:02:00.805 Info    handshake with 192.0.2.6403 completed
-18-03-2024 06:04:00.018 Debug   queue depth 7303 exceeds soft limit
-18-03-2024 06:00:37.335 Info    request completed in 5115ms
-18-03-2024 06:02:47.280 Error   lease acquisition timed out after 9837ms
-18-03-2024 06:02:02.859 Info    dropped 7845 stale entries during compaction
-18-03-2024 06:01:38.042 Warn    deserialization failed at offset 5724: unexpected token
-18-03-2024 06:03:13.087 Info    checkpoint written at offset 4134
-18-03-2024 06:03:04.800 Debug   config reloaded from profile 8cf03caf
-18-03-2024 06:02:06.251 Warn    segment 709ecaa7 failed checksum validation
-18-03-2024 06:00:37.072 Error   lease acquisition timed out after 8028ms
-18-03-2024 06:01:52.047 Info    retrying upstream after 4167ms backoff
-18-03-2024 06:04:14.976 Debug   config reloaded from profile 0417a643
-18-03-2024 06:03:16.175 Warn    lease acquisition timed out after 2906ms
-18-03-2024 06:03:23.130 Info    retrying upstream after 430ms backoff
-18-03-2024 06:03:35.441 Info    request completed in 5144ms
-18-03-2024 06:01:50.888 Debug   worker 2413 joined the pool
-18-03-2024 06:00:50.844 Debug   handshake with 192.0.2.3394 completed
-18-03-2024 06:01:55.240 Warn    lease acquisition timed out after 8308ms
-18-03-2024 06:01:14.481 Info    checkpoint written at offset 7749
-18-03-2024 06:00:23.520 Debug   worker 1543 joined the pool
-18-03-2024 06:01:54.410 Info    config reloaded from profile 8c8f57d8
-18-03-2024 06:03:35.006 Info    request completed in 6347ms
-18-03-2024 06:01:58.800 Info    checkpoint written at offset 8976
-18-03-2024 06:04:12.148 Debug   worker 7122 joined the pool
-18-03-2024 06:01:04.992 Info    request completed in 963ms
-18-03-2024 06:01:11.190 Error   lease acquisition timed out after 1796ms
-18-03-2024 06:01:36.418 Error   segment 189473f4 failed checksum validation
-18-03-2024 06:02:44.560 Info    flushed 7503 records to segment bcf04846
-18-03-2024 06:01:18.315 Warn    write rejected: quota exceeded by 3740 bytes
-18-03-2024 06:01:26.614 Info    shard 4505 rebalanced to node-c01
-18-03-2024 06:00:22.539 Debug   dropped 9954 stale entries during compaction
-18-03-2024 06:03:25.884 Info    cache miss for key 83d1b4a7
-18-03-2024 06:01:11.925 Info    dropped 1379 stale entries during compaction
-18-03-2024 06:00:32.928 Info    shard 2417 rebalanced to node-c03
-18-03-2024 06:03:31.596 Info    request completed in 7325ms
-18-03-2024 06:02:14.160 Info    request completed in 664ms
-18-03-2024 06:00:33.761 Error   segment 656b8164 failed checksum validation
-18-03-2024 06:04:06.330 Info    worker 2675 joined the pool
-18-03-2024 06:03:07.261 Error   upstream 192.0.2.66 refused connection after 3 attempts
-18-03-2024 06:00:22.144 Warn    write rejected: quota exceeded by 3323 bytes
-18-03-2024 06:04:17.103 Warn    segment 0a68eda0 failed checksum validation
-18-03-2024 06:04:22.332 Error   write rejected: quota exceeded by 5488 bytes
-18-03-2024 06:04:29.660 Info    background scan finished, 3760 objects visited
-18-03-2024 06:01:39.528 Info    cache miss for key e9444fa9
-18-03-2024 06:03:17.251 Debug   worker 9655 joined the pool
-18-03-2024 06:02:59.386 Info    flushed 3155 records to segment bb2ae08c
-18-03-2024 06:00:50.328 Debug   connection pool resized to 3305
-18-03-2024 06:01:14.200 Info    worker 6816 joined the pool
-18-03-2024 06:04:20.071 Warn    write rejected: quota exceeded by 3135 bytes
-18-03-2024 06:04:00.786 Info    worker 5197 joined the pool
-18-03-2024 06:00:11.248 Warn    segment d85ad6e6 failed checksum validation
-18-03-2024 06:01:49.824 Warn    segment fb83cb45 failed checksum validation
-18-03-2024 06:00:55.695 Info    retrying upstream after 5966ms backoff
-18-03-2024 06:00:40.948 Info    flushed 9057 records to segment 38563b02
-18-03-2024 06:02:58.164 Warn    segment 8989c8f3 failed checksum validation
-18-03-2024 06:00:27.612 Info    handshake with 192.0.2.6970 completed
-18-03-2024 06:04:34.383 Info    worker 5971 joined the pool
-18-03-2024 06:01:20.230 Info    retrying upstream after 4967ms backoff
-18-03-2024 06:00:06.399 Debug   handshake with 192.0.2.4445 completed
-18-03-2024 06:03:03.696 Info    flushed 1994 records to segment eecfe327
-18-03-2024 06:01:21.282 Debug   queue depth 7146 exceeds soft limit
-18-03-2024 06:03:59.904 Info    handshake with 192.0.2.9906 completed
-18-03-2024 06:02:34.440 Warn    write rejected: quota exceeded by 8955 bytes
-18-03-2024 06:02:31.076 Debug   shard 1995 rebalanced to node-b03
-18-03-2024 06:01:48.984 Info    lease renewed, ttl 8201s
-18-03-2024 06:00:14.360 Info    config reloaded from profile 2f04d8d7
-18-03-2024 06:02:53.279 Warn    upstream 192.0.2.1633 refused connection after 3 attempts
-18-03-2024 06:00:31.680 Debug   background scan finished, 6035 objects visited
-18-03-2024 06:00:12.978 Warn    write rejected: quota exceeded by 9259 bytes
-18-03-2024 06:01:43.968 Warn    lease acquisition timed out after 689ms
-18-03-2024 06:02:21.708 Warn    write rejected: quota exceeded by 3678 bytes
-18-03-2024 06:04:22.812 Info    lease renewed, ttl 5745s
-18-03-2024 06:04:24.625 Info    worker 9308 joined the pool
-18-03-2024 06:02:08.502 Info    background scan finished, 6666 objects visited
-18-03-2024 06:01:21.424 Info    request completed in 5236ms
-18-03-2024 06:03:58.056 Info    connection pool resized to 7026
-18-03-2024 06:04:26.085 Info    cache miss for key 07642cdd
-18-03-2024 06:04:03.090 Info    dropped 6266 stale entries during compaction
-18-03-2024 06:00:10.965 Warn    deserialization failed at offset 3722: unexpected token
-18-03-2024 06:04:36.696 Info    config reloaded from profile 36295936
-18-03-2024 06:02:09.741 Info    flushed 8495 records to segment c9adc537
-18-03-2024 06:00:04.404 Info    shard 4350 rebalanced to node-b01
-18-03-2024 06:00:48.510 Info    flushed 2872 records to segment 946de172
-18-03-2024 06:02:33.824 Debug   cache miss for key 7341eff3
-18-03-2024 06:04:17.213 Debug   queue depth 4519 exceeds soft limit
-18-03-2024 06:03:02.286 Debug   cache miss for key 1a361f3c
-18-03-2024 06:00:11.824 Info    checkpoint written at offset 8814
-18-03-2024 06:04:26.400 Info    retrying upstream after 7156ms backoff
-18-03-2024 06:04:13.422 Info    retrying upstream after 8769ms backoff
-18-03-2024 06:04:29.346 Info    worker 1610 joined the pool
-18-03-2024 06:03:25.811 Debug   connection pool resized to 6988
-18-03-2024 06:02:28.800 Warn    deserialization failed at offset 7020: unexpected token
-18-03-2024 06:02:51.350 Info    lease renewed, ttl 3293s
-18-03-2024 06:00:50.728 Warn    upstream 192.0.2.5460 refused connection after 3 attempts
-18-03-2024 06:00:34.362 Warn    upstream 192.0.2.8705 refused connection after 3 attempts
-18-03-2024 06:00:55.352 Info    checkpoint written at offset 7264
-18-03-2024 06:02:11.075 Debug   flushed 9139 records to segment b1b12cee
-18-03-2024 06:04:48.750 Info    lease renewed, ttl 9418s
-18-03-2024 06:01:34.626 Debug   checkpoint written at offset 7229
-18-03-2024 06:02:11.600 Debug   shard 2543 rebalanced to node-c03
-18-03-2024 06:02:19.305 Info    queue depth 9420 exceeds soft limit
-18-03-2024 06:03:10.762 Info    request completed in 4947ms
-18-03-2024 06:02:44.590 Info    shard 7803 rebalanced to node-c03
-18-03-2024 06:00:07.560 Info    handshake with 192.0.2.2225 completed
-18-03-2024 06:01:35.382 Debug   cache miss for key 145c1468
-18-03-2024 06:03:07.984 Debug   dropped 3374 stale entries during compaction
-18-03-2024 06:00:28.083 Info    request completed in 3470ms
-18-03-2024 06:00:04.560 Info    config reloaded from profile 16ca2ce3
-18-03-2024 06:02:39.049 Info    queue depth 6455 exceeds soft limit
-18-03-2024 06:04:04.602 Info    handshake with 192.0.2.8521 completed
-18-03-2024 06:04:44.599 Warn    write rejected: quota exceeded by 9498 bytes
-18-03-2024 06:02:45.024 Warn    upstream 192.0.2.27 refused connection after 3 attempts
-18-03-2024 06:00:45.135 Error   deserialization failed at offset 4665: unexpected token
-18-03-2024 06:00:03.064 Warn    segment 31f24426 failed checksum validation
-18-03-2024 06:04:45.324 Info    worker 992 joined the pool
-18-03-2024 06:03:39.648 Debug   connection pool resized to 5167
-18-03-2024 06:04:13.770 Info    lease renewed, ttl 6737s
-18-03-2024 06:04:17.180 Info    cache miss for key 48b4c1f4
-18-03-2024 06:02:28.803 Info    request completed in 2152ms
-18-03-2024 06:01:46.536 Info    config reloaded from profile 45ff9ba0
-18-03-2024 06:03:55.765 Info    cache miss for key a585a83c
-18-03-2024 06:01:13.530 Debug   queue depth 2308 exceeds soft limit
-18-03-2024 06:02:57.475 Info    retrying upstream after 5080ms backoff
-18-03-2024 06:01:56.400 Debug   retrying upstream after 3682ms backoff
-18-03-2024 06:00:09.324 Debug   worker 7523 joined the pool
-18-03-2024 06:01:46.586 Info    shard 7950 rebalanced to node-a01
-18-03-2024 06:01:57.629 Warn    upstream 192.0.2.5721 refused connection after 3 attempts
-18-03-2024 06:02:43.020 Warn    upstream 192.0.2.7262 refused connection after 3 attempts
-18-03-2024 06:04:03.672 Info    lease renewed, ttl 4150s
-18-03-2024 06:03:49.908 Info    lease renewed, ttl 6312s
-18-03-2024 06:03:18.882 Info    connection pool resized to 4417
-18-03-2024 06:04:07.744 Info    checkpoint written at offset 8348
-18-03-2024 06:04:01.780 Info    handshake with 192.0.2.2977 completed
-18-03-2024 06:00:54.234 Info    checkpoint written at offset 1257
-18-03-2024 06:00:52.729 Error   deserialization failed at offset 1976: unexpected token
-18-03-2024 06:03:30.396 Info    request completed in 2573ms
-18-03-2024 06:01:37.047 Info    config reloaded from profile 846712b3
-18-03-2024 06:04:25.440 Warn    deserialization failed at offset 6118: unexpected token
-18-03-2024 06:05:05.326 Error   write rejected: quota exceeded by 8058 bytes
-18-03-2024 06:02:26.520 Info    worker 1971 joined the pool
-18-03-2024 06:02:34.635 Debug   config reloaded from profile 261e77c2
-18-03-2024 06:02:13.392 Debug   shard 4130 rebalanced to node-c02
-18-03-2024 06:01:24.270 Info    dropped 759 stale entries during compaction
-18-03-2024 06:03:21.388 Info    cache miss for key c208194a
-18-03-2024 06:04:14.243 Warn    segment 22731405 failed checksum validation
-18-03-2024 06:03:47.430 Info    queue depth 3674 exceeds soft limit
-18-03-2024 06:04:21.273 Info    handshake with 192.0.2.5728 completed
-18-03-2024 06:03:18.400 Debug   connection pool resized to 9767
-18-03-2024 06:03:54.693 Info    handshake with 192.0.2.4646 completed
-18-03-2024 06:04:57.542 Info    config reloaded from profile 6089ad28
-18-03-2024 06:05:12.367 Debug   background scan finished, 3439 objects visited
-18-03-2024 06:01:02.712 Info    config reloaded from profile ad81a666
-18-03-2024 06:03:36.545 Info    handshake with 192.0.2.5057 completed
-18-03-2024 06:04:23.562 Info    lease renewed, ttl 1005s
-18-03-2024 06:00:58.104 Info    queue depth 9144 exceeds soft limit
-18-03-2024 06:00:16.160 Warn    segment 3103eefb failed checksum validation
-18-03-2024 06:03:34.385 Info    cache miss for key 0d12cf91
-18-03-2024 06:03:41.940 Info    flushed 2798 records to segment 41f24f2c
-18-03-2024 06:02:17.059 Info    lease renewed, ttl 9575s
-18-03-2024 06:04:12.532 Info    queue depth 7650 exceeds soft limit
-18-03-2024 06:03:45.201 Info    request completed in 1011ms
-18-03-2024 06:03:33.268 Info    worker 9916 joined the pool
-18-03-2024 06:01:37.800 Info    worker 9973 joined the pool
-18-03-2024 06:03:53.376 Warn    write rejected: quota exceeded by 3171 bytes
-18-03-2024 06:00:44.118 Warn    upstream 192.0.2.8490 refused connection after 3 attempts
-18-03-2024 06:00:58.078 Debug   cache miss for key 48081f56
-18-03-2024 06:04:13.071 Warn    lease acquisition timed out after 2019ms
-18-03-2024 06:00:04.100 Info    cache miss for key 451539fb
-18-03-2024 06:04:11.226 Info    connection pool resized to 7741
-18-03-2024 06:01:52.614 Info    flushed 6355 records to segment 3eb302c1
-18-03-2024 06:01:37.114 Warn    lease acquisition timed out after 8974ms
-18-03-2024 06:00:37.080 Error   lease acquisition timed out after 5192ms
-18-03-2024 06:02:52.425 Info    config reloaded from profile aa947839
-18-03-2024 06:00:41.300 Info    dropped 7662 stale entries during compaction
-18-03-2024 06:02:19.763 Info    background scan finished, 3969 objects visited
-18-03-2024 06:01:29.424 Warn    lease acquisition timed out after 391ms
-18-03-2024 06:03:36.369 Info    checkpoint written at offset 4316
-18-03-2024 06:02:05.330 Info    config reloaded from profile ee36f6ba
-18-03-2024 06:04:49.188 Debug   dropped 5781 stale entries during compaction
-18-03-2024 06:02:33.920 Info    handshake with 192.0.2.5719 completed
-18-03-2024 06:04:04.902 Debug   cache miss for key d774563d
-18-03-2024 06:03:51.018 Info    handshake with 192.0.2.1973 completed
-18-03-2024 06:00:41.750 Info    connection pool resized to 5072
-18-03-2024 06:02:38.840 Debug   checkpoint written at offset 2520
-18-03-2024 06:03:37.620 Info    cache miss for key 64710dfb
-18-03-2024 06:00:49.442 Info    cache miss for key 4be47d3b
-18-03-2024 06:04:27.641 Info    request completed in 3039ms
-18-03-2024 06:05:14.160 Info    config reloaded from profile 9a051040
-18-03-2024 06:02:48.200 Info    dropped 4473 stale entries during compaction
-18-03-2024 06:00:14.314 Info    retrying upstream after 7917ms backoff
-18-03-2024 06:01:22.614 Info    config reloaded from profile a6f63aca
-18-03-2024 06:04:39.364 Debug   dropped 6215 stale entries during compaction
-18-03-2024 06:00:05.915 Info    retrying upstream after 6714ms backoff
-18-03-2024 06:01:34.752 Error   upstream 192.0.2.37 refused connection after 3 attempts
-18-03-2024 06:04:14.100 Info    connection pool resized to 3424
-18-03-2024 06:03:24.368 Info    dropped 4604 stale entries during compaction
-18-03-2024 06:03:30.552 Info    request completed in 1162ms
-18-03-2024 06:02:24.500 Info    background scan finished, 6651 objects visited
-18-03-2024 06:05:12.317 Info    connection pool resized to 5784
-18-03-2024 06:01:41.388 Error   deserialization failed at offset 9339: unexpected token
-18-03-2024 06:04:03.958 Warn    segment e93205a0 failed checksum validation
-18-03-2024 06:02:10.662 Info    handshake with 192.0.2.8154 completed
-18-03-2024 06:02:33.045 Info    flushed 5161 records to segment b0eebe51
-18-03-2024 06:02:56.336 Info    retrying upstream after 8271ms backoff
-18-03-2024 06:00:19.711 Info    queue depth 6664 exceeds soft limit
-18-03-2024 06:05:32.046 Info    dropped 4723 stale entries during compaction
-18-03-2024 06:03:08.980 Info    request completed in 9942ms
-18-03-2024 06:00:30.960 Debug   flushed 4276 records to segment 74e8a771
-18-03-2024 06:02:48.756 Info    lease renewed, ttl 2599s
-18-03-2024 06:00:23.274 Warn    deserialization failed at offset 3389: unexpected token
-18-03-2024 06:01:03.862 Warn    deserialization failed at offset 3874: unexpected token
-18-03-2024 06:02:07.008 Error   lease acquisition timed out after 7140ms
-18-03-2024 06:01:34.285 Debug   shard 6568 rebalanced to node-b01
-18-03-2024 06:00:45.032 Info    background scan finished, 7130 objects visited
-18-03-2024 06:00:08.670 Warn    segment 840d3438 failed checksum validation
-18-03-2024 06:04:42.968 Debug   retrying upstream after 3109ms backoff
-18-03-2024 06:05:08.495 Info    handshake with 192.0.2.2007 completed
-18-03-2024 06:04:12.300 Info    background scan finished, 9670 objects visited
-18-03-2024 06:01:05.325 Warn    segment 2072253a failed checksum validation
-18-03-2024 06:02:43.064 Error   upstream 192.0.2.3331 refused connection after 3 attempts
-18-03-2024 06:03:08.568 Info    dropped 6262 stale entries during compaction
-18-03-2024 06:05:25.128 Info    handshake with 192.0.2.2305 completed
-18-03-2024 06:03:38.750 Debug   lease renewed, ttl 8472s
-18-03-2024 06:05:00.468 Info    connection pool resized to 7696
-18-03-2024 06:02:22.951 Info    checkpoint written at offset 9054
-18-03-2024 06:04:57.642 Info    checkpoint written at offset 4888
-18-03-2024 06:05:11.166 Info    flushed 2766 records to segment 4e32fcfe
-18-03-2024 06:05:01.840 Info    connection pool resized to 5478
-18-03-2024 06:01:45.720 Info    worker 8995 joined the pool
-18-03-2024 06:01:13.206 Warn    deserialization failed at offset 9804: unexpected token
-18-03-2024 06:02:15.982 Warn    upstream 192.0.2.1728 refused connection after 3 attempts
-18-03-2024 06:02:27.628 Info    handshake with 192.0.2.7280 completed
-18-03-2024 06:01:36.465 Info    connection pool resized to 7856
-18-03-2024 06:03:05.174 Debug   connection pool resized to 1112
-18-03-2024 06:00:30.158 Info    lease renewed, ttl 4530s
-18-03-2024 06:01:07.488 Info    dropped 5686 stale entries during compaction
-18-03-2024 06:00:43.561 Info    flushed 7203 records to segment 04b270c9
-18-03-2024 06:02:17.060 Info    cache miss for key c72248c8
-18-03-2024 06:05:02.940 Info    request completed in 2984ms
-18-03-2024 06:03:38.540 Warn    upstream 192.0.2.8367 refused connection after 3 attempts
-18-03-2024 06:05:30.410 Warn    segment 84223406 failed checksum validation
-18-03-2024 06:02:36.450 Info    cache miss for key 9c716f23
-18-03-2024 06:05:22.200 Info    request completed in 4614ms
-18-03-2024 06:01:21.536 Warn    write rejected: quota exceeded by 5191 bytes
-18-03-2024 06:03:29.001 Info    request completed in 3910ms
-18-03-2024 06:03:11.274 Info    cache miss for key 48f33ced
-18-03-2024 06:04:47.680 Info    request completed in 7734ms
-18-03-2024 06:05:42.000 Info    config reloaded from profile d1c2fcc4
-18-03-2024 06:02:13.348 Info    retrying upstream after 295ms backoff
-18-03-2024 06:05:30.132 Info    checkpoint written at offset 1370
-18-03-2024 06:01:32.106 Info    flushed 3808 records to segment 6d629521
-18-03-2024 06:02:12.888 Info    background scan finished, 7984 objects visited
-18-03-2024 06:05:42.995 Warn    deserialization failed at offset 6910: unexpected token
-18-03-2024 06:03:22.038 Info    queue depth 4516 exceeds soft limit
-18-03-2024 06:05:03.845 Info    shard 2128 rebalanced to node-a03
-18-03-2024 06:01:03.560 Info    request completed in 7259ms
-18-03-2024 06:03:24.525 Info    checkpoint written at offset 4427
-18-03-2024 06:03:19.290 Error   lease acquisition timed out after 24ms
-18-03-2024 06:04:56.075 Info    shard 6314 rebalanced to node-c01
-18-03-2024 06:03:23.376 Debug   config reloaded from profile c1f3ff95
-18-03-2024 06:01:31.300 Debug   shard 3158 rebalanced to node-a03
-18-03-2024 06:05:10.760 Error   lease acquisition timed out after 2510ms
-18-03-2024 06:02:36.465 Info    shard 2398 rebalanced to node-b02
-18-03-2024 06:00:46.716 Info    connection pool resized to 9920
-18-03-2024 06:04:44.270 Info    cache miss for key e148a013
-18-03-2024 06:01:54.750 Warn    upstream 192.0.2.7165 refused connection after 3 attempts
-18-03-2024 06:05:24.407 Info    config reloaded from profile 313a9356
-18-03-2024 06:00:29.440 Debug   config reloaded from profile 915d6bd4
-18-03-2024 06:01:30.258 Warn    deserialization failed at offset 2788: unexpected token
-18-03-2024 06:01:51.562 Info    checkpoint written at offset 4451
-18-03-2024 06:03:40.597 Info    background scan finished, 503 objects visited
-18-03-2024 06:00:20.328 Info    lease renewed, ttl 7208s
-18-03-2024 06:05:34.850 Info    connection pool resized to 6683
-18-03-2024 06:01:06.672 Info    config reloaded from profile 4ead0bac
-18-03-2024 06:00:21.321 Debug   config reloaded from profile a153085b
-18-03-2024 06:05:30.368 Info    background scan finished, 4108 objects visited
-18-03-2024 06:04:32.197 Info    cache miss for key 4126bbd4
-18-03-2024 06:05:49.680 Error   upstream 192.0.2.6919 refused connection after 3 attempts
-18-03-2024 06:04:50.472 Info    config reloaded from profile 1b28403f
-18-03-2024 06:00:27.028 Warn    lease acquisition timed out after 1943ms
-18-03-2024 06:00:29.856 Info    config reloaded from profile 18961161
-18-03-2024 06:01:21.258 Info    shard 2503 rebalanced to node-c03
-18-03-2024 06:02:38.950 Info    flushed 5431 records to segment 99714fef
-18-03-2024 06:01:37.344 Warn    lease acquisition timed out after 1334ms
-18-03-2024 06:00:43.102 Info    checkpoint written at offset 1002
-18-03-2024 06:01:05.660 Info    handshake with 192.0.2.293 completed
-18-03-2024 06:00:43.194 Info    config reloaded from profile 6cd8c43f
-18-03-2024 06:00:30.080 Info    queue depth 9245 exceeds soft limit
-18-03-2024 06:04:32.890 Info    cache miss for key f177db9e
-18-03-2024 06:01:24.780 Info    retrying upstream after 357ms backoff
-18-03-2024 06:03:13.315 Debug   shard 7682 rebalanced to node-c01
-18-03-2024 06:00:44.368 Warn    segment 3b206f69 failed checksum validation
-18-03-2024 06:02:03.795 Debug   queue depth 4447 exceeds soft limit
-18-03-2024 06:05:52.858 Info    lease renewed, ttl 6612s
-18-03-2024 06:03:43.492 Info    checkpoint written at offset 5130
-18-03-2024 06:03:47.520 Info    retrying upstream after 1059ms backoff
-18-03-2024 06:02:42.279 Info    config reloaded from profile 6dfbdb79
-18-03-2024 06:03:26.150 Info    handshake with 192.0.2.4044 completed
-18-03-2024 06:05:54.723 Warn    deserialization failed at offset 4101: unexpected token
-18-03-2024 06:05:14.160 Error   deserialization failed at offset 1127: unexpected token
-18-03-2024 06:05:59.281 Info    lease renewed, ttl 5986s
-18-03-2024 06:00:06.678 Info    flushed 7537 records to segment df7fa181
-18-03-2024 06:01:47.915 Info    retrying upstream after 1019ms backoff
-18-03-2024 06:02:16.708 Error   segment 5747c5f7 failed checksum validation
-18-03-2024 06:06:18.015 Debug   handshake with 192.0.2.721 completed
-18-03-2024 06:00:21.076 Info    dropped 1766 stale entries during compaction
-18-03-2024 06:00:16.303 Info    config reloaded from profile 32150c40
-18-03-2024 06:01:46.560 Debug   request completed in 6094ms
-18-03-2024 06:05:39.233 Info    queue depth 4380 exceeds soft limit
-18-03-2024 06:03:22.982 Info    flushed 7895 records to segment 982ef355
-18-03-2024 06:01:02.595 Debug   lease renewed, ttl 8792s
-18-03-2024 06:06:00.536 Info    config reloaded from profile de071545
-18-03-2024 06:02:07.380 Debug   config reloaded from profile ee50904b
-18-03-2024 06:01:08.586 Info    checkpoint written at offset 711
-18-03-2024 06:02:51.159 Warn    segment efca60ff failed checksum validation
-18-03-2024 06:04:59.112 Info    queue depth 7039 exceeds soft limit
-18-03-2024 06:00:17.442 Info    background scan finished, 622 objects visited
-18-03-2024 06:02:19.680 Warn    segment 1fbe2e25 failed checksum validation
-18-03-2024 06:03:41.388 Info    flushed 5868 records to segment b8d60932
-18-03-2024 06:03:47.448 Error   write rejected: quota exceeded by 7760 bytes
-18-03-2024 06:05:02.603 Info    request completed in 7650ms
-18-03-2024 06:00:36.038 Info    lease renewed, ttl 3135s
-18-03-2024 06:00:27.300 Info    request completed in 4276ms
-18-03-2024 06:02:28.352 Warn    deserialization failed at offset 1599: unexpected token
-18-03-2024 06:02:04.079 Warn    write rejected: quota exceeded by 8872 bytes
-18-03-2024 06:00:50.856 Debug   handshake with 192.0.2.3179 completed
-18-03-2024 06:00:49.929 Error   deserialization failed at offset 906: unexpected token
-18-03-2024 06:04:58.900 Info    cache miss for key 38c1491c
-18-03-2024 06:03:44.649 Info    shard 9194 rebalanced to node-b01
-18-03-2024 06:01:49.984 Error   upstream 192.0.2.3206 refused connection after 3 attempts
-18-03-2024 06:01:39.283 Info    retrying upstream after 1522ms backoff
-18-03-2024 06:00:57.072 Warn    lease acquisition timed out after 5428ms
-18-03-2024 06:06:16.270 Warn    lease acquisition timed out after 2680ms
-18-03-2024 06:06:22.568 Info    retrying upstream after 7077ms backoff
-18-03-2024 06:05:44.463 Debug   worker 8519 joined the pool
-18-03-2024 06:06:24.332 Error   deserialization failed at offset 2051: unexpected token
-18-03-2024 06:01:39.889 Info    background scan finished, 1214 objects visited
-18-03-2024 06:04:55.020 Warn    lease acquisition timed out after 3370ms
-18-03-2024 06:00:15.856 Debug   dropped 2957 stale entries during compaction
-18-03-2024 06:03:23.360 Info    shard 465 rebalanced to node-a03
-18-03-2024 06:03:50.376 Error   deserialization failed at offset 3460: unexpected token
-18-03-2024 06:03:39.674 Debug   shard 8860 rebalanced to node-a02
-18-03-2024 06:00:20.895 Info    queue depth 4401 exceeds soft limit
-18-03-2024 06:02:03.504 Info    flushed 472 records to segment 53b6bba3
-18-03-2024 06:00:50.847 Info    cache miss for key ca91fcef
-18-03-2024 06:05:47.304 Info    flushed 9306 records to segment 6938f346
-18-03-2024 06:04:15.744 Info    dropped 2522 stale entries during compaction
-18-03-2024 06:01:38.000 Info    cache miss for key a400cfae
-18-03-2024 06:00:37.037 Debug   config reloaded from profile 7e0994b1
-18-03-2024 06:03:44.448 Warn    deserialization failed at offset 6239: unexpected token
-18-03-2024 06:04:43.849 Info    connection pool resized to 9149
-18-03-2024 06:04:55.176 Debug   connection pool resized to 8588
-18-03-2024 06:02:49.845 Debug   request completed in 3742ms
-18-03-2024 06:03:44.338 Info    checkpoint written at offset 4455
-18-03-2024 06:01:58.826 Info    lease renewed, ttl 195s
-18-03-2024 06:00:21.168 Info    request completed in 1609ms
-18-03-2024 06:01:24.756 Warn    upstream 192.0.2.8471 refused connection after 3 attempts
-18-03-2024 06:01:16.760 Warn    lease acquisition timed out after 5948ms
-18-03-2024 06:03:47.475 Info    request completed in 2504ms
-18-03-2024 06:06:00.272 Info    flushed 720 records to segment 9fe4c897
-18-03-2024 06:06:07.719 Info    checkpoint written at offset 9810
-18-03-2024 06:06:21.264 Warn    segment 84cd928b failed checksum validation
-18-03-2024 06:06:37.880 Info    cache miss for key c539120b
-18-03-2024 06:03:48.600 Debug   background scan finished, 6207 objects visited
-18-03-2024 06:06:14.256 Info    worker 5442 joined the pool
-18-03-2024 06:06:18.696 Warn    write rejected: quota exceeded by 7486 bytes
-18-03-2024 06:04:17.807 Debug   connection pool resized to 7469
-18-03-2024 06:01:17.520 Warn    lease acquisition timed out after 5603ms
-18-03-2024 06:01:42.100 Info    worker 7319 joined the pool
-18-03-2024 06:05:17.842 Info    config reloaded from profile 560ecbfc
-18-03-2024 06:01:22.863 Debug   lease renewed, ttl 586s
-18-03-2024 06:03:09.440 Debug   retrying upstream after 3610ms backoff
-18-03-2024 06:06:30.525 Info    lease renewed, ttl 2553s
-18-03-2024 06:01:06.690 Debug   connection pool resized to 2517
-18-03-2024 06:01:15.998 Warn    deserialization failed at offset 720: unexpected token
-18-03-2024 06:04:19.056 Info    connection pool resized to 4748
-18-03-2024 06:01:00.711 Info    queue depth 3820 exceeds soft limit
-18-03-2024 06:05:11.060 Info    connection pool resized to 2669
-18-03-2024 06:05:38.168 Info    queue depth 191 exceeds soft limit
-18-03-2024 06:01:58.680 Warn    deserialization failed at offset 6523: unexpected token
-18-03-2024 06:04:40.976 Info    retrying upstream after 4395ms backoff
-18-03-2024 06:05:52.594 Info    lease renewed, ttl 2108s
-18-03-2024 06:03:08.370 Warn    segment 77c82dae failed checksum validation
-18-03-2024 06:03:58.280 Error   deserialization failed at offset 3416: unexpected token
-18-03-2024 06:03:34.659 Debug   connection pool resized to 6337
-18-03-2024 06:06:35.478 Info    lease renewed, ttl 2673s
-18-03-2024 06:06:48.327 Error   upstream 192.0.2.2528 refused connection after 3 attempts
-18-03-2024 06:02:33.920 Info    cache miss for key caf30493
-18-03-2024 06:00:46.845 Info    shard 1589 rebalanced to node-c03
-18-03-2024 06:00:16.672 Info    checkpoint written at offset 2474
-18-03-2024 06:04:40.567 Debug   cache miss for key 4f6b98c5
-18-03-2024 06:01:52.752 Info    handshake with 192.0.2.4206 completed
-18-03-2024 06:04:42.150 Warn    segment a013a565 failed checksum validation
-18-03-2024 06:01:26.818 Info    lease renewed, ttl 3975s
-18-03-2024 06:03:51.387 Info    cache miss for key 381d6da1
-18-03-2024 06:04:44.008 Debug   background scan finished, 4628 objects visited
-18-03-2024 06:05:35.680 Debug   connection pool resized to 7051
-18-03-2024 06:03:10.050 Info    retrying upstream after 6009ms backoff
-18-03-2024 06:00:35.734 Info    handshake with 192.0.2.2826 completed
-18-03-2024 06:06:28.188 Info    handshake with 192.0.2.7292 completed
-18-03-2024 06:06:02.232 Info    connection pool resized to 8616
-18-03-2024 06:02:00.156 Warn    lease acquisition timed out after 5289ms
-18-03-2024 06:00:16.880 Debug   lease renewed, ttl 4334s
-18-03-2024 06:00:47.520 Info    cache miss for key dc9daa1a
-18-03-2024 06:01:37.244 Debug   retrying upstream after 7120ms backoff
-18-03-2024 06:00:08.464 Warn    deserialization failed at offset 4356: unexpected token
-18-03-2024 06:00:54.009 Warn    upstream 192.0.2.5343 refused connection after 3 attempts
-18-03-2024 06:02:55.960 Info    handshake with 192.0.2.6299 completed
-18-03-2024 06:05:25.727 Debug   checkpoint written at offset 424
-18-03-2024 06:07:03.738 Info    retrying upstream after 3845ms backoff
-18-03-2024 06:02:22.442 Info    worker 7595 joined the pool
-18-03-2024 06:00:21.280 Info    lease renewed, ttl 1702s
-18-03-2024 06:02:49.335 Info    cache miss for key 5ffe57b1
-18-03-2024 06:04:47.820 Info    retrying upstream after 5456ms backoff
-18-03-2024 06:01:18.958 Info    dropped 8812 stale entries during compaction
-18-03-2024 06:02:44.472 Info    retrying upstream after 8761ms backoff
-18-03-2024 06:01:57.590 Info    flushed 5753 records to segment 471f7e76
-18-03-2024 06:05:09.230 Info    retrying upstream after 7798ms backoff
-18-03-2024 06:04:24.537 Debug   config reloaded from profile 2fde4c03
-18-03-2024 06:04:21.568 Info    shard 5417 rebalanced to node-c01
-18-03-2024 06:05:15.462 Debug   flushed 2377 records to segment d1cbc9b7
-18-03-2024 06:02:32.508 Info    request completed in 6469ms
-18-03-2024 06:04:20.150 Debug   worker 2927 joined the pool
-18-03-2024 06:02:02.664 Info    flushed 2369 records to segment 355bb4c3
-18-03-2024 06:02:28.626 Error   upstream 192.0.2.4006 refused connection after 3 attempts
-18-03-2024 06:01:56.424 Error   lease acquisition timed out after 7708ms
-18-03-2024 06:06:18.729 Info    config reloaded from profile 9c48b2ec
-18-03-2024 06:00:19.440 Info    config reloaded from profile d52142ff
-18-03-2024 06:02:39.988 Info    handshake with 192.0.2.7345 completed
-18-03-2024 06:05:38.666 Info    retrying upstream after 5957ms backoff
-18-03-2024 06:03:39.849 Warn    upstream 192.0.2.9584 refused connection after 3 attempts
-18-03-2024 06:05:51.216 Info    checkpoint written at offset 3489
-18-03-2024 06:02:46.005 Info    shard 6241 rebalanced to node-a01
-18-03-2024 06:02:42.900 Debug   shard 4371 rebalanced to node-c03
-18-03-2024 06:02:26.745 Info    checkpoint written at offset 286
-18-03-2024 06:03:33.248 Warn    lease acquisition timed out after 6731ms
-18-03-2024 06:00:35.937 Warn    write rejected: quota exceeded by 3945 bytes
-18-03-2024 06:04:44.490 Info    checkpoint written at offset 1623
-18-03-2024 06:07:07.672 Info    lease renewed, ttl 7660s
-18-03-2024 06:01:43.740 Warn    deserialization failed at offset 2873: unexpected token
-18-03-2024 06:03:56.088 Error   segment 6117e145 failed checksum validation
-18-03-2024 06:02:05.810 Info    connection pool resized to 5860
-18-03-2024 06:00:42.705 Warn    deserialization failed at offset 5110: unexpected token
-18-03-2024 06:00:12.056 Info    lease renewed, ttl 1231s
-18-03-2024 06:04:23.280 Info    worker 6482 joined the pool
-18-03-2024 06:03:23.130 Warn    deserialization failed at offset 8402: unexpected token
-18-03-2024 06:01:26.821 Info    flushed 5183 records to segment e8ee45f6
-18-03-2024 06:01:54.400 Info    handshake with 192.0.2.3403 completed
-18-03-2024 06:04:00.018 Debug   config reloaded from profile 2df84ada
-18-03-2024 06:01:06.120 Debug   cache miss for key dd1c3036
-18-03-2024 06:00:24.266 Info    dropped 6180 stale entries during compaction
-18-03-2024 06:02:27.936 Debug   shard 4745 rebalanced to node-a01
-18-03-2024 06:00:54.145 Warn    deserialization failed at offset 2421: unexpected token
-18-03-2024 06:06:07.192 Info    worker 9462 joined the pool
-18-03-2024 06:02:37.194 Warn    lease acquisition timed out after 8147ms
-18-03-2024 06:04:05.976 Info    request completed in 1366ms
-18-03-2024 06:01:10.976 Info    flushed 2976 records to segment f190433c
-18-03-2024 06:05:24.120 Info    lease renewed, ttl 967s
-18-03-2024 06:02:28.874 Info    lease renewed, ttl 7281s
-18-03-2024 06:01:01.160 Info    handshake with 192.0.2.783 completed
-18-03-2024 06:05:10.527 Info    lease renewed, ttl 9703s
-18-03-2024 06:05:18.604 Debug   retrying upstream after 1152ms backoff
-18-03-2024 06:06:20.215 Warn    write rejected: quota exceeded by 4098 bytes
-18-03-2024 06:02:55.212 Warn    upstream 192.0.2.6992 refused connection after 3 attempts
-18-03-2024 06:04:18.027 Info    config reloaded from profile 8b26afe0
-18-03-2024 06:05:07.450 Info    request completed in 3983ms
-18-03-2024 06:06:46.197 Info    retrying upstream after 1440ms backoff
-18-03-2024 06:00:52.640 Debug   connection pool resized to 2388
-18-03-2024 06:05:00.428 Info    config reloaded from profile 2cb04034
-18-03-2024 06:03:09.618 Debug   worker 7341 joined the pool
-18-03-2024 06:06:10.590 Error   upstream 192.0.2.4310 refused connection after 3 attempts
-18-03-2024 06:03:39.180 Info    checkpoint written at offset 3270
-18-03-2024 06:01:03.000 Info    request completed in 1965ms
-18-03-2024 06:03:58.712 Debug   cache miss for key ad94aa06
-18-03-2024 06:03:37.511 Debug   connection pool resized to 1577
-18-03-2024 06:04:08.160 Info    handshake with 192.0.2.750 completed
-18-03-2024 06:00:21.451 Warn    upstream 192.0.2.5081 refused connection after 3 attempts
-18-03-2024 06:05:14.140 Info    cache miss for key 17a248e0
-18-03-2024 06:00:37.323 Debug   lease renewed, ttl 6274s
-18-03-2024 06:06:59.972 Info    lease renewed, ttl 9257s
-18-03-2024 06:02:37.487 Warn    write rejected: quota exceeded by 8197 bytes
-18-03-2024 06:06:15.354 Info    cache miss for key 803a7422
-18-03-2024 06:02:29.820 Info    shard 8663 rebalanced to node-a01
-18-03-2024 06:03:43.792 Error   segment 837ede05 failed checksum validation
-18-03-2024 06:04:41.976 Info    background scan finished, 1681 objects visited
-18-03-2024 06:04:46.776 Info    worker 4250 joined the pool
-18-03-2024 06:02:05.290 Info    handshake with 192.0.2.20 completed
-18-03-2024 06:00:58.140 Info    queue depth 7557 exceeds soft limit
-18-03-2024 06:07:23.849 Debug   dropped 8540 stale entries during compaction
-18-03-2024 06:01:15.372 Warn    write rejected: quota exceeded by 8492 bytes
-18-03-2024 06:01:22.296 Warn    upstream 192.0.2.6793 refused connection after 3 attempts
-18-03-2024 06:06:32.392 Error   lease acquisition timed out after 9470ms
-18-03-2024 06:01:13.280 Info    queue depth 251 exceeds soft limit
-18-03-2024 06:05:07.128 Info    config reloaded from profile 5207f1ae
-18-03-2024 06:03:11.549 Info    background scan finished, 1580 objects visited
-18-03-2024 06:01:37.580 Info    handshake with 192.0.2.9725 completed
-18-03-2024 06:00:22.980 Debug   flushed 9809 records to segment 2f7a5afb
-18-03-2024 06:05:35.800 Info    request completed in 6391ms
-18-03-2024 06:04:02.861 Warn    lease acquisition timed out after 8980ms
-18-03-2024 06:03:37.728 Warn    upstream 192.0.2.621 refused connection after 3 attempts
-18-03-2024 06:01:01.109 Info    handshake with 192.0.2.3988 completed
-18-03-2024 06:07:32.368 Warn    upstream 192.0.2.3602 refused connection after 3 attempts
-18-03-2024 06:04:44.130 Warn    upstream 192.0.2.6266 refused connection after 3 attempts
-18-03-2024 06:07:42.400 Warn    deserialization failed at offset 7924: unexpected token
-18-03-2024 06:07:10.404 Debug   checkpoint written at offset 9294
-18-03-2024 06:05:45.084 Warn    lease acquisition timed out after 6493ms
-18-03-2024 06:05:41.905 Info    retrying upstream after 377ms backoff
-18-03-2024 06:06:01.920 Info    shard 9848 rebalanced to node-b01
-18-03-2024 06:05:41.334 Info    shard 5443 rebalanced to node-b02
-18-03-2024 06:05:38.142 Warn    segment e322500c failed checksum validation
-18-03-2024 06:04:49.587 Debug   config reloaded from profile 736fa749
-18-03-2024 06:04:09.096 Info    dropped 2010 stale entries during compaction
-18-03-2024 06:03:57.660 Info    lease renewed, ttl 9539s
-18-03-2024 06:06:46.934 Info    lease renewed, ttl 5647s
-18-03-2024 06:02:20.040 Info    background scan finished, 7110 objects visited
-18-03-2024 06:06:53.472 Info    config reloaded from profile 1a85d2b3
-18-03-2024 06:04:38.222 Info    queue depth 4682 exceeds soft limit
-18-03-2024 06:05:47.490 Info    connection pool resized to 7365
-18-03-2024 06:06:21.746 Debug   retrying upstream after 8563ms backoff
-18-03-2024 06:03:01.660 Debug   shard 7775 rebalanced to node-a03
-18-03-2024 06:06:20.052 Error   lease acquisition timed out after 2819ms
-18-03-2024 06:01:38.616 Info    config reloaded from profile 6ec89e6a
-18-03-2024 06:05:57.200 Info    connection pool resized to 6690
-18-03-2024 06:04:10.488 Info    background scan finished, 6383 objects visited
-18-03-2024 06:01:16.505 Info    cache miss for key 8d677a14
-18-03-2024 06:01:33.062 Debug   cache miss for key eb6bd1ab
-18-03-2024 06:00:11.790 Debug   dropped 7540 stale entries during compaction
-18-03-2024 06:05:45.740 Error   upstream 192.0.2.6870 refused connection after 3 attempts
-18-03-2024 06:01:20.308 Info    checkpoint written at offset 6648
-18-03-2024 06:01:42.834 Debug   retrying upstream after 9277ms backoff
-18-03-2024 06:06:31.573 Warn    write rejected: quota exceeded by 5867 bytes
-18-03-2024 06:04:42.976 Info    worker 2707 joined the pool
-18-03-2024 06:00:05.925 Info    connection pool resized to 7177
-18-03-2024 06:07:37.796 Error   write rejected: quota exceeded by 9898 bytes
-18-03-2024 06:01:11.220 Error   write rejected: quota exceeded by 4805 bytes
-18-03-2024 06:01:27.912 Debug   worker 2509 joined the pool
-18-03-2024 06:04:12.068 Warn    lease acquisition timed out after 1448ms
-18-03-2024 06:04:42.030 Warn    deserialization failed at offset 4558: unexpected token
-18-03-2024 06:07:11.142 Debug   retrying upstream after 7557ms backoff
-18-03-2024 06:04:18.664 Info    connection pool resized to 5394
-18-03-2024 06:00:23.860 Info    config reloaded from profile 4ac24964
-18-03-2024 06:00:04.776 Info    request completed in 4571ms
-18-03-2024 06:01:03.335 Info    background scan finished, 2747 objects visited
-18-03-2024 06:07:15.344 Debug   connection pool resized to 8185
-18-03-2024 06:02:09.276 Info    shard 5963 rebalanced to node-b03
-18-03-2024 06:00:04.792 Info    cache miss for key e3700000
-18-03-2024 06:01:32.323 Info    shard 7702 rebalanced to node-c01
+18-03-2024 06:00:00.158 Debug   flushed 7433 records to segment ca47370a
+18-03-2024 06:00:00.272 Info    handshake with 192.0.2.9268 completed
+18-03-2024 06:00:00.330 Debug   dropped 1214 stale entries during compaction
+18-03-2024 06:00:00.706 Error   segment 32187104 failed checksum validation
+18-03-2024 06:00:00.734 Info    flushed 9329 records to segment c2b5a0c7
+18-03-2024 06:00:00.901 Info    cache miss for key 3f44b407
+18-03-2024 06:00:01.077 Error   segment 3323225c failed checksum validation
+18-03-2024 06:00:01.430 Info    lease renewed, ttl 9107s
+18-03-2024 06:00:01.536 Info    background scan finished, 8127 objects visited
+18-03-2024 06:00:01.840 Info    request completed in 416ms
+18-03-2024 06:00:02.211 Info    checkpoint written at offset 4020
+18-03-2024 06:00:02.509 Warn    lease acquisition timed out after 9821ms
+18-03-2024 06:00:02.557 Info    worker 3091 joined the pool
+18-03-2024 06:00:02.638 Info    flushed 8364 records to segment adc31511
+18-03-2024 06:00:02.838 Info    config reloaded from profile d65b5a12
+18-03-2024 06:00:02.962 Debug   connection pool resized to 9627
+18-03-2024 06:00:03.010 Warn    write rejected: quota exceeded by 9474 bytes
+18-03-2024 06:00:03.340 Info    worker 7069 joined the pool
+18-03-2024 06:00:03.665 Info    dropped 3976 stale entries during compaction
+18-03-2024 06:00:03.676 Error   deserialization failed at offset 4584: unexpected token
+18-03-2024 06:00:03.798 Info    retrying upstream after 8583ms backoff
+18-03-2024 06:00:03.917 Debug   config reloaded from profile ed07320e
+18-03-2024 06:00:03.950 Info    shard 6534 rebalanced to node-c03
+18-03-2024 06:00:04.208 Info    connection pool resized to 6695
+18-03-2024 06:00:04.347 Error   upstream 192.0.2.6016 refused connection after 3 attempts
+18-03-2024 06:00:04.419 Warn    lease acquisition timed out after 1391ms
+18-03-2024 06:00:04.554 Info    background scan finished, 4990 objects visited
+18-03-2024 06:00:04.793 Debug   request completed in 1207ms
+18-03-2024 06:00:04.818 Info    shard 5545 rebalanced to node-b02
+18-03-2024 06:00:05.166 Info    lease renewed, ttl 3326s
+18-03-2024 06:00:05.217 Debug   cache miss for key 499cd54e
+18-03-2024 06:00:05.477 Warn    segment ff9a2f35 failed checksum validation
+18-03-2024 06:00:05.489 Warn    lease acquisition timed out after 7525ms
+18-03-2024 06:00:05.646 Warn    upstream 192.0.2.9659 refused connection after 3 attempts
+18-03-2024 06:00:05.961 Info    checkpoint written at offset 7688
+18-03-2024 06:00:06.013 Warn    upstream 192.0.2.2343 refused connection after 3 attempts
+18-03-2024 06:00:06.077 Error   segment 0d8f90b0 failed checksum validation
+18-03-2024 06:00:06.131 Info    flushed 5343 records to segment ad78e10c
+18-03-2024 06:00:06.164 Warn    lease acquisition timed out after 1652ms
+18-03-2024 06:00:06.307 Info    cache miss for key fdeb2089
+18-03-2024 06:00:06.357 Warn    deserialization failed at offset 6079: unexpected token
+18-03-2024 06:00:06.644 Info    connection pool resized to 4346
+18-03-2024 06:00:06.656 Debug   handshake with 192.0.2.475 completed
+18-03-2024 06:00:06.722 Info    shard 9410 rebalanced to node-a02
+18-03-2024 06:00:06.913 Debug   config reloaded from profile 1f25812d
+18-03-2024 06:00:07.221 Info    handshake with 192.0.2.352 completed
+18-03-2024 06:00:07.503 Info    dropped 9996 stale entries during compaction
+18-03-2024 06:00:07.729 Info    connection pool resized to 2838
+18-03-2024 06:00:07.856 Info    lease renewed, ttl 1385s
+18-03-2024 06:00:08.126 Info    cache miss for key fa7e7bb5
+18-03-2024 06:00:08.385 Debug   request completed in 553ms
+18-03-2024 06:00:08.561 Info    connection pool resized to 8979
+18-03-2024 06:00:08.718 Info    dropped 3198 stale entries during compaction
+18-03-2024 06:00:08.799 Error   lease acquisition timed out after 5224ms
+18-03-2024 06:00:08.942 Warn    write rejected: quota exceeded by 2968 bytes
+18-03-2024 06:00:09.327 Info    checkpoint written at offset 4902
+18-03-2024 06:00:09.399 Info    flushed 5903 records to segment 4497b6cc
+18-03-2024 06:00:09.498 Debug   worker 7467 joined the pool
+18-03-2024 06:00:09.803 Info    config reloaded from profile 3d3814bf
+18-03-2024 06:00:09.877 Warn    lease acquisition timed out after 3758ms
+18-03-2024 06:00:10.120 Info    queue depth 4094 exceeds soft limit
+18-03-2024 06:00:10.145 Info    retrying upstream after 1280ms backoff
+18-03-2024 06:00:10.497 Info    connection pool resized to 5921
+18-03-2024 06:00:10.681 Warn    lease acquisition timed out after 4817ms
+18-03-2024 06:00:10.695 Debug   request completed in 1090ms
+18-03-2024 06:00:11.044 Warn    write rejected: quota exceeded by 8077 bytes
+18-03-2024 06:00:11.088 Debug   handshake with 192.0.2.3944 completed
+18-03-2024 06:00:11.377 Info    lease renewed, ttl 4796s
+18-03-2024 06:00:11.603 Error   deserialization failed at offset 8268: unexpected token
+18-03-2024 06:00:11.716 Info    queue depth 8360 exceeds soft limit
+18-03-2024 06:00:11.978 Info    retrying upstream after 295ms backoff
+18-03-2024 06:00:12.245 Info    background scan finished, 5072 objects visited
+18-03-2024 06:00:12.578 Info    connection pool resized to 4924
+18-03-2024 06:00:12.607 Debug   handshake with 192.0.2.1062 completed
+18-03-2024 06:00:12.805 Warn    lease acquisition timed out after 8384ms
+18-03-2024 06:00:12.936 Info    shard 9791 rebalanced to node-c02
+18-03-2024 06:00:13.081 Warn    lease acquisition timed out after 8283ms
+18-03-2024 06:00:13.257 Debug   background scan finished, 166 objects visited
+18-03-2024 06:00:13.649 Info    cache miss for key fdad40d7
+18-03-2024 06:00:13.746 Info    retrying upstream after 2849ms backoff
+18-03-2024 06:00:13.995 Error   deserialization failed at offset 8640: unexpected token
+18-03-2024 06:00:14.314 Info    cache miss for key 4f32745b
+18-03-2024 06:00:14.705 Error   upstream 192.0.2.7618 refused connection after 3 attempts
+18-03-2024 06:00:14.922 Info    flushed 5953 records to segment 40371061
+18-03-2024 06:00:14.939 Info    dropped 6225 stale entries during compaction
+18-03-2024 06:00:15.317 Info    request completed in 397ms
+18-03-2024 06:00:15.380 Info    retrying upstream after 9547ms backoff
+18-03-2024 06:00:15.391 Info    cache miss for key 1ca24fa4
+18-03-2024 06:00:15.527 Info    background scan finished, 4984 objects visited
+18-03-2024 06:00:15.857 Debug   lease renewed, ttl 9794s
+18-03-2024 06:00:16.015 Debug   dropped 149 stale entries during compaction
+18-03-2024 06:00:16.095 Info    cache miss for key 15779b6b
+18-03-2024 06:00:16.212 Info    cache miss for key 67e1ea11
+18-03-2024 06:00:16.576 Info    worker 9936 joined the pool
+18-03-2024 06:00:16.810 Info    background scan finished, 7278 objects visited
+18-03-2024 06:00:16.964 Info    shard 9016 rebalanced to node-a01
+18-03-2024 06:00:17.275 Info    config reloaded from profile c816b1a3
+18-03-2024 06:00:17.296 Info    config reloaded from profile 2ad39f2c
+18-03-2024 06:00:17.690 Info    connection pool resized to 4795
+18-03-2024 06:00:17.897 Info    flushed 7231 records to segment 30bc2dca
+18-03-2024 06:00:18.291 Info    cache miss for key af357244
+18-03-2024 06:00:18.462 Info    handshake with 192.0.2.682 completed
+18-03-2024 06:00:18.839 Error   write rejected: quota exceeded by 2104 bytes
+18-03-2024 06:00:19.153 Info    cache miss for key 9746d476
+18-03-2024 06:00:19.498 Info    handshake with 192.0.2.235 completed
+18-03-2024 06:00:19.743 Info    lease renewed, ttl 539s
+18-03-2024 06:00:19.785 Info    flushed 3258 records to segment 0cf9cccc
+18-03-2024 06:00:19.960 Error   write rejected: quota exceeded by 4440 bytes
+18-03-2024 06:00:20.325 Info    background scan finished, 1212 objects visited
+18-03-2024 06:00:20.337 Info    connection pool resized to 3832
+18-03-2024 06:00:20.439 Debug   flushed 2135 records to segment e233acd9
+18-03-2024 06:00:20.809 Info    lease renewed, ttl 1520s
+18-03-2024 06:00:21.079 Debug   config reloaded from profile fc56353c
+18-03-2024 06:00:21.226 Info    request completed in 5343ms
+18-03-2024 06:00:21.425 Error   upstream 192.0.2.603 refused connection after 3 attempts
+18-03-2024 06:00:21.759 Error   write rejected: quota exceeded by 2209 bytes
+18-03-2024 06:00:22.053 Info    lease renewed, ttl 9152s
+18-03-2024 06:00:22.412 Warn    upstream 192.0.2.4915 refused connection after 3 attempts
+18-03-2024 06:00:22.568 Info    retrying upstream after 9949ms backoff
+18-03-2024 06:00:22.940 Debug   queue depth 1781 exceeds soft limit
+18-03-2024 06:00:23.015 Warn    lease acquisition timed out after 3929ms
+18-03-2024 06:00:23.263 Debug   queue depth 7004 exceeds soft limit
+18-03-2024 06:00:23.323 Error   upstream 192.0.2.2970 refused connection after 3 attempts
+18-03-2024 06:00:23.349 Info    retrying upstream after 4799ms backoff
+18-03-2024 06:00:23.715 Info    queue depth 1147 exceeds soft limit
+18-03-2024 06:00:23.753 Info    connection pool resized to 6953
+18-03-2024 06:00:24.121 Info    config reloaded from profile c817cf2a
+18-03-2024 06:00:24.517 Error   segment 114fe034 failed checksum validation
+18-03-2024 06:00:24.755 Info    dropped 7374 stale entries during compaction
+18-03-2024 06:00:24.932 Info    shard 854 rebalanced to node-b02
+18-03-2024 06:00:24.957 Info    checkpoint written at offset 7930
+18-03-2024 06:00:25.331 Info    queue depth 8627 exceeds soft limit
+18-03-2024 06:00:25.714 Info    shard 875 rebalanced to node-c02
+18-03-2024 06:00:26.002 Debug   config reloaded from profile 4c9c4f15
+18-03-2024 06:00:26.046 Error   deserialization failed at offset 8276: unexpected token
+18-03-2024 06:00:26.399 Info    background scan finished, 35 objects visited
+18-03-2024 06:00:26.632 Warn    segment 8655e799 failed checksum validation
+18-03-2024 06:00:26.840 Warn    upstream 192.0.2.8530 refused connection after 3 attempts
+18-03-2024 06:00:27.194 Warn    lease acquisition timed out after 5083ms
+18-03-2024 06:00:27.347 Info    shard 3223 rebalanced to node-b01
+18-03-2024 06:00:27.665 Debug   retrying upstream after 2620ms backoff
+18-03-2024 06:00:27.964 Info    checkpoint written at offset 4997
+18-03-2024 06:00:28.295 Error   write rejected: quota exceeded by 1593 bytes
+18-03-2024 06:00:28.652 Info    background scan finished, 289 objects visited
+18-03-2024 06:00:29.026 Info    connection pool resized to 2275
+18-03-2024 06:00:29.290 Debug   lease renewed, ttl 1715s
+18-03-2024 06:00:29.502 Debug   lease renewed, ttl 1201s
+18-03-2024 06:00:29.812 Info    cache miss for key 0cf20db2
+18-03-2024 06:00:30.071 Info    background scan finished, 8123 objects visited
+18-03-2024 06:00:30.240 Info    flushed 8369 records to segment 1c7d9d2c
+18-03-2024 06:00:30.495 Info    retrying upstream after 6067ms backoff
+18-03-2024 06:00:30.664 Info    request completed in 9953ms
+18-03-2024 06:00:30.753 Info    checkpoint written at offset 5858
+18-03-2024 06:00:30.882 Debug   background scan finished, 4222 objects visited
+18-03-2024 06:00:31.034 Error   write rejected: quota exceeded by 7048 bytes
+18-03-2024 06:00:31.227 Warn    write rejected: quota exceeded by 3231 bytes
+18-03-2024 06:00:31.535 Warn    write rejected: quota exceeded by 8564 bytes
+18-03-2024 06:00:31.696 Warn    upstream 192.0.2.3417 refused connection after 3 attempts
+18-03-2024 06:00:31.953 Debug   dropped 3622 stale entries during compaction
+18-03-2024 06:00:32.103 Info    handshake with 192.0.2.998 completed
+18-03-2024 06:00:32.239 Warn    write rejected: quota exceeded by 4932 bytes
+18-03-2024 06:00:32.378 Info    dropped 8363 stale entries during compaction
+18-03-2024 06:00:32.392 Info    connection pool resized to 807
+18-03-2024 06:00:32.512 Info    background scan finished, 149 objects visited
+18-03-2024 06:00:32.863 Info    connection pool resized to 6867
+18-03-2024 06:00:33.059 Info    queue depth 4989 exceeds soft limit
+18-03-2024 06:00:33.100 Warn    lease acquisition timed out after 1978ms
+18-03-2024 06:00:33.228 Info    cache miss for key a3a614d8
+18-03-2024 06:00:33.269 Warn    segment 65f596b6 failed checksum validation
+18-03-2024 06:00:33.492 Info    shard 9135 rebalanced to node-a03
+18-03-2024 06:00:33.614 Debug   queue depth 733 exceeds soft limit
+18-03-2024 06:00:33.985 Info    lease renewed, ttl 2762s
+18-03-2024 06:00:34.016 Info    connection pool resized to 1451
+18-03-2024 06:00:34.024 Info    flushed 5785 records to segment 4cc9de20
+18-03-2024 06:00:34.250 Info    retrying upstream after 8825ms backoff
+18-03-2024 06:00:34.449 Info    retrying upstream after 2078ms backoff
+18-03-2024 06:00:34.692 Warn    upstream 192.0.2.4744 refused connection after 3 attempts
+18-03-2024 06:00:34.813 Debug   queue depth 8693 exceeds soft limit
+18-03-2024 06:00:34.848 Info    request completed in 7420ms
+18-03-2024 06:00:35.132 Warn    write rejected: quota exceeded by 5620 bytes
+18-03-2024 06:00:35.229 Warn    deserialization failed at offset 8321: unexpected token
+18-03-2024 06:00:35.518 Info    background scan finished, 9944 objects visited
+18-03-2024 06:00:35.809 Debug   config reloaded from profile ca4f9ab0
+18-03-2024 06:00:35.901 Info    handshake with 192.0.2.5828 completed
+18-03-2024 06:00:36.040 Info    shard 1817 rebalanced to node-b03
+18-03-2024 06:00:36.316 Info    background scan finished, 5667 objects visited
+18-03-2024 06:00:36.367 Info    queue depth 8469 exceeds soft limit
+18-03-2024 06:00:36.532 Info    handshake with 192.0.2.587 completed
+18-03-2024 06:00:36.582 Info    background scan finished, 1013 objects visited
+18-03-2024 06:00:36.958 Error   lease acquisition timed out after 159ms
+18-03-2024 06:00:37.161 Info    retrying upstream after 8585ms backoff
+18-03-2024 06:00:37.538 Info    request completed in 2509ms
+18-03-2024 06:00:37.846 Info    config reloaded from profile cdc286e4
+18-03-2024 06:00:38.032 Warn    lease acquisition timed out after 6006ms
+18-03-2024 06:00:38.244 Info    flushed 9686 records to segment a60952df
+18-03-2024 06:00:38.301 Info    config reloaded from profile d29772a3
+18-03-2024 06:00:38.341 Info    worker 5203 joined the pool
+18-03-2024 06:00:38.455 Info    connection pool resized to 918
+18-03-2024 06:00:38.649 Info    shard 7935 rebalanced to node-a02
+18-03-2024 06:00:38.838 Error   segment 54d2b0b0 failed checksum validation
+18-03-2024 06:00:38.942 Debug   request completed in 7310ms
+18-03-2024 06:00:39.187 Error   upstream 192.0.2.2368 refused connection after 3 attempts
+18-03-2024 06:00:39.575 Error   deserialization failed at offset 4044: unexpected token
+18-03-2024 06:00:39.905 Warn    lease acquisition timed out after 9188ms
+18-03-2024 06:00:40.109 Info    flushed 7163 records to segment 8910d4db
+18-03-2024 06:00:40.237 Error   write rejected: quota exceeded by 8652 bytes
+18-03-2024 06:00:40.372 Warn    segment 3a6c9ec5 failed checksum validation
+18-03-2024 06:00:40.698 Info    config reloaded from profile d6e88dce
+18-03-2024 06:00:40.742 Info    handshake with 192.0.2.7132 completed
+18-03-2024 06:00:40.815 Error   lease acquisition timed out after 2485ms
+18-03-2024 06:00:40.849 Info    shard 6937 rebalanced to node-b03
+18-03-2024 06:00:41.056 Info    flushed 4894 records to segment 828cd7d5
+18-03-2024 06:00:41.071 Info    request completed in 5114ms
+18-03-2024 06:00:41.282 Info    retrying upstream after 9036ms backoff
+18-03-2024 06:00:41.555 Info    connection pool resized to 3982
+18-03-2024 06:00:41.750 Info    cache miss for key 448fbd94
+18-03-2024 06:00:42.010 Info    connection pool resized to 5687
+18-03-2024 06:00:42.247 Debug   lease renewed, ttl 915s
+18-03-2024 06:00:42.254 Info    queue depth 7671 exceeds soft limit
+18-03-2024 06:00:42.258 Info    checkpoint written at offset 6547
+18-03-2024 06:00:42.349 Info    shard 256 rebalanced to node-b03
+18-03-2024 06:00:42.358 Warn    upstream 192.0.2.3332 refused connection after 3 attempts
+18-03-2024 06:00:42.652 Info    retrying upstream after 8644ms backoff
+18-03-2024 06:00:43.039 Info    retrying upstream after 9766ms backoff
+18-03-2024 06:00:43.240 Info    lease renewed, ttl 8826s
+18-03-2024 06:00:43.426 Info    request completed in 353ms
+18-03-2024 06:00:43.623 Info    lease renewed, ttl 1053s
+18-03-2024 06:00:43.809 Info    connection pool resized to 8064
+18-03-2024 06:00:44.155 Info    request completed in 3499ms
+18-03-2024 06:00:44.500 Debug   lease renewed, ttl 2517s
+18-03-2024 06:00:44.825 Info    shard 4858 rebalanced to node-a03
+18-03-2024 06:00:45.005 Info    worker 4452 joined the pool
+18-03-2024 06:00:45.244 Debug   worker 7848 joined the pool
+18-03-2024 06:00:45.431 Info    shard 7289 rebalanced to node-a01
+18-03-2024 06:00:45.823 Debug   shard 5509 rebalanced to node-c03
+18-03-2024 06:00:45.903 Error   upstream 192.0.2.2280 refused connection after 3 attempts
+18-03-2024 06:00:45.968 Warn    write rejected: quota exceeded by 5740 bytes
+18-03-2024 06:00:46.255 Info    retrying upstream after 3664ms backoff
+18-03-2024 06:00:46.614 Info    background scan finished, 6516 objects visited
+18-03-2024 06:00:46.804 Debug   background scan finished, 8683 objects visited
+18-03-2024 06:00:47.173 Info    checkpoint written at offset 1297
+18-03-2024 06:00:47.254 Error   lease acquisition timed out after 3011ms
+18-03-2024 06:00:47.276 Info    config reloaded from profile 5323a7da
+18-03-2024 06:00:47.590 Debug   config reloaded from profile 3b66c922
+18-03-2024 06:00:47.672 Info    background scan finished, 6287 objects visited
+18-03-2024 06:00:47.979 Info    handshake with 192.0.2.8461 completed
+18-03-2024 06:00:48.077 Warn    upstream 192.0.2.3960 refused connection after 3 attempts
+18-03-2024 06:00:48.088 Info    queue depth 4661 exceeds soft limit
+18-03-2024 06:00:48.400 Info    connection pool resized to 8756
+18-03-2024 06:00:48.672 Info    worker 3368 joined the pool
+18-03-2024 06:00:48.902 Error   upstream 192.0.2.617 refused connection after 3 attempts
+18-03-2024 06:00:49.173 Info    cache miss for key dd8ebe04
+18-03-2024 06:00:49.436 Info    queue depth 7833 exceeds soft limit
+18-03-2024 06:00:49.555 Info    worker 5419 joined the pool
+18-03-2024 06:00:49.677 Debug   handshake with 192.0.2.3265 completed
+18-03-2024 06:00:49.875 Info    background scan finished, 9083 objects visited
+18-03-2024 06:00:49.918 Debug   config reloaded from profile 07ee0397
+18-03-2024 06:00:50.298 Info    handshake with 192.0.2.5343 completed
+18-03-2024 06:00:50.536 Info    queue depth 5015 exceeds soft limit
+18-03-2024 06:00:50.734 Info    cache miss for key 6236aa23
+18-03-2024 06:00:50.882 Info    retrying upstream after 2353ms backoff
+18-03-2024 06:00:51.234 Info    lease renewed, ttl 4607s
+18-03-2024 06:00:51.634 Info    connection pool resized to 9477
+18-03-2024 06:00:51.898 Info    retrying upstream after 6849ms backoff
+18-03-2024 06:00:52.045 Info    checkpoint written at offset 1983
+18-03-2024 06:00:52.228 Info    background scan finished, 6009 objects visited
+18-03-2024 06:00:52.548 Error   upstream 192.0.2.6555 refused connection after 3 attempts
+18-03-2024 06:00:52.596 Info    checkpoint written at offset 3858
+18-03-2024 06:00:52.679 Info    handshake with 192.0.2.373 completed
+18-03-2024 06:00:52.987 Info    cache miss for key 51f934f8
+18-03-2024 06:00:53.202 Debug   queue depth 4328 exceeds soft limit
+18-03-2024 06:00:53.598 Info    background scan finished, 6789 objects visited
+18-03-2024 06:00:53.790 Debug   background scan finished, 2853 objects visited
+18-03-2024 06:00:53.815 Info    connection pool resized to 8083
+18-03-2024 06:00:54.110 Debug   flushed 6656 records to segment 5a0c3417
+18-03-2024 06:00:54.236 Warn    deserialization failed at offset 2205: unexpected token
+18-03-2024 06:00:54.279 Info    request completed in 5767ms
+18-03-2024 06:00:54.494 Info    request completed in 2125ms
+18-03-2024 06:00:54.825 Info    config reloaded from profile 2a954b2d
+18-03-2024 06:00:55.161 Debug   shard 2688 rebalanced to node-a02
+18-03-2024 06:00:55.558 Info    config reloaded from profile ddeacf11
+18-03-2024 06:00:55.658 Info    request completed in 5061ms
+18-03-2024 06:00:55.862 Warn    upstream 192.0.2.1866 refused connection after 3 attempts
+18-03-2024 06:00:55.979 Info    retrying upstream after 3819ms backoff
+18-03-2024 06:00:56.333 Warn    upstream 192.0.2.28 refused connection after 3 attempts
+18-03-2024 06:00:56.714 Warn    segment 6f201a09 failed checksum validation
+18-03-2024 06:00:56.850 Info    config reloaded from profile 9d746e9a
+18-03-2024 06:00:57.090 Debug   handshake with 192.0.2.718 completed
+18-03-2024 06:00:57.189 Info    worker 3520 joined the pool
+18-03-2024 06:00:57.530 Info    cache miss for key fa248300
+18-03-2024 06:00:57.645 Info    worker 9742 joined the pool
+18-03-2024 06:00:57.766 Info    config reloaded from profile c20fa3b8
+18-03-2024 06:00:58.084 Error   upstream 192.0.2.8725 refused connection after 3 attempts
+18-03-2024 06:00:58.252 Info    queue depth 8259 exceeds soft limit
+18-03-2024 06:00:58.498 Error   upstream 192.0.2.5798 refused connection after 3 attempts
+18-03-2024 06:00:58.546 Warn    write rejected: quota exceeded by 328 bytes
+18-03-2024 06:00:58.888 Info    config reloaded from profile eccd8e26
+18-03-2024 06:00:58.899 Debug   handshake with 192.0.2.885 completed
+18-03-2024 06:00:59.147 Warn    deserialization failed at offset 7591: unexpected token
+18-03-2024 06:00:59.428 Info    dropped 4561 stale entries during compaction
+18-03-2024 06:00:59.689 Info    flushed 4382 records to segment 960ad857
+18-03-2024 06:00:59.863 Warn    deserialization failed at offset 4614: unexpected token
+18-03-2024 06:01:00.262 Info    flushed 259 records to segment dce6a9cd
+18-03-2024 06:01:00.437 Info    background scan finished, 667 objects visited
+18-03-2024 06:01:00.670 Info    flushed 2711 records to segment d00955c8
+18-03-2024 06:01:00.917 Info    config reloaded from profile aefe7d5e
+18-03-2024 06:01:01.255 Info    cache miss for key 52d868b0
+18-03-2024 06:01:01.575 Info    cache miss for key 47ae5e42
+18-03-2024 06:01:01.812 Info    cache miss for key 24871699
+18-03-2024 06:01:01.982 Warn    write rejected: quota exceeded by 3225 bytes
+18-03-2024 06:01:02.170 Info    dropped 7635 stale entries during compaction
+18-03-2024 06:01:02.217 Debug   flushed 2726 records to segment 99772753
+18-03-2024 06:01:02.612 Debug   queue depth 6492 exceeds soft limit
+18-03-2024 06:01:02.692 Info    worker 5294 joined the pool
+18-03-2024 06:01:03.086 Info    background scan finished, 5544 objects visited
+18-03-2024 06:01:03.351 Info    handshake with 192.0.2.4235 completed
+18-03-2024 06:01:03.723 Info    config reloaded from profile ba4d8162
+18-03-2024 06:01:04.056 Debug   dropped 2789 stale entries during compaction
+18-03-2024 06:01:04.283 Debug   connection pool resized to 938
+18-03-2024 06:01:04.299 Info    connection pool resized to 3669
+18-03-2024 06:01:04.510 Warn    write rejected: quota exceeded by 869 bytes
+18-03-2024 06:01:04.679 Debug   worker 4479 joined the pool
+18-03-2024 06:01:04.912 Debug   worker 7579 joined the pool
+18-03-2024 06:01:05.004 Debug   retrying upstream after 8510ms backoff
+18-03-2024 06:01:05.315 Info    lease renewed, ttl 9927s
+18-03-2024 06:01:05.687 Debug   config reloaded from profile 8b89ba97
+18-03-2024 06:01:05.892 Info    cache miss for key ef956199
+18-03-2024 06:01:06.013 Info    lease renewed, ttl 8304s
+18-03-2024 06:01:06.343 Info    connection pool resized to 1861
+18-03-2024 06:01:06.724 Debug   background scan finished, 9545 objects visited
+18-03-2024 06:01:07.090 Info    cache miss for key 8bf8f5b1
+18-03-2024 06:01:07.152 Info    retrying upstream after 2483ms backoff
+18-03-2024 06:01:07.465 Warn    deserialization failed at offset 6074: unexpected token
+18-03-2024 06:01:07.508 Warn    segment 19f6fae2 failed checksum validation
+18-03-2024 06:01:07.824 Debug   retrying upstream after 8523ms backoff
+18-03-2024 06:01:08.216 Debug   retrying upstream after 917ms backoff
+18-03-2024 06:01:08.391 Info    config reloaded from profile b9499116
+18-03-2024 06:01:08.698 Debug   cache miss for key 1ca59c88
+18-03-2024 06:01:08.711 Info    connection pool resized to 1963
+18-03-2024 06:01:08.907 Warn    lease acquisition timed out after 285ms
+18-03-2024 06:01:09.248 Warn    write rejected: quota exceeded by 253 bytes
+18-03-2024 06:01:09.387 Warn    deserialization failed at offset 2729: unexpected token
+18-03-2024 06:01:09.698 Info    retrying upstream after 5505ms backoff
+18-03-2024 06:01:09.763 Warn    upstream 192.0.2.7744 refused connection after 3 attempts
+18-03-2024 06:01:09.877 Warn    upstream 192.0.2.4150 refused connection after 3 attempts
+18-03-2024 06:01:10.109 Warn    lease acquisition timed out after 5868ms
+18-03-2024 06:01:10.237 Debug   background scan finished, 7603 objects visited
+18-03-2024 06:01:10.310 Info    connection pool resized to 5445
+18-03-2024 06:01:10.430 Info    checkpoint written at offset 4717
+18-03-2024 06:01:10.793 Info    retrying upstream after 2780ms backoff
+18-03-2024 06:01:11.070 Info    lease renewed, ttl 4083s
+18-03-2024 06:01:11.244 Debug   shard 1443 rebalanced to node-b02
+18-03-2024 06:01:11.642 Info    background scan finished, 7319 objects visited
+18-03-2024 06:01:11.662 Warn    write rejected: quota exceeded by 9603 bytes
+18-03-2024 06:01:11.849 Info    connection pool resized to 1350
+18-03-2024 06:01:12.069 Debug   shard 95 rebalanced to node-c03
+18-03-2024 06:01:12.272 Info    checkpoint written at offset 2810
+18-03-2024 06:01:12.510 Info    request completed in 8157ms
+18-03-2024 06:01:12.514 Warn    upstream 192.0.2.8041 refused connection after 3 attempts
+18-03-2024 06:01:12.663 Info    retrying upstream after 114ms backoff
+18-03-2024 06:01:12.812 Info    worker 3770 joined the pool
+18-03-2024 06:01:13.083 Info    lease renewed, ttl 6803s
+18-03-2024 06:01:13.405 Info    flushed 549 records to segment 34a22766
+18-03-2024 06:01:13.437 Warn    segment 548f03e5 failed checksum validation
+18-03-2024 06:01:13.605 Debug   flushed 1040 records to segment be77d3e0
+18-03-2024 06:01:13.805 Debug   request completed in 6089ms
+18-03-2024 06:01:14.082 Info    background scan finished, 3052 objects visited
+18-03-2024 06:01:14.272 Info    cache miss for key cefaaf75
+18-03-2024 06:01:14.453 Info    retrying upstream after 4247ms backoff
+18-03-2024 06:01:14.568 Warn    deserialization failed at offset 6893: unexpected token
+18-03-2024 06:01:14.755 Info    worker 5218 joined the pool
+18-03-2024 06:01:15.153 Debug   retrying upstream after 2670ms backoff
+18-03-2024 06:01:15.507 Info    lease renewed, ttl 2056s
+18-03-2024 06:01:15.752 Info    background scan finished, 154 objects visited
+18-03-2024 06:01:16.105 Info    config reloaded from profile a44ec0ab
+18-03-2024 06:01:16.251 Warn    write rejected: quota exceeded by 6369 bytes
+18-03-2024 06:01:16.322 Info    shard 5398 rebalanced to node-b03
+18-03-2024 06:01:16.481 Info    request completed in 1588ms
+18-03-2024 06:01:16.510 Debug   queue depth 9944 exceeds soft limit
+18-03-2024 06:01:16.745 Warn    upstream 192.0.2.8996 refused connection after 3 attempts
+18-03-2024 06:01:16.891 Warn    deserialization failed at offset 474: unexpected token
+18-03-2024 06:01:17.099 Debug   request completed in 8787ms
+18-03-2024 06:01:17.221 Info    cache miss for key f81c45d9
+18-03-2024 06:01:17.273 Info    dropped 3416 stale entries during compaction
+18-03-2024 06:01:17.315 Debug   checkpoint written at offset 8838
+18-03-2024 06:01:17.472 Debug   retrying upstream after 7641ms backoff
+18-03-2024 06:01:17.655 Info    retrying upstream after 5098ms backoff
+18-03-2024 06:01:17.689 Info    retrying upstream after 6178ms backoff
+18-03-2024 06:01:17.806 Info    retrying upstream after 1609ms backoff
+18-03-2024 06:01:18.149 Info    lease renewed, ttl 8446s
+18-03-2024 06:01:18.238 Info    checkpoint written at offset 5607
+18-03-2024 06:01:18.406 Info    retrying upstream after 161ms backoff
+18-03-2024 06:01:18.441 Info    flushed 861 records to segment 087ba9d7
+18-03-2024 06:01:18.780 Warn    write rejected: quota exceeded by 4398 bytes
+18-03-2024 06:01:18.931 Info    lease renewed, ttl 478s
+18-03-2024 06:01:19.007 Info    config reloaded from profile 9003910a
+18-03-2024 06:01:19.359 Info    shard 5074 rebalanced to node-c02
+18-03-2024 06:01:19.461 Error   upstream 192.0.2.3204 refused connection after 3 attempts
+18-03-2024 06:01:19.807 Info    flushed 8331 records to segment 229aba6a
+18-03-2024 06:01:19.898 Warn    upstream 192.0.2.3155 refused connection after 3 attempts
+18-03-2024 06:01:19.910 Info    cache miss for key 5c1651f5
+18-03-2024 06:01:20.278 Warn    deserialization failed at offset 5016: unexpected token
+18-03-2024 06:01:20.438 Warn    segment d6712d16 failed checksum validation
+18-03-2024 06:01:20.469 Debug   dropped 708 stale entries during compaction
+18-03-2024 06:01:20.755 Info    handshake with 192.0.2.6557 completed
+18-03-2024 06:01:21.040 Info    dropped 2305 stale entries during compaction
+18-03-2024 06:01:21.262 Info    config reloaded from profile 9cdbd465
+18-03-2024 06:01:21.442 Error   segment 07d2c53d failed checksum validation
+18-03-2024 06:01:21.733 Info    dropped 4387 stale entries during compaction
+18-03-2024 06:01:21.857 Info    flushed 3618 records to segment 507d58f9
+18-03-2024 06:01:22.072 Error   lease acquisition timed out after 4680ms
+18-03-2024 06:01:22.172 Debug   background scan finished, 2480 objects visited
+18-03-2024 06:01:22.477 Warn    lease acquisition timed out after 306ms
+18-03-2024 06:01:22.714 Info    retrying upstream after 3731ms backoff
+18-03-2024 06:01:22.961 Warn    segment f713fed5 failed checksum validation
+18-03-2024 06:01:23.149 Info    request completed in 3304ms
+18-03-2024 06:01:23.194 Info    worker 887 joined the pool
+18-03-2024 06:01:23.331 Info    worker 5400 joined the pool
+18-03-2024 06:01:23.679 Info    dropped 979 stale entries during compaction
+18-03-2024 06:01:23.930 Info    config reloaded from profile 69fc3e67
+18-03-2024 06:01:24.300 Warn    segment 0718738f failed checksum validation
+18-03-2024 06:01:24.649 Info    handshake with 192.0.2.9982 completed
+18-03-2024 06:01:24.673 Info    flushed 9424 records to segment 19ccae2a
+18-03-2024 06:01:25.034 Warn    segment df78f79c failed checksum validation
+18-03-2024 06:01:25.258 Debug   dropped 1239 stale entries during compaction
+18-03-2024 06:01:25.262 Debug   connection pool resized to 1084
+18-03-2024 06:01:25.468 Error   upstream 192.0.2.7009 refused connection after 3 attempts
+18-03-2024 06:01:25.543 Info    connection pool resized to 5223
+18-03-2024 06:01:25.653 Warn    write rejected: quota exceeded by 7245 bytes
+18-03-2024 06:01:26.001 Info    handshake with 192.0.2.517 completed
+18-03-2024 06:01:26.281 Debug   shard 5341 rebalanced to node-b02
+18-03-2024 06:01:26.549 Info    lease renewed, ttl 8376s
+18-03-2024 06:01:26.836 Info    request completed in 2323ms
+18-03-2024 06:01:27.151 Info    queue depth 626 exceeds soft limit
+18-03-2024 06:01:27.414 Error   write rejected: quota exceeded by 2123 bytes
+18-03-2024 06:01:27.758 Error   upstream 192.0.2.4630 refused connection after 3 attempts
+18-03-2024 06:01:27.974 Info    cache miss for key 2b8adfc2
+18-03-2024 06:01:28.172 Info    handshake with 192.0.2.8952 completed
+18-03-2024 06:01:28.261 Info    request completed in 6102ms
+18-03-2024 06:01:28.403 Error   lease acquisition timed out after 6213ms
+18-03-2024 06:01:28.495 Info    retrying upstream after 2654ms backoff
+18-03-2024 06:01:28.673 Info    worker 1221 joined the pool
+18-03-2024 06:01:29.008 Info    dropped 2858 stale entries during compaction
+18-03-2024 06:01:29.222 Warn    segment 5b5d65d9 failed checksum validation
+18-03-2024 06:01:29.354 Info    connection pool resized to 3361
+18-03-2024 06:01:29.359 Info    flushed 5977 records to segment c186c4e0
+18-03-2024 06:01:29.651 Error   lease acquisition timed out after 1680ms
+18-03-2024 06:01:29.898 Error   deserialization failed at offset 7557: unexpected token
+18-03-2024 06:01:30.021 Info    connection pool resized to 2227
+18-03-2024 06:01:30.087 Info    request completed in 1629ms
+18-03-2024 06:01:30.115 Warn    upstream 192.0.2.2926 refused connection after 3 attempts
+18-03-2024 06:01:30.324 Debug   dropped 4815 stale entries during compaction
+18-03-2024 06:01:30.404 Info    dropped 7470 stale entries during compaction
+18-03-2024 06:01:30.680 Info    flushed 3594 records to segment c46947cc
+18-03-2024 06:01:31.028 Warn    write rejected: quota exceeded by 6033 bytes
+18-03-2024 06:01:31.276 Info    handshake with 192.0.2.2528 completed
+18-03-2024 06:01:31.647 Warn    upstream 192.0.2.4187 refused connection after 3 attempts
+18-03-2024 06:01:31.873 Info    config reloaded from profile 78fa0a1f
+18-03-2024 06:01:32.155 Info    dropped 9856 stale entries during compaction
+18-03-2024 06:01:32.238 Info    flushed 1123 records to segment ad5518b0
+18-03-2024 06:01:32.539 Error   segment 9f2072a4 failed checksum validation
+18-03-2024 06:01:32.707 Info    flushed 1843 records to segment bb1e4207
+18-03-2024 06:01:32.790 Warn    lease acquisition timed out after 3268ms
+18-03-2024 06:01:33.077 Debug   worker 4593 joined the pool
+18-03-2024 06:01:33.119 Error   upstream 192.0.2.1456 refused connection after 3 attempts
+18-03-2024 06:01:33.133 Warn    write rejected: quota exceeded by 3758 bytes
+18-03-2024 06:01:33.296 Debug   request completed in 7696ms
+18-03-2024 06:01:33.686 Info    worker 5542 joined the pool
+18-03-2024 06:01:33.714 Debug   cache miss for key 33e32b57
+18-03-2024 06:01:33.869 Info    shard 4815 rebalanced to node-b02
+18-03-2024 06:01:34.177 Error   deserialization failed at offset 5402: unexpected token
+18-03-2024 06:01:34.325 Warn    upstream 192.0.2.7445 refused connection after 3 attempts
+18-03-2024 06:01:34.444 Debug   background scan finished, 7566 objects visited
+18-03-2024 06:01:34.785 Info    shard 6487 rebalanced to node-a02
+18-03-2024 06:01:34.863 Error   write rejected: quota exceeded by 269 bytes
+18-03-2024 06:01:35.040 Info    lease renewed, ttl 236s
+18-03-2024 06:01:35.153 Info    background scan finished, 3388 objects visited
+18-03-2024 06:01:35.386 Warn    segment 7c623922 failed checksum validation
+18-03-2024 06:01:35.660 Info    checkpoint written at offset 304
+18-03-2024 06:01:35.808 Info    connection pool resized to 7571
+18-03-2024 06:01:36.189 Warn    segment a39f339d failed checksum validation
+18-03-2024 06:01:36.421 Error   segment 8fc49c99 failed checksum validation
+18-03-2024 06:01:36.797 Info    handshake with 192.0.2.3917 completed
+18-03-2024 06:01:36.819 Info    config reloaded from profile cc37bb2e
+18-03-2024 06:01:37.042 Warn    upstream 192.0.2.933 refused connection after 3 attempts
+18-03-2024 06:01:37.278 Info    connection pool resized to 3648
+18-03-2024 06:01:37.343 Info    retrying upstream after 4255ms backoff
+18-03-2024 06:01:37.372 Info    background scan finished, 9092 objects visited
+18-03-2024 06:01:37.633 Info    config reloaded from profile 1f3a7562
+18-03-2024 06:01:37.724 Debug   cache miss for key 7fbdbc98
+18-03-2024 06:01:38.058 Error   upstream 192.0.2.601 refused connection after 3 attempts
+18-03-2024 06:01:38.387 Info    retrying upstream after 1423ms backoff
+18-03-2024 06:01:38.688 Info    retrying upstream after 641ms backoff
+18-03-2024 06:01:38.725 Debug   dropped 4676 stale entries during compaction
+18-03-2024 06:01:38.944 Debug   connection pool resized to 891
+18-03-2024 06:01:39.083 Info    shard 7468 rebalanced to node-a03
+18-03-2024 06:01:39.163 Info    lease renewed, ttl 8894s
+18-03-2024 06:01:39.184 Info    flushed 4499 records to segment b9956f79
+18-03-2024 06:01:39.486 Info    shard 4019 rebalanced to node-a03
+18-03-2024 06:01:39.583 Info    background scan finished, 1629 objects visited
+18-03-2024 06:01:39.603 Info    background scan finished, 4248 objects visited
+18-03-2024 06:01:39.714 Info    config reloaded from profile c13d19bc
+18-03-2024 06:01:40.012 Debug   checkpoint written at offset 1439
+18-03-2024 06:01:40.323 Debug   config reloaded from profile 6f61ec44
+18-03-2024 06:01:40.645 Warn    deserialization failed at offset 5214: unexpected token
+18-03-2024 06:01:40.857 Warn    lease acquisition timed out after 320ms
+18-03-2024 06:01:41.068 Info    checkpoint written at offset 125
+18-03-2024 06:01:41.386 Info    retrying upstream after 839ms backoff
+18-03-2024 06:01:41.511 Info    lease renewed, ttl 2612s
+18-03-2024 06:01:41.526 Info    queue depth 8854 exceeds soft limit
+18-03-2024 06:01:41.851 Info    flushed 692 records to segment beba4946
+18-03-2024 06:01:42.158 Debug   dropped 4870 stale entries during compaction
+18-03-2024 06:01:42.183 Info    handshake with 192.0.2.214 completed
+18-03-2024 06:01:42.488 Info    queue depth 6033 exceeds soft limit
+18-03-2024 06:01:42.570 Info    connection pool resized to 3388
+18-03-2024 06:01:42.636 Error   write rejected: quota exceeded by 4908 bytes
+18-03-2024 06:01:42.963 Warn    upstream 192.0.2.7573 refused connection after 3 attempts
+18-03-2024 06:01:43.008 Info    retrying upstream after 811ms backoff
+18-03-2024 06:01:43.353 Info    retrying upstream after 4020ms backoff
+18-03-2024 06:01:43.600 Info    cache miss for key aedd46ea
+18-03-2024 06:01:43.966 Info    lease renewed, ttl 3066s
+18-03-2024 06:01:44.358 Debug   queue depth 3534 exceeds soft limit
+18-03-2024 06:01:44.541 Info    request completed in 4805ms
+18-03-2024 06:01:44.607 Info    retrying upstream after 3917ms backoff
+18-03-2024 06:01:44.641 Warn    lease acquisition timed out after 3718ms
+18-03-2024 06:01:44.969 Debug   shard 6173 rebalanced to node-c03
+18-03-2024 06:01:45.328 Warn    segment e80962b5 failed checksum validation
+18-03-2024 06:01:45.642 Error   write rejected: quota exceeded by 1008 bytes
+18-03-2024 06:01:45.754 Info    shard 1542 rebalanced to node-b03
+18-03-2024 06:01:45.827 Info    retrying upstream after 9771ms backoff
+18-03-2024 06:01:46.082 Warn    deserialization failed at offset 2624: unexpected token
+18-03-2024 06:01:46.124 Info    retrying upstream after 7789ms backoff
+18-03-2024 06:01:46.478 Debug   dropped 2968 stale entries during compaction
+18-03-2024 06:01:46.530 Info    shard 8679 rebalanced to node-b03
+18-03-2024 06:01:46.617 Info    queue depth 2809 exceeds soft limit
+18-03-2024 06:01:46.765 Debug   flushed 7848 records to segment 34752f4a
+18-03-2024 06:01:47.097 Debug   connection pool resized to 9387
+18-03-2024 06:01:47.301 Info    shard 6945 rebalanced to node-c01
+18-03-2024 06:01:47.521 Info    checkpoint written at offset 8849
+18-03-2024 06:01:47.757 Warn    upstream 192.0.2.4169 refused connection after 3 attempts
+18-03-2024 06:01:48.099 Info    flushed 5677 records to segment 4edc9d37
+18-03-2024 06:01:48.427 Info    checkpoint written at offset 805
+18-03-2024 06:01:48.512 Info    request completed in 7068ms
+18-03-2024 06:01:48.653 Info    retrying upstream after 7653ms backoff
+18-03-2024 06:01:49.028 Info    config reloaded from profile eee58b8c
+18-03-2024 06:01:49.243 Warn    upstream 192.0.2.1717 refused connection after 3 attempts
+18-03-2024 06:01:49.581 Debug   handshake with 192.0.2.8464 completed
+18-03-2024 06:01:49.829 Info    worker 9424 joined the pool
+18-03-2024 06:01:50.030 Debug   retrying upstream after 8017ms backoff
+18-03-2024 06:01:50.406 Info    request completed in 4217ms
+18-03-2024 06:01:50.420 Info    config reloaded from profile 47d45415
+18-03-2024 06:01:50.494 Info    shard 5741 rebalanced to node-a03
+18-03-2024 06:01:50.591 Info    shard 1293 rebalanced to node-b02
+18-03-2024 06:01:50.714 Debug   lease renewed, ttl 9130s
+18-03-2024 06:01:50.827 Info    shard 5604 rebalanced to node-a01
+18-03-2024 06:01:51.189 Warn    upstream 192.0.2.5269 refused connection after 3 attempts
+18-03-2024 06:01:51.326 Info    lease renewed, ttl 1351s
+18-03-2024 06:01:51.454 Warn    write rejected: quota exceeded by 122 bytes
+18-03-2024 06:01:51.533 Debug   shard 4705 rebalanced to node-b03
+18-03-2024 06:01:51.872 Info    queue depth 6274 exceeds soft limit
+18-03-2024 06:01:51.993 Info    request completed in 6086ms
+18-03-2024 06:01:52.244 Info    background scan finished, 1903 objects visited
+18-03-2024 06:01:52.327 Error   lease acquisition timed out after 2117ms
+18-03-2024 06:01:52.360 Debug   connection pool resized to 2439
+18-03-2024 06:01:52.611 Info    checkpoint written at offset 3292
+18-03-2024 06:01:52.919 Debug   queue depth 8680 exceeds soft limit
+18-03-2024 06:01:52.954 Info    flushed 9396 records to segment 89bb6a4a
+18-03-2024 06:01:53.303 Info    checkpoint written at offset 9627
+18-03-2024 06:01:53.465 Info    handshake with 192.0.2.6632 completed
+18-03-2024 06:01:53.832 Info    handshake with 192.0.2.5311 completed
+18-03-2024 06:01:54.159 Info    handshake with 192.0.2.9597 completed
+18-03-2024 06:01:54.558 Info    checkpoint written at offset 7626
+18-03-2024 06:01:54.862 Info    flushed 786 records to segment 53649d88
+18-03-2024 06:01:55.049 Info    lease renewed, ttl 9099s
+18-03-2024 06:01:55.187 Warn    lease acquisition timed out after 5394ms
+18-03-2024 06:01:55.228 Info    config reloaded from profile 43bfcddf
+18-03-2024 06:01:55.300 Info    retrying upstream after 7479ms backoff
+18-03-2024 06:01:55.469 Warn    lease acquisition timed out after 6851ms
+18-03-2024 06:01:55.510 Info    checkpoint written at offset 7985
+18-03-2024 06:01:55.653 Info    worker 67 joined the pool
+18-03-2024 06:01:55.804 Error   write rejected: quota exceeded by 9329 bytes
+18-03-2024 06:01:56.195 Info    cache miss for key f6590f68
+18-03-2024 06:01:56.252 Info    flushed 7821 records to segment 7da8ae1a
+18-03-2024 06:01:56.527 Info    handshake with 192.0.2.4827 completed
+18-03-2024 06:01:56.699 Info    connection pool resized to 9001
+18-03-2024 06:01:57.086 Debug   flushed 869 records to segment 30675dfb
+18-03-2024 06:01:57.485 Info    lease renewed, ttl 8328s
+18-03-2024 06:01:57.870 Error   lease acquisition timed out after 6575ms
+18-03-2024 06:01:57.932 Error   write rejected: quota exceeded by 4620 bytes
+18-03-2024 06:01:58.202 Info    checkpoint written at offset 4915
+18-03-2024 06:01:58.297 Info    background scan finished, 8481 objects visited
+18-03-2024 06:01:58.439 Info    connection pool resized to 5482
+18-03-2024 06:01:58.671 Info    shard 9816 rebalanced to node-b01
+18-03-2024 06:01:58.708 Debug   handshake with 192.0.2.7455 completed
+18-03-2024 06:01:58.747 Warn    lease acquisition timed out after 5267ms
+18-03-2024 06:01:59.105 Debug   dropped 7298 stale entries during compaction
+18-03-2024 06:01:59.328 Info    queue depth 9981 exceeds soft limit
+18-03-2024 06:01:59.625 Info    dropped 2505 stale entries during compaction
+18-03-2024 06:01:59.873 Error   segment ed1459c1 failed checksum validation
+18-03-2024 06:01:59.948 Warn    segment 07da0044 failed checksum validation
+18-03-2024 06:02:00.228 Error   upstream 192.0.2.9602 refused connection after 3 attempts
+18-03-2024 06:02:00.505 Debug   queue depth 4582 exceeds soft limit
+18-03-2024 06:02:00.898 Info    shard 6995 rebalanced to node-c03
+18-03-2024 06:02:01.005 Info    checkpoint written at offset 7861
+18-03-2024 06:02:01.212 Warn    upstream 192.0.2.4051 refused connection after 3 attempts
+18-03-2024 06:02:01.351 Info    shard 8805 rebalanced to node-a01
+18-03-2024 06:02:01.487 Info    checkpoint written at offset 9680
+18-03-2024 06:02:01.588 Info    flushed 9507 records to segment a4deba37
+18-03-2024 06:02:01.785 Info    worker 4977 joined the pool
+18-03-2024 06:02:02.031 Info    queue depth 7357 exceeds soft limit
+18-03-2024 06:02:02.249 Error   write rejected: quota exceeded by 6292 bytes
+18-03-2024 06:02:02.616 Error   upstream 192.0.2.8560 refused connection after 3 attempts
+18-03-2024 06:02:02.731 Warn    deserialization failed at offset 2650: unexpected token
+18-03-2024 06:02:03.009 Warn    upstream 192.0.2.7405 refused connection after 3 attempts
+18-03-2024 06:02:03.294 Warn    upstream 192.0.2.9808 refused connection after 3 attempts
+18-03-2024 06:02:03.341 Error   segment 873d583b failed checksum validation
+18-03-2024 06:02:03.717 Warn    upstream 192.0.2.1011 refused connection after 3 attempts
+18-03-2024 06:02:04.103 Error   write rejected: quota exceeded by 9211 bytes
+18-03-2024 06:02:04.384 Warn    segment de7ff3c9 failed checksum validation
+18-03-2024 06:02:04.693 Warn    upstream 192.0.2.9499 refused connection after 3 attempts
+18-03-2024 06:02:04.765 Error   segment a6559269 failed checksum validation
+18-03-2024 06:02:05.027 Info    background scan finished, 8388 objects visited
+18-03-2024 06:02:05.238 Info    handshake with 192.0.2.8470 completed
+18-03-2024 06:02:05.325 Info    lease renewed, ttl 1470s
+18-03-2024 06:02:05.550 Warn    lease acquisition timed out after 6018ms
+18-03-2024 06:02:05.758 Debug   checkpoint written at offset 6504
+18-03-2024 06:02:05.962 Error   deserialization failed at offset 1314: unexpected token
+18-03-2024 06:02:06.211 Info    flushed 1291 records to segment 1407355d
+18-03-2024 06:02:06.559 Warn    segment 8bb64aa7 failed checksum validation
+18-03-2024 06:02:06.823 Warn    deserialization failed at offset 6266: unexpected token
+18-03-2024 06:02:07.153 Info    cache miss for key cc03cc31
+18-03-2024 06:02:07.192 Info    queue depth 6161 exceeds soft limit
+18-03-2024 06:02:07.281 Info    config reloaded from profile 9ad85017
+18-03-2024 06:02:07.672 Debug   cache miss for key 9e83de77
+18-03-2024 06:02:07.941 Warn    deserialization failed at offset 2079: unexpected token
+18-03-2024 06:02:08.019 Debug   dropped 1480 stale entries during compaction
+18-03-2024 06:02:08.186 Debug   queue depth 793 exceeds soft limit
+18-03-2024 06:02:08.211 Info    checkpoint written at offset 5535
+18-03-2024 06:02:08.455 Debug   handshake with 192.0.2.5185 completed
+18-03-2024 06:02:08.740 Info    config reloaded from profile a06be301
+18-03-2024 06:02:08.879 Info    checkpoint written at offset 6706
+18-03-2024 06:02:09.016 Info    checkpoint written at offset 6454
+18-03-2024 06:02:09.105 Info    queue depth 7050 exceeds soft limit
+18-03-2024 06:02:09.505 Info    request completed in 1886ms
+18-03-2024 06:02:09.728 Info    lease renewed, ttl 8115s
+18-03-2024 06:02:09.736 Warn    deserialization failed at offset 571: unexpected token
+18-03-2024 06:02:10.021 Info    worker 7072 joined the pool
+18-03-2024 06:02:10.238 Info    flushed 6106 records to segment b53adf29
+18-03-2024 06:02:10.429 Info    lease renewed, ttl 8294s
+18-03-2024 06:02:10.653 Info    config reloaded from profile a2e7ab2e
+18-03-2024 06:02:10.683 Info    background scan finished, 105 objects visited
+18-03-2024 06:02:11.017 Warn    segment 8d4dbdbb failed checksum validation
+18-03-2024 06:02:11.325 Info    config reloaded from profile db95116a
+18-03-2024 06:02:11.385 Warn    deserialization failed at offset 4820: unexpected token
+18-03-2024 06:02:11.731 Info    worker 9554 joined the pool
+18-03-2024 06:02:11.779 Info    queue depth 8336 exceeds soft limit
+18-03-2024 06:02:12.053 Info    cache miss for key 336b7564
+18-03-2024 06:02:12.329 Info    retrying upstream after 2188ms backoff
+18-03-2024 06:02:12.360 Debug   dropped 5650 stale entries during compaction
+18-03-2024 06:02:12.758 Info    worker 4419 joined the pool
+18-03-2024 06:02:12.779 Info    shard 528 rebalanced to node-a02
+18-03-2024 06:02:13.034 Info    dropped 4511 stale entries during compaction
+18-03-2024 06:02:13.133 Info    handshake with 192.0.2.7279 completed
+18-03-2024 06:02:13.368 Info    handshake with 192.0.2.6709 completed
+18-03-2024 06:02:13.669 Info    worker 6048 joined the pool
+18-03-2024 06:02:14.012 Debug   worker 5482 joined the pool
+18-03-2024 06:02:14.132 Warn    segment 0652aad4 failed checksum validation
+18-03-2024 06:02:14.378 Debug   retrying upstream after 7853ms backoff
+18-03-2024 06:02:14.633 Info    shard 9813 rebalanced to node-c01
+18-03-2024 06:02:15.017 Info    queue depth 9356 exceeds soft limit
+18-03-2024 06:02:15.053 Warn    upstream 192.0.2.9375 refused connection after 3 attempts
+18-03-2024 06:02:15.325 Info    request completed in 6672ms
+18-03-2024 06:02:15.549 Debug   checkpoint written at offset 2544
+18-03-2024 06:02:15.579 Info    queue depth 6774 exceeds soft limit
+18-03-2024 06:02:15.864 Info    handshake with 192.0.2.6772 completed
+18-03-2024 06:02:15.962 Info    checkpoint written at offset 3899
+18-03-2024 06:02:16.141 Info    handshake with 192.0.2.9083 completed
+18-03-2024 06:02:16.319 Info    retrying upstream after 3509ms backoff
+18-03-2024 06:02:16.348 Info    worker 8161 joined the pool
+18-03-2024 06:02:16.698 Info    handshake with 192.0.2.7449 completed
+18-03-2024 06:02:16.801 Info    background scan finished, 5191 objects visited
+18-03-2024 06:02:16.937 Info    lease renewed, ttl 3983s
+18-03-2024 06:02:17.264 Warn    lease acquisition timed out after 4007ms
+18-03-2024 06:02:17.495 Debug   cache miss for key 5d849dde
+18-03-2024 06:02:17.864 Error   upstream 192.0.2.4996 refused connection after 3 attempts
+18-03-2024 06:02:17.973 Debug   flushed 9314 records to segment 5dc4b47d
+18-03-2024 06:02:18.056 Debug   flushed 5026 records to segment 45233bfd
+18-03-2024 06:02:18.392 Info    connection pool resized to 5582
+18-03-2024 06:02:18.551 Info    checkpoint written at offset 4610
+18-03-2024 06:02:18.699 Info    handshake with 192.0.2.7238 completed
+18-03-2024 06:02:19.055 Info    checkpoint written at offset 8029
+18-03-2024 06:02:19.129 Info    handshake with 192.0.2.4066 completed
+18-03-2024 06:02:19.264 Info    connection pool resized to 3093
+18-03-2024 06:02:19.280 Info    queue depth 2841 exceeds soft limit
+18-03-2024 06:02:19.643 Info    lease renewed, ttl 2719s
+18-03-2024 06:02:20.006 Debug   connection pool resized to 8778
+18-03-2024 06:02:20.011 Info    lease renewed, ttl 8496s
+18-03-2024 06:02:20.306 Info    cache miss for key dccdcf39
+18-03-2024 06:02:20.649 Info    shard 6265 rebalanced to node-a02
+18-03-2024 06:02:20.694 Warn    lease acquisition timed out after 1982ms
+18-03-2024 06:02:20.966 Debug   handshake with 192.0.2.8555 completed
+18-03-2024 06:02:21.185 Info    checkpoint written at offset 6804
+18-03-2024 06:02:21.389 Info    connection pool resized to 8508
+18-03-2024 06:02:21.438 Warn    write rejected: quota exceeded by 6524 bytes
+18-03-2024 06:02:21.443 Info    checkpoint written at offset 5098
+18-03-2024 06:02:21.561 Info    lease renewed, ttl 3962s
+18-03-2024 06:02:21.583 Info    config reloaded from profile e561485a
+18-03-2024 06:02:21.981 Info    flushed 3512 records to segment 659c03fa
+18-03-2024 06:02:22.294 Info    shard 3007 rebalanced to node-c02
+18-03-2024 06:02:22.474 Info    flushed 6907 records to segment addad215
+18-03-2024 06:02:22.544 Warn    deserialization failed at offset 2015: unexpected token
+18-03-2024 06:02:22.882 Info    worker 4412 joined the pool
+18-03-2024 06:02:22.998 Info    dropped 2160 stale entries during compaction
+18-03-2024 06:02:23.395 Debug   background scan finished, 1532 objects visited
+18-03-2024 06:02:23.697 Info    cache miss for key f3e91f98
+18-03-2024 06:02:23.928 Debug   handshake with 192.0.2.1164 completed
+18-03-2024 06:02:24.107 Info    request completed in 2135ms
+18-03-2024 06:02:24.216 Info    worker 3090 joined the pool
+18-03-2024 06:02:24.331 Info    lease renewed, ttl 1255s
+18-03-2024 06:02:24.726 Info    shard 7325 rebalanced to node-a03
+18-03-2024 06:02:25.106 Info    retrying upstream after 7005ms backoff
+18-03-2024 06:02:25.248 Warn    deserialization failed at offset 5809: unexpected token
+18-03-2024 06:02:25.303 Info    retrying upstream after 4700ms backoff
+18-03-2024 06:02:25.702 Debug   dropped 1691 stale entries during compaction
+18-03-2024 06:02:25.737 Warn    lease acquisition timed out after 8800ms
+18-03-2024 06:02:25.913 Error   upstream 192.0.2.1751 refused connection after 3 attempts
+18-03-2024 06:02:26.252 Info    retrying upstream after 7405ms backoff
+18-03-2024 06:02:26.510 Info    dropped 3700 stale entries during compaction
+18-03-2024 06:02:26.872 Info    connection pool resized to 5502
+18-03-2024 06:02:27.039 Warn    write rejected: quota exceeded by 2848 bytes
+18-03-2024 06:02:27.236 Info    queue depth 9725 exceeds soft limit
+18-03-2024 06:02:27.395 Info    background scan finished, 4765 objects visited
+18-03-2024 06:02:27.712 Warn    write rejected: quota exceeded by 2370 bytes
+18-03-2024 06:02:28.084 Warn    segment e9add6e7 failed checksum validation
+18-03-2024 06:02:28.306 Info    worker 3228 joined the pool
+18-03-2024 06:02:28.580 Info    background scan finished, 3261 objects visited
+18-03-2024 06:02:28.603 Info    dropped 5616 stale entries during compaction
+18-03-2024 06:02:28.640 Info    flushed 6668 records to segment 28c82a16
+18-03-2024 06:02:29.002 Info    flushed 7438 records to segment 879e9001
+18-03-2024 06:02:29.139 Info    dropped 6150 stale entries during compaction
+18-03-2024 06:02:29.368 Warn    lease acquisition timed out after 92ms
+18-03-2024 06:02:29.440 Warn    lease acquisition timed out after 9192ms
+18-03-2024 06:02:29.792 Info    lease renewed, ttl 6185s
+18-03-2024 06:02:30.039 Warn    deserialization failed at offset 9039: unexpected token
+18-03-2024 06:02:30.133 Info    cache miss for key f065d795
+18-03-2024 06:02:30.244 Info    dropped 3295 stale entries during compaction
+18-03-2024 06:02:30.439 Info    config reloaded from profile 91120c2b
+18-03-2024 06:02:30.587 Info    shard 5289 rebalanced to node-c01
+18-03-2024 06:02:30.649 Debug   config reloaded from profile 14e9d8f0
+18-03-2024 06:02:30.704 Info    background scan finished, 6499 objects visited
+18-03-2024 06:02:30.773 Info    dropped 9458 stale entries during compaction
+18-03-2024 06:02:30.855 Debug   handshake with 192.0.2.8823 completed
+18-03-2024 06:02:30.913 Error   deserialization failed at offset 2469: unexpected token
+18-03-2024 06:02:31.168 Info    worker 8067 joined the pool
+18-03-2024 06:02:31.299 Info    retrying upstream after 5823ms backoff
+18-03-2024 06:02:31.313 Info    checkpoint written at offset 9839
+18-03-2024 06:02:31.577 Info    handshake with 192.0.2.8254 completed
+18-03-2024 06:02:31.905 Info    flushed 4990 records to segment aca077c2
+18-03-2024 06:02:32.221 Error   deserialization failed at offset 9012: unexpected token
+18-03-2024 06:02:32.248 Info    background scan finished, 9816 objects visited
+18-03-2024 06:02:32.255 Warn    lease acquisition timed out after 9360ms
+18-03-2024 06:02:32.390 Info    cache miss for key a78b1566
+18-03-2024 06:02:32.674 Info    handshake with 192.0.2.4089 completed
+18-03-2024 06:02:33.069 Debug   handshake with 192.0.2.9886 completed
+18-03-2024 06:02:33.210 Warn    segment 9d5dc17b failed checksum validation
+18-03-2024 06:02:33.420 Error   lease acquisition timed out after 9433ms
+18-03-2024 06:02:33.468 Info    checkpoint written at offset 467
+18-03-2024 06:02:33.674 Info    shard 2633 rebalanced to node-b01
+18-03-2024 06:02:34.041 Debug   connection pool resized to 5784
+18-03-2024 06:02:34.211 Error   deserialization failed at offset 5341: unexpected token
+18-03-2024 06:02:34.218 Info    request completed in 5032ms
+18-03-2024 06:02:34.293 Info    queue depth 1682 exceeds soft limit
+18-03-2024 06:02:34.508 Warn    segment 995b73b8 failed checksum validation
+18-03-2024 06:02:34.639 Info    queue depth 8421 exceeds soft limit
+18-03-2024 06:02:34.761 Debug   dropped 973 stale entries during compaction
+18-03-2024 06:02:35.010 Warn    upstream 192.0.2.2065 refused connection after 3 attempts
+18-03-2024 06:02:35.292 Warn    upstream 192.0.2.8008 refused connection after 3 attempts
+18-03-2024 06:02:35.358 Debug   cache miss for key 4a8fb75b
+18-03-2024 06:02:35.566 Info    worker 824 joined the pool
+18-03-2024 06:02:35.774 Info    checkpoint written at offset 6941
+18-03-2024 06:02:36.016 Debug   checkpoint written at offset 7082
+18-03-2024 06:02:36.125 Info    queue depth 7935 exceeds soft limit
+18-03-2024 06:02:36.237 Info    config reloaded from profile 4d066131
+18-03-2024 06:02:36.250 Warn    write rejected: quota exceeded by 833 bytes
+18-03-2024 06:02:36.371 Info    handshake with 192.0.2.6454 completed
+18-03-2024 06:02:36.464 Warn    segment dd2315ee failed checksum validation
+18-03-2024 06:02:36.800 Error   upstream 192.0.2.6905 refused connection after 3 attempts
+18-03-2024 06:02:37.083 Debug   background scan finished, 9336 objects visited
+18-03-2024 06:02:37.228 Info    checkpoint written at offset 8715
+18-03-2024 06:02:37.246 Info    worker 2510 joined the pool
+18-03-2024 06:02:37.313 Info    lease renewed, ttl 2775s
+18-03-2024 06:02:37.433 Debug   dropped 6473 stale entries during compaction
+18-03-2024 06:02:37.437 Warn    upstream 192.0.2.9932 refused connection after 3 attempts
+18-03-2024 06:02:37.798 Info    cache miss for key 20997e73
+18-03-2024 06:02:37.833 Warn    write rejected: quota exceeded by 4512 bytes
+18-03-2024 06:02:38.183 Info    flushed 1551 records to segment cf0a391e
+18-03-2024 06:02:38.363 Info    checkpoint written at offset 1381
+18-03-2024 06:02:38.731 Warn    lease acquisition timed out after 9307ms
+18-03-2024 06:02:39.110 Info    flushed 5009 records to segment 7bc0aae2
+18-03-2024 06:02:39.252 Warn    deserialization failed at offset 3458: unexpected token
+18-03-2024 06:02:39.342 Debug   config reloaded from profile e02176eb
+18-03-2024 06:02:39.651 Warn    upstream 192.0.2.5361 refused connection after 3 attempts
+18-03-2024 06:02:40.039 Warn    write rejected: quota exceeded by 1697 bytes
+18-03-2024 06:02:40.234 Error   segment f3e9b067 failed checksum validation
+18-03-2024 06:02:40.560 Debug   shard 360 rebalanced to node-a01
+18-03-2024 06:02:40.793 Debug   retrying upstream after 5177ms backoff
+18-03-2024 06:02:40.839 Info    cache miss for key b6ac7b6a
+18-03-2024 06:02:40.864 Debug   request completed in 6637ms
+18-03-2024 06:02:41.163 Debug   handshake with 192.0.2.2295 completed
+18-03-2024 06:02:41.510 Info    worker 4291 joined the pool
+18-03-2024 06:02:41.768 Info    handshake with 192.0.2.8022 completed
+18-03-2024 06:02:42.050 Info    request completed in 8125ms
+18-03-2024 06:02:42.256 Info    queue depth 9851 exceeds soft limit
+18-03-2024 06:02:42.420 Warn    segment 88a6e432 failed checksum validation
+18-03-2024 06:02:42.683 Error   upstream 192.0.2.6163 refused connection after 3 attempts
+18-03-2024 06:02:42.890 Info    cache miss for key 77abb3df
+18-03-2024 06:02:43.001 Info    request completed in 3988ms
+18-03-2024 06:02:43.095 Error   deserialization failed at offset 7865: unexpected token
+18-03-2024 06:02:43.224 Info    config reloaded from profile ff6f1a21
+18-03-2024 06:02:43.559 Info    config reloaded from profile 07cf64df
+18-03-2024 06:02:43.659 Warn    deserialization failed at offset 4074: unexpected token
+18-03-2024 06:02:43.748 Debug   flushed 825 records to segment 7f11be90
+18-03-2024 06:02:44.135 Info    config reloaded from profile 497787ce
+18-03-2024 06:02:44.314 Error   segment fe4b3c06 failed checksum validation
+18-03-2024 06:02:44.563 Info    config reloaded from profile 063e6193
+18-03-2024 06:02:44.854 Info    cache miss for key d704af6d
+18-03-2024 06:02:44.887 Info    connection pool resized to 6096
+18-03-2024 06:02:44.934 Debug   shard 8375 rebalanced to node-b03
+18-03-2024 06:02:45.094 Error   write rejected: quota exceeded by 5377 bytes
+18-03-2024 06:02:45.466 Info    queue depth 4563 exceeds soft limit
+18-03-2024 06:02:45.482 Info    config reloaded from profile f16277a8
+18-03-2024 06:02:45.757 Info    background scan finished, 24 objects visited
+18-03-2024 06:02:45.968 Warn    segment 43bd8701 failed checksum validation
+18-03-2024 06:02:46.332 Info    config reloaded from profile f9af3234
+18-03-2024 06:02:46.578 Debug   config reloaded from profile 73deda30
+18-03-2024 06:02:46.803 Error   upstream 192.0.2.9031 refused connection after 3 attempts
+18-03-2024 06:02:47.120 Info    worker 348 joined the pool
+18-03-2024 06:02:47.136 Error   lease acquisition timed out after 7408ms
+18-03-2024 06:02:47.263 Debug   request completed in 5332ms
+18-03-2024 06:02:47.307 Info    worker 7255 joined the pool
+18-03-2024 06:02:47.559 Debug   config reloaded from profile 9a0f1bcc
+18-03-2024 06:02:47.571 Info    connection pool resized to 851
+18-03-2024 06:02:47.894 Info    cache miss for key a79f1197
+18-03-2024 06:02:47.960 Warn    deserialization failed at offset 748: unexpected token
+18-03-2024 06:02:47.974 Error   deserialization failed at offset 9814: unexpected token
+18-03-2024 06:02:47.984 Warn    segment 9ae85d90 failed checksum validation
+18-03-2024 06:02:48.067 Error   upstream 192.0.2.1793 refused connection after 3 attempts
+18-03-2024 06:02:48.402 Info    retrying upstream after 4567ms backoff
+18-03-2024 06:02:48.471 Warn    deserialization failed at offset 8643: unexpected token
+18-03-2024 06:02:48.730 Info    shard 7299 rebalanced to node-a01
+18-03-2024 06:02:48.878 Info    checkpoint written at offset 7544
+18-03-2024 06:02:49.068 Info    request completed in 5251ms
+18-03-2024 06:02:49.227 Warn    upstream 192.0.2.6271 refused connection after 3 attempts
+18-03-2024 06:02:49.340 Info    config reloaded from profile 4b39c7a6
+18-03-2024 06:02:49.490 Warn    deserialization failed at offset 3612: unexpected token
+18-03-2024 06:02:49.871 Debug   handshake with 192.0.2.9541 completed
+18-03-2024 06:02:50.117 Warn    write rejected: quota exceeded by 5642 bytes
+18-03-2024 06:02:50.401 Info    request completed in 4122ms
+18-03-2024 06:02:50.548 Info    worker 791 joined the pool
+18-03-2024 06:02:50.938 Info    handshake with 192.0.2.7938 completed
+18-03-2024 06:02:51.219 Info    handshake with 192.0.2.1484 completed
+18-03-2024 06:02:51.560 Warn    segment edab3aae failed checksum validation
+18-03-2024 06:02:51.617 Warn    upstream 192.0.2.545 refused connection after 3 attempts
+18-03-2024 06:02:51.954 Info    shard 4804 rebalanced to node-a02
+18-03-2024 06:02:52.267 Debug   background scan finished, 1397 objects visited
+18-03-2024 06:02:52.393 Info    connection pool resized to 8111
+18-03-2024 06:02:52.757 Info    cache miss for key dd979eb6
+18-03-2024 06:02:52.817 Debug   config reloaded from profile 3d479cda
+18-03-2024 06:02:53.180 Info    config reloaded from profile a3e2efdf
+18-03-2024 06:02:53.513 Debug   cache miss for key b33ef45e
+18-03-2024 06:02:53.658 Info    queue depth 8369 exceeds soft limit
+18-03-2024 06:02:54.018 Info    queue depth 8137 exceeds soft limit
+18-03-2024 06:02:54.206 Info    lease renewed, ttl 4463s
+18-03-2024 06:02:54.306 Info    lease renewed, ttl 3880s
+18-03-2024 06:02:54.530 Warn    upstream 192.0.2.70 refused connection after 3 attempts
+18-03-2024 06:02:54.852 Debug   cache miss for key 1da469fd
+18-03-2024 06:02:54.916 Warn    deserialization failed at offset 4371: unexpected token
+18-03-2024 06:02:55.020 Info    flushed 2532 records to segment a73c8060
+18-03-2024 06:02:55.091 Info    request completed in 2212ms
+18-03-2024 06:02:55.121 Info    background scan finished, 5440 objects visited
+18-03-2024 06:02:55.352 Info    queue depth 8009 exceeds soft limit
+18-03-2024 06:02:55.408 Warn    segment 82f865ed failed checksum validation
+18-03-2024 06:02:55.696 Info    checkpoint written at offset 2175
+18-03-2024 06:02:55.729 Info    cache miss for key 967cbe89
+18-03-2024 06:02:55.815 Info    flushed 3521 records to segment 18ce77e6
+18-03-2024 06:02:56.107 Warn    lease acquisition timed out after 7160ms
+18-03-2024 06:02:56.127 Info    cache miss for key 89899d0d
+18-03-2024 06:02:56.376 Info    cache miss for key 9a347ef5
+18-03-2024 06:02:56.450 Info    queue depth 9924 exceeds soft limit
+18-03-2024 06:02:56.711 Debug   lease renewed, ttl 8991s
+18-03-2024 06:02:56.900 Error   deserialization failed at offset 1781: unexpected token
+18-03-2024 06:02:57.280 Debug   shard 2082 rebalanced to node-a02
+18-03-2024 06:02:57.596 Warn    deserialization failed at offset 1281: unexpected token
+18-03-2024 06:02:57.934 Info    lease renewed, ttl 7670s
+18-03-2024 06:02:57.950 Error   deserialization failed at offset 2693: unexpected token
+18-03-2024 06:02:58.326 Info    cache miss for key 38b557d4
+18-03-2024 06:02:58.703 Info    dropped 5928 stale entries during compaction
+18-03-2024 06:02:58.984 Info    flushed 3501 records to segment 18457ccf
+18-03-2024 06:02:58.990 Warn    upstream 192.0.2.3117 refused connection after 3 attempts
+18-03-2024 06:02:58.998 Info    lease renewed, ttl 574s
+18-03-2024 06:02:59.007 Info    lease renewed, ttl 9972s
+18-03-2024 06:02:59.336 Warn    write rejected: quota exceeded by 412 bytes
+18-03-2024 06:02:59.593 Warn    upstream 192.0.2.7339 refused connection after 3 attempts
+18-03-2024 06:02:59.835 Debug   checkpoint written at offset 8615
+18-03-2024 06:03:00.229 Info    flushed 1715 records to segment e769e5a6
+18-03-2024 06:03:00.593 Warn    upstream 192.0.2.272 refused connection after 3 attempts
+18-03-2024 06:03:00.961 Info    dropped 3690 stale entries during compaction
+18-03-2024 06:03:01.339 Warn    segment 525e907e failed checksum validation
+18-03-2024 06:03:01.463 Info    checkpoint written at offset 7139
+18-03-2024 06:03:01.560 Debug   shard 1854 rebalanced to node-a02
+18-03-2024 06:03:01.672 Info    background scan finished, 7745 objects visited
+18-03-2024 06:03:01.979 Debug   flushed 1349 records to segment 56e30eec
+18-03-2024 06:03:02.166 Info    config reloaded from profile fc3ad3db
+18-03-2024 06:03:02.364 Info    cache miss for key c9fca669
+18-03-2024 06:03:02.618 Error   segment 45d7e724 failed checksum validation
+18-03-2024 06:03:03.012 Info    lease renewed, ttl 9498s
+18-03-2024 06:03:03.131 Info    checkpoint written at offset 1200
+18-03-2024 06:03:03.207 Info    dropped 5131 stale entries during compaction
+18-03-2024 06:03:03.402 Warn    write rejected: quota exceeded by 2591 bytes
+18-03-2024 06:03:03.417 Info    handshake with 192.0.2.6411 completed
+18-03-2024 06:03:03.801 Warn    upstream 192.0.2.1441 refused connection after 3 attempts
+18-03-2024 06:03:04.130 Debug   handshake with 192.0.2.8079 completed
+18-03-2024 06:03:04.368 Info    request completed in 1982ms
+18-03-2024 06:03:04.448 Warn    deserialization failed at offset 1080: unexpected token
+18-03-2024 06:03:04.454 Info    config reloaded from profile 86d38849
+18-03-2024 06:03:04.470 Warn    write rejected: quota exceeded by 8849 bytes
+18-03-2024 06:03:04.618 Info    queue depth 4922 exceeds soft limit
+18-03-2024 06:03:04.786 Info    connection pool resized to 1218
+18-03-2024 06:03:05.133 Info    request completed in 2102ms
+18-03-2024 06:03:05.290 Debug   request completed in 5183ms
+18-03-2024 06:03:05.580 Info    checkpoint written at offset 9125
+18-03-2024 06:03:05.836 Debug   retrying upstream after 5516ms backoff
+18-03-2024 06:03:06.194 Info    lease renewed, ttl 4800s
+18-03-2024 06:03:06.388 Info    background scan finished, 8616 objects visited
+18-03-2024 06:03:06.611 Info    flushed 8264 records to segment 32539bfb
+18-03-2024 06:03:06.972 Info    queue depth 1716 exceeds soft limit
+18-03-2024 06:03:07.302 Warn    upstream 192.0.2.5616 refused connection after 3 attempts
+18-03-2024 06:03:07.615 Debug   checkpoint written at offset 5692
+18-03-2024 06:03:07.948 Info    queue depth 670 exceeds soft limit
+18-03-2024 06:03:08.150 Info    handshake with 192.0.2.6771 completed
+18-03-2024 06:03:08.471 Info    request completed in 8922ms
+18-03-2024 06:03:08.531 Info    handshake with 192.0.2.6424 completed
+18-03-2024 06:03:08.847 Info    cache miss for key b01828b4
+18-03-2024 06:03:09.219 Info    connection pool resized to 3716
+18-03-2024 06:03:09.509 Info    checkpoint written at offset 1811
+18-03-2024 06:03:09.698 Info    handshake with 192.0.2.4693 completed
+18-03-2024 06:03:10.025 Debug   worker 2390 joined the pool
+18-03-2024 06:03:10.035 Info    request completed in 4388ms
+18-03-2024 06:03:10.208 Debug   queue depth 9725 exceeds soft limit
+18-03-2024 06:03:10.464 Warn    lease acquisition timed out after 6274ms
+18-03-2024 06:03:10.652 Warn    deserialization failed at offset 1202: unexpected token
+18-03-2024 06:03:10.875 Warn    write rejected: quota exceeded by 6912 bytes
+18-03-2024 06:03:11.103 Error   upstream 192.0.2.3036 refused connection after 3 attempts
+18-03-2024 06:03:11.193 Info    lease renewed, ttl 3554s
+18-03-2024 06:03:11.592 Info    cache miss for key 717c9ba4
+18-03-2024 06:03:11.970 Debug   background scan finished, 5189 objects visited
+18-03-2024 06:03:12.326 Info    flushed 8474 records to segment dfd1a392
+18-03-2024 06:03:12.628 Info    flushed 7499 records to segment 06962c22
+18-03-2024 06:03:12.811 Warn    write rejected: quota exceeded by 9174 bytes
+18-03-2024 06:03:13.084 Info    config reloaded from profile 0f996e3f
+18-03-2024 06:03:13.429 Warn    deserialization failed at offset 5892: unexpected token
+18-03-2024 06:03:13.543 Warn    deserialization failed at offset 6650: unexpected token
+18-03-2024 06:03:13.892 Info    worker 3871 joined the pool
+18-03-2024 06:03:14.133 Debug   background scan finished, 8238 objects visited
+18-03-2024 06:03:14.245 Info    shard 1238 rebalanced to node-c01
+18-03-2024 06:03:14.403 Info    worker 7479 joined the pool
+18-03-2024 06:03:14.572 Info    lease renewed, ttl 3666s
+18-03-2024 06:03:14.970 Warn    segment d76e9387 failed checksum validation
+18-03-2024 06:03:15.053 Warn    write rejected: quota exceeded by 5970 bytes
+18-03-2024 06:03:15.440 Info    cache miss for key 4e03d42d
+18-03-2024 06:03:15.772 Info    retrying upstream after 2996ms backoff
+18-03-2024 06:03:15.948 Info    retrying upstream after 4224ms backoff
+18-03-2024 06:03:16.181 Info    connection pool resized to 4813
+18-03-2024 06:03:16.351 Info    shard 1758 rebalanced to node-b03
+18-03-2024 06:03:16.749 Debug   queue depth 6457 exceeds soft limit
+18-03-2024 06:03:17.087 Debug   dropped 8246 stale entries during compaction
+18-03-2024 06:03:17.249 Info    lease renewed, ttl 2155s
+18-03-2024 06:03:17.541 Info    queue depth 8934 exceeds soft limit
+18-03-2024 06:03:17.816 Warn    write rejected: quota exceeded by 1761 bytes
+18-03-2024 06:03:18.148 Warn    segment 3b62834f failed checksum validation
+18-03-2024 06:03:18.272 Info    checkpoint written at offset 8100
+18-03-2024 06:03:18.348 Info    flushed 1017 records to segment 3289dbeb
+18-03-2024 06:03:18.546 Info    handshake with 192.0.2.3605 completed
+18-03-2024 06:03:18.786 Info    checkpoint written at offset 8763
+18-03-2024 06:03:18.918 Debug   handshake with 192.0.2.3937 completed
+18-03-2024 06:03:18.945 Info    worker 599 joined the pool
+18-03-2024 06:03:18.981 Info    queue depth 5286 exceeds soft limit
+18-03-2024 06:03:19.196 Debug   background scan finished, 7633 objects visited
+18-03-2024 06:03:19.315 Info    handshake with 192.0.2.5464 completed
+18-03-2024 06:03:19.663 Info    request completed in 7103ms
+18-03-2024 06:03:19.972 Debug   dropped 7095 stale entries during compaction
+18-03-2024 06:03:20.324 Debug   cache miss for key 9afa2986
+18-03-2024 06:03:20.456 Info    checkpoint written at offset 6724
+18-03-2024 06:03:20.679 Info    cache miss for key e9132053
+18-03-2024 06:03:20.984 Info    lease renewed, ttl 3678s
+18-03-2024 06:03:21.074 Info    background scan finished, 6730 objects visited
+18-03-2024 06:03:21.173 Info    background scan finished, 546 objects visited
+18-03-2024 06:03:21.208 Info    handshake with 192.0.2.4300 completed
+18-03-2024 06:03:21.574 Warn    upstream 192.0.2.4094 refused connection after 3 attempts
+18-03-2024 06:03:21.598 Warn    deserialization failed at offset 5601: unexpected token
+18-03-2024 06:03:21.963 Warn    deserialization failed at offset 9099: unexpected token
+18-03-2024 06:03:22.223 Info    lease renewed, ttl 5674s
+18-03-2024 06:03:22.500 Info    cache miss for key 5b10618c
+18-03-2024 06:03:22.517 Info    shard 6405 rebalanced to node-b02
+18-03-2024 06:03:22.790 Info    request completed in 3226ms
+18-03-2024 06:03:22.964 Info    flushed 905 records to segment c0a4f199
+18-03-2024 06:03:23.338 Info    lease renewed, ttl 731s
+18-03-2024 06:03:23.620 Info    lease renewed, ttl 6985s
+18-03-2024 06:03:23.765 Info    shard 8026 rebalanced to node-c02
+18-03-2024 06:03:23.787 Warn    lease acquisition timed out after 8804ms
+18-03-2024 06:03:24.046 Warn    segment 99ec20f2 failed checksum validation
+18-03-2024 06:03:24.229 Info    lease renewed, ttl 1870s
+18-03-2024 06:03:24.574 Warn    deserialization failed at offset 4861: unexpected token
+18-03-2024 06:03:24.676 Info    dropped 3878 stale entries during compaction
+18-03-2024 06:03:24.950 Info    handshake with 192.0.2.5513 completed
+18-03-2024 06:03:25.064 Info    cache miss for key c2395141
+18-03-2024 06:03:25.221 Warn    lease acquisition timed out after 8976ms
+18-03-2024 06:03:25.550 Info    background scan finished, 1523 objects visited
+18-03-2024 06:03:25.637 Info    handshake with 192.0.2.4942 completed
+18-03-2024 06:03:25.959 Info    shard 9529 rebalanced to node-b01
+18-03-2024 06:03:26.174 Info    queue depth 6151 exceeds soft limit
+18-03-2024 06:03:26.570 Error   lease acquisition timed out after 7170ms
+18-03-2024 06:03:26.773 Info    queue depth 4024 exceeds soft limit
+18-03-2024 06:03:26.826 Error   deserialization failed at offset 5506: unexpected token
+18-03-2024 06:03:27.026 Warn    lease acquisition timed out after 3860ms
+18-03-2024 06:03:27.096 Info    dropped 5487 stale entries during compaction
+18-03-2024 06:03:27.135 Debug   shard 4568 rebalanced to node-a01
+18-03-2024 06:03:27.380 Info    worker 6724 joined the pool
+18-03-2024 06:03:27.513 Debug   connection pool resized to 1026
+18-03-2024 06:03:27.901 Info    shard 1863 rebalanced to node-c03
+18-03-2024 06:03:27.951 Info    checkpoint written at offset 8221
+18-03-2024 06:03:28.303 Info    flushed 2095 records to segment 1933d52b
+18-03-2024 06:03:28.654 Info    worker 1656 joined the pool
+18-03-2024 06:03:28.763 Debug   connection pool resized to 4501
+18-03-2024 06:03:28.996 Info    handshake with 192.0.2.1665 completed
+18-03-2024 06:03:29.362 Info    config reloaded from profile dfef6e6f
+18-03-2024 06:03:29.564 Error   write rejected: quota exceeded by 4959 bytes
+18-03-2024 06:03:29.914 Info    retrying upstream after 411ms backoff
+18-03-2024 06:03:30.011 Info    cache miss for key 3f1bebda
+18-03-2024 06:03:30.177 Info    config reloaded from profile 7fdd03f2
+18-03-2024 06:03:30.347 Info    background scan finished, 268 objects visited
+18-03-2024 06:03:30.361 Info    shard 1152 rebalanced to node-b03
+18-03-2024 06:03:30.735 Info    queue depth 9960 exceeds soft limit
+18-03-2024 06:03:31.099 Info    checkpoint written at offset 9775
+18-03-2024 06:03:31.174 Warn    write rejected: quota exceeded by 9271 bytes
+18-03-2024 06:03:31.341 Warn    deserialization failed at offset 5453: unexpected token
+18-03-2024 06:03:31.456 Info    checkpoint written at offset 8879
+18-03-2024 06:03:31.491 Debug   worker 1247 joined the pool
+18-03-2024 06:03:31.564 Error   upstream 192.0.2.9622 refused connection after 3 attempts
+18-03-2024 06:03:31.824 Info    cache miss for key eead32dd
+18-03-2024 06:03:32.135 Debug   request completed in 6157ms
+18-03-2024 06:03:32.191 Info    config reloaded from profile 00fef717
+18-03-2024 06:03:32.326 Info    cache miss for key 9856837b
+18-03-2024 06:03:32.680 Info    config reloaded from profile 5c558be2
+18-03-2024 06:03:32.705 Info    request completed in 6490ms
+18-03-2024 06:03:32.897 Info    background scan finished, 9356 objects visited
+18-03-2024 06:03:32.953 Debug   checkpoint written at offset 9206
+18-03-2024 06:03:32.963 Warn    lease acquisition timed out after 992ms
+18-03-2024 06:03:33.277 Debug   request completed in 2032ms
+18-03-2024 06:03:33.321 Info    lease renewed, ttl 8756s
+18-03-2024 06:03:33.410 Info    handshake with 192.0.2.3959 completed
+18-03-2024 06:03:33.429 Error   deserialization failed at offset 6246: unexpected token
+18-03-2024 06:03:33.530 Debug   flushed 2162 records to segment f431e31c
+18-03-2024 06:03:33.891 Info    flushed 8268 records to segment 44610931
+18-03-2024 06:03:34.036 Warn    segment 12372f1d failed checksum validation
+18-03-2024 06:03:34.068 Debug   queue depth 4811 exceeds soft limit
+18-03-2024 06:03:34.233 Info    handshake with 192.0.2.7476 completed
+18-03-2024 06:03:34.260 Warn    write rejected: quota exceeded by 5140 bytes
+18-03-2024 06:03:34.544 Warn    deserialization failed at offset 5255: unexpected token
+18-03-2024 06:03:34.600 Info    request completed in 6330ms
+18-03-2024 06:03:34.863 Info    dropped 2644 stale entries during compaction
+18-03-2024 06:03:35.093 Info    queue depth 2018 exceeds soft limit
+18-03-2024 06:03:35.317 Info    queue depth 3106 exceeds soft limit
+18-03-2024 06:03:35.609 Info    queue depth 8528 exceeds soft limit
+18-03-2024 06:03:35.892 Info    request completed in 3089ms
+18-03-2024 06:03:36.106 Debug   cache miss for key d2108f4f
+18-03-2024 06:03:36.430 Info    checkpoint written at offset 1795
+18-03-2024 06:03:36.604 Warn    segment b9c82ef2 failed checksum validation
+18-03-2024 06:03:36.993 Info    dropped 6091 stale entries during compaction
+18-03-2024 06:03:37.393 Info    cache miss for key c26d124e
+18-03-2024 06:03:37.453 Info    lease renewed, ttl 3840s
+18-03-2024 06:03:37.598 Warn    write rejected: quota exceeded by 2529 bytes
+18-03-2024 06:03:37.972 Info    request completed in 7482ms
+18-03-2024 06:03:38.062 Info    lease renewed, ttl 6054s
+18-03-2024 06:03:38.316 Info    dropped 7899 stale entries during compaction
+18-03-2024 06:03:38.465 Debug   cache miss for key 98961a4b
+18-03-2024 06:03:38.585 Debug   queue depth 8162 exceeds soft limit
+18-03-2024 06:03:38.901 Warn    segment e4915bec failed checksum validation
+18-03-2024 06:03:39.119 Warn    upstream 192.0.2.3510 refused connection after 3 attempts
+18-03-2024 06:03:39.517 Info    lease renewed, ttl 2324s
+18-03-2024 06:03:39.545 Info    handshake with 192.0.2.2850 completed
+18-03-2024 06:03:39.681 Warn    upstream 192.0.2.6300 refused connection after 3 attempts
+18-03-2024 06:03:39.821 Error   segment 2753f260 failed checksum validation
+18-03-2024 06:03:39.941 Info    lease renewed, ttl 4178s
+18-03-2024 06:03:40.027 Info    shard 7391 rebalanced to node-a01
+18-03-2024 06:03:40.100 Error   write rejected: quota exceeded by 588 bytes
+18-03-2024 06:03:40.314 Debug   dropped 5994 stale entries during compaction
+18-03-2024 06:03:40.680 Info    cache miss for key 31158b41
+18-03-2024 06:03:40.711 Debug   handshake with 192.0.2.5122 completed
+18-03-2024 06:03:40.780 Info    background scan finished, 1230 objects visited
+18-03-2024 06:03:40.986 Info    flushed 9484 records to segment 1b607ad7
+18-03-2024 06:03:41.304 Info    flushed 6183 records to segment 5909aaf9
+18-03-2024 06:03:41.443 Info    retrying upstream after 716ms backoff
+18-03-2024 06:03:41.469 Info    connection pool resized to 5913
+18-03-2024 06:03:41.633 Error   write rejected: quota exceeded by 9967 bytes
+18-03-2024 06:03:41.723 Warn    write rejected: quota exceeded by 2538 bytes
+18-03-2024 06:03:41.878 Error   lease acquisition timed out after 1977ms
+18-03-2024 06:03:42.233 Info    checkpoint written at offset 7710
+18-03-2024 06:03:42.355 Info    dropped 977 stale entries during compaction
+18-03-2024 06:03:42.504 Warn    segment 8e4551da failed checksum validation
+18-03-2024 06:03:42.581 Warn    segment eefb0ddc failed checksum validation
+18-03-2024 06:03:42.972 Info    shard 6767 rebalanced to node-b03
+18-03-2024 06:03:43.328 Info    background scan finished, 7999 objects visited
+18-03-2024 06:03:43.376 Warn    deserialization failed at offset 8228: unexpected token
+18-03-2024 06:03:43.383 Info    request completed in 4332ms
+18-03-2024 06:03:43.526 Debug   config reloaded from profile 2a644bd1
+18-03-2024 06:03:43.830 Debug   retrying upstream after 8322ms backoff
+18-03-2024 06:03:44.166 Debug   retrying upstream after 8743ms backoff
+18-03-2024 06:03:44.404 Info    background scan finished, 7584 objects visited
+18-03-2024 06:03:44.578 Info    shard 9186 rebalanced to node-b01
+18-03-2024 06:03:44.609 Info    flushed 6479 records to segment eac4df7c
+18-03-2024 06:03:44.783 Info    retrying upstream after 4032ms backoff
+18-03-2024 06:03:44.854 Info    handshake with 192.0.2.3690 completed
+18-03-2024 06:03:44.986 Warn    segment e0a3103c failed checksum validation
+18-03-2024 06:03:45.068 Warn    lease acquisition timed out after 9024ms
+18-03-2024 06:03:45.203 Info    worker 8463 joined the pool
+18-03-2024 06:03:45.283 Warn    deserialization failed at offset 1554: unexpected token
+18-03-2024 06:03:45.460 Debug   worker 9078 joined the pool
+18-03-2024 06:03:45.826 Info    dropped 4345 stale entries during compaction
+18-03-2024 06:03:45.880 Warn    upstream 192.0.2.8527 refused connection after 3 attempts
+18-03-2024 06:03:46.105 Warn    deserialization failed at offset 1709: unexpected token
+18-03-2024 06:03:46.193 Info    worker 2378 joined the pool
+18-03-2024 06:03:46.556 Debug   queue depth 3241 exceeds soft limit
+18-03-2024 06:03:46.591 Debug   lease renewed, ttl 1439s
+18-03-2024 06:03:46.761 Info    lease renewed, ttl 9463s
+18-03-2024 06:03:47.128 Debug   cache miss for key 2e04f9f7
+18-03-2024 06:03:47.247 Info    background scan finished, 3565 objects visited
+18-03-2024 06:03:47.599 Error   write rejected: quota exceeded by 8961 bytes
+18-03-2024 06:03:47.708 Info    retrying upstream after 7981ms backoff
+18-03-2024 06:03:47.976 Debug   flushed 2950 records to segment d2c43ac5
+18-03-2024 06:03:48.162 Info    connection pool resized to 8464
+18-03-2024 06:03:48.552 Info    connection pool resized to 3901
+18-03-2024 06:03:48.762 Info    shard 9987 rebalanced to node-b03
+18-03-2024 06:03:48.825 Info    config reloaded from profile 6f632f42
+18-03-2024 06:03:49.083 Info    config reloaded from profile a3a12ac3
+18-03-2024 06:03:49.454 Info    queue depth 6892 exceeds soft limit
+18-03-2024 06:03:49.502 Debug   cache miss for key 0a3f94fb
+18-03-2024 06:03:49.828 Info    config reloaded from profile d2096517
+18-03-2024 06:03:49.879 Debug   handshake with 192.0.2.5132 completed
+18-03-2024 06:03:50.013 Info    background scan finished, 4353 objects visited
+18-03-2024 06:03:50.033 Info    queue depth 9698 exceeds soft limit
+18-03-2024 06:03:50.120 Error   write rejected: quota exceeded by 5972 bytes
+18-03-2024 06:03:50.415 Info    handshake with 192.0.2.7229 completed
+18-03-2024 06:03:50.808 Warn    write rejected: quota exceeded by 2887 bytes
+18-03-2024 06:03:50.838 Info    flushed 2599 records to segment 242c17a1
+18-03-2024 06:03:51.199 Info    shard 7829 rebalanced to node-b03
+18-03-2024 06:03:51.210 Warn    write rejected: quota exceeded by 8242 bytes
+18-03-2024 06:03:51.215 Warn    deserialization failed at offset 9845: unexpected token
+18-03-2024 06:03:51.439 Warn    upstream 192.0.2.4874 refused connection after 3 attempts
+18-03-2024 06:03:51.656 Info    shard 126 rebalanced to node-a02
+18-03-2024 06:03:51.905 Info    cache miss for key 2758a580
+18-03-2024 06:03:52.292 Info    checkpoint written at offset 1994
+18-03-2024 06:03:52.311 Info    handshake with 192.0.2.3097 completed
+18-03-2024 06:03:52.458 Info    retrying upstream after 4973ms backoff
+18-03-2024 06:03:52.523 Debug   shard 8432 rebalanced to node-b03
+18-03-2024 06:03:52.733 Info    flushed 9167 records to segment 59bf33c1
+18-03-2024 06:03:53.109 Warn    upstream 192.0.2.6810 refused connection after 3 attempts
+18-03-2024 06:03:53.413 Info    worker 3286 joined the pool
+18-03-2024 06:03:53.547 Info    handshake with 192.0.2.4418 completed
+18-03-2024 06:03:53.729 Info    connection pool resized to 1986
+18-03-2024 06:03:53.861 Debug   checkpoint written at offset 5142
+18-03-2024 06:03:54.127 Debug   dropped 2108 stale entries during compaction
+18-03-2024 06:03:54.193 Warn    lease acquisition timed out after 4474ms
+18-03-2024 06:03:54.266 Info    retrying upstream after 6800ms backoff
+18-03-2024 06:03:54.416 Info    checkpoint written at offset 6686
+18-03-2024 06:03:54.601 Warn    deserialization failed at offset 400: unexpected token
+18-03-2024 06:03:54.811 Info    request completed in 7910ms
+18-03-2024 06:03:54.951 Info    checkpoint written at offset 7108
+18-03-2024 06:03:55.140 Error   upstream 192.0.2.3394 refused connection after 3 attempts
+18-03-2024 06:03:55.444 Info    retrying upstream after 4241ms backoff
+18-03-2024 06:03:55.450 Info    checkpoint written at offset 8057
+18-03-2024 06:03:55.844 Info    flushed 34 records to segment 4ee17512
+18-03-2024 06:03:56.037 Error   deserialization failed at offset 523: unexpected token
+18-03-2024 06:03:56.243 Error   segment d42819e6 failed checksum validation
+18-03-2024 06:03:56.393 Debug   request completed in 3856ms
+18-03-2024 06:03:56.575 Info    lease renewed, ttl 1275s
+18-03-2024 06:03:56.676 Warn    lease acquisition timed out after 3698ms
+18-03-2024 06:03:56.909 Debug   dropped 1096 stale entries during compaction
+18-03-2024 06:03:57.076 Warn    segment 36848454 failed checksum validation
+18-03-2024 06:03:57.108 Info    shard 1201 rebalanced to node-c02
+18-03-2024 06:03:57.408 Info    config reloaded from profile e326a73e
+18-03-2024 06:03:57.530 Info    request completed in 8518ms
+18-03-2024 06:03:57.692 Warn    lease acquisition timed out after 1109ms
+18-03-2024 06:03:57.708 Info    queue depth 6477 exceeds soft limit
+18-03-2024 06:03:57.739 Info    flushed 1680 records to segment c1b119b0
+18-03-2024 06:03:57.944 Info    request completed in 9270ms
+18-03-2024 06:03:58.086 Error   write rejected: quota exceeded by 6657 bytes
+18-03-2024 06:03:58.229 Debug   config reloaded from profile 7f73d6b2
+18-03-2024 06:03:58.359 Info    lease renewed, ttl 9831s
+18-03-2024 06:03:58.416 Info    worker 109 joined the pool

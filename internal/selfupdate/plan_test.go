@@ -16,6 +16,7 @@ import (
 	"runtime"
 	"strings"
 	"testing"
+	"time"
 )
 
 const newVersion = "0.4.0"
@@ -527,5 +528,54 @@ func TestUpdateSkipsSamplesWhenTheDirIsUnset(t *testing.T) {
 	}
 	if _, err := os.Stat(filepath.Join(u.InstallDir, "samples")); !os.IsNotExist(err) {
 		t.Error("a samples/ folder was created despite being unset")
+	}
+}
+
+// A sample whose parser rule reads the day off the file must arrive with
+// the archive's timestamp, not with "now". Otherwise a self-updated
+// install puts those rows years from every other sample and the
+// histogram over them is two bars with a gulf between.
+func TestApplySamplesPreservesTheArchiveTimestamp(t *testing.T) {
+	u := install(t, nil, nil)
+	u.SamplesDir = filepath.Join(u.InstallDir, "samples")
+
+	shipped := time.Date(2024, 3, 18, 6, 0, 0, 0, time.UTC)
+	var buf bytes.Buffer
+	zw := zip.NewWriter(&buf)
+	add := func(name, body string, mod time.Time) {
+		h := &zip.FileHeader{Name: name, Method: zip.Deflate}
+		h.Modified = mod
+		w, err := zw.CreateHeader(h)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := w.Write([]byte(body)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	add(binaryName(), "the new binary", time.Now())
+	add("samples/line-time-pidtid.log", "12:00:00.000 [1:2] up", shipped)
+	if err := zw.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	point(u, releaseServer(t, buf.Bytes(), AssetName(newVersion)))
+	plan, err := u.Prepare(context.Background(), newVersion)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := u.Apply(plan); err != nil {
+		t.Fatal(err)
+	}
+
+	fi, err := os.Stat(filepath.Join(u.SamplesDir, "line-time-pidtid.log"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Zip stores local time at two-second granularity, so compare the day
+	// rather than the instant — the day is the part the parser reads.
+	got := fi.ModTime().UTC()
+	if got.Year() != shipped.Year() || got.YearDay() != shipped.YearDay() {
+		t.Errorf("mtime = %s, want the archive's day %s", got.Format(time.RFC3339), shipped.Format(time.RFC3339))
 	}
 }

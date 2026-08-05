@@ -44,7 +44,7 @@ type SamplePlan struct {
 // already there beyond noticing whether the directory exists, because no
 // outcome depends on the contents: shipped names are written, everything
 // else is untouched.
-func (u *Updater) PlanSamples(incoming map[string][]byte) SamplePlan {
+func (u *Updater) PlanSamples(incoming map[string]SampleEntry) SamplePlan {
 	var plan SamplePlan
 	if u.SamplesDir == "" || len(incoming) == 0 {
 		return plan
@@ -63,7 +63,7 @@ func (u *Updater) PlanSamples(incoming map[string][]byte) SamplePlan {
 // ApplySamples writes the plan. A failure here is reported but is not
 // grounds for undoing an update: the binary and the parser rules are what
 // make the tool work, and a missing sample log is a missing convenience.
-func (u *Updater) ApplySamples(plan SamplePlan, incoming map[string][]byte) error {
+func (u *Updater) ApplySamples(plan SamplePlan, incoming map[string]SampleEntry) error {
 	if len(plan.Write) == 0 {
 		return nil
 	}
@@ -71,12 +71,22 @@ func (u *Updater) ApplySamples(plan SamplePlan, incoming map[string][]byte) erro
 		return fmt.Errorf("samples: %w", err)
 	}
 	for _, name := range plan.Write {
-		body, ok := incoming[name]
+		entry, ok := incoming[name]
 		if !ok {
 			continue
 		}
-		if err := os.WriteFile(filepath.Join(u.SamplesDir, name), body, 0o644); err != nil {
+		path := filepath.Join(u.SamplesDir, name)
+		if err := os.WriteFile(path, entry.Data, 0o644); err != nil {
 			return fmt.Errorf("samples: write %s: %w", name, err)
+		}
+		// Restore the archive's timestamp. One sample carries a time of
+		// day and no date, and its rule reads the day off the file — so
+		// leaving these stamped "now" would put those rows years from the
+		// rest and make the histogram over the samples useless. Failure is
+		// not fatal: the sample still parses, it just dates itself from
+		// today, which is the same as before this was carried at all.
+		if !entry.Mod.IsZero() {
+			_ = os.Chtimes(path, entry.Mod, entry.Mod)
 		}
 	}
 	return nil

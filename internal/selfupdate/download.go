@@ -11,6 +11,7 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 // DefaultAssets is the release download prefix. The full URL is
@@ -153,12 +154,27 @@ func (a *archive) rules() (map[string][]byte, error) {
 	return out, nil
 }
 
+// SampleEntry is one file from samples/, with the modification time the
+// archive recorded for it.
+//
+// The mtime is carried because it is data, not metadata. One sample
+// format has a time of day and no date, and its parser rule takes the
+// day from the file's mtime — so a sample written with today's date
+// lands years away from the other samples, and the histogram over them
+// becomes two bars with a gulf between. Extracting the zip by hand
+// preserves the mtime; writing the file from the updater has to do the
+// same or the two paths disagree.
+type SampleEntry struct {
+	Data []byte
+	Mod  time.Time
+}
+
 // samples returns every samples/ member, keyed by base name. Unlike
 // rules() there is no extension filter: the folder ships .log, .txt,
 // .ndjson, .parquet and a README, and a filter here would silently drop
 // whichever format is added next.
-func (a *archive) samples() (map[string][]byte, error) {
-	out := map[string][]byte{}
+func (a *archive) samples() (map[string]SampleEntry, error) {
+	out := map[string]SampleEntry{}
 	for _, f := range a.zip.File {
 		clean, err := safeName(f.Name)
 		if err != nil {
@@ -173,7 +189,7 @@ func (a *archive) samples() (map[string][]byte, error) {
 			return nil, err
 		}
 		if ok {
-			out[base] = data
+			out[base] = SampleEntry{Data: data, Mod: f.Modified}
 		}
 	}
 	return out, nil
