@@ -24,7 +24,6 @@ affects nothing — the binary does not read it.
 | `line-iso-bracket.log` | Line text | `2024-03-18 06:00:00.000 [INF] [SCH] [PID:4179] …`, with indented continuation lines folded into the record above them. |
 | `line-dashdate-level.log` | Line text | `18-03-2024 06:00:00.000 Info …` — day-first dates. |
 | `line-dotdate-pidtid.log` | Line text | `18.03.24 06:00:00:000 67727/611247 …` — note the colon before the milliseconds. |
-| `line-time-pidtid.log` | Line text | Time of day with no date; the date comes from the file's mtime and rolls over at midnight, which this file crosses. |
 | `line-time-dotdate.log` | Line text | `06:00:00.000 18.03.2024: …` — time before date. |
 | `unmatched.log` | *none* | **Fails to load on purpose.** Load it to see the diagnosis: which adapters looked, what each one objected to, and the line as the parser saw it. The **Parser rules** builder opens from there. |
 
@@ -51,3 +50,22 @@ kopusha --dir samples/              # NDJSON only — see below
 
 `--dir` pre-loads the `.ndjson` files it finds and ignores everything
 else; use `--files` with a glob, or the file browser, for the rest.
+
+## What is not here
+
+Two supported formats are deliberately absent.
+
+**EVTX** — the fixture is a vendored capture, third-party data rather
+than something this project generates. The code path is proven in CI;
+try it against a capture of your own.
+
+**Time-of-day-only line logs** (`HH:MM:SS` with no date) — the format is
+supported and tested, but its rule takes the date from the file's own
+mtime. That is right for a real log sitting where it was written, and
+wrong for a sample: copy it without preserving timestamps, re-save it,
+or unpack the archive with a tool that ignores them, and those rows jump
+to today while every other sample stays put. The timeline you see would
+depend on how the file reached you.
+
+Both formats are covered by `parsers.d/` rules that ship with the
+binary, so your own logs in those shapes parse regardless.

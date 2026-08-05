@@ -9,6 +9,35 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.8] — 2026-08-05
+
+### Changed
+
+- **The time-of-day sample is no longer shipped, and the sample timeline
+  no longer depends on the filesystem.** That format carries `HH:MM:SS`
+  and no date, so its rule takes the day from the file's own mtime. Two
+  releases went into making that mtime survive — pinning it in
+  `build.sh`, then re-pinning it in the release job after
+  `upload-artifact` discarded it — and it worked, but it was the wrong
+  thing to make work. The sample's position on the timeline was a
+  property of how the file had been copied, not of the file. A plain
+  `cp`, a re-save, or an extractor that ignores timestamps would still
+  have sent those rows to today while the rest stayed in 2024.
+
+  It is excluded from the shipped samples now, alongside the EVTX
+  capture and for a comparable reason: both are formats whose sample
+  cannot stand on its own. The format is still supported, still has its
+  `parsers.d/` rule in every install, and is still covered by the test
+  fixtures and the REQ-DT matrix — only the demo copy is gone.
+
+  With it goes the mtime pinning in `build.sh` and the release workflow,
+  which existed for that one file. The updater still restores the
+  timestamps an archive recorded, because updating and unzipping should
+  produce the same result whatever the folder contains.
+
+  Samples now span **1 hour 5 minutes**, and stamping every one of them
+  with today's date leaves that unchanged.
+
 ## [0.3.7] — 2026-08-05
 
 ### Fixed
@@ -594,7 +623,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.7...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.8...HEAD
+[0.3.8]: https://github.com/labmk/kopusha/releases/tag/v0.3.8
 [0.3.7]: https://github.com/labmk/kopusha/releases/tag/v0.3.7
 [0.3.6]: https://github.com/labmk/kopusha/releases/tag/v0.3.6
 [0.3.5]: https://github.com/labmk/kopusha/releases/tag/v0.3.5

@@ -4,11 +4,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VERSION="${VERSION:-0.3.7}"
+VERSION="${VERSION:-0.3.8}"
 
-# The day the shipped sample logs describe, matching BASE in
-# test-fixtures/generate.py. Used to pin sample mtimes — see step 3.
-SAMPLE_MTIME="202403180600"
 # Default to the host platform. Set GOOS/GOARCH to cross-compile —
 # see docs/BUILD.md for which combinations actually work (CGO makes
 # most of them require a matching C cross-toolchain).
@@ -282,25 +279,25 @@ done
 if [ -d "${SCRIPT_DIR}/test-fixtures/formats" ]; then
     rm -rf "dist/samples"
     mkdir -p "dist/samples"
+    # line-time-pidtid.log is excluded along with the EVTX capture, for
+    # a different reason: its format carries a time of day and no date,
+    # so its parser rule takes the day from the file's mtime. That is
+    # correct behaviour and it stays covered by the test fixtures — but
+    # it makes the shipped sample's position on the timeline a property
+    # of the filesystem rather than of the file. Copy it without
+    # preserving times, re-save it, or unpack the archive with a tool
+    # that ignores timestamps, and those rows jump to today while the
+    # other eight samples stay in 2024. A demo file whose timeline
+    # depends on how it was copied is a bad demo file.
+    #
+    # Anything added here that depends on mtime will have the same
+    # problem, so keep the shipped set to formats that carry their own
+    # date.
     find "${SCRIPT_DIR}/test-fixtures/formats" -maxdepth 1 -type f \
-        ! -name '*.evtx' -exec cp {} "dist/samples/" \;
+        ! -name '*.evtx' ! -name 'line-time-pidtid.log' \
+        -exec cp {} "dist/samples/" \;
     cp "${SCRIPT_DIR}/test-fixtures/SAMPLES.md" "dist/samples/README.md"
-    # Pin the modification time to the day the sample data describes.
-    #
-    # One sample format carries a time of day and no date, and its rule
-    # sets ts_use_mtime_date — the file's own mtime supplies the day,
-    # which is exactly the real-world behaviour it exists to demonstrate.
-    # Left at the build date those 600 rows landed years away from the
-    # other nine files, and the histogram over "the samples" was two
-    # lonely bars with an empty gulf between them.
-    #
-    # Pinning the mtime keeps the feature honest — the date still comes
-    # from the filesystem, nothing is hardcoded in the parser — while
-    # putting every sample record inside the same day. Zip stores mtimes,
-    # so this survives into the release archive.
-    find "dist/samples" -type f -exec touch -t "${SAMPLE_MTIME}" {} + 2>/dev/null \
-        || echo "  (could not pin sample mtimes; the time-only sample will date itself from today)"
-    echo "  Samples: dist/samples/ ($(ls -1 dist/samples | wc -l) files, dated ${SAMPLE_MTIME})"
+    echo "  Samples: dist/samples/ ($(ls -1 dist/samples | wc -l) files)"
 fi
 
 # ---------------------------------------------------------------------------

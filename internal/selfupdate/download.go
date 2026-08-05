@@ -157,13 +157,14 @@ func (a *archive) rules() (map[string][]byte, error) {
 // SampleEntry is one file from samples/, with the modification time the
 // archive recorded for it.
 //
-// The mtime is carried because it is data, not metadata. One sample
-// format has a time of day and no date, and its parser rule takes the
-// day from the file's mtime — so a sample written with today's date
-// lands years away from the other samples, and the histogram over them
-// becomes two bars with a gulf between. Extracting the zip by hand
-// preserves the mtime; writing the file from the updater has to do the
-// same or the two paths disagree.
+// The mtime is carried so that updating and unzipping produce the same
+// result. Extracting the archive by hand restores the timestamps it
+// recorded; an updater that stamped every file "now" would quietly
+// diverge from that, and for a log format whose parser reads the date
+// off the file — kopusha has one — the divergence changes what the data
+// says. No shipped sample relies on that today, and the sample set is
+// kept that way on purpose (see build.sh), but the two paths should
+// agree regardless of which files happen to be in the folder.
 type SampleEntry struct {
 	Data []byte
 	Mod  time.Time
