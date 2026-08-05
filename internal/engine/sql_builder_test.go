@@ -168,6 +168,44 @@ func TestQuoteFieldRefStructSubPath(t *testing.T) {
 	}
 }
 
+// A struct key carrying a single quote must not break out of the SQL
+// string literal in the emitted json_extract_string path. Before this
+// was escaped, a crafted NDJSON key like
+//
+//	x') || (SELECT version()) || json_extract_string("nested", '$.x
+//
+// rebalanced the quotes and parentheses into a working subquery, which
+// DuckDB then ran with the process's filesystem access — arbitrary SQL
+// execution from a loaded log file. The identifier half was quoted from
+// the start; the path half was not.
+func TestQuoteFieldRefEscapesStructPathQuotes(t *testing.T) {
+	e := newEmpty()
+	e.tableCols["file_a"] = []string{"nested"}
+	e.tableStructPaths["file_a"] = []string{"nested.ev'il"}
+
+	got := e.quoteFieldRef("nested.ev'il")
+	// The single quote inside the path is doubled, so the literal stays
+	// closed exactly where it should.
+	want := `json_extract_string("nested", '$.ev''il')`
+	if got != want {
+		t.Errorf("quoteFieldRef → %q, want %q", got, want)
+	}
+	// And the weaponised form: no bare, unescaped quote may survive
+	// between the emitted path delimiters.
+	e.tableStructPaths["file_a"] = []string{`nested.x') || (SELECT version()) || json_extract_string("nested", '$.x`}
+	got = e.quoteFieldRef(`nested.x') || (SELECT version()) || json_extract_string("nested", '$.x`)
+	inner := got[strings.Index(got, "'$")+1 : strings.LastIndex(got, "'")]
+	for i := 0; i < len(inner); i++ {
+		if inner[i] == '\'' {
+			// A lone quote is an injection; a doubled quote ('') is escaped data.
+			if i+1 >= len(inner) || inner[i+1] != '\'' {
+				t.Fatalf("unescaped quote at %d in emitted path: %q", i, got)
+			}
+			i++ // skip the pair
+		}
+	}
+}
+
 func TestQuoteFieldRefUnknownFallsBack(t *testing.T) {
 	e := newEmpty()
 	e.tableCols["file_a"] = []string{"a", "b"}

@@ -9,6 +9,36 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [0.3.5] — 2026-08-05
+
+### Security
+
+- **A crafted log file could execute arbitrary SQL.** When a filter or
+  the Fields panel referenced a nested (struct) field, the engine built
+  a `json_extract_string(col, '$.path')` expression with the path taken
+  from a JSON key in the loaded file — and that path was placed into the
+  SQL string literal without escaping. The column-name half had been
+  quoted against exactly this since the beginning; the path half was
+  missed.
+
+  A key such as `ev'il` broke the query; weaponised, a key like
+  `x') || (SELECT …) || json_extract_string("c", '$.x` rebalanced the
+  quotes into a working subquery that DuckDB then ran with the process's
+  filesystem access — so a file someone was asked to open could read or
+  write other files once its struct field was filtered or profiled.
+
+  The path is now escaped the same way every other value in the engine
+  already was. As a side effect a legitimate struct key that happens to
+  contain a quote resolves correctly instead of erroring. An audit of
+  every other SQL string-literal interpolation in the engine found this
+  was the only unescaped one; filter values, load and export paths, and
+  time bounds were all already escaped.
+
+  Found by a pentest of the ingest path, not a report. There is no
+  evidence of use, and the tool is local and single-user by design, but
+  a log file is exactly the untrusted input the parsers are built to
+  handle, so this is worth an immediate release.
+
 ## [0.3.4] — 2026-08-05
 
 ### Added
@@ -511,7 +541,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.4...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.5...HEAD
+[0.3.5]: https://github.com/labmk/kopusha/releases/tag/v0.3.5
 [0.3.4]: https://github.com/labmk/kopusha/releases/tag/v0.3.4
 [0.3.3]: https://github.com/labmk/kopusha/releases/tag/v0.3.3
 [0.3.2]: https://github.com/labmk/kopusha/releases/tag/v0.3.2

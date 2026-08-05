@@ -1380,7 +1380,17 @@ func (e *Engine) quoteFieldRef(name string) string {
 				parts := strings.Split(p, ".")
 				root := parts[0]
 				jsonPath := "$." + strings.Join(parts[1:], ".")
-				return fmt.Sprintf("json_extract_string(%s, '%s')", quoteIdent(root), jsonPath)
+				// The root column is an identifier and quoted as one;
+				// jsonPath is a SQL *string literal* and must be escaped
+				// as one. Both halves come from a JSON key in the loaded
+				// file, so a struct key like `ev'il` — or, weaponised,
+				// `x') || (SELECT ...) || json_extract_string("c", '$.x`
+				// — would otherwise close the literal and inject SQL that
+				// DuckDB runs with the process's filesystem access. The
+				// identifier side was escaped from the start; this side
+				// was not.
+				return fmt.Sprintf("json_extract_string(%s, '%s')",
+					quoteIdent(root), escapeSQLString(jsonPath))
 			}
 		}
 	}
