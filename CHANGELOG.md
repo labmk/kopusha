@@ -9,6 +9,24 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Changed
+
+- **Frontend moves to React 19 and Vite 8.** React 18.3 → 19.3,
+  `@vitejs/plugin-react` 4 → 6, Vite 6 → 8, Playwright 1.63, and
+  TanStack Query 5.104. React 18 no longer receives fixes, and Vite 6
+  is two majors behind. No application code had to change: the entry
+  point already used `createRoot`, and nothing relied on the APIs React
+  19 removed. The full Playwright suite passes against the built
+  binary. The bundled JavaScript grows from about 354 kB to 408 kB
+  (113 kB to 126 kB gzipped).
+  Building now needs **Node 22.12+**, which is Vite 8's floor.
+  Supersedes Dependabot #6 and #30.
+- **Release provenance uses `actions/attest-build-provenance` v4**, up
+  from v2. The attestation format and the `gh attestation verify`
+  command are unchanged.
+
 ## [0.3.10] — 2026-10-01
 
 Security hotfix. Built from 0.3.9 with only the changes below; no

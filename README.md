@@ -251,7 +251,7 @@ alphabetical order, so a module can ship its own sibling file.
 
 ## Build
 
-Requires Go 1.26.6+, Node 22+, and a C compiler (DuckDB needs CGO).
+Requires Go 1.26.6+, Node 22.12+, and a C compiler (DuckDB needs CGO).
 
 ```bash
 ./build.sh                             # host platform
