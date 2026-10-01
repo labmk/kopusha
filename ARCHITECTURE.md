@@ -81,7 +81,7 @@ kopusha[.exe]                     (~85 MB single binary)
 
 ## Tech Stack
 
-- **Backend**: Go 1.25.6+ (toolchain pinned to 1.26.5), `net/http`,
+- **Backend**: Go 1.26.6+ (toolchain pinned to 1.26.8), `net/http`,
   `embed`, `crypto/tls` — all stdlib. `github.com/swaggo/swag` for
   OpenAPI annotations.
 - **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO
@@ -102,8 +102,8 @@ kopusha[.exe]                     (~85 MB single binary)
 
 ### Toolchain setup
 
-- **Go**: 1.25.6+ with CGO enabled.
-- **Node**: 18+ with npm.
+- **Go**: 1.26.6+ with CGO enabled.
+- **Node**: 22+ with npm.
 - **C compiler (Windows)**: a MinGW-w64 GCC whose C++ ABI matches the
   prebuilt `libduckdb_static.a`. `build.sh` probes for one and reports
   its choice. The working set moves with `duckdb-go-bindings` releases —

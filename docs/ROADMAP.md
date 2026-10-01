@@ -33,8 +33,7 @@ and do not write regex for fun.
 
 ## Do it now
 
-Empty. Everything that was here shipped in 0.2.0 — see the
-[changelog](../CHANGELOG.md):
+Empty. Shipped so far — see the [changelog](../CHANGELOG.md):
 
 - **#13 rule-authoring UI** and **#14 explain why a file did not
   parse**, which turned out to be one feature from two directions: the
@@ -43,16 +42,14 @@ Empty. Everything that was here shipped in 0.2.0 — see the
   small and independent of both.
 - **#12 virtualised result table**, **#15 Parquet read and write**, and
   **#25 export writing where you are actually looking**.
-
-The next thing to pick up is #18.
+- **#18 field profiling panel** and **#17 user-initiated update**. The
+  update path refuses an archive with no build attestation from the
+  release workflow; see [SECURITY.md](../SECURITY.md) for exactly what
+  that check does and does not prove.
 
 ## Near future
 
-The next substantive capabilities.
-
-| | |
-|---|---|
-| [#18](https://github.com/labmk/kopusha/issues/18) | **Field profiling panel.** Answers "what is in this data" before a query is written. |
+Empty. The next substantive capability is not yet chosen.
 
 ## Future
 
@@ -61,8 +58,7 @@ Wanted, not scheduled.
 | | |
 |---|---|
 | [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
-| [#17](https://github.com/labmk/kopusha/issues/17) | **User-initiated update.** A button that fetches and replaces the binary, then restarts. Blocked on signing. |
-| [#24](https://github.com/labmk/kopusha/issues/24) | **Sign releases.** Gates #17, and is what would let macOS builds be notarized so a download stops being blocked. |
+| [#24](https://github.com/labmk/kopusha/issues/24) | **Platform signing.** Releases already carry a Sigstore build attestation that self-update checks against GitHub's record. Still open: verifying that signature inside the binary rather than trusting `api.github.com`, macOS notarization so a download stops being quarantined, and Windows code signing. |
 | [#21](https://github.com/labmk/kopusha/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
 
 ## Far future
@@ -72,7 +68,7 @@ Blocked on a precondition or a decision.
 | | |
 |---|---|
 | [#22](https://github.com/labmk/kopusha/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
-| [#23](https://github.com/labmk/kopusha/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Ship field profiling first and see whether the need survives. |
+| [#23](https://github.com/labmk/kopusha/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Field profiling has shipped; revisit only if the need survives it. |
 
 ## Things deliberately not planned
 
