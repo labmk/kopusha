@@ -87,7 +87,7 @@ kopusha[.exe]                     (~85 MB single binary)
 - **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO
   required; statically-linked `libduckdb_static.a` from
   `duckdb-go-bindings`).
-- **Frontend**: React 18, Vite 6, TanStack Query 5 (server state +
+- **Frontend**: React 19, Vite 8, TanStack Query 5 (server state +
   caching), Radix UI primitives (Dialog + Popover). The result table is
   windowed by `hooks/useVirtualRows.js` — a fixed row height makes the
   scroll maths arithmetic, which is why row detail opens in a side panel
@@ -103,7 +103,7 @@ kopusha[.exe]                     (~85 MB single binary)
 ### Toolchain setup
 
 - **Go**: 1.26.6+ with CGO enabled.
-- **Node**: 22+ with npm.
+- **Node**: 22.12+ with npm.
 - **C compiler (Windows)**: a MinGW-w64 GCC whose C++ ABI matches the
   prebuilt `libduckdb_static.a`. `build.sh` probes for one and reports
   its choice. The working set moves with `duckdb-go-bindings` releases —

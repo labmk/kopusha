@@ -1,6 +1,6 @@
 # Third-party notices
 
-kopusha 0.2.2 is distributed as a single statically linked
+kopusha 0.3.9 is distributed as a single statically linked
 executable. Every component listed here is compiled into that binary,
 which is why their notices ship with it: MIT and BSD require the
 copyright notice to travel with copies, and Apache-2.0 §4 requires
@@ -22,7 +22,7 @@ A machine-readable CycloneDX equivalent is in
 | BSD-2-Clause | 1 |
 | BSD-3-Clause | 6 |
 | ISC | 1 |
-| MIT | 58 |
+| MIT | 62 |
 | PostgreSQL | 1 |
 
 Every licence above is permissive. No component is under GPL, AGPL,
@@ -71,12 +71,19 @@ would make the distributed binary undistributable under MIT.
 - `@floating-ui/react-dom` 2.1.9 — Floating UI for React DOM
 - `@floating-ui/utils` 0.2.12 — Utilities for Floating UI
 - `@radix-ui/primitive` 1.1.7
+- `@radix-ui/react-arrow` 1.1.15
 - `@radix-ui/react-compose-refs` 1.1.5
 - `@radix-ui/react-context` 1.2.2
 - `@radix-ui/react-dialog` 1.1.23
+- `@radix-ui/react-dismissable-layer` 1.1.19
 - `@radix-ui/react-focus-guards` 1.1.6
+- `@radix-ui/react-focus-scope` 1.1.16
 - `@radix-ui/react-id` 1.1.4
 - `@radix-ui/react-popover` 1.1.23
+- `@radix-ui/react-popper` 1.3.7
+- `@radix-ui/react-portal` 1.1.17
+- `@radix-ui/react-presence` 1.1.10
+- `@radix-ui/react-primitive` 2.1.10
 - `@radix-ui/react-slot` 1.3.3
 - `@radix-ui/react-use-callback-ref` 1.1.4
 - `@radix-ui/react-use-controllable-state` 1.2.6
@@ -85,24 +92,21 @@ would make the distributed binary undistributable under MIT.
 - `@radix-ui/react-use-rect` 1.1.4
 - `@radix-ui/react-use-size` 1.1.4
 - `@radix-ui/rect` 1.1.3
-- `@tanstack/query-core` 5.101.4 — The framework agnostic core that powers TanStack Query
-- `@tanstack/react-query` 5.101.4 — Hooks for managing, caching and syncing asynchronous and remote data in React
-- `@types/prop-types` 15.7.15 — TypeScript definitions for prop-types
-- `@types/react` 18.3.31 — TypeScript definitions for react
+- `@tanstack/query-core` 5.104.0 — The framework agnostic core that powers TanStack Query
+- `@tanstack/react-query` 5.104.0 — Hooks for managing, caching and syncing asynchronous and remote data in React
+- `@types/react` 19.3.0 — TypeScript definitions for react
 - `aria-hidden` 1.2.6 — Cast aria-hidden to everything, except...
 - `csstype` 3.2.3 — Strict TypeScript and Flow types for style based on MDN data
 - `detect-node-es` 1.1.0 — Detect Node.JS (as opposite to browser environment). ESM modification
 - `get-nonce` 1.0.1 — returns nonce
 - `github.com/KyleBanks/depth` v1.2.1
 - `github.com/duckdb/duckdb-go-bindings` v0.10505.0
-- `github.com/duckdb/duckdb-go-bindings/lib/darwin-arm64` v0.10505.0
+- `github.com/duckdb/duckdb-go-bindings/lib/linux-amd64` v0.10505.0
 - `github.com/duckdb/duckdb-go/v2` v2.10505.0
 - `github.com/go-viper/mapstructure/v2` v2.5.0
 - `github.com/josharian/intern` v1.0.0
 - `github.com/mailru/easyjson` v0.7.6
 - `github.com/swaggo/swag` v1.16.6
-- `js-tokens` 4.0.0 — A regex that tokenizes JavaScript.
-- `loose-envify` 1.4.0 — Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST
 - `org.duckdb.third_party/fmt` — Formatting library
 - `org.duckdb.third_party/fsst` — Fast static symbol table string compression
 - `org.duckdb.third_party/hyperloglog` — Cardinality estimation
@@ -116,12 +120,12 @@ would make the distributed binary undistributable under MIT.
 - `org.duckdb/duckdb-extension-icu` — ICU / timezone extension
 - `org.duckdb/duckdb-extension-json` — JSON extension
 - `org.duckdb/duckdb-extension-parquet` — Parquet extension
-- `react` 18.3.1 — React is a JavaScript library for building user interfaces.
-- `react-dom` 18.3.1 — React package for working with the DOM.
+- `react` 19.3.0 — React is a JavaScript library for building user interfaces.
+- `react-dom` 19.3.0 — React package for working with the DOM.
 - `react-remove-scroll` 2.7.2 — Disables scroll outside of `children` node.
 - `react-remove-scroll-bar` 2.3.8 — Removes body scroll without content _shake_
 - `react-style-singleton` 2.2.3 — Just create a single stylesheet...
-- `scheduler` 0.23.2 — Cooperative scheduler for the browser environment.
+- `scheduler` 0.28.0 — Cooperative scheduler for the browser environment.
 - `use-callback-ref` 1.3.3 — The same useRef, but with callback
 - `use-sidecar` 1.1.3 — Sidecar code splitting utils
 
