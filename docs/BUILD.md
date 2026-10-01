@@ -2,10 +2,10 @@
 
 ## Requirements
 
-- **Go 1.25.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.5`;
-  the `go 1.25.6` line is the language-compat floor, so any 1.25.6+
+- **Go 1.26.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.8`;
+  the `go 1.26.6` line is the language-compat floor, so any 1.26.6+
   toolchain can consume the module.
-- **Node 20+** with npm (Vite frontend build). CI builds on 24 LTS.
+- **Node 22+** with npm (Vite frontend build). CI builds on 24 LTS.
 - **A C compiler.** DuckDB is a CGO dependency — there is no pure-Go
   fallback.
 
