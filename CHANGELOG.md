@@ -9,6 +9,29 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Security
+
+- **Build toolchain moved to Go 1.26.8.** 1.26.5 carried six standard
+  library advisories that govulncheck traces into kopusha's own code
+  paths: GO-2026-6218 (`net/url`), GO-2026-6090 (`crypto/tls`),
+  GO-2026-6089 and GO-2026-5026 (`net/http`), GO-2026-6088
+  (`encoding/xml`, reached by the XML loader) and GO-2026-5972
+  (`encoding/asn1`, reached on the `--cert`/`--key` path). All are
+  fixed from 1.26.6.
+- **Frontend build dependencies patched**: `nanoid` 3.3.19
+  (GHSA-2v37-7h3g-55p8, high) and `js-yaml` 5.4.2
+  (GHSA-r3ph-w7gj-g6xm, moderate), both pinned through `overrides`.
+  Neither ships in the binary; both are build-time only.
+
+### Changed
+
+- **Minimum Go is now 1.26.6**, up from 1.25.6. Go 1.25 left upstream
+  support when Go 1.27 shipped. **Minimum Node for building is now
+  22**; Node 20 reached end of life in April 2026. CI already built on
+  Node 24.
+
 ## [0.3.9] — 2026-08-05
 
 ### Changed

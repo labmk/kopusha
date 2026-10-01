@@ -1,23 +1,20 @@
 module github.com/labmk/kopusha
 
-// Require Go 1.25.6+ — this pulls the 2026-01-15 stdlib release that
-// fixes CVE-2025-61728 (archive/zip name-indexing DoS) and
-// CVE-2025-61726 (net/http form-parse DoS), both of which our zip
-// handlers and HTTP layer feed directly. Plus four more stdlib fixes
-// from the same release.
+// Require Go 1.26.6+ — Go 1.25 left upstream support when Go 1.27
+// shipped (August 2026), and 1.26.6 is the first 1.26 release that
+// fixes the six stdlib advisories govulncheck flags as reachable on
+// 1.26.5: GO-2026-6218 (net/url quadratic resolvePath), GO-2026-6090
+// (crypto/tls post-handshake messages), GO-2026-6089 (net/http h2c
+// ReadHeaderTimeout), GO-2026-6088 (encoding/xml recursion depth, hit
+// by the XML loader), GO-2026-5972 (encoding/asn1 recursion depth, on
+// the --cert/--key path) and GO-2026-5026 (punycode labels, reached via
+// the self-update fetch).
 //
-// `toolchain go1.26.5` pins the build toolchain to the release that
-// fixes the four stdlib advisories govulncheck flags as reachable on
-// 1.26.2: GO-2026-5856 (crypto/tls ECH privacy leak, reachable via
-// ListenAndServeTLS on the --cert/--key path), GO-2026-5039
-// (net/textproto), GO-2026-5037 (crypto/x509 hostname parsing), and
-// GO-2026-4971 (net.Listen NUL-byte panic on Windows, which main.go
-// hits directly). `go 1.25.6` stays as the language-compat floor so
-// downstream builds on any 1.25.6+ keep working — the toolchain line
-// only constrains the build environment.
-go 1.25.6
+// `toolchain go1.26.8` pins the build environment to the newest 1.26
+// patch release; the `go` line stays the floor for downstream builds.
+go 1.26.6
 
-toolchain go1.26.5
+toolchain go1.26.8
 
 require (
 	github.com/Velocidex/ordereddict v0.0.0-20210502082334-cf5d9045c0d1
