@@ -283,7 +283,7 @@ jobs:
       # verification then covers the artifact the user actually runs,
       # with no intermediate file to trust.
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: 'out/*.zip'
 
