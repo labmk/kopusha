@@ -46,6 +46,13 @@ var version = "0.3.11"
 // @schemes         http https
 
 func main() {
+	// `kopusha mcp` is a separate, stdio-only mode for AI agents. It has
+	// to branch before anything below touches the standard handles or
+	// writes to standard output, which is its protocol channel.
+	if len(os.Args) > 1 && os.Args[1] == "mcp" {
+		os.Exit(runMCPBridge(os.Args[2:]))
+	}
+
 	// Windows GUI-subsystem binaries (`-H windowsgui`) start without a
 	// console, so launching from Explorer doesn't flash a black window.
 	// Re-attach to the parent's console (cmd.exe / PowerShell) when one

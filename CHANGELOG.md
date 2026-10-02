@@ -22,6 +22,14 @@ those are external and stable.
   bearer token, no export or other disk writes, zip archives refused.
   See [docs/MCP.md](docs/MCP.md). First module to ship, and the first
   real use of the module contract.
+- **`kopusha mcp`: standard input/output for agents (#16, phase 2).**
+  A thin bridge for MCP clients that only launch servers as
+  subprocesses. It forwards newline-delimited JSON-RPC to the running
+  viewer's `/api/mcp` and writes the replies back, starting no engine of
+  its own. Port and token default to the `kopusha*.conf` files next to
+  the binary. When the viewer is not running or the module is disabled,
+  requests are answered with a JSON-RPC error saying so. See
+  [docs/MCP.md](docs/MCP.md).
 
 ### Changed
 

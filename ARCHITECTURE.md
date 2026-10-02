@@ -22,6 +22,7 @@ the same source with no code changes.
 ```
 kopusha[.exe]                     (~85 MB single binary)
   main.go                            CLI entry: flags, conf load, registry boot, TLS
+  main_mcp.go                        `kopusha mcp`: stdio bridge mode, branches before startup
   console_windows.go                 AttachConsole shim (build-tagged); console_other.go is a no-op
   internal/
     config/config.go                 kopusha*.conf parser (INI sections) + LoadAll merge
@@ -72,7 +73,8 @@ kopusha[.exe]                     (~85 MB single binary)
   parsers.d.sha256                   Generated; go:embed'd so the binary knows
                                      which rules it shipped with
   modules/                           Optional sub-features, enabled by config section
-    mcp/                             MCP endpoint for AI agents (/api/mcp); see docs/MCP.md
+    mcp/                             MCP endpoint for AI agents (/api/mcp) and the
+                                     stdio bridge behind `kopusha mcp`; see docs/MCP.md
   static/                            Vite build output (generated, git-ignored)
   ARCHITECTURE.md                    This document
   REQUIREMENTS.md                    Canonical accepted data types + ingest contract
@@ -412,7 +414,11 @@ All endpoints return JSON. Errors: `{"error": "message"}`.
 Modules add routes under `/api/<name>/*` and `/m/<name>/*`, which
 appear only when the module's `[<name>]` config section is present.
 The shipped `mcp` module adds `POST /api/mcp` (JSON-RPC 2.0, MCP
-Streamable HTTP), loopback clients only — see [docs/MCP.md](./docs/MCP.md).
+Streamable HTTP), loopback clients only. `kopusha mcp` (main_mcp.go)
+is a separate mode of the same binary: it bridges standard
+input/output to that endpoint for clients that only launch
+subprocesses, and branches before any other startup so nothing but
+protocol messages reaches standard output — see [docs/MCP.md](./docs/MCP.md).
 
 ## Module conventions
 

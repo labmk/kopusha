@@ -51,7 +51,7 @@ Empty. Shipped so far — see the [changelog](../CHANGELOG.md):
 
 | | |
 |---|---|
-| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** Phase 1 shipped: the `mcp` module serves six read-only tools over local HTTP at `/api/mcp` ([docs/MCP.md](./MCP.md)). Open: phase 2, a standard input/output mode for clients that cannot connect over HTTP. |
+| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** Built, not yet released: the `mcp` module serves seven tools over local HTTP at `/api/mcp` (phase 1), and `kopusha mcp` bridges standard input/output to it for clients that only launch subprocesses (phase 2). See [docs/MCP.md](./MCP.md). |
 
 ## Future
 

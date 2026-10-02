@@ -302,8 +302,10 @@ example.
 One module ships, disabled: **MCP for AI agents**. Rename
 `kopusha_mcp.conf.example` to `kopusha_mcp.conf` and a local agent can
 load, inspect and query parsed logs over the Model Context Protocol at
-`http://127.0.0.1:9200/api/mcp`. Loopback only, read-only on disk, no
-outbound connections. Details: [docs/MCP.md](./docs/MCP.md).
+`http://127.0.0.1:9200/api/mcp`. Clients that only launch servers as
+subprocesses use `kopusha mcp`, which bridges standard input/output to
+that endpoint. Loopback only, read-only on disk, no outbound
+connections. Details: [docs/MCP.md](./docs/MCP.md).
 
 ## Roadmap
 

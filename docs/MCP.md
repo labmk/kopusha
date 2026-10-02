@@ -43,8 +43,56 @@ Generic client configuration:
 
 With `token` set, add the header `Authorization: Bearer <token>`.
 
-Clients that only launch servers over standard input/output are not
-supported yet.
+### Clients that only speak standard input/output
+
+Some clients launch every MCP server as a subprocess and talk to it
+over standard input/output. For those, `kopusha mcp` is a thin bridge:
+it reads one JSON-RPC message per line from standard input, forwards it
+to the running viewer's `/api/mcp`, and writes the reply to standard
+output. It starts no engine and loads nothing itself, so the agent and
+the UI still share one session.
+
+The viewer must already be running with the module enabled. Start it
+first, then register the bridge with the client:
+
+```bash
+# Claude Code
+claude mcp add kopusha -- /path/to/kopusha mcp
+```
+
+```json
+{
+  "mcpServers": {
+    "kopusha": { "command": "/path/to/kopusha", "args": ["mcp"] }
+  }
+}
+```
+
+| Flag | Default | Effect |
+|------|---------|--------|
+| `--port` | `port` from `kopusha.conf`, else 9200 | Port of the running viewer |
+| `--url` | `http://127.0.0.1:<port>/api/mcp` | Full endpoint, overrides `--port` |
+| `--token` | `token` from `kopusha_mcp.conf` | Bearer token |
+
+The defaults come from the `kopusha*.conf` files next to the binary, so
+a bridge launched from the same install finds its viewer without flags.
+Prefer the config file over `--token`: command-line arguments are
+visible to other local users in the process list.
+
+Behaviour:
+
+- **Viewer not running, or module disabled:** every request gets a
+  JSON-RPC error (code `-32000`) saying which, and the bridge keeps
+  running. Start or fix the viewer and the next request goes through.
+- **Ordering:** messages are forwarded one at a time, in order. A long
+  `query` delays the messages behind it.
+- **Output:** standard output carries protocol messages only, one
+  compact JSON object per line. Diagnostics go to standard error.
+- **Size:** a message over 1 MiB is dropped and answered with an error
+  with a `null` id, matching the endpoint's own body limit.
+- **TLS:** the bridge uses the system certificate store. A viewer
+  started with `--cert`/`--key` and a self-signed certificate is not
+  reachable through it; use the client's HTTP transport instead.
 
 ## Tools
 
@@ -85,7 +133,9 @@ message.
   header names loopback. This holds even when `listen` is non-loopback
   with TLS. The `Host`/`Origin` checks stop a web page in a local
   browser from reaching the endpoint through DNS rebinding.
-- **No egress.** The module makes no outbound connection. Data reaches
+- **No egress.** The module makes no outbound connection. The
+  `kopusha mcp` bridge connects only to the endpoint it is given, by
+  default on `127.0.0.1`. Data reaches
   the agent process on this machine; where the agent sends it next is
   the agent's configuration, not kopusha's.
 - **Read-only on disk.** No export, no rule writes, no settings
