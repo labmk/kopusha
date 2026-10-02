@@ -22,6 +22,7 @@ the same source with no code changes.
 ```
 kopusha[.exe]                     (~85 MB single binary)
   main.go                            CLI entry: flags, conf load, registry boot, TLS
+  main_mcp.go                        `kopusha mcp`: stdio bridge mode, branches before startup
   console_windows.go                 AttachConsole shim (build-tagged); console_other.go is a no-op
   internal/
     config/config.go                 kopusha*.conf parser (INI sections) + LoadAll merge
@@ -71,11 +72,14 @@ kopusha[.exe]                     (~85 MB single binary)
   parsers.d/                         YAML rule files for block/line/xml autodetect
   parsers.d.sha256                   Generated; go:embed'd so the binary knows
                                      which rules it shipped with
-  modules/                           Optional sub-features (none ship by default)
+  modules/                           Optional sub-features, enabled by config section
+    mcp/                             MCP endpoint for AI agents (/api/mcp) and the
+                                     stdio bridge behind `kopusha mcp`; see docs/MCP.md
   static/                            Vite build output (generated, git-ignored)
   ARCHITECTURE.md                    This document
   REQUIREMENTS.md                    Canonical accepted data types + ingest contract
   docs/MODULES.md                    Module authoring contract
+  docs/MCP.md                        MCP module: enable, tools, security model
   docs/BUILD.md                      Per-platform build + cross-compile notes
 ```
 
@@ -409,11 +413,17 @@ All endpoints return JSON. Errors: `{"error": "message"}`.
 
 Modules add routes under `/api/<name>/*` and `/m/<name>/*`, which
 appear only when the module's `[<name>]` config section is present.
+The shipped `mcp` module adds `POST /api/mcp` (JSON-RPC 2.0, MCP
+Streamable HTTP), loopback clients only. `kopusha mcp` (main_mcp.go)
+is a separate mode of the same binary: it bridges standard
+input/output to that endpoint for clients that only launch
+subprocesses, and branches before any other startup so nothing but
+protocol messages reaches standard output — see [docs/MCP.md](./docs/MCP.md).
 
 ## Module conventions
 
-No modules ship by default. See [docs/MODULES.md](./docs/MODULES.md)
-for the full contract. In brief:
+One module ships, disabled by default: `mcp`. See
+[docs/MODULES.md](./docs/MODULES.md) for the full contract. In brief:
 
 - Each module lives under `modules/<name>/` with a Go-valid package
   name even when the directory has dashes.
@@ -426,6 +436,9 @@ for the full contract. In brief:
   switch.
 - Routes go under `/api/<name>/*` and `/m/<name>/*`, disjoint from core
   paths so longest-prefix matching keeps them clear of the SPA catch-all.
+- Modules reach core state through `RegisterContext.Deps` (`Engine`,
+  `Rules`, `Settings`, activity hooks), never by importing
+  `internal/server`.
 - Register the React component in `frontend/src/moduleRegistry.js` and
   add a `resolve.alias` entry in `frontend/vite.config.js` for every
   external package the module imports — module JSX sits outside the

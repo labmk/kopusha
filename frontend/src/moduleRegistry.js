@@ -8,7 +8,7 @@
 // [section] in kopusha.conf removes the manifest entry → the tab
 // is not rendered regardless of what's in this file).
 //
-// No modules ship with kopusha by default. To add one:
+// No shipped module has a tab (modules/mcp is backend-only). To add one:
 //   1. Place its tab component under modules/<name>/frontend/.
 //   2. Add one import + one map entry below.
 //   3. Have the backend module surface a `Tab` field in its manifest.

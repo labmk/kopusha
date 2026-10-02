@@ -256,7 +256,7 @@ fi
 # all values commented = defaults). Each optional module adds its own
 # kopusha_<name>.conf sibling; ship one as `.example` when it needs
 # per-site values, and the operator renames it to `.conf` to enable.
-for conf in kopusha.conf; do
+for conf in kopusha.conf kopusha_mcp.conf.example; do
     if [ -f "${SCRIPT_DIR}/${conf}" ]; then
         cp "${SCRIPT_DIR}/${conf}" "dist/${conf}"
         echo "  Config: dist/${conf}"

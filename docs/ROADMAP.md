@@ -49,7 +49,9 @@ Empty. Shipped so far — see the [changelog](../CHANGELOG.md):
 
 ## Near future
 
-Empty. The next substantive capability is not yet chosen.
+| | |
+|---|---|
+| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** Built, not yet released: the `mcp` module serves seven tools over local HTTP at `/api/mcp` (phase 1), and `kopusha mcp` bridges standard input/output to it for clients that only launch subprocesses (phase 2). See [docs/MCP.md](./MCP.md). |
 
 ## Future
 
@@ -57,7 +59,6 @@ Wanted, not scheduled.
 
 | | |
 |---|---|
-| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** An agent cannot parse heterogeneous logs; that is exactly what this project has. The API already exists. |
 | [#24](https://github.com/labmk/kopusha/issues/24) | **Platform signing.** Releases already carry a Sigstore build attestation that self-update checks against GitHub's record. Still open: verifying that signature inside the binary rather than trusting `api.github.com`, macOS notarization so a download stops being quarantined, and Windows code signing. |
 | [#21](https://github.com/labmk/kopusha/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
 
