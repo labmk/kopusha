@@ -1,6 +1,6 @@
 # Third-party notices
 
-kopusha 0.3.9 is distributed as a single statically linked
+kopusha 0.3.11 is distributed as a single statically linked
 executable. Every component listed here is compiled into that binary,
 which is why their notices ship with it: MIT and BSD require the
 copyright notice to travel with copies, and Apache-2.0 §4 requires
