@@ -261,7 +261,8 @@ VERSION=1.0.0 ./build.sh               # custom version
 MANUFACTURER="Acme Corp" ./build.sh    # brand a fork
 ```
 
-Output lands in `dist/` alongside `parsers.d/` and `kopusha.conf`.
+Output lands in `dist/` alongside `parsers.d/`, `kopusha.conf` and
+`kopusha_mcp.conf.example`.
 
 Windows binaries are produced by CI; that is the supported path. A
 local Windows build needs a MinGW-w64 GCC whose C++ ABI matches the
@@ -294,9 +295,15 @@ cd frontend && npm run gen:api
 ## Extending
 
 kopusha has a module system for optional sub-features that ship
-their own Go handlers, React tab, and static assets. No modules ship by
-default — see [docs/MODULES.md](./docs/MODULES.md) for the contract and
-a worked example.
+their own Go handlers, React tab, and static assets — see
+[docs/MODULES.md](./docs/MODULES.md) for the contract and a worked
+example.
+
+One module ships, disabled: **MCP for AI agents**. Rename
+`kopusha_mcp.conf.example` to `kopusha_mcp.conf` and a local agent can
+load, inspect and query parsed logs over the Model Context Protocol at
+`http://127.0.0.1:9200/api/mcp`. Loopback only, read-only on disk, no
+outbound connections. Details: [docs/MCP.md](./docs/MCP.md).
 
 ## Roadmap
 

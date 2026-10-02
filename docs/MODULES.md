@@ -10,8 +10,11 @@ combination of:
 - **Config data** passed to the SPA at boot (a branding module, say,
   supplying a logo URL and company name)
 
-No modules ship with kopusha. This document is the contract for
-adding one.
+One module ships with kopusha: `mcp` (`modules/mcp/`), a backend-only
+module that serves the MCP endpoint for AI agents — see
+[MCP.md](./MCP.md). It is disabled until its config section exists, and
+is the reference for a module with handlers and no tab. This document
+is the contract for adding one.
 
 ## Lifecycle
 
@@ -48,6 +51,7 @@ type Module interface {
 | `Config` | Read your `[section]` via `ctx.Config.Section(name)` |
 | `Manifest` | Fill `Tab`, `Style`, `Bundle`, `Config` |
 | `Engine` | Query loaded files |
+| `Rules` | The `parsers.d` manager: live ingest registry, rule list |
 | `Settings` | Persist state (add a field to `settings.Settings`) |
 | `APIHandler` | Wrap handlers so they refresh the inactivity timer |
 | `TouchActivity` | Call from long-running handlers to keep the timer fresh |
@@ -64,7 +68,8 @@ modules/my-module/
     MyModuleTab.jsx
 ```
 
-Data-only modules (assets and CSS, no handlers) flatten into
+Data-only modules (assets and CSS, no handlers) and backend-only
+modules (handlers, no tab — `modules/mcp/`) flatten into
 `modules/my-module/` directly. Go's `embed` cannot escape upward with
 `..`, so any embedded file must live beside the source that embeds it.
 
@@ -118,6 +123,11 @@ Four edits, all one-liners:
 
 1. **`main.go`** — import the package and add
    `modreg.Add(hello.New())` before `modreg.Boot(...)`.
+
+   Pass constructor arguments the module needs from `main`, e.g.
+   `mcp.New(version)`.
+
+   Steps 2 and 3 apply only to modules with a tab.
 
 2. **`frontend/src/moduleRegistry.js`** — import the tab component and
    map the module ID to it:

@@ -1,0 +1,24 @@
+# kopusha MCP module — lets a local AI agent query parsed logs over the
+# Model Context Protocol. See docs/MCP.md.
+#
+# Rename this file to kopusha_mcp.conf to enable it. The [mcp] section
+# being present is the on/off switch; delete the file to turn it off.
+#
+# The endpoint is http://127.0.0.1:<port>/api/mcp on the viewer's own
+# listener. It answers loopback clients only, whatever `listen` says,
+# and makes no outbound connection.
+
+[mcp]
+
+# Optional shared secret. When set, clients must send
+# "Authorization: Bearer <token>". Loopback-only already keeps other
+# machines out; this keeps other local users out on a shared host.
+# token =
+
+# Largest page a single query tool call may return. Default 500.
+# max_rows = 500
+
+# Expose load_directory, so the agent can load files itself. Set false
+# to limit the agent to whatever the operator loaded. Default true.
+# Zip archives are always refused: loading one writes to disk.
+# allow_load = true

@@ -9,6 +9,25 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Added
+
+- **MCP endpoint for AI agents (#16, phase 1).** New `mcp` module at
+  `POST /api/mcp` (MCP Streamable HTTP, JSON replies). Tools:
+  `list_files`, `load_directory`, `list_formats`, `get_fields`,
+  `field_samples`, `query`, `explain_detection`. Disabled by default;
+  enable by renaming the shipped `kopusha_mcp.conf.example`. Loopback
+  clients only (remote address, `Host` and `Origin` checked), optional
+  bearer token, no export or other disk writes, zip archives refused.
+  See [docs/MCP.md](docs/MCP.md). First module to ship, and the first
+  real use of the module contract.
+
+### Changed
+
+- **Module contract:** `module.Deps` gains `Rules`, the `parsers.d`
+  manager, so modules can reach the live ingest registry. Additive.
+
 ## [0.3.11] — 2026-10-02
 
 Includes the 0.3.10 security fixes.

@@ -25,6 +25,7 @@ import (
 	"github.com/labmk/kopusha/internal/server"
 	"github.com/labmk/kopusha/internal/settings"
 	"github.com/labmk/kopusha/internal/update"
+	"github.com/labmk/kopusha/modules/mcp"
 )
 
 //go:embed parsers.d.sha256
@@ -332,16 +333,20 @@ func main() {
 	}
 
 	// Module registry. Modules are mounted only when their config
-	// section is present in kopusha.conf — see /api/modules for
-	// the runtime view the SPA reads. No modules ship by default;
-	// add yours with modreg.Add(<pkg>.New()) — see docs/MODULES.md.
+	// section is present in a kopusha*.conf — see /api/modules for
+	// the runtime view the SPA reads. Add yours with
+	// modreg.Add(<pkg>.New()) — see docs/MODULES.md.
 	modreg := module.NewRegistry(cfg, module.Deps{
 		Engine:        eng,
+		Rules:         ruleMgr,
 		Settings:      store,
 		APIHandler:    srv.APIHandler,
 		TouchActivity: srv.TouchActivity,
 		AddBusyCheck:  srv.AddBusyCheck,
 	})
+	// MCP endpoint for AI agents, off unless [mcp] is configured —
+	// see modules/mcp and docs/MCP.md.
+	modreg.Add(mcp.New(version))
 	if err := modreg.Boot(srv.Mux()); err != nil {
 		log.Fatalf("module registry boot: %v", err)
 	}

@@ -1,6 +1,7 @@
 // Package module defines the interface optional kopusha sub-features
-// implement to plug into the core viewer. No modules ship by default;
-// see docs/MODULES.md for the contract and a worked example.
+// implement to plug into the core viewer. One module ships, modules/mcp,
+// disabled until configured; see docs/MODULES.md for the contract and a
+// worked example.
 //
 // Boot flow:
 //
@@ -23,6 +24,7 @@ import (
 
 	"github.com/labmk/kopusha/internal/config"
 	"github.com/labmk/kopusha/internal/engine"
+	"github.com/labmk/kopusha/internal/parsers"
 	"github.com/labmk/kopusha/internal/settings"
 )
 
@@ -54,6 +56,10 @@ type Deps struct {
 	// Engine is the DuckDB engine the viewer uses. May be nil in tests;
 	// modules that need it should fail fast in Register.
 	Engine *engine.Engine
+
+	// Rules is the parsers.d manager: the live ingest registry and the
+	// rules it was built from. May be nil in tests.
+	Rules *parsers.Manager
 
 	// Settings is the persistent settings store (saved queries, last
 	// directory, per-module state, …). May be nil in tests.
