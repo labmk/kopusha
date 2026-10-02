@@ -11,6 +11,27 @@ those are external and stable.
 
 ## [Unreleased]
 
+### Changed
+
+- **Frontend moves to React 19 and Vite 8.** React 18.3 → 19.3,
+  `@vitejs/plugin-react` 4 → 6, Vite 6 → 8, Playwright 1.63, and
+  TanStack Query 5.104. React 18 no longer receives fixes, and Vite 6
+  is two majors behind. No application code had to change: the entry
+  point already used `createRoot`, and nothing relied on the APIs React
+  19 removed. The full Playwright suite passes against the built
+  binary. The bundled JavaScript grows from about 354 kB to 408 kB
+  (113 kB to 126 kB gzipped).
+  Building now needs **Node 22.12+**, which is Vite 8's floor.
+  Supersedes Dependabot #6 and #30.
+- **Release provenance uses `actions/attest-build-provenance` v4**, up
+  from v2. The attestation format and the `gh attestation verify`
+  command are unchanged.
+
+## [0.3.10] — 2026-10-01
+
+Security hotfix. Built from 0.3.9 with only the changes below; no
+feature or UI change ships in this release.
+
 ### Security
 
 - **Build toolchain moved to Go 1.26.8.** 1.26.5 carried six standard
@@ -27,19 +48,9 @@ those are external and stable.
 
 ### Changed
 
-- **Frontend moves to React 19 and Vite 8.** React 18.3 → 19.3,
-  `@vitejs/plugin-react` 4 → 6, Vite 6 → 8, Playwright 1.63, and
-  TanStack Query 5.104. React 18 no longer receives fixes, and Vite 6
-  is two majors behind. No application code had to change: the entry
-  point already used `createRoot`, and nothing relied on the APIs React
-  19 removed. The full Playwright suite passes against the built
-  binary. The bundled JavaScript grows from about 354 kB to 408 kB
-  (113 kB to 126 kB gzipped).
-  Building now needs **Node 22.12+**, which is Vite 8's floor.
-  Supersedes Dependabot #6 and #30.
 - **Minimum Go is now 1.26.6**, up from 1.25.6. Go 1.25 left upstream
-  support when Go 1.27 shipped. Node 20, the previous documented
-  build floor, reached end of life in April 2026. CI already built on
+  support when Go 1.27 shipped. **Minimum Node for building is now
+  22**; Node 20 reached end of life in April 2026. CI already built on
   Node 24.
 
 ## [0.3.9] — 2026-08-05
@@ -687,7 +698,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.9...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.10...HEAD
+[0.3.10]: https://github.com/labmk/kopusha/releases/tag/v0.3.10
 [0.3.9]: https://github.com/labmk/kopusha/releases/tag/v0.3.9
 [0.3.8]: https://github.com/labmk/kopusha/releases/tag/v0.3.8
 [0.3.7]: https://github.com/labmk/kopusha/releases/tag/v0.3.7
