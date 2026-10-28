@@ -85,7 +85,7 @@ kopusha[.exe]                     (~85 MB single binary)
 
 ## Tech Stack
 
-- **Backend**: Go 1.26.6+ (toolchain pinned to 1.26.8), `net/http`,
+- **Backend**: Go 1.26.6+ (toolchain pinned to 1.26.10), `net/http`,
   `embed`, `crypto/tls` — all stdlib. `github.com/swaggo/swag` for
   OpenAPI annotations.
 - **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO

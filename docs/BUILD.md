@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Go 1.26.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.8`;
+- **Go 1.26.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.10`;
   the `go 1.26.6` line is the language-compat floor, so any 1.26.6+
   toolchain can consume the module.
 - **Node 22.12+** with npm (Vite 8 frontend build). CI builds on 24 LTS.
