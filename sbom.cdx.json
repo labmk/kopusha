@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-28T15:16:04Z",
+    "timestamp": "2026-10-28T22:26:20Z",
     "tools": {
       "components": [
         {
@@ -145,15 +145,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
+      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.20000.0?type=module",
       "type": "library",
       "name": "github.com/duckdb/duckdb-go-bindings",
-      "version": "v0.10506.0",
+      "version": "v0.20000.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "facfefe79821032f0c57f4099f0b9a7c3f67f99a18424ad177f71e494d0a45e0"
+          "content": "8c220f71b7ce0af19cbbac89c5e904b29af2fb932ec6ba4e4ab4564ea8a79f6d"
         }
       ],
       "licenses": [
@@ -163,7 +163,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.20000.0?goarch=amd64&goos=linux&type=module",
       "externalReferences": [
         {
           "url": "https://github.com/duckdb/duckdb-go-bindings",
@@ -178,48 +178,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
-      "type": "library",
-      "name": "github.com/duckdb/duckdb-go-bindings/lib/linux-amd64",
-      "version": "v0.10506.0",
-      "scope": "required",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "cb2d93514f985b188188e42bc98b1e525d00714ce81456119a6ac21a28d4c625"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?goarch=amd64&goos=linux&type=module",
-      "externalReferences": [
-        {
-          "url": "https://github.com/duckdb/duckdb-go-bindings/lib/linux-amd64",
-          "type": "vcs"
-        }
-      ],
-      "properties": [
-        {
-          "name": "kopusha:origin",
-          "value": "go"
-        }
-      ]
-    },
-    {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
+      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.20000.0?type=module",
       "type": "library",
       "name": "github.com/duckdb/duckdb-go/v2",
-      "version": "v2.10506.0",
+      "version": "v2.20000.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "99c663510fe448d79976d182ab28f9fc910351d8fbfe4bc82df20e513cd022ed"
+          "content": "f6247876e5a75065a38d2a548f9ea20cdaf1c549873ffc43e1837d87c2515524"
         }
       ],
       "licenses": [
@@ -229,7 +196,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.20000.0?goarch=amd64&goos=linux&type=module",
       "externalReferences": [
         {
           "url": "https://github.com/duckdb/duckdb-go",
@@ -566,6 +533,33 @@
           "type": "vcs"
         }
       ],
+      "properties": [
+        {
+          "name": "kopusha:origin",
+          "value": "go"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:golang/go.duckdb.org/libduckdb/linux-amd64@v0.20000.0?type=module",
+      "type": "library",
+      "name": "go.duckdb.org/libduckdb/linux-amd64",
+      "version": "v0.20000.0",
+      "scope": "required",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed63d7e3904881a7a82e656e586c332dfb880bbf0912f7656483e71dbca18757"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:golang/go.duckdb.org/libduckdb/linux-amd64@v0.20000.0?goarch=amd64&goos=linux&type=module",
       "properties": [
         {
           "name": "kopusha:origin",
@@ -3039,6 +3033,29 @@
     },
     {
       "type": "library",
+      "name": "httplib",
+      "group": "org.duckdb.third_party",
+      "description": "HTTP client (cpp-httplib); linked since DuckDB 2.0, unused \u2014 extension auto-install is off",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "kopusha:origin",
+          "value": "duckdb-static"
+        },
+        {
+          "name": "kopusha:evidence",
+          "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "hyperloglog",
       "group": "org.duckdb.third_party",
       "description": "Cardinality estimation",
@@ -3046,6 +3063,29 @@
         {
           "license": {
             "id": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "kopusha:origin",
+          "value": "duckdb-static"
+        },
+        {
+          "name": "kopusha:evidence",
+          "value": "statically linked inside libduckdb_static.a; not discoverable by SBOM scanners"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jemalloc",
+      "group": "org.duckdb.third_party",
+      "description": "Memory allocator (Linux builds)",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
           }
         }
       ],
@@ -3247,10 +3287,10 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/kopusha@v0.0.0-20261002192602-2642fe085600?type=module",
+      "ref": "pkg:golang/github.com/labmk/kopusha@v0.0.0-20261028151651-b617af8d6ab6?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.20000.0?type=module",
         "pkg:golang/github.com/swaggo/swag@v1.16.6?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module",
         "pkg:golang/www.velocidex.com/golang/evtx@v0.2.0?type=module"
@@ -3266,10 +3306,10 @@
       "ref": "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module"
     },
     {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
+      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.20000.0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
+        "pkg:golang/go.duckdb.org/libduckdb/linux-amd64@v0.20000.0?type=module",
         "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
         "pkg:golang/golang.org/x/sync@v0.24.0?type=module",
         "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
@@ -3277,16 +3317,13 @@
       ]
     },
     {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module"
-    },
-    {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
+      "ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.20000.0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.20000.0?type=module",
         "pkg:golang/github.com/go-viper/mapstructure/v2@v2.5.0?type=module",
         "pkg:golang/github.com/google/uuid@v1.6.0?type=module",
+        "pkg:golang/go.duckdb.org/libduckdb/linux-amd64@v0.20000.0?type=module",
         "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
         "pkg:golang/golang.org/x/sync@v0.24.0?type=module",
         "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
@@ -3358,6 +3395,9 @@
         "pkg:golang/gopkg.in/yaml.v2@v2.4.0?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module"
       ]
+    },
+    {
+      "ref": "pkg:golang/go.duckdb.org/libduckdb/linux-amd64@v0.20000.0?type=module"
     },
     {
       "ref": "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
