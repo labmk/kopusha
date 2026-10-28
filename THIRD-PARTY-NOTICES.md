@@ -54,9 +54,9 @@ would make the distributed binary undistributable under MIT.
 ## BSD-3-Clause
 
 - `github.com/google/uuid` v1.6.0
-- `golang.org/x/mod` v0.32.0
-- `golang.org/x/sync` v0.19.0
-- `golang.org/x/tools` v0.41.0
+- `golang.org/x/mod` v0.42.0
+- `golang.org/x/sync` v0.24.0
+- `golang.org/x/tools` v0.52.0
 - `org.duckdb.third_party/re2` — Regular expressions
 - `org.duckdb.third_party/zstd` — Zstandard compression (dual BSD-3/GPL-2; BSD taken)
 
@@ -70,39 +70,39 @@ would make the distributed binary undistributable under MIT.
 - `@floating-ui/dom` 1.8.0 — Floating UI for the web
 - `@floating-ui/react-dom` 2.1.9 — Floating UI for React DOM
 - `@floating-ui/utils` 0.2.12 — Utilities for Floating UI
-- `@radix-ui/primitive` 1.1.7
-- `@radix-ui/react-arrow` 1.1.15
+- `@radix-ui/primitive` 1.2.0
+- `@radix-ui/react-arrow` 1.1.17
 - `@radix-ui/react-compose-refs` 1.1.5
-- `@radix-ui/react-context` 1.2.2
-- `@radix-ui/react-dialog` 1.1.23
-- `@radix-ui/react-dismissable-layer` 1.1.19
-- `@radix-ui/react-focus-guards` 1.1.6
-- `@radix-ui/react-focus-scope` 1.1.16
+- `@radix-ui/react-context` 1.3.0
+- `@radix-ui/react-dialog` 1.3.1
+- `@radix-ui/react-dismissable-layer` 1.2.1
+- `@radix-ui/react-focus-guards` 1.2.0
+- `@radix-ui/react-focus-scope` 1.3.1
 - `@radix-ui/react-id` 1.1.4
-- `@radix-ui/react-popover` 1.1.23
-- `@radix-ui/react-popper` 1.3.7
-- `@radix-ui/react-portal` 1.1.17
-- `@radix-ui/react-presence` 1.1.10
-- `@radix-ui/react-primitive` 2.1.10
-- `@radix-ui/react-slot` 1.3.3
-- `@radix-ui/react-use-callback-ref` 1.1.4
-- `@radix-ui/react-use-controllable-state` 1.2.6
+- `@radix-ui/react-popover` 1.3.1
+- `@radix-ui/react-popper` 1.4.0
+- `@radix-ui/react-portal` 1.2.0
+- `@radix-ui/react-presence` 1.1.11
+- `@radix-ui/react-primitive` 2.2.0
+- `@radix-ui/react-slot` 1.5.0
+- `@radix-ui/react-use-callback-ref` 1.1.5
+- `@radix-ui/react-use-controllable-state` 1.3.0
 - `@radix-ui/react-use-effect-event` 0.0.5
 - `@radix-ui/react-use-layout-effect` 1.1.4
 - `@radix-ui/react-use-rect` 1.1.4
-- `@radix-ui/react-use-size` 1.1.4
+- `@radix-ui/react-use-size` 1.1.5
 - `@radix-ui/rect` 1.1.3
-- `@tanstack/query-core` 5.104.0 — The framework agnostic core that powers TanStack Query
-- `@tanstack/react-query` 5.104.0 — Hooks for managing, caching and syncing asynchronous and remote data in React
+- `@tanstack/query-core` 5.105.0 — The framework agnostic core that powers TanStack Query
+- `@tanstack/react-query` 5.105.0 — Hooks for managing, caching and syncing asynchronous and remote data in React
 - `@types/react` 19.3.0 — TypeScript definitions for react
 - `aria-hidden` 1.2.6 — Cast aria-hidden to everything, except...
 - `csstype` 3.2.3 — Strict TypeScript and Flow types for style based on MDN data
 - `detect-node-es` 1.1.0 — Detect Node.JS (as opposite to browser environment). ESM modification
 - `get-nonce` 1.0.1 — returns nonce
 - `github.com/KyleBanks/depth` v1.2.1
-- `github.com/duckdb/duckdb-go-bindings` v0.10505.0
-- `github.com/duckdb/duckdb-go-bindings/lib/linux-amd64` v0.10505.0
-- `github.com/duckdb/duckdb-go/v2` v2.10505.0
+- `github.com/duckdb/duckdb-go-bindings` v0.10506.0
+- `github.com/duckdb/duckdb-go-bindings/lib/linux-amd64` v0.10506.0
+- `github.com/duckdb/duckdb-go/v2` v2.10506.0
 - `github.com/go-viper/mapstructure/v2` v2.5.0
 - `github.com/josharian/intern` v1.0.0
 - `github.com/mailru/easyjson` v0.7.6
@@ -120,8 +120,8 @@ would make the distributed binary undistributable under MIT.
 - `org.duckdb/duckdb-extension-icu` — ICU / timezone extension
 - `org.duckdb/duckdb-extension-json` — JSON extension
 - `org.duckdb/duckdb-extension-parquet` — Parquet extension
-- `react` 19.3.0 — React is a JavaScript library for building user interfaces.
-- `react-dom` 19.3.0 — React package for working with the DOM.
+- `react` 19.3.1 — React is a JavaScript library for building user interfaces.
+- `react-dom` 19.3.1 — React package for working with the DOM.
 - `react-remove-scroll` 2.7.2 — Disables scroll outside of `children` node.
 - `react-remove-scroll-bar` 2.3.8 — Removes body scroll without content _shake_
 - `react-style-singleton` 2.2.3 — Just create a single stylesheet...

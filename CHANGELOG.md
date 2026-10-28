@@ -9,6 +9,24 @@ the HTTP API, the `parsers.d/` rule schema, and the module contract.
 The file formats kopusha *reads* are not affected by that caveat —
 those are external and stable.
 
+## [Unreleased]
+
+### Changed
+
+- **Dependencies bumped.** DuckDB 1.5.5 → 1.5.6 (`duckdb-go/v2`
+  v2.10506.0, bindings v0.10506.0); build toolchain Go 1.26.8 → 1.26.10;
+  `apache/arrow-go` 18.8.0, `klauspost/compress` 1.20.3,
+  `golang.org/x/*` refreshed. Frontend: React 19.3.1, Radix dialog and
+  popover 1.3.1, TanStack Query 5.105.0, Vite 8.3.5, Playwright 1.64.1.
+  SBOM and third-party notices regenerated.
+
+### Security
+
+- **Vite 8.3.5** clears the high-severity `npm audit` finding on 8.3.0–8.3.2
+  (dev server only: GHSA-9jrq-w75r-8gcw, GHSA-rq7h-c2jc-7f22,
+  GHSA-vfpm-58rq-9qcg, and the bundled `launch-editor` advisories).
+  Not shipped in the binary.
+
 ## [0.3.12] — 2026-10-02
 
 ### Added

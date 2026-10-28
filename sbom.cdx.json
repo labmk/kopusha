@@ -3,7 +3,7 @@
   "specVersion": "1.6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-02T19:16:03Z",
+    "timestamp": "2026-10-28T15:16:04Z",
     "tools": {
       "components": [
         {
@@ -145,15 +145,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10505.0?type=module",
+      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
       "type": "library",
       "name": "github.com/duckdb/duckdb-go-bindings",
-      "version": "v0.10505.0",
+      "version": "v0.10506.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ff4a4fb132eb702b131b14f456b1e02569ce70f7b5b502f5beb922d6fde36c02"
+          "content": "facfefe79821032f0c57f4099f0b9a7c3f67f99a18424ad177f71e494d0a45e0"
         }
       ],
       "licenses": [
@@ -163,7 +163,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10505.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?goarch=amd64&goos=linux&type=module",
       "externalReferences": [
         {
           "url": "https://github.com/duckdb/duckdb-go-bindings",
@@ -178,15 +178,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10505.0?type=module",
+      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
       "type": "library",
       "name": "github.com/duckdb/duckdb-go-bindings/lib/linux-amd64",
-      "version": "v0.10505.0",
+      "version": "v0.10506.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9ebb1a5588f75d80916d2d85a5d38c0ff28713b7a044cafefcd4752079a34fce"
+          "content": "cb2d93514f985b188188e42bc98b1e525d00714ce81456119a6ac21a28d4c625"
         }
       ],
       "licenses": [
@@ -196,7 +196,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10505.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?goarch=amd64&goos=linux&type=module",
       "externalReferences": [
         {
           "url": "https://github.com/duckdb/duckdb-go-bindings/lib/linux-amd64",
@@ -211,15 +211,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
+      "bom-ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
       "type": "library",
       "name": "github.com/duckdb/duckdb-go/v2",
-      "version": "v2.10505.0",
+      "version": "v2.10506.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "496c2f2e7d90c7f4504a740dba9c20205f156e727903a39053d9586ff9831132"
+          "content": "99c663510fe448d79976d182ab28f9fc910351d8fbfe4bc82df20e513cd022ed"
         }
       ],
       "licenses": [
@@ -229,7 +229,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?goarch=amd64&goos=linux&type=module",
       "externalReferences": [
         {
           "url": "https://github.com/duckdb/duckdb-go",
@@ -574,15 +574,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
+      "bom-ref": "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
       "type": "library",
       "name": "golang.org/x/mod",
-      "version": "v0.32.0",
+      "version": "v0.42.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f45e1ddcf1cb9636fac7ffe33b2a2432fdde5fe60379ea59484a37985272f777"
+          "content": "20278bdedd8bdf496348f1c7c439d1e1fa95701b7fcd1db32406fd8ee6af9908"
         }
       ],
       "licenses": [
@@ -592,7 +592,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/golang.org/x/mod@v0.32.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/golang.org/x/mod@v0.42.0?goarch=amd64&goos=linux&type=module",
       "properties": [
         {
           "name": "kopusha:origin",
@@ -605,15 +605,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/sync@v0.19.0?type=module",
+      "bom-ref": "pkg:golang/golang.org/x/sync@v0.24.0?type=module",
       "type": "library",
       "name": "golang.org/x/sync",
-      "version": "v0.19.0",
+      "version": "v0.24.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bd5fb579636667981e465623ce6d9a751816dbf99ca5ebd7360e74619b4f084e"
+          "content": "8aa883ac6a03832baf00aae12d0b61504cd4fd1dfbf0defc8176c18f179dee80"
         }
       ],
       "licenses": [
@@ -623,7 +623,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/golang.org/x/sync@v0.19.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/golang.org/x/sync@v0.24.0?goarch=amd64&goos=linux&type=module",
       "properties": [
         {
           "name": "kopusha:origin",
@@ -636,15 +636,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:golang/golang.org/x/tools@v0.41.0?type=module",
+      "bom-ref": "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
       "type": "library",
       "name": "golang.org/x/tools",
-      "version": "v0.41.0",
+      "version": "v0.52.0",
       "scope": "required",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6bd6fc88cc1e586f92d0e067954dfaaf32e9db4cf5469d74c3e218d9ccc74d07"
+          "content": "af2c60e14eb7a1a51893bb8e2d3177ee7e377f8aa0b46bea5782288add41684b"
         }
       ],
       "licenses": [
@@ -654,7 +654,7 @@
           }
         }
       ],
-      "purl": "pkg:golang/golang.org/x/tools@v0.41.0?goarch=amd64&goos=linux&type=module",
+      "purl": "pkg:golang/golang.org/x/tools@v0.52.0?goarch=amd64&goos=linux&type=module",
       "properties": [
         {
           "name": "kopusha:origin",
@@ -763,8 +763,8 @@
       "type": "library",
       "name": "react-dialog",
       "group": "@radix-ui",
-      "version": "1.1.23",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.1.23",
+      "version": "1.3.1",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.3.1",
       "licenses": [
         {
           "license": {
@@ -773,7 +773,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-dialog@1.1.23",
+      "purl": "pkg:npm/%40radix-ui/react-dialog@1.3.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/dialog",
@@ -791,7 +791,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.1.23.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-dialog/-/react-dialog-1.3.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -811,8 +811,8 @@
       "type": "library",
       "name": "react-popover",
       "group": "@radix-ui",
-      "version": "1.1.23",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.1.23",
+      "version": "1.3.1",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.3.1",
       "licenses": [
         {
           "license": {
@@ -821,7 +821,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-popover@1.1.23",
+      "purl": "pkg:npm/%40radix-ui/react-popover@1.3.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/popover",
@@ -839,7 +839,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.1.23.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-popover/-/react-popover-1.3.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -859,8 +859,8 @@
       "type": "library",
       "name": "react-query",
       "group": "@tanstack",
-      "version": "5.104.0",
-      "bom-ref": "kopusha-frontend@0.3.12|@tanstack/react-query@5.104.0",
+      "version": "5.105.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@tanstack/react-query@5.105.0",
       "author": "tannerlinsley",
       "description": "Hooks for managing, caching and syncing asynchronous and remote data in React",
       "licenses": [
@@ -871,7 +871,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40tanstack/react-query@5.104.0",
+      "purl": "pkg:npm/%40tanstack/react-query@5.105.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/TanStack/query.git#packages/react-query",
@@ -889,7 +889,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.104.0.tgz",
+          "url": "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.105.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -908,8 +908,8 @@
     {
       "type": "library",
       "name": "react-dom",
-      "version": "19.3.0",
-      "bom-ref": "kopusha-frontend@0.3.12|react-dom@19.3.0",
+      "version": "19.3.1",
+      "bom-ref": "kopusha-frontend@0.3.12|react-dom@19.3.1",
       "description": "React package for working with the DOM.",
       "licenses": [
         {
@@ -919,7 +919,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/react-dom@19.3.0",
+      "purl": "pkg:npm/react-dom@19.3.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/react/react.git#packages/react-dom",
@@ -937,7 +937,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.0.tgz",
+          "url": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -956,8 +956,8 @@
     {
       "type": "library",
       "name": "react",
-      "version": "19.3.0",
-      "bom-ref": "kopusha-frontend@0.3.12|react@19.3.0",
+      "version": "19.3.1",
+      "bom-ref": "kopusha-frontend@0.3.12|react@19.3.1",
       "description": "React is a JavaScript library for building user interfaces.",
       "licenses": [
         {
@@ -967,7 +967,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/react@19.3.0",
+      "purl": "pkg:npm/react@19.3.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/react/react.git#packages/react",
@@ -985,7 +985,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/react/-/react-19.3.0.tgz",
+          "url": "https://registry.npmjs.org/react/-/react-19.3.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1009,8 +1009,8 @@
       "type": "library",
       "name": "primitive",
       "group": "@radix-ui",
-      "version": "1.1.7",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7",
+      "version": "1.2.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0",
       "licenses": [
         {
           "license": {
@@ -1019,7 +1019,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/primitive@1.1.7",
+      "purl": "pkg:npm/%40radix-ui/primitive@1.2.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/core/primitive",
@@ -1037,7 +1037,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.1.7.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/primitive/-/primitive-1.2.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1105,8 +1105,8 @@
       "type": "library",
       "name": "react-context",
       "group": "@radix-ui",
-      "version": "1.2.2",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-context@1.2.2",
+      "version": "1.3.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-context@1.3.0",
       "licenses": [
         {
           "license": {
@@ -1115,7 +1115,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-context@1.2.2",
+      "purl": "pkg:npm/%40radix-ui/react-context@1.3.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/context",
@@ -1133,7 +1133,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.2.2.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.3.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1153,8 +1153,8 @@
       "type": "library",
       "name": "react-dismissable-layer",
       "group": "@radix-ui",
-      "version": "1.1.19",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.1.19",
+      "version": "1.2.1",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.2.1",
       "licenses": [
         {
           "license": {
@@ -1163,7 +1163,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.1.19",
+      "purl": "pkg:npm/%40radix-ui/react-dismissable-layer@1.2.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/dismissable-layer",
@@ -1181,7 +1181,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.1.19.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-dismissable-layer/-/react-dismissable-layer-1.2.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1201,8 +1201,8 @@
       "type": "library",
       "name": "react-focus-guards",
       "group": "@radix-ui",
-      "version": "1.1.6",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.1.6",
+      "version": "1.2.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.2.0",
       "licenses": [
         {
           "license": {
@@ -1211,7 +1211,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-focus-guards@1.1.6",
+      "purl": "pkg:npm/%40radix-ui/react-focus-guards@1.2.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/focus-guards",
@@ -1229,7 +1229,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.1.6.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-focus-guards/-/react-focus-guards-1.2.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1249,8 +1249,8 @@
       "type": "library",
       "name": "react-focus-scope",
       "group": "@radix-ui",
-      "version": "1.1.16",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.1.16",
+      "version": "1.3.1",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.3.1",
       "licenses": [
         {
           "license": {
@@ -1259,7 +1259,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.1.16",
+      "purl": "pkg:npm/%40radix-ui/react-focus-scope@1.3.1",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/focus-scope",
@@ -1277,7 +1277,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.1.16.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-focus-scope/-/react-focus-scope-1.3.1.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1345,8 +1345,8 @@
       "type": "library",
       "name": "react-portal",
       "group": "@radix-ui",
-      "version": "1.1.17",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.1.17",
+      "version": "1.2.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.2.0",
       "licenses": [
         {
           "license": {
@@ -1355,7 +1355,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-portal@1.1.17",
+      "purl": "pkg:npm/%40radix-ui/react-portal@1.2.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/portal",
@@ -1373,7 +1373,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.1.17.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-portal/-/react-portal-1.2.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1393,8 +1393,8 @@
       "type": "library",
       "name": "react-presence",
       "group": "@radix-ui",
-      "version": "1.1.10",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.10",
+      "version": "1.1.11",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.11",
       "licenses": [
         {
           "license": {
@@ -1403,7 +1403,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-presence@1.1.10",
+      "purl": "pkg:npm/%40radix-ui/react-presence@1.1.11",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/presence",
@@ -1421,7 +1421,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.10.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-presence/-/react-presence-1.1.11.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1441,8 +1441,8 @@
       "type": "library",
       "name": "react-primitive",
       "group": "@radix-ui",
-      "version": "2.1.10",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
+      "version": "2.2.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
       "licenses": [
         {
           "license": {
@@ -1451,7 +1451,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-primitive@2.1.10",
+      "purl": "pkg:npm/%40radix-ui/react-primitive@2.2.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/primitive",
@@ -1469,7 +1469,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.1.10.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-primitive/-/react-primitive-2.2.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1489,8 +1489,8 @@
       "type": "library",
       "name": "react-slot",
       "group": "@radix-ui",
-      "version": "1.3.3",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.3.3",
+      "version": "1.5.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.5.0",
       "licenses": [
         {
           "license": {
@@ -1499,7 +1499,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-slot@1.3.3",
+      "purl": "pkg:npm/%40radix-ui/react-slot@1.5.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/slot",
@@ -1517,7 +1517,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.3.3.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.5.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1537,8 +1537,8 @@
       "type": "library",
       "name": "react-use-controllable-state",
       "group": "@radix-ui",
-      "version": "1.2.6",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.2.6",
+      "version": "1.3.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.3.0",
       "licenses": [
         {
           "license": {
@@ -1547,7 +1547,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-controllable-state@1.2.6",
+      "purl": "pkg:npm/%40radix-ui/react-use-controllable-state@1.3.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-controllable-state",
@@ -1565,7 +1565,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.2.6.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-controllable-state/-/react-use-controllable-state-1.3.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1788,8 +1788,8 @@
       "type": "library",
       "name": "react-popper",
       "group": "@radix-ui",
-      "version": "1.3.7",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.3.7",
+      "version": "1.4.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.4.0",
       "licenses": [
         {
           "license": {
@@ -1798,7 +1798,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-popper@1.3.7",
+      "purl": "pkg:npm/%40radix-ui/react-popper@1.4.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/popper",
@@ -1816,7 +1816,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.3.7.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-popper/-/react-popper-1.4.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1836,8 +1836,8 @@
       "type": "library",
       "name": "query-core",
       "group": "@tanstack",
-      "version": "5.104.0",
-      "bom-ref": "kopusha-frontend@0.3.12|@tanstack/query-core@5.104.0",
+      "version": "5.105.0",
+      "bom-ref": "kopusha-frontend@0.3.12|@tanstack/query-core@5.105.0",
       "author": "tannerlinsley",
       "description": "The framework agnostic core that powers TanStack Query",
       "licenses": [
@@ -1848,7 +1848,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40tanstack/query-core@5.104.0",
+      "purl": "pkg:npm/%40tanstack/query-core@5.105.0",
       "externalReferences": [
         {
           "url": "git+https://github.com/TanStack/query.git#packages/query-core",
@@ -1866,7 +1866,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.104.0.tgz",
+          "url": "https://registry.npmjs.org/@tanstack/query-core/-/query-core-5.105.0.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -1934,8 +1934,8 @@
       "type": "library",
       "name": "react-use-callback-ref",
       "group": "@radix-ui",
-      "version": "1.1.4",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.4",
+      "version": "1.1.5",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.5",
       "licenses": [
         {
           "license": {
@@ -1944,7 +1944,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-callback-ref@1.1.4",
+      "purl": "pkg:npm/%40radix-ui/react-use-callback-ref@1.1.5",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-callback-ref",
@@ -1962,7 +1962,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.4.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.1.5.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2390,8 +2390,8 @@
       "type": "library",
       "name": "react-arrow",
       "group": "@radix-ui",
-      "version": "1.1.15",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.15",
+      "version": "1.1.17",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.17",
       "licenses": [
         {
           "license": {
@@ -2400,7 +2400,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-arrow@1.1.15",
+      "purl": "pkg:npm/%40radix-ui/react-arrow@1.1.17",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/arrow",
@@ -2418,7 +2418,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.15.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-arrow/-/react-arrow-1.1.17.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -2486,8 +2486,8 @@
       "type": "library",
       "name": "react-use-size",
       "group": "@radix-ui",
-      "version": "1.1.4",
-      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.4",
+      "version": "1.1.5",
+      "bom-ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.5",
       "licenses": [
         {
           "license": {
@@ -2496,7 +2496,7 @@
           }
         }
       ],
-      "purl": "pkg:npm/%40radix-ui/react-use-size@1.1.4",
+      "purl": "pkg:npm/%40radix-ui/react-use-size@1.1.5",
       "externalReferences": [
         {
           "url": "git+https://github.com/radix-ui/primitives.git#packages/react/use-size",
@@ -2514,7 +2514,7 @@
           "comment": "as detected from PackageJson property \"bugs.url\""
         },
         {
-          "url": "https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.4.tgz",
+          "url": "https://registry.npmjs.org/@radix-ui/react-use-size/-/react-use-size-1.1.5.tgz",
           "type": "distribution",
           "comment": "as detected from npm-ls property \"resolved\""
         }
@@ -3247,10 +3247,10 @@
   ],
   "dependencies": [
     {
-      "ref": "pkg:golang/github.com/labmk/kopusha@v0.3.11-0.20261001210806-e8df03c42830?type=module",
+      "ref": "pkg:golang/github.com/labmk/kopusha@v0.0.0-20261002192602-2642fe085600?type=module",
       "dependsOn": [
         "pkg:golang/github.com/Velocidex/ordereddict@v0.0.0-20210502082334-cf5d9045c0d1?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
         "pkg:golang/github.com/swaggo/swag@v1.16.6?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module",
         "pkg:golang/www.velocidex.com/golang/evtx@v0.2.0?type=module"
@@ -3266,30 +3266,30 @@
       "ref": "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module"
     },
     {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10505.0?type=module",
+      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10505.0?type=module",
-        "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
-        "pkg:golang/golang.org/x/sync@v0.19.0?type=module",
-        "pkg:golang/golang.org/x/tools@v0.41.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
+        "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
+        "pkg:golang/golang.org/x/sync@v0.24.0?type=module",
+        "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module"
       ]
     },
     {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10505.0?type=module"
+      "ref": "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module"
     },
     {
-      "ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10505.0?type=module",
+      "ref": "pkg:golang/github.com/duckdb/duckdb-go/v2@v2.10506.0?type=module",
       "dependsOn": [
         "pkg:golang/github.com/davecgh/go-spew@v1.1.2-0.20180830191138-d8f796af33cc?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10505.0?type=module",
-        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10505.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go-bindings@v0.10506.0?type=module",
+        "pkg:golang/github.com/duckdb/duckdb-go-bindings/lib/linux-amd64@v0.10506.0?type=module",
         "pkg:golang/github.com/go-viper/mapstructure/v2@v2.5.0?type=module",
         "pkg:golang/github.com/google/uuid@v1.6.0?type=module",
-        "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
-        "pkg:golang/golang.org/x/sync@v0.19.0?type=module",
-        "pkg:golang/golang.org/x/tools@v0.41.0?type=module",
+        "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
+        "pkg:golang/golang.org/x/sync@v0.24.0?type=module",
+        "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module"
       ]
     },
@@ -3353,26 +3353,26 @@
         "pkg:golang/github.com/go-openapi/swag@v0.19.15?type=module",
         "pkg:golang/github.com/josharian/intern@v1.0.0?type=module",
         "pkg:golang/github.com/mailru/easyjson@v0.7.6?type=module",
-        "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
-        "pkg:golang/golang.org/x/tools@v0.41.0?type=module",
+        "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
+        "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
         "pkg:golang/gopkg.in/yaml.v2@v2.4.0?type=module",
         "pkg:golang/gopkg.in/yaml.v3@v3.0.1?type=module"
       ]
     },
     {
-      "ref": "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
+      "ref": "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
       "dependsOn": [
-        "pkg:golang/golang.org/x/tools@v0.41.0?type=module"
+        "pkg:golang/golang.org/x/tools@v0.52.0?type=module"
       ]
     },
     {
-      "ref": "pkg:golang/golang.org/x/sync@v0.19.0?type=module"
+      "ref": "pkg:golang/golang.org/x/sync@v0.24.0?type=module"
     },
     {
-      "ref": "pkg:golang/golang.org/x/tools@v0.41.0?type=module",
+      "ref": "pkg:golang/golang.org/x/tools@v0.52.0?type=module",
       "dependsOn": [
-        "pkg:golang/golang.org/x/mod@v0.32.0?type=module",
-        "pkg:golang/golang.org/x/sync@v0.19.0?type=module"
+        "pkg:golang/golang.org/x/mod@v0.42.0?type=module",
+        "pkg:golang/golang.org/x/sync@v0.24.0?type=module"
       ]
     },
     {
@@ -3393,122 +3393,124 @@
     {
       "ref": "kopusha-frontend@0.3.12",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.1.23",
-        "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.1.23",
-        "kopusha-frontend@0.3.12|@tanstack/react-query@5.104.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.3.1",
+        "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.3.1",
+        "kopusha-frontend@0.3.12|@tanstack/react-query@5.105.0",
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.1.23",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-dialog@1.3.1",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
-        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.2.2",
-        "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.1.19",
-        "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.1.6",
-        "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.1.16",
+        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.3.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.2.1",
+        "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.3.1",
         "kopusha-frontend@0.3.12|@radix-ui/react-id@1.1.4",
-        "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.1.17",
-        "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.3.3",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.2.6",
+        "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.11",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.5.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.3.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|aria-hidden@1.2.6",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
         "kopusha-frontend@0.3.12|react-remove-scroll@2.7.2",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.1.23",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-popover@1.3.1",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
-        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.2.2",
-        "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.1.19",
-        "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.1.6",
-        "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.1.16",
+        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.3.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.2.1",
+        "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.3.1",
         "kopusha-frontend@0.3.12|@radix-ui/react-id@1.1.4",
-        "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.3.7",
-        "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.1.17",
-        "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.3.3",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.2.6",
+        "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.4.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.11",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.5.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.3.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|aria-hidden@1.2.6",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
         "kopusha-frontend@0.3.12|react-remove-scroll@2.7.2",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@tanstack/react-query@5.104.0",
+      "ref": "kopusha-frontend@0.3.12|@tanstack/react-query@5.105.0",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@tanstack/query-core@5.104.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|@tanstack/query-core@5.105.0",
+        "kopusha-frontend@0.3.12|@types/react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|react-dom@19.3.0",
+      "ref": "kopusha-frontend@0.3.12|react-dom@19.3.1",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|scheduler@0.28.0"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|react@19.3.0"
+      "ref": "kopusha-frontend@0.3.12|react@19.3.1"
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7"
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0"
     },
     {
       "ref": "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-context@1.2.2",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-context@1.3.0",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.1.19",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-dismissable-layer@1.2.1",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.5",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-effect-event@0.0.5",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.1.6",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-guards@1.2.0",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.1.16",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-focus-scope@1.3.1",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.5",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
@@ -3516,60 +3518,60 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.1.17",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-portal@1.2.0",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.10",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-presence@1.1.11",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.3.3",
+        "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.5.0",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.3.3",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-slot@1.5.0",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.2.6",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-controllable-state@1.3.0",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.1.7",
+        "kopusha-frontend@0.3.12|@radix-ui/primitive@1.2.0",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-effect-event@0.0.5",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
       "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
@@ -3590,41 +3592,42 @@
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|react-remove-scroll-bar@2.3.8",
         "kopusha-frontend@0.3.12|react-style-singleton@2.2.3",
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|tslib@2.8.1",
         "kopusha-frontend@0.3.12|use-callback-ref@1.3.3",
         "kopusha-frontend@0.3.12|use-sidecar@1.1.3"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.3.7",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-popper@1.4.0",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@floating-ui/react-dom@2.1.9",
-        "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.15",
+        "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.17",
         "kopusha-frontend@0.3.12|@radix-ui/react-compose-refs@1.1.5",
-        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.2.2",
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.4",
+        "kopusha-frontend@0.3.12|@radix-ui/react-context@1.3.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.5",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@radix-ui/react-use-rect@1.1.4",
-        "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.4",
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.5",
         "kopusha-frontend@0.3.12|@radix-ui/rect@1.1.3",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@tanstack/query-core@5.104.0"
+      "ref": "kopusha-frontend@0.3.12|@tanstack/query-core@5.105.0"
     },
     {
       "ref": "kopusha-frontend@0.3.12|scheduler@0.28.0"
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.4",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-callback-ref@1.1.5",
       "dependsOn": [
+        "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
@@ -3632,7 +3635,7 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
@@ -3646,7 +3649,7 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|react-style-singleton@2.2.3",
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|tslib@2.8.1"
       ]
     },
@@ -3655,7 +3658,7 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|get-nonce@1.0.1",
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|tslib@2.8.1"
       ]
     },
@@ -3663,7 +3666,7 @@
       "ref": "kopusha-frontend@0.3.12|use-callback-ref@1.3.3",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|tslib@2.8.1"
       ]
     },
@@ -3672,7 +3675,7 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
         "kopusha-frontend@0.3.12|detect-node-es@1.1.0",
-        "kopusha-frontend@0.3.12|react@19.3.0",
+        "kopusha-frontend@0.3.12|react@19.3.1",
         "kopusha-frontend@0.3.12|tslib@2.8.1"
       ]
     },
@@ -3680,17 +3683,17 @@
       "ref": "kopusha-frontend@0.3.12|@floating-ui/react-dom@2.1.9",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@floating-ui/dom@1.8.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.15",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-arrow@1.1.17",
       "dependsOn": [
-        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.1.10",
+        "kopusha-frontend@0.3.12|@radix-ui/react-primitive@2.2.0",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react-dom@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react-dom@19.3.1",
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
@@ -3698,15 +3701,15 @@
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/rect@1.1.3",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
-      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.4",
+      "ref": "kopusha-frontend@0.3.12|@radix-ui/react-use-size@1.1.5",
       "dependsOn": [
         "kopusha-frontend@0.3.12|@radix-ui/react-use-layout-effect@1.1.4",
         "kopusha-frontend@0.3.12|@types/react@19.3.0",
-        "kopusha-frontend@0.3.12|react@19.3.0"
+        "kopusha-frontend@0.3.12|react@19.3.1"
       ]
     },
     {
