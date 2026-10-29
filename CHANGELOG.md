@@ -11,18 +11,21 @@ those are external and stable.
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-10-29
+
+DuckDB 2.0 engine, with timestamps pinned to UTC and runtime extension
+downloads turned off.
+
 ### Changed
 
-- **Dependencies bumped.** DuckDB 1.5.5 → 1.5.6 (`duckdb-go/v2`
-  v2.10506.0, bindings v0.10506.0); build toolchain Go 1.26.8 → 1.26.10;
+- **DuckDB 1.5.5 → 2.0** (`duckdb-go/v2` v2.20000.0). Prebuilt libraries
+  now come from `go.duckdb.org/libduckdb/*`. Binary grows from about
+  67 MB to 85 MB (linux-amd64).
+- **Dependencies bumped.** Build toolchain Go 1.26.8 → 1.26.10;
   `apache/arrow-go` 18.8.0, `klauspost/compress` 1.20.3,
   `golang.org/x/*` refreshed. Frontend: React 19.3.1, Radix dialog and
   popover 1.3.1, TanStack Query 5.105.0, Vite 8.3.5, Playwright 1.64.1.
   SBOM and third-party notices regenerated.
-
-- **DuckDB 2.0** (`duckdb-go/v2` v2.20000.0). Prebuilt libraries now
-  come from `go.duckdb.org/libduckdb/*`. Binary grows from about 67 MB
-  to 85 MB (linux-amd64).
 - **Timestamps are pinned to UTC.** DuckDB 2.0 reads ISO strings with a
   zone suffix (`…Z`, `…+02:00`) as `TIMESTAMPTZ`, which renders and
   compares in the host's zone: on any non-UTC machine time filters
@@ -761,7 +764,8 @@ want explained.
   at `Event.System.EventID.Value`, and `EventData` entries are keyed by
   name.
 
-[Unreleased]: https://github.com/labmk/kopusha/compare/v0.3.12...HEAD
+[Unreleased]: https://github.com/labmk/kopusha/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/labmk/kopusha/releases/tag/v0.4.0
 [0.3.12]: https://github.com/labmk/kopusha/releases/tag/v0.3.12
 [0.3.11]: https://github.com/labmk/kopusha/releases/tag/v0.3.11
 [0.3.10]: https://github.com/labmk/kopusha/releases/tag/v0.3.10
