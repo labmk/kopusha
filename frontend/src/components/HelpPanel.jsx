@@ -16,7 +16,7 @@ const SECTIONS = [
     title: 'Getting data in',
     rows: [
       ['+ Add', 'Browse the filesystem and load a log file. Several files load together and are queried as one table, even when their formats differ.'],
-      ['Try the samples', 'Loads the sample logs shipped beside the binary — one per supported format — so there is something to query immediately.'],
+      ['Try the samples', 'Loads the sample logs shipped beside the binary (NDJSON, Parquet, XML and a file no parser matches) so there is something to query immediately.'],
       ['Checkbox beside a file', 'Include or exclude that file from the query without unloading it.'],
       ['Parser rules', 'Build a rule for a format kopusha does not recognise yet, from a sample you paste in.'],
     ],
