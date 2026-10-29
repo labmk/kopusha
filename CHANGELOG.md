@@ -20,8 +20,24 @@ those are external and stable.
   popover 1.3.1, TanStack Query 5.105.0, Vite 8.3.5, Playwright 1.64.1.
   SBOM and third-party notices regenerated.
 
+- **DuckDB 2.0** (`duckdb-go/v2` v2.20000.0). Prebuilt libraries now
+  come from `go.duckdb.org/libduckdb/*`. Binary grows from about 67 MB
+  to 85 MB (linux-amd64).
+- **Timestamps are pinned to UTC.** DuckDB 2.0 reads ISO strings with a
+  zone suffix (`…Z`, `…+02:00`) as `TIMESTAMPTZ`, which renders and
+  compares in the host's zone: on any non-UTC machine time filters
+  missed rows, the histogram emptied and values gained an offset
+  suffix. The engine now sets the session zone to UTC and converts such
+  NDJSON columns back to `TIMESTAMP`, matching 1.5 behaviour. Parquet
+  `TIMESTAMPTZ` columns now also render in UTC rather than host time.
+
 ### Security
 
+- **No runtime extension downloads.** DuckDB 2.0 links an HTTP client
+  and defaults to auto-installing missing extensions from
+  `extensions.duckdb.org`. The engine now turns
+  `autoinstall_known_extensions` and `autoload_known_extensions` off;
+  every extension kopusha uses is statically linked.
 - **Vite 8.3.5** clears the high-severity `npm audit` finding on 8.3.0–8.3.2
   (dev server only: GHSA-9jrq-w75r-8gcw, GHSA-rq7h-c2jc-7f22,
   GHSA-vfpm-58rq-9qcg, and the bundled `launch-editor` advisories).

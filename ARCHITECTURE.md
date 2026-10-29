@@ -89,8 +89,8 @@ kopusha[.exe]                     (~85 MB single binary)
   `embed`, `crypto/tls` — all stdlib. `github.com/swaggo/swag` for
   OpenAPI annotations.
 - **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO
-  required; statically-linked `libduckdb_static.a` from
-  `duckdb-go-bindings`).
+  required; statically-linked `libduckdb_static.a` from the per-platform
+  `go.duckdb.org/libduckdb/*` modules).
 - **Frontend**: React 19, Vite 8, TanStack Query 5 (server state +
   caching), Radix UI primitives (Dialog + Popover). The result table is
   windowed by `hooks/useVirtualRows.js` — a fixed row height makes the
@@ -110,12 +110,21 @@ kopusha[.exe]                     (~85 MB single binary)
 - **Node**: 22.12+ with npm.
 - **C compiler (Windows)**: a MinGW-w64 GCC whose C++ ABI matches the
   prebuilt `libduckdb_static.a`. `build.sh` probes for one and reports
-  its choice. The working set moves with `duckdb-go-bindings` releases —
+  its choice. The working set moves with DuckDB library releases —
   docs/BUILD.md records what was last verified.
 - **DuckDB runtime**: no external download. Extensions (JSON, ICU,
   parquet, …) are statically linked; never call `INSTALL json` — it
   would try to fetch from `extensions.duckdb.org` and hang ~4 minutes
-  on air-gapped hosts.
+  on air-gapped hosts. `engine.New` also sets
+  `autoinstall_known_extensions` and `autoload_known_extensions` off
+  globally: DuckDB 2.0 links an HTTP client and would otherwise try to
+  download any unlinked extension a query touches.
+- **Timestamps**: the session zone is pinned to UTC
+  (`SET GLOBAL TimeZone = 'UTC'`). DuckDB 2.0's JSON reader infers
+  `TIMESTAMPTZ` for ISO strings with a zone suffix; after an NDJSON load
+  the engine converts those top-level columns to `TIMESTAMP` (UTC wall
+  time), so values, filters and MIN/MAX behave as under 1.5 and never
+  depend on the host's zone. Parquet keeps its declared types.
 
 ## Key Design Decisions
 

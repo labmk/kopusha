@@ -86,7 +86,8 @@ Earlier revisions of this document asserted the reverse: that MSYS2
 `_Mbstatet` ABI mismatch. That was accurate against an older bindings
 release and is no longer true. Treat the table as a record of what was
 last observed, not a rule — if the link step starts failing after a
-`duckdb-go-bindings` bump, the working compiler may well move again.
+DuckDB library bump (`go.duckdb.org/libduckdb/*`, formerly
+`duckdb-go-bindings`), the working compiler may well move again.
 
 The practical advice: install the [winlibs](https://winlibs.com/) or
 MinGW-Builds GCC to `C:\mingw64`, or simply read the `C compiler:` line

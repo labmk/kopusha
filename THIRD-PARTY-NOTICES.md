@@ -19,10 +19,10 @@ A machine-readable CycloneDX equivalent is in
 |---------|-----------|
 | 0BSD | 1 |
 | Apache-2.0 | 10 |
-| BSD-2-Clause | 1 |
+| BSD-2-Clause | 2 |
 | BSD-3-Clause | 6 |
 | ISC | 1 |
-| MIT | 62 |
+| MIT | 63 |
 | PostgreSQL | 1 |
 
 Every licence above is permissive. No component is under GPL, AGPL,
@@ -50,6 +50,7 @@ would make the distributed binary undistributable under MIT.
 ## BSD-2-Clause
 
 - `github.com/pkg/errors` v0.8.1
+- `org.duckdb.third_party/jemalloc` — Memory allocator (Linux builds)
 
 ## BSD-3-Clause
 
@@ -100,15 +101,16 @@ would make the distributed binary undistributable under MIT.
 - `detect-node-es` 1.1.0 — Detect Node.JS (as opposite to browser environment). ESM modification
 - `get-nonce` 1.0.1 — returns nonce
 - `github.com/KyleBanks/depth` v1.2.1
-- `github.com/duckdb/duckdb-go-bindings` v0.10506.0
-- `github.com/duckdb/duckdb-go-bindings/lib/linux-amd64` v0.10506.0
-- `github.com/duckdb/duckdb-go/v2` v2.10506.0
+- `github.com/duckdb/duckdb-go-bindings` v0.20000.0
+- `github.com/duckdb/duckdb-go/v2` v2.20000.0
 - `github.com/go-viper/mapstructure/v2` v2.5.0
 - `github.com/josharian/intern` v1.0.0
 - `github.com/mailru/easyjson` v0.7.6
 - `github.com/swaggo/swag` v1.16.6
+- `go.duckdb.org/libduckdb/linux-amd64` v0.20000.0
 - `org.duckdb.third_party/fmt` — Formatting library
 - `org.duckdb.third_party/fsst` — Fast static symbol table string compression
+- `org.duckdb.third_party/httplib` — HTTP client (cpp-httplib); linked since DuckDB 2.0, unused — extension auto-install is off
 - `org.duckdb.third_party/hyperloglog` — Cardinality estimation
 - `org.duckdb.third_party/miniz` — Deflate/inflate
 - `org.duckdb.third_party/skiplistlib` — Skip list
@@ -135,7 +137,7 @@ would make the distributed binary undistributable under MIT.
 
 ## A note on the DuckDB components
 
-`libduckdb_static.a` arrives prebuilt from `duckdb-go-bindings`, so no
+`libduckdb_static.a` arrives prebuilt from `go.duckdb.org/libduckdb`, so no
 scanner can see inside it. The DuckDB entries above were derived from
 the static archives the linker actually consumes and their licences
 read from the DuckDB source tree. They are marked in the SBOM with an
@@ -143,4 +145,4 @@ read from the DuckDB source tree. They are marked in the SBOM with an
 being presented as scanner output.
 
 Full licence texts are available from each project's repository. The
-DuckDB bundle's texts ship inside the `duckdb-go-bindings` module.
+DuckDB bundle's texts ship inside the `go.duckdb.org/libduckdb` modules.

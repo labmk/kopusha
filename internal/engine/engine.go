@@ -143,6 +143,29 @@ func New() (*Engine, error) {
 	}
 	vphase("SELECT json_valid('{}')", t)
 
+	// DuckDB 2.0 reads ISO strings with a zone suffix as TIMESTAMPTZ,
+	// which renders and compares in the session zone. Left at the
+	// machine's local zone, naive filter bounds and MIN/MAX shift by its
+	// offset; UTC keeps them meaning what the log says. GLOBAL so every
+	// pooled connection inherits it. Not a DSN option: TimeZone needs
+	// ICU, which is not loaded yet when the DSN is applied.
+	//
+	// Extension auto-install/auto-load off: every extension kopusha needs
+	// is statically linked and loaded at open. DuckDB 2.0 links an HTTP
+	// client, so with the defaults (both true) a query touching an
+	// unlinked extension would try to download it from
+	// extensions.duckdb.org — the hang the NOTE above avoids, and code
+	// fetched at runtime.
+	for _, stmt := range []string{
+		"SET GLOBAL TimeZone = 'UTC'",
+		"SET GLOBAL autoinstall_known_extensions = false",
+		"SET GLOBAL autoload_known_extensions = false",
+	} {
+		if _, err := db.Exec(stmt); err != nil {
+			return nil, fmt.Errorf("duckdb: %s: %w", stmt, err)
+		}
+	}
+
 	e := &Engine{
 		db:               db,
 		files:            make(map[string]*FileInfo),
@@ -357,7 +380,8 @@ func jsonReadExpr(escapedPath string) string {
 }
 
 func (e *Engine) duckdbLoadDirect(tableName, loadPath, reportPath, loaderName string, sizeBytes int64, expr readExprFunc) error {
-	if expr == nil {
+	isJSON := expr == nil
+	if isJSON {
 		expr = jsonReadExpr
 	}
 	query := fmt.Sprintf(
@@ -375,6 +399,11 @@ func (e *Engine) duckdbLoadDirect(tableName, loadPath, reportPath, loaderName st
 		})
 		return fmt.Errorf("failed to load file into DuckDB: %w", err)
 	}
+	if isJSON {
+		if err := e.naiveTimestamps(tableName); err != nil {
+			return fmt.Errorf("failed to normalise timestamps: %w", err)
+		}
+	}
 	logx.Info("engine.load_file", logx.F{
 		"path":        reportPath,
 		"loader":      loaderName,
@@ -382,6 +411,46 @@ func (e *Engine) duckdbLoadDirect(tableName, loadPath, reportPath, loaderName st
 		"size_bytes":  sizeBytes,
 		"duration_ms": time.Since(loadStart).Milliseconds(),
 	})
+	return nil
+}
+
+// naiveTimestamps converts the table's top-level TIMESTAMPTZ columns to
+// TIMESTAMP. DuckDB 2.0's JSON reader infers TIMESTAMPTZ for ISO strings
+// with a zone suffix (`…Z`, `…+02:00`), where 1.5 inferred TIMESTAMP.
+// The cast runs under the engine's UTC session zone, so values become
+// the UTC wall time — exactly what 1.5 stored — and VARCHAR renders
+// stay `YYYY-MM-DD HH:MM:SS` without an offset suffix the frontend and
+// exports do not expect. Parquet is not passed through here: its column
+// types are declared by the file, not inferred.
+func (e *Engine) naiveTimestamps(tableName string) error {
+	rows, err := e.db.Query(
+		`SELECT column_name FROM duckdb_columns() WHERE table_name = ? AND data_type = 'TIMESTAMP WITH TIME ZONE'`,
+		tableName,
+	)
+	if err != nil {
+		return err
+	}
+	var cols []string
+	for rows.Next() {
+		var c string
+		if err := rows.Scan(&c); err != nil {
+			rows.Close()
+			return err
+		}
+		cols = append(cols, c)
+	}
+	rows.Close()
+	if err := rows.Err(); err != nil {
+		return err
+	}
+	for _, c := range cols {
+		if _, err := e.db.Exec(fmt.Sprintf(
+			`ALTER TABLE %s ALTER COLUMN %s SET DATA TYPE TIMESTAMP`,
+			tableName, quoteIdent(c),
+		)); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 

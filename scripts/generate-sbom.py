@@ -17,7 +17,7 @@ Three sources feed the SBOM, because no single tool can see all of it:
                      embedded via go:embed, so production dependencies
                      ship; dev tooling does not.
   3. DuckDB bundle   Hand-maintained below. libduckdb_static.a arrives
-                     prebuilt from duckdb-go-bindings, so no scanner can
+                     prebuilt from go.duckdb.org/libduckdb, so no scanner can
                      see inside it. Omitting it would make the SBOM
                      quietly wrong about the largest single chunk of
                      third-party code in the binary.
@@ -42,20 +42,28 @@ ROOT = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------------------------
 # DuckDB's vendored third-party components.
 #
-# Derived from the static archives the linker actually consumes —
-# `ls $(go env GOMODCACHE)/github.com/duckdb/duckdb-go-bindings/lib/*/lib*.a`
-# — rather than from DuckDB's source tree, so this list reflects what is
-# linked and not merely what upstream vendors. Licences were read from
+# Derived from the static archives the linker actually consumes, not
+# from DuckDB's source tree, so this list reflects what is linked and
+# not merely what upstream vendors. Licences were read from
 # github.com/duckdb/duckdb third_party/<name>/LICENSE.
 #
-# To refresh after a duckdb-go-bindings bump: re-run that ls, diff the
-# names against this table, and look up any newcomer.
+# Since DuckDB 2.0 the archives under
+# `$(go env GOMODCACHE)/go.duckdb.org/libduckdb/<platform>@<ver>/` are
+# single LTO objects: the vendored libraries no longer arrive as
+# separate lib*.a files. Check each name with
+# `strings libduckdb_static.a libduckdb_httplib.a | grep -ci <name>`
+# (fastpfor, duckdb_fmt, fsst, …) and diff `ls lib*.a` for new archives.
+#
+# To refresh after a DuckDB bump: re-run both, diff against this table,
+# and look up any newcomer.
 # ---------------------------------------------------------------------------
 DUCKDB_BUNDLED = [
     ("fastpforlib", "Apache-2.0", "Integer compression (FastPFor)"),
     ("fmt", "MIT", "Formatting library"),
     ("fsst", "MIT", "Fast static symbol table string compression"),
+    ("httplib", "MIT", "HTTP client (cpp-httplib); linked since DuckDB 2.0, unused — extension auto-install is off"),
     ("hyperloglog", "MIT", "Cardinality estimation"),
+    ("jemalloc", "BSD-2-Clause", "Memory allocator (Linux builds)"),
     ("mbedtls", "Apache-2.0", "Crypto primitives"),
     ("miniz", "MIT", "Deflate/inflate"),
     ("pg_query", "PostgreSQL", "PostgreSQL-derived SQL parser (libpg_query)"),
@@ -294,7 +302,7 @@ def write_notices(components, version):
     lines += [
         "## A note on the DuckDB components",
         "",
-        "`libduckdb_static.a` arrives prebuilt from `duckdb-go-bindings`, so no",
+        "`libduckdb_static.a` arrives prebuilt from `go.duckdb.org/libduckdb`, so no",
         "scanner can see inside it. The DuckDB entries above were derived from",
         "the static archives the linker actually consumes and their licences",
         "read from the DuckDB source tree. They are marked in the SBOM with an",
@@ -302,7 +310,7 @@ def write_notices(components, version):
         "being presented as scanner output.",
         "",
         "Full licence texts are available from each project's repository. The",
-        "DuckDB bundle's texts ship inside the `duckdb-go-bindings` module.",
+        "DuckDB bundle's texts ship inside the `go.duckdb.org/libduckdb` modules.",
         "",
     ]
 

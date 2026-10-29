@@ -2,7 +2,7 @@ version: 2
 
 updates:
   # Go modules. Grouped so the DuckDB bindings — which ship one module
-  # per platform and always bump in lockstep — arrive as a single PR
+  # per platform (go.duckdb.org/libduckdb/*) and always bump in lockstep — arrive as a single PR
   # instead of six that each fail to build alone.
   - package-ecosystem: gomod
     directory: /
@@ -13,6 +13,7 @@ updates:
       duckdb:
         patterns:
           - "github.com/duckdb/*"
+          - "go.duckdb.org/*"
       golang-x:
         patterns:
           - "golang.org/x/*"

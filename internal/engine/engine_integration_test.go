@@ -981,3 +981,59 @@ func TestProfilePresentAgreesWithExistsFilter(t *testing.T) {
 			p.Fields[0].Present, res.TotalCount)
 	}
 }
+
+// DuckDB 2.0 infers TIMESTAMPTZ for ISO strings with a zone suffix.
+// The engine converts them back to TIMESTAMP at UTC, so an offset is
+// folded into the value and nothing renders with an offset suffix.
+func TestZoneSuffixedTimestampsLoadAsUTCWallTime(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "tz.ndjson")
+	mustWriteJSON(t, path,
+		map[string]any{"@timestamp": "2026-05-20T11:00:00+02:00", "x": 1},
+		map[string]any{"@timestamp": "2026-05-20T09:30:00Z", "x": 2},
+	)
+	eng, err := New()
+	if err != nil {
+		t.Fatalf("New: %v", err)
+	}
+	defer eng.Close()
+	if err := eng.LoadFile(path); err != nil {
+		t.Fatalf("LoadFile: %v", err)
+	}
+
+	var typ string
+	if err := eng.db.QueryRow(
+		`SELECT data_type FROM duckdb_columns() WHERE table_name = 'file_f1' AND column_name = '@timestamp'`,
+	).Scan(&typ); err != nil {
+		t.Fatalf("column type: %v", err)
+	}
+	if typ != "TIMESTAMP" {
+		t.Errorf("@timestamp type = %s, want TIMESTAMP", typ)
+	}
+
+	tr, err := eng.GetTimeRange()
+	if err != nil {
+		t.Fatalf("GetTimeRange: %v", err)
+	}
+	if deref(tr.Min) != "2026-05-20 09:00:00" || deref(tr.Max) != "2026-05-20 09:30:00" {
+		t.Errorf("range = %s .. %s, want 2026-05-20 09:00:00 .. 2026-05-20 09:30:00", deref(tr.Min), deref(tr.Max))
+	}
+}
+
+// Every extension the engine uses is statically linked; nothing may be
+// fetched from extensions.duckdb.org at runtime.
+func TestExtensionAutoInstallIsOff(t *testing.T) {
+	eng, err := New()
+	if err != nil {
+		t.Fatalf("New: %v", err)
+	}
+	defer eng.Close()
+	for _, name := range []string{"autoinstall_known_extensions", "autoload_known_extensions"} {
+		var v bool
+		if err := eng.db.QueryRow("SELECT current_setting('" + name + "')").Scan(&v); err != nil {
+			t.Fatalf("%s: %v", name, err)
+		}
+		if v {
+			t.Errorf("%s = true, want false", name)
+		}
+	}
+}
