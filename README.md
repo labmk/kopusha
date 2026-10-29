@@ -1,347 +1,227 @@
 # kopusha
 
-**Makes unstructured logs queryable without writing extraction code.**
+A local viewer for log, metric and trace files.
 
-Point it at a folder of logs that share no schema — NDJSON here, a
-bracketed text format there, Windows event logs, XML — and get one
-queryable table with a real filter UI over it. No ingestion step, no
-index, no server, nothing to install.
+## The problem
 
-kopusha embeds a [DuckDB](https://duckdb.org) query engine and a
-React UI into one executable.
+Someone hands you a folder of files: application logs, a Windows event
+log export, some NDJSON, an XML dump. You need to find out what
+happened. The files have different formats and no shared schema.
 
-```
-kopusha --dir ./logs/
-```
+The usual options are slow to set up. A log platform needs a server, an
+ingestion pipeline and an index before you can search anything. SQL
+tools for local files expect data that is already structured (CSV,
+JSON, Parquet), so a text log line is one string column and you end up
+writing regular expressions per format. On a locked-down or offline
+machine, installing any of this may not be possible at all.
 
-## Why
+## What kopusha is
 
-Querying local files with SQL is a solved problem, and there are good
-tools for it. They all assume your data is already structured: Parquet,
-CSV, JSON.
+kopusha is one executable file. It contains a web UI and an embedded
+[DuckDB](https://duckdb.org) query engine. There is no server to set
+up, no index to build, no database to install and no runtime
+dependencies. It runs on your machine and reads files from your disk.
 
-Logs are not. A line like
+## How it works
 
-```
-2026-03-18 06:00:00.000 [INF] [SCH] [PID:4179] queue depth 2347 exceeds limit
-```
+You start the binary. It opens a page in your browser at
+`http://localhost:9200`. You pick files or a folder, and kopusha
+detects each file's format, parses it and loads it into an in-memory
+DuckDB database. Files with different fields are queried together as
+one table; a field a file does not have is empty (`NULL`) for that
+file's rows.
 
-is one string column to every one of those tools. Making it queryable
-means hand-writing regex extraction in SQL, per format, and then
-hand-writing the union across files whose fields don't line up.
+In the UI you can:
 
-That's the part kopusha does. Formats are described by dropping a
-YAML rule into `parsers.d/` — no recompile — and files with unrelated
-schemas load together into one union you can filter across. The query
-UI is there because the people who need this are not the people who
-enjoy writing regex; those already have grep.
+- filter by field with a visual builder (10 operators: is, is not,
+  contains, does not contain, wildcard, not wildcard, exists, does not
+  exist, is one of, is not one of), or edit the query as text;
+- search free text across all fields;
+- filter nested JSON fields by path, for example `nodeinfo.type`;
+- set a time range with presets, typed dates, or by dragging across a
+  histogram of record counts over time;
+- see which fields exist, how often each is filled, and their most
+  common values (**Fields**), and click a value to filter on it;
+- open a record in a side panel and move between records with `j`/`k`;
+- export the current result to NDJSON or Parquet, optionally with a
+  copy of the kopusha binary next to it;
+- share a view: filters, time range, search text, sort and visible
+  columns are kept in the URL fragment, so copying the address bar
+  shares the view (the loaded files are not part of it);
+- build a parser rule for an unknown text format from a few sample
+  lines, and see why a file did not parse.
 
-The deployment cost is one file you can copy onto an air-gapped
-machine.
+Formats it reads:
 
-## Features
+| Format | Detected by |
+|--------|-------------|
+| NDJSON | `.ndjson` extension, or the first line is a JSON object |
+| Parquet | `PAR1` magic bytes, or `.parquet` / `.pq` extension |
+| Windows EVTX | `ElfFile\0` magic bytes |
+| XML | First non-whitespace character is `<`; the repeating row element is found automatically |
+| Block records | A line of 20 or more dashes near the start; `Key: Value` fields between separators |
+| Line-based text logs | Regex rules in `parsers.d/`; 5 rules ship, and you can add your own |
 
-- **Single binary.** Frontend, query engine, and DuckDB extensions are
-  compiled in. No runtime dependencies. Nothing is fetched to run: the
-  only outbound request is an optional startup check for a newer release,
-  which reports and never installs — turn it off with `update_check =
-  false` and the binary makes no network calls at all. When a release
-  does exist, kopusha says so once and links to it; dismissing the
-  notice is remembered until the next version.
-- **Multi-format ingest.** NDJSON, Parquet, Windows EVTX, XML, and line-
-  or block-structured text logs. New text formats are added by dropping
-  a YAML rule into `parsers.d/` — no recompile.
-- **Rule builder.** Paste a few lines of an unrecognised format and
-  kopusha proposes a pattern, then shows the rows it would produce
-  before anything is saved. And when a file doesn't parse, it says
-  which adapters looked, what each one objected to, and what the first
-  line looked like by the time it reached the parser.
-- **Heterogeneous schemas.** Load files with completely different
-  fields at once. Queries union them and fill `NULL` for columns a
-  given file lacks.
-- **Nested field filtering.** JSON objects materialise as DuckDB
-  `STRUCT`s; a filter on `nodeinfo.type` resolves to the sub-path, and
-  the field picker surfaces those alongside flat columns.
-- **Field profiling.** **Fields** shows what is actually in the data:
-  which fields exist, how often each is populated, roughly how many
-  distinct values it takes, and — across a heterogeneous load — how
-  many of your files declare it at all. Expand one to see its most
-  common values, and click a value to filter to it. Look, then
-  formulate, instead of guessing and querying.
-- **Query builder + text DSL.** A visual filter builder with 10
-  operators, plus a pipeline-style text view for copy/paste portability.
-- **Time filtering with explicit UTC.** Presets, custom ranges, and a
-  UTC-offset timezone selector that avoids DST ambiguity. A histogram
-  above the table shows counts over time for the current filter; drag
-  across it to narrow the range without typing a timestamp.
-- **Shareable views.** **Copy link** puts the filters, time range, sort
-  and visible columns into a URL. It also means a refresh no longer
-  loses the query. The state lives in the URL fragment, so filter
-  values — which are log content — never reach the server or an access
-  log. Loaded files are not included: a path means something only on
-  the machine that produced it, so the recipient opens their own.
-- **Result table.** Virtualised, so a 10,000-row page renders only the
-  rows on screen. Clicking a row opens it in a side panel — `j`/`k` walk
-  the list — rather than expanding in place and pushing everything below
-  it off screen. Per-schema persisted column widths.
-- **Export.** Write the current filtered view back out as NDJSON or
-  Parquet — Parquet keeps the types and is typically ~10x smaller, so
-  the result drops straight into any other analytical tool. Optionally
-  copy the binary alongside it so the recipient needs no setup at all.
-- **Localhost by default.** Binds `127.0.0.1` unless you both set
-  `listen=` and supply a TLS certificate.
+Zip archives can be browsed and their entries loaded. Details per
+format are in [REQUIREMENTS.md](./REQUIREMENTS.md).
 
-## Verifying a download
+What kopusha does not do:
 
-Every release archive carries a signed attestation proving it was built
-by this repository's workflow from a named commit:
+- It does not send your data anywhere. The UI is served from the binary
+  and loads nothing from the internet.
+- It makes at most two kinds of outbound request, both to GitHub: a
+  release check at startup (reads the latest version number, never
+  downloads), and a release download only when you press the update
+  button. `update_check = false` in `kopusha.conf` turns both off;
+  then kopusha makes no network requests at all.
+- It does not change your input files. It writes only: exports where
+  you choose, extracted zip entries in a folder next to the zip, a
+  temporary NDJSON file in the system temp folder for each EVTX, XML or
+  text-log load (deleted after loading), rules you save in
+  `parsers.d/`, its own settings and log files next to the binary, and
+  the binary, shipped rules and samples when you install an update.
+- It does not keep an index or a database between runs. Loaded data
+  lives in memory and is gone when the process exits.
+- It has no user accounts or authentication. It listens on `127.0.0.1`
+  only, unless you configure otherwise with TLS (see
+  [SECURITY.md](./SECURITY.md)).
+- It is not a log collector. There is no live tail, retention or
+  alerting.
 
-```bash
-gh attestation verify kopusha-0.2.1-darwin-arm64.zip --repo labmk/kopusha
-```
+## Quick start
 
-That is a stronger check than the `SHA256SUMS` file published beside it,
-which only shows a download is intact — not where it came from.
+1. Download the zip for your platform from the
+   [releases page](https://github.com/labmk/kopusha/releases). Each
+   archive is named `kopusha-<version>-<os>-<arch>.zip`. To check where
+   it came from, see [Verifying a download](./SECURITY.md#verifying-a-download).
+2. Unzip it. Keep the files together: the binary, `parsers.d/`,
+   `kopusha.conf`, `kopusha_mcp.conf.example` and `samples/`.
+3. On Linux or macOS, if the binary does not start, restore the
+   executable bit: `chmod +x kopusha`. On macOS, a downloaded binary is
+   blocked until you remove the quarantine attribute:
+   `xattr -d com.apple.quarantine ./kopusha`.
+4. Run it:
 
-Binaries are not code-signed with a certificate, which is a separate
-thing and is what stops the operating system warning. See
-[SECURITY.md](./SECURITY.md).
+   ```bash
+   ./kopusha
+   ```
 
-## Usage
+   Your browser opens at `http://localhost:9200`.
+5. Press **Try the samples** to load the bundled sample files, or
+   **+ Add** to browse to your own. Press `?` in the UI for a reference
+   of every control.
+
+The server stops by itself when no browser tab has contacted it for
+`timeout` seconds (default 180), when you close the last tab, or when
+you press **Stop server**.
+
+### Command-line options
 
 ```bash
 kopusha                                            # port 9200, opens a browser
-kopusha --dir /path/to/logs/                       # pre-load a directory
-kopusha --files "/path/to/*.ndjson"                # pre-load a glob
-kopusha --port 8080 --no-browser                   # custom port, no auto-open
-kopusha --port 9443 --cert cert.pem --key key.pem  # TLS
-kopusha --verbose                                  # startup phase timings
-kopusha --no-update-check                          # skip the release check
+kopusha --dir /path/to/logs/                       # pre-load the .ndjson files in a folder
+kopusha --files "/path/to/*.log"                   # pre-load files matching a glob, any format
+kopusha --port 8080 --no-browser                   # other port, do not open a browser
+kopusha --port 9443 --cert cert.pem --key key.pem  # serve over HTTPS
+kopusha --verbose                                  # print startup timings
+kopusha --no-update-check                          # skip the release check for this run
+kopusha --version                                  # print the version and exit
+kopusha mcp                                        # stdio bridge for AI agents, see docs/MCP.md
 ```
 
-Keep the `parsers.d/` folder beside the binary. The server exits on its
-own once no browser tab has polled it for `timeout` seconds (default
-180), so a forgotten process doesn't linger.
+`--dir` only pre-loads files ending in `.ndjson`. Use `--files` with a
+glob, or the file browser in the UI, for other formats.
 
-### Sample data
+## Supported platforms
 
-Every archive also carries a `samples/` folder: one synthetic log per
-format below, so there is something to open before you point kopusha at
-anything of your own. Load several at once — their schemas don't line
-up, which is the case worth seeing. `samples/unmatched.log` is in there
-to fail, so the diagnosis screen has something to diagnose.
+| Platform | Release archive |
+|----------|-----------------|
+| Windows x86-64 | `windows-amd64` |
+| Linux x86-64 | `linux-amd64` |
+| Linux ARM64 | `linux-arm64` |
+| macOS Apple Silicon | `darwin-arm64` |
 
-```bash
-kopusha --files "samples/*.log"
-```
-
-Nothing in it came from a running system: the logs are generated, and
-the addresses are in the RFC 5737 documentation range. `samples/` is
-inert — the binary never reads it, and deleting it costs nothing.
-Windows event logs are the one format without a sample; the project's
-`.evtx` fixture is third-party data, so it stays out of the download.
-
-## Supported formats
-
-| Format | Detection | Notes |
-|--------|-----------|-------|
-| NDJSON | `.ndjson`, or first line parses as a JSON object | Direct DuckDB path — original schema preserved as written |
-| Parquet | `PAR1` magic bytes, or `.parquet`/`.pq` | Direct DuckDB path — already typed, so nothing is inferred |
-| EVTX | `ElfFile\0` magic bytes | Windows event logs |
-| XML | First non-whitespace char is `<` | Row element autodetected; dot-path flattened, `@`-prefixed attributes |
-| Block records | A line of 20+ dashes near the start | `Key: Value` fields between separators |
-| Line logs | YAML regex rules in `parsers.d/` | 5 shipped variants; add your own |
-
-Every non-NDJSON record gets an injected `@timestamp` (ISO-8601 UTC)
-and `_source_format`. See [REQUIREMENTS.md](./REQUIREMENTS.md) for the
-full per-format contract and the test matrix that enforces it.
-
-### When a file doesn't parse
-
-Nothing recognized it, so nothing pretends otherwise. kopusha shows
-what every adapter thought and why:
-
-```
-gateway.log — no rule matched
-  block     0   no separator line found in the first 262 bytes; tried 1 rule(s): keyvalue-dash-separated
-  evtx      0   does not start with the ElfFile signature
-  line      0   none of 5 rule(s) matched any of the first 5 non-blank lines: iso-bracket, …
-  ndjson    0   first non-space character is not '{'
-  parquet   0   does not start with PAR1, and the extension is not .parquet
-  xml       0   first non-space character is not '<'
-  first line seen: 2026-03-18T06:00:00 gateway[4179]: queue depth 2347
-```
-
-Anything invisible in an editor but fatal to a parser — a byte-order
-mark, CRLF endings, UTF-16, bytes that aren't valid UTF-8 — is listed
-too, and the line shown is the line as the parser sees it, not as the
-file stores it.
-
-### Adding a text format
-
-Click **Build a rule from this line** on that screen, or **Parser
-rules** in the header. Paste a few sample lines and kopusha proposes
-a pattern, then shows the table it would produce — through the real
-parser, so the preview cannot disagree with the result. Correct the
-field names, save, and the rule applies to the next load without a
-restart.
-
-The output is an ordinary YAML file in `parsers.d/`, which you can also
-write by hand:
-
-```yaml
-family: line
-name: my-format
-priority: 90
-parse: '^(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(?P<level>\w+)\s+(?P<message>.*)$'
-ts_layout: '2006-01-02 15:04:05'
-```
-
-`ts_layout` is a Go layout — the reference time `2006-01-02 15:04:05`
-written in the shape your timestamps use — not a `%Y-%m-%d` pattern.
-Formats that carry no date, or a date with no year, take the missing
-part from the file's modification time; see
-[ARCHITECTURE.md](./ARCHITECTURE.md) for the full schema.
-
-Rules describe structure only — regexes and field paths, no product
-knowledge. Files load in lexicographic order, so a `00-` prefix takes
-precedence over `50-`.
-
-### When a rule isn't enough
-
-A YAML rule covers any format whose structure a regex can describe. Some
-cannot be: binary formats, anything needing a decompression or decoding
-library, or a grammar that regular expressions genuinely can't express.
-Those need a new adapter in Go, and possibly a new dependency — a change
-to the binary rather than to a config file.
-
-**That's a welcome contribution.** Open a pull request, or an issue if
-you'd rather discuss the shape first, with:
-
-- **A description of the format** — what delimits a record, where the
-  timestamp is and in what layout, which fields are fixed and which are
-  optional or variable-width.
-- **An anonymized sample.** Retype the shape with invented values rather
-  than sending real log lines. Anything attached to a public repository
-  is public permanently, and a trimmed real log still carries whatever is
-  embedded in its message bodies.
-- **Why a `parsers.d/` rule can't do it** — briefly. It's the first thing
-  that will be asked, and it's often worth a second look.
-
-Any new dependency has to be permissive-licensed; see
-[CONTRIBUTING.md](./CONTRIBUTING.md) for that constraint and for the
-adapter checklist.
+Intel Macs are not supported. Linux builds need glibc. Release binaries
+are not code-signed, so Windows SmartScreen may warn and macOS needs
+the quarantine step above.
 
 ## Configuration
 
-`kopusha.conf` sits next to the binary. Every value is optional; the
-shipped file has all of them commented out.
+kopusha reads every `kopusha*.conf` file in the folder that holds the
+binary, in alphabetical order. Files ending in `.example` are skipped.
+All settings are optional; the shipped `kopusha.conf` has them all
+commented out.
+
+| Key | Default | Meaning |
+|-----|---------|---------|
+| `port` | `9200` | HTTP port. `--port` overrides it. |
+| `timeout` | `180` | Seconds without any request before the server exits. `0` disables. |
+| `listen` | `127.0.0.1` | Bind address. A non-loopback value is used only when `--cert` and `--key` are given; otherwise kopusha warns and stays on `127.0.0.1`. |
+| `update_check` | `true` | Set to `false` to turn off the release check and the update button. |
+| `parsers_dir` | `parsers.d` next to the binary | Folder of parser rules. A relative path is resolved against the current working directory, so use an absolute path. |
+
+Example:
 
 ```ini
-port    = 9200       # HTTP port
-timeout = 180        # inactivity auto-shutdown, seconds; 0 disables
-listen  = 127.0.0.1  # non-loopback requires --cert/--key
-parsers_dir = parsers.d
-update_check = true  # check GitHub for a newer release at startup
+# Comments go on their own line. A '#' after a value is not a comment.
+port = 9200
+timeout = 0
+update_check = false
 ```
 
-All `kopusha*.conf` files in the directory are merged at startup in
-alphabetical order, so a module can ship its own sibling file.
-`.example` suffixes are deliberately skipped.
+Optional modules have their own file, `kopusha_<name>.conf`. A module
+is on when its `[<name>]` section exists. The only shipped module is
+the MCP endpoint for AI agents, off by default: see
+[docs/MCP.md](./docs/MCP.md).
 
-## Build
+kopusha also writes two things next to the binary:
+`kopusha_settings.json` (last opened folder, and `auto_load_previous`:
+set it to `true` to reload the `.ndjson` files from that folder at
+startup) and `logs/kopusha_<date>.log` (a JSON log of loads and errors).
 
-Requires Go 1.26.6+, Node 22.12+, and a C compiler (DuckDB needs CGO).
+## Adding a text format
 
-```bash
-./build.sh                             # host platform
-GOOS=linux ./build.sh                  # Linux amd64
-GOOS=darwin GOARCH=arm64 ./build.sh    # macOS Apple Silicon
-VERSION=1.0.0 ./build.sh               # custom version
-MANUFACTURER="Acme Corp" ./build.sh    # brand a fork
-```
+Load a file that kopusha does not recognise and it shows what each
+format adapter checked and why it declined, and the first line as the
+parser saw it. From there, **Build a rule from this line** (or
+**Parser rules** in the header) lets you paste sample lines, review a
+proposed pattern and the rows it would produce, and save it. The saved
+rule is a YAML file in `parsers.d/` and applies to the next load
+without a restart.
 
-Output lands in `dist/` alongside `parsers.d/`, `kopusha.conf` and
-`kopusha_mcp.conf.example`.
+You can also write rules by hand. The rule format is described in
+[ARCHITECTURE.md](./ARCHITECTURE.md#parser-rules-parsersd). Formats that
+a regular expression cannot describe need a new adapter in Go; see
+[CONTRIBUTING.md](./CONTRIBUTING.md#adding-a-log-format).
 
-Windows binaries are produced by CI; that is the supported path. A
-local Windows build needs a MinGW-w64 GCC whose C++ ABI matches the
-prebuilt `libduckdb_static.a` — `build.sh` probes for one and prints
-which it picked. Which toolchains currently work, and the
-cross-compilation notes for every target, are in
-[docs/BUILD.md](./docs/BUILD.md).
+## Documentation
 
-## Development
+| Document | Contents |
+|----------|----------|
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Components, data flow, parser rule format, HTTP API, design decisions |
+| [REQUIREMENTS.md](./REQUIREMENTS.md) | Supported formats, the ingest contract and its test matrix |
+| [SECURITY.md](./SECURITY.md) | Threat model, network behaviour, verifying downloads, self-update, reporting issues |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Development setup, tests, rules for pull requests and test data |
+| [docs/BUILD.md](./docs/BUILD.md) | Building from source on each platform |
+| [docs/MCP.md](./docs/MCP.md) | Connecting a local AI agent |
+| [docs/MODULES.md](./docs/MODULES.md) | Writing an optional module |
+| [docs/ROADMAP.md](./docs/ROADMAP.md) | Planned and deliberately unplanned work |
+| [CHANGELOG.md](./CHANGELOG.md) | Changes per release |
 
-[ARCHITECTURE.md](./ARCHITECTURE.md) is the map — layers, contracts,
-and the decisions that are load-bearing. [CONTRIBUTING.md](./CONTRIBUTING.md)
-covers the change workflow.
+## AI-assisted development
 
-```bash
-go run .                          # backend on :9200
-cd frontend && npm run dev        # Vite on :5173, proxies /api to :9200
-cd frontend && npm run test:e2e   # Playwright (needs dist/ built first)
-go test ./...                     # Go suite
-```
-
-The OpenAPI spec is generated from `swag` annotations on the handlers
-and is the source of truth for the typed TypeScript client:
-
-```bash
-swag init -g main.go --output internal/server/docs --parseInternal --parseDependency
-cd frontend && npm run gen:api
-```
-
-## Extending
-
-kopusha has a module system for optional sub-features that ship
-their own Go handlers, React tab, and static assets — see
-[docs/MODULES.md](./docs/MODULES.md) for the contract and a worked
-example.
-
-One module ships, disabled: **MCP for AI agents**. Rename
-`kopusha_mcp.conf.example` to `kopusha_mcp.conf` and a local agent can
-load, inspect and query parsed logs over the Model Context Protocol at
-`http://127.0.0.1:9200/api/mcp`. Clients that only launch servers as
-subprocesses use `kopusha mcp`, which bridges standard input/output to
-that endpoint. Loopback only, read-only on disk, no outbound
-connections. Details: [docs/MCP.md](./docs/MCP.md).
-
-## Roadmap
-
-Direction and the reasoning behind it: [docs/ROADMAP.md](./docs/ROADMAP.md).
-Tracking is in [issues](https://github.com/labmk/kopusha/issues),
-grouped by milestone.
-
-## Security
-
-- **No authentication.** The loopback-only default is what keeps it
-  safe. Do not expose it on a network without an authenticating proxy
-  in front.
-- Non-loopback `listen` values are ignored unless TLS is configured.
-- The release check is the only outbound request, sends nothing about
-  the host, and never downloads or installs. `update_check = false`
-  removes it.
-- Report vulnerabilities per [SECURITY.md](./SECURITY.md).
-
-## AI-supported development
-
-kopusha was written with AI assistance. Architecture, design
-decisions, review and testing are human-owned; a substantial share of
-the implementation, documentation and test-fixture generation was
-Treat this the way you would any other code you did not write: read it
-before you run it on data you care about.
+kopusha was written with AI assistance. Architecture, design decisions,
+review and testing are done by people; a large part of the
+implementation, documentation and test fixtures was generated with AI
+tools. Read it as you would any other code you did not write before
+you run it on data you care about.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Copyright (c) 2026 labmk.
+MIT, see [LICENSE](./LICENSE). Copyright (c) 2026 labmk.
 
-Everything compiled into the binary is permissive — MIT, BSD, Apache-2.0,
-ISC. [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) lists it, and
-`sbom.cdx.json` is the machine-readable CycloneDX equivalent, shipped
-with every release.
-
-kopusha is an independent open source project. Anyone is free to
-use, modify and redistribute it, including commercially, under the MIT
-terms. It is provided as-is, with no warranty and no support
-commitment.
+Everything compiled into the binary is under a permissive license
+(MIT, BSD, Apache-2.0, ISC). [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md)
+lists the components and `sbom.cdx.json` is the same list in CycloneDX
+format; both ship in every release archive. The software is provided
+as-is, without warranty or support commitment.

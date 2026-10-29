@@ -2,114 +2,109 @@
 
 ## Requirements
 
-- **Go 1.26.6+** with CGO enabled. `go.mod` pins `toolchain go1.26.10`;
-  the `go 1.26.6` line is the language-compat floor, so any 1.26.6+
-  toolchain can consume the module.
-- **Node 22.12+** with npm (Vite 8 frontend build). CI builds on 24 LTS.
-- **A C compiler.** DuckDB is a CGO dependency — there is no pure-Go
-  fallback.
+- **Go 1.26.6 or later** with CGO enabled. `go.mod` sets `go 1.26.6`
+  as the minimum and pins `toolchain go1.26.10` for builds.
+- **Node 22.12 or later** with npm, for the Vite 8 UI build. CI uses
+  Node 24.
+- **A C compiler.** DuckDB is linked through CGO; there is no pure-Go
+  build.
 
 Optional:
 
-- `swag` — regenerates the OpenAPI spec from handler annotations.
-  Without it the build uses the committed `internal/server/docs/swagger.json`.
-  `go install github.com/swaggo/swag/cmd/swag@latest`
-- `govulncheck` — run automatically at the end of the build unless
-  `SKIP_VULNCHECK=1`. `go install golang.org/x/vuln/cmd/govulncheck@latest`
+- `swag` regenerates the OpenAPI spec from handler annotations. Without
+  it, the build uses the committed `internal/server/docs/swagger.json`.
+  Install: `go install github.com/swaggo/swag/cmd/swag@latest`
+- `govulncheck` runs at the end of the build unless
+  `SKIP_VULNCHECK=1`. Install:
+  `go install golang.org/x/vuln/cmd/govulncheck@latest`
 
-## Quick start
+## Build
 
 ```bash
-./build.sh
+./build.sh                             # host platform
+GOOS=linux GOARCH=arm64 ./build.sh     # another target (needs a matching C compiler)
+GOOS=darwin GOARCH=arm64 ./build.sh    # macOS, on a Mac only
+VERSION=1.0.0 ./build.sh               # custom version string
+MANUFACTURER="Acme Corp" ./build.sh    # name passed to the signing hook
 ```
 
-Defaults to the host platform. Output goes to `dist/` together with
-`parsers.d/`, `kopusha.conf`, and `samples/` — the synthetic log
-fixtures, minus the vendored `.evtx`.
+Output goes to `dist/`: the binary, `parsers.d/`, `kopusha.conf`,
+`kopusha_mcp.conf.example` and `samples/`.
 
-Environment overrides:
+Environment variables:
 
 | Variable | Default | Effect |
 |----------|---------|--------|
-| `VERSION` | current release | Stamped into `main.version` via ldflags |
+| `VERSION` | current release | Written into `main.version` with `-ldflags` |
 | `GOOS` / `GOARCH` | host | Target platform |
-| `PRODUCT_NAME` | `kopusha` | Shown in build output, passed to the sign hook |
-| `MANUFACTURER` | `labmk` | Passed to the sign hook |
-| `COPYRIGHT` | derived from `MANUFACTURER` | Passed to the sign hook |
-| `CC` | auto-detected | C compiler override |
-| `SKIP_VULNCHECK` | `0` | Set to `1` on air-gapped hosts (vuln.go.dev unreachable) |
-| `MACOSX_DEPLOYMENT_TARGET` | build SDK major version | macOS minimum version |
+| `PRODUCT_NAME` | `kopusha` | Shown in build output, passed to the signing hook |
+| `MANUFACTURER` | `labmk` | Passed to the signing hook |
+| `COPYRIGHT` | built from `MANUFACTURER` | Passed to the signing hook |
+| `CC` | detected | C compiler |
+| `SKIP_VULNCHECK` | `0` | `1` skips `govulncheck` (for hosts that cannot reach vuln.go.dev) |
+| `MACOSX_DEPLOYMENT_TARGET` | major version of the build SDK | Minimum macOS version |
 
 ## Supported targets
 
-DuckDB ships prebuilt static libraries for exactly these; `build.sh`
-rejects anything else up front rather than failing at link time.
+DuckDB provides prebuilt static libraries for these targets. `build.sh`
+rejects any other target before compiling.
 
-| Target | Build host | C toolchain |
-|--------|-----------|-------------|
-| `windows/amd64` | Windows (CI) | MinGW-w64 GCC — see below |
+| Target | Build host | C compiler |
+|--------|------------|------------|
+| `windows/amd64` | Windows (CI) | MinGW-w64 GCC, see [Windows](#windows) |
 | `linux/amd64` | Linux | system GCC |
 | `linux/arm64` | Linux arm64 | system GCC |
-| `darwin/arm64` | **macOS only** | Xcode Command Line Tools (clang) |
+| `darwin/arm64` | macOS only | Xcode Command Line Tools (clang) |
 
-macOS support is **Apple Silicon only**. Intel Macs are not a target:
-`build.sh` rejects `darwin/amd64` up front and CI does not build it.
-The DuckDB bindings do ship an Intel archive, so the target is
-reachable if you ever need it — add the case back to `build.sh` and
-build on an arm64 Mac with `CC="clang -arch x86_64"`, since the macOS
-SDK is universal. Nothing in the source is architecture-specific.
+Intel Macs (`darwin/amd64`) are not a target: `build.sh` rejects it and
+CI does not build it. The DuckDB bindings do include an Intel macOS
+library and nothing in the source depends on the architecture. To build
+one anyway, add the case back to `build.sh` and build on an Apple
+Silicon Mac with `CC="clang -arch x86_64"`.
 
-## Platform notes
+## Windows
 
-### Windows
+Windows binaries are built by CI, and that is the supported way to get
+one. The project is not developed on Windows. This section is for a
+local build.
 
-**Nobody develops this project on Windows.** The Windows binary is
-produced by CI, and that is the supported path. What follows is for the
-case where you need a local Windows build anyway.
+The only difficulty is the C compiler. The build links a prebuilt
+`libduckdb_static.a`, so the compiler's C++ ABI must match the one that
+built it. `build.sh` searches for a compiler, prints the one it chose
+and its version, and otherwise uses `gcc` from `PATH`.
 
-The C toolchain is the only real difficulty, because you are linking
-against a **prebuilt** `libduckdb_static.a` and your compiler's C++ ABI
-has to match whatever built it. `build.sh` probes for a compiler, prints
-which one it selected and its version, and falls through to `gcc` on
-`PATH`.
+Last observed results, on 2026-08-01 with `duckdb-go-bindings v0.10505.0`:
 
-What is known, as of 2026-08-01 against `duckdb-go-bindings v0.10505.0`:
+| Compiler | Result |
+|----------|--------|
+| MinGW-Builds GCC 15.2.0 in `C:\mingw64` (msvcrt) | Works. This is the stock GitHub `windows-latest` toolchain used by CI. |
+| MSYS2 ucrt64 GCC 16.1.0 | Fails: `ld` crashes linking `libduckdb_static.a` (`collect2.exe: error: ld returned 5 exit status`, no symbol errors). |
+| TDM-GCC 10.x | Fails: too old, `__throw_bad_array_new_length` is missing. |
 
-| Toolchain | Result |
-|-----------|--------|
-| MinGW-Builds GCC 15.2.0 at `C:\mingw64` (msvcrt) | **Works.** This is the stock GitHub `windows-latest` toolchain; CI builds and passes e2e with it. |
-| MSYS2 ucrt64 GCC 16.1.0 | **Fails.** `ld` crashes linking `libduckdb_static.a` — `collect2.exe: error: ld returned 5 exit status`, no symbol diagnostics. |
-| TDM-GCC 10.x | Fails — too old, missing `__throw_bad_array_new_length`. |
+Earlier versions of this document said the opposite (ucrt64 required,
+mingw64 GCC 15 broken). That was true for an older bindings release.
+Treat the table as a record, not a rule: after an upgrade of the DuckDB
+library modules (`go.duckdb.org/libduckdb/*`, formerly
+`duckdb-go-bindings`) the working compiler can change.
 
-Earlier revisions of this document asserted the reverse: that MSYS2
-**ucrt64** was required and mingw64 GCC 15.x was broken by an
-`_Mbstatet` ABI mismatch. That was accurate against an older bindings
-release and is no longer true. Treat the table as a record of what was
-last observed, not a rule — if the link step starts failing after a
-DuckDB library bump (`go.duckdb.org/libduckdb/*`, formerly
-`duckdb-go-bindings`), the working compiler may well move again.
+In practice: install [winlibs](https://winlibs.com/) or MinGW-Builds
+GCC to `C:\mingw64`, and check the `C compiler:` line that `build.sh`
+prints against the table.
 
-The practical advice: install the [winlibs](https://winlibs.com/) or
-MinGW-Builds GCC to `C:\mingw64`, or simply read the `C compiler:` line
-`build.sh` prints and compare it against the table.
+The binary uses the console subsystem, so starting it from Explorer
+opens a console window. This is deliberate: closing the window stops
+the process.
 
-The binary is built for the console subsystem, so launching it from
-Explorer opens a console window. That's deliberate — closing the window
-kills the process, which is the clearest possible "I'm done" gesture.
+## macOS
 
-### macOS
+A macOS binary must be built on macOS. CGO needs the Apple SDK, which
+may not be redistributed, so there is no cross-compile from Linux or
+Windows. `build.sh` detects the attempt and stops with an explanation.
 
-**A macOS binary must be built on macOS.** CGO needs a C toolchain
-targeting Darwin, and that requires the Apple SDK, which Apple does not
-permit redistributing. There is no supported cross-compile path from
-Linux or Windows. `build.sh` detects the attempt and fails early with an
-explanation rather than surfacing a confusing
-`gcc: unrecognized command-line option '-arch'` from `runtime/cgo`.
-
-If you have no Mac, use CI — `.github/workflows/build.yml` builds
-`darwin/arm64` on the `macos-26` (Apple Silicon) runner and uploads it
-as an artifact. That leg runs only on tags and manual dispatch, because
-macOS runners bill at 10x while the repository is private.
+Without a Mac, use CI: `.github/workflows/build.yml` builds
+`darwin/arm64` on the `macos-26` runner and uploads it as an artifact.
+That job runs only for tags and manual runs, because macOS runners are
+billed at 10 times the Linux rate while the repository is private.
 
 On a Mac:
 
@@ -118,77 +113,93 @@ xcode-select --install          # once
 GOOS=darwin GOARCH=arm64 ./build.sh
 ```
 
-`MACOSX_DEPLOYMENT_TARGET` defaults to the **major version of the build
-SDK**, so the supported minimum is whatever macOS the build machine
-targets. There is deliberately no older floor: DuckDB's prebuilt archive
-and the Go runtime objects are compiled against the installed SDK, so
-pinning an older target only produced a linker warning per object and a
-binary that had never been verified on that older release. Set the
-variable explicitly if you need a deliberate older target and are
-prepared to test it.
+`MACOSX_DEPLOYMENT_TARGET` defaults to the major version of the build
+SDK, so the minimum supported macOS is the one the build machine
+targets. There is no older default: DuckDB's library and the Go runtime
+are compiled against the installed SDK, and an older target produced a
+linker warning per object and a binary never tested on that release.
+Set the variable yourself only if you will test on the older version.
 
-`build.sh` applies an **ad-hoc** code signature (`codesign --sign -`),
-which is enough for a binary you built yourself or copied over manually.
-It is *not* enough for distribution: a binary downloaded through a
-browser carries the quarantine attribute, and Gatekeeper will refuse an
-ad-hoc signature. Distribution requires a Developer ID certificate plus
-notarization — wire that into `hooks/sign.sh`, which receives
-`$1=binary $2=product $3=version $4=manufacturer`.
+`build.sh` signs the binary ad hoc (`codesign --sign -`). That is
+enough for a binary you built or copied yourself. A binary downloaded
+through a browser carries the quarantine attribute, and Gatekeeper
+refuses ad-hoc signatures. Distribution needs a Developer ID
+certificate and notarization, which you can add in `hooks/sign.sh`.
 
-Recipients of an unnotarized build can clear quarantine manually:
+To run an unnotarized download:
 
 ```bash
 xattr -d com.apple.quarantine ./kopusha
 ```
 
-### Linux
+## Linux
 
-Nothing special — system GCC works. Building `linux/arm64` on an amd64
-host needs `aarch64-linux-gnu-gcc` and `CC=aarch64-linux-gnu-gcc`; the
-prebuilt DuckDB archive for that target is glibc-based, so musl hosts
-(Alpine) need a glibc toolchain or a compatible container.
+The system GCC works. To build `linux/arm64` on an amd64 host, install
+`aarch64-linux-gnu-gcc` and set `CC=aarch64-linux-gnu-gcc`. The prebuilt
+DuckDB library is built against glibc, so musl systems such as Alpine
+need a glibc toolchain or a glibc container.
 
 ## Build hooks
 
-Three optional executables, all skipped if absent:
+Optional executables, skipped when absent:
 
 | Hook | When | Arguments |
 |------|------|-----------|
-| `hooks/pre-build.sh` | before compilation | `version os arch` |
-| `hooks/sign.sh` | after compilation | `binary product version manufacturer` |
-| `hooks/post-build.sh` | last | `binary version os arch` |
+| `hooks/pre-build.sh` | before compiling | `version os arch` |
+| `hooks/sign.sh` | after compiling | `binary product version manufacturer` |
+| `hooks/post-build.sh` | at the end | `binary version os arch` |
 
-`hooks/sign.sh.example` sketches a Windows `signtool` invocation.
+`hooks/sign.sh.example` shows a Windows `signtool` call.
 
-## What the build does
+## What `build.sh` does
 
-1. `swag init` — regenerate the OpenAPI spec (skipped if `swag` absent).
-2. `go run ./cmd/genmanifest` — rewrite `parsers.d.sha256`, the record of
-   which parser rules this binary ships with. `go:embed` compiles it in,
-   so the manifest inside the binary always describes the `parsers.d/`
-   beside it.
-3. `npm ci && npm run build` — the `prebuild` script regenerates the
-   typed TS client from `swagger.json`, then Vite writes to `static/`.
-4. Verify `static/index.html` exists (guards against a silent frontend
-   failure producing a binary with an empty UI).
-5. `go build` with `-s -w` and the version stamped in.
-6. `govulncheck` (unless skipped) — reported, non-fatal by default.
-7. Copy `parsers.d/` and `kopusha.conf` into `dist/`.
-8. Copy `test-fixtures/formats/` into `dist/samples/` (with
-   `test-fixtures/SAMPLES.md` as its `README.md`), skipping
-   `sample.evtx` — the one fixture that is vendored rather than
-   generated, and so is not redistributed. The release workflow puts
-   the folder in every archive.
-9. Code-sign hook.
+1. `swag init`: regenerates the OpenAPI spec (skipped without `swag`).
+2. `go run ./cmd/genmanifest`: rewrites `parsers.d.sha256`, the list of
+   rules this binary ships with. It is compiled in with `go:embed`, so
+   the manifest in the binary always matches the `parsers.d/` next to
+   it.
+3. `npm ci && npm run build` in `frontend/`. The `prebuild` script
+   regenerates the TypeScript client from `swagger.json`; Vite writes
+   to `static/`.
+4. Checks that `static/index.html` exists, so a failed UI build cannot
+   produce a binary with an empty UI.
+5. `go build` with `-s -w` and the version.
+6. Ad-hoc code signature on macOS.
+7. `govulncheck` (unless skipped). Findings are printed; they do not
+   stop the build.
+8. Copies `parsers.d/`, `kopusha.conf` and `kopusha_mcp.conf.example`
+   into `dist/`.
+9. Copies `sample.ndjson`, `sample.parquet`, `xml-row-element.txt` and
+   `unmatched.log` from `test-fixtures/formats/` into `dist/samples/`,
+   with `test-fixtures/SAMPLES.md` as `README.md`. The CI release job
+   puts this folder in every archive.
+10. Runs `hooks/sign.sh`, then `hooks/post-build.sh`.
+
+## CI and releases
+
+`.github/workflows/build.yml` runs on pushes and pull requests to
+`main`, on `v*` tags, and manually. It runs `gofmt` and `go vet`, builds
+each target on a native runner, runs the Go tests on every target and
+the e2e tests on Linux amd64 and Windows, and runs `govulncheck` and
+`npm audit`. Ordinary pushes build Linux and Windows only; tags and
+manual runs also build macOS.
+
+For a `v*` tag, the release job packs each platform into
+`kopusha-<version>-<os>-<arch>.zip` (binary, `parsers.d/`, config
+files, `samples/`, `LICENSE`, `README.md`, `THIRD-PARTY-NOTICES.md`,
+`sbom.cdx.json`), writes `SHA256SUMS`, creates a build attestation for
+each zip and publishes the GitHub release. See
+[SECURITY.md](../SECURITY.md#verifying-a-download).
 
 ## Troubleshooting
 
-**`static/index.html not found`** — the frontend build failed. Run
-`cd frontend && npm run build` directly to see the real error.
+**`static/index.html not found`**: the UI build failed. Run
+`cd frontend && npm run build` to see the error.
 
-**Build hangs for ~4 minutes on first query** — something called
+**The first query hangs for about 4 minutes**: something ran DuckDB
 `INSTALL json`, which tries to reach `extensions.duckdb.org`. All
-extensions are statically linked; that call should never be made.
+extensions are linked in; that statement must never run.
 
-**`go: cannot find GOROOT`** in a hook — hooks inherit the build
-environment but not the MSYS2 PATH prepend. Set it explicitly.
+**`go: cannot find GOROOT` in a hook**: hooks inherit the build
+environment but not changes made to `PATH` inside the MSYS2 shell. Set
+it in the hook.

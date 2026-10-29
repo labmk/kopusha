@@ -1,228 +1,222 @@
 # Contributing
 
-Thanks for taking an interest. kopusha is a small, single-maintainer
-project, so a quick note on expectations before you invest time:
+kopusha has one maintainer and is not anyone's day job. Responses are
+best effort.
 
-- **Bug reports are always welcome**, especially ones with a file that
-  reproduces the problem (redacted or synthesized — see below).
-- **Small fixes** — a parser rule, a wrong regex, a UI papercut — can go
+- **Bug reports** are welcome, especially with a file that reproduces
+  the problem. The file must be synthetic or fully redacted; see
+  [Test data policy](#test-data-policy).
+- **Small fixes** (a parser rule, a regex, a UI problem) can go
   straight to a pull request.
-- **Large changes** are worth an issue first. A new ingest family, a
-  schema change, or anything touching the query pipeline is a
-  conversation before it is a diff, mostly so you don't build something
-  that collides with work already in flight.
-- Response times are best-effort. This is not anyone's day job.
+- **Large changes** (a new ingest family, a schema change, anything in
+  the query pipeline) should start as an issue, so the work does not
+  collide with something already in progress.
+- **Security issues** go through [SECURITY.md](./SECURITY.md), not
+  public issues.
 
-## Getting set up
+## Setup
 
-You need Go 1.26.6+ with CGO enabled, Node 22.12+, and a C compiler —
-DuckDB is a CGO dependency, so there is no pure-Go path.
-
-```bash
-./build.sh                        # full build: frontend + Go binary into dist/
-go run .                          # backend only, :9200
-cd frontend && npm run dev        # Vite on :5173, proxies /api to :9200
-```
-
-Platform-specific toolchain notes — in particular which Windows C
-compilers link against the prebuilt DuckDB archive — are in
-[docs/BUILD.md](./docs/BUILD.md). If the link step fails with missing
-symbols or a linker crash, that document is almost certainly the
-answer.
-
-## Running the tests
+You need Go 1.26.6 or later with CGO enabled, Node 22.12 or later with
+npm, and a C compiler. DuckDB is a CGO dependency; there is no pure-Go
+build. Per-platform compiler notes are in [docs/BUILD.md](./docs/BUILD.md);
+if linking fails with missing symbols or a linker crash, look there
+first.
 
 ```bash
-go test ./...                     # Go suite
-cd frontend && npm run test:e2e   # Playwright — needs dist/ built first
+./build.sh                        # full build: UI and binary into dist/
+./dist/kopusha                    # run the build (dist\kopusha.exe on Windows)
+
+go run .                          # backend only, on port 9200
+cd frontend && npm run dev        # Vite dev server on 5173, forwards /api to 9200
 ```
 
-The e2e suite spawns the real binary against `test-fixtures/`, so
-`./build.sh` has to have run at least once.
+Under `go run`, the executable lives in a temporary build folder, so
+`kopusha.conf` and `parsers.d/` are not found: only NDJSON, Parquet and
+EVTX load, and the embedded UI is whatever is currently in `static/`.
+Use `./build.sh` and `dist/` to test parser rules or configuration.
 
-## Before you open a pull request
+After changing an HTTP handler's `swag` annotations, regenerate the
+OpenAPI spec and the TypeScript client (`build.sh` does both when
+`swag` is installed):
+
+```bash
+swag init -g main.go --output internal/server/docs --parseInternal --parseDependency
+cd frontend && npm run gen:api
+```
+
+## Tests
+
+```bash
+go test ./...                     # Go tests
+cd frontend && npm run test:e2e   # Playwright; needs dist/ built first
+```
+
+The e2e suite starts the real binary from `dist/` on port 9201 with
+`test-fixtures/ndjson/` pre-loaded, so run `./build.sh` at least once
+before it.
+
+CI (`.github/workflows/build.yml`) runs `gofmt`, `go vet`, the Go tests
+on every platform, the e2e tests on Linux and Windows, `govulncheck`
+and `npm audit`.
+
+## Pull request checklist
 
 1. `go test ./...` and the e2e suite pass.
-2. `gofmt` clean.
-3. New behaviour has a test. New *ingest formats* have more than that —
-   see the checklist in [REQUIREMENTS.md](./REQUIREMENTS.md), which
-   requires a REQ-DT row, a fixture, a Go unit test, and an e2e test.
-   That matrix is the contract; a format without a row in it is not
-   considered supported.
-4. Version bumped, if the change is user-visible — see "Release chores"
-   below.
+2. `gofmt` reports nothing.
+3. New behaviour has a test. A new ingest format needs a REQ-DT row, a
+   fixture, a Go unit test and an e2e test; see
+   [REQUIREMENTS.md](./REQUIREMENTS.md#adding-a-format).
+4. Regenerated files are in the same commit as the change that caused
+   them (see [Generated files](#generated-files)).
+5. User-visible changes bump the version (see [Releases](#releases)).
 
-Commits should explain *why*, not restate the diff. Long-form is fine;
-the existing history leans verbose deliberately.
+Commit messages explain why the change was made, not what the diff
+shows. Long messages are fine.
 
-If you want to record that a commit was AI-assisted, use a neutral
-trailer:
+To record that a commit was AI-assisted, use this neutral trailer:
 
 ```
 Assisted-by: AI coding assistant
 ```
 
-Don't name a vendor, product, or model — in commit messages, code
-comments, or documentation. Tool names change and get retired; git
-history does not, and a commit message is the one thing in this
-repository that cannot be corrected later. Commits before v0.1.0 name a
-specific tool — that was the earlier convention, and rewriting published
-history to match this one would be worse than the inconsistency.
+Do not name a vendor, product or model in commit messages, code
+comments or documentation. Tool names change; git history cannot be
+corrected later. Commits before v0.1.0 name a specific tool; that was
+the earlier convention, and published history is not rewritten.
 
 ## AI-assisted contributions
 
-Allowed, and used here — parts of this project were written with AI
-assistance. So this is not a purity rule. It is about who is accountable.
+AI tools are allowed and were used to write parts of this project. The
+rule is about accountability: you are the author of what you submit.
 
-**You are the author of what you submit.** Not the tool. That means:
-
-- You can explain what every line does and why, in review.
-- It is tested, and you ran the tests.
-- You have checked it does what the description claims rather than
-  something that merely looks correct. Plausible-but-wrong is the
-  characteristic failure of generated code, and it survives a skim.
+- You can explain every line and why it is there.
+- You ran the tests.
+- You checked that the change does what its description says.
+  Generated code is often plausible but wrong, and that is easy to miss
+  when skimming.
 - "The model wrote it" is not an answer to a review comment.
 
-Two things get a change closed rather than reviewed:
+A pull request is closed without review if the author cannot explain
+it, or if it contains invented facts: APIs, config keys, licences,
+DuckDB behaviour or toolchain claims that nobody checked. This project
+has lost two CI runs to inherited Windows build instructions that were
+wrong.
 
-- **A pull request the author cannot explain.** Reviewing takes longer
-  than writing here, and that time comes out of a single maintainer's
-  evening.
-- **Invented facts.** Generated code confidently references APIs,
-  configuration keys, and licences that do not exist. Any claim about a
-  dependency's licence, a DuckDB behaviour, or a platform toolchain must
-  be something you checked, not something you were told. This project has
-  already been bitten: the Windows build instructions it inherited were
-  confidently wrong and cost two failed CI runs before anyone tested the
-  claim.
-
-You do not need to disclose that you used a tool. You do need to stand
-behind the result.
+You do not have to disclose tool use. You do have to stand behind the
+result.
 
 ## Test data policy
 
-**This one is not negotiable.** Fixtures exercise format grammar only —
-the shape a parser must handle — never real captured data. No real
-hostnames, usernames, IP addresses (use the RFC 5737 ranges), filesystem
-paths from a real deployment, vendor or product names, or identifiers
-lifted from a live system.
+This rule has no exceptions. Fixtures describe the structure a parser
+must handle and never contain real captured data. No real host names,
+user names, IP addresses (use the RFC 5737 ranges), file paths from a
+real system, vendor or product names, or identifiers from a live
+system.
 
-Fixtures under `test-fixtures/formats/` are also **shipped**: `build.sh`
-copies them into `dist/samples/` so every release archive has sample
-data in it. Write each one as though it will be downloaded by strangers,
-because it will be.
+Some fixtures from `test-fixtures/formats/` are copied into
+`dist/samples/` and shipped in every release archive (see
+[REQUIREMENTS.md](./REQUIREMENTS.md#fixtures-in-release-archives)).
+Write every fixture as if strangers will download it.
 
-Do not trim a real log file down to make a fixture. Trimming removes
-rows; it does not remove what is embedded in the message bodies. Write
-it by hand, or add a writer to `test-fixtures/generate.py` and
-regenerate — the generator is seeded, so output is byte-reproducible.
+Do not make a fixture by shortening a real log. Removing lines does not
+remove what is inside the message text. Write it by hand, or add a
+writer to `test-fixtures/generate.py` and regenerate.
 
-The same applies to bug reports: if you attach a log, make sure it is
-one you are willing to see in a public issue tracker forever.
-
-## Dependencies
-
-The project is MIT and every dependency must be permissive — MIT, BSD,
-Apache-2.0, ISC, or MPL-2.0 at the outside. **A GPL- or AGPL-licensed
-dependency cannot be accepted**, because static linking would make the
-distributed binary a copyleft work that the MIT license on this
-repository cannot carry.
-
-After adding or upgrading a dependency, regenerate the notices and SBOM:
-
-```bash
-python3 scripts/generate-sbom.py
-```
-
-That rewrites both [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md)
-and `sbom.cdx.json`; commit them with your change. Neither file is
-edited by hand. It needs `cyclonedx-gomod` on `PATH`:
-
-```bash
-go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
-```
-
-Check the output — if a new component lands under a licence not already
-in the summary table, that is the moment to think about whether it
-belongs here.
-
-Beyond licensing, new dependencies need a reason. The backend is
-deliberately stdlib-only apart from DuckDB, the EVTX parser, YAML, and
-swag.
+The same applies to files attached to issues: attach only what you
+accept being public permanently.
 
 ## Adding a log format
 
-Most new formats need no Go at all. If the format is a line, block, or
-XML shape, write a YAML rule in `parsers.d/` and it is picked up on
-restart — see the example in the README and the existing rules for
-reference. A genuinely new family (CSV, syslog, …) means a new adapter
-under `internal/ingest/<name>/`; the `Loader` contract is documented in
-[ARCHITECTURE.md](./ARCHITECTURE.md).
+Most formats need no Go code. A line, block or XML format is a YAML
+rule in `parsers.d/`. Build it in the UI or write it by hand; the rule
+keys are in [ARCHITECTURE.md](./ARCHITECTURE.md#parser-rules-parsersd).
+Rules describe text structure only (regexes, paths, field names), not
+whose logs they came from.
 
-Parser rules describe **structure only**: regexes, dot-paths, field
-names. A rule should read as a statement about text shape, not about
-whose logs it came from.
-
-Adding or editing a rule changes `parsers.d.sha256`, the manifest of
-what a binary ships with. `./build.sh` regenerates it, or run the
-generator directly:
+Changing a shipped rule changes `parsers.d.sha256`, the manifest of the
+rules a binary ships with. `./build.sh` regenerates it, or run:
 
 ```bash
 go run ./cmd/genmanifest
 ```
 
-A test fails if the committed manifest is stale, so this cannot be
-forgotten silently — left wrong, a binary would misjudge which rules the
-user edited.
+A test fails if the committed manifest is out of date. A wrong manifest
+would make self-update misjudge which rules the user edited.
 
-## House style
+Some formats cannot be described with a regular expression: binary
+formats, compressed or encoded data, or grammars regexes cannot
+express. These need a new adapter in `internal/ingest/<name>/` and
+possibly a new dependency. The adapter interfaces are in
+[ARCHITECTURE.md](./ARCHITECTURE.md#adapter-interfaces) and the
+checklist is in [REQUIREMENTS.md](./REQUIREMENTS.md#adding-a-format).
+If you propose one in an issue, include:
 
-Existing code is the best guide, but these are the conventions worth
-stating because they are easy to violate without noticing:
+- a description of the format: what separates records, where the
+  timestamp is and its layout, which fields are fixed and which are
+  optional or variable width;
+- an anonymised sample, retyped with invented values;
+- a short reason why a `parsers.d/` rule cannot do it.
 
-- **Go**: stdlib HTTP, no frameworks. Core handlers in `server.go`,
-  business logic in `engine.go`, module handlers under `modules/<name>/`.
-- **DuckDB queries** use `ILIKE` for case-insensitive matching; `*` is
-  translated to SQL `%`. SQL string escaping is single-quote doubling.
-- **Engine schema is cached** at `LoadFile` time — never re-read
-  `information_schema` from the hot path.
-- **Frontend state lives in `App.jsx`**; auto-query on filter/time/sort
-  change with a 100 ms debounce, gated by the Auto Apply toggle.
-- **`localStorage` access goes through `useLocalStorage`** — don't
-  sprinkle raw `getItem`/`setItem` calls.
-- **Date parsing and formatting live in `utils/datetime.js`**;
-  components must not define their own.
-- **CSS uses custom properties** for theming. Core defaults are neutral
-  slate; a branding module may override `--accent` / `--accent-*`.
+## Dependencies
 
-## Release chores
+The project is MIT licensed and every dependency must be permissive:
+MIT, BSD, Apache-2.0, ISC, or at most MPL-2.0. GPL and AGPL dependencies
+cannot be accepted, because the binary links statically and would
+become a copyleft work.
 
-A user-visible change bumps the version in four places, which must stay
-in sync:
+The backend uses only the Go standard library apart from DuckDB, the
+EVTX parser, YAML and swag. Any new dependency needs a reason.
 
-- `build.sh` — `VERSION`
-- `frontend/package.json` — `version`
-- `main.go` — **both** the `version` var and the `@version` swag
-  annotation
+After adding or upgrading a dependency, regenerate the notices and the
+SBOM, check the licence summary for anything new, and commit the
+result:
 
-The generated files under `internal/server/docs/` pick the version up
-from the swag annotation on the next `swag init`, which `build.sh` runs
-when `swag` is on `PATH`.
+```bash
+go install github.com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest   # once
+python3 scripts/generate-sbom.py
+```
 
-Regenerated artifacts belong in the same commit as the change that
-causes them:
+## Code conventions
 
-| Artifact | Regenerate with |
-|----------|-----------------|
+- **Go:** standard library HTTP, no frameworks. Core handlers in
+  `internal/server/server.go`, query logic in `internal/engine/engine.go`,
+  module handlers in `modules/<name>/`.
+- **DuckDB queries:** case-insensitive matching with `ILIKE`; `*` in
+  user input becomes `%`; SQL strings are escaped by doubling single
+  quotes.
+- **Engine schema** is cached when a file is loaded. Do not read
+  `information_schema` on the query path.
+- **Frontend state** lives in `App.jsx`. With Auto Apply on, filter,
+  time and text changes re-run the query after 100 ms.
+- **`localStorage`** is accessed through `useLocalStorage`, not raw
+  `getItem` / `setItem`.
+- **Dates** are parsed and formatted only in `utils/datetime.js`.
+- **CSS** uses custom properties for theming. The defaults are neutral
+  slate; a module may override `--accent` and `--accent-*`.
+
+## Generated files
+
+| File | Regenerate with |
+|------|-----------------|
 | `parsers.d.sha256` | `go run ./cmd/genmanifest` (or `./build.sh`) |
 | `sbom.cdx.json`, `THIRD-PARTY-NOTICES.md` | `python3 scripts/generate-sbom.py` |
+| `internal/server/docs/` | `swag init` (see [Setup](#setup)), also run by `./build.sh` |
+| `frontend/src/api/generated/` | `npm run gen:api`, also run by `npm run build` |
 
-## Security issues
+Neither the SBOM nor the notices are edited by hand.
 
-Do not open a public issue. Follow [SECURITY.md](./SECURITY.md).
+## Releases
+
+A user-visible change bumps the version in four places that must match:
+
+- `build.sh`: `VERSION`
+- `frontend/package.json`: `version`
+- `main.go`: the `version` variable and the `@version` swag annotation
+
+The OpenAPI files in `internal/server/docs/` take the version from the
+annotation the next time `swag init` runs.
 
 ## License
 
-By contributing, you agree that your contributions are licensed under
-the MIT license that covers the project. There is no CLA and no
-copyright assignment — you keep your copyright.
+Contributions are licensed under the project's MIT license. There is no
+CLA and no copyright assignment; you keep your copyright.

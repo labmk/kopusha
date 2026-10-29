@@ -1,160 +1,151 @@
-# kopusha — Data-type ingestion requirements
+# Format requirements
 
-This document is the canonical list of file formats kopusha accepts,
-the contract each one must satisfy after ingest, and the test cases
-that prove it. Update this file together with the test matrix below
-whenever a new adapter or shipped `parsers.d/` rule is added.
+This is the list of file formats kopusha supports, what each one must
+produce after loading, and the tests that check it. A format without a
+row in the [matrix](#format-matrix) is not considered supported. Update
+this file together with the matrix whenever an adapter or a shipped
+`parsers.d/` rule is added.
+
+## Ingest contract
+
+For every format:
+
+1. The file is loaded through the dispatcher in
+   `internal/ingest/dispatch.go`, which picks the adapter with the
+   highest detection score (see
+   [ARCHITECTURE.md](./ARCHITECTURE.md#detection)).
+2. The file can be queried: its record count in `/api/files` equals
+   `total_count` from an unfiltered `/api/query` with only that file
+   enabled.
+
+For every format except NDJSON and Parquet:
+
+3. Each record has a top-level `@timestamp` field, an ISO-8601 UTC
+   string.
+4. Each record has a top-level `_source_format` field with the value
+   listed in the matrix. The adapter's record stream adds it.
+
+NDJSON and Parquet are read by DuckDB directly from the original file
+(`read_json_auto` and `read_parquet`), so their records keep exactly
+their original fields and get no `_source_format`. For NDJSON this
+keeps the schema as written and is 2 to 4 times faster than parsing in
+Go. A Parquet file is already a typed table; adding columns would
+change it, and an exported file loaded back must return what was
+exported. These two formats are checked through the `format` field of
+`/api/files` instead.
+
+## Format matrix
+
+| ID | Family | Rule or variant | `_source_format` | Detection | Fixture | Go test | E2e test |
+|----|--------|-----------------|------------------|-----------|---------|---------|----------|
+| REQ-DT-01 | NDJSON | direct | none | `.ndjson` extension, or the first line is a JSON object | `test-fixtures/formats/sample.ndjson` | `internal/ingest/ndjson/ndjson_test.go::TestDirectIngester` | `frontend/e2e/formats.spec.js::REQ-DT-01 ndjson` |
+| REQ-DT-10 | Parquet | direct | none | `PAR1` magic bytes, or `.parquet` / `.pq` extension | `test-fixtures/formats/sample.parquet` | `internal/ingest/parquet/parquet_test.go` | none yet; routing is covered by `internal/ingest/fixtures_test.go` |
+| REQ-DT-02 | EVTX | binary | `evtx` | `ElfFile\0` magic bytes | `test-fixtures/formats/sample.evtx` | `internal/ingest/evtx/evtx_test.go::TestStreamRealSample` (skipped if the file is missing) | `frontend/e2e/formats.spec.js::REQ-DT-02 evtx` |
+| REQ-DT-03 | XML | `repeating-row-element` | `xml:<row name>` | First non-whitespace character is `<` | `test-fixtures/formats/xml-row-element.txt` | `internal/ingest/xml/xml_test.go::TestMultiRootStreamingWithoutXmlDeclaration` and others | `frontend/e2e/formats.spec.js::REQ-DT-03 xml-row-element` |
+| REQ-DT-04 | block | `keyvalue-dash-separated` | `block:keyvalue-dash-separated` | A line of 20 or more dashes in the first 512 bytes | `test-fixtures/formats/block-keyvalue-dash.txt` | `internal/ingest/block/block_test.go::TestDetectMatchesDashSeparator` and others | `frontend/e2e/formats.spec.js::REQ-DT-04 block-keyvalue-dash` |
+| REQ-DT-05 | line | `iso-bracket` | `line:iso-bracket` | `YYYY-MM-DD HH:MM:SS.mmm [LVL] [COMP] [PID:N] msg` | `test-fixtures/formats/line-iso-bracket.log` | `internal/ingest/line/line_test.go::TestIsoBracketBasic`, `TestIsoBracketContinuation` | `frontend/e2e/formats.spec.js::REQ-DT-05 line-iso-bracket` |
+| REQ-DT-06 | line | `dashdate-level` | `line:dashdate-level` | `DD-MM-YYYY HH:MM:SS.mmm Level msg` | `test-fixtures/formats/line-dashdate-level.log` | `internal/ingest/line/line_test.go::TestDashdateLevel` | `frontend/e2e/formats.spec.js::REQ-DT-06 line-dashdate-level` |
+| REQ-DT-07 | line | `dotdate-pidtid` | `line:dotdate-pidtid` | `prefix: DD.MM.YY HH:MM:SS:msec PID/TID msg` (the colon before milliseconds is fixed by `ts_regex_subs`) | `test-fixtures/formats/line-dotdate-pidtid.log` | `internal/ingest/line/line_test.go::TestDotdatePIDTID` | `frontend/e2e/formats.spec.js::REQ-DT-07 line-dotdate-pidtid` |
+| REQ-DT-08 | line | `time-pidtid` | `line:time-pidtid` | `HH:MM:SS.uuuuuu PID/TID Level msg` (date from file modification time, handles midnight rollover) | `test-fixtures/formats/line-time-pidtid.log` | `internal/ingest/line/line_test.go::TestTimeOnlyUsesMtimeDate`, `TestTimeOnlyDayRollover` | `frontend/e2e/formats.spec.js::REQ-DT-08 line-time-pidtid` |
+| REQ-DT-09 | line | `time-dotdate` | `line:time-dotdate` | `HH:MM:SS.mmm DD.MM.YYYY: msg` (time before date) | `test-fixtures/formats/line-time-dotdate.log` | `internal/ingest/line/line_test.go::TestTimeDotdate` | `frontend/e2e/formats.spec.js::REQ-DT-09 line-time-dotdate` |
+
+### Unrecognised format
+
+| ID | Requirement | Fixture | Go test | E2e test |
+|----|-------------|---------|---------|----------|
+| REQ-DT-00 | No adapter accepts the file, and every adapter reports a reason, the first non-blank line, and any encoding problem (byte-order mark, CRLF, NUL bytes, invalid UTF-8) | `test-fixtures/formats/unmatched.log` | `internal/server/rules_test.go::TestExplainReportsEveryAdapter` | `frontend/e2e/rules.spec.js` |
+
+This fixture must keep matching nothing. If a new shipped rule starts
+matching it, change the fixture, not the test, and keep it a plausible
+real-world format.
 
 ## Fixtures
 
-Every fixture under `test-fixtures/` is **synthetic** and is produced by
-`test-fixtures/generate.py`, which is seeded so regeneration is
-byte-reproducible:
+All fixtures in `test-fixtures/` are synthetic. The NDJSON, XML,
+block and line fixtures are produced by `test-fixtures/generate.py`,
+which uses a fixed seed, so running it again gives identical bytes.
+`sample.parquet` and `unmatched.log` are committed files that the
+generator does not write, and `sample.evtx` is described below.
 
 ```bash
 python3 test-fixtures/generate.py
 ```
 
-Regenerate after changing any `parsers.d/` rule, then run
-`go test ./internal/ingest/` — `fixtures_test.go` wires up the same
-registry `main.go` builds and asserts every fixture still routes to its
-intended adapter and emits the documented `_source_format`. That test is
-what catches the quiet failure where an edited regex stops matching, a
-lower-priority rule picks the file up instead, rows still appear, and
-nothing looks wrong until you check the marker.
+Regenerate after changing a `parsers.d/` rule, then run
+`go test ./internal/ingest/`. `internal/ingest/fixtures_test.go` builds
+the same adapter registry as `main.go` and checks that each fixture is
+picked by the intended adapter and has the expected `_source_format`.
+This catches the case where an edited regex stops matching, a
+lower-priority rule takes the file instead, and rows still appear.
 
-Fixtures exercise format grammar only. See the "Test data policy"
-section in CONTRIBUTING.md for what they must never contain.
+Fixtures describe format structure only. The rules for their content
+are in [CONTRIBUTING.md](./CONTRIBUTING.md#test-data-policy).
 
-**These fixtures are published.** `build.sh` copies
-`test-fixtures/formats/` into `dist/samples/`, so every release archive
-carries them and a fresh install has something to open. That raises the
-stakes on the policy above rather than changing it — a fixture is now
-shipped to strangers, not just committed. The one exclusion is
-`sample.evtx`, for the reason below.
+### Fixtures in release archives
 
-**EVTX is the one vendored fixture.** It is a binary format with
-per-chunk CRC32 checksums and BinXML template tables, which
-`generate.py` cannot synthesize. Shipping a capture of our own is out
-of the question — an exported Windows event log carries the machine
-name, user SIDs, and installed-software traces of whatever host
-produced it. But shipping *nothing* left REQ-DT-02 skipped and every
-EVTX code path unproven in CI, which is worse.
+`build.sh` copies a fixed subset into `dist/samples/`, which every
+release archive includes: `sample.ndjson`, `sample.parquet`,
+`xml-row-element.txt` and `unmatched.log`, plus
+`test-fixtures/SAMPLES.md` as `README.md`. These are therefore
+published to anyone who downloads kopusha.
 
-So `test-fixtures/formats/sample.evtx` is vendored from the
+### The EVTX fixture
+
+EVTX is a binary format with per-chunk CRC32 checksums and BinXML
+templates that `generate.py` cannot produce. An export from one of our
+own machines would contain its host name, user SIDs and installed
+software. So `test-fixtures/formats/sample.evtx` is taken from the
 [Velocidex/evtx](https://github.com/Velocidex/evtx) project
-(`testdata/Security_1_record.evtx`, Apache-2.0, 68 KB). It is an
-already-published sample from a third party, so it discloses nothing
-about any of our environments — the policy above is satisfied at its
-intent, not merely its letter. It is a single-record Security log whose
-header is marked **dirty**, which usefully exercises the `OpenDirty`
-path that a cleanly-closed export would not reach.
+(`testdata/Security_1_record.evtx`, Apache-2.0, 68 KB). It is a public
+third-party sample and reveals nothing about our environments. It holds
+one Security record and its header is marked dirty, which tests the
+`OpenDirty` code path.
 
-It is also the one fixture `build.sh` keeps out of `dist/samples/`.
-`THIRD-PARTY-NOTICES.md` is generated from the dependency graph — it
-credits the `www.velocidex.com/golang/evtx` parser we link, and knows
-nothing about a data file — so redistributing the sample in a release
-archive would carry an Apache-2.0 attribution obligation that nothing
-in the archive discharges. Keeping it in the repository, where the
-provenance is stated here, costs nothing: CI still proves the EVTX path
-against it, and users have `.evtx` files of their own.
+It is the only fixture from outside the project. It is not copied into
+release archives: `THIRD-PARTY-NOTICES.md` is generated from the Go
+dependency graph and does not cover data files, so shipping it would
+add an attribution duty that the archive does not meet.
 
-This is the only fixture permitted to come from outside; everything
-else is generated. The skip-if-missing guards stay in place so the
-suite still degrades gracefully if someone deletes the file:
+If the file is missing, the tests degrade instead of failing:
 
-- `internal/ingest/evtx/evtx_test.go` — magic-byte detection tests run
-  unconditionally (they construct a `LoadHint` in memory); the
-  streaming test skips when the file is absent.
-- `internal/ingest/fixtures_test.go` — REQ-DT-02 is marked optional.
-- `frontend/e2e/formats.spec.js` — REQ-DT-02 skips.
+- `internal/ingest/evtx/evtx_test.go`: magic-byte tests still run; the
+  streaming test is skipped.
+- `internal/ingest/fixtures_test.go`: REQ-DT-02 is optional.
+- `frontend/e2e/formats.spec.js`: REQ-DT-02 is skipped.
 
-To test against a different capture, drop any `.evtx` file in its
-place; on Windows, `wevtutil epl Application sample.evtx` produces one.
-Do not commit a replacement sourced from a real machine.
+To test with another file, put any `.evtx` in its place (on Windows,
+`wevtutil epl Application sample.evtx` creates one). Do not commit a
+file taken from a real machine.
 
-## Ingestion contract
+## Adding a format
 
-**For every data type:**
+1. **New variant of an existing family** (another line, block or XML
+   shape): build the rule in the UI (**Parser rules**) or add a YAML
+   file to `parsers.d/`. Add a writer to `test-fixtures/generate.py`
+   and regenerate. Add a test function to the family's existing
+   `_test.go` file.
+2. **New family** (for example CSV): create `internal/ingest/<name>/`,
+   implement `Loader` plus `RecordStreamer` or `DirectIngester`, and
+   `Explainer` so the adapter can say why it declined. Register it in
+   `parsers.Manager.Reload`. If the format has its own extension, add it
+   to `ingestableExts` in `internal/server/server.go`, or the file
+   browser hides it. Add unit tests in `internal/ingest/<name>/` and a
+   fixture in `test-fixtures/formats/`.
+3. Either way: add a REQ-DT row to the matrix above, a row to the table
+   in `internal/ingest/fixtures_test.go`, and an e2e test in
+   `frontend/e2e/formats.spec.js` that follows the existing ones (POST
+   `/api/files/load`, GET `/api/files` for the record count, POST
+   `/api/query` and check `_source_format`).
+4. A shipped rule change also changes `parsers.d.sha256`; see
+   [CONTRIBUTING.md](./CONTRIBUTING.md#adding-a-log-format).
 
-1. Be queryable through `/api/query` with the file enabled — i.e. the
-   row count from `/api/files` matches the `total_count` returned by
-   an unfiltered `/api/query` for that file alone.
-2. Reach the engine via the dispatcher in `internal/ingest/dispatch.go`
-   (sniff + extension routing). Detection scores >= 70 commit the file
-   to that adapter.
+## Running the tests
 
-**For every data type EXCEPT NDJSON:**
-
-3. Carry a top-level **`@timestamp`** field as an ISO-8601 UTC string.
-4. Carry a top-level **`_source_format`** field whose value matches
-   the canonical name listed in the table below. This field is injected
-   by the per-adapter record-streaming layer.
-
-**NDJSON and Parquet are the documented exceptions:** both go through
-`DirectIngester`
-(DuckDB's `read_json_auto` reads the original file directly), so the
-records carry only their original fields — no `_source_format`
-injection. Parquet is the same case for the same reason, and more
-strongly: a Parquet file is *already* a typed table, so re-deriving a
-schema or injecting marker columns would discard what the format exists
-to preserve. Round-tripping an export back in must return what went
-out. The original NDJSON is already structured; preserving the
-schema as-written is the whole point of the direct path (2-4× faster
-than parsing through Go). NDJSON detection is verified via the
-`/api/files` `format` field instead.
-
-The dispatcher (`internal/ingest/dispatch.go`) routes by sniff +
-extension. Detection scores >= 70 commit the file to that adapter;
-below that the adapter is treated as fallback. Each requirement
-below states the expected detection signal so a regression in
-sniffing is easy to spot.
-
-## Data type matrix
-
-| ID | Format family | Rule / variant | `_source_format` | Detection signal | Sample fixture | Go unit test | E2e test |
-|----|---------------|----------------|------------------|------------------|----------------|--------------|----------|
-| REQ-DT-01 | NDJSON | n/a (direct) | n/a (no `_source_format` — direct path) | `.ndjson` extension OR first non-blank line parses as a JSON object | `test-fixtures/formats/sample.ndjson` | `internal/ingest/ndjson/ndjson_test.go::TestDirectIngester` | `frontend/e2e/formats.spec.js::REQ-DT-01 ndjson` |
-| REQ-DT-10 | Parquet | n/a (columnar binary) | n/a (no `_source_format` — direct path) | Magic bytes `PAR1` at offset 0, or `.parquet`/`.pq` extension | `test-fixtures/formats/sample.parquet` | `internal/ingest/parquet/parquet_test.go` | `frontend/e2e/formats.spec.js::parquet` |
-| REQ-DT-02 | EVTX | n/a (binary) | `evtx` | Magic bytes `ElfFile\0` at offset 0 | `test-fixtures/formats/sample.evtx` | `internal/ingest/evtx/evtx_test.go::TestStreamRealSample` (skip-if-missing) | `frontend/e2e/formats.spec.js::evtx` |
-| REQ-DT-03 | XML | `repeating-row-element` | `xml:<rowName>` | First non-whitespace char is `<` | `test-fixtures/formats/xml-row-element.txt` | `internal/ingest/xml/xml_test.go::TestMultiRootStreamingWithoutXmlDeclaration` (et al.) | `frontend/e2e/formats.spec.js::xml` |
-| REQ-DT-04 | block | `keyvalue-dash-separated` | `block:keyvalue-dash-separated` | A line of 20+ dashes appears in the first ~512 bytes | `test-fixtures/formats/block-keyvalue-dash.txt` | `internal/ingest/block/block_test.go::TestDetectMatchesDashSeparator` (et al.) | `frontend/e2e/formats.spec.js::block-keyvalue-dash` |
-| REQ-DT-05 | line | `iso-bracket` | `line:iso-bracket` | Parse regex matches first non-blank line: `YYYY-MM-DD HH:MM:SS.mmm [LVL] [COMP] [PID:N] msg` | `test-fixtures/formats/line-iso-bracket.log` | `internal/ingest/line/line_test.go::TestIsoBracketBasic` / `TestIsoBracketContinuation` | `frontend/e2e/formats.spec.js::line-iso-bracket` |
-| REQ-DT-06 | line | `dashdate-level` | `line:dashdate-level` | Parse regex matches: `DD-MM-YYYY HH:MM:SS.mmm Level msg` | `test-fixtures/formats/line-dashdate-level.log` | `internal/ingest/line/line_test.go::TestDashdateLevel` | `frontend/e2e/formats.spec.js::line-dashdate-level` |
-| REQ-DT-07 | line | `dotdate-pidtid` | `line:dotdate-pidtid` | Parse regex matches: `prefix: DD.MM.YY HH:MM:SS:msec PID/TID msg` (note colon-msec — handled by `ts_regex_subs`) | `test-fixtures/formats/line-dotdate-pidtid.log` | `internal/ingest/line/line_test.go::TestDotdatePIDTID` | `frontend/e2e/formats.spec.js::line-dotdate-pidtid` |
-| REQ-DT-08 | line | `time-pidtid` | `line:time-pidtid` | Parse regex matches: `HH:MM:SS.uuuuuu PID/TID Level msg` (date sourced from file mtime, rollover-aware) | `test-fixtures/formats/line-time-pidtid.log` | `internal/ingest/line/line_test.go::TestTimeOnlyUsesMtimeDate` + `TestTimeOnlyDayRollover` | `frontend/e2e/formats.spec.js::line-time-pidtid` |
-| REQ-DT-09 | line | `time-dotdate` | `line:time-dotdate` | Parse regex matches: `HH:MM:SS.mmm DD.MM.YYYY: msg` (time before date) | `test-fixtures/formats/line-time-dotdate.log` | `internal/ingest/line/line_test.go::TestTimeDotdate` | `frontend/e2e/formats.spec.js::line-time-dotdate` |
-
-### The negative case
-
-| ID | Purpose | Requirement | Sample fixture | Go test | E2e test |
-|----|---------|-------------|----------------|---------|----------|
-| REQ-DT-00 | Unrecognised format | No adapter claims it, **and** every adapter reports a non-empty reason, the first non-blank line, and any encoding trait (BOM, CRLF, NUL, invalid UTF-8) | `test-fixtures/formats/unmatched.log` | `internal/server/rules_test.go::TestExplainReportsEveryAdapter` | `frontend/e2e/rules.spec.js` |
-
-This fixture must keep matching nothing. If a new shipped rule ever
-claims it, the diagnosis path loses its only end-to-end test — change
-the fixture rather than the assertion, and check that it is still a
-plausible real-world format.
-
-## Adding a new data type
-
-1. **New format family** (e.g. CSV): create `internal/ingest/<name>/`, implement the `Loader` interface (plus `RecordStreamer` or `DirectIngester`, and `Explainer` so the adapter can say why it declined), and register it in `parsers.Manager.Reload`. Add the extension to `ingestableExts` in `internal/server` or the file browser will hide it. Add Go unit tests under `internal/ingest/<name>/`. Add a new REQ-DT-NN row to the matrix above and a fixture under `test-fixtures/formats/`.
-
-2. **Same family, new rule variant** (another line/block/xml shape): build it in the UI (**Parser rules**) or drop a YAML file under `parsers.d/`, add a writer to `test-fixtures/generate.py` and regenerate, add a Go unit test (the existing per-family `_test.go` files already cover the test harness — just add a new `TestX` function). Add a REQ-DT-NN row to the matrix.
-
-3. Add a row to the table in `internal/ingest/fixtures_test.go` so the new fixture's routing is asserted.
-
-4. Add an e2e test in `frontend/e2e/formats.spec.js` mirroring the existing per-data-type structure (POST `/api/files/load`, GET `/api/files` for the row count, POST `/api/query` and assert `_source_format`).
-
-## Running the test matrix
+From the repository root:
 
 ```bash
-# Go unit tests across every adapter:
-cd kopusha && go test ./internal/ingest/...
+go test ./internal/ingest/...                          # adapter unit tests
 
-# E2e suite (requires dist/kopusha.exe built first):
-cd kopusha/frontend && npm run test:e2e -- formats.spec.js
+./build.sh                                             # e2e needs dist/kopusha (dist/kopusha.exe on Windows)
+cd frontend && npm run test:e2e -- formats.spec.js     # format e2e tests
 ```
-
-CI should fail if any new data type lands without a row in the matrix
-above and a fixture + Go unit + e2e covering it.

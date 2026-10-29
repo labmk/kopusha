@@ -1,79 +1,82 @@
-# Writing an kopusha module
+# Writing a kopusha module
 
-A module is an optional sub-feature that plugs into the core viewer
-without the core knowing anything about it. A module can contribute any
-combination of:
+A module is an optional feature added to kopusha without the core code
+knowing about it. A module can provide any of:
 
-- **HTTP handlers** under `/api/<name>/*`
-- **Static assets** under `/m/<name>/*` (CSS, images, JS bundles)
-- **A React tab** rendered alongside the built-in viewer tab
-- **Config data** passed to the SPA at boot (a branding module, say,
-  supplying a logo URL and company name)
+- HTTP handlers under `/api/<name>/`;
+- static files (CSS, images, JavaScript) under `/m/<name>/`;
+- a React tab shown next to the main viewer tab;
+- configuration values passed to the UI at startup (for example a logo
+  URL for a branding module).
 
-One module ships with kopusha: `mcp` (`modules/mcp/`), a backend-only
-module that serves the MCP endpoint for AI agents — see
-[MCP.md](./MCP.md). It is disabled until its config section exists, and
-is the reference for a module with handlers and no tab. This document
-is the contract for adding one.
+One module ships with kopusha: `mcp` in `modules/mcp/`, which serves
+the MCP endpoint for AI agents ([MCP.md](./MCP.md)). It has handlers and
+no tab, and is the reference for that kind of module.
+
+## On and off
+
+A module is enabled when its `[<name>]` section exists in one of the
+`kopusha*.conf` files next to the binary, and the section does not set
+`enabled` to `false`, `0`, `no`, `off` or an empty value. There is no
+build flag.
 
 ## Lifecycle
 
-1. `main.go` loads all `kopusha*.conf` files and merges them into one
-   `config.Config`.
-2. `module.NewRegistry(cfg, deps)` is constructed, then each module is
-   added with `modreg.Add(yourmodule.New())`.
-3. `modreg.Boot(mux)` calls `Enabled(cfg)` on each. Modules that return
-   `false` are skipped entirely — no routes, no manifest entry.
+1. `main.go` reads all `kopusha*.conf` files into one `config.Config`.
+2. `module.NewRegistry(cfg, deps)` creates the registry, and each module
+   is added with `modreg.Add(yourmodule.New())`.
+3. `modreg.Boot(mux)` calls `Enabled(cfg)` on each module. A module that
+   returns `false` gets no routes and no manifest entry.
 4. For each enabled module, `Register(ctx)` runs once. It mounts routes
    on `ctx.Mux` and fills `ctx.Manifest`.
-5. The SPA fetches `/api/modules` at boot and uses the manifest to
-   decide which tabs to render, which stylesheets to inject, and what
+5. The UI fetches `/api/modules` at startup and uses the manifests to
+   decide which tabs to show, which stylesheets to load and which
    config values to apply.
 
-A module is enabled **iff** its config section exists. That is the only
-on/off switch — there is no build flag.
-
-## The interface
+## Interface
 
 ```go
 type Module interface {
-    Name() string                      // registry ID, kebab-case
+    Name() string                       // registry ID, kebab-case
     Enabled(cfg *config.Config) bool    // usually cfg.ModuleEnabled(Name())
     Register(ctx *RegisterContext) error
 }
 ```
 
-`RegisterContext` embeds `Deps`, so `Register` can reach:
+`RegisterContext` embeds `Deps`, so `Register` can use:
 
 | Field | Use |
 |-------|-----|
-| `Mux` | Mount your handlers |
-| `Config` | Read your `[section]` via `ctx.Config.Section(name)` |
-| `Manifest` | Fill `Tab`, `Style`, `Bundle`, `Config` |
+| `Mux` | Mount handlers |
+| `Config` | Read your section with `ctx.Config.Section(name)` |
+| `Manifest` | Set `Tab`, `Style`, `Bundle`, `Config` |
 | `Engine` | Query loaded files |
-| `Rules` | The `parsers.d` manager: live ingest registry, rule list |
-| `Settings` | Persist state (add a field to `settings.Settings`) |
-| `APIHandler` | Wrap handlers so they refresh the inactivity timer |
-| `TouchActivity` | Call from long-running handlers to keep the timer fresh |
-| `AddBusyCheck` | Register a `func() bool` so auto-shutdown pauses during your work |
+| `Rules` | The `parsers.d/` manager: current adapter registry and rule list |
+| `Settings` | Store state (add a field to `settings.Settings`) |
+| `APIHandler` | Wrap a handler so requests reset the inactivity timer |
+| `TouchActivity` | Reset the inactivity timer from long-running work |
+| `AddBusyCheck` | Register a `func() bool`; auto-shutdown waits while it returns true |
 
-## Directory layout
+Modules reach the core only through these fields. They do not import
+`internal/server`.
+
+## Folder layout
 
 ```
 modules/my-module/
-  backend/            # Go — only if the module has both halves
-    module.go         # package mymodule (Go-valid identifier, no dashes)
+  backend/            # Go, only when the module has both a backend and a UI part
+    module.go         # package mymodule (a valid Go name, no dashes)
     handlers.go
   frontend/
     MyModuleTab.jsx
 ```
 
-Data-only modules (assets and CSS, no handlers) and backend-only
-modules (handlers, no tab — `modules/mcp/`) flatten into
-`modules/my-module/` directly. Go's `embed` cannot escape upward with
-`..`, so any embedded file must live beside the source that embeds it.
+A module with only data (assets and CSS) or only a backend (like
+`modules/mcp/`) puts its files directly in `modules/my-module/`. Go's
+`embed` cannot reach parent folders with `..`, so embedded files must
+sit next to the Go file that embeds them.
 
-## Minimal example
+## Example
 
 ```go
 // modules/hello/module.go
@@ -119,57 +122,52 @@ func (m *Module) Register(ctx *module.RegisterContext) error {
 
 ## Wiring it up
 
-Four edits, all one-liners:
-
-1. **`main.go`** — import the package and add
-   `modreg.Add(hello.New())` before `modreg.Boot(...)`.
-
-   Pass constructor arguments the module needs from `main`, e.g.
-   `mcp.New(version)`.
-
-   Steps 2 and 3 apply only to modules with a tab.
-
-2. **`frontend/src/moduleRegistry.js`** — import the tab component and
-   map the module ID to it:
+1. **`main.go`:** import the package and call `modreg.Add(hello.New())`
+   before `modreg.Boot(...)`. Pass any values the module needs from
+   `main`, as in `mcp.New(version)`.
+2. **`frontend/src/moduleRegistry.js`** (modules with a tab only):
+   import the tab component and map the module ID to it.
 
    ```js
    import HelloTab from '../../modules/hello/frontend/HelloTab';
    export const moduleComponents = { hello: HelloTab };
    ```
 
-3. **`frontend/vite.config.js`** — add a `resolve.alias` entry for
-   every external package your JSX imports. Module files live outside
-   the Vite project root, so Rollup's `node_modules` walk-up never
-   reaches `frontend/node_modules` and the import will fail to resolve
-   even though the package is installed.
-
-4. **`kopusha_hello.conf`** — ship the config section. If it needs
-   per-site values, ship it as `kopusha_hello.conf.example` instead;
-   the `.example` suffix is deliberately excluded from the startup glob,
-   so the operator opts in by renaming.
+3. **`frontend/vite.config.js`** (modules with a tab only): add a
+   `resolve.alias` entry for every npm package the module's JSX imports.
+   Module files are outside the Vite project folder, so the bundler does
+   not find `frontend/node_modules` on its own and the import fails even
+   though the package is installed.
+4. **`kopusha_hello.conf`:** ship the config section. If it needs
+   site-specific values, ship `kopusha_hello.conf.example` instead.
+   Files ending in `.example` are not read, so the operator enables the
+   module by renaming the file.
 
    ```ini
    [hello]
-   enabled = true
    greeting = hi
    ```
 
+   To ship the section turned off, add `enabled = false`.
+
 ## Removing a module
 
-Delete `modules/<name>/`, drop the import and `modreg.Add(...)` line in
-`main.go`, drop the `moduleRegistry.js` entry, delete the conf file, and
-rebuild. Nothing in the core references a module by name.
+Delete `modules/<name>/`, remove its import and `modreg.Add(...)` line
+from `main.go`, remove its entry in `moduleRegistry.js`, delete its
+config file, and rebuild. The core does not refer to modules by name.
 
-## Conventions
+## Rules
 
-- Route prefixes `/api/<name>/` and `/m/<name>/` are disjoint from every
-  core path, so the SPA's `/` catch-all never shadows them. Stay inside
-  your prefix.
-- Wrap handlers in `ctx.APIHandler` unless you have a reason not to —
-  otherwise requests to your module won't refresh the inactivity timer
-  and the server may shut down under an active user.
-- If your module does work that outlasts a request (a long transfer, a
-  subprocess), register an `AddBusyCheck` predicate so auto-shutdown
-  doesn't fire mid-operation.
-- Manifest fields are all optional. A tab-only module fills `Tab`; a
-  theme-only module fills `Style` + `Config`; both patterns compose.
+- Keep routes under `/api/<name>/` and `/m/<name>/`. These prefixes do
+  not overlap with core routes, so the UI's catch-all route `/` never
+  hides them.
+- Wrap handlers in `ctx.APIHandler`. Otherwise requests to your module
+  do not count as activity, and the server can shut down while someone
+  is using it.
+- If the module does work that outlasts a request (a long transfer, a
+  subprocess), register an `AddBusyCheck` function so auto-shutdown
+  waits.
+- All manifest fields are optional. A tab-only module sets `Tab`; a
+  theme module sets `Style` and `Config`; both can be combined.
+- Module UI code is bundled with the main UI for now. The `Bundle`
+  manifest field is reserved for separately built bundles.
