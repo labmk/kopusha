@@ -1,146 +1,169 @@
-# Security Policy
+# Security
 
 ## Reporting a vulnerability
 
-Please report security issues privately via GitHub's
+Report security issues privately through GitHub's
 [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability)
-on [github.com/labmk/kopusha](https://github.com/labmk/kopusha),
-rather than opening a public issue.
+on [github.com/labmk/kopusha](https://github.com/labmk/kopusha). Do not
+open a public issue.
 
-Include what you have: affected version, a reproduction, and the impact
-you believe it has. You'll get an acknowledgement within a few days.
+Include the affected version, steps to reproduce, and the impact you
+expect. You will get an acknowledgement within a few days.
+
+Only the latest release is supported. Fixes go to `main` and ship in
+the next release.
 
 ## Threat model
 
-kopusha is a **local, single-user tool**. It reads files you already
-have access to and serves a UI to `127.0.0.1`. It is not a multi-tenant
-service and does not attempt to be one.
+kopusha is a local tool for one user. It reads files the user can
+already read and serves its UI on `127.0.0.1`. It is not a multi-user
+service.
 
-**There is no authentication or authorization.** Anyone who can reach
-the HTTP port has full access to every loaded file, can browse the
-filesystem through `/api/browse` with the privileges of the process, can
-export data to any writable path, and can shut the server down. The
-loopback bind is the entire access control story.
+**There is no authentication or authorisation.** Anyone who can reach
+the HTTP port can read every loaded file, list the file system through
+`/api/browse` with the process's permissions, export data to any
+writable path, and stop the server. Binding to loopback is the only
+access control.
 
-Two guardrails enforce that:
+Two rules protect that:
 
 - The server binds `127.0.0.1` unless `listen` is set in
-  `kopusha.conf` **and** a TLS certificate is supplied via
-  `--cert`/`--key`. Setting `listen` alone is ignored, with a warning.
-- TLS is off by default because loopback traffic doesn't need it.
+  `kopusha.conf` **and** a TLS certificate is given with `--cert` and
+  `--key`. `listen` without a certificate is ignored with a warning.
+- TLS is off by default, because loopback traffic does not need it.
 
-If you expose kopusha beyond loopback, put an authenticating reverse
-proxy in front of it. Treat "reachable on the network without a proxy"
-as a misconfiguration, not a vulnerability in kopusha.
+If you expose kopusha to a network, put an authenticating reverse proxy
+in front of it. Exposing it without one is a misconfiguration, not a
+vulnerability in kopusha.
+
+The MCP module has its own checks (loopback client, `Host` and
+`Origin` headers, optional token); see [docs/MCP.md](./docs/MCP.md#security-model).
 
 ### In scope
 
-- Anything that lets a **file** escalate: a crafted NDJSON, EVTX, XML,
-  or text log that causes memory corruption, code execution, path
-  traversal on load or export, or a hang that isn't proportionate to its
-  size. Parsers process untrusted input by design — this is the area
-  that matters most.
-- Path traversal or symlink-following in `/api/browse`, `/api/export`,
-  `/api/export/self-copy`, or zip extraction that reaches outside the
-  intended directory.
-- A crafted `parsers.d/` rule that escapes its stated capabilities
-  (regex matching and field mapping).
-- Anything that weakens the loopback/TLS guardrail above.
-- Dependency vulnerabilities reachable from kopusha's own code
-  paths — `govulncheck` and `npm audit` both gate CI.
+- A crafted input file (NDJSON, Parquet, EVTX, XML, text log) that
+  causes memory corruption, code execution, path traversal on load or
+  export, or a hang out of proportion to its size. Parsers handle
+  untrusted input; this area matters most.
+- Path traversal or symlink following in `/api/browse`, `/api/export`,
+  `/api/export/self-copy` or zip extraction that reaches outside the
+  intended folder.
+- A `parsers.d/` rule that does more than match regular expressions and
+  map fields.
+- Anything that weakens the loopback and TLS rule above.
+- Vulnerable dependencies reachable from kopusha's code. `govulncheck`
+  and `npm audit` run in CI.
 
 ### Out of scope
 
-- Lack of authentication on the local HTTP interface. That's the
-  documented design; see above.
-- Reading files the invoking user can already read. That is the tool's
-  purpose.
-- Denial of service through a legitimately enormous input file. Loading
-  a 100 GB file on a 16 GB machine will fail, and that's expected.
-- Findings that require an attacker to already control the machine, the
-  binary, or the `parsers.d/` directory.
+- Lack of authentication on the local HTTP port (by design, see above).
+- Reading files the user can already read (that is the purpose of the
+  tool).
+- Running out of memory on a very large input. Loading a 100 GB file
+  on a machine with 16 GB of memory will fail.
+- Attacks that require control of the machine, the binary or the
+  `parsers.d/` folder.
 
-## Supported versions
+## Network behaviour
 
-The latest released version. Fixes land on `main` and ship in the next
-release.
+kopusha sends no telemetry and the UI loads nothing from the internet.
+There are two outbound requests, both to GitHub:
 
-## Build integrity
+1. **Release check**, at startup, in the background. A GET to the
+   GitHub releases API for the latest version number. Nothing about the
+   machine is sent beyond what any HTTP request reveals (IP address and
+   User-Agent). It never downloads a release. Its result is shown in
+   the status bar. It fails silently when there is no network.
+2. **Self-update**, only when the user presses the update button. See
+   [Self-update](#self-update).
 
-- Release binaries are built by `.github/workflows/build.yml` on
-  GitHub-hosted runners, one per platform.
-- **Every release archive carries a signed build attestation.** It
-  records that those exact bytes were produced by that workflow, from
-  this repository, at a named commit. Verify before running:
+`update_check = false` in `kopusha.conf` turns off both.
+`--no-update-check` turns off both for one run. With either, kopusha
+makes no outbound connections.
 
-  ```bash
-  gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
-  ```
+DuckDB extensions are linked into the binary. kopusha never downloads
+an extension at runtime.
 
-  The signature is made with a short-lived certificate issued to the
-  workflow run through Sigstore. No signing key exists to be stolen,
-  and nothing has to be renewed.
+## Verifying a download
 
-  This is what `SHA256SUMS` cannot do. A checksum shows a download is
-  intact against a list published in the same place by whoever
-  published the file — an attacker who replaced the archive would
-  replace the list with it. The attestation is tied to the build, not
-  to the publisher.
+Release binaries are built by `.github/workflows/build.yml` on
+GitHub-hosted runners. Every release archive has a signed build
+attestation that records that those exact bytes were built by that
+workflow, from this repository, at a named commit. Verify it with the
+GitHub CLI:
 
-- **Attestation is not code signing.** It answers "was this built from
-  the source it claims?", not "who is the publisher?" — and only the
-  second silences the operating system. Concretely:
+```bash
+gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
+```
 
-  - macOS binaries are **ad-hoc signed only**, not notarized. A build
-    downloaded through a browser is blocked by Gatekeeper until you
-    clear the quarantine attribute. See
-    [docs/BUILD.md](./docs/BUILD.md).
-  - Windows binaries are unsigned unless you supply `hooks/sign.sh`,
-    so SmartScreen will warn.
+The signature uses a short-lived certificate issued to the workflow run
+through Sigstore. There is no long-lived signing key to steal or renew.
 
-  Certificate-based signing for both platforms is tracked in
-  [#24](https://github.com/labmk/kopusha/issues/24).
-- DuckDB extensions are statically linked. kopusha never downloads an
-  extension at runtime, which is what makes air-gapped use safe.
-- **kopusha downloads code only when you press the button.** Two
-  outbound requests exist. The startup release check reads the GitHub
-  releases API and renders a version string; it never downloads. The
-  self-update path fetches a release archive and replaces the running
-  binary, and runs only on an explicit click — never on a timer, never
-  at startup, and never at all when `update_check = false`.
+`SHA256SUMS`, published beside the archives, only shows that a download
+is intact compared with a list from the same place. Someone who
+replaced an archive could replace the list too. The attestation is tied
+to the build, not to whoever uploaded the file.
 
-  Before anything is written, the downloaded bytes are hashed and that
-  digest is looked up in GitHub's attestations API. An archive no
-  release workflow produced has no attestation and is refused. The
-  attestation is also checked to name this repository, the release
-  workflow, the tag being installed, and a GitHub-hosted runner.
+### Attestation is not code signing
 
-  **What that check is worth, stated precisely:** it authenticates the
-  archive against GitHub's attestation record over TLS. It does *not*
-  verify the Sigstore signature inside the bundle, so it does not defend
-  against an adversary able to forge responses from `api.github.com` —
-  who could equally forge the download. It does defend against the
-  realistic case: an asset uploaded by hand or swapped after
-  publication, which no workflow attested.
+An attestation shows the binary was built from this source. It does not
+identify a publisher to the operating system, so it does not stop OS
+warnings:
 
-  For the full cryptographic check, verify before running:
+- macOS binaries have only an ad-hoc signature and are not notarized.
+  A binary downloaded with a browser is blocked by Gatekeeper until you
+  run `xattr -d com.apple.quarantine ./kopusha`. See
+  [docs/BUILD.md](./docs/BUILD.md#macos).
+- Windows binaries are unsigned unless a `hooks/sign.sh` is provided at
+  build time, so SmartScreen warns.
 
-  ```bash
-  gh attestation verify kopusha-<version>-<platform>.zip --repo labmk/kopusha
-  ```
+Certificate-based signing is tracked in
+[#24](https://github.com/labmk/kopusha/issues/24).
 
-  The previous binary is kept alongside the new one as `.old`, so an
-  update can be undone by renaming one file.
+## Self-update
 
-- **Your files are never replaced by an update.** Config files are not
-  touched at all. A parser rule is replaced only when it is
-  byte-identical to the one the running binary shipped with — anything
-  you edited, added or deleted is left alone, and the update reports
-  what it skipped and why. See docs/SELF_UPDATE_PROPOSAL.md.
+When a newer release exists, the UI offers to install it. Nothing
+happens until the user presses the button. It never runs on a timer or
+at startup, and it is unavailable when `update_check = false`.
 
-  The one exception is `samples/`, which is overwritten. It is inert
-  demo data — the binary never reads it, and deleting it changes
-  nothing — so shipped sample files are replaced with the newer
-  release's versions and the folder is created if it is missing. Any
-  file in there that the release does not carry is left untouched, so
-  the folder remains safe to keep your own files in.
+Steps:
+
+1. The release archive for the running platform is downloaded into
+   memory.
+2. Its SHA-256 digest is looked up in GitHub's attestations API. An
+   archive that no release workflow produced has no attestation and is
+   refused. The attestation must also name this repository, the release
+   workflow, the tag being installed and a GitHub-hosted runner.
+3. The UI shows the plan: versions, archive, verification result, and
+   which parser rules and samples will change. Nothing has been written
+   yet.
+4. On confirmation, the new binary replaces the old one, `parsers.d/`
+   and `samples/` are merged as described below, and kopusha restarts
+   (on Windows, or if restarting fails, you start it again). The old
+   binary is renamed to `<name>.old` during the swap and deleted the
+   next time kopusha starts.
+
+What the check proves: the archive matches GitHub's attestation record,
+fetched over TLS. It does not verify the Sigstore signature inside the
+attestation, so it does not protect against someone who can forge
+responses from `api.github.com` (they could forge the download too). It
+does protect against the realistic case: an archive uploaded by hand or
+replaced after publication, which no workflow attested. For the full
+cryptographic check, run `gh attestation verify` as shown above.
+
+### What an update changes in your folder
+
+- **Config files** (`kopusha*.conf`, `kopusha_settings.json`) are never
+  touched.
+- **Parser rules:** a rule is replaced or removed only if it is
+  byte-identical to the rule the running binary shipped with (checked
+  against the manifest compiled into the binary). Rules you edited,
+  added or deleted are left alone, and the update reports what it
+  skipped. If the running binary has no manifest, `parsers.d/` is not
+  touched at all.
+- **`samples/`:** shipped sample files are overwritten with the new
+  release's versions, and the folder is created if missing. Other files
+  in it are left alone. The binary never reads this folder.
+
+The design is explained in
+[docs/SELF_UPDATE_PROPOSAL.md](./docs/SELF_UPDATE_PROPOSAL.md).

@@ -1,30 +1,31 @@
 # MCP endpoint for AI agents
 
-kopusha can serve its parser and query engine to a local AI agent over
-the [Model Context Protocol](https://modelcontextprotocol.io). An agent
-pointed at a folder of mixed logs gets columns, a schema and real field
-values, instead of writing a regex per format per file.
+kopusha can give a local AI agent access to its parsers and query
+engine over the [Model Context Protocol](https://modelcontextprotocol.io)
+(MCP). The agent gets parsed columns, field lists and real field values
+from a folder of mixed logs, instead of writing a regex per format.
 
-It ships as the `mcp` module, disabled.
+This is the `mcp` module. It ships turned off.
 
-## Enable
+## Turn it on
 
-1. Rename `kopusha_mcp.conf.example` (next to the binary) to
+1. In the folder with the binary, rename `kopusha_mcp.conf.example` to
    `kopusha_mcp.conf`.
-2. For agent-only use, set `timeout = 0` in `kopusha.conf`, or the
-   server exits after 180 s without requests while the agent is idle.
-3. Start kopusha. `--no-browser` skips opening the UI.
+2. If only an agent will use kopusha, set `timeout = 0` in
+   `kopusha.conf`. Otherwise the server exits after 180 seconds without
+   requests while the agent is idle.
+3. Start kopusha. `--no-browser` stops it from opening the UI.
 
 ```bash
 ./kopusha --no-browser
 ```
 
-Startup logs `module "mcp": enabled`. The endpoint is
+The startup log shows `module "mcp": enabled`. The endpoint is
 `http://127.0.0.1:<port>/api/mcp` (port 9200 by default).
 
-## Connect a client
+## Connect a client over HTTP
 
-The transport is MCP Streamable HTTP. Clients that support it:
+The transport is MCP Streamable HTTP.
 
 ```bash
 # Claude Code
@@ -41,19 +42,18 @@ Generic client configuration:
 }
 ```
 
-With `token` set, add the header `Authorization: Bearer <token>`.
+If `token` is set, the client must send `Authorization: Bearer <token>`.
 
-### Clients that only speak standard input/output
+## Connect a client over stdin/stdout
 
-Some clients launch every MCP server as a subprocess and talk to it
-over standard input/output. For those, `kopusha mcp` is a thin bridge:
-it reads one JSON-RPC message per line from standard input, forwards it
-to the running viewer's `/api/mcp`, and writes the reply to standard
-output. It starts no engine and loads nothing itself, so the agent and
-the UI still share one session.
+Some clients can only start an MCP server as a subprocess and talk to it
+over standard input and output. For them, `kopusha mcp` is a bridge: it
+reads one JSON-RPC message per line from standard input, sends it to
+the running kopusha's `/api/mcp`, and writes the reply to standard
+output. It does not start an engine or load anything itself, so the
+agent and the UI share one session.
 
-The viewer must already be running with the module enabled. Start it
-first, then register the bridge with the client:
+Start kopusha with the module enabled first, then register the bridge:
 
 ```bash
 # Claude Code
@@ -70,87 +70,89 @@ claude mcp add kopusha -- /path/to/kopusha mcp
 
 | Flag | Default | Effect |
 |------|---------|--------|
-| `--port` | `port` from `kopusha.conf`, else 9200 | Port of the running viewer |
-| `--url` | `http://127.0.0.1:<port>/api/mcp` | Full endpoint, overrides `--port` |
+| `--port` | `port` from `kopusha.conf`, else 9200 | Port of the running kopusha |
+| `--url` | `http://127.0.0.1:<port>/api/mcp` | Full endpoint; overrides `--port` |
 | `--token` | `token` from `kopusha_mcp.conf` | Bearer token |
 
 The defaults come from the `kopusha*.conf` files next to the binary, so
-a bridge launched from the same install finds its viewer without flags.
-Prefer the config file over `--token`: command-line arguments are
-visible to other local users in the process list.
+a bridge started from the same install finds its server without flags.
+Prefer the config file to `--token`: other local users can see
+command-line arguments in the process list.
 
-Behaviour:
+Bridge behaviour:
 
-- **Viewer not running, or module disabled:** every request gets a
-  JSON-RPC error (code `-32000`) saying which, and the bridge keeps
-  running. Start or fix the viewer and the next request goes through.
-- **Ordering:** messages are forwarded one at a time, in order. A long
-  `query` delays the messages behind it.
-- **Output:** standard output carries protocol messages only, one
+- **Server not running, or module off:** each request gets a JSON-RPC
+  error (code `-32000`) that says which. The bridge keeps running, and
+  the next request goes through once the server is fixed.
+- **Order:** messages are forwarded one at a time, in order. A slow
+  `query` delays the messages after it.
+- **Output:** standard output carries only protocol messages, one
   compact JSON object per line. Diagnostics go to standard error.
-- **Size:** a message over 1 MiB is dropped and answered with an error
-  with a `null` id, matching the endpoint's own body limit.
-- **TLS:** the bridge uses the system certificate store. A viewer
-  started with `--cert`/`--key` and a self-signed certificate is not
-  reachable through it; use the client's HTTP transport instead.
+- **Size:** a message larger than 1 MiB is dropped and answered with an
+  error with a `null` id, the same limit as the endpoint.
+- **TLS:** the bridge uses the system certificate store. It cannot
+  reach a server started with `--cert`/`--key` and a self-signed
+  certificate; use the HTTP transport for that.
 
 ## Tools
 
 | Tool | Arguments | Returns |
 |------|-----------|---------|
-| `list_files` | — | Loaded files: id, path, records, enabled |
-| `load_directory` | `path` (absolute; directory or file) | `loaded[]`, `errors[]`. Not recursive. Zip refused. Hidden when `allow_load = false` |
-| `list_formats` | — | Ingest adapters in this build, rules from `parsers.d`, rules directory |
-| `get_fields` | — | Field union across enabled files, including STRUCT sub-paths; detected timestamp field |
-| `field_samples` | `fields[]`, `cap` (default 30, max 500) | Distinct values per field. Empty list = more than `cap` values |
+| `list_files` | none | Loaded files: id, path, records, enabled |
+| `load_directory` | `path` (absolute; a folder or a file) | `loaded[]`, `errors[]`. Not recursive. Zip files are refused. Hidden when `allow_load = false`. |
+| `list_formats` | none | Adapters in this build, rules from `parsers.d/`, the rules folder |
+| `get_fields` | none | All fields across enabled files, including nested paths; the detected timestamp field |
+| `field_samples` | `fields[]`, `cap` (default 30, max 500) | Distinct values per field. An empty list means more than `cap` values. |
 | `query` | `filters[]`, `search_text`, `time_from`, `time_to`, `sort_order`, `sort_field`, `offset`, `limit` (default 50, max `max_rows`) | `rows[]`, `total_count`, `fields[]` |
-| `explain_detection` | `path` (absolute file) | Per-adapter score and reason, first line, encoding notes. Loads nothing |
+| `explain_detection` | `path` (absolute file) | Score and reason per adapter, first line, encoding notes. Loads nothing. |
 
 Filter operators: `is`, `is_not`, `contains`, `not_contains`,
 `wildcard`, `not_wildcard`, `exists`, `does_not_exist`. `logic`
-(`and`/`or`) joins a filter to the next. Same model as the viewer and
-`POST /api/query`.
+(`and` / `or`) joins a filter to the next one. This is the same filter
+model as the UI and `POST /api/query`, without `is_one_of` and
+`is_not_one_of`.
 
-Tool failures (bad path, unknown field, limit over `max_rows`) come
-back as tool results with `isError: true`, so the agent sees the
+Tool errors (bad path, unknown field, `limit` above `max_rows`) are
+returned as tool results with `isError: true`, so the agent sees the
 message.
 
 ## Configuration
 
-`[mcp]` in `kopusha_mcp.conf`:
+The `[mcp]` section in `kopusha_mcp.conf`:
 
 | Key | Default | Effect |
 |-----|---------|--------|
 | `token` | empty | Require `Authorization: Bearer <token>` |
 | `max_rows` | 500 | Largest `limit` one `query` call may use |
-| `allow_load` | true | Expose `load_directory` |
-| `enabled` | true | `false` disables without deleting the section |
+| `allow_load` | true | Offer the `load_directory` tool |
+| `enabled` | true | `false` turns the module off without deleting the section |
 
 ## Security model
 
-- **This machine only.** Requests are refused unless the remote address
-  is loopback, the `Host` header names loopback, and any `Origin`
-  header names loopback. This holds even when `listen` is non-loopback
-  with TLS. The `Host`/`Origin` checks stop a web page in a local
-  browser from reaching the endpoint through DNS rebinding.
-- **No egress.** The module makes no outbound connection. The
-  `kopusha mcp` bridge connects only to the endpoint it is given, by
-  default on `127.0.0.1`. Data reaches
-  the agent process on this machine; where the agent sends it next is
-  the agent's configuration, not kopusha's.
-- **Read-only on disk.** No export, no rule writes, no settings
-  changes. `load_directory` reads files into the session; non-NDJSON
-  formats are converted through the system temp directory, as in the
-  UI. Zip archives are refused because loading one extracts it next to
-  the archive.
-- **Shared session.** The agent and the UI see the same loaded files.
-  A file the agent loads appears in the UI and the reverse.
+- **This machine only.** A request is refused unless the client address
+  is loopback, the `Host` header names a loopback host, and any
+  `Origin` header names a loopback host. This applies even when
+  `listen` is set to a network address with TLS. The `Host` and
+  `Origin` checks stop a web page open in a local browser from reaching
+  the endpoint through DNS rebinding.
+- **No outbound connections.** The module connects to nothing. The
+  bridge connects only to the endpoint it is given (by default on
+  `127.0.0.1`). Data reaches the agent process on this machine; where
+  the agent sends it next depends on the agent's configuration.
+- **Read-only on disk.** No export, no rule changes, no settings
+  changes. `load_directory` reads files into the session; EVTX, XML
+  and text logs are converted through a temporary file in the system
+  temp folder, as in the UI. Zip files are refused because loading one
+  extracts it next to the archive.
+- **Shared session.** The agent and the UI see the same loaded files. A
+  file loaded by the agent appears in the UI, and the other way round.
 
-## Protocol notes
+## Protocol details
 
-- Revisions accepted: `2025-11-25`, `2025-06-18`, `2025-03-26`. An
-  unknown revision in `initialize` is answered with the newest.
-- POST only. Each request gets one `application/json` reply; no SSE
-  stream, no session id. `GET` returns 405.
+- Supported protocol versions: `2025-11-25`, `2025-06-18`,
+  `2025-03-26`. An unknown version in `initialize` is answered with the
+  newest.
+- POST only. Each request gets one `application/json` reply; there is
+  no SSE stream and no session id. `GET` returns 405.
 - Notifications get `202 Accepted`. JSON-RPC batches are rejected.
 - Request body limit: 1 MiB.

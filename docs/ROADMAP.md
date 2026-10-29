@@ -1,83 +1,72 @@
 # Roadmap
 
-Direction, not dates. This is a single-maintainer project — items move
-when someone does the work, and "future" honestly means "wanted, not
-scheduled".
+This file lists the project's direction, not dates. kopusha has one
+maintainer; items move when someone does the work, and "future" means
+wanted but not scheduled.
 
-Tracking lives in [issues](https://github.com/labmk/kopusha/issues),
+Work is tracked in [issues](https://github.com/labmk/kopusha/issues),
 grouped by [milestone](https://github.com/labmk/kopusha/milestones)
-and tagged `horizon:*`. This file explains the *reasoning*; the issues
-carry the detail.
+and labelled `horizon:*`. This file gives the reasons; the issues hold
+the details.
 
-## Where the project is aimed
+## Direction
 
-Querying local files with SQL is a solved problem, and well served.
-Competing on "query files in a browser" means fighting for ground that
-is already held.
+Running SQL over local CSV, JSON or Parquet files is already well
+covered by other tools. Those tools do not turn unstructured logs into
+typed columns. That is the part of kopusha with no ready equivalent:
+the `parsers.d/` rules, the scored format detection, and querying
+files with unrelated schemas as one table.
 
-What those tools do not do is **turn unstructured logs into typed
-columns** — they start from Parquet, CSV or JSON. The `parsers.d/` rule
-system, the confidence-scored format dispatch, and the union across
-files with unrelated schemas are the part of this project with no
-ready equivalent.
+So the work goes into parsing and the tools around it. For everything
+after parsing, kopusha hands off to other tools instead of competing
+with them. Parquet export is the main example: parse the logs here,
+then open the result in any analytical tool.
 
-So the direction is: **invest in parsing and in the ergonomics around
-it; treat the rest of the analytical ecosystem as an ally rather than a
-competitor.** Parquet export is the clearest expression of that —
-parse the mess here, hand the result to whatever the user already
-likes.
+The intended users are people who need answers from logs but do not
+write regular expressions as a matter of course. People who are fluent
+with grep and regex already have tools that work for them.
 
-The audience is explicitly *not* people who are comfortable with grep
-and a regex. They are already served. It is people who need the answers
-and do not write regex for fun.
+## Shipped
 
-## Do it now
+Details are in the [changelog](../CHANGELOG.md).
 
-Empty. Shipped so far — see the [changelog](../CHANGELOG.md):
-
-- **#13 rule-authoring UI** and **#14 explain why a file did not
-  parse**, which turned out to be one feature from two directions: the
-  failure message is the entry point to the rule builder.
-- **#19 time histogram** and **#20 shareable query state**, which were
-  small and independent of both.
-- **#12 virtualised result table**, **#15 Parquet read and write**, and
-  **#25 export writing where you are actually looking**.
-- **#18 field profiling panel** and **#17 user-initiated update**. The
-  update path refuses an archive with no build attestation from the
-  release workflow; see [SECURITY.md](../SECURITY.md) for exactly what
-  that check does and does not prove.
-
-## Near future
-
-| | |
-|---|---|
-| [#16](https://github.com/labmk/kopusha/issues/16) | **MCP server.** Shipped in 0.3.12: the `mcp` module serves seven tools over local HTTP at `/api/mcp` (phase 1), and `kopusha mcp` bridges standard input/output to it for clients that only launch subprocesses (phase 2). See [docs/MCP.md](./MCP.md). |
+| Issue | Feature |
+|-------|---------|
+| #13, #14 | Rule builder in the UI, and an explanation of why a file did not parse. The failure screen leads straight to the rule builder. |
+| #19 | Time histogram |
+| #20 | View state in the URL, for sharing and reloads |
+| #12 | Virtualised result table |
+| #15 | Parquet read and export |
+| #25 | Export writes to the folder the user is looking at |
+| #18 | Field profiling panel |
+| #17 | Self-update on request, checked against the release build attestation; see [SECURITY.md](../SECURITY.md#self-update) |
+| [#16](https://github.com/labmk/kopusha/issues/16) | MCP server (0.3.12): the `mcp` module serves seven tools at `/api/mcp`, and `kopusha mcp` bridges stdin/stdout for clients that only start subprocesses. See [MCP.md](./MCP.md). |
 
 ## Future
 
 Wanted, not scheduled.
 
-| | |
-|---|---|
-| [#24](https://github.com/labmk/kopusha/issues/24) | **Platform signing.** Releases already carry a Sigstore build attestation that self-update checks against GitHub's record. Still open: verifying that signature inside the binary rather than trusting `api.github.com`, macOS notarization so a download stops being quarantined, and Windows code signing. |
-| [#21](https://github.com/labmk/kopusha/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and need documenting, not building. S3 needs `httpfs`, which is not statically linked — and loading it at runtime would cost the air-gap guarantee. |
+| Issue | Item |
+|-------|------|
+| [#24](https://github.com/labmk/kopusha/issues/24) | **Platform signing.** Releases already have a Sigstore build attestation that self-update checks against GitHub's record. Still open: checking the signature inside the binary instead of trusting `api.github.com`, macOS notarization so downloads are not quarantined, and Windows code signing. |
+| [#21](https://github.com/labmk/kopusha/issues/21) | **Remote sources.** NFS and SMB already work as mounted paths and only need documenting. S3 needs DuckDB's `httpfs` extension, which is not linked in; loading it at runtime would break offline use. |
 
-## Far future
+## Later
 
 Blocked on a precondition or a decision.
 
-| | |
-|---|---|
-| [#22](https://github.com/labmk/kopusha/issues/22) | **Streaming / live tail.** A second mode with its own state machine, in a space that is already well served. |
-| [#23](https://github.com/labmk/kopusha/issues/23) | **LLM-assisted query building.** Conflicts with air-gapped operation, and the DSL is probably not the bottleneck. Field profiling has shipped; revisit only if the need survives it. |
+| Issue | Item |
+|-------|------|
+| [#22](https://github.com/labmk/kopusha/issues/22) | **Live tail.** A second mode with its own state handling, in an area other tools already cover well. |
+| [#23](https://github.com/labmk/kopusha/issues/23) | **LLM-assisted query building.** Conflicts with offline use, and the query language is probably not what slows users down. Field profiling has shipped; revisit only if the need remains. |
 
-## Things deliberately not planned
+## Not planned
 
-- **Becoming an observability platform.** Ingest, retention, alerting,
-  dashboards. Mature tools do that, and better than a project this size
-  could.
-- **A TUI.** Long-established tools occupy that ground with far more
-  work behind them than this project would put in.
-- **Authentication.** The loopback bind *is* the access control; see
-  [SECURITY.md](../SECURITY.md). Anything else belongs behind a
-  reverse proxy.
+- **An observability platform** (ingestion, retention, alerting,
+  dashboards). Established tools do this better than a project of this
+  size could.
+- **A terminal UI.** Existing terminal tools have far more work behind
+  them than this project would put in.
+- **Authentication.** The loopback-only bind is the access control; see
+  [SECURITY.md](../SECURITY.md). Anything more belongs in a reverse
+  proxy.

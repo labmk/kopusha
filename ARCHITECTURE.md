@@ -1,174 +1,167 @@
 # Architecture
 
-How kopusha is put together: the layers, the contracts between
-them, and the decisions that are load-bearing. Working rules for
-contributors live in [CONTRIBUTING.md](./CONTRIBUTING.md); the ingest
-contract and its test matrix live in [REQUIREMENTS.md](./REQUIREMENTS.md).
+How kopusha is built: its parts, how data moves through them, and why
+the main decisions were made. Format requirements and their tests are
+in [REQUIREMENTS.md](./REQUIREMENTS.md). Contributor rules are in
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## What This Is
+## Overview
 
-kopusha is a standalone log/metrics/traces viewer distributed as a
-single static binary: Go backend + embedded DuckDB query engine +
-React/Vite frontend bundled via `go:embed`. It reads files from the
-local filesystem — NDJSON, Windows EVTX, XML, and rule-driven text logs
-— and exposes a query UI on localhost. No server, no index, no runtime
-dependencies.
+kopusha is a single executable that contains:
 
-Primary target is Windows amd64; Linux amd64 and macOS arm64 build from
-the same source with no code changes.
+- a Go HTTP server (standard library `net/http`);
+- an embedded DuckDB 2.0 database, linked in through CGO from the
+  static `libduckdb_static.a` in the per-platform
+  `go.duckdb.org/libduckdb/*` Go modules;
+- a React single-page UI, built by Vite and compiled into the binary
+  with `go:embed`.
 
-## Repository layout
+It reads files from the local disk, loads them into an in-memory DuckDB
+database and serves a query UI on `127.0.0.1`. Release builds exist for
+Windows amd64, Linux amd64 and arm64, and macOS arm64, from the same
+source.
+
+## Parts
+
+| Part | Location | Role |
+|------|----------|------|
+| Entry point | `main.go` | Flags, config loading, wiring, TLS, inactivity shutdown |
+| MCP bridge mode | `main_mcp.go` | `kopusha mcp`: forwards stdin/stdout to a running instance |
+| Config | `internal/config/` | Parses and merges `kopusha*.conf` (INI with sections) |
+| Ingest | `internal/ingest/` | Format detection and one adapter per format family |
+| Parser rules | `internal/parsers/` | Owns `parsers.d/`: loads rules, builds the adapter registry, rule builder backend |
+| Engine | `internal/engine/` | DuckDB wrapper: load, query, histogram, profile, export |
+| HTTP server | `internal/server/` | REST handlers, file browser, zip handling, embedded UI |
+| Modules | `internal/module/`, `modules/` | Optional features switched on by config; `modules/mcp/` is the only one shipped |
+| Settings | `internal/settings/` | `kopusha_settings.json` next to the binary |
+| Logging | `internal/logx/` | JSON log in `logs/kopusha_<date>.log` next to the binary |
+| Release check | `internal/update/` | Asks GitHub for the latest release; reports only |
+| Self-update | `internal/selfupdate/` | Downloads, verifies and installs a release when the user asks |
+| Rule manifest | `internal/manifest/`, `cmd/genmanifest/`, `parsers.d.sha256` | Records which rules the binary shipped with |
+| UI | `frontend/` | React 19, TanStack Query 5, Radix UI; output goes to `static/` |
+
+### Repository layout
 
 ```
-kopusha[.exe]                     (~85 MB single binary)
-  main.go                            CLI entry: flags, conf load, registry boot, TLS
-  main_mcp.go                        `kopusha mcp`: stdio bridge mode, branches before startup
-  console_windows.go                 AttachConsole shim (build-tagged); console_other.go is a no-op
-  internal/
-    config/config.go                 kopusha*.conf parser (INI sections) + LoadAll merge
-    engine/engine.go                 DuckDB wrapper: dispatch via ingest, query, export
-    ingest/                          Format dispatch + adapters
-      loader.go                      Loader, RecordStreamer, DirectIngester ifaces
-      dispatch.go                    Registry: sniff → pick by confidence score
-      rules.go                       parsers.d/ YAML loader; family-routed
-      ndjson/                        DirectIngester (DuckDB read_json_auto fast path)
-      parquet/                       DirectSQLIngester (DuckDB read_parquet)
-      block/                         ---- separated Key: Value records
-      line/                          regex-driven line autodetect
-      xml/                           autodetected row element + dot-path flatten
-      evtx/                          Windows EVTX via Velocidex/evtx
-    logx/                            Structured file logger next to the binary
-    manifest/                        SHA-256 record of the shipped parsers.d/ rules
-    update/                          Release-notification check (reports only)
-    module/                          Module interface + Registry + /api/modules
-    server/server.go                 Core HTTP server + embedded SPA
-    server/docs/                     swag-generated OpenAPI spec (regen via `swag init`)
-    settings/settings.go             Persistent settings (JSON file next to binary)
-  frontend/                          React SPA (Vite build)
-    openapi-ts.config.js             reads internal/server/docs/swagger.json
-    playwright.config.js             spawns dist/kopusha.exe on :9201 with --dir test-fixtures/ndjson
-    src/
-      App.jsx                        Layout, /api/modules consumer
-      main.jsx                       Wraps App in QueryClientProvider
-      queryClient.js                 TanStack Query client + defaults
-      moduleRegistry.js              Maps module id → React component (empty by default)
-      api/client.js                  Hand-written HTTP client (coexists with generated)
-      api/generated/                 @hey-api/openapi-ts output — types + SDK
-      hooks/useLocalStorage.js       Lazy-init + auto-persist hook
-      hooks/useApiQueries.js         useVersion/useFiles/useFields/useLogQuery/…
-      utils/datetime.js              Shared date parse/format/validate
-      utils/queryDsl.js              pipeline-style serialize/parse
-      components/                    FilePanel, FileBrowser, TimeFilter, QueryBuilder,
-                                     QueryTextDialog, MultiValueInput, LogTable,
-                                     FieldPicker, ExportDialog
-      styles/app.css                 Neutral slate theme + .rdx-* overlay hooks
-    e2e/                             Playwright smoke + per-format specs
-  test-fixtures/                     Synthetic + one vendored EVTX sample; see REQUIREMENTS.md
-    ndjson/                          pre-loaded by webServer for smoke.spec.js
-    formats/                         one fixture per REQ-DT entry; build.sh ships
-                                     these (minus sample.evtx) as dist/samples/
-    SAMPLES.md                       becomes dist/samples/README.md
-  cmd/genmanifest/                   Writes parsers.d.sha256; run from build.sh
-  parsers.d/                         YAML rule files for block/line/xml autodetect
-  parsers.d.sha256                   Generated; go:embed'd so the binary knows
-                                     which rules it shipped with
-  modules/                           Optional sub-features, enabled by config section
-    mcp/                             MCP endpoint for AI agents (/api/mcp) and the
-                                     stdio bridge behind `kopusha mcp`; see docs/MCP.md
-  static/                            Vite build output (generated, git-ignored)
-  ARCHITECTURE.md                    This document
-  REQUIREMENTS.md                    Canonical accepted data types + ingest contract
-  docs/MODULES.md                    Module authoring contract
-  docs/MCP.md                        MCP module: enable, tools, security model
-  docs/BUILD.md                      Per-platform build + cross-compile notes
+main.go, main_mcp.go         entry points
+console_windows.go           attaches to the parent console on Windows (no-op elsewhere)
+internal/
+  config/ engine/ ingest/ parsers/ server/ module/
+  settings/ logx/ update/ selfupdate/ manifest/
+  ingest/
+    loader.go                Loader, RecordStreamer, DirectIngester interfaces
+    dispatch.go              Registry: score every adapter, pick the best
+    rules.go                 reads parsers.d/*.yaml and groups rules by family
+    ndjson/ parquet/         read directly by DuckDB
+    evtx/ xml/ block/ line/  stream records into a temp NDJSON file
+  server/docs/               OpenAPI spec generated by swag
+modules/mcp/                 MCP endpoint and stdio bridge, see docs/MCP.md
+frontend/
+  src/App.jsx                layout and query state
+  src/components/            file panel, browser, query builder, table, dialogs
+  src/hooks/                 useApiQueries, useLocalStorage, useVirtualRows
+  src/utils/                 datetime.js, queryDsl.js, urlState.js
+  src/api/                   hand-written client.js and generated/ TS client
+  e2e/                       Playwright tests against the real binary
+parsers.d/                   shipped YAML parser rules
+test-fixtures/               synthetic fixtures (plus one vendored EVTX), see REQUIREMENTS.md
+cmd/genmanifest/             writes parsers.d.sha256
+scripts/generate-sbom.py     writes sbom.cdx.json and THIRD-PARTY-NOTICES.md
+static/                      Vite output, generated
 ```
 
-## Tech Stack
+## How data flows
 
-- **Backend**: Go 1.26.6+ (toolchain pinned to 1.26.10), `net/http`,
-  `embed`, `crypto/tls` — all stdlib. `github.com/swaggo/swag` for
-  OpenAPI annotations.
-- **Query engine**: DuckDB via `github.com/duckdb/duckdb-go/v2` (CGO
-  required; statically-linked `libduckdb_static.a` from the per-platform
-  `go.duckdb.org/libduckdb/*` modules).
-- **Frontend**: React 19, Vite 8, TanStack Query 5 (server state +
-  caching), Radix UI primitives (Dialog + Popover). The result table is
-  windowed by `hooks/useVirtualRows.js` — a fixed row height makes the
-  scroll maths arithmetic, which is why row detail opens in a side panel
-  instead of expanding the row.
-- **Codegen**: `@hey-api/openapi-ts` generates the TS client from
-  `swag init`'s `swagger.json` into `frontend/src/api/generated/` on
-  every `npm run build` (via the `prebuild` script).
-- **e2e**: Playwright against the real Go binary with pre-loaded
-  fixtures.
-- **Build**: `build.sh` runs `swag init` (if available) → `npm ci &&
-  npm run build` → `go build`.
+### Startup
 
-### Toolchain setup
+1. `main.go` finds the folder that holds the executable. Config files,
+   settings, logs, `parsers.d/` and `samples/` are all looked up there.
+2. It merges all `kopusha*.conf` files in that folder in alphabetical
+   order.
+3. It opens an in-memory DuckDB database, checks that the built-in
+   JSON reader works, sets the session time zone to UTC and turns off
+   extension auto-install and auto-load (see [Timestamps](#timestamps)
+   and [DuckDB extensions](#duckdb-extensions)).
+4. It compares `parsers.d/` with the manifest compiled into the binary
+   and logs which rules were changed, added or removed. Then the rule
+   manager loads the rules and builds the adapter registry.
+5. It pre-loads files from `--files` / `--dir`, or from the last folder
+   when `auto_load_previous` is set.
+6. It starts the release check in the background (unless disabled),
+   mounts enabled modules, and starts listening.
 
-- **Go**: 1.26.6+ with CGO enabled.
-- **Node**: 22.12+ with npm.
-- **C compiler (Windows)**: a MinGW-w64 GCC whose C++ ABI matches the
-  prebuilt `libduckdb_static.a`. `build.sh` probes for one and reports
-  its choice. The working set moves with DuckDB library releases —
-  docs/BUILD.md records what was last verified.
-- **DuckDB runtime**: no external download. Extensions (JSON, ICU,
-  parquet, …) are statically linked; never call `INSTALL json` — it
-  would try to fetch from `extensions.duckdb.org` and hang ~4 minutes
-  on air-gapped hosts. `engine.New` also sets
-  `autoinstall_known_extensions` and `autoload_known_extensions` off
-  globally: DuckDB 2.0 links an HTTP client and would otherwise try to
-  download any unlinked extension a query touches.
-- **Timestamps**: the session zone is pinned to UTC
-  (`SET GLOBAL TimeZone = 'UTC'`). DuckDB 2.0's JSON reader infers
-  `TIMESTAMPTZ` for ISO strings with a zone suffix; after an NDJSON load
-  the engine converts those top-level columns to `TIMESTAMP` (UTC wall
-  time), so values, filters and MIN/MAX behave as under 1.5 and never
-  depend on the host's zone. Parquet keeps its declared types.
+### Loading a file
 
-## Key Design Decisions
+`engine.LoadFile`:
 
-- **Single binary**: frontend compiled in via `go:embed static/*`. This
-  is what enables the self-copy-with-export feature, where the binary
-  is copied alongside exported data so the recipient needs no setup.
-- **Backend file browser**: browsers cannot read the local filesystem,
-  so the Go backend exposes `/api/browse`. `--files`/`--dir` cover the
-  scripted path.
-- **DuckDB for NDJSON**: native `read_json_auto()` with
-  `format='newline_delimited'`. Columnar in-memory representation is
-  2–4× more memory-efficient than parsed JSON dicts. All filtering maps
-  to SQL (`ILIKE` for case-insensitive; `*` is translated to `%`).
-- **Heterogeneous schemas**: the column set is the union of all enabled
-  tables; `UNION ALL` queries name columns explicitly and fill `NULL`
-  where a file lacks one.
-- **Timestamp handling**: auto-detected by column name (priority
-  `@timestamp` → `timestamp` → `time` → …). Stored UTC; the frontend
-  applies presentation timezone.
-- **Loopback by default**: a non-loopback `listen` is honoured only
-  when a TLS cert is supplied; otherwise the server warns and falls
-  back to `127.0.0.1`. There is no authentication layer.
+1. Builds a `LoadHint`: path, extension, first 512 bytes and
+   modification time.
+2. Asks the registry to pick an adapter (see [Detection](#detection)).
+3. Either hands the original file to DuckDB (NDJSON through
+   `read_json_auto`, Parquet through `read_parquet`), or calls the
+   adapter's `Stream`, writes each record as one line into a temporary
+   NDJSON file in the system temp folder, and loads that with
+   `read_json_auto`. The temp file is deleted afterwards.
+4. Creates one DuckDB table per file. For tables read with
+   `read_json_auto` (NDJSON and every streamed format), top-level
+   `TIMESTAMPTZ` columns are converted to `TIMESTAMP` (see
+   [Timestamps](#timestamps)).
+5. Caches the table's column list and nested-field paths.
+
+The file list shown in the UI always has the original path, never the
+temp file.
+
+A path inside a zip is written as `archive.zip|entry`. Loading it
+extracts the entry to `<folder of zip>/<zip name>/` and loads the
+extracted file. Extraction is capped at 2 GiB per entry and 10 GiB per
+archive load, and paths are checked to stay inside the target folder.
+
+### Querying
+
+The UI sends filters, a time range, free text, sort and paging to
+`POST /api/query`. The engine builds one `UNION ALL` over the enabled
+tables. Each column of the union of all columns is named explicitly,
+and a table without that column contributes `NULL`. Filters become SQL
+`WHERE` clauses:
+
+- values are compared as text with `TRY_CAST(... AS VARCHAR)`, case
+  insensitively (`ILIKE`, `LOWER`);
+- `*` in wildcard filters becomes SQL `%`;
+- the time range is compared after casting to `TIMESTAMP`, not as text;
+- free-text search is an `OR` of `ILIKE` across every column.
+
+The histogram, field profile and export use the same filter builder, so
+they always match the table.
+
+### Exporting
+
+`POST /api/export` runs DuckDB `COPY` over the filtered query. The file
+extension picks the format: `.parquet` / `.pq` writes Parquet with zstd
+compression; anything else writes NDJSON. `POST /api/export/self-copy`
+copies the running binary into a folder.
+
+### Shutdown
+
+Three mechanisms, from most to least direct:
+
+1. **Stop server** in the status bar calls `POST /api/shutdown`. The
+   process exits after 2 seconds, unless another request arrives in
+   that time (another tab is still open) or a module reports busy.
+2. Closing a tab sends the same request with `navigator.sendBeacon`
+   on `pagehide`, with the same 2-second cancellation.
+3. Inactivity: every 30 seconds the server checks when the last API
+   request arrived; after `timeout` seconds (default 180) it exits. The
+   UI polls `/api/version` every 30 seconds, so an open tab keeps it
+   alive. Modules can pause this check with `AddBusyCheck`.
 
 ## Ingest layer
 
-`engine.LoadFile` builds a `LoadHint` (path, extension, first 512
-bytes, mtime), asks `ingest.Registry` to pick the best Loader by
-confidence score, and then either:
-
-- calls `UseDirectPath()` and hands the original path to DuckDB
-  unchanged (NDJSON), or
-- calls `Stream(ctx, hint, emit)`, which iterates the file and writes
-  one normalized `ingest.Record` per logical row into a temp NDJSON
-  file that DuckDB then loads via the same `read_json_auto`.
-
-The temp file is deleted after the table is created. `FileInfo.Path`
-reported to the UI is always the original input path, never the temp.
-
-### Loader contract
+### Adapter interfaces
 
 ```go
 type Loader interface {
     Name() string
-    Detect(h LoadHint) int  // 0=no, 100=exact magic, 1=fallback
+    Detect(h LoadHint) int // confidence score, 0 = cannot read
 }
 
 type RecordStreamer interface {
@@ -181,299 +174,341 @@ type DirectIngester interface {
     UseDirectPath() bool
 }
 
-// For a format DuckDB reads with something other than read_json_auto.
+// For a direct format DuckDB reads with something other than read_json_auto.
 type DirectSQLIngester interface {
     DirectIngester
     ReadExpr(escapedPath string) string
 }
+
+// Optional: says in one sentence why Detect returned its score.
+type Explainer interface {
+    Loader
+    Explain(h LoadHint) string
+}
 ```
 
-Every `Record` must include `@timestamp` (ISO-8601 UTC) and
-`_source_format` (e.g. `line:iso-bracket`, `xml:Event`,
-`block:keyvalue-dash-separated`, `evtx`). NDJSON is the documented
-exception — see REQUIREMENTS.md.
+Every record from a `RecordStreamer` must have `@timestamp` (ISO-8601
+UTC string) and `_source_format` (for example `line:iso-bracket`,
+`xml:Event`, `block:keyvalue-dash-separated`, `evtx`). NDJSON and
+Parquet records keep their original fields only.
 
-### Dispatch
+### Detection
 
-`Registry.Pick` returns the highest-scoring loader; ties break
-alphabetically by `Loader.Name()` for determinism.
+`Registry.Pick` asks every adapter for a score and takes the highest.
+Any score above 0 can win. Equal scores are broken by adapter name in
+alphabetical order, so the result does not depend on registration
+order.
 
-| Score | Meaning |
-|-------|---------|
-| 100   | Exact magic bytes (EVTX `ElfFile\0`) |
-| 90    | Strong extension match (`.ndjson`) or validated content (first-line JSON object) |
-| 70–85 | Content sniff matched (block separator, line regex, xml `<`) |
-| 1–50  | Fallback / weak match |
-| 0     | Cannot handle |
+| Adapter | Score |
+|---------|-------|
+| `parquet` | 100 for `PAR1` magic bytes; 90 for `.parquet` / `.pq` extension |
+| `evtx` | 100 for `ElfFile\0` magic bytes |
+| `ndjson` | 90 for `.ndjson`, or when the first line is a JSON object; 70 for a `.json` file whose first line is a JSON object; 0 for a top-level JSON array |
+| `block`, `xml`, `line` | The `priority` of the best matching rule in `parsers.d/` (shipped values 70 to 100) |
 
-### Rule files (`parsers.d/`)
+What the rule-driven adapters look at: `block` and `xml` apply the
+rule's `sniff` regex to the first 512 bytes; `line` tries each rule's
+`parse` regex on up to 200 non-blank lines in the first 16 KiB, so a
+banner before the first log line does not prevent a match.
 
-Each YAML file is one rule. The top-level `family:` key routes it to
-`block`, `line`, or `xml`; unknown families log a warning and are
-ignored. Files load in lexicographic order, so a numeric prefix gives
-precedence control.
+### Explaining a failed load
 
-| File | Family | Matches |
-|------|--------|---------|
-| `00-block-keyvalue-dash.yaml` | block | 20+-dash separator, `Key: Value` fields |
-| `10-xml-row-element.yaml` | xml | any XML; autodetects row element |
-| `20-line-iso-bracket.yaml` | line | `YYYY-MM-DD HH:MM:SS.mmm [LVL] [COMP] [PID:N] msg` |
-| `21-line-dashdate-level.yaml` | line | `DD-MM-YYYY HH:MM:SS.mmm Level msg` |
-| `22-line-dotdate-pidtid.yaml` | line | `prefix: DD.MM.YY HH:MM:SS:mmm PID/TID msg` |
-| `23-line-time-pidtid.yaml` | line | `HH:MM:SS.uuuuuu PID/TID Level msg` (date from mtime, rollover-aware) |
-| `24-line-time-dotdate.yaml` | line | `HH:MM:SS.mmm DD.MM.YYYY: msg` |
+`Registry.Explain` returns a diagnosis: every adapter's score and
+reason (from `Explainer`), the first non-blank line as the parser sees
+it, and notes on encoding problems that are invisible in an editor
+(byte-order mark, CRLF line endings, NUL bytes, invalid UTF-8). It
+reads the file but loads nothing. The UI shows it when a load fails,
+and the same screen opens the rule builder. Endpoint:
+`POST /api/files/explain`; MCP tool: `explain_detection`.
 
-The `line` family supports `ts_regex_subs` (preprocess the captured ts
-before `time.Parse`), `ts_use_mtime_date` (combine time-of-day with
-file mtime; a backwards jump > 12h advances the working date by one day
-for cross-midnight rollover) and `ts_use_mtime_year` (the capture has
-month and day but no year, as syslog does; the year comes from the
-mtime, stepping back one year when the result would postdate the file).
-The last two describe different gaps in the same timestamp and are
-mutually exclusive — setting both fails rule compilation. The `xml`
-family always dot-path flattens with `@`-prefixed attributes. The
-`block` family handles UTF-8 BOM and CRLF transparently.
+### Parser rules (`parsers.d/`)
 
-**Rules must describe structure only** — regexes, dot-paths, field
-names. No product names, hostnames, or deployment specifics.
+Each `*.yaml` / `*.yml` file in `parsers.d/` is one rule. Files are read
+in alphabetical order; hidden files and subfolders are ignored. The
+`family` key sends the rule to the `block`, `line` or `xml` adapter; a
+rule with an unknown family is ignored with a warning. Within a family,
+the matching rule with the highest `priority` is used; with equal
+priority, the file that sorts first wins. Hand-edited rules take effect
+at the next start. Rules saved from the UI take effect immediately.
 
-### Authoring rules (`internal/parsers`)
+Shipped rules:
 
-Hand-writing a rule means writing a Go regex with named capture groups
-and a Go time layout, which is the exact skill the tool exists to make
-unnecessary — anyone comfortable doing it was never blocked. So the
-same rule schema is reachable from the UI, and `internal/parsers` owns
-that path:
+| File | Family | Priority | Matches |
+|------|--------|----------|---------|
+| `00-block-keyvalue-dash.yaml` | block | 70 | 20+ dash separator lines, `Key: Value` fields |
+| `10-xml-row-element.yaml` | xml | 80 | Any XML; the row element is the name repeated most as siblings |
+| `20-line-iso-bracket.yaml` | line | 100 | `YYYY-MM-DD HH:MM:SS.mmm [LVL] [COMP] [PID:N] msg` |
+| `21-line-dashdate-level.yaml` | line | 90 | `DD-MM-YYYY HH:MM:SS.mmm Level msg` |
+| `22-line-dotdate-pidtid.yaml` | line | 90 | `prefix: DD.MM.YY HH:MM:SS:mmm PID/TID msg` |
+| `23-line-time-pidtid.yaml` | line | 80 | `HH:MM:SS.uuuuuu PID/TID Level msg` (date from file modification time) |
+| `24-line-time-dotdate.yaml` | line | 85 | `HH:MM:SS.mmm DD.MM.YYYY: msg` |
+
+Keys of a `line` rule:
+
+| Key | Required | Meaning |
+|-----|----------|---------|
+| `family` | yes | `line` |
+| `name` | no | Rule name; appears in `_source_format` as `line:<name>` |
+| `priority` | no | Detection score when the rule matches. Default 10. |
+| `parse` | yes | Go regular expression with named groups. Must include `(?P<ts>...)`. Every other named group becomes a field. |
+| `ts_layout` | yes | Go time layout for the `ts` group: the reference time `2006-01-02 15:04:05` written the way your timestamps look (not `%Y-%m-%d`) |
+| `ts_assume_tz` | no | IANA time zone for timestamps without an offset. Default UTC. |
+| `ts_regex_subs` | no | List of `pattern` / `replacement` pairs applied to the `ts` text before parsing |
+| `ts_use_mtime_date` | no | The timestamp has only a time of day. The date comes from the file's modification time; a backwards jump of more than 12 hours moves to the next day. |
+| `ts_use_mtime_year` | no | The timestamp has month and day but no year. The year comes from the modification time, one year earlier if the result would be after the file's time. Cannot be combined with `ts_use_mtime_date`. |
+| `message_field` | no | Field that continuation lines (lines that do not match `parse`) are appended to. Default `message`. |
+
+Example:
+
+```yaml
+family: line
+name: my-format
+priority: 90
+parse: '^(?P<ts>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(?P<level>\w+)\s+(?P<message>.*)$'
+ts_layout: '2006-01-02 15:04:05'
+```
+
+For `block` rules (`sniff`, `separator`, `field`, `ts_field`,
+`ts_layouts`) and `xml` rules (`sniff`, `ts_candidates`,
+`ts_layouts`), the shipped files in `parsers.d/` are the reference;
+each one documents its keys in comments. The `block` adapter handles a
+UTF-8 byte-order mark and CRLF line endings. The `xml` adapter flattens
+each row with dot paths and writes attributes as `@name`.
+
+Rules describe the shape of text only: regular expressions, field paths
+and names. They must not contain product names, host names or other
+details of a particular installation.
+
+### Rule builder (`internal/parsers`)
 
 | File | Responsibility |
 |------|----------------|
-| `manager.go` | Owns `parsers.d`: builds the loader `Registry`, rebuilds it on save, and is the only writer |
-| `suggest.go` | Infers a candidate rule from pasted lines |
-| `preview.go` | Runs a candidate through the **real** `line` adapter |
-| `draft.go` | The draft type, validation, and the YAML emitter |
+| `manager.go` | Owns `parsers.d/`: builds the adapter registry, rebuilds it after a save, and is the only code that writes rules |
+| `suggest.go` | Proposes a rule from pasted sample lines |
+| `preview.go` | Runs a draft rule through the real `line` adapter on a temp file |
+| `draft.go` | Draft type, validation, YAML output |
 
-Three properties are load-bearing:
+Only `line` rules can be built in the UI.
 
-- **The manager owns the registry, not `main`.** A rule saved from the
-  UI has to apply immediately; a restart in the middle of the loop
-  would discard the loaded files the operator was trying to parse.
-- **The preview runs the real adapter**, over a temp file, not a
-  reimplementation. Continuation-line folding, BOM skipping, the
-  mtime-date rollover and oversized-line truncation are all adapter
-  behaviour that a second implementation would get subtly wrong, and a
-  preview that disagrees with the result is worse than none.
-- **The rule name is a filename.** It arrives from a browser, so it is
-  rebuilt from an allow-list (`Slug`) and the resulting path is then
-  checked to be inside `parsers.d` — the second check does not depend
-  on the first being exhaustive.
+How a rule is proposed: the builder finds the timestamp, splits each
+sample line into tokens and compares the lines position by position.
+Positions where all lines agree become literal text; positions that
+differ become fields. Spaces, levels and numbers are always captured as
+fields even when they agree, and a word counts as a fixed label only
+when punctuation follows it (as in `PID:`). Three sample lines are
+little evidence, and a process ID that happened not to change would
+otherwise be frozen into the regex and reject the rest of the file.
 
-Inference is structural rather than clever: locate the timestamp,
-tokenize each sample line, and walk the streams in lockstep. Positions
-where every line agrees are literal, positions where they differ are
-fields, and the walk stops where the structure does. The recurring
-hazard is *accidental* agreement — a three-line sample is little
-evidence, and a pid that happened not to change looks exactly like
-structure. Freezing one into the regex yields a rule that parses the
-sample and rejects the file, so agreement alone never makes a token
-literal: spaces, levels and numbers are always captured, and a word
-must be closed by punctuation (`PID:`) to count as a label.
+## Engine details
 
-### Explaining a failure
+### Cached metadata
 
-`Registry.Explain` returns a `Diagnosis`: every adapter's score *and*
-reason, the first non-blank line as the parser sees it, and notes for
-the encoding traits that break matching invisibly (BOM, CRLF, NUL
-bytes, invalid UTF-8). Adapters supply the reason through the optional
-`Explainer` interface; it is called only from this path, so it may
-re-read the file.
+`engine.Engine` keeps per-table metadata so queries never read
+`information_schema`:
 
-`Pick` discards all of this, which is correct for loading a file and
-wrong for explaining a failure. The diagnosis is also the input the
-rule builder needs, so "no rule matched" and "build one from this line"
-are one screen.
+| Field | Filled | Cleared | Purpose |
+|-------|--------|---------|---------|
+| `tableCols` | `LoadFile` | `UnloadFile` | Ordered column list per table |
+| `tableStructPaths` | `LoadFile` | `UnloadFile` | Dotted paths into nested `STRUCT` columns |
+| `pathIndex` | `LoadFile` | `UnloadFile` | Absolute path to file ID, for duplicate detection |
 
-### Adding a new format
+`fetchTableColumns` reads `information_schema` and is called only from
+`LoadFile`.
 
-1. **Same family as an existing rule**: build it in the UI (**Parser
-   rules**, or the prompt on a failed load), or drop a YAML file in
-   `parsers.d/` and restart.
-2. **Brand-new family** (CSV, …): create `internal/ingest/<name>/`,
-   implement `Loader` + `RecordStreamer` (or `DirectIngester`), and
-   register it in `parsers.Manager.Reload`. No engine changes needed.
-   Implement `Explainer` too — an adapter that declines without saying
-   why is a blank row in every diagnosis. If the format has its own
-   extension, add it to `ingestableExts` in `internal/server`, or the
-   file browser will hide files the dispatcher can read.
+### Nested JSON fields
 
-Either way, add a REQ-DT row + fixture + Go test + e2e test — see the
-CI gate in REQUIREMENTS.md.
+DuckDB turns nested JSON objects into `STRUCT` columns:
+`{"nodeinfo": {"type": "worker"}}` becomes a column `nodeinfo` of type
+`STRUCT(type VARCHAR)`. To make `nodeinfo.type` filterable:
 
-## Engine internals
+- `discoverStructSubPaths` probes each column at load time with
+  `typeof` and `struct_keys`, up to 6 levels deep, and stores the dotted
+  paths.
+- `buildUnionSelect` converts `STRUCT` columns with `to_json(col)`.
+  DuckDB's plain text cast gives `{'k': 'v'}`, which is not valid JSON.
+- `quoteFieldRef` resolves a field name first as a literal column (so a
+  column really named `app.name` still works), then as a struct path
+  (`json_extract_string("nodeinfo", '$.type')`).
 
-`engine.Engine` caches per-table metadata to keep `information_schema`
-off the hot path:
+### Timestamps
 
-| Field | Type | Populated | Cleared | Purpose |
-|-------|------|-----------|---------|---------|
-| `tableCols` | `map[string][]string` | `LoadFile` | `UnloadFile` | Ordered column list per DuckDB table |
-| `tableStructPaths` | `map[string][]string` | `LoadFile` | `UnloadFile` | Dotted STRUCT sub-paths discovered by probing |
-| `pathIndex` | `map[string]string` | `LoadFile` | `UnloadFile` | Absolute path → file ID, O(1) duplicate detection |
+The timestamp column is chosen by name: `@timestamp`, `timestamp`,
+`time`, `datetime`, `date`, `ts`, `event_time`, `created_at`, then any
+name containing `time` or `date`. The user can choose another one in
+the UI (`/api/timestamp-field`). Adapters other than NDJSON and Parquet
+write `@timestamp` as an ISO-8601 UTC string. Time-range filters and
+the histogram cast the column to `TIMESTAMP` before comparing, because
+text comparison orders `2026-05-20T10:00:00Z` after
+`2026-05-20 10:00:00`. The UI shows times in a fixed UTC offset chosen
+by the user (UTC-12 to UTC+12); named time zones are not offered
+because they make times near daylight-saving changes ambiguous.
 
-Key helpers:
+The DuckDB session time zone is set to UTC
+(`SET GLOBAL TimeZone = 'UTC'`), so results never depend on the host's
+time zone. DuckDB 2.0's JSON reader reads ISO strings with a zone
+suffix (`Z`, `+02:00`) as `TIMESTAMPTZ`. After each `read_json_auto`
+load, the engine converts those top-level columns to `TIMESTAMP`, which
+under the UTC session gives the UTC wall time. Values, filters and
+MIN/MAX therefore behave as they did with DuckDB 1.5, and text output
+has no offset suffix. Parquet columns keep the types declared in the
+file.
 
-- `fetchTableColumns(tableName)` — hits `information_schema`. **Only
-  called from `LoadFile`**; runtime callers read `e.tableCols`.
-- `allColumns(tables)` — union across tables, first-appearance order.
-- `buildUnionQuery(tables, addSourceTable)` — `UNION ALL` from cache.
-- `pickTimestampField(columns)` / `isTimestampLike(col)` — pure helpers.
+### DuckDB extensions
 
-### STRUCT sub-path filtering
+The extensions kopusha needs (JSON, Parquet, ICU) are statically
+linked and loaded when the database opens. kopusha never runs
+`INSTALL`: it would try to download from `extensions.duckdb.org` and,
+on a machine without internet access, wait about 4 minutes for the
+connection to time out. DuckDB 2.0 includes an HTTP client and by
+default downloads any unlinked extension a query needs, so `engine.New`
+sets `autoinstall_known_extensions` and `autoload_known_extensions` to
+`false` globally. No code is fetched at runtime.
 
-DuckDB's `read_json_auto` materialises nested JSON as `STRUCT` columns:
-`{"nodeinfo": {"type": "worker"}}` becomes a `nodeinfo` column of type
-`STRUCT(type VARCHAR)`. Three coordinated pieces make
-`nodeinfo.type` filterable:
+## Frontend details
 
-- `discoverStructSubPaths` probes each top-level column at `LoadFile`
-  time via `typeof` + `struct_keys`, recursing into nested STRUCTs
-  (capped at 6 levels), storing dotted paths in `tableStructPaths`.
-- `buildUnionSelect` projects STRUCT columns through `to_json(col)`
-  rather than `CAST AS VARCHAR` — DuckDB's struct-to-text cast emits
-  `{'k': 'v'}` (single-quoted, **not** valid JSON), which downstream
-  `json_extract_string` cannot parse.
-- `quoteFieldRef` resolves a field name against literal columns first
-  (so a column genuinely named `app.name` still works), then against
-  `tableStructPaths` (emitting `json_extract_string("nodeinfo",
-  '$.type')`), then falls back.
+- `App.jsx` holds the query state. With **Auto Apply** on, a filter,
+  time or text change runs the query after a 100 ms delay.
+- Server data is fetched through TanStack Query hooks in
+  `hooks/useApiQueries.js` (global `staleTime` 5 minutes, shorter for
+  some hooks). Changes invalidate queries through
+  `queryClient.invalidateQueries`.
+- The result table is virtualised by `hooks/useVirtualRows.js`. Rows
+  have a fixed height, which keeps scroll calculations simple; this is
+  why a record opens in a side panel instead of expanding in place.
+- `utils/urlState.js` stores the view (filters, time range, search
+  text, sort, hidden columns, page size) in the URL fragment. The
+  fragment is not sent to the server, so filter values do not appear
+  in server logs.
+- `utils/datetime.js` is the only place that parses and formats dates.
+- `utils/queryDsl.js` converts filters to and from the text query form:
+  an empty `{}` selector, `|=` text filters, `| field op "value"` field
+  filters and an `@time:` line. `contains` and `wildcard` are both
+  written as `=~` and read back as `wildcard`.
+- `hooks/useLocalStorage.js` wraps all `localStorage` access. Column
+  widths are stored per column set, so they reset when the schema
+  changes.
+- The TypeScript client in `src/api/generated/` is generated from the
+  OpenAPI spec by `@hey-api/openapi-ts` on every `npm run build`. Older
+  code still uses the hand-written `src/api/client.js`.
 
-`GetFields()` and `FieldSamples` both return the union of literal
-columns and struct paths.
+## HTTP API
 
-## Frontend internals
+All endpoints return JSON; errors are `{"error": "message"}`. The full
+spec is served at `/api/openapi.json` and generated from `swag`
+annotations in `internal/server/`.
 
-- `src/hooks/useLocalStorage.js` — `[value, setValue]`, lazy read on
-  mount, auto-persist on change, booleans as `'1'|'0'`.
-- `src/utils/datetime.js` — the single home for date parsing and
-  formatting: `DT_RE`, `isValidDateTime`, `isoToText`,
-  `parseUserDateTime`, `formatTimestamp`, `formatTimeout`.
-- `src/utils/queryDsl.js` — pipeline-style serialize/parse. Empty `{}`
-  stream selector + `|=` line filters + `| field op "value"` label
-  filters + an `@time:` extension line. Operator map: `is` → `=`,
-  `is_not` → `!=`, `contains`/`wildcard` → `=~`, `exists` → `=~ ".+"`,
-  `does_not_exist` → `= ""`, `is_one_of` → anchored regex alternation.
-  Round-trip is lossless for the kopusha model; `contains` and
-  `wildcard` both serialize as `=~` and parse back as `wildcard`.
-- `LogTable` persists column widths under a key derived from the column
-  set shape, so widths survive restarts but reset when the schema
-  changes shape.
-- Server reads all go through TanStack Query hooks in
-  `hooks/useApiQueries.js` with a 5-min `staleTime`. Mutations
-  invalidate via `queryClient.invalidateQueries`.
-
-## Shutdown behaviour
-
-Three layers, in order of directness:
-
-1. **Explicit** — status-bar "Stop server" button POSTs
-   `/api/shutdown`, which exits after a 2-second grace period. Any
-   `/api/version` touch inside that window (a second tab still polling)
-   cancels the shutdown.
-2. **Tab close** — `pagehide` fires
-   `navigator.sendBeacon('/api/shutdown')`. Best-effort, doesn't block
-   tab close, multi-tab-safe via the same grace cancellation.
-3. **Inactivity** — the `timeout` loop (default 180s) is the fallback
-   for force-kill and browser-crash cases. The SPA's 30s
-   `/api/version` poll keeps the timer fresh with ~6× margin while any
-   tab is open. Modules registering an `AddBusyCheck` predicate pause
-   the loop while they're mid-work.
-
-## API Reference
-
-All endpoints return JSON. Errors: `{"error": "message"}`.
-
-| Method | Path | Body/Params | Returns |
-|--------|------|-------------|---------|
-| GET | `/api/version` | — | `{version, os, arch, idle_timeout_seconds}` |
-| GET | `/api/files` | — | `{files[], timestamp_field}` |
+| Method | Path | Body or parameters | Returns |
+|--------|------|--------------------|---------|
+| GET | `/api/version` | | `{version, os, arch, idle_timeout_seconds, repository}` |
+| GET | `/api/update` | | `{current, latest, available, url, checked, enabled}` |
+| POST | `/api/update/prepare` | | Downloads and verifies the newest release; returns the plan. Writes nothing. |
+| POST | `/api/update/apply` | | Installs the prepared plan, then restarts |
+| GET | `/api/files` | | `{files[], timestamp_field}` |
 | POST | `/api/files/load` | `{path}` | `{status}` |
+| POST | `/api/files/load-dir` | `{path}` (folder or zip, not recursive) | `{status, loaded[], errors[]}` |
 | POST | `/api/files/unload` | `{id}` | `{status}` |
 | POST | `/api/files/toggle` | `{id, enabled}` | `{status}` |
-| POST | `/api/files/load-dir` | `{path}` | `{status, loaded[], errors[]}` |
-| GET | `/api/browse` | `?path=` | `{current_path, entries[]}` |
-| POST | `/api/query` | `{filters[], time_from, time_to, sort_order, search_text, offset, limit}` | `{rows[], total_count, fields[], offset, limit}` |
-| GET | `/api/fields` | — | `{fields[]}` |
-| GET | `/api/field-samples` | `?fields=a,b,c&cap=N` | `{field: [v1,…]}` — DISTINCT values per field, capped |
-| GET | `/api/timerange` | — | `{min, max, timestamp_fields[]}` |
-| GET/POST | `/api/timestamp-field` | POST: `{field}` | `{field}` |
-| POST | `/api/histogram` | same body as `/api/query`; offset and limit ignored | `{buckets[], interval_seconds, min, max, total, field}` |
-| POST | `/api/profile` | `/api/query` body + optional `fields[]` | `{total, fields[], truncated}` — one scan covers every field |
-| POST | `/api/profile/values` | `/api/query` body + `{field, top}` | `{field, total, values[]}` — one GROUP BY, fetched on expand |
-| POST | `/api/files/explain` | `{path}` | `{chosen, best_score, adapters[], first_line, notes[]}` — read-only; loads nothing |
-| GET | `/api/rules` | — | `{rules[], dir}` |
-| POST | `/api/rules/suggest` | `{sample}` | a draft rule inferred from the sample; writes nothing |
+| POST | `/api/files/explain` | `{path}` | `{chosen, best_score, adapters[], first_line, notes[]}`; loads nothing |
+| GET | `/api/samples` | | `{available, dir, files[]}` from `samples/` next to the binary |
+| GET | `/api/browse` | `?path=` (default: home folder) | `{current_path, entries[], drives, in_zip}` |
+| POST | `/api/query` | `{filters[], time_from, time_to, sort_order, sort_field, search_text, offset, limit}` | `{rows[], total_count, fields[], offset, limit}` |
+| POST | `/api/histogram` | Same as `/api/query`; offset and limit ignored | `{buckets[], interval_seconds, min, max, total, field}` |
+| POST | `/api/profile` | `/api/query` body plus optional `fields[]` | `{total, fields[], truncated}` |
+| POST | `/api/profile/values` | `/api/query` body plus `{field, top}` | `{field, total, values[]}` |
+| GET | `/api/fields` | | `{fields[]}` |
+| GET | `/api/field-samples` | `?fields=a,b&cap=N` | `{field: [values]}`, distinct values per field |
+| GET | `/api/timerange` | | `{min, max, timestamp_fields[]}` |
+| GET, POST | `/api/timestamp-field` | POST: `{field}` | `{field}` |
+| GET | `/api/rules` | | `{rules[], dir}` |
+| POST | `/api/rules/suggest` | `{sample}` | Draft rule; writes nothing |
 | POST | `/api/rules/preview` | `{rule, sample}` | `{fields[], rows[], lines[], parsed, continuation, timestamp_errors, error}` |
-| POST | `/api/rules/save` | `{rule, overwrite}` | `{status, path, file, rules}`; `409` when the name exists |
-| POST | `/api/export` | `{query, output_path}` | `{status, records, path}` — format follows the extension |
+| POST | `/api/rules/save` | `{rule, overwrite}` | `{status, path, file, rules}`; 409 if the name exists |
+| POST | `/api/export` | `{query, output_path}` | `{status, records, path}`; format from the extension |
 | POST | `/api/export/self-copy` | `{target_dir}` | `{status, path}` |
-| GET/POST | `/api/settings` | POST: `{last_directory, …}` | settings object / `{status}` |
-| POST | `/api/shutdown` | — | exits after 2s grace |
-| GET | `/api/modules` | — | `{modules: [{id, tab?, bundle?, style?, config?}]}` |
-| GET | `/api/openapi.json` | — | Swagger 2.0 spec generated from `swag` annotations |
+| GET, POST | `/api/settings` | POST: `{last_directory, auto_load_previous}` | Settings, or `{status}` |
+| POST | `/api/shutdown` | | `{status, grace_seconds}`; exits after 2 s unless cancelled |
+| GET | `/api/modules` | | `{modules: [{id, tab, bundle, style, config}]}` |
+| GET | `/api/openapi.json` | | Swagger 2.0 spec |
 
-Modules add routes under `/api/<name>/*` and `/m/<name>/*`, which
-appear only when the module's `[<name>]` config section is present.
-The shipped `mcp` module adds `POST /api/mcp` (JSON-RPC 2.0, MCP
-Streamable HTTP), loopback clients only. `kopusha mcp` (main_mcp.go)
-is a separate mode of the same binary: it bridges standard
-input/output to that endpoint for clients that only launch
-subprocesses, and branches before any other startup so nothing but
-protocol messages reaches standard output — see [docs/MCP.md](./docs/MCP.md).
+Filters are `{field, operator, value, logic}`. Operators: `is`,
+`is_not`, `contains`, `not_contains`, `wildcard`, `not_wildcard`,
+`exists`, `does_not_exist`, `is_one_of`, `is_not_one_of` (the last two
+take a comma-separated list). `logic` (`and` / `or`) joins a filter to
+the next one.
 
-## Module conventions
+Modules add routes under `/api/<name>/` and `/m/<name>/` only when
+enabled. The `mcp` module adds `POST /api/mcp`; see
+[docs/MCP.md](./docs/MCP.md).
 
-One module ships, disabled by default: `mcp`. See
-[docs/MODULES.md](./docs/MODULES.md) for the full contract. In brief:
+## Modules
 
-- Each module lives under `modules/<name>/` with a Go-valid package
-  name even when the directory has dashes.
-- Modules with both halves split into `backend/` and `frontend/`.
-  Data-only modules flatten — Go's `embed` cannot escape upward with
-  `..`, so embedded files must sit beside the source.
-- Implement `module.Module`: `Name()`, `Enabled(*config.Config)`,
-  `Register(*RegisterContext)`. `Enabled` should consult
-  `cfg.ModuleEnabled("<name>")` so a config section is the on/off
-  switch.
-- Routes go under `/api/<name>/*` and `/m/<name>/*`, disjoint from core
-  paths so longest-prefix matching keeps them clear of the SPA catch-all.
-- Modules reach core state through `RegisterContext.Deps` (`Engine`,
-  `Rules`, `Settings`, activity hooks), never by importing
-  `internal/server`.
-- Register the React component in `frontend/src/moduleRegistry.js` and
-  add a `resolve.alias` entry in `frontend/vite.config.js` for every
-  external package the module imports — module JSX sits outside the
-  Vite project root, so Rollup's node_modules walk-up never reaches
-  `frontend/node_modules`.
+A module is an optional feature that registers its own HTTP routes,
+static files, UI tab or UI config. It is enabled when its `[<name>]`
+section exists in a `kopusha*.conf` file and `enabled` is not set to
+false. Modules reach the core only through `RegisterContext` (engine,
+rules, settings, activity hooks) and never import `internal/server`.
+The full contract is in [docs/MODULES.md](./docs/MODULES.md).
 
-## Known Limitations / Backlog
+## Design decisions
 
-- **Free-text search** uses `TRY_CAST(combined.* AS VARCHAR) ILIKE`,
-  which is DuckDB-specific and may misbehave on exotic column types; a
-  per-column union approach would be more robust.
-- **No authentication** — fine for localhost, needs an auth layer
-  before any network exposure.
-- **Trace visualization** — the table view works for logs and metrics;
-  traces would benefit from a Gantt/waterfall span view. Design and
-  cost tradeoffs are in [docs/TRACE_VIEW_PROPOSAL.md](./docs/TRACE_VIEW_PROPOSAL.md).
-- **Per-module bundle splitting** — module React code is bundled with
-  the main Vite output because `moduleRegistry.js` imports statically.
-  The Manifest already exposes an optional `Bundle` URL field so a
-  split build can arrive without changing the contract.
-- **API client migration** — `frontend/src/api/client.js` and
-  `frontend/src/api/generated/` coexist; migration is per-component and
-  ungated.
-- **NDJSON schema inference is capped** at `sample_size=50000`. Fields
-  that appear *only* beyond row 50,000 are silently dropped. This is a
-  deliberate load-time tradeoff (~37% faster on a 200 MB file); raise
-  the constant in `engine.go` if your data is non-uniform.
-- **Swag CLI** — `swag init` runs from `build.sh` only if the CLI is on
-  PATH. Builds without it succeed using the committed `swagger.json`.
+**One binary.** The UI is embedded with `go:embed static/*` and the
+DuckDB extensions are linked in. A user copies one file (plus the
+`parsers.d/` folder) to a machine and runs it, including machines with
+no internet access. It also makes "export with the viewer attached"
+possible: the binary copies itself next to the exported data.
+
+**DuckDB instead of a custom store.** DuckDB reads NDJSON and Parquet
+directly, stores data in columns (less memory than parsed JSON
+objects), and does the filtering, grouping and export in SQL. Other
+formats are converted to NDJSON once at load time, so there is one
+query path for everything.
+
+**Detection by score.** Each adapter returns a confidence number and
+the highest one wins. New formats are added without changing the
+dispatcher, and a diagnosis can show every adapter's opinion.
+
+**Rules as data.** Text formats are described in YAML, not code, so a
+user can add one without rebuilding. The rule manager, not `main`,
+owns the registry, so a rule saved from the UI applies immediately and
+the files already loaded stay loaded.
+
+**The rule preview runs the real adapter.** Continuation lines,
+byte-order marks, date rollover and long-line truncation are adapter
+behaviour. A second implementation for the preview would drift, and a
+preview that disagrees with the real result is worse than none.
+
+**Rule names are file names.** A rule name from the browser is reduced
+to a safe set of characters (`Slug`), and the resulting path is then
+checked to be inside `parsers.d/`. The second check does not depend on
+the first being complete.
+
+**Backend file browser.** A browser cannot list local folders, so the
+server provides `/api/browse`. `--files` and `--dir` cover scripted
+use. The browser shows only extensions an adapter can read (and
+`.zip`, `.json`, `.csv`), to keep large folders usable.
+
+**Loopback only, no authentication.** The server binds `127.0.0.1`. A
+non-loopback `listen` is accepted only with a TLS certificate. Access
+control beyond that belongs in a reverse proxy; see
+[SECURITY.md](./SECURITY.md).
+
+**Updates only on request.** The release check only reports. Installing
+a release requires a button press and a build attestation; see
+[SECURITY.md](./SECURITY.md#self-update).
+
+## Known limitations
+
+- **NDJSON schema detection reads the first 50,000 rows**
+  (`jsonSampleRows` in `engine.go`). A field that appears only after
+  that row is dropped. This made loading a 200 MB file about 3 times
+  faster; raise the constant if your files are not uniform.
+- **No authentication.** See above.
+- **No trace view.** Traces show as table rows. A span waterfall view
+  is discussed in [docs/TRACE_VIEW_PROPOSAL.md](./docs/TRACE_VIEW_PROPOSAL.md).
+- **Module UI code is bundled with the main UI**, because
+  `frontend/src/moduleRegistry.js` imports it statically. The module
+  manifest already has a `Bundle` field for separate bundles later.
+- **Two API clients.** `src/api/client.js` and the generated client
+  coexist; components move over one at a time.
+- **`swag` is optional.** Without it on `PATH`, `build.sh` uses the
+  committed `swagger.json`.
